@@ -31,7 +31,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemUserProfileEntity> FindAllByPropertyID(SystemUserProfilePropertysEntity _propertyID);
     }
 
-    public partial class SystemUserProfileServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemUserProfileEntity,int>
+    public partial class SystemUserProfileServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SystemUserProfileEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

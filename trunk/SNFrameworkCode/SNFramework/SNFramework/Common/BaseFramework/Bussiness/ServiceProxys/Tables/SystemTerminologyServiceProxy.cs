@@ -18,7 +18,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 	    bool IsExisted(string terminologyCode, string lang);
     }
 
-    public partial class SystemTerminologyServiceProxy : ISystemTerminologyServiceProxy
+    public partial class SystemTerminologyServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemTerminologyEntity,int>, ISystemTerminologyServiceProxy
     {
         public string GetLocalizationNameByTypeAndCode(string localizationType, string localizationCode)
         {

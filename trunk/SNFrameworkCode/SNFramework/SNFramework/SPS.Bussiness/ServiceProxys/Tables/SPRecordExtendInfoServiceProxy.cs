@@ -17,7 +17,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     }
 
-    internal partial class SPRecordExtendInfoServiceProxy : ISPRecordExtendInfoServiceProxy
+    internal partial class SPRecordExtendInfoServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPRecordExtendInfoEntity,int>, ISPRecordExtendInfoServiceProxy
     {
 
 

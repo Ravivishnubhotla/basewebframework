@@ -38,12 +38,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
             dataVersion.ParentDataType = objAuditable.GetType().FullName;
             dataVersion.ParentDataID = Convert.ToInt32(objAuditable.GetDataEntityKey());
             dataVersion.VersionNumber = 1;
-            dataVersion.ChangeUserID = objAuditable.CreateBy;
-            dataVersion.ChangeDate = objAuditable.CreateAt;
+            dataVersion.ChangeUserID = objAuditable.GetDataCreateBy();
+            dataVersion.ChangeDate = objAuditable.GetDataCreateAt();
             dataVersion.VauleField = objAuditable.GetEntityPropertyDictionaryValues();
             dataVersion.NewChangeFileld = "";
             dataVersion.OldChangeFileld = "";
-
+ 
             SystemVersionWrapper.Save(dataVersion);
 
             return dataVersion;
@@ -67,8 +67,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
             else
             {
                 dataVersion.VersionNumber = curdataVersion.VersionNumber + 1;
-                dataVersion.ChangeUserID = objAuditable.CreateBy;
-                dataVersion.ChangeDate = objAuditable.CreateAt;
+                dataVersion.ChangeUserID = objAuditable.GetDataLastModifyBy();
+                dataVersion.ChangeDate = objAuditable.GetDataLastModifyAt();
                 dataVersion.VauleField = objAuditable.GetEntityPropertyDictionaryValues();
                 dataVersion.GetChangeField(curdataVersion);
 
@@ -83,20 +83,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
             try
             {
                 SystemLogWrapper log = new SystemLogWrapper();
-                log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.CreateAt, System.DateTime.Now);
+                log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.GetDataCreateAt(), System.DateTime.Now);
 
                 SystemUserWrapper opUser = null;
 
-                if (auditableData.CreateBy.HasValue)
+                if (auditableData.GetDataCreateBy().HasValue)
                 {
-                    opUser = SystemUserWrapper.FindById(auditableData.CreateBy.Value);
+                    opUser = SystemUserWrapper.FindById(auditableData.GetDataCreateBy().Value);
                 }
 
-                log.LogDescrption = auditableData.LastModifyComment;
+                log.LogDescrption = auditableData.GetDataLastModifyComment();
 
                 log.LogLevel = SystemLogWrapper.SysteLogLevel.Info;
-                log.LogRelateDateTime = auditableData.CreateAt;
-                log.LogRelateUserID = auditableData.CreateBy;
+                log.LogRelateDateTime = auditableData.GetDataCreateAt();
+                log.LogRelateUserID = auditableData.GetDataCreateBy();
 
                 if (opUser != null)
                     log.LogRelateUserName = opUser.UserLoginID;
@@ -106,7 +106,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
 
 
                 log.ParentDataType = auditableData.GetType().Name.ToString();
-                log.ParentDataID = auditableData.CreateBy;
+                log.ParentDataID = auditableData.GetDataCreateBy();
                 log.LogSource = "Operation";
                 log.LogType = SystemLogWrapper.SysteLogType.OperationLog;
 
@@ -125,20 +125,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
             try
             {
                 SystemLogWrapper log = new SystemLogWrapper();
-                log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.LastModifyAt, System.DateTime.Now);
+                log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.GetDataLastModifyAt(), System.DateTime.Now);
 
                 SystemUserWrapper opUser = null;
 
-                if (auditableData.LastModifyBy.HasValue)
+                if (auditableData.GetDataLastModifyBy().HasValue)
                 {
-                    opUser = SystemUserWrapper.FindById(auditableData.LastModifyBy.Value);
+                    opUser = SystemUserWrapper.FindById(auditableData.GetDataLastModifyBy().Value);
                 }
 
-                log.LogDescrption = auditableData.LastModifyComment;
+                log.LogDescrption = auditableData.GetDataLastModifyComment();
 
                 log.LogLevel = SystemLogWrapper.SysteLogLevel.Info;
-                log.LogRelateDateTime = auditableData.LastModifyAt;
-                log.LogRelateUserID = auditableData.LastModifyBy;
+                log.LogRelateDateTime = auditableData.GetDataLastModifyAt();
+                log.LogRelateUserID = auditableData.GetDataLastModifyBy();
 
                 if (opUser != null)
                     log.LogRelateUserName = opUser.UserLoginID;
@@ -146,7 +146,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
                     log.LogRelateUserName = "";
 
                 log.ParentDataType = auditableData.GetType().ToString();
-                log.ParentDataID = auditableData.LastModifyBy;
+                log.ParentDataID = auditableData.GetDataLastModifyBy();
                 log.LogSource = "Operation";
                 log.LogType = SystemLogWrapper.SysteLogType.OperationLog;
 
@@ -176,20 +176,20 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
                 }
 
                 SystemLogWrapper log = new SystemLogWrapper();
-                log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.LastModifyAt, System.DateTime.Now);
+                log.LogDate = ValueConvertUtil.ConvertNullableValue(auditableData.GetDataLastModifyAt(), System.DateTime.Now);
 
                 SystemUserWrapper opUser = null;
 
-                if (auditableData.LastModifyBy.HasValue)
+                if (auditableData.GetDataLastModifyBy().HasValue)
                 {
-                    opUser = SystemUserWrapper.FindById(auditableData.LastModifyBy.Value);
+                    opUser = SystemUserWrapper.FindById(auditableData.GetDataLastModifyBy().Value);
                 }
 
-                log.LogDescrption = auditableData.LastModifyComment;
+                log.LogDescrption = auditableData.GetDataLastModifyComment();
 
                 log.LogLevel = SystemLogWrapper.SysteLogLevel.Info;
-                log.LogRelateDateTime = auditableData.LastModifyAt;
-                log.LogRelateUserID = auditableData.LastModifyBy;
+                log.LogRelateDateTime = auditableData.GetDataLastModifyAt();
+                log.LogRelateUserID = auditableData.GetDataLastModifyBy();
 
                 if (opUser != null)
                     log.LogRelateUserName = opUser.UserLoginID;
@@ -197,7 +197,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
                     log.LogRelateUserName = "";
 
                 log.ParentDataType = auditableData.GetType().ToString();
-                log.ParentDataID = auditableData.LastModifyBy;
+                log.ParentDataID = auditableData.GetDataLastModifyBy();
                 log.LogSource = "Operation";
                 log.LogType = SystemLogWrapper.SysteLogType.OperationLog;
 
@@ -211,13 +211,14 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Commons
         }
 
 
-        public abstract int? CreateBy { get; set; }
-        public abstract DateTime? CreateAt { get; set; }
-        public abstract int? LastModifyBy { get; set; }
-        public abstract DateTime? LastModifyAt { get; set; }
-        public abstract string LastModifyComment { get; set; }
+        public abstract int? GetDataCreateBy();
+        public abstract DateTime? GetDataCreateAt();
+        public abstract int? GetDataLastModifyBy();
+        public abstract DateTime? GetDataLastModifyAt();
+        public abstract string GetDataLastModifyComment();
         public abstract string GetEntityTypeName();
         public abstract string GetEntityName();
         public abstract string GetEntityID();
+        public abstract string GetEntityNo();
     }
 }

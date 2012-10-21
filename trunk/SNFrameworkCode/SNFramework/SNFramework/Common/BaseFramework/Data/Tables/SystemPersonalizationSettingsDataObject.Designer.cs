@@ -87,6 +87,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly IntProperty PROPERTY_USERID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastModifyBy"));
 		public static readonly DateTimeProperty PROPERTY_USERID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastModifyAt"));
 		public static readonly StringProperty PROPERTY_USERID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastModifyComment"));
+		public static readonly StringProperty PROPERTY_USERID_LASTLOGINIP = new StringProperty(Property.ForName(PROPERTY_USERID_ALIAS_NAME + ".LastLoginIP"));
 		#endregion
 		public static readonly StringProperty PROPERTY_PATH = new StringProperty(Property.ForName(SystemPersonalizationSettingsEntity.PROPERTY_NAME_PATH));		
 		public static readonly ByteArrayProperty PROPERTY_PAGESETTINGS = new ByteArrayProperty(Property.ForName(SystemPersonalizationSettingsEntity.PROPERTY_NAME_PAGESETTINGS));		
@@ -264,6 +265,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                 		case "UserId_SystemPersonalizationSettingsEntity_Alias.LastModifyAt":
 							return typeof (DateTime);
                 		case "UserId_SystemPersonalizationSettingsEntity_Alias.LastModifyComment":
+							return typeof (string);
+                		case "UserId_SystemPersonalizationSettingsEntity_Alias.LastLoginIP":
 							return typeof (string);
           			}
                     break;

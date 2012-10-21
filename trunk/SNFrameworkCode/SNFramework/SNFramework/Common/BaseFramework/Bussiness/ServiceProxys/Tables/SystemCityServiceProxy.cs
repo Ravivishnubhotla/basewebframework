@@ -18,7 +18,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemCityServiceProxy : ISystemCityServiceProxy
+    public partial class SystemCityServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemCityEntity,int>, ISystemCityServiceProxy
     {
 
 

@@ -33,7 +33,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemDepartmentPostRoleRelationEntity> FindAllByRoleID(SystemRoleEntity _roleID);
     }
 
-    public partial class SystemDepartmentPostRoleRelationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemDepartmentPostRoleRelationEntity,int>
+    public partial class SystemDepartmentPostRoleRelationServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SystemDepartmentPostRoleRelationEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

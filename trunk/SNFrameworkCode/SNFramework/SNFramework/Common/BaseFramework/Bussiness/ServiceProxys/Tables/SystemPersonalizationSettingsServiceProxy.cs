@@ -24,7 +24,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         void SavePersonalizationBlob(string path, string userName, byte[] dataBlob);
     }
 
-    public partial class SystemPersonalizationSettingsServiceProxy : ISystemPersonalizationSettingsServiceProxy
+    public partial class SystemPersonalizationSettingsServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemPersonalizationSettingsEntity,int>, ISystemPersonalizationSettingsServiceProxy
     {
         public void LoadPersonalizationBlobs(string path, string userName, ref byte[] userDataBlob)
         {

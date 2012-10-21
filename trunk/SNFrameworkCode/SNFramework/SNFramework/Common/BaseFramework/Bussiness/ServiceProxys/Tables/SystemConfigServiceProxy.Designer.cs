@@ -29,7 +29,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemConfigEntity> FindAllByConfigGroupID(SystemConfigGroupEntity _configGroupID);
     }
 
-    public partial class SystemConfigServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemConfigEntity,int>
+    public partial class SystemConfigServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SystemConfigEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

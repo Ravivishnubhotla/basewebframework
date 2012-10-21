@@ -29,7 +29,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemPostEntity> FindAllByOrganizationID(SystemOrganizationEntity _organizationID);
     }
 
-    public partial class SystemPostServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemPostEntity,int>
+    public partial class SystemPostServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SystemPostEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

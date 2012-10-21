@@ -17,7 +17,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemEmailQueueServiceProxy : ISystemEmailQueueServiceProxy
+    public partial class SystemEmailQueueServiceProxy :BaseSpringNHibernateEntityServiceProxy<SystemEmailQueueEntity,int>, ISystemEmailQueueServiceProxy
     {
 
 

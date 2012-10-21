@@ -19,7 +19,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemUserGroupUserRelationServiceProxy : ISystemUserGroupUserRelationServiceProxy
+    public partial class SystemUserGroupUserRelationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemUserGroupUserRelationEntity,int>, ISystemUserGroupUserRelationServiceProxy
     {
 
 

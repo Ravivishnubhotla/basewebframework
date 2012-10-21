@@ -26,7 +26,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         List<SystemPrivilegeEntity> TestFindResouceNameAndOPName(string resourceName, string opName);
     }
 
-    public partial class SystemPrivilegeServiceProxy : ISystemPrivilegeServiceProxy
+    public partial class SystemPrivilegeServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemPrivilegeEntity,int>, ISystemPrivilegeServiceProxy
     {
  
 

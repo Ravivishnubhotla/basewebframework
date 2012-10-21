@@ -18,7 +18,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
     }
 
     [RecordAuditorClass(EnableVersion = false)]
-    public partial class SystemEmailTemplateServiceProxy : ISystemEmailTemplateServiceProxy
+    public partial class SystemEmailTemplateServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemEmailTemplateEntity,int>, ISystemEmailTemplateServiceProxy
     {
         //[RecordAuditorMethod(AuditorActionHandle = )]
         //public override void Save(SystemEmailTemplateEntity obj)

@@ -17,7 +17,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     }
 
-    internal partial class SPChannelSycnParamsServiceProxy : ISPChannelSycnParamsServiceProxy
+    internal partial class SPChannelSycnParamsServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPChannelSycnParamsEntity,int>, ISPChannelSycnParamsServiceProxy
     {        
         
         

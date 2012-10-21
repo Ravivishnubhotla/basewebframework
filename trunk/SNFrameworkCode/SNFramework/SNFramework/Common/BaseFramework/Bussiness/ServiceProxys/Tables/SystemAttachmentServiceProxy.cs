@@ -18,7 +18,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemAttachmentServiceProxy : ISystemAttachmentServiceProxy
+    public partial class SystemAttachmentServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemAttachmentEntity,int>, ISystemAttachmentServiceProxy
     {
 
 

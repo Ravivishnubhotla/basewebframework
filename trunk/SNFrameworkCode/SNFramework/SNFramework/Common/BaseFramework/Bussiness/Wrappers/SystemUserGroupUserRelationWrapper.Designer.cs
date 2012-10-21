@@ -118,6 +118,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 					return PROPERTY_USERID_LASTMODIFYAT;
 		        case "UserID_LastModifyComment":
 					return PROPERTY_USERID_LASTMODIFYCOMMENT;
+		        case "UserID_LastLoginIP":
+					return PROPERTY_USERID_LASTLOGINIP;
 		        case "UserGroupID_GroupID":
 					return PROPERTY_USERGROUPID_GROUPID;
 		        case "UserGroupID_GroupNameCn":
@@ -199,6 +201,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public const string PROPERTY_USERID_LASTMODIFYBY = "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyBy";
 		public const string PROPERTY_USERID_LASTMODIFYAT = "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyAt";
 		public const string PROPERTY_USERID_LASTMODIFYCOMMENT = "UserID_SystemUserGroupUserRelationEntity_Alias.LastModifyComment";
+		public const string PROPERTY_USERID_LASTLOGINIP = "UserID_SystemUserGroupUserRelationEntity_Alias.LastLoginIP";
 		#endregion
 		#region userGroupID字段外键查询字段
         public const string PROPERTY_USERGROUPID_ALIAS_NAME = "UserGroupID_SystemUserGroupUserRelationEntity_Alias";
@@ -643,6 +646,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 if (this. UserID == null)
                     return null;
                 return  UserID.LastModifyComment;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_LASTLOGINIP)]
+        public string UserID_LastLoginIP
+        {
+            get
+            {
+                if (this. UserID == null)
+                    return null;
+                return  UserID.LastLoginIP;
             }
         }
 		#endregion

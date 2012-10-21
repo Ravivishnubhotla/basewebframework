@@ -24,7 +24,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         SystemPrivilegeInRolesEntity GetRelationByRoleAndPrivilege(SystemRoleEntity roleEntity, SystemPrivilegeEntity privilegeEntity);
     }
 
-    public partial class SystemPrivilegeInRolesServiceProxy : ISystemPrivilegeInRolesServiceProxy
+    public partial class SystemPrivilegeInRolesServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemPrivilegeInRolesEntity,int>, ISystemPrivilegeInRolesServiceProxy
     {
         [Transaction(ReadOnly = false)]
         public void PatchUpdatePermissionsParam(List<SystemPrivilegeInRolesEntity> privilegeInRolesEntities)

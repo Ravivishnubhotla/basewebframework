@@ -31,7 +31,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemPrivilegeParameterEntity> FindAllByPrivilegeID(SystemPrivilegeEntity _privilegeID);
     }
 
-    public partial class SystemPrivilegeParameterServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemPrivilegeParameterEntity,int>
+    public partial class SystemPrivilegeParameterServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SystemPrivilegeParameterEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

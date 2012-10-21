@@ -31,7 +31,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemRoleApplicationEntity> FindAllByApplicationID(SystemApplicationEntity _applicationID);
     }
 
-    public partial class SystemRoleApplicationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemRoleApplicationEntity,int>
+    public partial class SystemRoleApplicationServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SystemRoleApplicationEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

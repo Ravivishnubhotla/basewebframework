@@ -17,7 +17,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemWorkFlowServiceProxy : ISystemWorkFlowServiceProxy
+    public partial class SystemWorkFlowServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemWorkFlowEntity,int>, ISystemWorkFlowServiceProxy
     {
 
 

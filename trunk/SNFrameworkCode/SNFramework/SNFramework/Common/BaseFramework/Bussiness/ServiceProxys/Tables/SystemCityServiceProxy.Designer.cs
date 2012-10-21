@@ -29,7 +29,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemCityEntity> FindAllByProvinceID(SystemProvinceEntity _provinceID);
     }
 
-    public partial class SystemCityServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemCityEntity,int>
+    public partial class SystemCityServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SystemCityEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

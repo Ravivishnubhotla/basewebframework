@@ -17,7 +17,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     }
 
-    internal partial class SPClientCodeRelationServiceProxy : ISPClientCodeRelationServiceProxy
+    internal partial class SPClientCodeRelationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPClientCodeRelationEntity,int>, ISPClientCodeRelationServiceProxy
     {
         public static SPClientCodeRelationEntity NewDefaultCode(SPSClientEntity client,SPCodeEntity code)
         {

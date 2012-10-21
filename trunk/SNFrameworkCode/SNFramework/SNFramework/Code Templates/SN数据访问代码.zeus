@@ -609,6 +609,7 @@ namespace <%= config.ServiceProxyNameSpace %>
 	    {
 			GenerateFileHead(config.GenerateBaseServiceProxyClassName(table)+".cs"); 
 			output.writeln(config.ImportServiceProxyNameSpace);
+						string pkType = config.GetPKType(table);
 %>using <%= config.BaseServiceProxyNameSpace %>;
 using <%= config.BaseDataObjectNameSpace%>;
 using <%= config.BaseEntityObjectNameSpace %>;
@@ -623,7 +624,7 @@ namespace <%= config.ServiceProxyNameSpace %>
 
     }
 
-    internal class <%= config.GenerateBaseServiceProxyClassName(table) %> : <%= config.GenerateServiceProxyClassName(table) %>
+    internal class <%= config.GenerateBaseServiceProxyClassName(table) %> 
     {
 
 
@@ -667,7 +668,7 @@ namespace <%= config.ServiceProxyNameSpace %>
 				}
 %>    }
 
-    <% if (config.ServiceProxyClassIsInternal) {%>internal<%}else{%>public<%}%> partial class <%= config.GenerateServiceProxyClassName(table) %> : <%= config.RootServiceProxyClassName %><<%= config.GenerateEntityClassName(table) %>,<%=pkType%>>
+    <% if (config.ServiceProxyClassIsInternal) {%>internal<%}else{%>public<%}%> partial class <%= config.GenerateServiceProxyClassName(table) %> //: <%= config.RootServiceProxyClassName %><<%= config.GenerateEntityClassName(table) %>,<%=pkType%>>
     {
 		public <%= config.DataObjectContainerIoCClassName %> DataObjectsContainerIocID { set; get; }
 	

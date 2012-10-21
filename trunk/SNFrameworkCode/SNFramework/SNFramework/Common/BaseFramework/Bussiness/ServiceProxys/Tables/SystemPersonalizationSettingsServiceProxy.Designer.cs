@@ -31,7 +31,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 		List<SystemPersonalizationSettingsEntity> FindAllByUserId(SystemUserEntity _userId);
     }
 
-    public partial class SystemPersonalizationSettingsServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemPersonalizationSettingsEntity,int>
+    public partial class SystemPersonalizationSettingsServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SystemPersonalizationSettingsEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

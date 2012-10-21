@@ -53,7 +53,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         SystemRoleEntity GetRoleByCode(string roleCode);
     }
 
-    public partial class SystemRoleServiceProxy : ISystemRoleServiceProxy
+    public partial class SystemRoleServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemRoleEntity,int>, ISystemRoleServiceProxy
     {
         public bool DeleteRole(string roleName, bool onPopulatedRole)
         {

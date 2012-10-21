@@ -79,7 +79,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         List<SystemUserEntity> FindAllByOrderByExpcept(string sortFieldName, bool isDesc, List<string> expceptUserLoginId, List<string> expceptRoleName, PageQueryParams pageQueryParams);
     }
 
-    public partial class SystemUserServiceProxy : ISystemUserServiceProxy
+    public partial class SystemUserServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemUserEntity,int>, ISystemUserServiceProxy
     {
         protected const string DEV_USER_ID = "DeveloperAdministrator";
         protected const string SYS_USER_ID = "SystemAdministrator";

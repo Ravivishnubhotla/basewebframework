@@ -98,6 +98,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
 		public static readonly string PROPERTY_NAME_LASTMODIFYAT = "LastModifyAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYCOMMENT = "LastModifyComment";
+		public static readonly string PROPERTY_NAME_LASTLOGINIP = "LastLoginIP";
 		
         #endregion
 	
@@ -666,6 +667,21 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			set
 			{
 				entity.LastModifyComment = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string LastLoginIP
+		{
+			get
+			{
+				return entity.LastLoginIP;
+			}
+			set
+			{
+				entity.LastLoginIP = value;
 			}
 		}
 		#endregion 

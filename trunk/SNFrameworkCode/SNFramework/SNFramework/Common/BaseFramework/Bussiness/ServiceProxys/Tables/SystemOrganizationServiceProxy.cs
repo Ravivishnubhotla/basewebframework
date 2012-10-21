@@ -18,7 +18,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemOrganizationServiceProxy : ISystemOrganizationServiceProxy
+    public partial class SystemOrganizationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemOrganizationEntity,int>, ISystemOrganizationServiceProxy
     {
 
 

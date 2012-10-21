@@ -76,6 +76,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public const string PROPERTY_USERID_LASTMODIFYBY = "UserID_SystemUserProfileEntity_Alias.LastModifyBy";
 		public const string PROPERTY_USERID_LASTMODIFYAT = "UserID_SystemUserProfileEntity_Alias.LastModifyAt";
 		public const string PROPERTY_USERID_LASTMODIFYCOMMENT = "UserID_SystemUserProfileEntity_Alias.LastModifyComment";
+		public const string PROPERTY_USERID_LASTLOGINIP = "UserID_SystemUserProfileEntity_Alias.LastLoginIP";
 		#endregion
 		#region propertyID字段外键查询字段
         public const string PROPERTY_PROPERTYID_ALIAS_NAME = "PropertyID_SystemUserProfileEntity_Alias";

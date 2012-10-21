@@ -20,7 +20,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         List<SystemUserEntity> GetUserByRole(SystemRoleEntity systemRoleEntity);
     }
 
-    public partial class SystemUserRoleRelationServiceProxy : ISystemUserRoleRelationServiceProxy
+    public partial class SystemUserRoleRelationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemUserRoleRelationEntity,int>, ISystemUserRoleRelationServiceProxy
     {
 
         public List<SystemUserEntity> GetUserByRole(SystemRoleEntity systemRoleEntity)

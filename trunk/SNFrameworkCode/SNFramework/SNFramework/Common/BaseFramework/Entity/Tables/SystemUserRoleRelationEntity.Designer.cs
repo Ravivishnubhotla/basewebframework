@@ -68,6 +68,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public const string PROPERTY_USERID_LASTMODIFYBY = "UserID_SystemUserRoleRelationEntity_Alias.LastModifyBy";
 		public const string PROPERTY_USERID_LASTMODIFYAT = "UserID_SystemUserRoleRelationEntity_Alias.LastModifyAt";
 		public const string PROPERTY_USERID_LASTMODIFYCOMMENT = "UserID_SystemUserRoleRelationEntity_Alias.LastModifyComment";
+		public const string PROPERTY_USERID_LASTLOGINIP = "UserID_SystemUserRoleRelationEntity_Alias.LastLoginIP";
 		#endregion
 		#region roleID字段外键查询字段
         public const string PROPERTY_ROLEID_ALIAS_NAME = "RoleID_SystemUserRoleRelationEntity_Alias";

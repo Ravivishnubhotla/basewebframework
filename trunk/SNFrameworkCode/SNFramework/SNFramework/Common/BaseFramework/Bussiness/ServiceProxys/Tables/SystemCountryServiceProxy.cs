@@ -17,7 +17,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         SystemCountryEntity FindByCode3(string code3);
     }
 
-    public partial class SystemCountryServiceProxy : ISystemCountryServiceProxy
+    public partial class SystemCountryServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemCountryEntity,int>, ISystemCountryServiceProxy
     {
         public SystemCountryEntity FindByCode3(string code3)
         {

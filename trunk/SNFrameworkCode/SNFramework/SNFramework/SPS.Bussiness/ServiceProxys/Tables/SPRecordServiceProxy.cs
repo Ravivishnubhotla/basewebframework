@@ -29,7 +29,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         //void AutoMatch(int channelId, int codeId, int clientId, DateTime startDate, DateTime endDate);
     }
 
-    internal partial class SPRecordServiceProxy : ISPRecordServiceProxy
+    internal partial class SPRecordServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPRecordEntity,int>, ISPRecordServiceProxy
     {
         public void UpdateUrlSuccessSend(int recordId, string url)
         {

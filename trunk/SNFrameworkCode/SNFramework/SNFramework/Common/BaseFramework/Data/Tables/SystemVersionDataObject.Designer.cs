@@ -31,6 +31,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 		public static readonly IntProperty PROPERTY_CHANGEUSERID = new IntProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_CHANGEUSERID));		
 		public static readonly IntProperty PROPERTY_CHANGEUSERNAME = new IntProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_CHANGEUSERNAME));		
 		public static readonly IntProperty PROPERTY_VERSIONNUMBER = new IntProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_VERSIONNUMBER));		
+		public static readonly StringProperty PROPERTY_DATANUMBER = new StringProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_DATANUMBER));		
 		public static readonly StringProperty PROPERTY_COMMENT = new StringProperty(Property.ForName(SystemVersionEntity.PROPERTY_NAME_COMMENT));		
       
 
@@ -81,6 +82,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
                     return typeof (int);
                 case "VersionNumber":
                     return typeof (int);
+                case "DataNumber":
+                    return typeof (string);
                 case "Comment":
                     return typeof (string);
           }

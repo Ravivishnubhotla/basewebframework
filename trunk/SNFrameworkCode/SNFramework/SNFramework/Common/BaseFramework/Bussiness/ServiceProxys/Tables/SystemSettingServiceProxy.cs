@@ -22,7 +22,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         SystemSettingWrapper GetCurrentSystemSetting();
     }
 
-    public partial class SystemSettingServiceProxy : ISystemSettingServiceProxy
+    public partial class SystemSettingServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemSettingEntity,int>, ISystemSettingServiceProxy
     {
         /// <summary>
         /// 获取系统基本设置信息

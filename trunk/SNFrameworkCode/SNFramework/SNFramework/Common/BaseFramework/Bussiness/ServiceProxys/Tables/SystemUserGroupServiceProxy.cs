@@ -23,7 +23,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
         void PatchAssignUserGroupRoles(SystemUserGroupEntity systemUserGroupEntity, List<string> roleids);
     }
 
-    public partial class SystemUserGroupServiceProxy : ISystemUserGroupServiceProxy
+    public partial class SystemUserGroupServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemUserGroupEntity,int>, ISystemUserGroupServiceProxy
     {
         /// <summary>
         /// 获取用户分配的所有角色

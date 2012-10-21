@@ -144,6 +144,8 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 					return PROPERTY_USERID_LASTMODIFYAT;
 		        case "UserId_LastModifyComment":
 					return PROPERTY_USERID_LASTMODIFYCOMMENT;
+		        case "UserId_LastLoginIP":
+					return PROPERTY_USERID_LASTLOGINIP;
               default:
                     return columnName;
             }
@@ -231,6 +233,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 		public const string PROPERTY_USERID_LASTMODIFYBY = "UserId_SystemPersonalizationSettingsEntity_Alias.LastModifyBy";
 		public const string PROPERTY_USERID_LASTMODIFYAT = "UserId_SystemPersonalizationSettingsEntity_Alias.LastModifyAt";
 		public const string PROPERTY_USERID_LASTMODIFYCOMMENT = "UserId_SystemPersonalizationSettingsEntity_Alias.LastModifyComment";
+		public const string PROPERTY_USERID_LASTLOGINIP = "UserId_SystemPersonalizationSettingsEntity_Alias.LastLoginIP";
 		#endregion
       	
 	
@@ -915,6 +918,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
                 if (this. UserId == null)
                     return null;
                 return  UserId.LastModifyComment;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_USERID_LASTLOGINIP)]
+        public string UserId_LastLoginIP
+        {
+            get
+            {
+                if (this. UserId == null)
+                    return null;
+                return  UserId.LastLoginIP;
             }
         }
 		#endregion

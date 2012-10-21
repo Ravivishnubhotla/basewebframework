@@ -27,7 +27,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
     {
     }
 
-    public partial class SystemRoleServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemRoleEntity,int>
+    public partial class SystemRoleServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SystemRoleEntity,int>
     {
 		public BaseFrameworkDataObjectContainers DataObjectsContainerIocID { set; get; }
 	

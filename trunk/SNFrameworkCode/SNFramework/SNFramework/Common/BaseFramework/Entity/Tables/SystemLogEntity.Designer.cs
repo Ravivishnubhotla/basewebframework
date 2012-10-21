@@ -35,6 +35,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		public static readonly string PROPERTY_NAME_LOGRELATEUSERID = "LogRelateUserID";
 		public static readonly string PROPERTY_NAME_LOGRELATEUSERNAME = "LogRelateUserName";
 		public static readonly string PROPERTY_NAME_LOGRELATEDATETIME = "LogRelateDateTime";
+		public static readonly string PROPERTY_NAME_DATANUMBER = "DataNumber";
 		
         #endregion
 	
@@ -65,6 +66,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		private int? _logRelateUserID;
 		private string _logRelateUserName;
 		private DateTime? _logRelateDateTime;
+		private string _dataNumber;
 		
 		#endregion
 
@@ -87,6 +89,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_logRelateUserID = null;
 			_logRelateUserName = null;
 			_logRelateDateTime = null;
+			_dataNumber = null;
 		}
 		#endregion
 
@@ -94,7 +97,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SystemLogEntity( int logID, string logLevel, string logType, DateTime logDate, string logSource, string logUser, string logDescrption, string logRequestInfo, int? parentDataID, string parentDataType, int? logRelateUserID, string logRelateUserName, DateTime? logRelateDateTime)
+		public SystemLogEntity( int logID, string logLevel, string logType, DateTime logDate, string logSource, string logUser, string logDescrption, string logRequestInfo, int? parentDataID, string parentDataType, int? logRelateUserID, string logRelateUserName, DateTime? logRelateDateTime, string dataNumber)
 		{
 			_logID = logID;
 			_logLevel = logLevel;
@@ -109,6 +112,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			_logRelateUserID = logRelateUserID;
 			_logRelateUserName = logRelateUserName;
 			_logRelateDateTime = logRelateDateTime;
+			_dataNumber = dataNumber;
 		}
 		#endregion     
 	
@@ -317,6 +321,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Entity.Tables
 			set	
 			{
 				_isChanged |= (_logRelateDateTime != value); _logRelateDateTime = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string DataNumber
+		{
+			get { return _dataNumber; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 100)
+					throw new ArgumentOutOfRangeException("Invalid value for DataNumber", value, value.ToString());
+				_isChanged |= (_dataNumber != value); _dataNumber = value;
 			}
 		}
 	

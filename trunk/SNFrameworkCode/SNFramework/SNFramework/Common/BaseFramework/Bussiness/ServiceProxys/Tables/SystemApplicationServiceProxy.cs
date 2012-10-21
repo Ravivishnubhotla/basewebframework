@@ -26,7 +26,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
     }
 
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
-    public partial class SystemApplicationServiceProxy : ISystemApplicationServiceProxy
+    public partial class SystemApplicationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SystemApplicationEntity,int>, ISystemApplicationServiceProxy
     {
         public SystemApplicationWrapper CreateOrLoadApplication(string configValue)
         {

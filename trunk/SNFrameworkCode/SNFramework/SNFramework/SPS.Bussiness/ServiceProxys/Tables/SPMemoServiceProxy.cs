@@ -17,7 +17,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     }
 
-    internal partial class SPMemoServiceProxy : ISPMemoServiceProxy
+    internal partial class SPMemoServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPMemoEntity,int>, ISPMemoServiceProxy
     {
  
     }

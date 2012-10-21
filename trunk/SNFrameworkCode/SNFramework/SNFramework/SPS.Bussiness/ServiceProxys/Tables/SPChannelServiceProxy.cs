@@ -30,7 +30,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
 
 
-    internal partial class SPChannelServiceProxy : ISPChannelServiceProxy
+    internal partial class SPChannelServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPChannelEntity,int>, ISPChannelServiceProxy
     {
         [Transaction(ReadOnly = false)]
         public void QuickAddSPChannel(SPChannelEntity channelEntity, string pLinkId, string pMo, string pMobile, string pSpCode, string pCreateDate, string pProvince, string pCity, string pExtend1, string pExtend2, string pExtend3, string pExtend4, string pExtend5, string pExtend6, string pExtend7, string pExtend8, string pExtend9, string pExtend10)

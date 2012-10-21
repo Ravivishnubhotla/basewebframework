@@ -25,7 +25,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     }
 
-    internal partial class SPParamsConvertRuleServiceProxy : ISPParamsConvertRuleServiceProxy
+    internal partial class SPParamsConvertRuleServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPParamsConvertRuleEntity,int>, ISPParamsConvertRuleServiceProxy
     {
 
 

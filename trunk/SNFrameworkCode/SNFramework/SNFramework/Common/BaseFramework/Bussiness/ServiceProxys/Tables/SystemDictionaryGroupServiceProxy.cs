@@ -18,7 +18,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Ta
 
     }
 
-    public partial class SystemDictionaryGroupServiceProxy : ISystemDictionaryGroupServiceProxy
+    public partial class SystemDictionaryGroupServiceProxy :BaseSpringNHibernateEntityServiceProxy<SystemDictionaryGroupEntity,int>, ISystemDictionaryGroupServiceProxy
     {
 
 
