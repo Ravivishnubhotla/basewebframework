@@ -126,7 +126,15 @@ namespace SNFramework.BSF.MainPage
             ssoTokenInfo.SSOKey = ssoKey;
             ssoTokenInfo.Email = userWrapper.UserEmail;
 
-            SystemLogWrapper.LogUserLoginSuccessed(userWrapper, ipaddress, loginDate);
+            userWrapper.LastLoginDate = loginDate;
+            userWrapper.LastLoginIP = ipaddress;
+            userWrapper.LastModifyAt = loginDate;
+            userWrapper.LastModifyBy = userWrapper.UserID;
+            userWrapper.LastModifyComment = "用户登陆更新信息";
+
+            SystemUserWrapper.Update(userWrapper);
+
+            SystemLogWrapper.LogUserLoginSuccessed(userWrapper);
  
             string token = SSOProvider.GetSSFToken(ssoTokenInfo);
 
