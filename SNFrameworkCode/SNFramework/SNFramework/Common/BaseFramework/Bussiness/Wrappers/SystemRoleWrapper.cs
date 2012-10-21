@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Threading;
 using System.Web.Security;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Commons;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
@@ -14,7 +15,7 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 {
 	[Serializable]
-    public partial class SystemRoleWrapper : BaseSpringNHibernateWrapper<SystemRoleEntity, ISystemRoleServiceProxy, SystemRoleWrapper, int>
+    public partial class SystemRoleWrapper : BaseAuditableWrapper<SystemRoleEntity, ISystemRoleServiceProxy, SystemRoleWrapper, int>
     {
         #region Static Common Data Operation
 
@@ -290,6 +291,51 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             {
                 return SystemTerminologyWrapper.GetLocalizationName(this.RoleName, Thread.CurrentThread.CurrentUICulture.ToString().ToLower());
             }
+        }
+
+        public override int? GetDataCreateBy()
+        {
+            return this.CreateBy;
+        }
+
+        public override DateTime? GetDataCreateAt()
+        {
+            return this.CreateAt;
+        }
+
+        public override int? GetDataLastModifyBy()
+        {
+            return this.LastModifyBy;
+        }
+
+        public override DateTime? GetDataLastModifyAt()
+        {
+            return this.LastModifyAt;
+        }
+
+        public override string GetDataLastModifyComment()
+        {
+            return this.LastModifyComment;
+        }
+
+        public override string GetEntityTypeName()
+        {
+            return "½ÇÉ«";
+        }
+
+        public override string GetEntityName()
+        {
+            return this.RoleName;
+        }
+
+        public override string GetEntityID()
+        {
+            return this.RoleID.ToString();
+        }
+
+        public override string GetEntityNo()
+        {
+            return this.RoleCode;
         }
     }
 }
