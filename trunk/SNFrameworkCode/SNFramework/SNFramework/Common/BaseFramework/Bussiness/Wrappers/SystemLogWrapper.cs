@@ -126,13 +126,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return "";
         }
  
-	    public static void LogUserLoginSuccessed(SystemUserWrapper user,string ip, DateTime logindate)
+	    public static void LogUserLoginSuccessed(SystemUserWrapper user)
         {
             SystemLogWrapper log = new SystemLogWrapper();
-            log.LogDate = logindate;
-            log.LogDescrption = string.Format("用户{0}于{1}时间成功登陆系统。登陆IP:{2}.", user.UserLoginID, logindate.ToLongTimeString(), ip);
+            log.LogDate = user.LastLoginDate;
+            log.LogDescrption = string.Format("用户{0}于{1}时间成功登陆系统。登陆IP:{2}.", user.UserLoginID, user.LastLoginDate.ToLongTimeString(), user.LastLoginIP);
             log.LogLevel = SysteLogLevel.Info;
-            log.LogRelateDateTime = logindate;
+            log.LogRelateDateTime = user.LastLoginDate;
             log.LogRelateUserID = user.UserID;
             log.LogRelateUserName = user.UserLoginID;
             log.ParentDataType = typeof (SystemUserWrapper).Name.ToString();
