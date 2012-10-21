@@ -103,76 +103,23 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
         }
 			
 		#endregion
-
-        //public static SystemVersionWrapper SaveNewVersion<T>(T objAuditable) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int> , IAuditableWrapper
-        //{
-        //    SystemVersionWrapper dataVersion = new SystemVersionWrapper();
-
-        //    dataVersion.ParentDataType = objAuditable.GetType().FullName;
-        //    dataVersion.ParentDataID = objAuditable.GetDataEntityKey();
-        //    dataVersion.VersionNumber = 1;
-        //    dataVersion.ChangeUserID = objAuditable.CreateBy;
-        //    dataVersion.ChangeDate = objAuditable.CreateAt;
-        //    dataVersion.VauleField = objAuditable.GetEntityPropertyDictionaryValues();
-        //    dataVersion.NewChangeFileld = "";
-        //    dataVersion.OldChangeFileld = "";
-
-        //    Save(dataVersion);
-
-        //    return dataVersion;
-        //}
-
-        //public static SystemVersionWrapper UpdateNewVersion<T>(T objAuditable) where T : BaseSpringNHibernateWrapper<BaseTableEntity<int>, IBaseSpringNHibernateEntityServiceProxy<BaseTableEntity<int>, int>, T, int>, IAuditableWrapper
-        //{
-        //    SystemVersionWrapper dataVersion = new SystemVersionWrapper();
-
-        //    dataVersion.ParentDataType = objAuditable.GetType().FullName;
-        //    dataVersion.ParentDataID = objAuditable.GetDataEntityKey();
-
-        //    SystemVersionWrapper systemDataVersion = GetCurrentVersionByDataTypeAndDataID(dataVersion.ParentDataType, dataVersion.ParentDataID.Value);
-
-        //    if (systemDataVersion == null)
-        //    {
-        //        return SaveNewVersion(objAuditable);
-        //    }
-        //    else
-        //    {
-        //        dataVersion.VersionNumber = systemDataVersion.VersionNumber + 1;
-        //        dataVersion.ChangeUserID = objAuditable.CreateBy;
-        //        dataVersion.ChangeDate = objAuditable.CreateAt;
-        //        dataVersion.VauleField = objAuditable.GetEntityPropertyDictionaryValues();
-        //        dataVersion.GetChangeField(systemDataVersion);
-
-        //        Save(dataVersion);
-
-        //        return dataVersion;
-        //    }
-        //}
-
+ 
         public void GetChangeField(SystemVersionWrapper currentDataVersion)
         {
             this.NewChangeFileld = "";
             this.OldChangeFileld = "";
+
+            PropertyChangeInfo propertyChangeInfo = new PropertyChangeInfo
+            (
+                JsonConvert.DeserializeObject<Dictionary<string, string>>(currentDataVersion.VauleField),
+                JsonConvert.DeserializeObject<Dictionary<string, string>>(this.VauleField)
+            );
+
             if (!string.IsNullOrEmpty(currentDataVersion.VauleField))
             {
-                Dictionary<string, string> nccurrentData = JsonConvert.DeserializeObject<Dictionary<string, string>>(currentDataVersion.VauleField);
-                Dictionary<string, string> ncnewData = JsonConvert.DeserializeObject<Dictionary<string, string>>(this.VauleField);
-
-
-                Dictionary<string, string> oldChangedValues = new Dictionary<string, string>();
-                Dictionary<string, string> newChangedValues = new Dictionary<string, string>();
-
-                foreach (KeyValuePair<string, string> item in nccurrentData)
-                {
-                    if (ncnewData[item.Key] != nccurrentData[item.Key])
-                    {
-                        oldChangedValues.Add(item.Key, nccurrentData[item.Key]);
-                        newChangedValues.Add(item.Key, ncnewData[item.Key]);
-                    }
-                }
-
-                this.NewChangeFileld = JsonConvert.SerializeObject(newChangedValues);
-                this.OldChangeFileld = JsonConvert.SerializeObject(oldChangedValues);
+                propertyChangeInfo.GetChangeFields();
+                this.NewChangeFileld = JsonConvert.SerializeObject(propertyChangeInfo.NewChangedPropertys);
+                this.OldChangeFileld = JsonConvert.SerializeObject(propertyChangeInfo.OldChangedPropertys);
             }
         }
 

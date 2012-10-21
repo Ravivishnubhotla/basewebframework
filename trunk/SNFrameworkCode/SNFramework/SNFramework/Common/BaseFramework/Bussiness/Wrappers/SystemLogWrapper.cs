@@ -118,6 +118,13 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             public const string Error = "Error";
             public const string Warning = "Warning";
         }
+
+        public static string GetDataTypeName(string typeFullName)
+        {
+            if (typeFullName == typeof(SystemUserWrapper).FullName)
+                return "User";
+            return "";
+        }
  
 	    public static void LogUserLoginSuccessed(SystemUserWrapper user,string ip, DateTime logindate)
         {
