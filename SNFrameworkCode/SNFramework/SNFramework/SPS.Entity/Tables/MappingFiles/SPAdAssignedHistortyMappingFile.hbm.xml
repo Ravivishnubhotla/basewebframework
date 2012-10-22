@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPAdAssignedHistortyEntity,SPS.Entity" table="SPAdAssignedHistorty" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<many-to-one column="SPAdID" name="SPAdID" class="SPS.Entity.Tables.SPAdvertisementEntity,SPS.Entity" />		
+		<many-to-one column="SPClientID" name="SPClientID" class="SPS.Entity.Tables.SPSClientEntity,SPS.Entity" />		
+		<property column="StartDate" type="DateTime" name="StartDate"   />	
+		<property column="EndDate" type="DateTime" name="EndDate"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   not-null="true"  />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   not-null="true"  />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   not-null="true"  length="600" />	
+
+
+
+
+</class>
+</hibernate-mapping>

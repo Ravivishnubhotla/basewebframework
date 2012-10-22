@@ -31,6 +31,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT = "SycnNotInterceptCount";
 		public static readonly string PROPERTY_NAME_SYNCDATASETTING = "SyncDataSetting";
 		public static readonly string PROPERTY_NAME_ALIAS = "Alias";
+		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_INTERCEPTRATE = "InterceptRate";
 		public static readonly string PROPERTY_NAME_DEFAULTPRICE = "DefaultPrice";
 		public static readonly string PROPERTY_NAME_DEFAULTSHOWRECORDDAYS = "DefaultShowRecordDays";
@@ -83,6 +84,7 @@ namespace SPS.Entity.Tables
 		private int? _sycnNotInterceptCount;
 		private SPSDataSycnSettingEntity _syncDataSetting;
 		private string _alias;
+		private bool? _isEnable;
 		private decimal _interceptRate;
 		private decimal _defaultPrice;
 		private int _defaultShowRecordDays;
@@ -109,6 +111,7 @@ namespace SPS.Entity.Tables
 			_sycnNotInterceptCount = null;
 			_syncDataSetting = null;
 			_alias = null;
+			_isEnable = null;
 			_interceptRate = 0;
 			_defaultPrice = 0;
 			_defaultShowRecordDays = 0;
@@ -124,7 +127,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPSClientEntity( int id, string name, string description, int userID, bool? isDefaultClient, bool syncData, int? sycnNotInterceptCount, SPSDataSycnSettingEntity syncDataSetting, string alias, decimal interceptRate, decimal defaultPrice, int defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPSClientEntity( int id, string name, string description, int userID, bool? isDefaultClient, bool syncData, int? sycnNotInterceptCount, SPSDataSycnSettingEntity syncDataSetting, string alias, bool? isEnable, decimal interceptRate, decimal defaultPrice, int defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -135,6 +138,7 @@ namespace SPS.Entity.Tables
 			_sycnNotInterceptCount = sycnNotInterceptCount;
 			_syncDataSetting = syncDataSetting;
 			_alias = alias;
+			_isEnable = isEnable;
 			_interceptRate = interceptRate;
 			_defaultPrice = defaultPrice;
 			_defaultShowRecordDays = defaultShowRecordDays;
@@ -280,6 +284,20 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 400)
 					throw new ArgumentOutOfRangeException("Invalid value for Alias", value, value.ToString());
 				_isChanged |= (_alias != value); _alias = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsEnable
+		{
+			get { return _isEnable; }
+
+			set	
+			{
+				_isChanged |= (_isEnable != value); _isEnable = value;
 			}
 		}
 

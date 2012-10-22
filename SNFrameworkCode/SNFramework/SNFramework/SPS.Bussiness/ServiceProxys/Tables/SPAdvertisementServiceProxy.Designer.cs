@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="foreveross" file="SPCodeInfoServiceProxy.Designer.cs">
+// <copyright company="foreveross" file="SPAdvertisementServiceProxy.Designer.cs">
 //   Copyright (c) Foreveross Enterprises. All rights reserved.
 // </copyright>
 // <summary>
@@ -25,17 +25,15 @@ using SPS.Data.AdoNet;
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
 
-    public interface ISPCodeInfoServiceProxyDesigner
+    public interface ISPAdvertisementServiceProxyDesigner
     {
-		List<SPCodeInfoEntity> FindAllByOrderByAndFilterAndSPCodeID(string orderByColumnName, bool isDesc,   SPCodeEntity _sPCodeID, PageQueryParams pageQueryParams);
-		List<SPCodeInfoEntity> FindAllBySPCodeID(SPCodeEntity _sPCodeID);
     }
 
-    internal partial class SPCodeInfoServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPCodeInfoEntity,int>
+    internal partial class SPAdvertisementServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPAdvertisementEntity,int>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	
-        public SPCodeInfoDataObject SelfDataObj
+        public SPAdvertisementDataObject SelfDataObj
         {
             set
             {
@@ -43,18 +41,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             }
 			get
             {
-                return (SPCodeInfoDataObject)selfDataObject;
+                return (SPAdvertisementDataObject)selfDataObject;
             }
-        }
-	
-		public List<SPCodeInfoEntity> FindAllByOrderByAndFilterAndSPCodeID(string orderByColumnName, bool isDesc,  SPCodeEntity _sPCodeID, PageQueryParams pageQueryParams)
-        {
-			return this.SelfDataObj.GetPageList_By_SPCodeID_SPCodeEntity(orderByColumnName, isDesc,_sPCodeID, pageQueryParams);
-        }
-		
-		public List<SPCodeInfoEntity> FindAllBySPCodeID(SPCodeEntity _sPCodeID)
-        {
-			return this.SelfDataObj.GetList_By_SPCodeID_SPCodeEntity(_sPCodeID);
         }
 
 

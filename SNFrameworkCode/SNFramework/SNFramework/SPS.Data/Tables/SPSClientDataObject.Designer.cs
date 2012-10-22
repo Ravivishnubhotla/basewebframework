@@ -52,6 +52,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_SYNCDATASETTING_SYCNSATEFAILEDMESSAGE = new StringProperty(Property.ForName(PROPERTY_SYNCDATASETTING_ALIAS_NAME + ".SycnSateFailedMessage"));
 		#endregion
 		public static readonly StringProperty PROPERTY_ALIAS = new StringProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_ALIAS));		
+		public static readonly BoolProperty PROPERTY_ISENABLE = new BoolProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_ISENABLE));		
 		public static readonly DecimalProperty PROPERTY_INTERCEPTRATE = new DecimalProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_INTERCEPTRATE));		
 		public static readonly DecimalProperty PROPERTY_DEFAULTPRICE = new DecimalProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_DEFAULTPRICE));		
 		public static readonly IntProperty PROPERTY_DEFAULTSHOWRECORDDAYS = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_DEFAULTSHOWRECORDDAYS));		
@@ -107,6 +108,8 @@ namespace SPS.Data.Tables
                     return typeof (int);
                 case "Alias":
                     return typeof (string);
+                case "IsEnable":
+                    return typeof (bool);
                 case "InterceptRate":
                     return typeof (decimal);
                 case "DefaultPrice":

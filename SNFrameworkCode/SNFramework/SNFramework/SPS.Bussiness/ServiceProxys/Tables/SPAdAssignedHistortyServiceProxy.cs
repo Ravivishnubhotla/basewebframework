@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="foreveross" file="SPParamsConvertRuleServiceProxy.Designer.cs">
+// <copyright company="foreveross" file="SPAdAssignedHistortyServiceProxy.cs">
 //   Copyright (c) Foreveross Enterprises. All rights reserved.
 // </copyright>
 // <summary>
@@ -16,40 +16,19 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Data.Tables;
 using SPS.Entity.Tables;
-using SPS.Data.Tables.Container;
-using SPS.Data.AdoNet;
-
-
 
 
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
-
-    public interface ISPParamsConvertRuleServiceProxyDesigner
+	public interface ISPAdAssignedHistortyServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPAdAssignedHistortyEntity,int> ,ISPAdAssignedHistortyServiceProxyDesigner
     {
+
+
     }
 
-    internal partial class SPParamsConvertRuleServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPParamsConvertRuleEntity,int>
+    internal partial class SPAdAssignedHistortyServiceProxy : ISPAdAssignedHistortyServiceProxy
     {
-		public DataObjectContainers DataObjectsContainerIocID { set; get; }
-	
-        public SPParamsConvertRuleDataObject SelfDataObj
-        {
-            set
-            {
-                selfDataObject = value;
-            }
-			get
-            {
-                return (SPParamsConvertRuleDataObject)selfDataObject;
-            }
-        }
 
 
-
-
-        public AdoNetDataObject AdoNetDb { set; get; }		
-
-		
     }
 }

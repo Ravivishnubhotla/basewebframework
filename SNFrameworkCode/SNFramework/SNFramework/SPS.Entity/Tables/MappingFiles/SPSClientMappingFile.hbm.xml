@@ -19,6 +19,7 @@
 		<property column="SycnNotInterceptCount" type="int" name="SycnNotInterceptCount"   />	
 		<many-to-one column="SyncDataSetting" name="SyncDataSetting" class="SPS.Entity.Tables.SPSDataSycnSettingEntity,SPS.Entity" />		
 		<property column="Alias" type="string" name="Alias"   length="400" />	
+		<property column="IsEnable" type="Boolean" name="IsEnable"   />	
 		<property column="InterceptRate" type="Decimal" name="InterceptRate"   not-null="true"  />	
 		<property column="DefaultPrice" type="Decimal" name="DefaultPrice"   not-null="true"  />	
 		<property column="DefaultShowRecordDays" type="int" name="DefaultShowRecordDays"   not-null="true"  />	

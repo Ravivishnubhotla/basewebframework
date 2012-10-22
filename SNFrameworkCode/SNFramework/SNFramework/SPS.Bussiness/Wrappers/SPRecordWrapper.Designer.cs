@@ -138,6 +138,8 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_CLIENTID_SYNCDATASETTING;
 		        case "ClientID_Alias":
 					return PROPERTY_CLIENTID_ALIAS;
+		        case "ClientID_IsEnable":
+					return PROPERTY_CLIENTID_ISENABLE;
 		        case "ClientID_InterceptRate":
 					return PROPERTY_CLIENTID_INTERCEPTRATE;
 		        case "ClientID_DefaultPrice":
@@ -350,6 +352,7 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT = "ClientID_SPRecordEntity_Alias.SycnNotInterceptCount";
 		public const string PROPERTY_CLIENTID_SYNCDATASETTING = "ClientID_SPRecordEntity_Alias.SyncDataSetting";
 		public const string PROPERTY_CLIENTID_ALIAS = "ClientID_SPRecordEntity_Alias.Alias";
+		public const string PROPERTY_CLIENTID_ISENABLE = "ClientID_SPRecordEntity_Alias.IsEnable";
 		public const string PROPERTY_CLIENTID_INTERCEPTRATE = "ClientID_SPRecordEntity_Alias.InterceptRate";
 		public const string PROPERTY_CLIENTID_DEFAULTPRICE = "ClientID_SPRecordEntity_Alias.DefaultPrice";
 		public const string PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS = "ClientID_SPRecordEntity_Alias.DefaultShowRecordDays";
@@ -1219,6 +1222,16 @@ namespace SPS.Bussiness.Wrappers
                 if (this. ClientID == null)
                     return null;
                 return  ClientID.Alias;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_ISENABLE)]
+        public bool? ClientID_IsEnable
+        {
+            get
+            {
+                if (this. ClientID == null)
+                    return null;
+                return  ClientID.IsEnable;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_INTERCEPTRATE)]

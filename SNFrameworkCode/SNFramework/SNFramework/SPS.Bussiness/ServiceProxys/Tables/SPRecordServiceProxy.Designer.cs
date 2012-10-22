@@ -37,7 +37,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 		List<SPRecordEntity> FindAllByClientCodeRelationID(SPClientCodeRelationEntity _clientCodeRelationID);
     }
 
-    internal partial class SPRecordServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SPRecordEntity,int>
+    internal partial class SPRecordServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPRecordEntity,int>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	
