@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPAdvertisementEntity,SPS.Entity" table="SPAdvertisement" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="native">
+
+</generator>
+
+</id>
+
+
+		<property column="Name" type="string" name="Name"   length="100" />	
+		<property column="Code" type="string" name="Code"   length="100" />	
+		<property column="ImageUrl" type="string" name="ImageUrl"   length="400" />	
+		<property column="AdPrice" type="string" name="AdPrice"   length="100" />	
+		<property column="AccountType" type="string" name="AccountType"   length="100" />	
+		<property column="ApplyStatus" type="string" name="ApplyStatus"   length="100" />	
+		<property column="AdType" type="string" name="AdType"   length="100" />	
+		<property column="AdText" type="string" name="AdText"   length="4000" />	
+		<property column="Description" type="string" name="Description"   length="4000" />	
+		<property column="IsDisable" type="Boolean" name="IsDisable"   />	
+		<property column="AssignedClient" type="int" name="AssignedClient"   />	
+		<property column="CreateBy" type="int" name="CreateBy"   not-null="true"  />	
+		<property column="CreateAt" type="DateTime" name="CreateAt"   not-null="true"  />	
+		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	
+		<property column="LastModifyAt" type="DateTime" name="LastModifyAt"   />	
+		<property column="LastModifyComment" type="string" name="LastModifyComment"   not-null="true"  length="600" />	
+
+
+
+
+</class>
+</hibernate-mapping>

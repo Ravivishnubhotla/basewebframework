@@ -100,6 +100,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT = "SycnNotInterceptCount";
 		public static readonly string PROPERTY_NAME_SYNCDATASETTING = "SyncDataSetting";
 		public static readonly string PROPERTY_NAME_ALIAS = "Alias";
+		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_INTERCEPTRATE = "InterceptRate";
 		public static readonly string PROPERTY_NAME_DEFAULTPRICE = "DefaultPrice";
 		public static readonly string PROPERTY_NAME_DEFAULTSHOWRECORDDAYS = "DefaultShowRecordDays";
@@ -274,6 +275,21 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.Alias = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? IsEnable
+		{
+			get
+			{
+				return entity.IsEnable;
+			}
+			set
+			{
+				entity.IsEnable = value;
 			}
 		}
 		/// <summary>

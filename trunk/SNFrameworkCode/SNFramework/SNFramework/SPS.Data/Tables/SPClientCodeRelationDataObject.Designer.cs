@@ -78,6 +78,7 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SycnNotInterceptCount"));
 		public static readonly EntityProperty<SPSDataSycnSettingEntity> PROPERTY_CLIENTID_SYNCDATASETTING = new EntityProperty<SPSDataSycnSettingEntity>(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".SyncDataSetting"));
 		public static readonly StringProperty PROPERTY_CLIENTID_ALIAS = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".Alias"));
+		public static readonly BoolProperty PROPERTY_CLIENTID_ISENABLE = new BoolProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".IsEnable"));
 		public static readonly DecimalProperty PROPERTY_CLIENTID_INTERCEPTRATE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".InterceptRate"));
 		public static readonly DecimalProperty PROPERTY_CLIENTID_DEFAULTPRICE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".DefaultPrice"));
 		public static readonly IntProperty PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".DefaultShowRecordDays"));
@@ -292,6 +293,8 @@ namespace SPS.Data.Tables
 							return typeof (int);
                 		case "ClientID_SPClientCodeRelationEntity_Alias.Alias":
 							return typeof (string);
+                		case "ClientID_SPClientCodeRelationEntity_Alias.IsEnable":
+							return typeof (bool);
                 		case "ClientID_SPClientCodeRelationEntity_Alias.InterceptRate":
 							return typeof (decimal);
                 		case "ClientID_SPClientCodeRelationEntity_Alias.DefaultPrice":

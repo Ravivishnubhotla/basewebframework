@@ -91,6 +91,7 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CLIENTID_SYCNNOTINTERCEPTCOUNT = "ClientID_SPClientCodeRelationEntity_Alias.SycnNotInterceptCount";
 		public const string PROPERTY_CLIENTID_SYNCDATASETTING = "ClientID_SPClientCodeRelationEntity_Alias.SyncDataSetting";
 		public const string PROPERTY_CLIENTID_ALIAS = "ClientID_SPClientCodeRelationEntity_Alias.Alias";
+		public const string PROPERTY_CLIENTID_ISENABLE = "ClientID_SPClientCodeRelationEntity_Alias.IsEnable";
 		public const string PROPERTY_CLIENTID_INTERCEPTRATE = "ClientID_SPClientCodeRelationEntity_Alias.InterceptRate";
 		public const string PROPERTY_CLIENTID_DEFAULTPRICE = "ClientID_SPClientCodeRelationEntity_Alias.DefaultPrice";
 		public const string PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS = "ClientID_SPClientCodeRelationEntity_Alias.DefaultShowRecordDays";

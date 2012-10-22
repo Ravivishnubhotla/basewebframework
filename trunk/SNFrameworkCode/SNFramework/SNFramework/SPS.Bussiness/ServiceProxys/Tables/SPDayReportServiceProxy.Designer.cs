@@ -37,7 +37,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 		List<SPDayReportEntity> FindAllByUperID(SPUpperEntity _uperID);
     }
 
-    internal partial class SPDayReportServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SPDayReportEntity,int>
+    internal partial class SPDayReportServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPDayReportEntity,int>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	

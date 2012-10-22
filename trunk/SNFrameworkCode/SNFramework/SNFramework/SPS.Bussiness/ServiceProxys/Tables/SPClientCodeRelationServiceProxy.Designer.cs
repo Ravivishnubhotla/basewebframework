@@ -35,7 +35,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 		List<SPClientCodeRelationEntity> FindAllBySyncDataSetting(SPSDataSycnSettingEntity _syncDataSetting);
     }
 
-    internal partial class SPClientCodeRelationServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SPClientCodeRelationEntity,int>
+    internal partial class SPClientCodeRelationServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPClientCodeRelationEntity,int>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	

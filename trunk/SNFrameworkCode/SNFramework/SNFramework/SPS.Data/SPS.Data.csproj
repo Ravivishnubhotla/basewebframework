@@ -58,6 +58,18 @@
     <Compile Include="Tables\Container\DataObjectContainers.Designer.cs">
       <DependentUpon>DataObjectContainers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tables\SPAdAmountDataObject.cs" />
+    <Compile Include="Tables\SPAdAmountDataObject.Designer.cs">
+      <DependentUpon>SPAdAmountDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPAdAssignedHistortyDataObject.cs" />
+    <Compile Include="Tables\SPAdAssignedHistortyDataObject.Designer.cs">
+      <DependentUpon>SPAdAssignedHistortyDataObject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPAdvertisementDataObject.cs" />
+    <Compile Include="Tables\SPAdvertisementDataObject.Designer.cs">
+      <DependentUpon>SPAdvertisementDataObject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tables\SPChannelDataObject.cs" />
     <Compile Include="Tables\SPChannelDataObject.Designer.cs">
       <DependentUpon>SPChannelDataObject.cs</DependentUpon>

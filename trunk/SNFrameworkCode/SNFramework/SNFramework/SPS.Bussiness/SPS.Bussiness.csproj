@@ -79,6 +79,18 @@
     <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.Designer.cs">
       <DependentUpon>ServiceProxyContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceProxys\Tables\SPAdAmountServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPAdAmountServiceProxy.Designer.cs">
+      <DependentUpon>SPAdAmountServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPAdAssignedHistortyServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPAdAssignedHistortyServiceProxy.Designer.cs">
+      <DependentUpon>SPAdAssignedHistortyServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPAdvertisementServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPAdvertisementServiceProxy.Designer.cs">
+      <DependentUpon>SPAdvertisementServiceProxy.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPChannelParamsServiceProxy.Designer.cs">
       <DependentUpon>SPChannelParamsServiceProxy.cs</DependentUpon>
@@ -146,6 +158,18 @@
     <Compile Include="ServiceProxys\Tables\SPUpperServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPUpperServiceProxy.Designer.cs">
       <DependentUpon>SPUpperServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPAdAmountWrapper.cs" />
+    <Compile Include="Wrappers\SPAdAmountWrapper.Designer.cs">
+      <DependentUpon>SPAdAmountWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPAdAssignedHistortyWrapper.cs" />
+    <Compile Include="Wrappers\SPAdAssignedHistortyWrapper.Designer.cs">
+      <DependentUpon>SPAdAssignedHistortyWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPAdvertisementWrapper.cs" />
+    <Compile Include="Wrappers\SPAdvertisementWrapper.Designer.cs">
+      <DependentUpon>SPAdvertisementWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPChannelParamsWrapper.cs" />
     <Compile Include="Wrappers\SPChannelParamsWrapper.Designer.cs">
