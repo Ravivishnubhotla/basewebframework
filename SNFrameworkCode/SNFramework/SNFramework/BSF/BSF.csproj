@@ -455,6 +455,7 @@
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\UserManage\DialogUserSelector.aspx" />
     <Content Include="Moudles\SystemManage\UserManage\SystemUserAssignedGroup.aspx" />
     <Content Include="Moudles\SystemManage\UserManage\SystemUserAssignedRole.aspx" />
     <Content Include="Moudles\SystemManage\UserManage\SystemUserListPage.aspx" />
@@ -962,6 +963,13 @@
     <Compile Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx.designer.cs">
       <DependentUpon>UCSystemUserGroupEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\DialogUserSelector.aspx.cs">
+      <DependentUpon>DialogUserSelector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\UserManage\DialogUserSelector.aspx.designer.cs">
+      <DependentUpon>DialogUserSelector.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SystemManage\UserManage\SystemUserAssignedGroup.aspx.cs">
       <DependentUpon>SystemUserAssignedGroup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1019,6 +1027,7 @@
     <Folder Include="Files\Videos\" />
     <Folder Include="Moudles\Installs\" />
     <Folder Include="Moudles\SystemManage\DataVersionManage\" />
+    <Folder Include="Moudles\SystemManage\Samples\UserSelector\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Masters\AdminMaster.Master" />

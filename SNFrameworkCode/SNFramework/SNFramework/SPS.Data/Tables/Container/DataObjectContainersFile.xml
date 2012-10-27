@@ -6,6 +6,15 @@
     Spring.Net框架数据访问层容器配置文件
   </description>
   <!-- 数据访问类 -->
+ <object id="SPAdAmountDataObjectIocID" type="SPS.Data.Tables.SPAdAmountDataObject, SPS.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPAdAssignedHistortyDataObjectIocID" type="SPS.Data.Tables.SPAdAssignedHistortyDataObject, SPS.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
+ <object id="SPAdvertisementDataObjectIocID" type="SPS.Data.Tables.SPAdvertisementDataObject, SPS.Data">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
  <object id="SPChannelDataObjectIocID" type="SPS.Data.Tables.SPChannelDataObject, SPS.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
@@ -64,6 +73,9 @@
 
 
 <object id="DataObjectContainersIocID" type="SPS.Data.Tables.Container.DataObjectContainers, SPS.Data">
+    <property name="SPAdAmountDataObjectInstance" ref="SPAdAmountDataObjectIocID"/>
+    <property name="SPAdAssignedHistortyDataObjectInstance" ref="SPAdAssignedHistortyDataObjectIocID"/>
+    <property name="SPAdvertisementDataObjectInstance" ref="SPAdvertisementDataObjectIocID"/>
     <property name="SPChannelDataObjectInstance" ref="SPChannelDataObjectIocID"/>
     <property name="SPChannelParamsDataObjectInstance" ref="SPChannelParamsDataObjectIocID"/>
     <property name="SPChannelSycnParamsDataObjectInstance" ref="SPChannelSycnParamsDataObjectIocID"/>

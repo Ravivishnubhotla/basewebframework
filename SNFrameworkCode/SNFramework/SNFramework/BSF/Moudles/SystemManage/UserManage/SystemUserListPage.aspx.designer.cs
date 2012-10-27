@@ -155,5 +155,14 @@ namespace SNFramework.BSF.Moudles.SystemManage.UserManage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Window winShowLoginLog;
+        
+        /// <summary>
+        /// Window1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window Window1;
     }
 }

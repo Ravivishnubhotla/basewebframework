@@ -111,5 +111,16 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
 
         //    return this.FindListByQueryBuilder(queryGenerator);
         //}
+
+        public static DetachedCriteria SubQueryGetUserAssignedRoles(SystemUserEntity user)
+        {
+            DetachedCriteria criteria = DetachedCriteria.For(typeof(SystemUserRoleRelationEntity));
+
+            criteria.Add(SystemUserRoleRelationDataObject.PROPERTY_USERID.Eq(user));
+
+            criteria.SetProjection(SystemUserRoleRelationDataObject.PROPERTY_ROLEID.CriterionProperty);
+
+            return criteria;
+        }
     }
 }

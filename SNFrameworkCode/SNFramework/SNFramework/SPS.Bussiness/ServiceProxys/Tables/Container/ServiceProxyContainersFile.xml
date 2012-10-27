@@ -6,6 +6,21 @@
     Spring.Net框架服务层容器配置文件
   </description>
   <!-- 服务层类 -->
+  <object id="SPAdAmountServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPAdAmountServiceProxy, SPS.Bussiness">
+    <property name="SelfDataObj" ref="SPAdAmountDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
+  <object id="SPAdAssignedHistortyServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPAdAssignedHistortyServiceProxy, SPS.Bussiness">
+    <property name="SelfDataObj" ref="SPAdAssignedHistortyDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
+  <object id="SPAdvertisementServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPAdvertisementServiceProxy, SPS.Bussiness">
+    <property name="SelfDataObj" ref="SPAdvertisementDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
   <object id="SPChannelServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPChannelServiceProxy, SPS.Bussiness">
     <property name="SelfDataObj" ref="SPChannelDataObjectIocID"/>
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
@@ -96,6 +111,9 @@
 
 
 <object id="ServiceProxyContainerIocID" type="SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer, SPS.Bussiness">
+    <property name="SPAdAmountServiceProxyInstance" ref="SPAdAmountServiceProxyIocID"/>
+    <property name="SPAdAssignedHistortyServiceProxyInstance" ref="SPAdAssignedHistortyServiceProxyIocID"/>
+    <property name="SPAdvertisementServiceProxyInstance" ref="SPAdvertisementServiceProxyIocID"/>
     <property name="SPChannelServiceProxyInstance" ref="SPChannelServiceProxyIocID"/>
     <property name="SPChannelParamsServiceProxyInstance" ref="SPChannelParamsServiceProxyIocID"/>
     <property name="SPChannelSycnParamsServiceProxyInstance" ref="SPChannelSycnParamsServiceProxyIocID"/>
