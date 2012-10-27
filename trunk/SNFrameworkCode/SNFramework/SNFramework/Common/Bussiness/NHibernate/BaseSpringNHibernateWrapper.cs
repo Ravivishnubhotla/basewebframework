@@ -186,7 +186,7 @@ namespace Legendigital.Framework.Common.Bussiness.NHibernate
             return (T)propertyValue;
         }
 
-
+        
 
         
     }

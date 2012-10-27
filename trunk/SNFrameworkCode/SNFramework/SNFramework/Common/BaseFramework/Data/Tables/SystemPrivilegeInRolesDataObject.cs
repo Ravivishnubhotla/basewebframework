@@ -30,7 +30,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
         {
             NHibernateDynamicQueryGenerator<SystemPrivilegeInRolesEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
-            dynamicQueryGenerator.AddWhereClause(PROPERTY_ROLEID.In(QueryObjects.GetUserAssignedRoles(userEntity)));
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_ROLEID.In(SystemUserRoleRelationDataObject.SubQueryGetUserAssignedRoles(userEntity)));
 
             return this.FindListByQueryBuilder(dynamicQueryGenerator);
             

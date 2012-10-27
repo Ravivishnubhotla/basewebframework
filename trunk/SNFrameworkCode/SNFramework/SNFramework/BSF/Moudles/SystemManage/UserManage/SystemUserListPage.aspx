@@ -369,4 +369,22 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
+        <ext:Window ID="Window1" runat="server" Title="Window" Frame="true" Width="600"
+        ConstrainHeader="true" Height="350" Maximizable="true" Closable="true" Resizable="true"
+        Modal="true" Hidden="true">
+        <AutoLoad Url="../LogManage/SystemLogViewList.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="LogType" Mode="Value" Value="系统安全日志">
+                </ext:Parameter>
+                <ext:Parameter Name="ParentType" Mode="Value" Value="SystemUserWrapper">
+                </ext:Parameter>
+                <ext:Parameter Name="ParentID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

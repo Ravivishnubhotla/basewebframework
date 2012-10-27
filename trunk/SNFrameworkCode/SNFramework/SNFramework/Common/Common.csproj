@@ -890,9 +890,6 @@
     <Compile Include="BaseFramework\Data\Tables\Container\BaseFrameworkDataObjectContainers.Designer.cs">
       <DependentUpon>BaseFrameworkDataObjectContainers.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseFramework\Data\Tables\QueryObjects.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="BaseFramework\Data\Tables\SystemAddressDataObject.cs">
       <SubType>Code</SubType>
     </Compile>
