@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="foreveross" file="SPAdAmountServiceProxy.cs">
+// <copyright company="foreveross" file="SPAdReportServiceProxy.cs">
 //   Copyright (c) Foreveross Enterprises. All rights reserved.
 // </copyright>
 // <summary>
@@ -20,13 +20,13 @@ using SPS.Entity.Tables;
 
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
-	public interface ISPAdAmountServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPAdAmountEntity,int> ,ISPAdAmountServiceProxyDesigner
+	public interface ISPAdReportServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPAdReportEntity,int> ,ISPAdReportServiceProxyDesigner
     {
 
 
     }
 
-    internal partial class SPAdAmountServiceProxy : ISPAdAmountServiceProxy
+    internal partial class SPAdReportServiceProxy : ISPAdReportServiceProxy
     {
 
 

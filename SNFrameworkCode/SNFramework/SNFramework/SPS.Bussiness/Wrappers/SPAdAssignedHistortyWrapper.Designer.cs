@@ -44,40 +44,6 @@ namespace SPS.Bussiness.Wrappers
         {
             switch (columnName)
             {
-		        case "SPAdID_Id":
-					return PROPERTY_SPADID_ID;
-		        case "SPAdID_Name":
-					return PROPERTY_SPADID_NAME;
-		        case "SPAdID_Code":
-					return PROPERTY_SPADID_CODE;
-		        case "SPAdID_ImageUrl":
-					return PROPERTY_SPADID_IMAGEURL;
-		        case "SPAdID_AdPrice":
-					return PROPERTY_SPADID_ADPRICE;
-		        case "SPAdID_AccountType":
-					return PROPERTY_SPADID_ACCOUNTTYPE;
-		        case "SPAdID_ApplyStatus":
-					return PROPERTY_SPADID_APPLYSTATUS;
-		        case "SPAdID_AdType":
-					return PROPERTY_SPADID_ADTYPE;
-		        case "SPAdID_AdText":
-					return PROPERTY_SPADID_ADTEXT;
-		        case "SPAdID_Description":
-					return PROPERTY_SPADID_DESCRIPTION;
-		        case "SPAdID_IsDisable":
-					return PROPERTY_SPADID_ISDISABLE;
-		        case "SPAdID_AssignedClient":
-					return PROPERTY_SPADID_ASSIGNEDCLIENT;
-		        case "SPAdID_CreateBy":
-					return PROPERTY_SPADID_CREATEBY;
-		        case "SPAdID_CreateAt":
-					return PROPERTY_SPADID_CREATEAT;
-		        case "SPAdID_LastModifyBy":
-					return PROPERTY_SPADID_LASTMODIFYBY;
-		        case "SPAdID_LastModifyAt":
-					return PROPERTY_SPADID_LASTMODIFYAT;
-		        case "SPAdID_LastModifyComment":
-					return PROPERTY_SPADID_LASTMODIFYCOMMENT;
 		        case "SPClientID_Id":
 					return PROPERTY_SPCLIENTID_ID;
 		        case "SPClientID_Name":
@@ -133,6 +99,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPAdAssignedHistortyEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_SPADID = "SPAdID";
+		public static readonly string PROPERTY_NAME_SPADPACKID = "SPAdPackID";
 		public static readonly string PROPERTY_NAME_SPCLIENTID = "SPClientID";
 		public static readonly string PROPERTY_NAME_STARTDATE = "StartDate";
 		public static readonly string PROPERTY_NAME_ENDDATE = "EndDate";
@@ -145,26 +112,6 @@ namespace SPS.Bussiness.Wrappers
         #endregion
 	
  
-		#region sPAdID字段外键查询字段
-        public const string PROPERTY_SPADID_ALIAS_NAME = "SPAdID_SPAdAssignedHistortyEntity_Alias";
-		public const string PROPERTY_SPADID_ID = "SPAdID_SPAdAssignedHistortyEntity_Alias.Id";
-		public const string PROPERTY_SPADID_NAME = "SPAdID_SPAdAssignedHistortyEntity_Alias.Name";
-		public const string PROPERTY_SPADID_CODE = "SPAdID_SPAdAssignedHistortyEntity_Alias.Code";
-		public const string PROPERTY_SPADID_IMAGEURL = "SPAdID_SPAdAssignedHistortyEntity_Alias.ImageUrl";
-		public const string PROPERTY_SPADID_ADPRICE = "SPAdID_SPAdAssignedHistortyEntity_Alias.AdPrice";
-		public const string PROPERTY_SPADID_ACCOUNTTYPE = "SPAdID_SPAdAssignedHistortyEntity_Alias.AccountType";
-		public const string PROPERTY_SPADID_APPLYSTATUS = "SPAdID_SPAdAssignedHistortyEntity_Alias.ApplyStatus";
-		public const string PROPERTY_SPADID_ADTYPE = "SPAdID_SPAdAssignedHistortyEntity_Alias.AdType";
-		public const string PROPERTY_SPADID_ADTEXT = "SPAdID_SPAdAssignedHistortyEntity_Alias.AdText";
-		public const string PROPERTY_SPADID_DESCRIPTION = "SPAdID_SPAdAssignedHistortyEntity_Alias.Description";
-		public const string PROPERTY_SPADID_ISDISABLE = "SPAdID_SPAdAssignedHistortyEntity_Alias.IsDisable";
-		public const string PROPERTY_SPADID_ASSIGNEDCLIENT = "SPAdID_SPAdAssignedHistortyEntity_Alias.AssignedClient";
-		public const string PROPERTY_SPADID_CREATEBY = "SPAdID_SPAdAssignedHistortyEntity_Alias.CreateBy";
-		public const string PROPERTY_SPADID_CREATEAT = "SPAdID_SPAdAssignedHistortyEntity_Alias.CreateAt";
-		public const string PROPERTY_SPADID_LASTMODIFYBY = "SPAdID_SPAdAssignedHistortyEntity_Alias.LastModifyBy";
-		public const string PROPERTY_SPADID_LASTMODIFYAT = "SPAdID_SPAdAssignedHistortyEntity_Alias.LastModifyAt";
-		public const string PROPERTY_SPADID_LASTMODIFYCOMMENT = "SPAdID_SPAdAssignedHistortyEntity_Alias.LastModifyComment";
-		#endregion
 		#region sPClientID字段外键查询字段
         public const string PROPERTY_SPCLIENTID_ALIAS_NAME = "SPClientID_SPAdAssignedHistortyEntity_Alias";
 		public const string PROPERTY_SPCLIENTID_ID = "SPClientID_SPAdAssignedHistortyEntity_Alias.Id";
@@ -216,15 +163,30 @@ namespace SPS.Bussiness.Wrappers
 		/// 
 		/// </summary>
 		[DataMember]
-		public SPAdvertisementWrapper SPAdID
+		public int? SPAdID
 		{
 			get
 			{
-				return SPAdvertisementWrapper.ConvertEntityToWrapper(entity.SPAdID) ;
+				return entity.SPAdID;
 			}
 			set
 			{
-				entity.SPAdID = ((value == null) ? null : value.Entity);
+				entity.SPAdID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? SPAdPackID
+		{
+			get
+			{
+				return entity.SPAdPackID;
+			}
+			set
+			{
+				entity.SPAdPackID = value;
 			}
 		}
 		/// <summary>
@@ -353,178 +315,6 @@ namespace SPS.Bussiness.Wrappers
 		#region Query Property
 		
 		
-		#region sPAdID字段外键查询字段
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ID)]
-        public int? SPAdID_Id
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.Id;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_NAME)]
-        public string SPAdID_Name
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.Name;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_CODE)]
-        public string SPAdID_Code
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.Code;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_IMAGEURL)]
-        public string SPAdID_ImageUrl
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.ImageUrl;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ADPRICE)]
-        public string SPAdID_AdPrice
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.AdPrice;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ACCOUNTTYPE)]
-        public string SPAdID_AccountType
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.AccountType;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_APPLYSTATUS)]
-        public string SPAdID_ApplyStatus
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.ApplyStatus;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ADTYPE)]
-        public string SPAdID_AdType
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.AdType;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ADTEXT)]
-        public string SPAdID_AdText
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.AdText;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_DESCRIPTION)]
-        public string SPAdID_Description
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.Description;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ISDISABLE)]
-        public bool? SPAdID_IsDisable
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.IsDisable;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ASSIGNEDCLIENT)]
-        public int? SPAdID_AssignedClient
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.AssignedClient;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_CREATEBY)]
-        public int? SPAdID_CreateBy
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.CreateBy;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_CREATEAT)]
-        public DateTime? SPAdID_CreateAt
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.CreateAt;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_LASTMODIFYBY)]
-        public int? SPAdID_LastModifyBy
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.LastModifyBy;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_LASTMODIFYAT)]
-        public DateTime? SPAdID_LastModifyAt
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.LastModifyAt;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_LASTMODIFYCOMMENT)]
-        public string SPAdID_LastModifyComment
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.LastModifyComment;
-            }
-        }
-		#endregion
 		#region sPClientID字段外键查询字段
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPCLIENTID_ID)]
         public int? SPClientID_Id
@@ -713,17 +503,6 @@ namespace SPS.Bussiness.Wrappers
 
 
         #region "FKQuery"
-		
-        public static List<SPAdAssignedHistortyWrapper> FindAllByOrderByAndFilterAndSPAdID(string orderByColumnName, bool isDesc,   SPAdvertisementWrapper sPAdID,  PageQueryParams pageQueryParams)
-        {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSPAdID(orderByColumnName, isDesc,   sPAdID.Entity, pageQueryParams));
-        }
-
-        public static List<SPAdAssignedHistortyWrapper> FindAllBySPAdID(SPAdvertisementWrapper sPAdID)
-        {
-            return ConvertToWrapperList(businessProxy.FindAllBySPAdID(sPAdID.Entity));
-        }
-		
 		
         public static List<SPAdAssignedHistortyWrapper> FindAllByOrderByAndFilterAndSPClientID(string orderByColumnName, bool isDesc,   SPSClientWrapper sPClientID,  PageQueryParams pageQueryParams)
         {

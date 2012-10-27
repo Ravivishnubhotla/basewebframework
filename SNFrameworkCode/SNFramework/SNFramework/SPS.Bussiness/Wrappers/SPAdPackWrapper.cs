@@ -14,21 +14,21 @@ namespace SPS.Bussiness.Wrappers
 	[Serializable]
 	[DataContract]
 	//[JsonObject(MemberSerialization.OptIn)]
-    public partial class SPAdAmountWrapper  : BaseSpringNHibernateWrapper<SPAdAmountEntity, ISPAdAmountServiceProxy, SPAdAmountWrapper,int>
+    public partial class SPAdPackWrapper  : BaseSpringNHibernateWrapper<SPAdPackEntity, ISPAdPackServiceProxy, SPAdPackWrapper,int>
     { 
         #region Static Common Data Operation
 		
-		public static void Save(SPAdAmountWrapper obj)
+		public static void Save(SPAdPackWrapper obj)
         {
             Save(obj, businessProxy);
         }
 
-        public static void Update(SPAdAmountWrapper obj)
+        public static void Update(SPAdPackWrapper obj)
         {
             Update(obj, businessProxy);
         }
 
-        public static void SaveOrUpdate(SPAdAmountWrapper obj)
+        public static void SaveOrUpdate(SPAdPackWrapper obj)
         {
             SaveOrUpdate(obj, businessProxy);
         }
@@ -49,32 +49,32 @@ namespace SPS.Bussiness.Wrappers
             PatchDeleteByIDs(ids, businessProxy);
         }
 
-        public static void Delete(SPAdAmountWrapper instance)
+        public static void Delete(SPAdPackWrapper instance)
         {
             Delete(instance, businessProxy);
         }
 
-        public static void Refresh(SPAdAmountWrapper instance)
+        public static void Refresh(SPAdPackWrapper instance)
         {
             Refresh(instance, businessProxy);
         }
 
-        public static SPAdAmountWrapper FindById(int id)
+        public static SPAdPackWrapper FindById(int id)
         {
             return ConvertEntityToWrapper(FindById(id, businessProxy));
         }
 
-        public static List<SPAdAmountWrapper> FindAll()
+        public static List<SPAdPackWrapper> FindAll()
         {
             return ConvertToWrapperList(FindAll(businessProxy));
         }
 
-        public static List<SPAdAmountWrapper> FindAllByPage(PageQueryParams pageQueryParams)
+        public static List<SPAdPackWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
             return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 		
-		public static List<SPAdAmountWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
+		public static List<SPAdPackWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
             orderByColumnName = ProcessColumnName(orderByColumnName);
 
@@ -82,7 +82,7 @@ namespace SPS.Bussiness.Wrappers
         }
 
 
-        public static List<SPAdAmountWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc, PageQueryParams pageQueryParams)
+        public static List<SPAdPackWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc, PageQueryParams pageQueryParams)
         {
 			orderByFieldName = ProcessColumnName(orderByFieldName);
 
@@ -92,7 +92,7 @@ namespace SPS.Bussiness.Wrappers
         }
 		
 
-        public static List<SPAdAmountWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
+        public static List<SPAdPackWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
         {
 			orderByFieldName = ProcessColumnName(orderByFieldName);
 		

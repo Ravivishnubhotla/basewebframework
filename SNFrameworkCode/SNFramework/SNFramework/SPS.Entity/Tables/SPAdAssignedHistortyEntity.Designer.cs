@@ -24,6 +24,7 @@ namespace SPS.Entity.Tables
 		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPAdAssignedHistortyEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_SPADID = "SPAdID";
+		public static readonly string PROPERTY_NAME_SPADPACKID = "SPAdPackID";
 		public static readonly string PROPERTY_NAME_SPCLIENTID = "SPClientID";
 		public static readonly string PROPERTY_NAME_STARTDATE = "StartDate";
 		public static readonly string PROPERTY_NAME_ENDDATE = "EndDate";
@@ -36,26 +37,6 @@ namespace SPS.Entity.Tables
         #endregion
 	
  
-		#region sPAdID字段外键查询字段
-        public const string PROPERTY_SPADID_ALIAS_NAME = "SPAdID_SPAdAssignedHistortyEntity_Alias";
-		public const string PROPERTY_SPADID_ID = "SPAdID_SPAdAssignedHistortyEntity_Alias.Id";
-		public const string PROPERTY_SPADID_NAME = "SPAdID_SPAdAssignedHistortyEntity_Alias.Name";
-		public const string PROPERTY_SPADID_CODE = "SPAdID_SPAdAssignedHistortyEntity_Alias.Code";
-		public const string PROPERTY_SPADID_IMAGEURL = "SPAdID_SPAdAssignedHistortyEntity_Alias.ImageUrl";
-		public const string PROPERTY_SPADID_ADPRICE = "SPAdID_SPAdAssignedHistortyEntity_Alias.AdPrice";
-		public const string PROPERTY_SPADID_ACCOUNTTYPE = "SPAdID_SPAdAssignedHistortyEntity_Alias.AccountType";
-		public const string PROPERTY_SPADID_APPLYSTATUS = "SPAdID_SPAdAssignedHistortyEntity_Alias.ApplyStatus";
-		public const string PROPERTY_SPADID_ADTYPE = "SPAdID_SPAdAssignedHistortyEntity_Alias.AdType";
-		public const string PROPERTY_SPADID_ADTEXT = "SPAdID_SPAdAssignedHistortyEntity_Alias.AdText";
-		public const string PROPERTY_SPADID_DESCRIPTION = "SPAdID_SPAdAssignedHistortyEntity_Alias.Description";
-		public const string PROPERTY_SPADID_ISDISABLE = "SPAdID_SPAdAssignedHistortyEntity_Alias.IsDisable";
-		public const string PROPERTY_SPADID_ASSIGNEDCLIENT = "SPAdID_SPAdAssignedHistortyEntity_Alias.AssignedClient";
-		public const string PROPERTY_SPADID_CREATEBY = "SPAdID_SPAdAssignedHistortyEntity_Alias.CreateBy";
-		public const string PROPERTY_SPADID_CREATEAT = "SPAdID_SPAdAssignedHistortyEntity_Alias.CreateAt";
-		public const string PROPERTY_SPADID_LASTMODIFYBY = "SPAdID_SPAdAssignedHistortyEntity_Alias.LastModifyBy";
-		public const string PROPERTY_SPADID_LASTMODIFYAT = "SPAdID_SPAdAssignedHistortyEntity_Alias.LastModifyAt";
-		public const string PROPERTY_SPADID_LASTMODIFYCOMMENT = "SPAdID_SPAdAssignedHistortyEntity_Alias.LastModifyComment";
-		#endregion
 		#region sPClientID字段外键查询字段
         public const string PROPERTY_SPCLIENTID_ALIAS_NAME = "SPClientID_SPAdAssignedHistortyEntity_Alias";
 		public const string PROPERTY_SPCLIENTID_ID = "SPClientID_SPAdAssignedHistortyEntity_Alias.Id";
@@ -91,7 +72,8 @@ namespace SPS.Entity.Tables
  
 		
 		private int _id;
-		private SPAdvertisementEntity _sPAdID;
+		private int? _sPAdID;
+		private int? _sPAdPackID;
 		private SPSClientEntity _sPClientID;
 		private DateTime? _startDate;
 		private DateTime? _endDate;
@@ -111,6 +93,7 @@ namespace SPS.Entity.Tables
 		{
 			_id = 0;
 			_sPAdID = null;
+			_sPAdPackID = null;
 			_sPClientID = null;
 			_startDate = null;
 			_endDate = null;
@@ -126,10 +109,11 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPAdAssignedHistortyEntity( int id, SPAdvertisementEntity sPAdID, SPSClientEntity sPClientID, DateTime? startDate, DateTime? endDate, int createBy, DateTime createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPAdAssignedHistortyEntity( int id, int? sPAdID, int? sPAdPackID, SPSClientEntity sPClientID, DateTime? startDate, DateTime? endDate, int createBy, DateTime createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_sPAdID = sPAdID;
+			_sPAdPackID = sPAdPackID;
 			_sPClientID = sPClientID;
 			_startDate = startDate;
 			_endDate = endDate;
@@ -161,13 +145,27 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual SPAdvertisementEntity SPAdID
+		public virtual int? SPAdID
 		{
 			get { return _sPAdID; }
 
 			set	
 			{
 				_isChanged |= (_sPAdID != value); _sPAdID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual int? SPAdPackID
+		{
+			get { return _sPAdPackID; }
+
+			set	
+			{
+				_isChanged |= (_sPAdPackID != value); _sPAdPackID = value;
 			}
 		}
 

@@ -13,14 +13,14 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 
 namespace SPS.Bussiness.Wrappers
 {
-    public partial class SPAdAmountWrapper    //: BaseSpringNHibernateWrapper<SPAdAmountEntity, ISPAdAmountServiceProxy, SPAdAmountWrapper,int>
+    public partial class SPAdReportWrapper    //: BaseSpringNHibernateWrapper<SPAdReportEntity, ISPAdReportServiceProxy, SPAdReportWrapper,int>
     {
         #region Member
 
-		internal static readonly ISPAdAmountServiceProxy businessProxy = ((SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID", typeof(SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)))).SPAdAmountServiceProxyInstance;
+		internal static readonly ISPAdReportServiceProxy businessProxy = ((SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)(ContextRegistry.GetContext().GetObject("ServiceProxyContainerIocID", typeof(SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer)))).SPAdReportServiceProxyInstance;
 		
 		
-		internal SPAdAmountEntity Entity
+		internal SPAdReportEntity Entity
         {
             get { return this.entity; }
         }
@@ -28,12 +28,12 @@ namespace SPS.Bussiness.Wrappers
         #endregion
 
         #region Construtor
-		public SPAdAmountWrapper() : base(new SPAdAmountEntity())
+		public SPAdReportWrapper() : base(new SPAdReportEntity())
         {
             
         }
 
-        internal SPAdAmountWrapper(SPAdAmountEntity entityObj)
+        internal SPAdReportWrapper(SPAdReportEntity entityObj)
             : base(entityObj)
         {
         }
@@ -44,40 +44,16 @@ namespace SPS.Bussiness.Wrappers
         {
             switch (columnName)
             {
-		        case "SPAdID_Id":
-					return PROPERTY_SPADID_ID;
-		        case "SPAdID_Name":
-					return PROPERTY_SPADID_NAME;
-		        case "SPAdID_Code":
-					return PROPERTY_SPADID_CODE;
-		        case "SPAdID_ImageUrl":
-					return PROPERTY_SPADID_IMAGEURL;
-		        case "SPAdID_AdPrice":
-					return PROPERTY_SPADID_ADPRICE;
-		        case "SPAdID_AccountType":
-					return PROPERTY_SPADID_ACCOUNTTYPE;
-		        case "SPAdID_ApplyStatus":
-					return PROPERTY_SPADID_APPLYSTATUS;
-		        case "SPAdID_AdType":
-					return PROPERTY_SPADID_ADTYPE;
-		        case "SPAdID_AdText":
-					return PROPERTY_SPADID_ADTEXT;
-		        case "SPAdID_Description":
-					return PROPERTY_SPADID_DESCRIPTION;
-		        case "SPAdID_IsDisable":
-					return PROPERTY_SPADID_ISDISABLE;
-		        case "SPAdID_AssignedClient":
-					return PROPERTY_SPADID_ASSIGNEDCLIENT;
-		        case "SPAdID_CreateBy":
-					return PROPERTY_SPADID_CREATEBY;
-		        case "SPAdID_CreateAt":
-					return PROPERTY_SPADID_CREATEAT;
-		        case "SPAdID_LastModifyBy":
-					return PROPERTY_SPADID_LASTMODIFYBY;
-		        case "SPAdID_LastModifyAt":
-					return PROPERTY_SPADID_LASTMODIFYAT;
-		        case "SPAdID_LastModifyComment":
-					return PROPERTY_SPADID_LASTMODIFYCOMMENT;
+		        case "SPPackID_Id":
+					return PROPERTY_SPPACKID_ID;
+		        case "SPPackID_SPAdID":
+					return PROPERTY_SPPACKID_SPADID;
+		        case "SPPackID_Name":
+					return PROPERTY_SPPACKID_NAME;
+		        case "SPPackID_Code":
+					return PROPERTY_SPPACKID_CODE;
+		        case "SPPackID_Description":
+					return PROPERTY_SPPACKID_DESCRIPTION;
 		        case "SPClientID_Id":
 					return PROPERTY_SPCLIENTID_ID;
 		        case "SPClientID_Name":
@@ -130,12 +106,13 @@ namespace SPS.Bussiness.Wrappers
 		
       #region 公共常量
 
-		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPAdAmountEntity";
+		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPAdReportEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_SPADID = "SPAdID";
+		public static readonly string PROPERTY_NAME_SPPACKID = "SPPackID";
 		public static readonly string PROPERTY_NAME_SPCLIENTID = "SPClientID";
-		public static readonly string PROPERTY_NAME_STARTDATE = "StartDate";
-		public static readonly string PROPERTY_NAME_ENDDATE = "EndDate";
+		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
+		public static readonly string PROPERTY_NAME_CLIENTCOUNT = "ClientCount";
 		public static readonly string PROPERTY_NAME_ADCOUNT = "AdCount";
 		public static readonly string PROPERTY_NAME_ADAMOUNT = "AdAmount";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
@@ -147,46 +124,34 @@ namespace SPS.Bussiness.Wrappers
         #endregion
 	
  
-		#region sPAdID字段外键查询字段
-        public const string PROPERTY_SPADID_ALIAS_NAME = "SPAdID_SPAdAmountEntity_Alias";
-		public const string PROPERTY_SPADID_ID = "SPAdID_SPAdAmountEntity_Alias.Id";
-		public const string PROPERTY_SPADID_NAME = "SPAdID_SPAdAmountEntity_Alias.Name";
-		public const string PROPERTY_SPADID_CODE = "SPAdID_SPAdAmountEntity_Alias.Code";
-		public const string PROPERTY_SPADID_IMAGEURL = "SPAdID_SPAdAmountEntity_Alias.ImageUrl";
-		public const string PROPERTY_SPADID_ADPRICE = "SPAdID_SPAdAmountEntity_Alias.AdPrice";
-		public const string PROPERTY_SPADID_ACCOUNTTYPE = "SPAdID_SPAdAmountEntity_Alias.AccountType";
-		public const string PROPERTY_SPADID_APPLYSTATUS = "SPAdID_SPAdAmountEntity_Alias.ApplyStatus";
-		public const string PROPERTY_SPADID_ADTYPE = "SPAdID_SPAdAmountEntity_Alias.AdType";
-		public const string PROPERTY_SPADID_ADTEXT = "SPAdID_SPAdAmountEntity_Alias.AdText";
-		public const string PROPERTY_SPADID_DESCRIPTION = "SPAdID_SPAdAmountEntity_Alias.Description";
-		public const string PROPERTY_SPADID_ISDISABLE = "SPAdID_SPAdAmountEntity_Alias.IsDisable";
-		public const string PROPERTY_SPADID_ASSIGNEDCLIENT = "SPAdID_SPAdAmountEntity_Alias.AssignedClient";
-		public const string PROPERTY_SPADID_CREATEBY = "SPAdID_SPAdAmountEntity_Alias.CreateBy";
-		public const string PROPERTY_SPADID_CREATEAT = "SPAdID_SPAdAmountEntity_Alias.CreateAt";
-		public const string PROPERTY_SPADID_LASTMODIFYBY = "SPAdID_SPAdAmountEntity_Alias.LastModifyBy";
-		public const string PROPERTY_SPADID_LASTMODIFYAT = "SPAdID_SPAdAmountEntity_Alias.LastModifyAt";
-		public const string PROPERTY_SPADID_LASTMODIFYCOMMENT = "SPAdID_SPAdAmountEntity_Alias.LastModifyComment";
+		#region sPPackID字段外键查询字段
+        public const string PROPERTY_SPPACKID_ALIAS_NAME = "SPPackID_SPAdReportEntity_Alias";
+		public const string PROPERTY_SPPACKID_ID = "SPPackID_SPAdReportEntity_Alias.Id";
+		public const string PROPERTY_SPPACKID_SPADID = "SPPackID_SPAdReportEntity_Alias.SPAdID";
+		public const string PROPERTY_SPPACKID_NAME = "SPPackID_SPAdReportEntity_Alias.Name";
+		public const string PROPERTY_SPPACKID_CODE = "SPPackID_SPAdReportEntity_Alias.Code";
+		public const string PROPERTY_SPPACKID_DESCRIPTION = "SPPackID_SPAdReportEntity_Alias.Description";
 		#endregion
 		#region sPClientID字段外键查询字段
-        public const string PROPERTY_SPCLIENTID_ALIAS_NAME = "SPClientID_SPAdAmountEntity_Alias";
-		public const string PROPERTY_SPCLIENTID_ID = "SPClientID_SPAdAmountEntity_Alias.Id";
-		public const string PROPERTY_SPCLIENTID_NAME = "SPClientID_SPAdAmountEntity_Alias.Name";
-		public const string PROPERTY_SPCLIENTID_DESCRIPTION = "SPClientID_SPAdAmountEntity_Alias.Description";
-		public const string PROPERTY_SPCLIENTID_USERID = "SPClientID_SPAdAmountEntity_Alias.UserID";
-		public const string PROPERTY_SPCLIENTID_ISDEFAULTCLIENT = "SPClientID_SPAdAmountEntity_Alias.IsDefaultClient";
-		public const string PROPERTY_SPCLIENTID_SYNCDATA = "SPClientID_SPAdAmountEntity_Alias.SyncData";
-		public const string PROPERTY_SPCLIENTID_SYCNNOTINTERCEPTCOUNT = "SPClientID_SPAdAmountEntity_Alias.SycnNotInterceptCount";
-		public const string PROPERTY_SPCLIENTID_SYNCDATASETTING = "SPClientID_SPAdAmountEntity_Alias.SyncDataSetting";
-		public const string PROPERTY_SPCLIENTID_ALIAS = "SPClientID_SPAdAmountEntity_Alias.Alias";
-		public const string PROPERTY_SPCLIENTID_ISENABLE = "SPClientID_SPAdAmountEntity_Alias.IsEnable";
-		public const string PROPERTY_SPCLIENTID_INTERCEPTRATE = "SPClientID_SPAdAmountEntity_Alias.InterceptRate";
-		public const string PROPERTY_SPCLIENTID_DEFAULTPRICE = "SPClientID_SPAdAmountEntity_Alias.DefaultPrice";
-		public const string PROPERTY_SPCLIENTID_DEFAULTSHOWRECORDDAYS = "SPClientID_SPAdAmountEntity_Alias.DefaultShowRecordDays";
-		public const string PROPERTY_SPCLIENTID_CREATEBY = "SPClientID_SPAdAmountEntity_Alias.CreateBy";
-		public const string PROPERTY_SPCLIENTID_CREATEAT = "SPClientID_SPAdAmountEntity_Alias.CreateAt";
-		public const string PROPERTY_SPCLIENTID_LASTMODIFYBY = "SPClientID_SPAdAmountEntity_Alias.LastModifyBy";
-		public const string PROPERTY_SPCLIENTID_LASTMODIFYAT = "SPClientID_SPAdAmountEntity_Alias.LastModifyAt";
-		public const string PROPERTY_SPCLIENTID_LASTMODIFYCOMMENT = "SPClientID_SPAdAmountEntity_Alias.LastModifyComment";
+        public const string PROPERTY_SPCLIENTID_ALIAS_NAME = "SPClientID_SPAdReportEntity_Alias";
+		public const string PROPERTY_SPCLIENTID_ID = "SPClientID_SPAdReportEntity_Alias.Id";
+		public const string PROPERTY_SPCLIENTID_NAME = "SPClientID_SPAdReportEntity_Alias.Name";
+		public const string PROPERTY_SPCLIENTID_DESCRIPTION = "SPClientID_SPAdReportEntity_Alias.Description";
+		public const string PROPERTY_SPCLIENTID_USERID = "SPClientID_SPAdReportEntity_Alias.UserID";
+		public const string PROPERTY_SPCLIENTID_ISDEFAULTCLIENT = "SPClientID_SPAdReportEntity_Alias.IsDefaultClient";
+		public const string PROPERTY_SPCLIENTID_SYNCDATA = "SPClientID_SPAdReportEntity_Alias.SyncData";
+		public const string PROPERTY_SPCLIENTID_SYCNNOTINTERCEPTCOUNT = "SPClientID_SPAdReportEntity_Alias.SycnNotInterceptCount";
+		public const string PROPERTY_SPCLIENTID_SYNCDATASETTING = "SPClientID_SPAdReportEntity_Alias.SyncDataSetting";
+		public const string PROPERTY_SPCLIENTID_ALIAS = "SPClientID_SPAdReportEntity_Alias.Alias";
+		public const string PROPERTY_SPCLIENTID_ISENABLE = "SPClientID_SPAdReportEntity_Alias.IsEnable";
+		public const string PROPERTY_SPCLIENTID_INTERCEPTRATE = "SPClientID_SPAdReportEntity_Alias.InterceptRate";
+		public const string PROPERTY_SPCLIENTID_DEFAULTPRICE = "SPClientID_SPAdReportEntity_Alias.DefaultPrice";
+		public const string PROPERTY_SPCLIENTID_DEFAULTSHOWRECORDDAYS = "SPClientID_SPAdReportEntity_Alias.DefaultShowRecordDays";
+		public const string PROPERTY_SPCLIENTID_CREATEBY = "SPClientID_SPAdReportEntity_Alias.CreateBy";
+		public const string PROPERTY_SPCLIENTID_CREATEAT = "SPClientID_SPAdReportEntity_Alias.CreateAt";
+		public const string PROPERTY_SPCLIENTID_LASTMODIFYBY = "SPClientID_SPAdReportEntity_Alias.LastModifyBy";
+		public const string PROPERTY_SPCLIENTID_LASTMODIFYAT = "SPClientID_SPAdReportEntity_Alias.LastModifyAt";
+		public const string PROPERTY_SPCLIENTID_LASTMODIFYCOMMENT = "SPClientID_SPAdReportEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -218,15 +183,30 @@ namespace SPS.Bussiness.Wrappers
 		/// 
 		/// </summary>
 		[DataMember]
-		public SPAdvertisementWrapper SPAdID
+		public int? SPAdID
 		{
 			get
 			{
-				return SPAdvertisementWrapper.ConvertEntityToWrapper(entity.SPAdID) ;
+				return entity.SPAdID;
 			}
 			set
 			{
-				entity.SPAdID = ((value == null) ? null : value.Entity);
+				entity.SPAdID = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public SPAdPackWrapper SPPackID
+		{
+			get
+			{
+				return SPAdPackWrapper.ConvertEntityToWrapper(entity.SPPackID) ;
+			}
+			set
+			{
+				entity.SPPackID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -248,30 +228,30 @@ namespace SPS.Bussiness.Wrappers
 		/// 
 		/// </summary>
 		[DataMember]
-		public DateTime? StartDate
+		public DateTime? ReportDate
 		{
 			get
 			{
-				return entity.StartDate;
+				return entity.ReportDate;
 			}
 			set
 			{
-				entity.StartDate = value;
+				entity.ReportDate = value;
 			}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
 		[DataMember]
-		public DateTime? EndDate
+		public int? ClientCount
 		{
 			get
 			{
-				return entity.EndDate;
+				return entity.ClientCount;
 			}
 			set
 			{
-				entity.EndDate = value;
+				entity.ClientCount = value;
 			}
 		}
 		/// <summary>
@@ -385,175 +365,55 @@ namespace SPS.Bussiness.Wrappers
 		#region Query Property
 		
 		
-		#region sPAdID字段外键查询字段
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ID)]
-        public int? SPAdID_Id
+		#region sPPackID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPPACKID_ID)]
+        public int? SPPackID_Id
         {
             get
             {
-                if (this. SPAdID == null)
+                if (this. SPPackID == null)
                     return null;
-                return  SPAdID.Id;
+                return  SPPackID.Id;
             }
         }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_NAME)]
-        public string SPAdID_Name
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPPACKID_SPADID)]
+        public SPAdAssignedHistortyWrapper SPPackID_SPAdID
         {
             get
             {
-                if (this. SPAdID == null)
+                if (this. SPPackID == null)
                     return null;
-                return  SPAdID.Name;
+                return  SPPackID.SPAdID;
             }
         }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_CODE)]
-        public string SPAdID_Code
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPPACKID_NAME)]
+        public string SPPackID_Name
         {
             get
             {
-                if (this. SPAdID == null)
+                if (this. SPPackID == null)
                     return null;
-                return  SPAdID.Code;
+                return  SPPackID.Name;
             }
         }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_IMAGEURL)]
-        public string SPAdID_ImageUrl
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPPACKID_CODE)]
+        public string SPPackID_Code
         {
             get
             {
-                if (this. SPAdID == null)
+                if (this. SPPackID == null)
                     return null;
-                return  SPAdID.ImageUrl;
+                return  SPPackID.Code;
             }
         }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ADPRICE)]
-        public string SPAdID_AdPrice
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPPACKID_DESCRIPTION)]
+        public string SPPackID_Description
         {
             get
             {
-                if (this. SPAdID == null)
+                if (this. SPPackID == null)
                     return null;
-                return  SPAdID.AdPrice;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ACCOUNTTYPE)]
-        public string SPAdID_AccountType
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.AccountType;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_APPLYSTATUS)]
-        public string SPAdID_ApplyStatus
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.ApplyStatus;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ADTYPE)]
-        public string SPAdID_AdType
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.AdType;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ADTEXT)]
-        public string SPAdID_AdText
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.AdText;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_DESCRIPTION)]
-        public string SPAdID_Description
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.Description;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ISDISABLE)]
-        public bool? SPAdID_IsDisable
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.IsDisable;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_ASSIGNEDCLIENT)]
-        public int? SPAdID_AssignedClient
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.AssignedClient;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_CREATEBY)]
-        public int? SPAdID_CreateBy
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.CreateBy;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_CREATEAT)]
-        public DateTime? SPAdID_CreateAt
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.CreateAt;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_LASTMODIFYBY)]
-        public int? SPAdID_LastModifyBy
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.LastModifyBy;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_LASTMODIFYAT)]
-        public DateTime? SPAdID_LastModifyAt
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.LastModifyAt;
-            }
-        }
-		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_LASTMODIFYCOMMENT)]
-        public string SPAdID_LastModifyComment
-        {
-            get
-            {
-                if (this. SPAdID == null)
-                    return null;
-                return  SPAdID.LastModifyComment;
+                return  SPPackID.Description;
             }
         }
 		#endregion
@@ -746,23 +606,23 @@ namespace SPS.Bussiness.Wrappers
 
         #region "FKQuery"
 		
-        public static List<SPAdAmountWrapper> FindAllByOrderByAndFilterAndSPAdID(string orderByColumnName, bool isDesc,   SPAdvertisementWrapper sPAdID,  PageQueryParams pageQueryParams)
+        public static List<SPAdReportWrapper> FindAllByOrderByAndFilterAndSPPackID(string orderByColumnName, bool isDesc,   SPAdPackWrapper sPPackID,  PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSPAdID(orderByColumnName, isDesc,   sPAdID.Entity, pageQueryParams));
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSPPackID(orderByColumnName, isDesc,   sPPackID.Entity, pageQueryParams));
         }
 
-        public static List<SPAdAmountWrapper> FindAllBySPAdID(SPAdvertisementWrapper sPAdID)
+        public static List<SPAdReportWrapper> FindAllBySPPackID(SPAdPackWrapper sPPackID)
         {
-            return ConvertToWrapperList(businessProxy.FindAllBySPAdID(sPAdID.Entity));
+            return ConvertToWrapperList(businessProxy.FindAllBySPPackID(sPPackID.Entity));
         }
 		
 		
-        public static List<SPAdAmountWrapper> FindAllByOrderByAndFilterAndSPClientID(string orderByColumnName, bool isDesc,   SPSClientWrapper sPClientID,  PageQueryParams pageQueryParams)
+        public static List<SPAdReportWrapper> FindAllByOrderByAndFilterAndSPClientID(string orderByColumnName, bool isDesc,   SPSClientWrapper sPClientID,  PageQueryParams pageQueryParams)
         {
             return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSPClientID(orderByColumnName, isDesc,   sPClientID.Entity, pageQueryParams));
         }
 
-        public static List<SPAdAmountWrapper> FindAllBySPClientID(SPSClientWrapper sPClientID)
+        public static List<SPAdReportWrapper> FindAllBySPClientID(SPSClientWrapper sPClientID)
         {
             return ConvertToWrapperList(businessProxy.FindAllBySPClientID(sPClientID.Entity));
         }
@@ -781,37 +641,37 @@ namespace SPS.Bussiness.Wrappers
 
         #region Static Common Data Operation
 		
-		internal static List<SPAdAmountWrapper> ConvertToWrapperList(List<SPAdAmountEntity> entitylist)
+		internal static List<SPAdReportWrapper> ConvertToWrapperList(List<SPAdReportEntity> entitylist)
         {
-            List<SPAdAmountWrapper> list = new List<SPAdAmountWrapper>();
-            foreach (SPAdAmountEntity lentity in entitylist)
+            List<SPAdReportWrapper> list = new List<SPAdReportWrapper>();
+            foreach (SPAdReportEntity lentity in entitylist)
             {
                 list.Add(ConvertEntityToWrapper(lentity));
             }
             return list;
         }
 
-		internal static List<SPAdAmountWrapper> ConvertToWrapperList(IList<SPAdAmountEntity> entitylist)
+		internal static List<SPAdReportWrapper> ConvertToWrapperList(IList<SPAdReportEntity> entitylist)
         {
-            List<SPAdAmountWrapper> list = new List<SPAdAmountWrapper>();
-            foreach (SPAdAmountEntity lentity in entitylist)
+            List<SPAdReportWrapper> list = new List<SPAdReportWrapper>();
+            foreach (SPAdReportEntity lentity in entitylist)
             {
                 list.Add(ConvertEntityToWrapper(lentity));
             }
             return list;
         }
 		
-		internal static List<SPAdAmountEntity> ConvertToEntityList(List<SPAdAmountWrapper> wrapperlist)
+		internal static List<SPAdReportEntity> ConvertToEntityList(List<SPAdReportWrapper> wrapperlist)
         {
-            List<SPAdAmountEntity> list = new List<SPAdAmountEntity>();
-            foreach (SPAdAmountWrapper wrapper in wrapperlist)
+            List<SPAdReportEntity> list = new List<SPAdReportEntity>();
+            foreach (SPAdReportWrapper wrapper in wrapperlist)
             {
                 list.Add(wrapper.entity);
             }
             return list;
         }
 
-        internal static SPAdAmountWrapper ConvertEntityToWrapper(SPAdAmountEntity entity)
+        internal static SPAdReportWrapper ConvertEntityToWrapper(SPAdReportEntity entity)
         {
             if (entity == null)
                 return null;
@@ -819,7 +679,7 @@ namespace SPS.Bussiness.Wrappers
             if (entity.Id == 0)
                 return null;
 
-            return new SPAdAmountWrapper(entity);
+            return new SPAdReportWrapper(entity);
         }
 		
 		#endregion

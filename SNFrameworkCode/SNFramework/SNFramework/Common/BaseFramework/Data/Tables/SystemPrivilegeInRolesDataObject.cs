@@ -33,9 +33,6 @@ namespace Legendigital.Framework.Common.BaseFramework.Data.Tables
             dynamicQueryGenerator.AddWhereClause(PROPERTY_ROLEID.In(SystemUserRoleRelationDataObject.SubQueryGetUserAssignedRoles(userEntity)));
 
             return this.FindListByQueryBuilder(dynamicQueryGenerator);
-            
- 
-
         }
 
 

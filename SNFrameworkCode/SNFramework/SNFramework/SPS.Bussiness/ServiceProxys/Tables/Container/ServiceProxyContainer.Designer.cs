@@ -8,9 +8,11 @@ using SPS.Bussiness.ServiceProxys.Tables;
 namespace SPS.Bussiness.ServiceProxys.Tables.Container{
     public partial class ServiceProxyContainer
     {		
-		public ISPAdAmountServiceProxy SPAdAmountServiceProxyInstance
-        {get; set;}
 		public ISPAdAssignedHistortyServiceProxy SPAdAssignedHistortyServiceProxyInstance
+        {get; set;}
+		public ISPAdPackServiceProxy SPAdPackServiceProxyInstance
+        {get; set;}
+		public ISPAdReportServiceProxy SPAdReportServiceProxyInstance
         {get; set;}
 		public ISPAdvertisementServiceProxy SPAdvertisementServiceProxyInstance
         {get; set;}

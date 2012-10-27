@@ -6,13 +6,18 @@
     Spring.Net框架服务层容器配置文件
   </description>
   <!-- 服务层类 -->
-  <object id="SPAdAmountServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPAdAmountServiceProxy, SPS.Bussiness">
-    <property name="SelfDataObj" ref="SPAdAmountDataObjectIocID"/>
+  <object id="SPAdAssignedHistortyServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPAdAssignedHistortyServiceProxy, SPS.Bussiness">
+    <property name="SelfDataObj" ref="SPAdAssignedHistortyDataObjectIocID"/>
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
-  <object id="SPAdAssignedHistortyServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPAdAssignedHistortyServiceProxy, SPS.Bussiness">
-    <property name="SelfDataObj" ref="SPAdAssignedHistortyDataObjectIocID"/>
+  <object id="SPAdPackServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPAdPackServiceProxy, SPS.Bussiness">
+    <property name="SelfDataObj" ref="SPAdPackDataObjectIocID"/>
+	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
+	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
+  </object>
+  <object id="SPAdReportServiceProxyIocID" type="SPS.Bussiness.ServiceProxys.Tables.SPAdReportServiceProxy, SPS.Bussiness">
+    <property name="SelfDataObj" ref="SPAdReportDataObjectIocID"/>
 	<property name="AdoNetDb" ref="AdoNetDataObjectIocID"/>		
 	<property name="DataObjectsContainerIocID" ref="DataObjectContainersIocID"/>
   </object>
@@ -111,8 +116,9 @@
 
 
 <object id="ServiceProxyContainerIocID" type="SPS.Bussiness.ServiceProxys.Tables.Container.ServiceProxyContainer, SPS.Bussiness">
-    <property name="SPAdAmountServiceProxyInstance" ref="SPAdAmountServiceProxyIocID"/>
     <property name="SPAdAssignedHistortyServiceProxyInstance" ref="SPAdAssignedHistortyServiceProxyIocID"/>
+    <property name="SPAdPackServiceProxyInstance" ref="SPAdPackServiceProxyIocID"/>
+    <property name="SPAdReportServiceProxyInstance" ref="SPAdReportServiceProxyIocID"/>
     <property name="SPAdvertisementServiceProxyInstance" ref="SPAdvertisementServiceProxyIocID"/>
     <property name="SPChannelServiceProxyInstance" ref="SPChannelServiceProxyIocID"/>
     <property name="SPChannelParamsServiceProxyInstance" ref="SPChannelParamsServiceProxyIocID"/>
