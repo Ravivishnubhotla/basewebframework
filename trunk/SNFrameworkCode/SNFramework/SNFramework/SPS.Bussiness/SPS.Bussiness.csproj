@@ -79,13 +79,17 @@
     <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.Designer.cs">
       <DependentUpon>ServiceProxyContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServiceProxys\Tables\SPAdAmountServiceProxy.cs" />
-    <Compile Include="ServiceProxys\Tables\SPAdAmountServiceProxy.Designer.cs">
-      <DependentUpon>SPAdAmountServiceProxy.cs</DependentUpon>
-    </Compile>
     <Compile Include="ServiceProxys\Tables\SPAdAssignedHistortyServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPAdAssignedHistortyServiceProxy.Designer.cs">
       <DependentUpon>SPAdAssignedHistortyServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPAdPackServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPAdPackServiceProxy.Designer.cs">
+      <DependentUpon>SPAdPackServiceProxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceProxys\Tables\SPAdReportServiceProxy.cs" />
+    <Compile Include="ServiceProxys\Tables\SPAdReportServiceProxy.Designer.cs">
+      <DependentUpon>SPAdReportServiceProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceProxys\Tables\SPAdvertisementServiceProxy.cs" />
     <Compile Include="ServiceProxys\Tables\SPAdvertisementServiceProxy.Designer.cs">
@@ -159,13 +163,17 @@
     <Compile Include="ServiceProxys\Tables\SPUpperServiceProxy.Designer.cs">
       <DependentUpon>SPUpperServiceProxy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wrappers\SPAdAmountWrapper.cs" />
-    <Compile Include="Wrappers\SPAdAmountWrapper.Designer.cs">
-      <DependentUpon>SPAdAmountWrapper.cs</DependentUpon>
-    </Compile>
     <Compile Include="Wrappers\SPAdAssignedHistortyWrapper.cs" />
     <Compile Include="Wrappers\SPAdAssignedHistortyWrapper.Designer.cs">
       <DependentUpon>SPAdAssignedHistortyWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPAdPackWrapper.cs" />
+    <Compile Include="Wrappers\SPAdPackWrapper.Designer.cs">
+      <DependentUpon>SPAdPackWrapper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Wrappers\SPAdReportWrapper.cs" />
+    <Compile Include="Wrappers\SPAdReportWrapper.Designer.cs">
+      <DependentUpon>SPAdReportWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\SPAdvertisementWrapper.cs" />
     <Compile Include="Wrappers\SPAdvertisementWrapper.Designer.cs">

@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="foreveross" file="SPAdAmountEntity.Designer.cs">
+// <copyright company="foreveross" file="SPAdReportEntity.Designer.cs">
 //   Copyright (c) Foreveross Enterprises. All rights reserved.
 // </copyright>
 // <summary>
@@ -17,16 +17,17 @@ namespace SPS.Entity.Tables
 	///	
 	/// </summary>
 	[DataContract]
-	public partial class SPAdAmountEntity  : BaseTableEntity<int>,ICloneable
+	public partial class SPAdReportEntity  : BaseTableEntity<int>,ICloneable
 	{
       #region 公共常量
 
-		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPAdAmountEntity";
+		public static readonly string CLASS_FULL_NAME = "SPS.Entity.Tables.SPAdReportEntity";
 		public static readonly string PROPERTY_NAME_ID = "Id";
 		public static readonly string PROPERTY_NAME_SPADID = "SPAdID";
+		public static readonly string PROPERTY_NAME_SPPACKID = "SPPackID";
 		public static readonly string PROPERTY_NAME_SPCLIENTID = "SPClientID";
-		public static readonly string PROPERTY_NAME_STARTDATE = "StartDate";
-		public static readonly string PROPERTY_NAME_ENDDATE = "EndDate";
+		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
+		public static readonly string PROPERTY_NAME_CLIENTCOUNT = "ClientCount";
 		public static readonly string PROPERTY_NAME_ADCOUNT = "AdCount";
 		public static readonly string PROPERTY_NAME_ADAMOUNT = "AdAmount";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
@@ -38,46 +39,34 @@ namespace SPS.Entity.Tables
         #endregion
 	
  
-		#region sPAdID字段外键查询字段
-        public const string PROPERTY_SPADID_ALIAS_NAME = "SPAdID_SPAdAmountEntity_Alias";
-		public const string PROPERTY_SPADID_ID = "SPAdID_SPAdAmountEntity_Alias.Id";
-		public const string PROPERTY_SPADID_NAME = "SPAdID_SPAdAmountEntity_Alias.Name";
-		public const string PROPERTY_SPADID_CODE = "SPAdID_SPAdAmountEntity_Alias.Code";
-		public const string PROPERTY_SPADID_IMAGEURL = "SPAdID_SPAdAmountEntity_Alias.ImageUrl";
-		public const string PROPERTY_SPADID_ADPRICE = "SPAdID_SPAdAmountEntity_Alias.AdPrice";
-		public const string PROPERTY_SPADID_ACCOUNTTYPE = "SPAdID_SPAdAmountEntity_Alias.AccountType";
-		public const string PROPERTY_SPADID_APPLYSTATUS = "SPAdID_SPAdAmountEntity_Alias.ApplyStatus";
-		public const string PROPERTY_SPADID_ADTYPE = "SPAdID_SPAdAmountEntity_Alias.AdType";
-		public const string PROPERTY_SPADID_ADTEXT = "SPAdID_SPAdAmountEntity_Alias.AdText";
-		public const string PROPERTY_SPADID_DESCRIPTION = "SPAdID_SPAdAmountEntity_Alias.Description";
-		public const string PROPERTY_SPADID_ISDISABLE = "SPAdID_SPAdAmountEntity_Alias.IsDisable";
-		public const string PROPERTY_SPADID_ASSIGNEDCLIENT = "SPAdID_SPAdAmountEntity_Alias.AssignedClient";
-		public const string PROPERTY_SPADID_CREATEBY = "SPAdID_SPAdAmountEntity_Alias.CreateBy";
-		public const string PROPERTY_SPADID_CREATEAT = "SPAdID_SPAdAmountEntity_Alias.CreateAt";
-		public const string PROPERTY_SPADID_LASTMODIFYBY = "SPAdID_SPAdAmountEntity_Alias.LastModifyBy";
-		public const string PROPERTY_SPADID_LASTMODIFYAT = "SPAdID_SPAdAmountEntity_Alias.LastModifyAt";
-		public const string PROPERTY_SPADID_LASTMODIFYCOMMENT = "SPAdID_SPAdAmountEntity_Alias.LastModifyComment";
+		#region sPPackID字段外键查询字段
+        public const string PROPERTY_SPPACKID_ALIAS_NAME = "SPPackID_SPAdReportEntity_Alias";
+		public const string PROPERTY_SPPACKID_ID = "SPPackID_SPAdReportEntity_Alias.Id";
+		public const string PROPERTY_SPPACKID_SPADID = "SPPackID_SPAdReportEntity_Alias.SPAdID";
+		public const string PROPERTY_SPPACKID_NAME = "SPPackID_SPAdReportEntity_Alias.Name";
+		public const string PROPERTY_SPPACKID_CODE = "SPPackID_SPAdReportEntity_Alias.Code";
+		public const string PROPERTY_SPPACKID_DESCRIPTION = "SPPackID_SPAdReportEntity_Alias.Description";
 		#endregion
 		#region sPClientID字段外键查询字段
-        public const string PROPERTY_SPCLIENTID_ALIAS_NAME = "SPClientID_SPAdAmountEntity_Alias";
-		public const string PROPERTY_SPCLIENTID_ID = "SPClientID_SPAdAmountEntity_Alias.Id";
-		public const string PROPERTY_SPCLIENTID_NAME = "SPClientID_SPAdAmountEntity_Alias.Name";
-		public const string PROPERTY_SPCLIENTID_DESCRIPTION = "SPClientID_SPAdAmountEntity_Alias.Description";
-		public const string PROPERTY_SPCLIENTID_USERID = "SPClientID_SPAdAmountEntity_Alias.UserID";
-		public const string PROPERTY_SPCLIENTID_ISDEFAULTCLIENT = "SPClientID_SPAdAmountEntity_Alias.IsDefaultClient";
-		public const string PROPERTY_SPCLIENTID_SYNCDATA = "SPClientID_SPAdAmountEntity_Alias.SyncData";
-		public const string PROPERTY_SPCLIENTID_SYCNNOTINTERCEPTCOUNT = "SPClientID_SPAdAmountEntity_Alias.SycnNotInterceptCount";
-		public const string PROPERTY_SPCLIENTID_SYNCDATASETTING = "SPClientID_SPAdAmountEntity_Alias.SyncDataSetting";
-		public const string PROPERTY_SPCLIENTID_ALIAS = "SPClientID_SPAdAmountEntity_Alias.Alias";
-		public const string PROPERTY_SPCLIENTID_ISENABLE = "SPClientID_SPAdAmountEntity_Alias.IsEnable";
-		public const string PROPERTY_SPCLIENTID_INTERCEPTRATE = "SPClientID_SPAdAmountEntity_Alias.InterceptRate";
-		public const string PROPERTY_SPCLIENTID_DEFAULTPRICE = "SPClientID_SPAdAmountEntity_Alias.DefaultPrice";
-		public const string PROPERTY_SPCLIENTID_DEFAULTSHOWRECORDDAYS = "SPClientID_SPAdAmountEntity_Alias.DefaultShowRecordDays";
-		public const string PROPERTY_SPCLIENTID_CREATEBY = "SPClientID_SPAdAmountEntity_Alias.CreateBy";
-		public const string PROPERTY_SPCLIENTID_CREATEAT = "SPClientID_SPAdAmountEntity_Alias.CreateAt";
-		public const string PROPERTY_SPCLIENTID_LASTMODIFYBY = "SPClientID_SPAdAmountEntity_Alias.LastModifyBy";
-		public const string PROPERTY_SPCLIENTID_LASTMODIFYAT = "SPClientID_SPAdAmountEntity_Alias.LastModifyAt";
-		public const string PROPERTY_SPCLIENTID_LASTMODIFYCOMMENT = "SPClientID_SPAdAmountEntity_Alias.LastModifyComment";
+        public const string PROPERTY_SPCLIENTID_ALIAS_NAME = "SPClientID_SPAdReportEntity_Alias";
+		public const string PROPERTY_SPCLIENTID_ID = "SPClientID_SPAdReportEntity_Alias.Id";
+		public const string PROPERTY_SPCLIENTID_NAME = "SPClientID_SPAdReportEntity_Alias.Name";
+		public const string PROPERTY_SPCLIENTID_DESCRIPTION = "SPClientID_SPAdReportEntity_Alias.Description";
+		public const string PROPERTY_SPCLIENTID_USERID = "SPClientID_SPAdReportEntity_Alias.UserID";
+		public const string PROPERTY_SPCLIENTID_ISDEFAULTCLIENT = "SPClientID_SPAdReportEntity_Alias.IsDefaultClient";
+		public const string PROPERTY_SPCLIENTID_SYNCDATA = "SPClientID_SPAdReportEntity_Alias.SyncData";
+		public const string PROPERTY_SPCLIENTID_SYCNNOTINTERCEPTCOUNT = "SPClientID_SPAdReportEntity_Alias.SycnNotInterceptCount";
+		public const string PROPERTY_SPCLIENTID_SYNCDATASETTING = "SPClientID_SPAdReportEntity_Alias.SyncDataSetting";
+		public const string PROPERTY_SPCLIENTID_ALIAS = "SPClientID_SPAdReportEntity_Alias.Alias";
+		public const string PROPERTY_SPCLIENTID_ISENABLE = "SPClientID_SPAdReportEntity_Alias.IsEnable";
+		public const string PROPERTY_SPCLIENTID_INTERCEPTRATE = "SPClientID_SPAdReportEntity_Alias.InterceptRate";
+		public const string PROPERTY_SPCLIENTID_DEFAULTPRICE = "SPClientID_SPAdReportEntity_Alias.DefaultPrice";
+		public const string PROPERTY_SPCLIENTID_DEFAULTSHOWRECORDDAYS = "SPClientID_SPAdReportEntity_Alias.DefaultShowRecordDays";
+		public const string PROPERTY_SPCLIENTID_CREATEBY = "SPClientID_SPAdReportEntity_Alias.CreateBy";
+		public const string PROPERTY_SPCLIENTID_CREATEAT = "SPClientID_SPAdReportEntity_Alias.CreateAt";
+		public const string PROPERTY_SPCLIENTID_LASTMODIFYBY = "SPClientID_SPAdReportEntity_Alias.LastModifyBy";
+		public const string PROPERTY_SPCLIENTID_LASTMODIFYAT = "SPClientID_SPAdReportEntity_Alias.LastModifyAt";
+		public const string PROPERTY_SPCLIENTID_LASTMODIFYCOMMENT = "SPClientID_SPAdReportEntity_Alias.LastModifyComment";
 		#endregion
       	
 	
@@ -93,10 +82,11 @@ namespace SPS.Entity.Tables
  
 		
 		private int _id;
-		private SPAdvertisementEntity _sPAdID;
+		private int? _sPAdID;
+		private SPAdPackEntity _sPPackID;
 		private SPSClientEntity _sPClientID;
-		private DateTime? _startDate;
-		private DateTime? _endDate;
+		private DateTime? _reportDate;
+		private int? _clientCount;
 		private int? _adCount;
 		private decimal? _adAmount;
 		private int _createBy;
@@ -111,13 +101,14 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 默认构造函数
 		/// </summary>
-		public SPAdAmountEntity()
+		public SPAdReportEntity()
 		{
 			_id = 0;
 			_sPAdID = null;
+			_sPPackID = null;
 			_sPClientID = null;
-			_startDate = null;
-			_endDate = null;
+			_reportDate = null;
+			_clientCount = null;
 			_adCount = null;
 			_adAmount = null;
 			_createBy = 0;
@@ -132,13 +123,14 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPAdAmountEntity( int id, SPAdvertisementEntity sPAdID, SPSClientEntity sPClientID, DateTime? startDate, DateTime? endDate, int? adCount, decimal? adAmount, int createBy, DateTime createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPAdReportEntity( int id, int? sPAdID, SPAdPackEntity sPPackID, SPSClientEntity sPClientID, DateTime? reportDate, int? clientCount, int? adCount, decimal? adAmount, int createBy, DateTime createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_sPAdID = sPAdID;
+			_sPPackID = sPPackID;
 			_sPClientID = sPClientID;
-			_startDate = startDate;
-			_endDate = endDate;
+			_reportDate = reportDate;
+			_clientCount = clientCount;
 			_adCount = adCount;
 			_adAmount = adAmount;
 			_createBy = createBy;
@@ -169,13 +161,27 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual SPAdvertisementEntity SPAdID
+		public virtual int? SPAdID
 		{
 			get { return _sPAdID; }
 
 			set	
 			{
 				_isChanged |= (_sPAdID != value); _sPAdID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual SPAdPackEntity SPPackID
+		{
+			get { return _sPPackID; }
+
+			set	
+			{
+				_isChanged |= (_sPPackID != value); _sPPackID = value;
 			}
 		}
 
@@ -197,13 +203,13 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual DateTime? StartDate
+		public virtual DateTime? ReportDate
 		{
-			get { return _startDate; }
+			get { return _reportDate; }
 
 			set	
 			{
-				_isChanged |= (_startDate != value); _startDate = value;
+				_isChanged |= (_reportDate != value); _reportDate = value;
 			}
 		}
 
@@ -211,13 +217,13 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual DateTime? EndDate
+		public virtual int? ClientCount
 		{
-			get { return _endDate; }
+			get { return _clientCount; }
 
 			set	
 			{
-				_isChanged |= (_endDate != value); _endDate = value;
+				_isChanged |= (_clientCount != value); _clientCount = value;
 			}
 		}
 
@@ -333,7 +339,7 @@ namespace SPS.Entity.Tables
 		/// </summary>
 		public override bool Equals( object obj )
 		{
-			 return this.CheckEquals(obj as SPAdAmountEntity);
+			 return this.CheckEquals(obj as SPAdReportEntity);
 		}
 		
 		/// <summary>

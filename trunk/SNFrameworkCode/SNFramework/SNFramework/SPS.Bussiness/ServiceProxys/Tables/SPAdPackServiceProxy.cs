@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="foreveross" file="SPAdAmountDataObject.cs">
+// <copyright company="foreveross" file="SPAdPackServiceProxy.cs">
 //   Copyright (c) Foreveross Enterprises. All rights reserved.
 // </copyright>
 // <summary>
@@ -8,16 +8,27 @@
 // --------------------------------------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
-using NHibernate.Criterion;
+using Legendigital.Framework.Common.Bussiness.Interfaces;
+using Legendigital.Framework.Common.Data.Interfaces;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
-using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery.Propertys;
+using Legendigital.Framework.Common.Bussiness.NHibernate;
+using SPS.Data.Tables;
 using SPS.Entity.Tables;
-using Legendigital.Framework.Common.Data.NHibernate;
 
-namespace SPS.Data.Tables
+
+namespace SPS.Bussiness.ServiceProxys.Tables
 {
-    public partial class SPAdAmountDataObject
+	public interface ISPAdPackServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPAdPackEntity,int> ,ISPAdPackServiceProxyDesigner
     {
+
+
+    }
+
+    internal partial class SPAdPackServiceProxy : ISPAdPackServiceProxy
+    {
+
+
     }
 }

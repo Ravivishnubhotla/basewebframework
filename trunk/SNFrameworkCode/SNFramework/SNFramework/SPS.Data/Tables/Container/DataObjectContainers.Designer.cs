@@ -10,8 +10,9 @@ namespace SPS.Data.Tables.Container
         {
         }
 
-      public SPAdAmountDataObject SPAdAmountDataObjectInstance { set; get; }
       public SPAdAssignedHistortyDataObject SPAdAssignedHistortyDataObjectInstance { set; get; }
+      public SPAdPackDataObject SPAdPackDataObjectInstance { set; get; }
+      public SPAdReportDataObject SPAdReportDataObjectInstance { set; get; }
       public SPAdvertisementDataObject SPAdvertisementDataObjectInstance { set; get; }
       public SPChannelDataObject SPChannelDataObjectInstance { set; get; }
       public SPChannelParamsDataObject SPChannelParamsDataObjectInstance { set; get; }

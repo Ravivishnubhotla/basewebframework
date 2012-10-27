@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+
+<class name="SPS.Entity.Tables.SPAdPackEntity,SPS.Entity" table="SPAdPack" lazy="true"  >
+
+<id name="Id" column="ID" type="int" unsaved-value="0" >
+   <generator class="assigned">
+
+</generator>
+
+</id>
+
+
+		<!-- more than one foreign column is mapped to SPAdID - you're on your own. -->		
+		<property column="Name" type="string" name="Name"   length="100" />	
+		<property column="Code" type="string" name="Code"   length="100" />	
+		<property column="Description" type="string" name="Description"   length="100" />	
+
+
+
+
+</class>
+</hibernate-mapping>

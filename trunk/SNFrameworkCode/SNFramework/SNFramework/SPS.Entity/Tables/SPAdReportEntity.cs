@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="foreveross" file="SPAdAmountEntity.cs">
+// <copyright company="foreveross" file="SPAdReportEntity.cs">
 //   Copyright (c) Foreveross Enterprises. All rights reserved.
 // </copyright>
 // <summary>
@@ -11,7 +11,7 @@ using System;
 namespace SPS.Entity.Tables
 {
 	[Serializable]
-	public partial class SPAdAmountEntity
+	public partial class SPAdReportEntity
 	{
 	
 	}

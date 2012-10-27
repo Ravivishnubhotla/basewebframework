@@ -11,7 +11,8 @@
 </id>
 
 
-		<many-to-one column="SPAdID" name="SPAdID" class="SPS.Entity.Tables.SPAdvertisementEntity,SPS.Entity" />		
+		<property column="SPAdID" type="int" name="SPAdID"   />	
+		<property column="SPAdPackID" type="int" name="SPAdPackID"   />	
 		<many-to-one column="SPClientID" name="SPClientID" class="SPS.Entity.Tables.SPSClientEntity,SPS.Entity" />		
 		<property column="StartDate" type="DateTime" name="StartDate"   />	
 		<property column="EndDate" type="DateTime" name="EndDate"   />	

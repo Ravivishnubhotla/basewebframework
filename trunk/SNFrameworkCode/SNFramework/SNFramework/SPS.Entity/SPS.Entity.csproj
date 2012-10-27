@@ -39,13 +39,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tables\SPAdAmountEntity.cs" />
-    <Compile Include="Tables\SPAdAmountEntity.Designer.cs">
-      <DependentUpon>SPAdAmountEntity.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tables\SPAdAssignedHistortyEntity.cs" />
     <Compile Include="Tables\SPAdAssignedHistortyEntity.Designer.cs">
       <DependentUpon>SPAdAssignedHistortyEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPAdPackEntity.cs" />
+    <Compile Include="Tables\SPAdPackEntity.Designer.cs">
+      <DependentUpon>SPAdPackEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\SPAdReportEntity.cs" />
+    <Compile Include="Tables\SPAdReportEntity.Designer.cs">
+      <DependentUpon>SPAdReportEntity.cs</DependentUpon>
     </Compile>
     <Compile Include="Tables\SPAdvertisementEntity.cs" />
     <Compile Include="Tables\SPAdvertisementEntity.Designer.cs">
@@ -150,9 +154,12 @@
     <EmbeddedResource Include="Tables\MappingFiles\SPSDataSycnSettingMappingFile.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Tables\MappingFiles\SPAdAmountMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPAdAssignedHistortyMappingFile.hbm.xml" />
     <EmbeddedResource Include="Tables\MappingFiles\SPAdvertisementMappingFile.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tables\MappingFiles\SPAdPackMappingFile.hbm.xml" />
+    <EmbeddedResource Include="Tables\MappingFiles\SPAdReportMappingFile.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

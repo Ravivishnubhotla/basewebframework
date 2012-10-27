@@ -22,31 +22,8 @@ namespace SPS.Data.Tables
     {
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_ID));		
-		public static readonly EntityProperty<SPAdvertisementEntity> PROPERTY_SPADID = new EntityProperty<SPAdvertisementEntity>(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPADID));
-		#region sPAdID字段外键查询字段
-        public static NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> InClude_SPAdID_Query(NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> queryGenerator)
-        {
-            return queryGenerator.AddAlians(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPADID, PROPERTY_SPADID_ALIAS_NAME);
-        }
-        public static readonly string PROPERTY_SPADID_ALIAS_NAME = "SPAdID_SPAdAssignedHistortyEntity_Alias";
-		public static readonly IntProperty PROPERTY_SPADID_ID = new IntProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".Id"));
-		public static readonly StringProperty PROPERTY_SPADID_NAME = new StringProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".Name"));
-		public static readonly StringProperty PROPERTY_SPADID_CODE = new StringProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".Code"));
-		public static readonly StringProperty PROPERTY_SPADID_IMAGEURL = new StringProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".ImageUrl"));
-		public static readonly StringProperty PROPERTY_SPADID_ADPRICE = new StringProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".AdPrice"));
-		public static readonly StringProperty PROPERTY_SPADID_ACCOUNTTYPE = new StringProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".AccountType"));
-		public static readonly StringProperty PROPERTY_SPADID_APPLYSTATUS = new StringProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".ApplyStatus"));
-		public static readonly StringProperty PROPERTY_SPADID_ADTYPE = new StringProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".AdType"));
-		public static readonly StringProperty PROPERTY_SPADID_ADTEXT = new StringProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".AdText"));
-		public static readonly StringProperty PROPERTY_SPADID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".Description"));
-		public static readonly BoolProperty PROPERTY_SPADID_ISDISABLE = new BoolProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".IsDisable"));
-		public static readonly IntProperty PROPERTY_SPADID_ASSIGNEDCLIENT = new IntProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".AssignedClient"));
-		public static readonly IntProperty PROPERTY_SPADID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".CreateBy"));
-		public static readonly DateTimeProperty PROPERTY_SPADID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".CreateAt"));
-		public static readonly IntProperty PROPERTY_SPADID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".LastModifyBy"));
-		public static readonly DateTimeProperty PROPERTY_SPADID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".LastModifyAt"));
-		public static readonly StringProperty PROPERTY_SPADID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".LastModifyComment"));
-		#endregion
+		public static readonly IntProperty PROPERTY_SPADID = new IntProperty(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPADID));		
+		public static readonly IntProperty PROPERTY_SPADPACKID = new IntProperty(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPADPACKID));		
 		public static readonly EntityProperty<SPSClientEntity> PROPERTY_SPCLIENTID = new EntityProperty<SPSClientEntity>(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPCLIENTID));
 		#region sPClientID字段外键查询字段
         public static NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> InClude_SPClientID_Query(NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> queryGenerator)
@@ -113,6 +90,8 @@ namespace SPS.Data.Tables
                     return typeof (int);
                 case "SPAdID":
                     return typeof (int);
+                case "SPAdPackID":
+                    return typeof (int);
                 case "SPClientID":
                     return typeof (int);
                 case "StartDate":
@@ -139,45 +118,6 @@ namespace SPS.Data.Tables
         {
             switch (parent_alias)
             {
-	            case "SPAdID_SPAdAssignedHistortyEntity_Alias":
-					switch (fieldName)
-					{
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.Id":
-							return typeof (int);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.Name":
-							return typeof (string);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.Code":
-							return typeof (string);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.ImageUrl":
-							return typeof (string);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.AdPrice":
-							return typeof (string);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.AccountType":
-							return typeof (string);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.ApplyStatus":
-							return typeof (string);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.AdType":
-							return typeof (string);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.AdText":
-							return typeof (string);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.Description":
-							return typeof (string);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.IsDisable":
-							return typeof (bool);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.AssignedClient":
-							return typeof (int);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.CreateBy":
-							return typeof (int);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.CreateAt":
-							return typeof (DateTime);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.LastModifyBy":
-							return typeof (int);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.LastModifyAt":
-							return typeof (DateTime);
-                		case "SPAdID_SPAdAssignedHistortyEntity_Alias.LastModifyComment":
-							return typeof (string);
-          			}
-                    break;
 	            case "SPClientID_SPAdAssignedHistortyEntity_Alias":
 					switch (fieldName)
 					{
@@ -233,9 +173,6 @@ namespace SPS.Data.Tables
         {
             switch (parent_alias)
             {
-	            case "SPAdID_SPAdAssignedHistortyEntity_Alias":
-                    queryGenerator.AddAlians(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPADID, PROPERTY_SPADID_ALIAS_NAME);
-                    break;
 	            case "SPClientID_SPAdAssignedHistortyEntity_Alias":
                     queryGenerator.AddAlians(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPCLIENTID, PROPERTY_SPCLIENTID_ALIAS_NAME);
                     break;
@@ -246,27 +183,6 @@ namespace SPS.Data.Tables
         }
 		
 		
-		
-		public List<SPAdAssignedHistortyEntity> GetList_By_SPAdID_SPAdvertisementEntity(SPAdvertisementEntity fkentity)
-		{
-			NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
-
-            dynamicQueryGenerator.AddWhereClause(PROPERTY_SPADID.Eq(fkentity));
-
-            return this.FindListByQueryBuilder(dynamicQueryGenerator);
-		}
-		
-		
-        public List<SPAdAssignedHistortyEntity> GetPageList_By_SPAdID_SPAdvertisementEntity(string orderByColumnName, bool isDesc, SPAdvertisementEntity fkentity, PageQueryParams pageQueryParams)
-        {
-            NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
-
-            dynamicQueryGenerator.AddWhereClause(PROPERTY_SPADID.Eq(fkentity));
-
-            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
-
-            return FindListByPageByQueryBuilder(dynamicQueryGenerator, pageQueryParams);
-        }		
 		
 		public List<SPAdAssignedHistortyEntity> GetList_By_SPClientID_SPSClientEntity(SPSClientEntity fkentity)
 		{
