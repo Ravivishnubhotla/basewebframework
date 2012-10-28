@@ -51,7 +51,11 @@ public class GeneratedTemplate : DotNetScriptTemplate
 	
     private	string IDKeyName = "ID";
 	
-	 private NHibernateFrameworkWebUIGenerateConfig cfg;
+	private NHibernateFrameworkWebUIGenerateConfig cfg;
+	 
+	private	string PagePath;
+	
+	private	string PageNameSpace;
 	
 	//---------------------------------------------------
 	// Render() is where you want to write your logic    
@@ -68,6 +72,9 @@ public class GeneratedTemplate : DotNetScriptTemplate
 		NHibernateFrameworkWebUIGenerateConfig config = (NHibernateFrameworkWebUIGenerateConfig)input["codeGenerationSetting"];
 		
 		cfg = config;
+		
+		PagePath = (string)input["PagePath"];
+		PageNameSpace = config.WebPageNameSpace + "." + (string)input["PageNameSpace"];
 		
 		TableUIGenerationParams[] tableUIGenerationParamsListArray = (TableUIGenerationParams[])input["TableUIGenerationParamsArray"];
 		
@@ -138,9 +145,10 @@ public class GeneratedTemplate : DotNetScriptTemplate
 			string moudleCodeName = config.GenerateMoudleCodeName(table);
 			string validgroup = config.GenerateMoudleValidateGroupName(table);
 			string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+			string filepath = Path.Combine(PagePath,"UC" + config.GenerateMoudleCodeName(table) + "Add.ascx");
 %>
 
-
+<%= "<" %>%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UC<%= moudleCodeName %>Add.ascx.cs" Inherits="<%= PageNameSpace %>.UC<%= moudleCodeName %>Add" %<%= ">" %>
 <ext:Window ID="win<%= moudleCodeName %>Add" runat="server" Icon="ApplicationAdd" Title="<%= config.GenerateMoudleFormTitle(table) %> Add "
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll="true"
     ConstrainHeader="true" Resizable="true" Layout="Fit">
@@ -185,10 +193,11 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
         </ext:Button>
     </Buttons>
 </ext:Window>
-
-
+ 
 
 <%		
+			output.saveEnc(filepath,"o","uft8");
+			output.clear();
 		}
 		
 		
@@ -199,9 +208,10 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 			string validgroup = config.GenerateMoudleValidateGroupName(table);
 			string moudleDisplayName = config.GenerateMoudleDisplayName(table);
 			string PkPropertyName = config.GetPkProprtyName(table);
+			string filepath = Path.Combine(PagePath,"UC" + config.GenerateMoudleCodeName(table) + "Edit.ascx");
 %>
 
-
+<%= "<" %>%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UC<%= moudleCodeName %>Edit.ascx.cs" Inherits="<%= PageNameSpace %>.UC<%= moudleCodeName %>Edit" %<%= ">" %>
 
 <ext:Window ID="win<%= moudleCodeName %>Edit" runat="server" Icon="ApplicationEdit" Title="Edit <%= config.GenerateMoudleFormTitle(table) %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll="true"
@@ -259,6 +269,8 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 
 
 <%		
+			output.saveEnc(filepath,"o","uft8");
+			output.clear();
 		}
 		
 		
@@ -270,7 +282,11 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 			string moudleCodeName = config.GenerateMoudleCodeName(table);
 			string validgroup = config.GenerateMoudleValidateGroupName(table);
 			string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+			string filepath = Path.Combine(PagePath,"UC" + config.GenerateMoudleCodeName(table) + "View.ascx");
 %>
+ 
+<%= "<" %>%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UC<%= moudleCodeName %>View.ascx.cs" Inherits="<%= PageNameSpace %>.UC<%= moudleCodeName %>View" %<%= ">" %>
+
 <ext:Window ID="win<%= moudleCodeName %>View" runat="server" Icon="ApplicationViewDetail" Title="Show<%= config.GenerateMoudleFormTitle(table) %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll="true"
     ConstrainHeader="true" Resizable="true" Layout="Fit">
@@ -306,6 +322,8 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 
 
 <%		
+			output.saveEnc(filepath,"o","uft8");
+			output.clear();
 		}
 
 		
@@ -422,12 +440,12 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 				case "NumberField":
 				case "NumberDecimalField":
 %>				 
-						<ext:NumberField ID="radnum<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"  AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"   AnchorHorizontal="95%"/>
+						<ext:NumberField ID="num<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>"  AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"   AnchorHorizontal="95%"/>
                  	
 <%					break;
 				case "DateField":
 %>                 
-						<ext:DateField  ID="txt<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"   AnchorHorizontal="95%"/>
+						<ext:DateField  ID="date<%= tableUIGenerationParamsListItem.FieldName %>" runat="server" FieldLabel="<%= tableUIGenerationParamsListItem.FieldNameCn %>" AllowBlank="<%= (!tableUIGenerationParamsListItem.IsReqiured).ToString() %>"   AnchorHorizontal="95%"/>
                 
 <%					break;
 				case "HtmlEditor":
@@ -536,13 +554,21 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 				string wrapperClassName = config.GenerateWrapperClassMame(table,"");
 				string moudleCodeName = config.GenerateMoudleCodeName(table);
 				string moudleDisplayName = config.GenerateMoudleDisplayName(table);
+				string filepath = Path.Combine(PagePath,"UC" + config.GenerateMoudleCodeName(table) + "Add.ascx.cs");
 %>  
 
---------------------------------------------------Add Page Code----------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Ext.Net;
+using SPS.Bussiness.Wrappers;
 
-
-
-
+namespace <%=PageNameSpace%>
+{
+ 
     [DirectMethodProxyID(IDMode = DirectMethodProxyIDMode.Alias, Alias = "UC<%= moudleCodeName %>Add")]
     public partial class UC<%= moudleCodeName %>Add : System.Web.UI.UserControl
     {
@@ -600,11 +626,39 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 
 
 
+}
+
+<%			output.saveEnc(filepath,"o","uft8");
+			output.clear();
+			
+			
+			filepath = Path.Combine(PagePath,"UC" + config.GenerateMoudleCodeName(table) + "Add.ascx.designer.cs");
+%>
 
 
---------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
 
-<%				
+namespace <%=PageNameSpace%> {
+    
+    
+    public partial class UC<%=config.GenerateMoudleCodeName(table)%>Add {
+        
+ 
+    }
+}
+
+
+<%	
+			output.saveEnc(filepath,"o","uft8");
+			output.clear();
+			
 		}
 		
 		
@@ -615,9 +669,20 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 				string moudleDisplayName = config.GenerateMoudleDisplayName(table);
 				string PkQueryString = config.GetPkQueryKey(table);
 				string PkPropertyName = config.GetPkProprtyName(table);
+				string filepath = Path.Combine(PagePath,"UC" + config.GenerateMoudleCodeName(table) + "Edit.ascx.cs");
 %>  
 
---------------------------------------------------Edit Page Code----------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Ext.Net;
+using SPS.Bussiness.Wrappers;
+
+namespace <%=PageNameSpace%>
+{
 
 
 
@@ -709,10 +774,39 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 
 
 
---------------------------------------------------------------------------------------------------------------------------------------------
+}
 
-<%				
+<%			output.saveEnc(filepath,"o","uft8");
+			output.clear();				
+			filepath = Path.Combine(PagePath,"UC" + config.GenerateMoudleCodeName(table) + "Edit.ascx.designer.cs");
+%>
+
+
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace <%=PageNameSpace%> {
+    
+    
+    public partial class UC<%=config.GenerateMoudleCodeName(table)%>Edit {
+        
+ 
+    }
+}
+
+
+<%	
+			output.saveEnc(filepath,"o","uft8");
+			output.clear();
+			
 		}
+
 		
 		
 		
@@ -723,9 +817,20 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 				string moudleCodeName = config.GenerateMoudleCodeName(table);
 				string moudleDisplayName = config.GenerateMoudleDisplayName(table);
 				string PkQueryString = config.GetPkQueryKey(table);
+				string filepath = Path.Combine(PagePath,"UC" + config.GenerateMoudleCodeName(table) + "View.ascx.cs");
 %>  
 
---------------------------------------------------View Page Code----------------------------------------------------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Ext.Net;
+using SPS.Bussiness.Wrappers;
+
+namespace <%=PageNameSpace%>
+{
 
 
     [DirectMethodProxyID(IDMode = DirectMethodProxyIDMode.Alias, Alias = "UC<%= moudleCodeName %>View")]
@@ -787,16 +892,38 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 
 
 
+}
+
+<%			output.saveEnc(filepath,"o","uft8");
+			output.clear();	
+			filepath = Path.Combine(PagePath,"UC" + config.GenerateMoudleCodeName(table) + "View.ascx.designer.cs");
+%>
 
 
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
 
-
-
+namespace <%=PageNameSpace%> {
+    
+    
+    public partial class UC<%=config.GenerateMoudleCodeName(table)%>View {
+        
  
---------------------------------------------------------------------------------------------------------------------------------------------
+    }
+}
 
-<%				
-		}		
+
+<%	
+			output.saveEnc(filepath,"o","uft8");
+			output.clear();
+			
+		}
 
 		
 		private void GenerateGridView( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray ,NHibernateFrameworkWebUIGenerateConfig config)
@@ -807,7 +934,11 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 			string PkPropertyName = config.GetPkProprtyName(table);
 			string PkQueryString = config.GetPkQueryString(table);
 			string wrapperClassName = config.GenerateWrapperClassMame(table,"");
+			string filepath = Path.Combine(PagePath,"" + config.GenerateMoudleCodeName(table) + "ListPage.aspx");
 %>
+<%= "<" %>%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="<%= moudleNameEn %>ListPage.aspx.cs" Inherits="<%= PageNameSpace %>.<%= moudleNameEn %>ListPage" %<%= ">" %>
+
+
 <%= "<" %>%@ Register Src="UC<%= moudleNameEn %>Add.ascx" TagName="UC<%= moudleNameEn %>Add" TagPrefix="uc1" %<%= ">" %>
 <%= "<" %>%@ Register Src="UC<%= moudleNameEn %>Edit.ascx" TagName="UC<%= moudleNameEn %>Edit" TagPrefix="uc2" %<%= ">" %>
 <%= "<" %>%@ Register Src="UC<%= moudleNameEn %>View.ascx" TagName="UC<%= moudleNameEn %>View" TagPrefix="uc3"  %<%= ">" %>
@@ -823,7 +954,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
                 return 'true';
             else
                 return 'false';
-        }
+        };
 
 
         var RefreshData = function(btn) {
@@ -1014,9 +1145,28 @@ if(!tableUIGenerationParamsListArray[i].IsSelect)
     </ext:Viewport>
 </asp:Content>
 
--------------------------------------------------------------------------------------------------------------------------------------------------------
+<% 
+			output.saveEnc(filepath,"o","uft8");
+			output.clear();
+			
+			filepath = Path.Combine(PagePath,"" + config.GenerateMoudleCodeName(table) + "ListPage.aspx.cs");
+%> 
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using Ext.Net;
+using Legendigital.Common.WebApp.AppCode;
+using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using SPS.Bussiness.Wrappers;
 
+namespace <%=PageNameSpace%>
+{
+ 
     public partial class <%= moudleNameEn %>ListPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -1063,10 +1213,39 @@ if(!tableUIGenerationParamsListArray[i].IsSelect)
 
 
 
-
+}
 
 			
-<%}	
+<%			output.saveEnc(filepath,"o","uft8");
+			output.clear();
+			filepath = Path.Combine(PagePath,"" + config.GenerateMoudleCodeName(table) + "ListPage.aspx.designer.cs");
+%>
+
+
+//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated. 
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+namespace <%=PageNameSpace%> {
+    
+    
+    public partial class <%=config.GenerateMoudleCodeName(table)%>ListPage {
+        
+ 
+    }
+}
+
+
+<%	
+			output.saveEnc(filepath,"o","uft8");
+			output.clear();
+			
+		}
 
 
 
