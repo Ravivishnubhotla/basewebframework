@@ -109,11 +109,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
             get { return requiresUniqueEmail; }
         }
 
-        public bool ChangePassword(string username, string newPassword)
+        public bool ChangePassword(string loginID, string newPassword)
         {
             bool flag = false;
 
-            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(username);
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(loginID);
             if (user == null)
             {
                 return flag;
@@ -262,12 +262,12 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
             return password;
         }
 
-        public override bool ChangePassword(string username, string oldPassword, string newPassword)
+        public override bool ChangePassword(string loginID, string oldPassword, string newPassword)
         {
             bool flag = false;
-            if (ValidateUser(username, oldPassword))
+            if (ValidateUser(loginID, oldPassword))
             {
-                var e = new ValidatePasswordEventArgs(username, newPassword, true);
+                var e = new ValidatePasswordEventArgs(loginID, newPassword, true);
                 OnValidatingPassword(e);
                 if (e.Cancel)
                 {
@@ -279,7 +279,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Providers
                                                                                          NHibernateProviderSR.
                                                                                              Pwd_ChangeCancelledDueToNewPassword);
                 }
-                SystemUserWrapper user = SystemUserWrapper.FindByLoginID(username);
+                SystemUserWrapper user = SystemUserWrapper.FindByLoginID(loginID);
                 if (user == null)
                 {
                     return flag;

@@ -138,6 +138,18 @@
     <Content Include="MainPage\Default.aspx" />
     <Content Include="MainPage\Login.aspx" />
     <Content Include="MainPage\UCChangePassword.ascx" />
+    <Content Include="Moudles\SPS\Ads\SPAdAssignedHistortyListPage.aspx" />
+    <Content Include="Moudles\SPS\Ads\SPAdPackListPage.aspx" />
+    <Content Include="Moudles\SPS\Ads\SPAdvertisementListPage.aspx" />
+    <Content Include="Moudles\SPS\Ads\UCSPAdAssignedHistortyAdd.ascx" />
+    <Content Include="Moudles\SPS\Ads\UCSPAdAssignedHistortyEdit.ascx" />
+    <Content Include="Moudles\SPS\Ads\UCSPAdAssignedHistortyView.ascx" />
+    <Content Include="Moudles\SPS\Ads\UCSPAdPackAdd.ascx" />
+    <Content Include="Moudles\SPS\Ads\UCSPAdPackEdit.ascx" />
+    <Content Include="Moudles\SPS\Ads\UCSPAdPackView.ascx" />
+    <Content Include="Moudles\SPS\Ads\UCSPAdvertisementAdd.ascx" />
+    <Content Include="Moudles\SPS\Ads\UCSPAdvertisementEdit.ascx" />
+    <Content Include="Moudles\SPS\Ads\UCSPAdvertisementView.ascx" />
     <Content Include="Moudles\SPS\Channels\SPChannelEdit.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelFiltersListPage.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelListPage.aspx" />
@@ -170,6 +182,23 @@
     <Content Include="Moudles\SPS\Clients\UCSPSClientAdd.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientEdit.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientView.ascx" />
+    <Content Include="Moudles\SPS\ClientView\ReportClientCountRecordToday.aspx" />
+    <Content Include="Moudles\SPS\ClientView\ReportClientRecordDateRange.aspx" />
+    <Content Include="Moudles\SPS\ClientView\ReportClientSearchList.aspx" />
+    <Content Include="Moudles\SPS\ClientView\SPClientCodeList.aspx" />
+    <Content Include="Moudles\SPS\Codes\SPChannelCodeListPage.aspx" />
+    <Content Include="Moudles\SPS\Codes\SPChannelCodeTreeListPage.aspx" />
+    <Content Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx" />
+    <Content Include="Moudles\SPS\Codes\SPCodeFilterListPage.aspx" />
+    <Content Include="Moudles\SPS\Codes\SPCodeListPage.aspx" />
+    <Content Include="Moudles\SPS\Codes\SPCodeTreeListPage.aspx" />
+    <Content Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsAdd.ascx" />
+    <Content Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsEdit.ascx" />
+    <Content Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsView.ascx" />
+    <Content Include="Moudles\SPS\Codes\UCSPCodeAdd.ascx" />
+    <Content Include="Moudles\SPS\Reports\SPAdReportListPage.aspx" />
+    <Content Include="Moudles\SPS\Reports\UCSPAdReportAdd.ascx" />
+    <Content Include="Moudles\SPS\Reports\UCSPAdReportEdit.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -230,6 +259,90 @@
     </Compile>
     <Compile Include="Masters\AdminMaster.Master.designer.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\SPAdAssignedHistortyListPage.aspx.cs">
+      <DependentUpon>SPAdAssignedHistortyListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\SPAdAssignedHistortyListPage.aspx.designer.cs">
+      <DependentUpon>SPAdAssignedHistortyListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\SPAdPackListPage.aspx.cs">
+      <DependentUpon>SPAdPackListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\SPAdPackListPage.aspx.designer.cs">
+      <DependentUpon>SPAdPackListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\SPAdvertisementListPage.aspx.cs">
+      <DependentUpon>SPAdvertisementListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\SPAdvertisementListPage.aspx.designer.cs">
+      <DependentUpon>SPAdvertisementListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdAssignedHistortyAdd.ascx.cs">
+      <DependentUpon>UCSPAdAssignedHistortyAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdAssignedHistortyAdd.ascx.designer.cs">
+      <DependentUpon>UCSPAdAssignedHistortyAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdAssignedHistortyEdit.ascx.cs">
+      <DependentUpon>UCSPAdAssignedHistortyEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdAssignedHistortyEdit.ascx.designer.cs">
+      <DependentUpon>UCSPAdAssignedHistortyEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdAssignedHistortyView.ascx.cs">
+      <DependentUpon>UCSPAdAssignedHistortyView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdAssignedHistortyView.ascx.designer.cs">
+      <DependentUpon>UCSPAdAssignedHistortyView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdPackAdd.ascx.cs">
+      <DependentUpon>UCSPAdPackAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdPackAdd.ascx.designer.cs">
+      <DependentUpon>UCSPAdPackAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdPackEdit.ascx.cs">
+      <DependentUpon>UCSPAdPackEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdPackEdit.ascx.designer.cs">
+      <DependentUpon>UCSPAdPackEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdPackView.ascx.cs">
+      <DependentUpon>UCSPAdPackView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdPackView.ascx.designer.cs">
+      <DependentUpon>UCSPAdPackView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdvertisementAdd.ascx.cs">
+      <DependentUpon>UCSPAdvertisementAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdvertisementAdd.ascx.designer.cs">
+      <DependentUpon>UCSPAdvertisementAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdvertisementEdit.ascx.cs">
+      <DependentUpon>UCSPAdvertisementEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdvertisementEdit.ascx.designer.cs">
+      <DependentUpon>UCSPAdvertisementEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdvertisementView.ascx.cs">
+      <DependentUpon>UCSPAdvertisementView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Ads\UCSPAdvertisementView.ascx.designer.cs">
+      <DependentUpon>UCSPAdvertisementView.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelEdit.aspx.cs">
       <DependentUpon>SPChannelEdit.aspx</DependentUpon>
@@ -461,6 +574,128 @@
     <Compile Include="Moudles\SPS\Clients\UCSPSClientView.ascx.designer.cs">
       <DependentUpon>UCSPSClientView.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\ClientView\ReportClientCountRecordToday.aspx.cs">
+      <DependentUpon>ReportClientCountRecordToday.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientView\ReportClientCountRecordToday.aspx.designer.cs">
+      <DependentUpon>ReportClientCountRecordToday.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientView\ReportClientRecordDateRange.aspx.cs">
+      <DependentUpon>ReportClientRecordDateRange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientView\ReportClientRecordDateRange.aspx.designer.cs">
+      <DependentUpon>ReportClientRecordDateRange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientView\ReportClientSearchList.aspx.cs">
+      <DependentUpon>ReportClientSearchList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientView\ReportClientSearchList.aspx.designer.cs">
+      <DependentUpon>ReportClientSearchList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientView\SPClientCodeList.aspx.cs">
+      <DependentUpon>SPClientCodeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientView\SPClientCodeList.aspx.designer.cs">
+      <DependentUpon>SPClientCodeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPChannelCodeListPage.aspx.cs">
+      <DependentUpon>SPChannelCodeListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPChannelCodeListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelCodeListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPChannelCodeTreeListPage.aspx.cs">
+      <DependentUpon>SPChannelCodeTreeListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPChannelCodeTreeListPage.aspx.designer.cs">
+      <DependentUpon>SPChannelCodeTreeListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx.cs">
+      <DependentUpon>SPClientCodeSycnParamsListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx.designer.cs">
+      <DependentUpon>SPClientCodeSycnParamsListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeFilterListPage.aspx.cs">
+      <DependentUpon>SPCodeFilterListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeFilterListPage.aspx.designer.cs">
+      <DependentUpon>SPCodeFilterListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeListPage.aspx.cs">
+      <DependentUpon>SPCodeListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeListPage.aspx.designer.cs">
+      <DependentUpon>SPCodeListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeTreeListPage.aspx.cs">
+      <DependentUpon>SPCodeTreeListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeTreeListPage.aspx.designer.cs">
+      <DependentUpon>SPCodeTreeListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPSChannelCodeHandler.ashx.cs">
+      <DependentUpon>SPSChannelCodeHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsAdd.ascx.cs">
+      <DependentUpon>UCSPClientCodeSycnParamsAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsAdd.ascx.designer.cs">
+      <DependentUpon>UCSPClientCodeSycnParamsAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsEdit.ascx.cs">
+      <DependentUpon>UCSPClientCodeSycnParamsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsEdit.ascx.designer.cs">
+      <DependentUpon>UCSPClientCodeSycnParamsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsView.ascx.cs">
+      <DependentUpon>UCSPClientCodeSycnParamsView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsView.ascx.designer.cs">
+      <DependentUpon>UCSPClientCodeSycnParamsView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeAdd.ascx.cs">
+      <DependentUpon>UCSPCodeAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\UCSPCodeAdd.ascx.designer.cs">
+      <DependentUpon>UCSPCodeAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPAdReportListPage.aspx.cs">
+      <DependentUpon>SPAdReportListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\SPAdReportListPage.aspx.designer.cs">
+      <DependentUpon>SPAdReportListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\UCSPAdReportAdd.ascx.cs">
+      <DependentUpon>UCSPAdReportAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\UCSPAdReportAdd.ascx.designer.cs">
+      <DependentUpon>UCSPAdReportAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\UCSPAdReportEdit.ascx.cs">
+      <DependentUpon>UCSPAdReportEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Reports\UCSPAdReportEdit.ascx.designer.cs">
+      <DependentUpon>UCSPAdReportEdit.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -485,6 +720,10 @@
   <ItemGroup>
     <Content Include="Moudles\SPS\Clients\SPClientHandler.ashx" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Moudles\SPS\Codes\SPSChannelCodeHandler.ashx" />
+  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

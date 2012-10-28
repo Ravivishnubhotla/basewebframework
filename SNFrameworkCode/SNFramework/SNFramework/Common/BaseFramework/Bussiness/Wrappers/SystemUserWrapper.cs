@@ -186,6 +186,51 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             return businessProxy.GetRolesForUser(username);
         }
 
+
+        public static string EncodePassword(int userPasswordFormat,string password, string validationKey)
+        {
+            MembershipPasswordFormat passwordFormat = (MembershipPasswordFormat) userPasswordFormat;
+
+            string str = password;
+            switch (passwordFormat)
+            {
+                case MembershipPasswordFormat.Clear:
+                    return str;
+
+                case MembershipPasswordFormat.Hashed:
+                    {
+                        return str;
+                        //if (string.IsNullOrEmpty(validationKey))
+                        //{
+                        //    validationKey = machineKey.ValidationKey;
+                        //}
+                        //var hmacsha = new HMACSHA1 { Key = HexToByte(validationKey) };
+                        //return Convert.ToBase64String(hmacsha.ComputeHash(Encoding.Unicode.GetBytes(password)));
+                    }
+                case MembershipPasswordFormat.Encrypted:
+                    return str;
+                    //return Convert.ToBase64String(EncryptPassword(Encoding.Unicode.GetBytes(password)));
+            }
+
+            return str;
+        }
+ 
+
+        public static void ChangePassword(string loginID, string newPassword)
+        {
+            SystemUserWrapper user = SystemUserWrapper.FindByLoginID(loginID);
+
+            if (user == null)
+                return;
+
+
+            user.UserPassword = EncodePassword(user.PasswordFormat, newPassword, user.PasswordSalt);
+            user.LastPasswordChangeDate = DateTime.Now;
+            user.LastActivityDate = DateTime.Now;
+            SystemUserWrapper.Update(user);
+   
+        }
+
         /// <summary>
         /// 通过用户登陆ID获取用户
         /// </summary>
