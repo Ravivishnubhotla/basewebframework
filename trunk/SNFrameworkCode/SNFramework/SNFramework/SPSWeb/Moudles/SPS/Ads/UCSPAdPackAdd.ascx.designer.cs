@@ -31,24 +31,6 @@ namespace SPSWeb.Moudles.SPS.Ads {
         protected global::Ext.Net.FormPanel formPanelSPAdPackAdd;
         
         /// <summary>
-        /// radnumID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.NumberField radnumID;
-        
-        /// <summary>
-        /// radnumSPAdID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.NumberField radnumSPAdID;
-        
-        /// <summary>
         /// txtName control.
         /// </summary>
         /// <remarks>

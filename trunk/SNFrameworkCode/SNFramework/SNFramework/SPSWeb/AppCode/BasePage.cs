@@ -8,5 +8,9 @@ namespace SPSWeb.AppCode
 {
     public class BasePage : BaseSSOSecurityPage
     {
+        public static string BSFWebRoot
+        {
+            get { return System.Configuration.ConfigurationManager.AppSettings["BSFWebRoot"]; }
+        }
     }
 }

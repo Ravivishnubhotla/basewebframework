@@ -10,19 +10,18 @@
             Layout="Form">
             <Items>
 				 
-						<ext:NumberField ID="numID" runat="server" FieldLabel="ID"  AllowBlank="False"   AnchorHorizontal="95%"/>
-                 	
+ 
 				 
-						<ext:NumberField ID="numSPAdID" runat="server" FieldLabel="SPAdID"  AllowBlank="True"   AnchorHorizontal="95%"/>
+<%--						<ext:NumberField ID="numSPAdID" runat="server" FieldLabel="SPAdID"  AllowBlank="True"   AnchorHorizontal="95%"/>
                  	
 				 
 						<ext:NumberField ID="numSPPackID" runat="server" FieldLabel="SPPackID"  AllowBlank="True"   AnchorHorizontal="95%"/>
                  	
 				 
 						<ext:NumberField ID="numSPClientID" runat="server" FieldLabel="SPClientID"  AllowBlank="True"   AnchorHorizontal="95%"/>
-                 	
+                 	--%>
                  
-						<ext:DateField  ID="dateReportDate" runat="server" FieldLabel="ReportDate" AllowBlank="True"   AnchorHorizontal="95%"/>
+						<ext:DateField  ID="dateReportDate" runat="server" FieldLabel="报表日期" AllowBlank="True"   AnchorHorizontal="95%"/>
                 
 				 
 						<ext:NumberField ID="numClientCount" runat="server" FieldLabel="ClientCount"  AllowBlank="True"   AnchorHorizontal="95%"/>
@@ -31,23 +30,9 @@
 						<ext:NumberField ID="numAdCount" runat="server" FieldLabel="AdCount"  AllowBlank="True"   AnchorHorizontal="95%"/>
                  	
 				 
-						<ext:NumberField ID="numAdAmount" runat="server" FieldLabel="AdAmount"  AllowBlank="True"   AnchorHorizontal="95%"/>
+<%--						<ext:NumberField ID="numAdAmount" runat="server" FieldLabel="AdAmount"  AllowBlank="True"   AnchorHorizontal="95%"/>
                  	
-				 
-						<ext:NumberField ID="numCreateBy" runat="server" FieldLabel="CreateBy"  AllowBlank="False"   AnchorHorizontal="95%"/>
-                 	
-                 
-						<ext:DateField  ID="dateCreateAt" runat="server" FieldLabel="CreateAt" AllowBlank="False"   AnchorHorizontal="95%"/>
-                
-				 
-						<ext:NumberField ID="numLastModifyBy" runat="server" FieldLabel="LastModifyBy"  AllowBlank="True"   AnchorHorizontal="95%"/>
-                 	
-                 
-						<ext:DateField  ID="dateLastModifyAt" runat="server" FieldLabel="LastModifyAt" AllowBlank="True"   AnchorHorizontal="95%"/>
-                
-			
-						<ext:TextField ID="txtLastModifyComment" runat="server" FieldLabel="LastModifyComment" AllowBlank="False"  AnchorHorizontal="95%" />
-              
+ --%>
 
             </Items>
         </ext:FormPanel>

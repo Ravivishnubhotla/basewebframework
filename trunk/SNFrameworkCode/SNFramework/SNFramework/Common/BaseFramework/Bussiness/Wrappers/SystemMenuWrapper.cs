@@ -129,6 +129,9 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
             List<SystemMenuEntity> menus = businessProxy.GetUserAssignedMenuByLoginID(loginID);
 
+            if (menus==null)
+                return assignedMenus;
+
             foreach (SystemMenuEntity systemMenuWrapper in menus)
             {
                 if(applications.Exists(p=>(p.SystemApplicationID==systemMenuWrapper.ApplicationID.SystemApplicationID)))

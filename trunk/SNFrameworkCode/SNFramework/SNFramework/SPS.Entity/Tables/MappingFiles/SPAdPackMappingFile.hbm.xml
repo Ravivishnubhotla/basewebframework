@@ -4,14 +4,14 @@
 <class name="SPS.Entity.Tables.SPAdPackEntity,SPS.Entity" table="SPAdPack" lazy="true"  >
 
 <id name="Id" column="ID" type="int" unsaved-value="0" >
-   <generator class="assigned">
+   <generator class="native">
 
 </generator>
 
 </id>
 
 
-		<!-- more than one foreign column is mapped to SPAdID - you're on your own. -->		
+		<many-to-one column="SPAdID" name="SPAdID" class="SPS.Entity.Tables.SPAdvertisementEntity,SPS.Entity" />		
 		<property column="Name" type="string" name="Name"   length="100" />	
 		<property column="Code" type="string" name="Code"   length="100" />	
 		<property column="Description" type="string" name="Description"   length="100" />	

@@ -8,6 +8,7 @@ using Ext.Net;
 using Legendigital.Framework.Common.Utility;
 using Legendigital.Framework.Common.Web.ControlHelper;
 using SPS.Bussiness.Wrappers;
+using SPSWeb.AppCode;
 
 namespace SPSWeb.Moudles.SPS.Ads
 {
@@ -33,9 +34,8 @@ namespace SPSWeb.Moudles.SPS.Ads
                     this.txtCode.Text = ValueConvertUtil.ConvertStringValue(obj.Code);
                     this.txtImageUrl.Text = ValueConvertUtil.ConvertStringValue(obj.ImageUrl);
                     this.txtAdPrice.Text = ValueConvertUtil.ConvertStringValue(obj.AdPrice);
-                    this.txtAccountType.Text = ValueConvertUtil.ConvertStringValue(obj.AccountType);
-                    this.txtApplyStatus.Text = ValueConvertUtil.ConvertStringValue(obj.ApplyStatus);
-                    this.txtAdType.Text = ValueConvertUtil.ConvertStringValue(obj.AdType);
+                    cmbAccountType.SetValue(obj.AccountType); 
+                    this.cmbAdType.SetValue(obj.AdType);
                     this.txtAdText.Text = ValueConvertUtil.ConvertStringValue(obj.AdText);
                     this.txtDescription.Text = ValueConvertUtil.ConvertStringValue(obj.Description);
                     //this.chkIsDisable.Checked = obj.IsDisable.ToString();
@@ -44,7 +44,7 @@ namespace SPSWeb.Moudles.SPS.Ads
                     //this.dateCreateAt.Value = obj.CreateAt.ToString();
                     //this.numLastModifyBy.Value = obj.LastModifyBy.ToString();
                     //this.dateLastModifyAt.Value = obj.LastModifyAt.ToString();
-                    this.txtLastModifyComment.Text = ValueConvertUtil.ConvertStringValue(obj.LastModifyComment);
+ 
 
 
 
@@ -79,18 +79,20 @@ namespace SPSWeb.Moudles.SPS.Ads
                 obj.Code = this.txtCode.Text.Trim();
                 obj.ImageUrl = this.txtImageUrl.Text.Trim();
                 obj.AdPrice = this.txtAdPrice.Text.Trim();
-                obj.AccountType = this.txtAccountType.Text.Trim();
-                obj.ApplyStatus = this.txtApplyStatus.Text.Trim();
-                obj.AdType = this.txtAdType.Text.Trim();
+                obj.AccountType = cmbAccountType.SelectedItem.Value.Trim();
+                //obj.ApplyStatus = this.txtApplyStatus.Text.Trim();
+                obj.AdType = cmbAdType.SelectedItem.Value.Trim();
                 obj.AdText = this.txtAdText.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
-                obj.IsDisable = this.chkIsDisable.Checked;
+ 
                 //obj.AssignedClient = Convert.ToInt32(this.numAssignedClient.Value.Trim());
                 //obj.CreateBy = Convert.ToInt32(this.numCreateBy.Value.Trim());
                 //obj.CreateAt = UIHelper.SaftGetDateTime(this.dateCreateAt.Value.Trim());
                 //obj.LastModifyBy = Convert.ToInt32(this.numLastModifyBy.Value.Trim());
                 //obj.LastModifyAt = UIHelper.SaftGetDateTime(this.dateLastModifyAt.Value.Trim());
-                obj.LastModifyComment = this.txtLastModifyComment.Text.Trim();
+                obj.LastModifyBy = ((BasePage)this.Page).CurrentLoginUser.UserID;
+                obj.LastModifyAt = System.DateTime.Now;
+                obj.LastModifyComment = "创建用户。";
 
 
                 SPAdvertisementWrapper.Update(obj);

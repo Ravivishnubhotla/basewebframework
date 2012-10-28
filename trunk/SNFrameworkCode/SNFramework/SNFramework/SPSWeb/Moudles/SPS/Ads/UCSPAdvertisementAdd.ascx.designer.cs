@@ -67,31 +67,22 @@ namespace SPSWeb.Moudles.SPS.Ads {
         protected global::Ext.Net.TextField txtAdPrice;
         
         /// <summary>
-        /// txtAccountType control.
+        /// cmbAdType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtAccountType;
+        protected global::Ext.Net.ComboBox cmbAdType;
         
         /// <summary>
-        /// txtApplyStatus control.
+        /// cmbAccountType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtApplyStatus;
-        
-        /// <summary>
-        /// txtAdType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtAdType;
+        protected global::Ext.Net.ComboBox cmbAccountType;
         
         /// <summary>
         /// txtAdText control.
@@ -110,69 +101,6 @@ namespace SPSWeb.Moudles.SPS.Ads {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.TextArea txtDescription;
-        
-        /// <summary>
-        /// chkIsDisable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox chkIsDisable;
-        
-        /// <summary>
-        /// numAssignedClient control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.NumberField numAssignedClient;
-        
-        /// <summary>
-        /// numCreateBy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.NumberField numCreateBy;
-        
-        /// <summary>
-        /// txtCreateAt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.DateField txtCreateAt;
-        
-        /// <summary>
-        /// radnumLastModifyBy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.NumberField radnumLastModifyBy;
-        
-        /// <summary>
-        /// txtLastModifyAt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.DateField txtLastModifyAt;
-        
-        /// <summary>
-        /// txtLastModifyComment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtLastModifyComment;
         
         /// <summary>
         /// btnSavelSPAdvertisement control.

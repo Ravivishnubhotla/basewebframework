@@ -213,6 +213,9 @@
     <Compile Include="AppCode\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="AppCode\BaseUserControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="AppCode\DataRecievedHandler.cs" />
     <Compile Include="AppCode\IVRDataRecievedHandler.cs" />
     <Compile Include="AppCode\JSonResult.cs" />
