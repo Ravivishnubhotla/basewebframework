@@ -34,7 +34,8 @@ namespace Legendigital.Code.MyGenAddin.NHibernateFramework
         private string _defaultDatabaseName;
         private string _gridControlNameFormat;
         private string _HeaderUCTagName;
-
+        private string _webProjectRootPath;
+        private string _webPageNameSpace;
 
         [Category("[列表界面设置]"), ReadOnly(false), Description("[命名规范]-[表格控件命名]"), Browsable(true)]
         public string GridControlNameFormat
@@ -160,6 +161,23 @@ namespace Legendigital.Code.MyGenAddin.NHibernateFramework
             get { return _wrapperClassNameFormat; }
             set { _wrapperClassNameFormat = value; }
         }
+        [Category("[总体代码设置]"), ReadOnly(false), Description("[命名规范]-[Web项目根目录]"), Browsable(true)]
+        public string WebProjectRootPath
+        {
+            get { return _webProjectRootPath; }
+            set { _webProjectRootPath = value; }
+        }
+        [Category("[总体代码设置]"), ReadOnly(false), Description("[命名规范]-[Web项目名称空间"), Browsable(true)]
+        public string WebPageNameSpace
+        {
+            get { return _webPageNameSpace; }
+            set { _webPageNameSpace = value; }
+        }
+ 
+
+
+
+
         [Category("[总体代码设置]"), ReadOnly(false), Description("[命名规范]-[Header用户控件注册标签名]"), Browsable(true)]
         public string HeaderUcTagName
         {

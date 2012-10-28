@@ -218,6 +218,19 @@ namespace Legendigital.Code.MyGenAddin
         {
             var database = cbxtoolStripSelectDataBase.ComboBox.SelectedValue as IDatabase;
             var selectTable = cbxtoolStripSelectObejct.ComboBox.SelectedValue as ITable;
+
+            GenerateMoudlePages generateMoudle = new GenerateMoudlePages();
+
+            if (!(generateMoudle.ShowSelect(this.config.WebProjectRootPath) == DialogResult.OK))
+            {
+                return;
+            }
+
+            if (string.IsNullOrEmpty(generateMoudle.SelectPath))
+                return;
+
+            zeusInput["PagePath"] = generateMoudle.SelectPath;
+            zeusInput["PageNameSpace"] = generateMoudle.PageNameSpace;
             zeusInput["GenerateType"] = generateType;
             zeusInput["selectDataBase"] = database;
             zeusInput["selectTable"] = selectTable;

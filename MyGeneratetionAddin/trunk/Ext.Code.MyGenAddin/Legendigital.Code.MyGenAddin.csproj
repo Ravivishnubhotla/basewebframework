@@ -96,10 +96,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADOFrameworks\AdoBaseTableConfig.cs" />
     <Compile Include="ADOFrameworks\ADOFrameworkBaseSingleClassConfig.cs" />
     <Compile Include="ADOFrameworks\ADOFrameworkBaseSingleObjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ADOFrameworks\AdoTableBaseSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADO\PetShopCodeGenerateConfig.cs" />
     <Compile Include="BaseDatabaseGenerateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +143,12 @@
     <Compile Include="DefaultSettings.cs" />
     <Compile Include="EntityGenerateConfig.cs" />
     <Compile Include="FormUISetting.cs" />
+    <Compile Include="GenerateMoudlePages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerateMoudlePages.Designer.cs">
+      <DependentUpon>GenerateMoudlePages.cs</DependentUpon>
+    </Compile>
     <Compile Include="GenerateProject.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +218,9 @@
     <EmbeddedResource Include="DefaultProperties.resx">
       <DependentUpon>DefaultProperties.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GenerateMoudlePages.resx">
+      <DependentUpon>GenerateMoudlePages.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GenerateProject.resx">
       <DependentUpon>GenerateProject.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,7 +268,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_BuildVersioningStyle="Increment.Increment.Increment.Increment" />
+      <UserProperties BuildVersion_BuildVersioningStyle="Increment.Increment.Increment.Increment" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
