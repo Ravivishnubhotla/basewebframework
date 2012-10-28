@@ -22,6 +22,24 @@ namespace SPSWeb.Moudles.SPS.Ads {
         protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
         
         /// <summary>
+        /// storeDictionaryAdType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Store storeDictionaryAdType;
+        
+        /// <summary>
+        /// storeDictionaryAcountType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Store storeDictionaryAcountType;
+        
+        /// <summary>
         /// storeSPAdvertisement control.
         /// </summary>
         /// <remarks>
@@ -119,5 +137,14 @@ namespace SPSWeb.Moudles.SPS.Ads {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        
+        /// <summary>
+        /// winAdPacksManage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winAdPacksManage;
     }
 }

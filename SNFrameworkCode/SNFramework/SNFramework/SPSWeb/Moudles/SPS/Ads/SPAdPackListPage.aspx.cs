@@ -47,11 +47,26 @@ namespace SPSWeb.Moudles.SPS.Ads
 
             RecordSortor recordSortor = WebUIHelper.GetRecordSortorFromStoreRefreshDataEventArgs(e);
 
-            storeSPAdPack.DataSource = SPAdPackWrapper.FindAllByOrderBy(recordSortor.OrderByColumnName, recordSortor.IsDesc, pageQueryParams);
+
+            storeSPAdPack.DataSource = SPAdPackWrapper.FindAllByOrderByAndFilterAndSPAdID(recordSortor.OrderByColumnName, recordSortor.IsDesc, AdvertisementID, pageQueryParams);
             e.Total = pageQueryParams.RecordCount;
 
             storeSPAdPack.DataBind();
 
+        }
+
+
+        public SPAdvertisementWrapper AdvertisementID
+        {
+            get
+            {
+                if (this.Request.QueryString["AdvertisementID"] != null)
+                {
+                    return
+                        SPAdvertisementWrapper.FindById(int.Parse(this.Request.QueryString["AdvertisementID"]));
+                }
+                return null;
+            }
         }
     }
 

@@ -130,10 +130,14 @@ namespace Legendigital.Framework.Common.Securitys.SSO
 
             if (HttpContext.Current.Session["SSOKey"] != null)
                 return (string)HttpContext.Current.Session["SSOKey"];
+ 
 
             string ssf_Token_QueryString = page.Request.QueryString[QUERY_STRING_NAME_SSFToken];
 
             object ssf_Token_Session =GetSessionValue(Session_Key_LoginUser);
+
+            if(string.IsNullOrEmpty(ssf_Token_QueryString) && ssf_Token_Session==null)
+                return "";
 
             string string_Token = "";///看优先选用哪一个token
 

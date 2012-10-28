@@ -217,6 +217,7 @@ namespace Legendigital.Framework.Common.Securitys.SSO
         public void ClearLoginInfo()
         {
             Session[SSOProvider.Session_Key_LoginUser] = null;
+            HttpContext.Current.Session["SSOKey"] = null;
             FormsAuthentication.SignOut();
         }
     }

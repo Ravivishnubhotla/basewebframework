@@ -28,9 +28,10 @@
         }
 
         function show(img) {
-            var imgurl = '<%= this.ResolveUrl("~/images/CheckCode.jpg") %>' + '?' + Math.random();
+            
+            //var imgurl = '<%= this.ResolveUrl("~/images/CheckCode.jpg") %>' + '?' + Math.random();
             //alert(imgurl);
-            img.setImageUrl(imgurl);
+            //img.setImageUrl(imgurl);
         }
         
   
@@ -47,7 +48,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
         <Listeners>
-<%--            <DocumentReady Handler="show(#{imgCheckCode});"></DocumentReady>--%>
+            <DocumentReady Handler="show(#{imgCheckCode});"></DocumentReady>
         </Listeners>
     </ext:ResourceManagerProxy>
     <ext:Window ID="extwinLogin" runat="server" Width="500" ButtonAlign="Center" Height="320"

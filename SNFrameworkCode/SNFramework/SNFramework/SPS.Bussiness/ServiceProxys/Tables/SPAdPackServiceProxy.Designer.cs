@@ -27,8 +27,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     public interface ISPAdPackServiceProxyDesigner
     {
-		List<SPAdPackEntity> FindAllByOrderByAndFilterAndSPAdID(string orderByColumnName, bool isDesc,   SPAdAssignedHistortyEntity _sPAdID, PageQueryParams pageQueryParams);
-		List<SPAdPackEntity> FindAllBySPAdID(SPAdAssignedHistortyEntity _sPAdID);
+		List<SPAdPackEntity> FindAllByOrderByAndFilterAndSPAdID(string orderByColumnName, bool isDesc,   SPAdvertisementEntity _sPAdID, PageQueryParams pageQueryParams);
+		List<SPAdPackEntity> FindAllBySPAdID(SPAdvertisementEntity _sPAdID);
     }
 
     internal partial class SPAdPackServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPAdPackEntity,int>
@@ -47,14 +47,14 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             }
         }
 	
-		public List<SPAdPackEntity> FindAllByOrderByAndFilterAndSPAdID(string orderByColumnName, bool isDesc,  SPAdAssignedHistortyEntity _sPAdID, PageQueryParams pageQueryParams)
+		public List<SPAdPackEntity> FindAllByOrderByAndFilterAndSPAdID(string orderByColumnName, bool isDesc,  SPAdvertisementEntity _sPAdID, PageQueryParams pageQueryParams)
         {
-			return this.SelfDataObj.GetPageList_By_SPAdID_SPAdAssignedHistortyEntity(orderByColumnName, isDesc,_sPAdID, pageQueryParams);
+			return this.SelfDataObj.GetPageList_By_SPAdID_SPAdvertisementEntity(orderByColumnName, isDesc,_sPAdID, pageQueryParams);
         }
 		
-		public List<SPAdPackEntity> FindAllBySPAdID(SPAdAssignedHistortyEntity _sPAdID)
+		public List<SPAdPackEntity> FindAllBySPAdID(SPAdvertisementEntity _sPAdID)
         {
-			return this.SelfDataObj.GetList_By_SPAdID_SPAdAssignedHistortyEntity(_sPAdID);
+			return this.SelfDataObj.GetList_By_SPAdID_SPAdvertisementEntity(_sPAdID);
         }
 
 

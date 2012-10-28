@@ -7,11 +7,12 @@ using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Framework.Common.Web.ControlHelper;
 using SPS.Bussiness.Wrappers;
+using SPSWeb.AppCode;
 
 namespace SPSWeb.Moudles.SPS.Ads
 {
     [DirectMethodProxyID(IDMode = DirectMethodProxyIDMode.Alias, Alias = "UCSPAdvertisementAdd")]
-    public partial class UCSPAdvertisementAdd : System.Web.UI.UserControl
+    public partial class UCSPAdvertisementAdd : BaseUserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,7 +29,7 @@ namespace SPSWeb.Moudles.SPS.Ads
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "ErrorMessage:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "错误信息:" + ex.Message;
             }
         }
 
@@ -41,23 +42,20 @@ namespace SPSWeb.Moudles.SPS.Ads
                 obj.Code = this.txtCode.Text.Trim();
                 obj.ImageUrl = this.txtImageUrl.Text.Trim();
                 obj.AdPrice = this.txtAdPrice.Text.Trim();
-                obj.AccountType = this.txtAccountType.Text.Trim();
-                obj.ApplyStatus = this.txtApplyStatus.Text.Trim();
-                obj.AdType = this.txtAdType.Text.Trim();
+                obj.AccountType = cmbAccountType.SelectedItem.Value.Trim();
+                //obj.ApplyStatus = this.txtApplyStatus.Text.Trim();
+                obj.AdType = cmbAdType.SelectedItem.Value.Trim();
                 obj.AdText = this.txtAdText.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
-                obj.IsDisable = this.chkIsDisable.Checked;
+                obj.IsDisable = false;
                 //obj.AssignedClient = Convert.ToInt32(this.numAssignedClient.Value.Trim());
-                //obj.CreateBy = Convert.ToInt32(this.numCreateBy.Value.Trim());
-                //obj.CreateAt = UIHelper.SaftGetDateTime(this.dateCreateAt.Value.Trim());
-                //obj.LastModifyBy = Convert.ToInt32(this.numLastModifyBy.Value.Trim());
-                //obj.LastModifyAt = UIHelper.SaftGetDateTime(this.dateLastModifyAt.Value.Trim());
-                obj.LastModifyComment = this.txtLastModifyComment.Text.Trim();
+                obj.CreateBy = ((BasePage)this.Page).CurrentLoginUser.UserID;
+                obj.CreateAt = System.DateTime.Now;
+                obj.LastModifyBy = ((BasePage)this.Page).CurrentLoginUser.UserID;
+                obj.LastModifyAt = System.DateTime.Now;
+                obj.LastModifyComment = "创建用户。";
 
-
-
-
-
+ 
                 SPAdvertisementWrapper.Save(obj);
 
                 winSPAdvertisementAdd.Hide();

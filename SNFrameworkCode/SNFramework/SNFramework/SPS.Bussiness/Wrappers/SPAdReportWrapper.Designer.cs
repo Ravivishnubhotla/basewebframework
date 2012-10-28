@@ -377,7 +377,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPPACKID_SPADID)]
-        public SPAdAssignedHistortyWrapper SPPackID_SPAdID
+        public SPAdvertisementWrapper SPPackID_SPAdID
         {
             get
             {

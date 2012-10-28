@@ -8,10 +8,11 @@ using Ext.Net;
 using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using SPS.Bussiness.Wrappers;
+using SPSWeb.AppCode;
 
 namespace SPSWeb.Moudles.SPS.Ads
 {
-    public partial class SPAdvertisementListPage : System.Web.UI.Page
+    public partial class SPAdvertisementListPage : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

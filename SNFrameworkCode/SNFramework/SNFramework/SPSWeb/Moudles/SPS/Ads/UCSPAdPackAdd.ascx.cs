@@ -18,6 +18,19 @@ namespace SPSWeb.Moudles.SPS.Ads
 
         }
 
+        public SPAdvertisementWrapper AdvertisementID
+        {
+            get
+            {
+                if (this.Request.QueryString["AdvertisementID"] != null)
+                {
+                    return
+                        SPAdvertisementWrapper.FindById(int.Parse(this.Request.QueryString["AdvertisementID"]));
+                }
+                return null;
+            }
+        }
+
         [DirectMethod]
         public void Show()
         {
@@ -38,7 +51,7 @@ namespace SPSWeb.Moudles.SPS.Ads
             {
                 SPAdPackWrapper obj = new SPAdPackWrapper();
                 //obj.Id = Convert.ToInt32(this.numID.Value.Trim());
-                //obj.SPAdID = Convert.ToInt32(this.numSPAdID.Value.Trim());
+                obj.SPAdID = AdvertisementID;
                 obj.Name = this.txtName.Text.Trim();
                 obj.Code = this.txtCode.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();

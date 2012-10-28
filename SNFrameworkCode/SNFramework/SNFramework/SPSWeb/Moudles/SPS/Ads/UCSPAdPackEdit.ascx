@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPAdPackEdit.ascx.cs" Inherits="SPSWeb.Moudles.SPS.Ads.UCSPAdPackEdit" %>
-<ext:Window ID="winSPAdPackEdit" runat="server" Icon="ApplicationEdit" Title="Edit SPAdPack"
+<ext:Window ID="winSPAdPackEdit" runat="server" Icon="ApplicationEdit" Title="编辑广告包"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll="true"
     ConstrainHeader="true" Resizable="true"  Layout="fit">
     <Content>
@@ -10,28 +10,22 @@
 			
 			 <ext:Hidden ID="hidId" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
+ 
 			
-										 
-						<ext:NumberField ID="radnumID" runat="server" FieldLabel="ID"  AllowBlank="False"   AnchorHorizontal="95%"/>
-                 	
-				 
-						<ext:NumberField ID="radnumSPAdID" runat="server" FieldLabel="SPAdID"  AllowBlank="True"   AnchorHorizontal="95%"/>
-                 	
-			
-						<ext:TextField ID="txtName" runat="server" FieldLabel="Name" AllowBlank="True"  AnchorHorizontal="95%" />
+						<ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True"  AnchorHorizontal="95%" />
               
 			
-						<ext:TextField ID="txtCode" runat="server" FieldLabel="Code" AllowBlank="True"  AnchorHorizontal="95%" />
+						<ext:TextField ID="txtCode" runat="server" FieldLabel="编码" AllowBlank="True"  AnchorHorizontal="95%" />
               
 			
-						<ext:TextField ID="txtDescription" runat="server" FieldLabel="Description" AllowBlank="True"  AnchorHorizontal="95%" />
+						<ext:TextField ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True"  AnchorHorizontal="95%" />
               
 
             </Items>
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSPAdPack" runat="server" Text="Edit" Icon="ApplicationEdit">
+        <ext:Button ID="btnSaveSPAdPack" runat="server" Text="编辑" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPAdPackEdit}.getForm().isValid()) return false;"
                     OnEvent="btnSaveSPAdPack_Click" Success="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanelSPAdPackEdit}.getForm().reset();#{storeSPAdPack}.reload(); };
@@ -40,7 +34,7 @@
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancelSPAdPack" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancelSPAdPack" runat="server" Text="取消" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanelSPAdPackEdit}.getForm().reset();#{winSPAdPackEdit}.hide();" />
             </Listeners>

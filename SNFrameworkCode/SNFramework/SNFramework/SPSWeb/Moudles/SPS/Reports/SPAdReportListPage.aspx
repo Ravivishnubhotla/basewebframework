@@ -1,10 +1,9 @@
-
 <%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPAdReportListPage.aspx.cs" Inherits="SPSWeb.Moudles.SPS.Reports.SPAdReportListPage" %>
 
 
 <%@ Register Src="UCSPAdReportAdd.ascx" TagName="UCSPAdReportAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPAdReportEdit.ascx" TagName="UCSPAdReportEdit" TagPrefix="uc2" %>
- 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
@@ -25,16 +24,16 @@
         };
         
         function showAddForm() {
-                Ext.net.DirectMethods.UCSPAdReportAdd.Show( 
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
-                                                                    },
-                                                                    eventMask: {
-                                                                                showMask: true,
-                                                                                msg: 'Processing...'
-                                                                               }
-                                                                });    
+            Ext.net.DirectMethods.UCSPAdReportAdd.Show( 
+                                                            {
+                                                                failure: function(msg) {
+                                                                    Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                },
+                                                                eventMask: {
+                                                                    showMask: true,
+                                                                    msg: 'Processing...'
+                                                                }
+                                                            });    
         
         }
 
@@ -47,23 +46,23 @@
                                                                         Ext.Msg.alert('Operation failed', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
-                                                                                showMask: true,
-                                                                                msg: 'Processing...'
-                                                                               }
+                                                                        showMask: true,
+                                                                        msg: 'Processing...'
+                                                                    }
                                                                 }              
                 );
             }
 			
-			            if (cmd == "cmdView") {
+            if (cmd == "cmdView") {
                 Ext.net.DirectMethods.UCSPAdReportView.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('Operation failed', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
-                                                                                showMask: true,
-                                                                                msg: 'Processing...'
-                                                                               }
+                                                                        showMask: true,
+                                                                        msg: 'Processing...'
+                                                                    }
                                                                 }              
                 );
             }
@@ -82,9 +81,9 @@
                                                                         Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshData);            
                                                                     },
                                                                     eventMask: {
-                                                                                showMask: true,
-                                                                                msg: 'Processing ......'
-                                                                               }
+                                                                        showMask: true,
+                                                                        msg: 'Processing ......'
+                                                                    }
                                                                 }
                                                             );
                     }
@@ -100,26 +99,26 @@
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
             <ext:Parameter Name="limit" Value="8" Mode="Raw" />
         </AutoLoadParams>
-		 <Proxy>
+        <Proxy>
             <ext:PageProxy />
         </Proxy>
         <Reader>
             <ext:JsonReader IDProperty="Id">
                 <Fields>
-					<ext:RecordField Name="ID" Type="int" />
-				<ext:RecordField Name="SPAdID" Type="int" />
-				<ext:RecordField Name="SPPackID" Type="int" />
-				<ext:RecordField Name="SPClientID" Type="int" />
-				<ext:RecordField Name="ReportDate" Type="Date" />
-				<ext:RecordField Name="ClientCount" Type="int" />
-				<ext:RecordField Name="AdCount" Type="int" />
-				<ext:RecordField Name="AdAmount" Type="int" />
-				<ext:RecordField Name="CreateBy" Type="int" />
-				<ext:RecordField Name="CreateAt" Type="Date" />
-				<ext:RecordField Name="LastModifyBy" Type="int" />
-				<ext:RecordField Name="LastModifyAt" Type="Date" />
-		<ext:RecordField Name="LastModifyComment" />			
- 
+                    <ext:RecordField Name="ID" Type="int" />
+                    <ext:RecordField Name="SPAdID" Type="int" />
+                    <ext:RecordField Name="SPPackID" Type="int" />
+                    <ext:RecordField Name="SPClientID" Type="int" />
+                    <ext:RecordField Name="ReportDate" Type="Date" />
+                    <ext:RecordField Name="ClientCount" Type="int" />
+                    <ext:RecordField Name="AdCount" Type="int" />
+                    <ext:RecordField Name="AdAmount" Type="int" />
+                    <ext:RecordField Name="CreateBy" Type="int" />
+                    <ext:RecordField Name="CreateAt" Type="Date" />
+                    <ext:RecordField Name="LastModifyBy" Type="int" />
+                    <ext:RecordField Name="LastModifyAt" Type="Date" />
+                    <ext:RecordField Name="LastModifyComment" />
+
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -127,21 +126,21 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSPAdReportAdd ID="UCSPAdReportAdd1" runat="server" />
-    <uc2:UCSPAdReportEdit ID="UCSPAdReportEdit1" runat="server" /> 
- 
+    <uc2:UCSPAdReportEdit ID="UCSPAdReportEdit1" runat="server" />
+
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSPAdReport" runat="server" StoreID="storeSPAdReport"
-                StripeRows="true" Title="SPAdReport Management" Icon="Table">
+                StripeRows="true" Title="结算报表填写" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="Add">
+                            <ext:Button ID='btnAdd' runat="server" Text="批量添加" Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{storeSPAdReport}.reload();" />
                                 </Listeners>
@@ -158,48 +157,34 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
-				<ext:Column ColumnID="colID" DataIndex="ID" Header="ID" Sortable="true">
-                                </ext:Column>
-				<ext:Column ColumnID="colSPAdID" DataIndex="SPAdID" Header="SPAdID" Sortable="true">
-                                </ext:Column>
-				<ext:Column ColumnID="colSPPackID" DataIndex="SPPackID" Header="SPPackID" Sortable="true">
-                                </ext:Column>
-				<ext:Column ColumnID="colSPClientID" DataIndex="SPClientID" Header="SPClientID" Sortable="true">
-                                </ext:Column>
-				<ext:Column ColumnID="colReportDate" DataIndex="ReportDate" Header="ReportDate" Sortable="true">
-                                </ext:Column>
-				<ext:Column ColumnID="colClientCount" DataIndex="ClientCount" Header="ClientCount" Sortable="true">
-                                </ext:Column>
-				<ext:Column ColumnID="colAdCount" DataIndex="AdCount" Header="AdCount" Sortable="true">
-                                </ext:Column>
-				<ext:Column ColumnID="colAdAmount" DataIndex="AdAmount" Header="AdAmount" Sortable="true">
-                                </ext:Column>
-				<ext:Column ColumnID="colCreateBy" DataIndex="CreateBy" Header="CreateBy" Sortable="true">
-                                </ext:Column>
-				<ext:Column ColumnID="colCreateAt" DataIndex="CreateAt" Header="CreateAt" Sortable="true">
-                                </ext:Column>
-				<ext:Column ColumnID="colLastModifyBy" DataIndex="LastModifyBy" Header="LastModifyBy" Sortable="true">
-                                </ext:Column>
-				<ext:Column ColumnID="colLastModifyAt" DataIndex="LastModifyAt" Header="LastModifyAt" Sortable="true">
-                                </ext:Column>
-		<ext:Column ColumnID="colLastModifyComment" DataIndex="LastModifyComment" Header="LastModifyComment" Sortable="true">
-                                </ext:Column>			
+
+                        <ext:Column ColumnID="colSPAdID" DataIndex="SPAdID" Header="广告" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colSPPackID" DataIndex="SPPackID" Header="广告包" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colSPClientID" DataIndex="SPClientID" Header="下家" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colReportDate" DataIndex="ReportDate" Header="结算日期" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colClientCount" DataIndex="ClientCount" Header="下家结算数" Sortable="true">
+                        </ext:Column>
+                        <ext:Column ColumnID="colAdCount" DataIndex="AdCount" Header="上家结算数" Sortable="true">
+                        </ext:Column>
  
-                                <ext:CommandColumn ColumnID="colManage" Header="Management" Width="60">
-                                    <Commands>
-                                    <ext:SplitCommand Text="Management" Icon="ApplicationEdit">
+                        <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
+                            <Commands>
+                                <ext:SplitCommand Text="选择操作" Icon="ApplicationEdit">
                                     <Menu>
                                         <Items>
-                                                 <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="Edit"></ext:MenuCommand>
-                                                 <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Delete"></ext:MenuCommand>
-                                                 <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="View"></ext:MenuCommand>
+                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑"></ext:MenuCommand>
+
                                         </Items>
                                     </Menu>
-                                   
-                                    </ext:SplitCommand>
 
-                                    </Commands>
-                                </ext:CommandColumn>
+                                </ext:SplitCommand>
+
+                            </Commands>
+                        </ext:CommandColumn>
                     </Columns>
                 </ColumnModel>
                 <LoadMask ShowMask="true" />
