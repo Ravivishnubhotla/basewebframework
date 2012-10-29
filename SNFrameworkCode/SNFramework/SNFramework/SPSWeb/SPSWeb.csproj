@@ -263,6 +263,9 @@
     <Compile Include="Masters\AdminMaster.Master.designer.cs">
       <DependentUpon>AdminMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\DataService\DictionaryDataService.ashx.cs">
+      <DependentUpon>DictionaryDataService.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Ads\SPAdAssignedHistortyListPage.aspx.cs">
       <DependentUpon>SPAdAssignedHistortyListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -727,6 +730,7 @@
     <Content Include="Moudles\SPS\Codes\SPSChannelCodeHandler.ashx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Moudles\DataService\DictionaryDataService.ashx" />
     <None Include="Properties\PublishProfiles\SPSWEB.pubxml" />
   </ItemGroup>
   <PropertyGroup>
