@@ -184,6 +184,7 @@
     <Content Include="Moudles\SPS\Clients\UCSPSClientAdd.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientEdit.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientView.ascx" />
+    <Content Include="Moudles\SPS\ClientView\ReportAdDataRange.aspx" />
     <Content Include="Moudles\SPS\ClientView\ReportClientCountRecordToday.aspx" />
     <Content Include="Moudles\SPS\ClientView\ReportClientRecordDateRange.aspx" />
     <Content Include="Moudles\SPS\ClientView\ReportClientSearchList.aspx" />
@@ -595,6 +596,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Clients\UCSPSClientView.ascx.designer.cs">
       <DependentUpon>UCSPSClientView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientView\ReportAdDataRange.aspx.cs">
+      <DependentUpon>ReportAdDataRange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientView\ReportAdDataRange.aspx.designer.cs">
+      <DependentUpon>ReportAdDataRange.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\ClientView\ReportClientCountRecordToday.aspx.cs">
       <DependentUpon>ReportClientCountRecordToday.aspx</DependentUpon>

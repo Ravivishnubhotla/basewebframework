@@ -19,5 +19,46 @@ namespace SPS.Data.Tables
 {
     public partial class SPAdReportDataObject
     {
+        public List<SPAdReportEntity> QueryReport(DateTime startDate, DateTime endDate)
+        {
+            NHibernateDynamicQueryGenerator<SPAdReportEntity> query = this.GetNewQueryBuilder();
+
+            //指定查询条件
+            query.AddWhereClause(PROPERTY_REPORTDATE.Ge(startDate.Date));
+
+            query.AddWhereClause(PROPERTY_REPORTDATE.Lt(endDate.AddDays(1).Date));
+
+            return this.FindListByQueryBuilder(query);
+        }
+    
+        public SPAdReportEntity FindByCilentIDAdPackIDAndReportDate(int? spadId, SPAdPackEntity spPackId, SPSClientEntity spClientId, DateTime? reportDate)
+        {
+            NHibernateDynamicQueryGenerator<SPAdReportEntity> query = this.GetNewQueryBuilder();
+
+            //指定查询条件
+            query.AddWhereClause(PROPERTY_REPORTDATE.Eq(reportDate.Value));
+
+            query.AddWhereClause(PROPERTY_SPCLIENTID.Eq(spClientId));
+
+            query.AddWhereClause(PROPERTY_SPADID.Eq(spadId.Value));
+
+            query.AddWhereClause(PROPERTY_SPPACKID.Eq(spPackId));
+
+            return this.FindSingleEntityByQueryBuilder(query);
+        }
+
+        public List<SPAdReportEntity> QueryReport(DateTime startDate, DateTime endDate, SPSClientEntity spsClientEntity)
+        {
+            NHibernateDynamicQueryGenerator<SPAdReportEntity> query = this.GetNewQueryBuilder();
+
+            //指定查询条件
+            query.AddWhereClause(PROPERTY_REPORTDATE.Ge(startDate.Date));
+
+            query.AddWhereClause(PROPERTY_REPORTDATE.Lt(endDate.AddDays(1).Date));
+
+            query.AddWhereClause(PROPERTY_SPCLIENTID.Eq(spsClientEntity));
+
+            return this.FindListByQueryBuilder(query);
+        }
     }
 }

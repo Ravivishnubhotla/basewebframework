@@ -40,40 +40,31 @@ namespace SPSWeb.Moudles.SPS.Reports {
         protected global::Ext.Net.Hidden hidId;
         
         /// <summary>
-        /// numID control.
+        /// lblAdName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.NumberField numID;
+        protected global::Ext.Net.DisplayField lblAdName;
         
         /// <summary>
-        /// numSPAdID control.
+        /// lblAdPackName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.NumberField numSPAdID;
+        protected global::Ext.Net.DisplayField lblAdPackName;
         
         /// <summary>
-        /// numSPPackID control.
+        /// lblSPClientName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.NumberField numSPPackID;
-        
-        /// <summary>
-        /// numSPClientID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.NumberField numSPClientID;
+        protected global::Ext.Net.DisplayField lblSPClientName;
         
         /// <summary>
         /// dateReportDate control.
@@ -82,16 +73,7 @@ namespace SPSWeb.Moudles.SPS.Reports {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.DateField dateReportDate;
-        
-        /// <summary>
-        /// numClientCount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.NumberField numClientCount;
+        protected global::Ext.Net.DisplayField dateReportDate;
         
         /// <summary>
         /// numAdCount control.
@@ -103,58 +85,13 @@ namespace SPSWeb.Moudles.SPS.Reports {
         protected global::Ext.Net.NumberField numAdCount;
         
         /// <summary>
-        /// numAdAmount control.
+        /// numClientCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.NumberField numAdAmount;
-        
-        /// <summary>
-        /// numCreateBy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.NumberField numCreateBy;
-        
-        /// <summary>
-        /// dateCreateAt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.DateField dateCreateAt;
-        
-        /// <summary>
-        /// numLastModifyBy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.NumberField numLastModifyBy;
-        
-        /// <summary>
-        /// dateLastModifyAt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.DateField dateLastModifyAt;
-        
-        /// <summary>
-        /// txtLastModifyComment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtLastModifyComment;
+        protected global::Ext.Net.NumberField numClientCount;
         
         /// <summary>
         /// btnSaveSPAdReport control.

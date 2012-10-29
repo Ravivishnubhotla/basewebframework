@@ -1,9 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPAdReportListPage.aspx.cs" Inherits="SPSWeb.Moudles.SPS.Reports.SPAdReportListPage" %>
-
-
-<%@ Register Src="UCSPAdReportAdd.ascx" TagName="UCSPAdReportAdd" TagPrefix="uc1" %>
-<%@ Register Src="UCSPAdReportEdit.ascx" TagName="UCSPAdReportEdit" TagPrefix="uc2" %>
-
+Ôªø<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="ReportAdDataRange.aspx.cs" Inherits="SPSWeb.Moudles.SPS.ClientView.ReportAdDataRange" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
@@ -27,11 +22,11 @@
             Ext.net.DirectMethods.UCSPAdReportAdd.Show( 
                                                             {
                                                                 failure: function(msg) {
-                                                                    Ext.Msg.alert('≤Ÿ◊˜ ß∞‹', msg,RefreshData);
+                                                                    Ext.Msg.alert('Êìç‰ΩúÂ§±Ë¥•', msg,RefreshData);
                                                                 },
                                                                 eventMask: {
                                                                     showMask: true,
-                                                                    msg: '≤Ÿ◊˜÷–...'
+                                                                    msg: 'Êìç‰Ωú‰∏≠...'
                                                                 }
                                                             });    
         
@@ -43,32 +38,32 @@
                 Ext.net.DirectMethods.UCSPAdReportEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('≤Ÿ◊˜ ß∞‹', msg,RefreshData);
+                                                                        Ext.Msg.alert('Êìç‰ΩúÂ§±Ë¥•', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
-                                                                        msg: '≤Ÿ◊˜÷–...'
+                                                                        msg: 'Êìç‰Ωú‰∏≠...'
                                                                     }
                                                                 }              
                 );
             }
             
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('æØ∏Ê','»∑»œ…æ≥˝∏√Ãıº«¬º£ø ',
+                Ext.MessageBox.confirm('Ë≠¶Âëä','Á°ÆËÆ§Âà†Èô§ËØ•Êù°ËÆ∞ÂΩïÔºü ',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('≤Ÿ◊˜ ß∞‹', msg);
+                                                                        Ext.Msg.alert('Êìç‰ΩúÂ§±Ë¥•', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('≤Ÿ◊˜≥…π¶', 'Delete a record success!',RefreshData);            
+                                                                        Ext.Msg.alert('Êìç‰ΩúÊàêÂäü', 'Delete a record success!',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
-                                                                        msg: '≤Ÿ◊˜÷–...'
+                                                                        msg: 'Êìç‰Ωú‰∏≠...'
                                                                     }
                                                                 }
                                                             );
@@ -101,40 +96,32 @@
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <uc1:UCSPAdReportAdd ID="UCSPAdReportAdd1" runat="server" />
-    <uc2:UCSPAdReportEdit ID="UCSPAdReportEdit1" runat="server" />
+ 
 
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSPAdReport" runat="server" StoreID="storeSPAdReport"
-                StripeRows="true" Title="π„∏Êª„◊‹±®±Ì" Icon="Table">
+                StripeRows="true" Title="ÂπøÂëäÊ±áÊÄªÊä•Ë°®" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:DateField ID="dfStart" FieldLabel="ø™ º ±º‰" LabelWidth="60" AllowBlank="false"
+                            <ext:DateField ID="dfStart" FieldLabel="ÂºÄÂßãÊó∂Èó¥" LabelWidth="60" AllowBlank="false"
                                 Width="150" runat="server" />
                             <ext:ToolbarSpacer />
-                            <ext:DateField ID="dfEnd" FieldLabel="Ω· ¯ ±º‰" LabelWidth="60" AllowBlank="false" Width="150"
+                            <ext:DateField ID="dfEnd" FieldLabel="ÁªìÊùüÊó∂Èó¥" LabelWidth="60" AllowBlank="false" Width="150"
                                 runat="server" />
-                            <ext:Button ID='btnRefresh' runat="server" Text="≤È—Ø" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="Êü•ËØ¢" Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{storeSPAdReport}.reload();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID="btnToggleGroups" runat="server" Text=" ’∆/’πø™ ∑÷◊È" Icon="TableSort"
+                            <ext:Button ID="btnToggleGroups" runat="server" Text="Êî∂Ëµ∑/Â±ïÂºÄ ÂàÜÁªÑ" Icon="TableSort"
                                 AutoPostBack="false">
                                 <Listeners>
                                     <Click Handler="#{gridPanelSPAdReport}.getView().toggleAllGroups();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnAdd' runat="server" Text=" ÷∂ØÃÌº”±®±Ì" Icon="Add">
-                                <Listeners>
-                                    <Click Handler="showAddForm();" />
-                                </Listeners>
-                            </ext:Button>
-
-
-
+ 
                         </Items>
                     </ext:Toolbar>
                 </TopBar>
@@ -144,34 +131,29 @@
                 </View>
                 <ColumnModel ID="ColumnModel1" runat="server">
                     <Columns>
-                        <ext:Column ColumnID="colReportDate" DataIndex="ReportDate" Header="»’∆⁄" Sortable="true"
+                        <ext:Column ColumnID="colReportDate" DataIndex="ReportDate" Header="Êó•Êúü" Sortable="true"
                             Groupable="True">
                             <Renderer Fn="Ext.util.Format.dateRenderer('m/d/Y')" />
                         </ext:Column>
-                        <ext:Column ColumnID="colAdID" DataIndex="SPAd_Name" Header="π„∏Ê" Sortable="true"
+                        <ext:Column ColumnID="colAdID" DataIndex="SPAd_Name" Header="ÂπøÂëä" Sortable="true"
                             Groupable="True">
                         </ext:Column>
-                        <ext:Column ColumnID="colAdPackID" DataIndex="SPAdPack_Name" Header="π„∏Ê∞¸" Sortable="true"
+                        <ext:Column ColumnID="colAdPackID" DataIndex="SPAdPack_Name" Header="ÂπøÂëäÂåÖ" Sortable="true"
                             Groupable="True">
                         </ext:Column>
-                        <ext:Column ColumnID="colClientID" DataIndex="SPClientID_Name" Header="øÕªß" Sortable="true"
-                            Groupable="True">
-                        </ext:Column>
-                        <ext:GroupingSummaryColumn ColumnID="colTotalSuccessCount" Header="…œº“ ˝" DataIndex="AdCount"
-                            Sortable="true" SummaryType="Sum" Groupable="False">
-                        </ext:GroupingSummaryColumn>
+ 
 
-                        <ext:GroupingSummaryColumn ColumnID="colDownTotalCount" Header="œ¬º“ ˝" DataIndex="ClientCount"
+                        <ext:GroupingSummaryColumn ColumnID="colDownTotalCount" Header="ÁÇπÊí≠Êï∞" DataIndex="ClientCount"
                             Sortable="true" Groupable="False" SummaryType="Sum">
                         </ext:GroupingSummaryColumn>
-                        <ext:CommandColumn ColumnID="colManage" Header="π‹¿Ì" Width="60">
+                        <ext:CommandColumn ColumnID="colManage" Header="ÁÆ°ÁêÜ" Width="60">
                             <Commands>
-                                <ext:SplitCommand Text="≤Ÿ◊˜" Icon="ApplicationEdit">
+                                <ext:SplitCommand Text="Êìç‰Ωú" Icon="ApplicationEdit">
                                     <Menu>
                                         <Items>
-                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="±‡º≠">
+                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="ÁºñËæë">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="…æ≥˝">
+                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Âà†Èô§">
                                             </ext:MenuCommand>
                                         </Items>
                                     </Menu>
@@ -191,11 +173,9 @@
                 <BottomBar>
                     <ext:Toolbar ID="Toolbar1" runat="server">
                         <Items>
+ 
 
-                            <ext:DisplayField ID="lblTotalTotalSuccessCount" FieldLabel="◊‹…œº“ ˝" LabelWidth="60" runat="server"
-                                Text="-" />
-
-                            <ext:DisplayField ID="lblTotalDownSycnSuccess" FieldLabel="◊‹œ¬º“ ˝" LabelWidth="90" runat="server"
+                            <ext:DisplayField ID="lblTotalDownSycnSuccess" FieldLabel="ÊÄªÁÇπÊí≠Êï∞" LabelWidth="90" runat="server"
                                 Text="-" />
 
                         </Items>
@@ -206,4 +186,3 @@
         </Items>
     </ext:Viewport>
 </asp:Content>
-

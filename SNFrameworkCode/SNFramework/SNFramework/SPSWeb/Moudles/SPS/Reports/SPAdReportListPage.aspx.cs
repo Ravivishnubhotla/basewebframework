@@ -22,7 +22,12 @@ namespace SPSWeb.Moudles.SPS.Reports
             if (X.IsAjaxRequest)
                 return;
 
+            dfStart.SelectedDate = System.DateTime.Now.Date.AddDays(-2);
+            dfStart.MaxDate = System.DateTime.Now.Date;
+            dfEnd.SelectedDate = System.DateTime.Now.Date;
+            dfEnd.MaxDate = System.DateTime.Now.Date;
 
+ 
 
             this.gridPanelSPAdReport.Reload();
         }
@@ -47,14 +52,16 @@ namespace SPSWeb.Moudles.SPS.Reports
 
         protected void storeSPAdReport_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e, this.PagingToolBar1);
+ 
+ 
 
-            RecordSortor recordSortor = WebUIHelper.GetRecordSortorFromStoreRefreshDataEventArgs(e);
+            List<SPAdReportWrapper> spDayReports = SPAdReportWrapper.QueryReport(dfStart.SelectedDate, dfEnd.SelectedDate);
 
-            storeSPAdReport.DataSource = SPAdReportWrapper.FindAllByOrderBy(recordSortor.OrderByColumnName, recordSortor.IsDesc, pageQueryParams);
-            e.Total = pageQueryParams.RecordCount;
-
+            storeSPAdReport.DataSource = spDayReports;
             storeSPAdReport.DataBind();
+
+            this.lblTotalTotalSuccessCount.Text = spDayReports.Sum(p => p.AdCount).ToString();
+            this.lblTotalDownSycnSuccess.Text = spDayReports.Sum(p => p.ClientCount).ToString();
 
         }
     }

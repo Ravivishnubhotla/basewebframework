@@ -76,13 +76,22 @@ namespace SPSWeb.Moudles.SPS.Reports {
         protected global::Ext.Net.Toolbar tbTop;
         
         /// <summary>
-        /// btnAdd control.
+        /// dfStart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnAdd;
+        protected global::Ext.Net.DateField dfStart;
+        
+        /// <summary>
+        /// dfEnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.DateField dfEnd;
         
         /// <summary>
         /// btnRefresh control.
@@ -94,21 +103,66 @@ namespace SPSWeb.Moudles.SPS.Reports {
         protected global::Ext.Net.Button btnRefresh;
         
         /// <summary>
-        /// GridView1 control.
+        /// btnToggleGroups control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridView GridView1;
+        protected global::Ext.Net.Button btnToggleGroups;
         
         /// <summary>
-        /// PagingToolBar1 control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        protected global::Ext.Net.Button btnAdd;
+        
+        /// <summary>
+        /// GroupingView1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.GroupingView GroupingView1;
+        
+        /// <summary>
+        /// GroupingSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.GroupingSummary GroupingSummary1;
+        
+        /// <summary>
+        /// Toolbar1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Toolbar Toolbar1;
+        
+        /// <summary>
+        /// lblTotalTotalSuccessCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField lblTotalTotalSuccessCount;
+        
+        /// <summary>
+        /// lblTotalDownSycnSuccess control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField lblTotalDownSycnSuccess;
     }
 }
