@@ -134,7 +134,7 @@
         
         function checkNode(node, checked) {
             for (var i = 0; i < node.childNodes.length; i++) {
-                node.childNodes[i].ui.toggleCheck(checked);
+                //node.childNodes[i].ui.toggleCheck(checked);
             }
         }  
     

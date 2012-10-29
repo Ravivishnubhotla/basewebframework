@@ -37,6 +37,14 @@ namespace SPS.Entity.Tables
         #endregion
 	
  
+		#region sPAdPackID字段外键查询字段
+        public const string PROPERTY_SPADPACKID_ALIAS_NAME = "SPAdPackID_SPAdAssignedHistortyEntity_Alias";
+		public const string PROPERTY_SPADPACKID_ID = "SPAdPackID_SPAdAssignedHistortyEntity_Alias.Id";
+		public const string PROPERTY_SPADPACKID_SPADID = "SPAdPackID_SPAdAssignedHistortyEntity_Alias.SPAdID";
+		public const string PROPERTY_SPADPACKID_NAME = "SPAdPackID_SPAdAssignedHistortyEntity_Alias.Name";
+		public const string PROPERTY_SPADPACKID_CODE = "SPAdPackID_SPAdAssignedHistortyEntity_Alias.Code";
+		public const string PROPERTY_SPADPACKID_DESCRIPTION = "SPAdPackID_SPAdAssignedHistortyEntity_Alias.Description";
+		#endregion
 		#region sPClientID字段外键查询字段
         public const string PROPERTY_SPCLIENTID_ALIAS_NAME = "SPClientID_SPAdAssignedHistortyEntity_Alias";
 		public const string PROPERTY_SPCLIENTID_ID = "SPClientID_SPAdAssignedHistortyEntity_Alias.Id";
@@ -73,7 +81,7 @@ namespace SPS.Entity.Tables
 		
 		private int _id;
 		private int? _sPAdID;
-		private int? _sPAdPackID;
+		private SPAdPackEntity _sPAdPackID;
 		private SPSClientEntity _sPClientID;
 		private DateTime? _startDate;
 		private DateTime? _endDate;
@@ -109,7 +117,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPAdAssignedHistortyEntity( int id, int? sPAdID, int? sPAdPackID, SPSClientEntity sPClientID, DateTime? startDate, DateTime? endDate, int createBy, DateTime createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPAdAssignedHistortyEntity( int id, int? sPAdID, SPAdPackEntity sPAdPackID, SPSClientEntity sPClientID, DateTime? startDate, DateTime? endDate, int createBy, DateTime createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_sPAdID = sPAdID;
@@ -159,7 +167,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual int? SPAdPackID
+		public virtual SPAdPackEntity SPAdPackID
 		{
 			get { return _sPAdPackID; }
 
