@@ -103,7 +103,43 @@ namespace SPS.Bussiness.Wrappers
 			
 		#endregion
 
- 
+	    public static List<SPAdReportWrapper> QueryReport(DateTime startDate, DateTime endDate)
+	    {
+	        return SPAdReportWrapper.ConvertToWrapperList(businessProxy.QueryReport(startDate, endDate));
+	    }
 
+	    public string SPAd_Name
+	    {
+	        get
+	        {
+	            if(this.SPPackID!=null && this.SPPackID.SPAdID!=null)
+	            {
+	                return this.SPPackID.SPAdID.Name;
+	            }
+	            return "";
+	        }
+	    }
+
+        public string SPAdPack_Name
+        {
+            get
+            {
+                if (this.SPPackID != null && this.SPPackID.SPAdID != null)
+                {
+                    return this.SPPackID.SPAdID.Name + "-" + this.SPPackID.Name;
+                }
+                return "";
+            }
+        }
+
+	    public static void SaveNewReport(SPAdReportWrapper spAdReportWrapper)
+	    {
+	        businessProxy.SaveNewReport(spAdReportWrapper.Entity);
+	    }
+
+        public static List<SPAdReportWrapper> QueryReport(DateTime startDate, DateTime endDate, SPSClientWrapper client)
+	    {
+            return SPAdReportWrapper.ConvertToWrapperList(businessProxy.QueryReport(startDate, endDate, client.Entity));
+	    }
     }
 }

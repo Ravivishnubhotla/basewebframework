@@ -5,10 +5,11 @@ using System.Web;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.BaseFramework.Web;
 using SPS.Bussiness.Wrappers;
+using SPSWeb.AppCode;
 
 namespace Legendigital.Common.WebApp.AppCode
 {
-    public class SPClientViewPage : BaseSecurityPage
+    public class SPClientViewPage : BasePage
     {
         public SPSClientWrapper Client 
         {
@@ -16,8 +17,8 @@ namespace Legendigital.Common.WebApp.AppCode
             {
                 if (this.CurrentLoginUser == null)
                     return null;
-                if (!CurrentLoginUserAssignedRole.Contains(RoleCodeList.ROLE_CODE_SPDOWNUSER))
-                    return null;
+                //if (!CurrentLoginUserAssignedRole.Contains(RoleCodeList.ROLE_CODE_SPDOWNUSER))
+                //    return null;
 
                 //if (!this.Context.User.IsInRole(RoleCodeList.ROLE_CODE_SPDOWNUSER))
                 //    return null;
