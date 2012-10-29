@@ -17,10 +17,25 @@ namespace SNFramework.BSF.MainPage
 {
     public partial class Login : BasePage
     {
+        private static bool EnableValidateCode =
+            Boolean.Parse(ConfigurationUtil.GetConfigValue("EnableValidateCode", "false"));
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (X.IsAjaxRequest)
                 return;
+
+            if(!EnableValidateCode)
+            {
+                extwinLogin.Height = 290;
+                mfCheckCode.Hidden = true;
+            }
+            else
+            {
+                extwinLogin.Height = 320;
+                mfCheckCode.Hidden = false;        
+            }
+
 
             SystemSettingWrapper settingWrapper = SystemSettingWrapper.GetCurrentSystemSetting();
 
@@ -54,7 +69,7 @@ namespace SNFramework.BSF.MainPage
             string password = this.txtPassWord.Text.Trim();
             string checkCode = this.txtCheckCode.Text.Trim();
 
-            if (checkCode != CheckCode.GetCheckCode())
+            if (EnableValidateCode && checkCode != CheckCode.GetCheckCode())
             {
                 ResourceManager.AjaxSuccess = false;
                 ResourceManager.AjaxErrorMessage = "验证码错误！";
