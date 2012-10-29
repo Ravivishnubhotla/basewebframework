@@ -19,5 +19,28 @@ namespace SPS.Data.Tables
 {
     public partial class SPAdAssignedHistortyDataObject
     {
+        public List<SPAdAssignedHistortyEntity> FindAllCLientAssignedAdPack(SPSClientEntity client)
+        {
+            NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> query = this.GetNewQueryBuilder();
+
+            query.AddWhereClause(PROPERTY_ENDDATE.IsNull());
+
+            query.AddWhereClause(PROPERTY_SPCLIENTID.Eq(client));
+
+            return FindListByQueryBuilder(query);
+        }
+
+        public SPAdAssignedHistortyEntity FindAssignedHistortybyAdPack(SPAdPackEntity spAdPackEntity)
+        {
+            NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> query = this.GetNewQueryBuilder();
+
+            query.AddWhereClause(PROPERTY_ENDDATE.IsNull());
+
+            query.AddWhereClause(PROPERTY_SPADPACKID.Eq(spAdPackEntity));
+
+            return FindSingleEntityByQueryBuilder(query);
+        }
+
+ 
     }
 }

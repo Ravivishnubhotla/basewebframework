@@ -103,7 +103,24 @@ namespace SPS.Bussiness.Wrappers
 			
 		#endregion
 
- 
+	    public static List<SPAdPackWrapper> FindAllCLientAssignedAdPack(SPSClientWrapper client)
+	    {
+            return SPAdPackWrapper.ConvertToWrapperList(businessProxy.FindAllCLientAssignedAdPack(client.Entity));
+	    }
 
+        public static SPSClientWrapper GetAdPackAssignedClient(SPAdPackWrapper spAd)
+        {
+            return SPSClientWrapper.ConvertEntityToWrapper(businessProxy.GetAdPackAssignedClient(spAd.Entity));
+        }
+
+        public static void ClientAssignedAdPack(SPSClientWrapper client,SPAdPackWrapper adPack)
+        {
+            businessProxy.ClientAssignedAdPack(client.Entity, adPack.Entity);
+        }
+
+        public static void RemoveAdAssigned(SPAdPackWrapper client, SPSClientWrapper adPack)
+	    {
+            businessProxy.RemoveAdAssigned(client.Entity, adPack.Entity);
+	    }
     }
 }

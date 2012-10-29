@@ -27,6 +27,8 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     public interface ISPAdAssignedHistortyServiceProxyDesigner
     {
+		List<SPAdAssignedHistortyEntity> FindAllByOrderByAndFilterAndSPAdPackID(string orderByColumnName, bool isDesc,   SPAdPackEntity _sPAdPackID, PageQueryParams pageQueryParams);
+		List<SPAdAssignedHistortyEntity> FindAllBySPAdPackID(SPAdPackEntity _sPAdPackID);
 		List<SPAdAssignedHistortyEntity> FindAllByOrderByAndFilterAndSPClientID(string orderByColumnName, bool isDesc,   SPSClientEntity _sPClientID, PageQueryParams pageQueryParams);
 		List<SPAdAssignedHistortyEntity> FindAllBySPClientID(SPSClientEntity _sPClientID);
     }
@@ -45,6 +47,16 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             {
                 return (SPAdAssignedHistortyDataObject)selfDataObject;
             }
+        }
+	
+		public List<SPAdAssignedHistortyEntity> FindAllByOrderByAndFilterAndSPAdPackID(string orderByColumnName, bool isDesc,  SPAdPackEntity _sPAdPackID, PageQueryParams pageQueryParams)
+        {
+			return this.SelfDataObj.GetPageList_By_SPAdPackID_SPAdPackEntity(orderByColumnName, isDesc,_sPAdPackID, pageQueryParams);
+        }
+		
+		public List<SPAdAssignedHistortyEntity> FindAllBySPAdPackID(SPAdPackEntity _sPAdPackID)
+        {
+			return this.SelfDataObj.GetList_By_SPAdPackID_SPAdPackEntity(_sPAdPackID);
         }
 	
 		public List<SPAdAssignedHistortyEntity> FindAllByOrderByAndFilterAndSPClientID(string orderByColumnName, bool isDesc,  SPSClientEntity _sPClientID, PageQueryParams pageQueryParams)

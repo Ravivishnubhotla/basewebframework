@@ -16,19 +16,85 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using SPS.Data.Tables;
 using SPS.Entity.Tables;
+using Spring.Transaction;
+using Spring.Transaction.Interceptor;
 
 
 namespace SPS.Bussiness.ServiceProxys.Tables
 {
 	public interface ISPAdAssignedHistortyServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPAdAssignedHistortyEntity,int> ,ISPAdAssignedHistortyServiceProxyDesigner
     {
-
-
+	    List<SPAdPackEntity> FindAllCLientAssignedAdPack(SPSClientEntity client);
+	    void ClientAssignedAdPack(SPSClientEntity spsClientEntity, SPAdPackEntity spAdPackEntity);
+	    void RemoveAdAssigned(SPAdPackEntity spAdPackEntity, SPSClientEntity spsClientEntity);
+	    SPSClientEntity GetAdPackAssignedClient(SPAdPackEntity spAdPackEntity);
     }
 
     internal partial class SPAdAssignedHistortyServiceProxy : ISPAdAssignedHistortyServiceProxy
     {
+        public List<SPAdPackEntity> FindAllCLientAssignedAdPack(SPSClientEntity client)
+        {
+            List<SPAdAssignedHistortyEntity> adAssignedHistortys = this.SelfDataObj.FindAllCLientAssignedAdPack(client);
 
+            List<SPAdPackEntity> spads = new List<SPAdPackEntity>();
 
+            foreach (SPAdAssignedHistortyEntity assignedHistorty in adAssignedHistortys)
+            {
+                if(!spads.Contains(assignedHistorty.SPAdPackID))
+                {
+                    spads.Add(assignedHistorty.SPAdPackID);
+                }
+            }
+
+            return spads;
+        }
+
+        [Transaction(TransactionPropagation.Required, ReadOnly = false)]
+        public void ClientAssignedAdPack(SPSClientEntity spsClientEntity, SPAdPackEntity spAdPackEntity)
+        {
+            SPAdAssignedHistortyEntity spAdAssignedHistorty = this.SelfDataObj.FindAssignedHistortybyAdPack(spAdPackEntity);
+
+            if(spAdAssignedHistorty!=null)
+            {
+                spAdAssignedHistorty.EndDate = System.DateTime.Now;
+
+                this.SelfDataObj.Update(spAdAssignedHistorty);
+            }
+
+            SPAdAssignedHistortyEntity newspAdAssignedHistorty = new SPAdAssignedHistortyEntity();
+
+            newspAdAssignedHistorty.SPAdID = spAdPackEntity.SPAdID.Id;
+            newspAdAssignedHistorty.SPAdPackID = spAdPackEntity;
+            newspAdAssignedHistorty.SPClientID = spsClientEntity;
+            newspAdAssignedHistorty.StartDate = System.DateTime.Now;
+            newspAdAssignedHistorty.CreateAt = System.DateTime.Now;
+
+            this.SelfDataObj.Save(newspAdAssignedHistorty);
+        }
+        
+        [Transaction(TransactionPropagation.Required, ReadOnly = false)]
+        public void RemoveAdAssigned(SPAdPackEntity spAdPackEntity, SPSClientEntity spsClientEntity)
+        {
+            SPAdAssignedHistortyEntity spAdAssignedHistorty = this.SelfDataObj.FindAssignedHistortybyAdPack(spAdPackEntity);
+
+            if (spAdAssignedHistorty != null)
+            {
+                spAdAssignedHistorty.EndDate = System.DateTime.Now;
+
+                this.SelfDataObj.Update(spAdAssignedHistorty);
+            }
+        }
+
+        public SPSClientEntity GetAdPackAssignedClient(SPAdPackEntity spAdPackEntity)
+        {
+            SPAdAssignedHistortyEntity spAdAssignedHistorty = this.SelfDataObj.FindAssignedHistortybyAdPack(spAdPackEntity);
+
+            if (spAdAssignedHistorty != null)
+            {
+                return spAdAssignedHistorty.SPClientID;
+            }
+
+            return null;
+        }
     }
 }

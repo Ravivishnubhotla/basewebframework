@@ -12,7 +12,7 @@
 
 
 		<property column="SPAdID" type="int" name="SPAdID"   />	
-		<property column="SPAdPackID" type="int" name="SPAdPackID"   />	
+		<many-to-one column="SPAdPackID" name="SPAdPackID" class="SPS.Entity.Tables.SPAdPackEntity,SPS.Entity" />		
 		<many-to-one column="SPClientID" name="SPClientID" class="SPS.Entity.Tables.SPSClientEntity,SPS.Entity" />		
 		<property column="StartDate" type="DateTime" name="StartDate"   />	
 		<property column="EndDate" type="DateTime" name="EndDate"   />	
