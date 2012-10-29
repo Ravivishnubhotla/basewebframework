@@ -146,20 +146,7 @@
                         <ext:GroupingSummaryColumn ColumnID="colDownTotalCount" Header="点播数" DataIndex="ClientCount"
                             Sortable="true" Groupable="False" SummaryType="Sum">
                         </ext:GroupingSummaryColumn>
-                        <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
-                            <Commands>
-                                <ext:SplitCommand Text="操作" Icon="ApplicationEdit">
-                                    <Menu>
-                                        <Items>
-                                            <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
-                                            </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除">
-                                            </ext:MenuCommand>
-                                        </Items>
-                                    </Menu>
-                                </ext:SplitCommand>
-                            </Commands>
-                        </ext:CommandColumn>
+ 
                     </Columns>
                 </ColumnModel>
                 <LoadMask ShowMask="true" />

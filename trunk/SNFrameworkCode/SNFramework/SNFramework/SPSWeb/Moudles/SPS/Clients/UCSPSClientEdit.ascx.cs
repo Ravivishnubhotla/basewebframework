@@ -146,76 +146,76 @@ namespace SPSWeb.Moudles.SPS.Clients
                 obj.DefaultShowRecordDays = Convert.ToInt32(this.numShowDayRecord.Text.Trim());
                 obj.SyncData = chkSyncData.Checked;
 
-                if (obj.SyncDataSetting == null)
-                {
-                    obj.SyncDataSetting = new SPSDataSycnSettingWrapper();
+                //if (obj.SyncDataSetting == null)
+                //{
+                //    obj.SyncDataSetting = new SPSDataSycnSettingWrapper();
 
-                    SPSDataSycnSettingWrapper.Save(obj.SyncDataSetting);
-                }
+                //    SPSDataSycnSettingWrapper.Save(obj.SyncDataSetting);
+                //}
 
 
 
-                if (obj.SyncData)
-                {
-                    if (obj.SyncDataSetting == null)
-                    {
-                        SPSDataSycnSettingWrapper spsDataSycnSetting = new SPSDataSycnSettingWrapper();
+                //if (obj.SyncData)
+                //{
+                //    if (obj.SyncDataSetting == null)
+                //    {
+                //        SPSDataSycnSettingWrapper spsDataSycnSetting = new SPSDataSycnSettingWrapper();
 
-                        SPSDataSycnSettingWrapper.Save(spsDataSycnSetting);
+                //        SPSDataSycnSettingWrapper.Save(spsDataSycnSetting);
 
-                        obj.SyncDataSetting = spsDataSycnSetting;
-                    }
+                //        obj.SyncDataSetting = spsDataSycnSetting;
+                //    }
 
-                    obj.SyncDataSetting.SycnRetryTimes = Convert.ToInt32(txtSycnRetryTimes.Text);
+                //    obj.SyncDataSetting.SycnRetryTimes = Convert.ToInt32(txtSycnRetryTimes.Text);
 
-                    obj.SyncDataSetting.SycnMO = fsSyncMO.Collapsed;
+                //    obj.SyncDataSetting.SycnMO = fsSyncMO.Collapsed;
 
-                    if (obj.SyncDataSetting.SycnMO.HasValue && obj.SyncDataSetting.SycnMO.Value)
-                    {
-                        obj.SyncDataSetting.SycnMOUrl = txtSycnMOUrl.Text.Trim();
-                        obj.SyncDataSetting.SycnMOOkMessage = txtSycnMOOkMessage.Text.Trim();
-                        obj.SyncDataSetting.SycnMOFailedMessage = txtSycnMOFailedMessage.Text.Trim();
-                    }
-                    else
-                    {
-                        obj.SyncDataSetting.SycnMOUrl = "";
-                        obj.SyncDataSetting.SycnMOOkMessage = "";
-                        obj.SyncDataSetting.SycnMOFailedMessage = "";
-                    }
+                //    if (obj.SyncDataSetting.SycnMO.HasValue && obj.SyncDataSetting.SycnMO.Value)
+                //    {
+                //        obj.SyncDataSetting.SycnMOUrl = txtSycnMOUrl.Text.Trim();
+                //        obj.SyncDataSetting.SycnMOOkMessage = txtSycnMOOkMessage.Text.Trim();
+                //        obj.SyncDataSetting.SycnMOFailedMessage = txtSycnMOFailedMessage.Text.Trim();
+                //    }
+                //    else
+                //    {
+                //        obj.SyncDataSetting.SycnMOUrl = "";
+                //        obj.SyncDataSetting.SycnMOOkMessage = "";
+                //        obj.SyncDataSetting.SycnMOFailedMessage = "";
+                //    }
 
-                    obj.SyncDataSetting.SycnMR = fsSyncMR.Collapsed;
+                //    obj.SyncDataSetting.SycnMR = fsSyncMR.Collapsed;
 
-                    if (obj.SyncDataSetting.SycnMR.HasValue && obj.SyncDataSetting.SycnMR.Value)
-                    {
-                        obj.SyncDataSetting.SycnMRUrl = txtSycnMRUrl.Text.Trim();
-                        obj.SyncDataSetting.SycnMROkMessage = txtSycnMROkMessage.Text.Trim();
-                        obj.SyncDataSetting.SycnMRFailedMessage = txtSycnMRFailedMessage.Text.Trim();
-                    }
-                    else
-                    {
-                        obj.SyncDataSetting.SycnMRUrl = "";
-                        obj.SyncDataSetting.SycnMROkMessage = "";
-                        obj.SyncDataSetting.SycnMRFailedMessage = "";
-                    }
+                //    if (obj.SyncDataSetting.SycnMR.HasValue && obj.SyncDataSetting.SycnMR.Value)
+                //    {
+                //        obj.SyncDataSetting.SycnMRUrl = txtSycnMRUrl.Text.Trim();
+                //        obj.SyncDataSetting.SycnMROkMessage = txtSycnMROkMessage.Text.Trim();
+                //        obj.SyncDataSetting.SycnMRFailedMessage = txtSycnMRFailedMessage.Text.Trim();
+                //    }
+                //    else
+                //    {
+                //        obj.SyncDataSetting.SycnMRUrl = "";
+                //        obj.SyncDataSetting.SycnMROkMessage = "";
+                //        obj.SyncDataSetting.SycnMRFailedMessage = "";
+                //    }
 
-                    obj.SyncDataSetting.SycnSate = fsSyncState.Collapsed;
+                //    obj.SyncDataSetting.SycnSate = fsSyncState.Collapsed;
 
-                    if (obj.SyncDataSetting.SycnSate.HasValue && obj.SyncDataSetting.SycnSate.Value)
-                    {
-                        obj.SyncDataSetting.SycnSateUrl = txtSycnStateUrl.Text.Trim();
-                        obj.SyncDataSetting.SycnSateOkMessage = txtSycnStateOkMessage.Text.Trim();
-                        obj.SyncDataSetting.SycnSateFailedMessage = txtSycnStateFailedMessage.Text.Trim();
-                    }
-                    else
-                    {
-                        obj.SyncDataSetting.SycnSateUrl = "";
-                        obj.SyncDataSetting.SycnSateOkMessage = "";
-                        obj.SyncDataSetting.SycnSateFailedMessage = "";
-                    }
+                //    if (obj.SyncDataSetting.SycnSate.HasValue && obj.SyncDataSetting.SycnSate.Value)
+                //    {
+                //        obj.SyncDataSetting.SycnSateUrl = txtSycnStateUrl.Text.Trim();
+                //        obj.SyncDataSetting.SycnSateOkMessage = txtSycnStateOkMessage.Text.Trim();
+                //        obj.SyncDataSetting.SycnSateFailedMessage = txtSycnStateFailedMessage.Text.Trim();
+                //    }
+                //    else
+                //    {
+                //        obj.SyncDataSetting.SycnSateUrl = "";
+                //        obj.SyncDataSetting.SycnSateOkMessage = "";
+                //        obj.SyncDataSetting.SycnSateFailedMessage = "";
+                //    }
 
-                    SPSDataSycnSettingWrapper.Save(obj.SyncDataSetting);
+                //    SPSDataSycnSettingWrapper.Save(obj.SyncDataSetting);
 
-                }
+                //}
 
 
 

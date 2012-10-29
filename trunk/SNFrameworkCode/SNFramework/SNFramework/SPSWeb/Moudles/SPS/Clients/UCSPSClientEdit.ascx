@@ -21,19 +21,10 @@
                 <ext:NumberField ID="txtDefaultPrice" runat="server" FieldLabel="默认价格" AllowBlank="false"
                     AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkSyncData" runat="server" FieldLabel="是否同步数据" Checked="false"
-                    AnchorHorizontal="95%">
-                    <Listeners>
-                        <Check Handler="ShowSycn(#{chkSyncData},#{txtRecieveDataUrl},#{txtOkMessage},#{txtFailedMessage});">
-                        </Check>
-                    </Listeners>
+                    AnchorHorizontal="95%" Hidden="True">
+ 
                 </ext:Checkbox>
-                <ext:Checkbox ID="Checkbox1" runat="server" FieldLabel="是否同步数据" Checked="false"
-                    AnchorHorizontal="95%">
-                    <Listeners>
-                        <Check Handler="ShowSycn(#{chkSyncData},#{txtSycnRetryTimes},#{fsSyncMO},#{fsSyncMR},#{fsSyncState});">
-                        </Check>
-                    </Listeners>
-                </ext:Checkbox>
+ 
                 <ext:TextField ID="txtSycnRetryTimes" runat="server" FieldLabel="默认重发次数" AllowBlank="True"
                     AnchorHorizontal="95%" Hidden="true" />
                 <ext:FieldSet ID="fsSyncMO" runat="server" CheckboxToggle="true" Title="同步MO" AutoHeight="true"
