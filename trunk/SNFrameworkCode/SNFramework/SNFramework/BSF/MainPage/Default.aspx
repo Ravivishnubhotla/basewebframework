@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#"  MasterPageFile="~/Masters/AdminMaster.Master"  AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SNFramework.BSF.MainPage.Default" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SNFramework.BSF.MainPage.Default" %>
 
 <%@ Register Src="UCChangePassword.ascx" TagName="UCChangePassword" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -132,7 +132,8 @@
                         BodyBorder="false">
                         <Content>
                             <div class="menu south">
-                                <asp:Localize ID="locCopyRight" runat="server"></asp:Localize></div>
+                                <asp:Localize ID="locCopyRight" runat="server"></asp:Localize>
+                            </div>
                         </Content>
                     </ext:Panel>
                 </South>
@@ -156,8 +157,8 @@
                                                     <ext:Toolbar ID="Toolbar2" runat="server">
                                                         <Items>
                                                             <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
-                                                            <ext:Button ID="Button4" runat="server" Text="添加模块" Icon="BulletPlus" />
-                                                            <ext:Button ID="Button2" runat="server" Text="保存" Icon="Disk" />
+                                                            <ext:Button ID="Button4" runat="server" Text="添加模块" Icon="BulletPlus"  Hidden="True" />
+                                                            <ext:Button ID="Button2" runat="server" Text="保存" Icon="Disk"  Hidden="True" />
                                                         </Items>
                                                     </ext:Toolbar>
                                                 </TopBar>
@@ -167,19 +168,20 @@
                                                             <ext:PortalColumn ID="PortalColumn3" runat="server" Cls="x-column-padding1" ColumnWidth=".66"
                                                                 Layout="Anchor">
                                                                 <Items>
-                                                                    <ext:Portlet ID="Portlet4" runat="server" Title="代办事宜">
-                                                                        <Tools>
-                                                                            <ext:Tool Type="Close" />
-                                                                            <ext:Tool Type="Refresh" />
-                                                                        </Tools>
-                                                                    </ext:Portlet>
                                                                     <ext:Portlet ID="Portlet5" runat="server" Title="最新公告">
                                                                         <Tools>
                                                                             <ext:Tool Type="Close" />
                                                                             <ext:Tool Type="Refresh" />
                                                                         </Tools>
                                                                     </ext:Portlet>
-                                                                    <ext:Portlet ID="Portlet1" runat="server" Title="我的任务">
+                                                                    <ext:Portlet ID="Portlet4" runat="server" Title="代办事宜" Hidden="True">
+                                                                        <Tools>
+                                                                            <ext:Tool Type="Close" />
+                                                                            <ext:Tool Type="Refresh" />
+                                                                        </Tools>
+                                                                    </ext:Portlet>
+
+                                                                    <ext:Portlet ID="Portlet1" runat="server" Title="我的任务" Hidden="True">
                                                                         <Tools>
                                                                             <ext:Tool Type="Close" />
                                                                             <ext:Tool Type="Refresh" />
@@ -190,13 +192,13 @@
                                                             <ext:PortalColumn ID="PortalColumn1" runat="server" Cls="x-column-padding" ColumnWidth=".33"
                                                                 Layout="Anchor">
                                                                 <Items>
-                                                                    <ext:Portlet ID="plServerInfo" runat="server" Title="我的消息" Icon="Server" Closable="True">
+                                                                    <ext:Portlet ID="plServerInfo" runat="server" Title="我的消息" Icon="Server" Closable="True" Hidden="True">
                                                                         <Tools>
                                                                             <ext:Tool Type="Close" />
                                                                             <ext:Tool Type="Refresh" />
                                                                         </Tools>
                                                                     </ext:Portlet>
-                                                                    <ext:Portlet ID="Portlet2" runat="server" Title="我的日程" Icon="Server" Closable="True">
+                                                                    <ext:Portlet ID="Portlet2" runat="server" Title="我的日程" Icon="Server" Closable="True" Hidden="True">
                                                                         <Tools>
                                                                             <ext:Tool Type="Close" />
                                                                             <ext:Tool Type="Refresh" />

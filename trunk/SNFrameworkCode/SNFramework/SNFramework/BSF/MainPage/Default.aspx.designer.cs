@@ -247,15 +247,6 @@ namespace SNFramework.BSF.MainPage {
         protected global::Ext.Net.PortalColumn PortalColumn3;
         
         /// <summary>
-        /// Portlet4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Portlet Portlet4;
-        
-        /// <summary>
         /// Portlet5 control.
         /// </summary>
         /// <remarks>
@@ -263,6 +254,15 @@ namespace SNFramework.BSF.MainPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Portlet Portlet5;
+        
+        /// <summary>
+        /// Portlet4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Portlet Portlet4;
         
         /// <summary>
         /// Portlet1 control.
