@@ -23,7 +23,19 @@ namespace SPS.Data.Tables
 		#region Expression Query Property (标准查询字段)
 		public static readonly IntProperty PROPERTY_ID = new IntProperty(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_ID));		
 		public static readonly IntProperty PROPERTY_SPADID = new IntProperty(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPADID));		
-		public static readonly IntProperty PROPERTY_SPADPACKID = new IntProperty(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPADPACKID));		
+		public static readonly EntityProperty<SPAdPackEntity> PROPERTY_SPADPACKID = new EntityProperty<SPAdPackEntity>(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPADPACKID));
+		#region sPAdPackID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> InClude_SPAdPackID_Query(NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPADPACKID, PROPERTY_SPADPACKID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_SPADPACKID_ALIAS_NAME = "SPAdPackID_SPAdAssignedHistortyEntity_Alias";
+		public static readonly IntProperty PROPERTY_SPADPACKID_ID = new IntProperty(Property.ForName(PROPERTY_SPADPACKID_ALIAS_NAME + ".Id"));
+		public static readonly EntityProperty<SPAdvertisementEntity> PROPERTY_SPADPACKID_SPADID = new EntityProperty<SPAdvertisementEntity>(Property.ForName(PROPERTY_SPADPACKID_ALIAS_NAME + ".SPAdID"));
+		public static readonly StringProperty PROPERTY_SPADPACKID_NAME = new StringProperty(Property.ForName(PROPERTY_SPADPACKID_ALIAS_NAME + ".Name"));
+		public static readonly StringProperty PROPERTY_SPADPACKID_CODE = new StringProperty(Property.ForName(PROPERTY_SPADPACKID_ALIAS_NAME + ".Code"));
+		public static readonly StringProperty PROPERTY_SPADPACKID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_SPADPACKID_ALIAS_NAME + ".Description"));
+		#endregion
 		public static readonly EntityProperty<SPSClientEntity> PROPERTY_SPCLIENTID = new EntityProperty<SPSClientEntity>(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPCLIENTID));
 		#region sPClientID字段外键查询字段
         public static NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> InClude_SPClientID_Query(NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> queryGenerator)
@@ -118,6 +130,21 @@ namespace SPS.Data.Tables
         {
             switch (parent_alias)
             {
+	            case "SPAdPackID_SPAdAssignedHistortyEntity_Alias":
+					switch (fieldName)
+					{
+                		case "SPAdPackID_SPAdAssignedHistortyEntity_Alias.Id":
+							return typeof (int);
+                		case "SPAdPackID_SPAdAssignedHistortyEntity_Alias.SPAdID":
+							return typeof (int);
+                		case "SPAdPackID_SPAdAssignedHistortyEntity_Alias.Name":
+							return typeof (string);
+                		case "SPAdPackID_SPAdAssignedHistortyEntity_Alias.Code":
+							return typeof (string);
+                		case "SPAdPackID_SPAdAssignedHistortyEntity_Alias.Description":
+							return typeof (string);
+          			}
+                    break;
 	            case "SPClientID_SPAdAssignedHistortyEntity_Alias":
 					switch (fieldName)
 					{
@@ -173,6 +200,9 @@ namespace SPS.Data.Tables
         {
             switch (parent_alias)
             {
+	            case "SPAdPackID_SPAdAssignedHistortyEntity_Alias":
+                    queryGenerator.AddAlians(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPADPACKID, PROPERTY_SPADPACKID_ALIAS_NAME);
+                    break;
 	            case "SPClientID_SPAdAssignedHistortyEntity_Alias":
                     queryGenerator.AddAlians(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPCLIENTID, PROPERTY_SPCLIENTID_ALIAS_NAME);
                     break;
@@ -183,6 +213,27 @@ namespace SPS.Data.Tables
         }
 		
 		
+		
+		public List<SPAdAssignedHistortyEntity> GetList_By_SPAdPackID_SPAdPackEntity(SPAdPackEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_SPADPACKID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SPAdAssignedHistortyEntity> GetPageList_By_SPAdPackID_SPAdPackEntity(string orderByColumnName, bool isDesc, SPAdPackEntity fkentity, PageQueryParams pageQueryParams)
+        {
+            NHibernateDynamicQueryGenerator<SPAdAssignedHistortyEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_SPADPACKID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, pageQueryParams);
+        }		
 		
 		public List<SPAdAssignedHistortyEntity> GetList_By_SPClientID_SPSClientEntity(SPSClientEntity fkentity)
 		{

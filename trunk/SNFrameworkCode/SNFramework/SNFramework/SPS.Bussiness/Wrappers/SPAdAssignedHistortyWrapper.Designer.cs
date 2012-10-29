@@ -44,6 +44,16 @@ namespace SPS.Bussiness.Wrappers
         {
             switch (columnName)
             {
+		        case "SPAdPackID_Id":
+					return PROPERTY_SPADPACKID_ID;
+		        case "SPAdPackID_SPAdID":
+					return PROPERTY_SPADPACKID_SPADID;
+		        case "SPAdPackID_Name":
+					return PROPERTY_SPADPACKID_NAME;
+		        case "SPAdPackID_Code":
+					return PROPERTY_SPADPACKID_CODE;
+		        case "SPAdPackID_Description":
+					return PROPERTY_SPADPACKID_DESCRIPTION;
 		        case "SPClientID_Id":
 					return PROPERTY_SPCLIENTID_ID;
 		        case "SPClientID_Name":
@@ -112,6 +122,14 @@ namespace SPS.Bussiness.Wrappers
         #endregion
 	
  
+		#region sPAdPackID字段外键查询字段
+        public const string PROPERTY_SPADPACKID_ALIAS_NAME = "SPAdPackID_SPAdAssignedHistortyEntity_Alias";
+		public const string PROPERTY_SPADPACKID_ID = "SPAdPackID_SPAdAssignedHistortyEntity_Alias.Id";
+		public const string PROPERTY_SPADPACKID_SPADID = "SPAdPackID_SPAdAssignedHistortyEntity_Alias.SPAdID";
+		public const string PROPERTY_SPADPACKID_NAME = "SPAdPackID_SPAdAssignedHistortyEntity_Alias.Name";
+		public const string PROPERTY_SPADPACKID_CODE = "SPAdPackID_SPAdAssignedHistortyEntity_Alias.Code";
+		public const string PROPERTY_SPADPACKID_DESCRIPTION = "SPAdPackID_SPAdAssignedHistortyEntity_Alias.Description";
+		#endregion
 		#region sPClientID字段外键查询字段
         public const string PROPERTY_SPCLIENTID_ALIAS_NAME = "SPClientID_SPAdAssignedHistortyEntity_Alias";
 		public const string PROPERTY_SPCLIENTID_ID = "SPClientID_SPAdAssignedHistortyEntity_Alias.Id";
@@ -178,15 +196,15 @@ namespace SPS.Bussiness.Wrappers
 		/// 
 		/// </summary>
 		[DataMember]
-		public int? SPAdPackID
+		public SPAdPackWrapper SPAdPackID
 		{
 			get
 			{
-				return entity.SPAdPackID;
+				return SPAdPackWrapper.ConvertEntityToWrapper(entity.SPAdPackID) ;
 			}
 			set
 			{
-				entity.SPAdPackID = value;
+				entity.SPAdPackID = ((value == null) ? null : value.Entity);
 			}
 		}
 		/// <summary>
@@ -315,6 +333,58 @@ namespace SPS.Bussiness.Wrappers
 		#region Query Property
 		
 		
+		#region sPAdPackID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADPACKID_ID)]
+        public int? SPAdPackID_Id
+        {
+            get
+            {
+                if (this. SPAdPackID == null)
+                    return null;
+                return  SPAdPackID.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADPACKID_SPADID)]
+        public SPAdvertisementWrapper SPAdPackID_SPAdID
+        {
+            get
+            {
+                if (this. SPAdPackID == null)
+                    return null;
+                return  SPAdPackID.SPAdID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADPACKID_NAME)]
+        public string SPAdPackID_Name
+        {
+            get
+            {
+                if (this. SPAdPackID == null)
+                    return null;
+                return  SPAdPackID.Name;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADPACKID_CODE)]
+        public string SPAdPackID_Code
+        {
+            get
+            {
+                if (this. SPAdPackID == null)
+                    return null;
+                return  SPAdPackID.Code;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADPACKID_DESCRIPTION)]
+        public string SPAdPackID_Description
+        {
+            get
+            {
+                if (this. SPAdPackID == null)
+                    return null;
+                return  SPAdPackID.Description;
+            }
+        }
+		#endregion
 		#region sPClientID字段外键查询字段
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPCLIENTID_ID)]
         public int? SPClientID_Id
@@ -503,6 +573,17 @@ namespace SPS.Bussiness.Wrappers
 
 
         #region "FKQuery"
+		
+        public static List<SPAdAssignedHistortyWrapper> FindAllByOrderByAndFilterAndSPAdPackID(string orderByColumnName, bool isDesc,   SPAdPackWrapper sPAdPackID,  PageQueryParams pageQueryParams)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndSPAdPackID(orderByColumnName, isDesc,   sPAdPackID.Entity, pageQueryParams));
+        }
+
+        public static List<SPAdAssignedHistortyWrapper> FindAllBySPAdPackID(SPAdPackWrapper sPAdPackID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllBySPAdPackID(sPAdPackID.Entity));
+        }
+		
 		
         public static List<SPAdAssignedHistortyWrapper> FindAllByOrderByAndFilterAndSPClientID(string orderByColumnName, bool isDesc,   SPSClientWrapper sPClientID,  PageQueryParams pageQueryParams)
         {

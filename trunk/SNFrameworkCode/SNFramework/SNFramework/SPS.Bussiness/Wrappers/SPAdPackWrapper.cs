@@ -103,7 +103,18 @@ namespace SPS.Bussiness.Wrappers
 			
 		#endregion
 
- 
 
+	    public string AssignedClientName
+	    {
+	        get
+	        {
+	            SPSClientWrapper client = SPAdAssignedHistortyWrapper.GetAdPackAssignedClient(this);
+                if(client!=null)
+                {
+                    return client.Name;
+                }
+	            return "";
+	        }
+	    }
     }
 }
