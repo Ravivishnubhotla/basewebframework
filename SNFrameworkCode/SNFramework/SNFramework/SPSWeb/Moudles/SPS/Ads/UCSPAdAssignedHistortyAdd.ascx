@@ -47,8 +47,8 @@
         <ext:Button ID="btnSavelSPAdAssignedHistorty" runat="server" Text="Add" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPAdAssignedHistortyAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPAdAssignedHistorty_Click"
-                    Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSPAdAssignedHistortyAdd}.getForm().reset();#{storeSPAdAssignedHistorty}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
+                    Success="Ext.MessageBox.alert('操作成功', 'Add a record success' ,callback);function callback(id) {#{formPanelSPAdAssignedHistortyAdd}.getForm().reset();#{storeSPAdAssignedHistorty}.reload(); };
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>
             </DirectEvents>

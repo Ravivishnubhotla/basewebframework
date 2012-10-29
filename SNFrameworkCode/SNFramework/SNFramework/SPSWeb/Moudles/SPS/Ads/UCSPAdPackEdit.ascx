@@ -28,8 +28,8 @@
         <ext:Button ID="btnSaveSPAdPack" runat="server" Text="编辑" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPAdPackEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSPAdPack_Click" Success="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanelSPAdPackEdit}.getForm().reset();#{storeSPAdPack}.reload(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
+                    OnEvent="btnSaveSPAdPack_Click" Success="Ext.MessageBox.alert('操作成功', 'Update a record success',callback);function callback(id) {#{formPanelSPAdPackEdit}.getForm().reset();#{storeSPAdPack}.reload(); };
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
                 </Click>
             </DirectEvents>

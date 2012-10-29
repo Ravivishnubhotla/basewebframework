@@ -45,9 +45,9 @@
         <ext:Button ID="btnSavelSPAdvertisement" runat="server" Text="添加" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPAdvertisementAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPAdvertisement_Click"
-                    Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSPAdvertisementAdd}.getForm().reset();#{storeSPAdvertisement}.reload(); };
+                    Success="Ext.MessageBox.alert('操作成功', 'Add a record success' ,callback);function callback(id) {#{formPanelSPAdvertisementAdd}.getForm().reset();#{storeSPAdvertisement}.reload(); };
 "
-                    Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
+                    Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>
             </DirectEvents>

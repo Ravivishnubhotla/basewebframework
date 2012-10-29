@@ -61,8 +61,8 @@
         <ext:Button ID="btnSaveSPAdReport" runat="server" Text="Edit" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPAdReportEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSPAdReport_Click" Success="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanelSPAdReportEdit}.getForm().reset();#{storeSPAdReport}.reload(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
+                    OnEvent="btnSaveSPAdReport_Click" Success="Ext.MessageBox.alert('操作成功', 'Update a record success',callback);function callback(id) {#{formPanelSPAdReportEdit}.getForm().reset();#{storeSPAdReport}.reload(); };
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
                 </Click>
             </DirectEvents>

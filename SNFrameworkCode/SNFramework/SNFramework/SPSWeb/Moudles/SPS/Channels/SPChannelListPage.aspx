@@ -94,7 +94,7 @@
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('warning','Are you sure delete the record ? ',
+                Ext.MessageBox.confirm('警告','确认删除该条记录？ ',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
