@@ -31,7 +31,7 @@ namespace SPS.Data.Tables
         }
         public static readonly string PROPERTY_SPPACKID_ALIAS_NAME = "SPPackID_SPAdReportEntity_Alias";
 		public static readonly IntProperty PROPERTY_SPPACKID_ID = new IntProperty(Property.ForName(PROPERTY_SPPACKID_ALIAS_NAME + ".Id"));
-		public static readonly EntityProperty<SPAdAssignedHistortyEntity> PROPERTY_SPPACKID_SPADID = new EntityProperty<SPAdAssignedHistortyEntity>(Property.ForName(PROPERTY_SPPACKID_ALIAS_NAME + ".SPAdID"));
+		public static readonly EntityProperty<SPAdvertisementEntity> PROPERTY_SPPACKID_SPADID = new EntityProperty<SPAdvertisementEntity>(Property.ForName(PROPERTY_SPPACKID_ALIAS_NAME + ".SPAdID"));
 		public static readonly StringProperty PROPERTY_SPPACKID_NAME = new StringProperty(Property.ForName(PROPERTY_SPPACKID_ALIAS_NAME + ".Name"));
 		public static readonly StringProperty PROPERTY_SPPACKID_CODE = new StringProperty(Property.ForName(PROPERTY_SPPACKID_ALIAS_NAME + ".Code"));
 		public static readonly StringProperty PROPERTY_SPPACKID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_SPPACKID_ALIAS_NAME + ".Description"));

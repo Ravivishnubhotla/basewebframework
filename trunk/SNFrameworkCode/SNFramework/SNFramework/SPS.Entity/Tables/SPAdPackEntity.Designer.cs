@@ -34,11 +34,17 @@ namespace SPS.Entity.Tables
 		#region sPAdID字段外键查询字段
         public const string PROPERTY_SPADID_ALIAS_NAME = "SPAdID_SPAdPackEntity_Alias";
 		public const string PROPERTY_SPADID_ID = "SPAdID_SPAdPackEntity_Alias.Id";
-		public const string PROPERTY_SPADID_SPADID = "SPAdID_SPAdPackEntity_Alias.SPAdID";
-		public const string PROPERTY_SPADID_SPADPACKID = "SPAdID_SPAdPackEntity_Alias.SPAdPackID";
-		public const string PROPERTY_SPADID_SPCLIENTID = "SPAdID_SPAdPackEntity_Alias.SPClientID";
-		public const string PROPERTY_SPADID_STARTDATE = "SPAdID_SPAdPackEntity_Alias.StartDate";
-		public const string PROPERTY_SPADID_ENDDATE = "SPAdID_SPAdPackEntity_Alias.EndDate";
+		public const string PROPERTY_SPADID_NAME = "SPAdID_SPAdPackEntity_Alias.Name";
+		public const string PROPERTY_SPADID_CODE = "SPAdID_SPAdPackEntity_Alias.Code";
+		public const string PROPERTY_SPADID_IMAGEURL = "SPAdID_SPAdPackEntity_Alias.ImageUrl";
+		public const string PROPERTY_SPADID_ADPRICE = "SPAdID_SPAdPackEntity_Alias.AdPrice";
+		public const string PROPERTY_SPADID_ACCOUNTTYPE = "SPAdID_SPAdPackEntity_Alias.AccountType";
+		public const string PROPERTY_SPADID_APPLYSTATUS = "SPAdID_SPAdPackEntity_Alias.ApplyStatus";
+		public const string PROPERTY_SPADID_ADTYPE = "SPAdID_SPAdPackEntity_Alias.AdType";
+		public const string PROPERTY_SPADID_ADTEXT = "SPAdID_SPAdPackEntity_Alias.AdText";
+		public const string PROPERTY_SPADID_DESCRIPTION = "SPAdID_SPAdPackEntity_Alias.Description";
+		public const string PROPERTY_SPADID_ISDISABLE = "SPAdID_SPAdPackEntity_Alias.IsDisable";
+		public const string PROPERTY_SPADID_ASSIGNEDCLIENT = "SPAdID_SPAdPackEntity_Alias.AssignedClient";
 		public const string PROPERTY_SPADID_CREATEBY = "SPAdID_SPAdPackEntity_Alias.CreateBy";
 		public const string PROPERTY_SPADID_CREATEAT = "SPAdID_SPAdPackEntity_Alias.CreateAt";
 		public const string PROPERTY_SPADID_LASTMODIFYBY = "SPAdID_SPAdPackEntity_Alias.LastModifyBy";
@@ -59,7 +65,7 @@ namespace SPS.Entity.Tables
  
 		
 		private int _id;
-		private SPAdAssignedHistortyEntity _sPAdID;
+		private SPAdvertisementEntity _sPAdID;
 		private string _name;
 		private string _code;
 		private string _description;
@@ -84,7 +90,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPAdPackEntity( int id, SPAdAssignedHistortyEntity sPAdID, string name, string code, string description)
+		public SPAdPackEntity( int id, SPAdvertisementEntity sPAdID, string name, string code, string description)
 		{
 			_id = id;
 			_sPAdID = sPAdID;
@@ -114,7 +120,7 @@ namespace SPS.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual SPAdAssignedHistortyEntity SPAdID
+		public virtual SPAdvertisementEntity SPAdID
 		{
 			get { return _sPAdID; }
 

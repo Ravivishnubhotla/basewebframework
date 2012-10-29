@@ -52,7 +52,7 @@ namespace SPSWeb.Moudles.SPS.Reports
           //obj.CreateAt = UIHelper.SaftGetDateTime(this.dateCreateAt.Value.Trim());        	
           //obj.LastModifyBy = Convert.ToInt32(this.numLastModifyBy.Value.Trim());        	
           //obj.LastModifyAt = UIHelper.SaftGetDateTime(this.dateLastModifyAt.Value.Trim());        	
-          obj.LastModifyComment = this.txtLastModifyComment.Text.Trim();        	
+          //obj.LastModifyComment = this.txtLastModifyComment.Text.Trim();        	
 
 
 
