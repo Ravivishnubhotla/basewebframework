@@ -25,8 +25,8 @@
         <ext:Button ID="btnSavelSPAdPack" runat="server" Text="添加" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPAdPackAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPAdPack_Click"
-                    Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSPAdPackAdd}.getForm().reset();#{storeSPAdPack}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
+                    Success="Ext.MessageBox.alert('操作成功', 'Add a record success' ,callback);function callback(id) {#{formPanelSPAdPackAdd}.getForm().reset();#{storeSPAdPack}.reload(); };
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>
             </DirectEvents>

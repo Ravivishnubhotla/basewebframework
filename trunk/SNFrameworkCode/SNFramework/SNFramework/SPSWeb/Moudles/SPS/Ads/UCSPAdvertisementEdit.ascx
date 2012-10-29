@@ -46,8 +46,8 @@
         <ext:Button ID="btnSaveSPAdvertisement" runat="server" Text="编辑" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPAdvertisementEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSPAdvertisement_Click" Success="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanelSPAdvertisementEdit}.getForm().reset();#{storeSPAdvertisement}.reload(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
+                    OnEvent="btnSaveSPAdvertisement_Click" Success="Ext.MessageBox.alert('操作成功', 'Update a record success',callback);function callback(id) {#{formPanelSPAdvertisementEdit}.getForm().reset();#{storeSPAdvertisement}.reload(); };
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
                 </Click>
             </DirectEvents>

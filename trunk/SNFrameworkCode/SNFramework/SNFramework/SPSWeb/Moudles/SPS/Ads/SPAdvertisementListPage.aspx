@@ -26,11 +26,11 @@
             Ext.net.DirectMethods.UCSPAdvertisementAdd.Show( 
                                                             {
                                                                 failure: function(msg) {
-                                                                    Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                    Ext.Msg.alert('操作失败', msg,RefreshData);
                                                                 },
                                                                 eventMask: {
                                                                     showMask: true,
-                                                                    msg: 'Processing...'
+                                                                    msg: '操作中...'
                                                                 }
                                                             });    
         
@@ -42,11 +42,11 @@
                 Ext.net.DirectMethods.UCSPAdvertisementEdit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
-                                                                        msg: 'Processing...'
+                                                                        msg: '操作中...'
                                                                     }
                                                                 }              
                 );
@@ -56,28 +56,28 @@
                 Ext.net.DirectMethods.UCSPAdvertisementView.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
-                                                                        msg: 'Processing...'
+                                                                        msg: '操作中...'
                                                                     }
                                                                 }              
                 );
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('warning','Are you sure delete the record ? ',
+                Ext.MessageBox.confirm('警告','确认删除该条记录？ ',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshData);            
+                                                                        Ext.Msg.alert('操作成功', 'Delete a record success!',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,

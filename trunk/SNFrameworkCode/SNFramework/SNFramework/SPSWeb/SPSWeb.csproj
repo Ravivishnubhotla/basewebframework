@@ -172,9 +172,11 @@
     <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsEdit.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsView.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelView.ascx" />
+    <Content Include="Moudles\SPS\Clients\SPAdPackListPage.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientCodeRelationListPage.aspx" />
     <Content Include="Moudles\SPS\Clients\SPSClientCodeSycnTestForm.aspx" />
     <Content Include="Moudles\SPS\Clients\SPSClientListPage.aspx" />
+    <Content Include="Moudles\SPS\Clients\UCSPAdPackAdd.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPClientChangeUserLoginInfo.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPClientCodeRelationAdd.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPClientCodeRelationEdit.ascx" />
@@ -507,6 +509,13 @@
     <Compile Include="Moudles\SPS\Channels\UCSPChannelView.ascx.designer.cs">
       <DependentUpon>UCSPChannelView.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPAdPackListPage.aspx.cs">
+      <DependentUpon>SPAdPackListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPAdPackListPage.aspx.designer.cs">
+      <DependentUpon>SPAdPackListPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientCodeRelationListPage.aspx.cs">
       <DependentUpon>SPClientCodeRelationListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -530,6 +539,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPSClientListPage.aspx.designer.cs">
       <DependentUpon>SPSClientListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPAdPackAdd.ascx.cs">
+      <DependentUpon>UCSPAdPackAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\UCSPAdPackAdd.ascx.designer.cs">
+      <DependentUpon>UCSPAdPackAdd.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\UCSPClientChangeUserLoginInfo.ascx.cs">
       <DependentUpon>UCSPClientChangeUserLoginInfo.ascx</DependentUpon>

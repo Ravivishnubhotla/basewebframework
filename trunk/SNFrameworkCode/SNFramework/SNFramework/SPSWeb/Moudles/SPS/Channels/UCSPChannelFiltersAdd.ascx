@@ -27,7 +27,7 @@
         <ext:Button ID="btnSavelSPChannelFilters" runat="server" Text="Add" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPChannelFiltersAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPChannelFilters_Click"
-                    Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanelSPChannelFiltersAdd}.getForm().reset();#{storeSPChannelFilters}.reload(); };
+                    Success="Ext.MessageBox.alert('操作成功', 'Add a record success' ,callback);function callback(id) {#{formPanelSPChannelFiltersAdd}.getForm().reset();#{storeSPChannelFilters}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>

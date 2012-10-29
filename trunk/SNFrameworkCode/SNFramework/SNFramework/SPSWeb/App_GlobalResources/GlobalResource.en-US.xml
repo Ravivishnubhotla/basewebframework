@@ -17,15 +17,15 @@
   <add name="msgServerErrorMsg" value="Error Message : {0}" />
   <add name="msgTrue" value="Yes" />
   <add name="msgFalse" value="No" />
-  <add name="msgOpFailed" value="Operation failed" />
-  <add name="msgOpSuccessful" value="Operation Successful" />
-  <add name="msgProcessing" value="Processing..." />
+  <add name="msgOpFailed" value="操作失败" />
+  <add name="msgOpSuccessful" value="操作成功" />
+  <add name="msgProcessing" value="操作中..." />
   <add name="msgLoading" value="Loading..." />
   <add name="msgWarning" value="warning" />
   <add name="msgDeleteWarning" value="Are you sure delete this record?" />
   <add name="msgDeleteSuccessful" value="Delete record successful!" />
   <add name="msgSavingWaiting" value="saving,Please waiting...." />
-  <add name="msgShowError" value="Ext.Msg.alert('Operation Failed', result.errorMessage);" />
+  <add name="msgShowError" value="Ext.Msg.alert('操作失败', result.errorMessage);" />
   <add name="msgPatchAdd" value="Patch Add" />
   <add name="msgPatchEdit" value="Patch Edit" />
   <add name="msgDoubleSelectAddTitle" value="Add" />

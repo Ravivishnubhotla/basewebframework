@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPSClientListPage.aspx.cs" Inherits="SPSWeb.Moudles.SPS.Clients.SPSClientListPage" %>
+
 <%@ Register Src="UCSPSClientAdd.ascx" TagName="UCSPSClientAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPSClientEdit.ascx" TagName="UCSPSClientEdit" TagPrefix="uc2" %>
 <%@ Register Src="UCSPSClientView.ascx" TagName="UCSPSClientView" TagPrefix="uc3" %>
@@ -30,7 +31,7 @@
                                                                 },
                                                                 eventMask: {
                                                                     showMask: true,
-                                                                    msg: 'Processing...'
+                                                                    msg: '操作中...'
                                                                 }
                                                             });    
         
@@ -62,7 +63,7 @@
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
-                                                                        msg: 'Processing...'
+                                                                        msg: '操作中...'
                                                                     }
                                                                 }              
                 );
@@ -76,7 +77,7 @@
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
-                                                                        msg: 'Processing...'
+                                                                        msg: '操作中...'
                                                                     }
                                                                 }              
                 );
@@ -84,13 +85,19 @@
 			
             if (cmd == "cmdAssignedCode") {
                 var win = <%= winClientCode.ClientID %>;
-			    win.autoLoad.params.SPSClientID = id.id;
-			    win.setTitle(String.format('客户“{0}”代码分配管理',id.data.Name));
-			    win.show(); 
-			}
-
+                win.autoLoad.params.SPSClientID = id.id;
+                win.setTitle(String.format('客户“{0}”代码分配管理',id.data.Name));
+                win.show(); 
+            }
+            if (cmd == "cmdAssignedAdPack") {
+                var win = <%= winClientAdPack.ClientID %>;
+                            win.autoLoad.params.SPSClientID = id.id;
+                            win.setTitle(String.format('客户“{0}”广告包分配管理',id.data.Name));
+                            win.show(); 
+                        }
+            
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('warning','Are you sure delete the record ? ',
+                Ext.MessageBox.confirm('警告','确认删除该条记录？ ',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
@@ -100,7 +107,7 @@
                                                                         Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshData);            
+                                                                        Ext.Msg.alert('操作成功', 'Delete a record success!',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
@@ -139,7 +146,7 @@
                     <ext:RecordField Name="InterceptRate" Type="int" />
                     <ext:RecordField Name="DefaultPrice" Type="int" />
                     <ext:RecordField Name="IsDefaultClient" Type="Boolean" />
-                    
+
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -197,7 +204,9 @@
                                         <Items>
                                             <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             </ext:MenuCommand>
-                                            <ext:MenuCommand Icon="ScriptEdit" CommandName="cmdAssignedCode" Text="分配代码">
+                                            <%--                                            <ext:MenuCommand Icon="ScriptEdit" CommandName="cmdAssignedCode" Text="分配代码">
+                                            </ext:MenuCommand>--%>
+                                            <ext:MenuCommand Icon="ScriptEdit" CommandName="cmdAssignedAdPack" Text="分配广告包">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="UserEdit" CommandName="cmdChangeUserLoginInfo" Text="编辑用户信息">
                                             </ext:MenuCommand>
@@ -220,10 +229,25 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
-    <ext:Window ID="winClientCode" runat="server" Title="winClientCode" Frame="true"
+        <ext:Window ID="winClientCode" runat="server" Title="winClientCode" Frame="true"
         Width="700" ConstrainHeader="true" Height="350" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true">
         <AutoLoad Url="SPClientCodeRelationListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="SPSClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+
+    <ext:Window ID="winClientAdPack" runat="server" Title="winClientAdPack" Frame="true"
+        Width="700" ConstrainHeader="true" Height="350" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true">
+        <AutoLoad Url="SPAdPackListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
             <Params>
                 <ext:Parameter Name="SPSClientID" Mode="Raw" Value="0">

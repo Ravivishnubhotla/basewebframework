@@ -28,7 +28,7 @@
                                                                 },
                                                                 eventMask: {
                                                                     showMask: true,
-                                                                    msg: 'Processing...'
+                                                                    msg: '操作中...'
                                                                 }
                                                             });    
         
@@ -44,7 +44,7 @@
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
-                                                                        msg: 'Processing...'
+                                                                        msg: '操作中...'
                                                                     }
                                                                 }              
                 );
@@ -58,14 +58,14 @@
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
-                                                                        msg: 'Processing...'
+                                                                        msg: '操作中...'
                                                                     }
                                                                 }              
                 );
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('warning','Are you sure delete the record ? ',
+                Ext.MessageBox.confirm('警告','确认删除该条记录？ ',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
@@ -75,7 +75,7 @@
                                                                         Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshData);            
+                                                                        Ext.Msg.alert('操作成功', 'Delete a record success!',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                         showMask: true,
