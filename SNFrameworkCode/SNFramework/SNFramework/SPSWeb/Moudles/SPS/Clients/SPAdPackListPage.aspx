@@ -99,6 +99,9 @@
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="Code" />
                     <ext:RecordField Name="Description" />
+          
+                    
+                    
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -143,6 +146,7 @@
                         </ext:Column>
                         <ext:Column ColumnID="colDescription" DataIndex="Description" Header="描述" Sortable="true">
                         </ext:Column>
+  
                         <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
                             <Commands>
                                 <ext:SplitCommand Text="选择操作" Icon="ApplicationEdit">

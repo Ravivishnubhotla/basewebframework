@@ -184,6 +184,7 @@
     <Content Include="Moudles\SPS\Clients\UCSPSClientAdd.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientEdit.ascx" />
     <Content Include="Moudles\SPS\Clients\UCSPSClientView.ascx" />
+    <Content Include="Moudles\SPS\ClientView\ClientAdPackList.aspx" />
     <Content Include="Moudles\SPS\ClientView\ReportAdDataRange.aspx" />
     <Content Include="Moudles\SPS\ClientView\ReportClientCountRecordToday.aspx" />
     <Content Include="Moudles\SPS\ClientView\ReportClientRecordDateRange.aspx" />
@@ -202,6 +203,10 @@
     <Content Include="Moudles\SPS\Reports\SPAdReportListPage.aspx" />
     <Content Include="Moudles\SPS\Reports\UCSPAdReportAdd.ascx" />
     <Content Include="Moudles\SPS\Reports\UCSPAdReportEdit.ascx" />
+    <Content Include="Moudles\SPS\Uppers\SPUpperListPage.aspx" />
+    <Content Include="Moudles\SPS\Uppers\UCSPUpperAdd.ascx" />
+    <Content Include="Moudles\SPS\Uppers\UCSPUpperEdit.ascx" />
+    <Content Include="Moudles\SPS\Uppers\UCSPUpperView.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -597,6 +602,13 @@
     <Compile Include="Moudles\SPS\Clients\UCSPSClientView.ascx.designer.cs">
       <DependentUpon>UCSPSClientView.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\ClientView\ClientAdPackList.aspx.cs">
+      <DependentUpon>ClientAdPackList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\ClientView\ClientAdPackList.aspx.designer.cs">
+      <DependentUpon>ClientAdPackList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\ClientView\ReportAdDataRange.aspx.cs">
       <DependentUpon>ReportAdDataRange.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -726,6 +738,34 @@
     <Compile Include="Moudles\SPS\Reports\UCSPAdReportEdit.ascx.designer.cs">
       <DependentUpon>UCSPAdReportEdit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Uppers\SPUpperListPage.aspx.cs">
+      <DependentUpon>SPUpperListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Uppers\SPUpperListPage.aspx.designer.cs">
+      <DependentUpon>SPUpperListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Uppers\UCSPUpperAdd.ascx.cs">
+      <DependentUpon>UCSPUpperAdd.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Uppers\UCSPUpperAdd.ascx.designer.cs">
+      <DependentUpon>UCSPUpperAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Uppers\UCSPUpperEdit.ascx.cs">
+      <DependentUpon>UCSPUpperEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Uppers\UCSPUpperEdit.ascx.designer.cs">
+      <DependentUpon>UCSPUpperEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Uppers\UCSPUpperView.ascx.cs">
+      <DependentUpon>UCSPUpperView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Uppers\UCSPUpperView.ascx.designer.cs">
+      <DependentUpon>UCSPUpperView.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -757,6 +797,7 @@
     <Content Include="Moudles\DataService\DictionaryDataService.ashx" />
     <None Include="Properties\PublishProfiles\SPSWEB.pubxml" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

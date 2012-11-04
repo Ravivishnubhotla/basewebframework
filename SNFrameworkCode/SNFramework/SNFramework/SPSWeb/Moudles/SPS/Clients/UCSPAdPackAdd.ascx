@@ -2,6 +2,13 @@
 
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPAdPackAdd.ascx.cs" Inherits="SPSWeb.Moudles.SPS.Clients.UCSPAdPackAdd" %>
 
+<script type="text/javascript">
+    function AllowChange() {
+        return true;
+    }
+
+
+</script>
  
     <ext:Store ID="storeAd" runat="server" AutoLoad="true"  
         OnRefreshData="storeAd_Refresh">
@@ -22,7 +29,7 @@
                 <Fields>
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Name" />
-                                        <ext:RecordField Name="AssignedClientName" />
+                    <ext:RecordField Name="AssignedClientName" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -71,7 +78,7 @@
     <Buttons>
         <ext:Button ID="btnSavelSPAdPack" runat="server" Text="Add" Icon="Add">
             <DirectEvents>
-                <Click Before="if(!#{formPanelSPAdPackAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPAdPack_Click"
+                <Click Before="if(!#{formPanelSPAdPackAdd}.getForm().isValid() && AllowChange()) return false;" OnEvent="btnSaveSPAdPack_Click"
                     Success="Ext.MessageBox.alert('操作成功', '分配广告包成功' ,callback);function callback(id) {#{formPanelSPAdPackAdd}.getForm().reset();#{storeSPAdPack}.reload(); };
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />

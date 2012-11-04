@@ -26,7 +26,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     }
 
-    internal partial class SPAdvertisementServiceProxy : ISPAdvertisementServiceProxy
+    internal partial class SPAdvertisementServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPAdvertisementEntity,int>, ISPAdvertisementServiceProxy
     {
 
 

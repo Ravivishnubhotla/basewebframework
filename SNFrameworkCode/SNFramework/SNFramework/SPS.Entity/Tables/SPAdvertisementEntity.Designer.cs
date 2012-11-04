@@ -34,6 +34,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
 		public static readonly string PROPERTY_NAME_ASSIGNEDCLIENT = "AssignedClient";
+		public static readonly string PROPERTY_NAME_UPPERID = "UpperID";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -43,6 +44,18 @@ namespace SPS.Entity.Tables
         #endregion
 	
  
+		#region upperID字段外键查询字段
+        public const string PROPERTY_UPPERID_ALIAS_NAME = "UpperID_SPAdvertisementEntity_Alias";
+		public const string PROPERTY_UPPERID_ID = "UpperID_SPAdvertisementEntity_Alias.Id";
+		public const string PROPERTY_UPPERID_NAME = "UpperID_SPAdvertisementEntity_Alias.Name";
+		public const string PROPERTY_UPPERID_CODE = "UpperID_SPAdvertisementEntity_Alias.Code";
+		public const string PROPERTY_UPPERID_DESCRIPTION = "UpperID_SPAdvertisementEntity_Alias.Description";
+		public const string PROPERTY_UPPERID_CREATEBY = "UpperID_SPAdvertisementEntity_Alias.CreateBy";
+		public const string PROPERTY_UPPERID_CREATEAT = "UpperID_SPAdvertisementEntity_Alias.CreateAt";
+		public const string PROPERTY_UPPERID_LASTMODIFYBY = "UpperID_SPAdvertisementEntity_Alias.LastModifyBy";
+		public const string PROPERTY_UPPERID_LASTMODIFYAT = "UpperID_SPAdvertisementEntity_Alias.LastModifyAt";
+		public const string PROPERTY_UPPERID_LASTMODIFYCOMMENT = "UpperID_SPAdvertisementEntity_Alias.LastModifyComment";
+		#endregion
       	
 	
 	
@@ -68,6 +81,7 @@ namespace SPS.Entity.Tables
 		private string _description;
 		private bool? _isDisable;
 		private int? _assignedClient;
+		private SPUpperEntity _upperID;
 		private int _createBy;
 		private DateTime _createAt;
 		private int? _lastModifyBy;
@@ -94,6 +108,7 @@ namespace SPS.Entity.Tables
 			_description = null;
 			_isDisable = null;
 			_assignedClient = null;
+			_upperID = null;
 			_createBy = 0;
 			_createAt = DateTime.MinValue;
 			_lastModifyBy = null;
@@ -106,7 +121,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPAdvertisementEntity( int id, string name, string code, string imageUrl, string adPrice, string accountType, string applyStatus, string adType, string adText, string description, bool? isDisable, int? assignedClient, int createBy, DateTime createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPAdvertisementEntity( int id, string name, string code, string imageUrl, string adPrice, string accountType, string applyStatus, string adType, string adText, string description, bool? isDisable, int? assignedClient, SPUpperEntity upperID, int createBy, DateTime createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -120,6 +135,7 @@ namespace SPS.Entity.Tables
 			_description = description;
 			_isDisable = isDisable;
 			_assignedClient = assignedClient;
+			_upperID = upperID;
 			_createBy = createBy;
 			_createAt = createAt;
 			_lastModifyBy = lastModifyBy;
@@ -322,6 +338,20 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_assignedClient != value); _assignedClient = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual SPUpperEntity UpperID
+		{
+			get { return _upperID; }
+
+			set	
+			{
+				_isChanged |= (_upperID != value); _upperID = value;
 			}
 		}
 

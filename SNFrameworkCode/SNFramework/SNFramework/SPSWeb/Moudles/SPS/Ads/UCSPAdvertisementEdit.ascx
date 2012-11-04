@@ -10,7 +10,18 @@
 			
 			 <ext:Hidden ID="hidId" runat="server" AnchorHorizontal="95%">
                 </ext:Hidden>
-			
+			                <ext:ComboBox ID="cmbUpper" Editable="false" runat="server" FieldLabel="所属上家"
+                    DisplayField="Name" ValueField="Id" StoreID="storeUpper" AllowBlank="true"
+                     AnchorHorizontal="95%">
+			                                        <Triggers>
+                        <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                    </Triggers>
+                    <Listeners>
+                        <Select Handler="this.triggers[0].show();" />
+                        <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                        <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
+                    </Listeners>
+                </ext:ComboBox>
 									
 						<ext:TextField ID="txtName" runat="server" FieldLabel="名称" AllowBlank="True"  AnchorHorizontal="95%" />
               
@@ -59,6 +70,6 @@
         </ext:Button>
     </Buttons>
         <Listeners>
-        <BeforeShow Handler="#{storeDictionaryAdType}.reload();#{storeDictionaryAcountType}.reload();"></BeforeShow>
+        <BeforeShow Handler="#{storeDictionaryAdType}.reload();#{storeDictionaryAcountType}.reload();#{storeUpper}.reload();"></BeforeShow>
     </Listeners>
 </ext:Window>

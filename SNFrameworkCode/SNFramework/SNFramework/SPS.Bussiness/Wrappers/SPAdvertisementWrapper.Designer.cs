@@ -44,6 +44,24 @@ namespace SPS.Bussiness.Wrappers
         {
             switch (columnName)
             {
+		        case "UpperID_Id":
+					return PROPERTY_UPPERID_ID;
+		        case "UpperID_Name":
+					return PROPERTY_UPPERID_NAME;
+		        case "UpperID_Code":
+					return PROPERTY_UPPERID_CODE;
+		        case "UpperID_Description":
+					return PROPERTY_UPPERID_DESCRIPTION;
+		        case "UpperID_CreateBy":
+					return PROPERTY_UPPERID_CREATEBY;
+		        case "UpperID_CreateAt":
+					return PROPERTY_UPPERID_CREATEAT;
+		        case "UpperID_LastModifyBy":
+					return PROPERTY_UPPERID_LASTMODIFYBY;
+		        case "UpperID_LastModifyAt":
+					return PROPERTY_UPPERID_LASTMODIFYAT;
+		        case "UpperID_LastModifyComment":
+					return PROPERTY_UPPERID_LASTMODIFYCOMMENT;
               default:
                     return columnName;
             }
@@ -73,6 +91,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
 		public static readonly string PROPERTY_NAME_ISDISABLE = "IsDisable";
 		public static readonly string PROPERTY_NAME_ASSIGNEDCLIENT = "AssignedClient";
+		public static readonly string PROPERTY_NAME_UPPERID = "UpperID";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -82,6 +101,18 @@ namespace SPS.Bussiness.Wrappers
         #endregion
 	
  
+		#region upperID字段外键查询字段
+        public const string PROPERTY_UPPERID_ALIAS_NAME = "UpperID_SPAdvertisementEntity_Alias";
+		public const string PROPERTY_UPPERID_ID = "UpperID_SPAdvertisementEntity_Alias.Id";
+		public const string PROPERTY_UPPERID_NAME = "UpperID_SPAdvertisementEntity_Alias.Name";
+		public const string PROPERTY_UPPERID_CODE = "UpperID_SPAdvertisementEntity_Alias.Code";
+		public const string PROPERTY_UPPERID_DESCRIPTION = "UpperID_SPAdvertisementEntity_Alias.Description";
+		public const string PROPERTY_UPPERID_CREATEBY = "UpperID_SPAdvertisementEntity_Alias.CreateBy";
+		public const string PROPERTY_UPPERID_CREATEAT = "UpperID_SPAdvertisementEntity_Alias.CreateAt";
+		public const string PROPERTY_UPPERID_LASTMODIFYBY = "UpperID_SPAdvertisementEntity_Alias.LastModifyBy";
+		public const string PROPERTY_UPPERID_LASTMODIFYAT = "UpperID_SPAdvertisementEntity_Alias.LastModifyAt";
+		public const string PROPERTY_UPPERID_LASTMODIFYCOMMENT = "UpperID_SPAdvertisementEntity_Alias.LastModifyComment";
+		#endregion
       	
 	
 	
@@ -277,6 +308,21 @@ namespace SPS.Bussiness.Wrappers
 		/// 
 		/// </summary>
 		[DataMember]
+		public SPUpperWrapper UpperID
+		{
+			get
+			{
+				return SPUpperWrapper.ConvertEntityToWrapper(entity.UpperID) ;
+			}
+			set
+			{
+				entity.UpperID = ((value == null) ? null : value.Entity);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
 		public int CreateBy
 		{
 			get
@@ -354,12 +400,115 @@ namespace SPS.Bussiness.Wrappers
 		#region Query Property
 		
 		
+		#region upperID字段外键查询字段
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_ID)]
+        public int? UpperID_Id
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.Id;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_NAME)]
+        public string UpperID_Name
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.Name;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_CODE)]
+        public string UpperID_Code
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.Code;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_DESCRIPTION)]
+        public string UpperID_Description
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.Description;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_CREATEBY)]
+        public int? UpperID_CreateBy
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.CreateBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_CREATEAT)]
+        public DateTime? UpperID_CreateAt
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.CreateAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_LASTMODIFYBY)]
+        public int? UpperID_LastModifyBy
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.LastModifyBy;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_LASTMODIFYAT)]
+        public DateTime? UpperID_LastModifyAt
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.LastModifyAt;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_UPPERID_LASTMODIFYCOMMENT)]
+        public string UpperID_LastModifyComment
+        {
+            get
+            {
+                if (this. UpperID == null)
+                    return null;
+                return  UpperID.LastModifyComment;
+            }
+        }
+		#endregion
       	
    
 		#endregion
 
 
         #region "FKQuery"
+		
+        public static List<SPAdvertisementWrapper> FindAllByOrderByAndFilterAndUpperID(string orderByColumnName, bool isDesc,   SPUpperWrapper upperID,  PageQueryParams pageQueryParams)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByOrderByAndFilterAndUpperID(orderByColumnName, isDesc,   upperID.Entity, pageQueryParams));
+        }
+
+        public static List<SPAdvertisementWrapper> FindAllByUpperID(SPUpperWrapper upperID)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllByUpperID(upperID.Entity));
+        }
+		
 
 
 

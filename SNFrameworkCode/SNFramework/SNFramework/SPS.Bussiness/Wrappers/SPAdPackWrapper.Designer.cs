@@ -68,6 +68,8 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_SPADID_ISDISABLE;
 		        case "SPAdID_AssignedClient":
 					return PROPERTY_SPADID_ASSIGNEDCLIENT;
+		        case "SPAdID_UpperID":
+					return PROPERTY_SPADID_UPPERID;
 		        case "SPAdID_CreateBy":
 					return PROPERTY_SPADID_CREATEBY;
 		        case "SPAdID_CreateAt":
@@ -118,6 +120,7 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_SPADID_DESCRIPTION = "SPAdID_SPAdPackEntity_Alias.Description";
 		public const string PROPERTY_SPADID_ISDISABLE = "SPAdID_SPAdPackEntity_Alias.IsDisable";
 		public const string PROPERTY_SPADID_ASSIGNEDCLIENT = "SPAdID_SPAdPackEntity_Alias.AssignedClient";
+		public const string PROPERTY_SPADID_UPPERID = "SPAdID_SPAdPackEntity_Alias.UpperID";
 		public const string PROPERTY_SPADID_CREATEBY = "SPAdID_SPAdPackEntity_Alias.CreateBy";
 		public const string PROPERTY_SPADID_CREATEAT = "SPAdID_SPAdPackEntity_Alias.CreateAt";
 		public const string PROPERTY_SPADID_LASTMODIFYBY = "SPAdID_SPAdPackEntity_Alias.LastModifyBy";
@@ -335,6 +338,16 @@ namespace SPS.Bussiness.Wrappers
                 if (this. SPAdID == null)
                     return null;
                 return  SPAdID.AssignedClient;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_UPPERID)]
+        public SPUpperWrapper SPAdID_UpperID
+        {
+            get
+            {
+                if (this. SPAdID == null)
+                    return null;
+                return  SPAdID.UpperID;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPADID_CREATEBY)]

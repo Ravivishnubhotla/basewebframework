@@ -41,6 +41,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_SPADID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".Description"));
 		public static readonly BoolProperty PROPERTY_SPADID_ISDISABLE = new BoolProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".IsDisable"));
 		public static readonly IntProperty PROPERTY_SPADID_ASSIGNEDCLIENT = new IntProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".AssignedClient"));
+		public static readonly EntityProperty<SPUpperEntity> PROPERTY_SPADID_UPPERID = new EntityProperty<SPUpperEntity>(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".UpperID"));
 		public static readonly IntProperty PROPERTY_SPADID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".CreateBy"));
 		public static readonly DateTimeProperty PROPERTY_SPADID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".CreateAt"));
 		public static readonly IntProperty PROPERTY_SPADID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_SPADID_ALIAS_NAME + ".LastModifyBy"));
@@ -125,6 +126,8 @@ namespace SPS.Data.Tables
                 		case "SPAdID_SPAdPackEntity_Alias.IsDisable":
 							return typeof (bool);
                 		case "SPAdID_SPAdPackEntity_Alias.AssignedClient":
+							return typeof (int);
+                		case "SPAdID_SPAdPackEntity_Alias.UpperID":
 							return typeof (int);
                 		case "SPAdID_SPAdPackEntity_Alias.CreateBy":
 							return typeof (int);

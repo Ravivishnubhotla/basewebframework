@@ -22,6 +22,7 @@
 		<property column="Description" type="string" name="Description"   length="4000" />	
 		<property column="IsDisable" type="Boolean" name="IsDisable"   />	
 		<property column="AssignedClient" type="int" name="AssignedClient"   />	
+		<many-to-one column="UpperID" name="UpperID" class="SPS.Entity.Tables.SPUpperEntity,SPS.Entity" />		
 		<property column="CreateBy" type="int" name="CreateBy"   not-null="true"  />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   not-null="true"  />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

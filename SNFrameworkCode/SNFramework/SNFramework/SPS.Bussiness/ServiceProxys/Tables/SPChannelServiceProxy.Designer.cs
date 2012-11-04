@@ -31,7 +31,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 		List<SPChannelEntity> FindAllByUpperID(SPUpperEntity _upperID);
     }
 
-    internal partial class SPChannelServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPChannelEntity,int>
+    internal partial class SPChannelServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SPChannelEntity,int>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	

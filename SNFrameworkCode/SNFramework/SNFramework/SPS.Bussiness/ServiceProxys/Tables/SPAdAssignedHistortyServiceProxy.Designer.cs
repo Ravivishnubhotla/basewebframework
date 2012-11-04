@@ -33,7 +33,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 		List<SPAdAssignedHistortyEntity> FindAllBySPClientID(SPSClientEntity _sPClientID);
     }
 
-    internal partial class SPAdAssignedHistortyServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPAdAssignedHistortyEntity,int>
+    internal partial class SPAdAssignedHistortyServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SPAdAssignedHistortyEntity,int>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	

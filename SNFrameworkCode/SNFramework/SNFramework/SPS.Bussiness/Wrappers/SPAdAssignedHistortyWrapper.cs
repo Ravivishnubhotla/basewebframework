@@ -113,7 +113,7 @@ namespace SPS.Bussiness.Wrappers
             return SPSClientWrapper.ConvertEntityToWrapper(businessProxy.GetAdPackAssignedClient(spAd.Entity));
         }
 
-        public static void ClientAssignedAdPack(SPSClientWrapper client,SPAdPackWrapper adPack)
+	    public static void ClientAssignedAdPack(SPSClientWrapper client,SPAdPackWrapper adPack)
         {
             businessProxy.ClientAssignedAdPack(client.Entity, adPack.Entity);
         }
