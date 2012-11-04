@@ -149,7 +149,7 @@ public class GeneratedTemplate : DotNetScriptTemplate
 %>
 
 <%= "<" %>%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UC<%= moudleCodeName %>Add.ascx.cs" Inherits="<%= PageNameSpace %>.UC<%= moudleCodeName %>Add" %<%= ">" %>
-<ext:Window ID="win<%= moudleCodeName %>Add" runat="server" Icon="ApplicationAdd" Title="<%= config.GenerateMoudleFormTitle(table) %> Add "
+<ext:Window ID="win<%= moudleCodeName %>Add" runat="server" Icon="ApplicationAdd" Title="<%= config.GenerateMoudleFormTitle(table) %> 添加"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll="true"
     ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
@@ -177,16 +177,16 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSavel<%= moudleCodeName %>" runat="server" Text="Add" Icon="Add">
+        <ext:Button ID="btnSavel<%= moudleCodeName %>" runat="server" Text="添加" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanel<%= moudleCodeName %>Add}.getForm().isValid()) return false;" OnEvent="btnSave<%= moudleCodeName %>_Click"
-                    Success="Ext.MessageBox.alert('Operation successful', 'Add a record success' ,callback);function callback(id) {#{formPanel<%= moudleCodeName %>Add}.getForm().reset();#{store<%= moudleCodeName %>}.reload(); };
+                    Success="Ext.MessageBox.alert('操作成功', '添加记录成功' ,callback);function callback(id) {#{formPanel<%= moudleCodeName %>Add}.getForm().reset();#{store<%= moudleCodeName %>}.reload(); };
 " Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="saving,Please waiting....." />
+                    <EventMask ShowMask="true" Msg="数据保存中，请等待....." />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancel<%= moudleCodeName %>" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancel<%= moudleCodeName %>" runat="server" Text="取消" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanel<%= moudleCodeName %>Add}.getForm().reset();#{win<%= moudleCodeName %>Add}.hide();" />
             </Listeners>
@@ -213,7 +213,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
 
 <%= "<" %>%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UC<%= moudleCodeName %>Edit.ascx.cs" Inherits="<%= PageNameSpace %>.UC<%= moudleCodeName %>Edit" %<%= ">" %>
 
-<ext:Window ID="win<%= moudleCodeName %>Edit" runat="server" Icon="ApplicationEdit" Title="Edit <%= config.GenerateMoudleFormTitle(table) %>"
+<ext:Window ID="win<%= moudleCodeName %>Edit" runat="server" Icon="ApplicationEdit" Title="编辑 <%= config.GenerateMoudleFormTitle(table) %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll="true"
     ConstrainHeader="true" Resizable="true"  Layout="fit">
     <Content>
@@ -245,16 +245,16 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSave<%= moudleCodeName %>" runat="server" Text="Edit" Icon="ApplicationEdit">
+        <ext:Button ID="btnSave<%= moudleCodeName %>" runat="server" Text="编辑" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanel<%= moudleCodeName %>Edit}.getForm().isValid()) return false;"
-                    OnEvent="btnSave<%= moudleCodeName %>_Click" Success="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanel<%= moudleCodeName %>Edit}.getForm().reset();#{store<%= moudleCodeName %>}.reload(); };
-" Failure="Ext.Msg.alert('Operation Failed', result.errorMessage);">
-                    <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
+                    OnEvent="btnSave<%= moudleCodeName %>_Click" Success="Ext.MessageBox.alert('操作成功', '更新记录成功',callback);function callback(id) {#{formPanel<%= moudleCodeName %>Edit}.getForm().reset();#{store<%= moudleCodeName %>}.reload(); };
+" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
+                    <EventMask ShowMask="true" Msg="数据保存中，请等待....." />
                 </Click>
             </DirectEvents>
         </ext:Button>
-        <ext:Button ID="btnCancel<%= moudleCodeName %>" runat="server" Text="Cancel" Icon="Cancel">
+        <ext:Button ID="btnCancel<%= moudleCodeName %>" runat="server" Text="取消" Icon="Cancel">
             <Listeners>
                 <Click Handler="#{formPanel<%= moudleCodeName %>Edit}.getForm().reset();#{win<%= moudleCodeName %>Edit}.hide();" />
             </Listeners>
@@ -287,7 +287,7 @@ for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
  
 <%= "<" %>%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UC<%= moudleCodeName %>View.ascx.cs" Inherits="<%= PageNameSpace %>.UC<%= moudleCodeName %>View" %<%= ">" %>
 
-<ext:Window ID="win<%= moudleCodeName %>View" runat="server" Icon="ApplicationViewDetail" Title="Show<%= config.GenerateMoudleFormTitle(table) %>"
+<ext:Window ID="win<%= moudleCodeName %>View" runat="server" Icon="ApplicationViewDetail" Title="查看<%= config.GenerateMoudleFormTitle(table) %>"
     Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true" AutoScroll="true"
     ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
@@ -587,7 +587,7 @@ namespace <%=PageNameSpace%>
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "ErrorMessage:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
             }
         }
 
@@ -618,7 +618,7 @@ namespace <%=PageNameSpace%>
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
             }
         }
     }
@@ -723,14 +723,14 @@ namespace <%=PageNameSpace%>
                 else
                 {
                     ResourceManager.AjaxSuccess = false;
-                    ResourceManager.AjaxErrorMessage = "ErrorMessage:Data does not exist";
+                    ResourceManager.AjaxErrorMessage = "错误信息：数据不存在！";
                     return;
                 }
             }
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "ErrorMessage:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
                 return;
             }
         }
@@ -755,7 +755,7 @@ namespace <%=PageNameSpace%>
             catch (Exception ex)
             {
                 ResourceManager.AjaxSuccess = false;
-                ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
+                ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
                 return;
             }
 
@@ -875,14 +875,14 @@ namespace <%=PageNameSpace%>
                     else
                     {
                         ResourceManager.AjaxSuccess = false;
-                        ResourceManager.AjaxErrorMessage = "ErrorMessage:Data does not exist";
+                        ResourceManager.AjaxErrorMessage = "错误信息：数据不存在t";
                         return;
                     }
                 }
                 catch (Exception ex)
                 {
                     ResourceManager.AjaxSuccess = false;
-                    ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
+                    ResourceManager.AjaxErrorMessage = "错误信息：" + ex.Message;
                     return;
                 }
             }
@@ -951,9 +951,9 @@ namespace <%=PageNameSpace%> {
 
         var FormatBool = function(value) {
             if (value)
-                return 'true';
+                return '是';
             else
-                return 'false';
+                return '否';
         };
 
 
@@ -965,11 +965,11 @@ namespace <%=PageNameSpace%> {
                 Ext.net.DirectMethods.UC<%= moudleNameEn %>Add.Show( 
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '处理中...'
                                                                                }
                                                                 });    
         
@@ -981,11 +981,11 @@ namespace <%=PageNameSpace%> {
                 Ext.net.DirectMethods.UC<%= moudleNameEn %>Edit.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '处理中...'
                                                                                }
                                                                 }              
                 );
@@ -995,32 +995,32 @@ namespace <%=PageNameSpace%> {
                 Ext.net.DirectMethods.UC<%= moudleNameEn %>View.Show(id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg,RefreshData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing...'
+                                                                                msg: '处理中...'
                                                                                }
                                                                 }              
                 );
             }
 
             if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('warning','Are you sure delete the record ? ',
+                Ext.MessageBox.confirm('警告','确认删除该条数据？ ',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
                                                                 id.id,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('Operation failed', msg);
+                                                                        Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('Operation successful', 'Delete a record success!',RefreshData);            
+                                                                        Ext.Msg.alert('操作成功', '删除记录成功！',RefreshData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
-                                                                                msg: 'Processing ......'
+                                                                                msg: '处理中......'
                                                                                }
                                                                 }
                                                             );
@@ -1078,16 +1078,16 @@ if(!tableUIGenerationParamsListArray[i].IsSelect)
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanel<%= moudleNameEn %>" runat="server" StoreID="store<%= moudleNameEn %>"
-                StripeRows="true" Title="<%=moudleNameCn%> Management" Icon="Table">
+                StripeRows="true" Title="<%=moudleNameCn%>管理" Icon="Table">
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:Button ID='btnAdd' runat="server" Text="Add" Icon="Add">
+                            <ext:Button ID='btnAdd' runat="server" Text="添加" Icon="Add">
                                 <Listeners>
                                     <Click Handler="showAddForm();" />
                                 </Listeners>
                             </ext:Button>
-                            <ext:Button ID='btnRefresh' runat="server" Text="Refresh" Icon="Reload">
+                            <ext:Button ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
                                 <Listeners>
                                     <Click Handler="#{store<%= moudleNameEn %>}.reload();" />
                                 </Listeners>
@@ -1115,14 +1115,14 @@ if(!tableUIGenerationParamsListArray[i].IsSelect)
 	BulidGridPanelColumn(table ,tableUIGenerationParamsListArray[i] ,config);
 }
 %> 
-                                <ext:CommandColumn ColumnID="colManage" Header="Management" Width="60">
+                                <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
                                     <Commands>
-                                    <ext:SplitCommand Text="Management" Icon="ApplicationEdit">
+                                    <ext:SplitCommand Text="选择操作" Icon="ApplicationEdit">
                                     <Menu>
                                         <Items>
-                                                 <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="Edit"></ext:MenuCommand>
-                                                 <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="Delete"></ext:MenuCommand>
-                                                 <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="View"></ext:MenuCommand>
+                                                 <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑"></ext:MenuCommand>
+                                                 <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除"></ext:MenuCommand>
+                                                 <ext:MenuCommand Icon="ApplicationViewDetail" CommandName="cmdView" Text="查看"></ext:MenuCommand>
                                         </Items>
                                     </Menu>
                                    
@@ -1135,7 +1135,7 @@ if(!tableUIGenerationParamsListArray[i].IsSelect)
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="store<%= moudleNameEn %>"
-                        DisplayInfo="true" DisplayMsg="Display <%= moudleNameCn %>s {0} - {1} total {2}" EmptyMsg="No matched <%= moudleNameCn %>" />
+                        DisplayInfo="true" DisplayMsg="显示 <%= moudleNameCn %> {0} - {1} 共 {2}" EmptyMsg="没有匹配记录" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />

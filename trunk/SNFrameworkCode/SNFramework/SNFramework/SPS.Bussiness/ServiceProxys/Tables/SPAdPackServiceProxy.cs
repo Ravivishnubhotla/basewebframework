@@ -26,7 +26,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     }
 
-    internal partial class SPAdPackServiceProxy : ISPAdPackServiceProxy
+    internal partial class SPAdPackServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPAdPackEntity,int>, ISPAdPackServiceProxy
     {
 
 

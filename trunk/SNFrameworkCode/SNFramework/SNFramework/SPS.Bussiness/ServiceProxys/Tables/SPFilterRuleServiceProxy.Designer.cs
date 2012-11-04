@@ -29,7 +29,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
     {
     }
 
-    internal partial class SPFilterRuleServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPFilterRuleEntity,int>
+    internal partial class SPFilterRuleServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SPFilterRuleEntity,int>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	

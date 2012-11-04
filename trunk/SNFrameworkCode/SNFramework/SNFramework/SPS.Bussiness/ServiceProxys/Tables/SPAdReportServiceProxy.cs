@@ -30,7 +30,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 	    List<SPAdReportEntity> QueryReport(DateTime startDate, DateTime endDate, SPSClientEntity spsClientEntity);
     }
 
-    internal partial class SPAdReportServiceProxy : ISPAdReportServiceProxy
+    internal partial class SPAdReportServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPAdReportEntity,int>, ISPAdReportServiceProxy
     {
         public List<SPAdReportEntity> QueryReport(DateTime startDate, DateTime endDate)
         {

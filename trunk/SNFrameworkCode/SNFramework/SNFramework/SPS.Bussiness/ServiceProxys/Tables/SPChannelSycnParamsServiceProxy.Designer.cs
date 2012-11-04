@@ -31,7 +31,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 		List<SPChannelSycnParamsEntity> FindAllByChannelID(SPChannelEntity _channelID);
     }
 
-    internal partial class SPChannelSycnParamsServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPChannelSycnParamsEntity,int>
+    internal partial class SPChannelSycnParamsServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SPChannelSycnParamsEntity,int>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	

@@ -31,6 +31,10 @@ namespace SPSWeb.Moudles.SPS.Ads
                 if (obj != null)
                 {
                     this.txtName.Text = ValueConvertUtil.ConvertStringValue(obj.Name);
+                    if (obj.UpperID != null)
+                        this.cmbUpper.SetValue(obj.UpperID.Id.ToString());
+                    else
+                        this.cmbUpper.ClearValue();
                     this.txtCode.Text = ValueConvertUtil.ConvertStringValue(obj.Code);
                     this.txtImageUrl.Text = ValueConvertUtil.ConvertStringValue(obj.ImageUrl);
                     this.txtAdPrice.Text = ValueConvertUtil.ConvertStringValue(obj.AdPrice);
@@ -75,6 +79,10 @@ namespace SPSWeb.Moudles.SPS.Ads
             try
             {
                 SPAdvertisementWrapper obj = SPAdvertisementWrapper.FindById(int.Parse(hidId.Text.Trim()));
+                if (this.cmbUpper.SelectedItem != null)
+                    obj.UpperID = SPUpperWrapper.FindById(Convert.ToInt32(this.cmbUpper.SelectedItem.Value));
+                else
+                    obj.UpperID = null;
                 obj.Name = this.txtName.Text.Trim();
                 obj.Code = this.txtCode.Text.Trim();
                 obj.ImageUrl = this.txtImageUrl.Text.Trim();

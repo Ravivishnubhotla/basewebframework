@@ -33,7 +33,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 		List<SPAdReportEntity> FindAllBySPClientID(SPSClientEntity _sPClientID);
     }
 
-    internal partial class SPAdReportServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPAdReportEntity,int>
+    internal partial class SPAdReportServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SPAdReportEntity,int>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	

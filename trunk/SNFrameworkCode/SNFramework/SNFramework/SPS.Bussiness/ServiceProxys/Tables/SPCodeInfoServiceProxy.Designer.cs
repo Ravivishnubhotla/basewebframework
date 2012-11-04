@@ -31,7 +31,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 		List<SPCodeInfoEntity> FindAllBySPCodeID(SPCodeEntity _sPCodeID);
     }
 
-    internal partial class SPCodeInfoServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPCodeInfoEntity,int>
+    internal partial class SPCodeInfoServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SPCodeInfoEntity,int>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	

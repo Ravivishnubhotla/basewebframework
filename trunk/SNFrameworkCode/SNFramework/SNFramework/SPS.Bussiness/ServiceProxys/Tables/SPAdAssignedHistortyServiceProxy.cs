@@ -30,7 +30,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 	    SPSClientEntity GetAdPackAssignedClient(SPAdPackEntity spAdPackEntity);
     }
 
-    internal partial class SPAdAssignedHistortyServiceProxy : ISPAdAssignedHistortyServiceProxy
+    internal partial class SPAdAssignedHistortyServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPAdAssignedHistortyEntity, int>, ISPAdAssignedHistortyServiceProxy
     {
         public List<SPAdPackEntity> FindAllCLientAssignedAdPack(SPSClientEntity client)
         {

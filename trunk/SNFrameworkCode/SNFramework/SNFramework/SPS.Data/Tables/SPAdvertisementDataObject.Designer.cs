@@ -33,6 +33,23 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SPAdvertisementEntity.PROPERTY_NAME_DESCRIPTION));		
 		public static readonly BoolProperty PROPERTY_ISDISABLE = new BoolProperty(Property.ForName(SPAdvertisementEntity.PROPERTY_NAME_ISDISABLE));		
 		public static readonly IntProperty PROPERTY_ASSIGNEDCLIENT = new IntProperty(Property.ForName(SPAdvertisementEntity.PROPERTY_NAME_ASSIGNEDCLIENT));		
+		public static readonly EntityProperty<SPUpperEntity> PROPERTY_UPPERID = new EntityProperty<SPUpperEntity>(Property.ForName(SPAdvertisementEntity.PROPERTY_NAME_UPPERID));
+		#region upperID字段外键查询字段
+        public static NHibernateDynamicQueryGenerator<SPAdvertisementEntity> InClude_UpperID_Query(NHibernateDynamicQueryGenerator<SPAdvertisementEntity> queryGenerator)
+        {
+            return queryGenerator.AddAlians(SPAdvertisementEntity.PROPERTY_NAME_UPPERID, PROPERTY_UPPERID_ALIAS_NAME);
+        }
+        public static readonly string PROPERTY_UPPERID_ALIAS_NAME = "UpperID_SPAdvertisementEntity_Alias";
+		public static readonly IntProperty PROPERTY_UPPERID_ID = new IntProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".Id"));
+		public static readonly StringProperty PROPERTY_UPPERID_NAME = new StringProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".Name"));
+		public static readonly StringProperty PROPERTY_UPPERID_CODE = new StringProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".Code"));
+		public static readonly StringProperty PROPERTY_UPPERID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".Description"));
+		public static readonly IntProperty PROPERTY_UPPERID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".CreateBy"));
+		public static readonly DateTimeProperty PROPERTY_UPPERID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".CreateAt"));
+		public static readonly IntProperty PROPERTY_UPPERID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".LastModifyBy"));
+		public static readonly DateTimeProperty PROPERTY_UPPERID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".LastModifyAt"));
+		public static readonly StringProperty PROPERTY_UPPERID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_UPPERID_ALIAS_NAME + ".LastModifyComment"));
+		#endregion
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPAdvertisementEntity.PROPERTY_NAME_CREATEBY));		
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPAdvertisementEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPAdvertisementEntity.PROPERTY_NAME_LASTMODIFYBY));		
@@ -91,6 +108,8 @@ namespace SPS.Data.Tables
                     return typeof (bool);
                 case "AssignedClient":
                     return typeof (int);
+                case "UpperID":
+                    return typeof (int);
                 case "CreateBy":
                     return typeof (int);
                 case "CreateAt":
@@ -111,6 +130,29 @@ namespace SPS.Data.Tables
         {
             switch (parent_alias)
             {
+	            case "UpperID_SPAdvertisementEntity_Alias":
+					switch (fieldName)
+					{
+                		case "UpperID_SPAdvertisementEntity_Alias.Id":
+							return typeof (int);
+                		case "UpperID_SPAdvertisementEntity_Alias.Name":
+							return typeof (string);
+                		case "UpperID_SPAdvertisementEntity_Alias.Code":
+							return typeof (string);
+                		case "UpperID_SPAdvertisementEntity_Alias.Description":
+							return typeof (string);
+                		case "UpperID_SPAdvertisementEntity_Alias.CreateBy":
+							return typeof (int);
+                		case "UpperID_SPAdvertisementEntity_Alias.CreateAt":
+							return typeof (DateTime);
+                		case "UpperID_SPAdvertisementEntity_Alias.LastModifyBy":
+							return typeof (int);
+                		case "UpperID_SPAdvertisementEntity_Alias.LastModifyAt":
+							return typeof (DateTime);
+                		case "UpperID_SPAdvertisementEntity_Alias.LastModifyComment":
+							return typeof (string);
+          			}
+                    break;
  
                 default:
                     break;
@@ -125,6 +167,9 @@ namespace SPS.Data.Tables
         {
             switch (parent_alias)
             {
+	            case "UpperID_SPAdvertisementEntity_Alias":
+                    queryGenerator.AddAlians(SPAdvertisementEntity.PROPERTY_NAME_UPPERID, PROPERTY_UPPERID_ALIAS_NAME);
+                    break;
                 default:
                     break;
  
@@ -132,6 +177,27 @@ namespace SPS.Data.Tables
         }
 		
 		
+		
+		public List<SPAdvertisementEntity> GetList_By_UpperID_SPUpperEntity(SPUpperEntity fkentity)
+		{
+			NHibernateDynamicQueryGenerator<SPAdvertisementEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_UPPERID.Eq(fkentity));
+
+            return this.FindListByQueryBuilder(dynamicQueryGenerator);
+		}
+		
+		
+        public List<SPAdvertisementEntity> GetPageList_By_UpperID_SPUpperEntity(string orderByColumnName, bool isDesc, SPUpperEntity fkentity, PageQueryParams pageQueryParams)
+        {
+            NHibernateDynamicQueryGenerator<SPAdvertisementEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
+
+            dynamicQueryGenerator.AddWhereClause(PROPERTY_UPPERID.Eq(fkentity));
+
+            AddDefaultOrderByToQueryGenerator(orderByColumnName, isDesc, dynamicQueryGenerator);
+
+            return FindListByPageByQueryBuilder(dynamicQueryGenerator, pageQueryParams);
+        }		
 		
 
 		

@@ -38,6 +38,10 @@ namespace SPSWeb.Moudles.SPS.Ads
             try
             {
                 SPAdvertisementWrapper obj = new SPAdvertisementWrapper();
+                if (this.cmbUpper.SelectedItem!=null)
+                    obj.UpperID = SPUpperWrapper.FindById(Convert.ToInt32(this.cmbUpper.SelectedItem.Value));
+                else
+                    obj.UpperID = null;
                 obj.Name = this.txtName.Text.Trim();
                 obj.Code = this.txtCode.Text.Trim();
                 obj.ImageUrl = this.txtImageUrl.Text.Trim();

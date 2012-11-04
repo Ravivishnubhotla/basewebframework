@@ -1,5 +1,8 @@
-﻿using System;
+ 
+
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,9 +13,10 @@ using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using SPS.Bussiness.Wrappers;
 using SPSWeb.AppCode;
 
-namespace SPSWeb.Moudles.SPS.Ads
+namespace SPSWeb.Moudles.SPS.Uppers
 {
-    public partial class SPAdvertisementListPage : BasePage
+
+    public partial class SPUpperListPage : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,7 +25,7 @@ namespace SPSWeb.Moudles.SPS.Ads
 
 
 
-            this.gridPanelSPAdvertisement.Reload();
+            this.gridPanelSPUpper.Reload();
         }
 
 
@@ -30,7 +34,7 @@ namespace SPSWeb.Moudles.SPS.Ads
         {
             try
             {
-                SPAdvertisementWrapper.DeleteByID(id);
+                SPUpperWrapper.DeleteByID(id);
 
                 ResourceManager.AjaxSuccess = true;
             }
@@ -42,28 +46,22 @@ namespace SPSWeb.Moudles.SPS.Ads
             }
         }
 
-        protected void storeSPAdvertisement_Refresh(object sender, StoreRefreshDataEventArgs e)
+        protected void storeSPUpper_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
             PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e, this.PagingToolBar1);
 
             RecordSortor recordSortor = WebUIHelper.GetRecordSortorFromStoreRefreshDataEventArgs(e);
 
-            storeSPAdvertisement.DataSource = SPAdvertisementWrapper.FindAllByOrderBy(recordSortor.OrderByColumnName, recordSortor.IsDesc, pageQueryParams);
+            storeSPUpper.DataSource = SPUpperWrapper.FindAllByOrderBy(recordSortor.OrderByColumnName, recordSortor.IsDesc, pageQueryParams);
             e.Total = pageQueryParams.RecordCount;
 
-            storeSPAdvertisement.DataBind();
+            storeSPUpper.DataBind();
 
-        }
-
-        protected void storeUpper_OnRefreshData(object sender, StoreRefreshDataEventArgs e)
-        {
-            storeUpper.DataSource = SPUpperWrapper.FindAll();
-            storeUpper.DataBind();
         }
     }
 
 
 
-
-
 }
+
+			

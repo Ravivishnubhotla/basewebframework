@@ -134,6 +134,24 @@
             <ext:Parameter Name="GroupCode" Value="AcountType" Mode="Value" />
         </BaseParams>
     </ext:Store>
+
+
+    <ext:Store ID="storeUpper" runat="server" AutoLoad="false" OnRefreshData="storeUpper_OnRefreshData">
+        <Reader>
+            <ext:JsonReader>
+                <Fields>
+                    <ext:RecordField Name="Id" />
+                    <ext:RecordField Name="Name" />
+
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+        <BaseParams>
+            <ext:Parameter Name="GroupCode" Value="AcountType" Mode="Value" />
+        </BaseParams>
+    </ext:Store>
+
+
     <ext:Store ID="storeSPAdvertisement" runat="server" AutoLoad="true" RemoteSort="true" RemotePaging="true"
         OnRefreshData="storeSPAdvertisement_Refresh">
         <AutoLoadParams>
@@ -157,12 +175,8 @@
                     <ext:RecordField Name="AdText" />
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="IsDisable" Type="Boolean" />
-                    <ext:RecordField Name="AssignedClient" Type="int" />
-                    <ext:RecordField Name="CreateBy" Type="int" />
-                    <ext:RecordField Name="CreateAt" Type="Date" />
-                    <ext:RecordField Name="LastModifyBy" Type="int" />
-                    <ext:RecordField Name="LastModifyAt" Type="Date" />
-                    <ext:RecordField Name="LastModifyComment" />
+                    <ext:RecordField Name="UpperID_Name" />
+
 
                 </Fields>
             </ext:JsonReader>
@@ -202,6 +216,8 @@
                     <Columns>
                         <ext:RowNumbererColumn>
                         </ext:RowNumbererColumn>
+                        <ext:Column ColumnID="colUpperID_Name" DataIndex="UpperID_Name" Header="所属上家" Sortable="true">
+                        </ext:Column>
                         <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colCode" DataIndex="Code" Header="编号" Sortable="true">

@@ -31,7 +31,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 		List<SPAdPackEntity> FindAllBySPAdID(SPAdvertisementEntity _sPAdID);
     }
 
-    internal partial class SPAdPackServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPAdPackEntity,int>
+    internal partial class SPAdPackServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SPAdPackEntity,int>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	

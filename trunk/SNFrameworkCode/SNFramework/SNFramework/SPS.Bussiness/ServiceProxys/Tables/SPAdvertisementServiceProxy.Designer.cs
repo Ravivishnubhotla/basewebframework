@@ -27,9 +27,11 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 
     public interface ISPAdvertisementServiceProxyDesigner
     {
+		List<SPAdvertisementEntity> FindAllByOrderByAndFilterAndUpperID(string orderByColumnName, bool isDesc,   SPUpperEntity _upperID, PageQueryParams pageQueryParams);
+		List<SPAdvertisementEntity> FindAllByUpperID(SPUpperEntity _upperID);
     }
 
-    internal partial class SPAdvertisementServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPAdvertisementEntity,int>
+    internal partial class SPAdvertisementServiceProxy //: BaseSpringNHibernateEntityServiceProxy<SPAdvertisementEntity,int>
     {
 		public DataObjectContainers DataObjectsContainerIocID { set; get; }
 	
@@ -43,6 +45,16 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             {
                 return (SPAdvertisementDataObject)selfDataObject;
             }
+        }
+	
+		public List<SPAdvertisementEntity> FindAllByOrderByAndFilterAndUpperID(string orderByColumnName, bool isDesc,  SPUpperEntity _upperID, PageQueryParams pageQueryParams)
+        {
+			return this.SelfDataObj.GetPageList_By_UpperID_SPUpperEntity(orderByColumnName, isDesc,_upperID, pageQueryParams);
+        }
+		
+		public List<SPAdvertisementEntity> FindAllByUpperID(SPUpperEntity _upperID)
+        {
+			return this.SelfDataObj.GetList_By_UpperID_SPUpperEntity(_upperID);
         }
 
 
