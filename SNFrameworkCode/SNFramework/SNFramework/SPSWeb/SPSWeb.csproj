@@ -118,6 +118,7 @@
     <Content Include="Css\css.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
     <Content Include="images\bg.gif" />
     <Content Include="images\collapse-all.gif" />
     <Content Include="images\expand-all.gif" />
@@ -238,6 +239,9 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="images\CheckCode.ashx.cs">
       <DependentUpon>CheckCode.ashx</DependentUpon>

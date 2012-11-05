@@ -6,7 +6,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using Common.Logging;
 
-namespace BSF
+namespace SPSWeb
 {
     public class Global : System.Web.HttpApplication
     {
