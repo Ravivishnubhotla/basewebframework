@@ -42,8 +42,11 @@ namespace SPSWeb.Moudles.SPS.Reports
                     this.dateReportDate.Value = obj.ReportDate.Value.ToShortDateString();
                     this.numClientCount.Value = obj.ClientCount.ToString();
                     this.numAdCount.Value = obj.AdCount.ToString();
-       	
-          	
+                    this.numAdClientUseCount.Value = obj.AdClientUseCount;
+                    this.numAdUseCount.Value = obj.AdUseCount;
+                    this.numAdClientDownCount.Value = obj.AdClientDownCount;
+                    this.numAdDownCount.Value = obj.AdDownCount;
+ 
  
 
 
@@ -78,6 +81,11 @@ namespace SPSWeb.Moudles.SPS.Reports
 
                 obj.ClientCount = Convert.ToInt32(this.numClientCount.Value);
                 obj.AdCount = Convert.ToInt32(this.numAdCount.Value);
+                obj.AdClientUseCount = Convert.ToInt32(this.numAdClientUseCount.Value);
+                obj.AdUseCount = Convert.ToInt32(this.numAdUseCount.Value);
+                obj.AdClientDownCount = Convert.ToInt32(this.numAdClientDownCount.Value);
+                obj.AdDownCount = Convert.ToInt32(this.numAdDownCount.Value);
+                
 
                 SPAdReportWrapper.Update(obj);
 

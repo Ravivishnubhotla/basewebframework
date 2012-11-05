@@ -81,8 +81,9 @@
 
     </script>
 
-    <ext:Store ID="storeSPAdReport" runat="server" AutoLoad="true" RemoteSort="true" RemotePaging="true"
-        OnRefreshData="storeSPAdReport_Refresh">
+    <ext:Store ID="storeSPAdReport" runat="server" AutoLoad="true"
+        OnRefreshData="storeSPAdReport_Refresh" GroupField="SPAd_Name">
+        <SortInfo Direction="DESC" Field="SPAd_Name" />
         <Reader>
             <ext:JsonReader IDProperty="Id">
                 <Fields>
@@ -93,7 +94,11 @@
                     <ext:RecordField Name="ReportDate" Type="Date" />
                     <ext:RecordField Name="ClientCount" Type="int" />
                     <ext:RecordField Name="AdCount" Type="int" />
-                    <ext:RecordField Name="AdAmount" Type="int" />
+                    <ext:RecordField Name="AdClientUseCount" Type="int" />
+                    <ext:RecordField Name="AdUseCount" Type="int" />
+                    <ext:RecordField Name="AdClientDownCount" Type="int" />
+                    <ext:RecordField Name="AdDownCount" Type="int" />
+                    <ext:RecordField Name="AdAmount" Type="Float" />
 
                 </Fields>
             </ext:JsonReader>
@@ -157,11 +162,26 @@
                         <ext:Column ColumnID="colClientID" DataIndex="SPClientID_Name" Header="客户" Sortable="true"
                             Groupable="True">
                         </ext:Column>
-                        <ext:GroupingSummaryColumn ColumnID="colTotalSuccessCount" Header="上家数" DataIndex="AdCount"
+                        <ext:GroupingSummaryColumn ColumnID="colTotalSuccessCount" Header="上家订阅数" DataIndex="AdCount"
                             Sortable="true" SummaryType="Sum" Groupable="False">
                         </ext:GroupingSummaryColumn>
 
-                        <ext:GroupingSummaryColumn ColumnID="colDownTotalCount" Header="下家数" DataIndex="ClientCount"
+                        <ext:GroupingSummaryColumn ColumnID="colDownTotalCount" Header="下家订阅数" DataIndex="ClientCount"
+                            Sortable="true" Groupable="False" SummaryType="Sum">
+                        </ext:GroupingSummaryColumn>
+                        <ext:GroupingSummaryColumn ColumnID="colTotalSuccessCount" Header="上家打开数" DataIndex="AdUseCount"
+                            Sortable="true" SummaryType="Sum" Groupable="False">
+                        </ext:GroupingSummaryColumn>
+
+                        <ext:GroupingSummaryColumn ColumnID="colDownTotalCount" Header="下家打开数" DataIndex="AdClientUseCount"
+                            Sortable="true" Groupable="False" SummaryType="Sum">
+                        </ext:GroupingSummaryColumn>
+
+                        <ext:GroupingSummaryColumn ColumnID="colTotalSuccessCount" Header="上家激活数" DataIndex="AdDownCount"
+                            Sortable="true" SummaryType="Sum" Groupable="False">
+                        </ext:GroupingSummaryColumn>
+
+                        <ext:GroupingSummaryColumn ColumnID="colDownTotalCount" Header="下家激活数" DataIndex="AdClientDownCount"
                             Sortable="true" Groupable="False" SummaryType="Sum">
                         </ext:GroupingSummaryColumn>
                         <ext:CommandColumn ColumnID="colManage" Header="管理" Width="60">
@@ -192,10 +212,10 @@
                     <ext:Toolbar ID="Toolbar1" runat="server">
                         <Items>
 
-                            <ext:DisplayField ID="lblTotalTotalSuccessCount" FieldLabel="总上家数" LabelWidth="60" runat="server"
+                            <ext:DisplayField ID="lblTotalTotalSuccessCount" FieldLabel="总上家订阅数" LabelWidth="60" runat="server"
                                 Text="-" />
 
-                            <ext:DisplayField ID="lblTotalDownSycnSuccess" FieldLabel="总下家数" LabelWidth="90" runat="server"
+                            <ext:DisplayField ID="lblTotalDownSycnSuccess" FieldLabel="总下家订阅数" LabelWidth="90" runat="server"
                                 Text="-" />
 
                         </Items>

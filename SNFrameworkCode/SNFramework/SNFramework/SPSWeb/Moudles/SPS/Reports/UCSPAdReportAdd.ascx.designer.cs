@@ -112,6 +112,42 @@ namespace SPSWeb.Moudles.SPS.Reports {
         protected global::Ext.Net.NumberField numClientCount;
         
         /// <summary>
+        /// numAdUseCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.NumberField numAdUseCount;
+        
+        /// <summary>
+        /// numAdClientUseCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.NumberField numAdClientUseCount;
+        
+        /// <summary>
+        /// numAdDownCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.NumberField numAdDownCount;
+        
+        /// <summary>
+        /// numAdClientDownCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.NumberField numAdClientDownCount;
+        
+        /// <summary>
         /// btnSavelSPAdReport control.
         /// </summary>
         /// <remarks>

@@ -81,9 +81,18 @@
 
                 <ext:DateField ID="dateReportDate" runat="server" FieldLabel="报表日期" AllowBlank="false" AnchorHorizontal="95%" />
 
-                <ext:NumberField ID="numAdCount" runat="server" FieldLabel="上家数" AllowBlank="false" AnchorHorizontal="95%" />
+                <ext:NumberField ID="numAdCount" runat="server" FieldLabel="上家订阅数" AllowBlank="false" AnchorHorizontal="95%" />
 
-                <ext:NumberField ID="numClientCount" runat="server" FieldLabel="下家数" AllowBlank="false" AnchorHorizontal="95%" />
+                <ext:NumberField ID="numClientCount" runat="server" FieldLabel="下家订阅数" AllowBlank="false" AnchorHorizontal="95%" />
+
+                <ext:NumberField ID="numAdUseCount" runat="server" FieldLabel="上家打开数" AllowBlank="false" AnchorHorizontal="95%" />
+
+                <ext:NumberField ID="numAdClientUseCount" runat="server" FieldLabel="下家打开数" AllowBlank="false" AnchorHorizontal="95%" />
+
+
+                <ext:NumberField ID="numAdDownCount" runat="server" FieldLabel="上家激活数" AllowBlank="false" AnchorHorizontal="95%" />
+
+                <ext:NumberField ID="numAdClientDownCount" runat="server" FieldLabel="下家激活数" AllowBlank="false" AnchorHorizontal="95%" />
 
             </Items>
         </ext:FormPanel>

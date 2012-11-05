@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Text;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using System.Runtime.Serialization;
 using SPS.Entity.Tables;
@@ -103,7 +104,23 @@ namespace SPS.Bussiness.Wrappers
 			
 		#endregion
 
- 
+	    public string AdInfo
+	    {
+	        get
+	        {
+	            StringBuilder sb = new StringBuilder();
+                sb.AppendLine("广告包信息：<br/><ul>");
+	            List<SPAdPackWrapper> packs = SPAdPackWrapper.FindAllBySPAdID(this);
+	            foreach (SPAdPackWrapper spAdPackWrapper in packs)
+	            {
+                    sb.AppendLine("<li>" + spAdPackWrapper.Name + " 分配客户：" + spAdPackWrapper.AssignedClientName + "</li>");
+	            }
+                sb.AppendLine("</ul>");
+	            return sb.ToString();
+	        }
+	    }
+
+
 
     }
 }
