@@ -150,7 +150,24 @@
             <ext:Parameter Name="GroupCode" Value="AcountType" Mode="Value" />
         </BaseParams>
     </ext:Store>
+    <style type="text/css">
+        .x-grid3-td-fullName .x-grid3-cell-inner
+        {
+            font-family: tahoma, verdana;
+            display: block;
+            font-weight: normal;
+            font-style: normal;
+            color: #385F95;
+            white-space: normal;
+        }
 
+        .x-grid3-row-body p
+        {
+            margin: 5px 5px 10px 5px !important;
+            width: 99%;
+            color: Gray;
+        }
+    </style>
 
     <ext:Store ID="storeSPAdvertisement" runat="server" AutoLoad="true" RemoteSort="true" RemotePaging="true"
         OnRefreshData="storeSPAdvertisement_Refresh">
@@ -176,8 +193,7 @@
                     <ext:RecordField Name="Description" />
                     <ext:RecordField Name="IsDisable" Type="Boolean" />
                     <ext:RecordField Name="UpperID_Name" />
-
-
+                    <ext:RecordField Name="AdInfo" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -208,14 +224,12 @@
                     </ext:Toolbar>
                 </TopBar>
                 <View>
-                    <ext:GridView ForceFit="true" ID="GridView1">
-                        <GetRowClass Handler="" FormatHandler="False"></GetRowClass>
+                    <ext:GridView ForceFit="true" ID="GridView1" EnableRowBody="true">
+                        <GetRowClass Handler="rowParams.body = '<p>' + record.data.AdInfo + '</p>'; return 'x-grid3-row-expanded';" />
                     </ext:GridView>
                 </View>
                 <ColumnModel ID="ColumnModel1" runat="server">
                     <Columns>
-                        <ext:RowNumbererColumn>
-                        </ext:RowNumbererColumn>
                         <ext:Column ColumnID="colUpperID_Name" DataIndex="UpperID_Name" Header="所属上家" Sortable="true">
                         </ext:Column>
                         <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">

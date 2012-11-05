@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="ReportAdDataRange.aspx.cs" Inherits="SPSWeb.Moudles.SPS.ClientView.ReportAdDataRange" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
@@ -76,8 +77,9 @@
 
     </script>
 
-    <ext:Store ID="storeSPAdReport" runat="server" AutoLoad="true" RemoteSort="true" RemotePaging="true"
-        OnRefreshData="storeSPAdReport_Refresh">
+    <ext:Store ID="storeSPAdReport" runat="server" AutoLoad="true"
+        OnRefreshData="storeSPAdReport_Refresh" GroupField="SPAd_Name">
+        <SortInfo Direction="DESC" Field="SPAd_Name" />
         <Reader>
             <ext:JsonReader IDProperty="Id">
                 <Fields>
@@ -87,7 +89,8 @@
                     <ext:RecordField Name="SPClientID_Name" />
                     <ext:RecordField Name="ReportDate" Type="Date" />
                     <ext:RecordField Name="ClientCount" Type="int" />
-                    <ext:RecordField Name="AdCount" Type="int" />
+                    <ext:RecordField Name="AdClientUseCount" Type="int" />
+                    <ext:RecordField Name="AdClientDownCount" Type="int" />
                     <ext:RecordField Name="AdAmount" Type="int" />
 
                 </Fields>
@@ -96,7 +99,7 @@
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
- 
+
 
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
@@ -121,7 +124,7 @@
                                     <Click Handler="#{gridPanelSPAdReport}.getView().toggleAllGroups();" />
                                 </Listeners>
                             </ext:Button>
- 
+
                         </Items>
                     </ext:Toolbar>
                 </TopBar>
@@ -141,12 +144,21 @@
                         <ext:Column ColumnID="colAdPackID" DataIndex="SPAdPack_Name" Header="广告包" Sortable="true"
                             Groupable="True">
                         </ext:Column>
- 
 
-                        <ext:GroupingSummaryColumn ColumnID="colDownTotalCount" Header="点播数" DataIndex="ClientCount"
+
+                        <ext:GroupingSummaryColumn ColumnID="colDownTotalCount" Header="订阅数" DataIndex="ClientCount"
                             Sortable="true" Groupable="False" SummaryType="Sum">
                         </ext:GroupingSummaryColumn>
- 
+
+
+                        <ext:GroupingSummaryColumn ColumnID="colDownTotalCount" Header="打开数" DataIndex="AdClientUseCount"
+                            Sortable="true" Groupable="False" SummaryType="Sum">
+                        </ext:GroupingSummaryColumn>
+
+                        <ext:GroupingSummaryColumn ColumnID="colDownTotalCount" Header="激活数" DataIndex="AdClientDownCount"
+                            Sortable="true" Groupable="False" SummaryType="Sum">
+                        </ext:GroupingSummaryColumn>
+
                     </Columns>
                 </ColumnModel>
                 <LoadMask ShowMask="true" />
@@ -161,8 +173,7 @@
                     <ext:Toolbar ID="Toolbar1" runat="server">
                         <Items>
  
-
-                            <ext:DisplayField ID="lblTotalDownSycnSuccess" FieldLabel="总点播数" LabelWidth="90" runat="server"
+                            <ext:DisplayField ID="lblTotalDownSycnSuccess" FieldLabel="总订阅数" LabelWidth="90" runat="server"
                                 Text="-" />
 
                         </Items>

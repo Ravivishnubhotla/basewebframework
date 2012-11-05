@@ -66,6 +66,10 @@ namespace SPSWeb.Moudles.SPS.Reports
                 obj.ReportDate = this.dateReportDate.SelectedDate;
                 obj.ClientCount = Convert.ToInt32(this.numClientCount.Value);
                 obj.AdCount = Convert.ToInt32(this.numAdCount.Value);
+                obj.AdClientUseCount = Convert.ToInt32(this.numAdClientUseCount.Value);
+                obj.AdUseCount = Convert.ToInt32(this.numAdUseCount.Value);
+                obj.AdClientDownCount = Convert.ToInt32(this.numAdClientDownCount.Value);
+                obj.AdDownCount = Convert.ToInt32(this.numAdDownCount.Value);
                 obj.AdAmount = 1;
                 obj.CreateAt = System.DateTime.Now;
                 obj.LastModifyAt = System.DateTime.Now;

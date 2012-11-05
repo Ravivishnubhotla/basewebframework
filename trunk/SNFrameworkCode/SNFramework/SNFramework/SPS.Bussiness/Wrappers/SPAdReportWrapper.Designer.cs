@@ -114,6 +114,10 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_REPORTDATE = "ReportDate";
 		public static readonly string PROPERTY_NAME_CLIENTCOUNT = "ClientCount";
 		public static readonly string PROPERTY_NAME_ADCOUNT = "AdCount";
+		public static readonly string PROPERTY_NAME_ADUSECOUNT = "AdUseCount";
+		public static readonly string PROPERTY_NAME_ADCLIENTUSECOUNT = "AdClientUseCount";
+		public static readonly string PROPERTY_NAME_ADDOWNCOUNT = "AdDownCount";
+		public static readonly string PROPERTY_NAME_ADCLIENTDOWNCOUNT = "AdClientDownCount";
 		public static readonly string PROPERTY_NAME_ADAMOUNT = "AdAmount";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
@@ -267,6 +271,66 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.AdCount = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? AdUseCount
+		{
+			get
+			{
+				return entity.AdUseCount;
+			}
+			set
+			{
+				entity.AdUseCount = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? AdClientUseCount
+		{
+			get
+			{
+				return entity.AdClientUseCount;
+			}
+			set
+			{
+				entity.AdClientUseCount = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? AdDownCount
+		{
+			get
+			{
+				return entity.AdDownCount;
+			}
+			set
+			{
+				entity.AdDownCount = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public int? AdClientDownCount
+		{
+			get
+			{
+				return entity.AdClientDownCount;
+			}
+			set
+			{
+				entity.AdClientDownCount = value;
 			}
 		}
 		/// <summary>
