@@ -121,6 +121,9 @@ namespace SPS.Bussiness.Wrappers
 	    }
 
 
-
+	    public static void TestTransateion()
+	    {
+	        businessProxy.TestTransateion();
+	    }
     }
 }

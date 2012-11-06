@@ -65,6 +65,10 @@ namespace SPS.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_REPORTDATE = new DateTimeProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_REPORTDATE));		
 		public static readonly IntProperty PROPERTY_CLIENTCOUNT = new IntProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_CLIENTCOUNT));		
 		public static readonly IntProperty PROPERTY_ADCOUNT = new IntProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_ADCOUNT));		
+		public static readonly IntProperty PROPERTY_ADUSECOUNT = new IntProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_ADUSECOUNT));		
+		public static readonly IntProperty PROPERTY_ADCLIENTUSECOUNT = new IntProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_ADCLIENTUSECOUNT));		
+		public static readonly IntProperty PROPERTY_ADDOWNCOUNT = new IntProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_ADDOWNCOUNT));		
+		public static readonly IntProperty PROPERTY_ADCLIENTDOWNCOUNT = new IntProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_ADCLIENTDOWNCOUNT));		
 		public static readonly DecimalProperty PROPERTY_ADAMOUNT = new DecimalProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_ADAMOUNT));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_CREATEBY));		
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_CREATEAT));		
@@ -113,6 +117,14 @@ namespace SPS.Data.Tables
                 case "ClientCount":
                     return typeof (int);
                 case "AdCount":
+                    return typeof (int);
+                case "AdUseCount":
+                    return typeof (int);
+                case "AdClientUseCount":
+                    return typeof (int);
+                case "AdDownCount":
+                    return typeof (int);
+                case "AdClientDownCount":
                     return typeof (int);
                 case "AdAmount":
                     return typeof (decimal);
