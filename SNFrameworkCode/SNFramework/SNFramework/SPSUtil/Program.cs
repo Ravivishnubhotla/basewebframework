@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
+using SPS.Bussiness.Wrappers;
 using SubSonic.Repository;
 
 namespace SPSUtil
@@ -20,6 +22,22 @@ namespace SPSUtil
         {
             try
             {
+
+                List<SystemConfigWrapper> settings = SystemConfigWrapper.FindAll();
+
+                SystemShortMessageWrapper shortMessage = new SystemShortMessageWrapper();
+                shortMessage.Title = "";
+                shortMessage.MessageType = "1";
+                shortMessage.SendDate = System.DateTime.Now;
+                SystemShortMessageWrapper.Save(shortMessage);
+                Console.WriteLine(shortMessage.Id);
+                Console.WriteLine(settings[0].ConfigGroupID.Code);
+
+
+
+
+                SPAdvertisementWrapper.TestTransateion();
+
                 //处理未捕获的异常   
                 Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
                 //处理UI线程异常   

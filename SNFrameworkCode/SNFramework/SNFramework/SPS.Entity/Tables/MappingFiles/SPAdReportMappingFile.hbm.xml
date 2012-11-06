@@ -17,6 +17,10 @@
 		<property column="ReportDate" type="DateTime" name="ReportDate"   />	
 		<property column="ClientCount" type="int" name="ClientCount"   />	
 		<property column="AdCount" type="int" name="AdCount"   />	
+		<property column="AdUseCount" type="int" name="AdUseCount"   />	
+		<property column="AdClientUseCount" type="int" name="AdClientUseCount"   />	
+		<property column="AdDownCount" type="int" name="AdDownCount"   />	
+		<property column="AdClientDownCount" type="int" name="AdClientDownCount"   />	
 		<property column="AdAmount" type="Decimal" name="AdAmount"   />	
 		<property column="CreateBy" type="int" name="CreateBy"   not-null="true"  />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   not-null="true"  />	
