@@ -66,18 +66,21 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
         //private string _DBConfigurationPropertyName;
         #region 业务逻辑代码设置
         [Category("[业务逻辑代码设置]"), ReadOnly(false), Description("预加载名称空间"), Browsable(true)]
+        [Editor(typeof(MultilineTextEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string BussinessCodeImportNameSpace
         {
             get { return _bussinessCodeImportNameSpace; }
             set { _bussinessCodeImportNameSpace = value; }
         }
         [Category("[业务逻辑代码设置]"), ReadOnly(false), Description("设计类生成地址"), Browsable(true)]
+        [Editor(typeof(FolderNameEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string BussinessBaseCodeClassFilePath
         {
             get { return _bussinessBaseCodeClassFilePath; }
             set { _bussinessBaseCodeClassFilePath = value; }
         }
         [Category("[业务逻辑代码设置]"), ReadOnly(false), Description("类生成地址"), Browsable(true)]
+        [Editor(typeof(FolderNameEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string BussinessCodeClassFilePath
         {
             get { return _bussinessCodeClassFilePath; }
@@ -123,6 +126,7 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
 
         #region 数据层代码设置
         [Category("[数据层代码设置]"), ReadOnly(false), Description("预加载名称空间"), Browsable(true)]
+        [Editor(typeof(MultilineTextEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string DataCodeImportNameSpace
         {
             get { return _dataCodeImportNameSpace; }
@@ -135,6 +139,7 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
             set { _dataCodePropertyMemberPrefix = value; }
         }
         [Category("[数据层代码设置]"), ReadOnly(false), Description("类生成路径"), Browsable(true)]
+        [Editor(typeof(FolderNameEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string DataCodeClassFilePath
         {
             get { return _dataCodeClassFilePath; }
@@ -153,6 +158,7 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
             set { _dataCodeClassNameFormat = value; }
         }
         [Category("[数据层代码设置]"), ReadOnly(false), Description("设计类生成路径"), Browsable(true)]
+        [Editor(typeof(FolderNameEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string DataBaseCodeClassFilePath
         {
             get { return _dataBaseCodeClassFilePath; }
