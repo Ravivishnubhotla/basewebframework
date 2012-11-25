@@ -34,6 +34,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_ADDOWNCOUNT = "AdDownCount";
 		public static readonly string PROPERTY_NAME_ADCLIENTDOWNCOUNT = "AdClientDownCount";
 		public static readonly string PROPERTY_NAME_ADAMOUNT = "AdAmount";
+		public static readonly string PROPERTY_NAME_CLIENTAMOUNT = "ClientAmount";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -50,6 +51,7 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_SPPACKID_NAME = "SPPackID_SPAdReportEntity_Alias.Name";
 		public const string PROPERTY_SPPACKID_CODE = "SPPackID_SPAdReportEntity_Alias.Code";
 		public const string PROPERTY_SPPACKID_DESCRIPTION = "SPPackID_SPAdReportEntity_Alias.Description";
+		public const string PROPERTY_SPPACKID_ADPRICE = "SPPackID_SPAdReportEntity_Alias.AdPrice";
 		#endregion
 		#region sPClientID字段外键查询字段
         public const string PROPERTY_SPCLIENTID_ALIAS_NAME = "SPClientID_SPAdReportEntity_Alias";
@@ -97,6 +99,7 @@ namespace SPS.Entity.Tables
 		private int? _adDownCount;
 		private int? _adClientDownCount;
 		private decimal? _adAmount;
+		private decimal? _clientAmount;
 		private int _createBy;
 		private DateTime _createAt;
 		private int? _lastModifyBy;
@@ -123,6 +126,7 @@ namespace SPS.Entity.Tables
 			_adDownCount = null;
 			_adClientDownCount = null;
 			_adAmount = null;
+			_clientAmount = null;
 			_createBy = 0;
 			_createAt = DateTime.MinValue;
 			_lastModifyBy = null;
@@ -135,7 +139,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPAdReportEntity( int id, int? sPAdID, SPAdPackEntity sPPackID, SPSClientEntity sPClientID, DateTime? reportDate, int? clientCount, int? adCount, int? adUseCount, int? adClientUseCount, int? adDownCount, int? adClientDownCount, decimal? adAmount, int createBy, DateTime createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPAdReportEntity( int id, int? sPAdID, SPAdPackEntity sPPackID, SPSClientEntity sPClientID, DateTime? reportDate, int? clientCount, int? adCount, int? adUseCount, int? adClientUseCount, int? adDownCount, int? adClientDownCount, decimal? adAmount, decimal? clientAmount, int createBy, DateTime createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_sPAdID = sPAdID;
@@ -149,6 +153,7 @@ namespace SPS.Entity.Tables
 			_adDownCount = adDownCount;
 			_adClientDownCount = adClientDownCount;
 			_adAmount = adAmount;
+			_clientAmount = clientAmount;
 			_createBy = createBy;
 			_createAt = createAt;
 			_lastModifyBy = lastModifyBy;
@@ -324,6 +329,20 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_adAmount != value); _adAmount = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual decimal? ClientAmount
+		{
+			get { return _clientAmount; }
+
+			set	
+			{
+				_isChanged |= (_clientAmount != value); _clientAmount = value;
 			}
 		}
 

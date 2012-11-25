@@ -22,6 +22,7 @@
 		<property column="AdDownCount" type="int" name="AdDownCount"   />	
 		<property column="AdClientDownCount" type="int" name="AdClientDownCount"   />	
 		<property column="AdAmount" type="Decimal" name="AdAmount"   />	
+		<property column="ClientAmount" type="Decimal" name="ClientAmount"   />	
 		<property column="CreateBy" type="int" name="CreateBy"   not-null="true"  />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   not-null="true"  />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

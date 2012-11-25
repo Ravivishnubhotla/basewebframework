@@ -48,21 +48,21 @@ public class GeneratedTemplate : DotNetScriptTemplate
 		
 		IDatabase database = MyMeta.Databases[databaseName];
 		
-		DataSet dsRoles = DataAccessHelper.GetDataSetBySql("Select * from SystemRole");
+		//DataSet dsRoles = DataAccessHelper.GetDataSetBySql("Select * from SystemRole");
 		
-		GenerateRoleNameClass(dsRoles.Tables[0]);
+		//GenerateRoleNameClass(dsRoles.Tables[0]);
 		
-	    DataSet dsPermisions = DataAccessHelper.GetDataSetBySql("SELECT     dbo.SystemResources.Resources_NameEn, dbo.SystemResources.Resources_NameCn, dbo.SystemPrivilege.* FROM         dbo.SystemPrivilege INNER JOIN  dbo.SystemResources ON dbo.SystemPrivilege.Resources_ID = dbo.SystemResources.Resources_ID order by dbo.SystemPrivilege.Resources_ID asc,dbo.SystemPrivilege.PrivilegeOrder asc");
+	    //DataSet dsPermisions = DataAccessHelper.GetDataSetBySql("SELECT     dbo.SystemResources.Resources_NameEn, dbo.SystemResources.Resources_NameCn, dbo.SystemPrivilege.* FROM         dbo.SystemPrivilege INNER JOIN  dbo.SystemResources ON dbo.SystemPrivilege.Resources_ID = dbo.SystemResources.Resources_ID order by dbo.SystemPrivilege.Resources_ID asc,dbo.SystemPrivilege.PrivilegeOrder asc");
 		
-		GeneratePermissinNameClass(dsPermisions.Tables[0]);
+		//GeneratePermissinNameClass(dsPermisions.Tables[0]);
 		
-		DataSet dsDictionaryCategory = DataAccessHelper.GetDataSetBySql("SELECT * FROM [SystemDictionaryGroup]");
+		DataSet dsDictionaryCategory = DataAccessHelper.GetDataSetBySql("SELECT * FROM [DictionaryGroup]");
 		
 		GenerateDictionaryWrapperClass(dsDictionaryCategory.Tables[0]);
 		
-		DataSet dsConfigData = DataAccessHelper.GetDataSetBySql("SELECT    dbo.SystemConfig.*, ISNULL(dbo.SystemConfigGroup.Name, '') AS GroupName,  ISNULL(dbo.SystemConfigGroup.Code, '') AS GroupCode FROM dbo.SystemConfig LEFT OUTER JOIN dbo.SystemConfigGroup ON dbo.SystemConfig.Config_GroupID = dbo.SystemConfigGroup.ID ORDER BY GroupName");
+		//DataSet dsConfigData = DataAccessHelper.GetDataSetBySql("SELECT    dbo.SystemConfig.*, ISNULL(dbo.SystemConfigGroup.Name, '') AS GroupName,  ISNULL(dbo.SystemConfigGroup.Code, '') AS GroupCode FROM dbo.SystemConfig LEFT OUTER JOIN dbo.SystemConfigGroup ON dbo.SystemConfig.Config_GroupID = dbo.SystemConfigGroup.ID ORDER BY GroupName");
 		
-		GenerateConfigWrapperClass(dsConfigData.Tables[0]);
+		//GenerateConfigWrapperClass(dsConfigData.Tables[0]);
 		
 	}
 	
@@ -163,10 +163,10 @@ public class GeneratedTemplate : DotNetScriptTemplate
             return SystemDictionaryWrapper.ParseDictionaryValueByGroupCodeAndKey(Dictionary_GroupCode_<%= dr["Code"].ToString() %>, key); 
         }
 		#region KeyList
-<%      DataSet dsDictionaryItems = DataAccessHelper.GetDataSetBySql("SELECT *  FROM SystemDictionary where SystemDictionary_GroupID = '"+dr["ID"].ToString()+"'");
+<%      DataSet dsDictionaryItems = DataAccessHelper.GetDataSetBySql("SELECT *  FROM Dictionary where GroupID = '"+dr["ID"].ToString()+"'");
 		 foreach(DataRow dr1 in dsDictionaryItems.Tables[0].Rows){
-%>			///<%= dr1["SystemDictionary_Value"].ToString() %>
-			public const string Dictionary_<%=dr["Code"].ToString() %>_<%= dr1["SystemDictionary_Code"].ToString() %>_Key = "<%= dr1["SystemDictionary_Key"].ToString() %>";
+%>			///<%= dr1["Value"].ToString() %>
+			public const string Dictionary_<%=dr["Code"].ToString() %>_<%= dr1["Code"].ToString() %>_Key = "<%= dr1["DictionaryKey"].ToString() %>";
 <%		}
 %>		#endregion 
 		

@@ -35,6 +35,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_SPPACKID_NAME = new StringProperty(Property.ForName(PROPERTY_SPPACKID_ALIAS_NAME + ".Name"));
 		public static readonly StringProperty PROPERTY_SPPACKID_CODE = new StringProperty(Property.ForName(PROPERTY_SPPACKID_ALIAS_NAME + ".Code"));
 		public static readonly StringProperty PROPERTY_SPPACKID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_SPPACKID_ALIAS_NAME + ".Description"));
+		public static readonly DecimalProperty PROPERTY_SPPACKID_ADPRICE = new DecimalProperty(Property.ForName(PROPERTY_SPPACKID_ALIAS_NAME + ".AdPrice"));
 		#endregion
 		public static readonly EntityProperty<SPSClientEntity> PROPERTY_SPCLIENTID = new EntityProperty<SPSClientEntity>(Property.ForName(SPAdReportEntity.PROPERTY_NAME_SPCLIENTID));
 		#region sPClientID字段外键查询字段
@@ -70,6 +71,7 @@ namespace SPS.Data.Tables
 		public static readonly IntProperty PROPERTY_ADDOWNCOUNT = new IntProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_ADDOWNCOUNT));		
 		public static readonly IntProperty PROPERTY_ADCLIENTDOWNCOUNT = new IntProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_ADCLIENTDOWNCOUNT));		
 		public static readonly DecimalProperty PROPERTY_ADAMOUNT = new DecimalProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_ADAMOUNT));		
+		public static readonly DecimalProperty PROPERTY_CLIENTAMOUNT = new DecimalProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_CLIENTAMOUNT));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_CREATEBY));		
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPAdReportEntity.PROPERTY_NAME_LASTMODIFYBY));		
@@ -128,6 +130,8 @@ namespace SPS.Data.Tables
                     return typeof (int);
                 case "AdAmount":
                     return typeof (decimal);
+                case "ClientAmount":
+                    return typeof (decimal);
                 case "CreateBy":
                     return typeof (int);
                 case "CreateAt":
@@ -161,6 +165,8 @@ namespace SPS.Data.Tables
 							return typeof (string);
                 		case "SPPackID_SPAdReportEntity_Alias.Description":
 							return typeof (string);
+                		case "SPPackID_SPAdReportEntity_Alias.AdPrice":
+							return typeof (decimal);
           			}
                     break;
 	            case "SPClientID_SPAdReportEntity_Alias":

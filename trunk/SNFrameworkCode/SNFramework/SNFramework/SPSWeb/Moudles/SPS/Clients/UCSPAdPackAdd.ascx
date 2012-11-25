@@ -70,7 +70,7 @@
                         </Html>
                     </Template>
                 </ext:ComboBox>
-              
+                               <ext:NumberField ID="numClientPrice" runat="server" FieldLabel="·ÖÅä¼Û¸ñ" AllowBlank="false" AllowDecimals="True" DecimalPrecision="2" AnchorHorizontal="95%" />
 
             </Items>
         </ext:FormPanel>

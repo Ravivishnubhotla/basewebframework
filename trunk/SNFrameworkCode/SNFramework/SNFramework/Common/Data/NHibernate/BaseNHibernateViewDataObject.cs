@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Web;
 using Common.Logging;
@@ -884,20 +885,30 @@ namespace Legendigital.Framework.Common.Data.NHibernate
 
         #endregion
 
+        #region 其他功能
 
+        /// <summary>
+        /// 获取数据元数据
+        /// </summary>
+        /// <returns>元数据</returns>
         public virtual IClassMetadata GetClassMetadata()
         {
             try
             {
-                return HibernateTemplate.SessionFactory.GetClassMetadata(typeof(DomainType));
+                return HibernateTemplate.SessionFactory.GetClassMetadata(typeof (DomainType));
             }
             catch (Exception ex)
             {
                 Logger.Error("GetClassMetadata Failed:", ex);
-                throw new DataException("Could not perform GetClassMetadata for " + typeof(DomainType).Name, ex);
+                throw new DataException("Could not perform GetClassMetadata for " + typeof (DomainType).Name, ex);
             }
         }
 
+        /// <summary>
+        /// 查找用户是否包含属性
+        /// </summary>
+        /// <param name="propertyName">属性名</param>
+        /// <returns></returns>
         public bool CheckEntityHasProperty(string propertyName)
         {
             IClassMetadata classMetadata = GetClassMetadata();
@@ -905,19 +916,59 @@ namespace Legendigital.Framework.Common.Data.NHibernate
             return (classMetadata.GetPropertyType(propertyName) != null);
         }
 
-        public object GetEntityPropertyValue(string propertyName,DomainType domain)
+        /// <summary>
+        /// 查找用户是否包含属性
+        /// </summary>
+        /// <param name="propertyName">属性名</param>
+        /// <param name="domain">类型</param>
+        /// <returns></returns>
+        public object GetEntityPropertyValue(string propertyName, DomainType domain)
         {
             IClassMetadata classMetadata = GetClassMetadata();
 
-            return (classMetadata.GetPropertyValue(domain, propertyName,EntityMode.Poco));
+            return (classMetadata.GetPropertyValue(domain, propertyName, EntityMode.Poco));
         }
 
-        public virtual List<DomainType> QueryOver(System.Linq.Expressions.Expression<Func<DomainType>> query)
+        /// <summary>
+        /// Linq查询
+        /// </summary>
+        /// <param name="query">Linq表达式</param>
+        /// <returns></returns>
+        public virtual List<DomainType> QueryOver(Expression<Func<DomainType>> query)
         {
             ISession session = GetCurrentSession();
 
             return new List<DomainType>(session.QueryOver(query).List<DomainType>());
         }
+
+        /// <summary>
+        /// SQL语句分页查询
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="countsql"></param>
+        /// <param name="pageQueryParams"></param>
+        /// <returns></returns>
+        public virtual List<DomainType> FindAllBySqlAndPage(string sql, string countsql, PageQueryParams pageQueryParams)
+        {
+            pageQueryParams.RecordCount = GetCurrentSession().CreateSQLQuery(countsql).UniqueResult<int>();
+
+            return ConvertToTypedList(
+                GetCurrentSession().CreateSQLQuery(sql).AddEntity(typeof(DomainType)).SetFirstResult(pageQueryParams.FristRecord).SetMaxResults(pageQueryParams.MaxRecord).List<DomainType>());
+        }
+        /// <summary>
+        /// SQL语句直接查询
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public virtual List<DomainType> FindAllBySql(string sql)
+        {
+            return ConvertToTypedList(
+                GetCurrentSession().CreateSQLQuery(sql).AddEntity(typeof(DomainType)).List<DomainType>());
+        }
+
+
+        #endregion
+
 
 
     }

@@ -67,6 +67,15 @@ namespace SPSWeb.Moudles.SPS.Ads {
         protected global::Ext.Net.TextField txtDescription;
         
         /// <summary>
+        /// numAdPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.NumberField numAdPrice;
+        
+        /// <summary>
         /// btnSaveSPAdPack control.
         /// </summary>
         /// <remarks>

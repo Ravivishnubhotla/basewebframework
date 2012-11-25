@@ -16,6 +16,8 @@
               
 			
 						<ext:TextField ID="txtDescription" runat="server" FieldLabel="描述" AllowBlank="True"  AnchorHorizontal="95%" />
+                
+                 <ext:NumberField ID="numAdPrice" runat="server" FieldLabel="广告价格" AllowBlank="false" AllowDecimals="True" DecimalPrecision="2" AnchorHorizontal="95%" />
               
 
             </Items>

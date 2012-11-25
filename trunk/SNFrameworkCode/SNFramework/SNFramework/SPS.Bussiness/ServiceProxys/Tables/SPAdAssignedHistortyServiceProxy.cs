@@ -25,7 +25,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
 	public interface ISPAdAssignedHistortyServiceProxy : IBaseSpringNHibernateEntityServiceProxy<SPAdAssignedHistortyEntity,int> ,ISPAdAssignedHistortyServiceProxyDesigner
     {
 	    List<SPAdPackEntity> FindAllCLientAssignedAdPack(SPSClientEntity client);
-	    void ClientAssignedAdPack(SPSClientEntity spsClientEntity, SPAdPackEntity spAdPackEntity);
+	    void ClientAssignedAdPack(SPSClientEntity spsClientEntity, SPAdPackEntity spAdPackEntity, decimal clientPrice);
 	    void RemoveAdAssigned(SPAdPackEntity spAdPackEntity, SPSClientEntity spsClientEntity);
 	    SPSClientEntity GetAdPackAssignedClient(SPAdPackEntity spAdPackEntity);
     }
@@ -50,7 +50,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         }
 
         [Transaction(TransactionPropagation.Required, ReadOnly = false)]
-        public void ClientAssignedAdPack(SPSClientEntity spsClientEntity, SPAdPackEntity spAdPackEntity)
+        public void ClientAssignedAdPack(SPSClientEntity spsClientEntity, SPAdPackEntity spAdPackEntity, decimal clientPrice)
         {
             SPAdAssignedHistortyEntity spAdAssignedHistorty = this.SelfDataObj.FindAssignedHistortybyAdPack(spAdPackEntity);
 
@@ -66,6 +66,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             newspAdAssignedHistorty.SPAdID = spAdPackEntity.SPAdID.Id;
             newspAdAssignedHistorty.SPAdPackID = spAdPackEntity;
             newspAdAssignedHistorty.SPClientID = spsClientEntity;
+            newspAdAssignedHistorty.ClientPrice = clientPrice;
             newspAdAssignedHistorty.StartDate = System.DateTime.Now;
             newspAdAssignedHistorty.CreateAt = System.DateTime.Now;
 

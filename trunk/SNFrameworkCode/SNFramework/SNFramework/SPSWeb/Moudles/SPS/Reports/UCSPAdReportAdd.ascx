@@ -89,7 +89,6 @@
 
                 <ext:NumberField ID="numAdClientUseCount" runat="server" FieldLabel="下家打开数" AllowBlank="false" AnchorHorizontal="95%" />
 
-
                 <ext:NumberField ID="numAdDownCount" runat="server" FieldLabel="上家激活数" AllowBlank="false" AnchorHorizontal="95%" />
 
                 <ext:NumberField ID="numAdClientDownCount" runat="server" FieldLabel="下家激活数" AllowBlank="false" AnchorHorizontal="95%" />

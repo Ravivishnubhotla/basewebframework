@@ -27,6 +27,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_CODE = "Code";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
+		public static readonly string PROPERTY_NAME_ADPRICE = "AdPrice";
 		
         #endregion
 	
@@ -70,6 +71,7 @@ namespace SPS.Entity.Tables
 		private string _name;
 		private string _code;
 		private string _description;
+		private decimal? _adPrice;
 		
 		#endregion
 
@@ -84,6 +86,7 @@ namespace SPS.Entity.Tables
 			_name = null;
 			_code = null;
 			_description = null;
+			_adPrice = null;
 		}
 		#endregion
 
@@ -91,13 +94,14 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPAdPackEntity( int id, SPAdvertisementEntity sPAdID, string name, string code, string description)
+		public SPAdPackEntity( int id, SPAdvertisementEntity sPAdID, string name, string code, string description, decimal? adPrice)
 		{
 			_id = id;
 			_sPAdID = sPAdID;
 			_name = name;
 			_code = code;
 			_description = description;
+			_adPrice = adPrice;
 		}
 		#endregion     
 	
@@ -179,6 +183,20 @@ namespace SPS.Entity.Tables
 				if( value != null && value.Length > 100)
 					throw new ArgumentOutOfRangeException("Invalid value for Description", value, value.ToString());
 				_isChanged |= (_description != value); _description = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual decimal? AdPrice
+		{
+			get { return _adPrice; }
+
+			set	
+			{
+				_isChanged |= (_adPrice != value); _adPrice = value;
 			}
 		}
 	

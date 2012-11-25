@@ -15,6 +15,7 @@
 		<property column="Name" type="string" name="Name"   length="100" />	
 		<property column="Code" type="string" name="Code"   length="100" />	
 		<property column="Description" type="string" name="Description"   length="100" />	
+		<property column="AdPrice" type="Decimal" name="AdPrice"   />	
 
 
 

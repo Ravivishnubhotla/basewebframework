@@ -102,6 +102,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_NAME = "Name";
 		public static readonly string PROPERTY_NAME_CODE = "Code";
 		public static readonly string PROPERTY_NAME_DESCRIPTION = "Description";
+		public static readonly string PROPERTY_NAME_ADPRICE = "AdPrice";
 		
         #endregion
 	
@@ -211,6 +212,21 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.Description = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public decimal? AdPrice
+		{
+			get
+			{
+				return entity.AdPrice;
+			}
+			set
+			{
+				entity.AdPrice = value;
 			}
 		}
 		#endregion 

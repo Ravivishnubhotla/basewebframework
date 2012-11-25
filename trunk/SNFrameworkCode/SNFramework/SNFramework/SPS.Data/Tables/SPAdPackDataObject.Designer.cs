@@ -51,6 +51,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_NAME = new StringProperty(Property.ForName(SPAdPackEntity.PROPERTY_NAME_NAME));		
 		public static readonly StringProperty PROPERTY_CODE = new StringProperty(Property.ForName(SPAdPackEntity.PROPERTY_NAME_CODE));		
 		public static readonly StringProperty PROPERTY_DESCRIPTION = new StringProperty(Property.ForName(SPAdPackEntity.PROPERTY_NAME_DESCRIPTION));		
+		public static readonly DecimalProperty PROPERTY_ADPRICE = new DecimalProperty(Property.ForName(SPAdPackEntity.PROPERTY_NAME_ADPRICE));		
       
 
 
@@ -90,6 +91,8 @@ namespace SPS.Data.Tables
                     return typeof (string);
                 case "Description":
                     return typeof (string);
+                case "AdPrice":
+                    return typeof (decimal);
           }
 			return typeof(string);
         }
