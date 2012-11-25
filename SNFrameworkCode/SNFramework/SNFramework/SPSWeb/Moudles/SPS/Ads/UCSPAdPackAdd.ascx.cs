@@ -55,7 +55,7 @@ namespace SPSWeb.Moudles.SPS.Ads
                 obj.Name = this.txtName.Text.Trim();
                 obj.Code = this.txtCode.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
-
+                obj.AdPrice = Convert.ToDecimal(this.numAdPrice.Value);
 
 
 

@@ -104,9 +104,11 @@
         <Reader>
             <ext:JsonReader IDProperty="Id">
                 <Fields>
-                    <ext:RecordField Name="Name" />
+                    <ext:RecordField Name="Name" /> 
                     <ext:RecordField Name="Code" />
                     <ext:RecordField Name="Description" />
+                      <ext:RecordField Name="AdPrice" Type="Float" />                  
+                    
                                               <ext:RecordField Name="AssignedClientName" />    
                 </Fields>
             </ext:JsonReader>
@@ -156,6 +158,10 @@
                         </ext:Column>
                         <ext:Column ColumnID="colCode" DataIndex="Code" Header="编码" Sortable="true">
                         </ext:Column>
+                        
+                         <ext:Column ColumnID="colAdPrice" DataIndex="AdPrice" Header="价格" Sortable="true">
+                        </ext:Column>                       
+                        
                         <ext:Column ColumnID="colDescription" DataIndex="Description" Header="描述" Sortable="true">
                         </ext:Column>
 

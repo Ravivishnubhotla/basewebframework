@@ -35,6 +35,7 @@ namespace SPS.Data.Tables
 		public static readonly StringProperty PROPERTY_SPADPACKID_NAME = new StringProperty(Property.ForName(PROPERTY_SPADPACKID_ALIAS_NAME + ".Name"));
 		public static readonly StringProperty PROPERTY_SPADPACKID_CODE = new StringProperty(Property.ForName(PROPERTY_SPADPACKID_ALIAS_NAME + ".Code"));
 		public static readonly StringProperty PROPERTY_SPADPACKID_DESCRIPTION = new StringProperty(Property.ForName(PROPERTY_SPADPACKID_ALIAS_NAME + ".Description"));
+		public static readonly DecimalProperty PROPERTY_SPADPACKID_ADPRICE = new DecimalProperty(Property.ForName(PROPERTY_SPADPACKID_ALIAS_NAME + ".AdPrice"));
 		#endregion
 		public static readonly EntityProperty<SPSClientEntity> PROPERTY_SPCLIENTID = new EntityProperty<SPSClientEntity>(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_SPCLIENTID));
 		#region sPClientID字段外键查询字段
@@ -62,6 +63,7 @@ namespace SPS.Data.Tables
 		public static readonly DateTimeProperty PROPERTY_SPCLIENTID_LASTMODIFYAT = new DateTimeProperty(Property.ForName(PROPERTY_SPCLIENTID_ALIAS_NAME + ".LastModifyAt"));
 		public static readonly StringProperty PROPERTY_SPCLIENTID_LASTMODIFYCOMMENT = new StringProperty(Property.ForName(PROPERTY_SPCLIENTID_ALIAS_NAME + ".LastModifyComment"));
 		#endregion
+		public static readonly DecimalProperty PROPERTY_CLIENTPRICE = new DecimalProperty(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_CLIENTPRICE));		
 		public static readonly DateTimeProperty PROPERTY_STARTDATE = new DateTimeProperty(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_STARTDATE));		
 		public static readonly DateTimeProperty PROPERTY_ENDDATE = new DateTimeProperty(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_ENDDATE));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPAdAssignedHistortyEntity.PROPERTY_NAME_CREATEBY));		
@@ -106,6 +108,8 @@ namespace SPS.Data.Tables
                     return typeof (int);
                 case "SPClientID":
                     return typeof (int);
+                case "ClientPrice":
+                    return typeof (decimal);
                 case "StartDate":
                     return typeof (DateTime);
                 case "EndDate":
@@ -143,6 +147,8 @@ namespace SPS.Data.Tables
 							return typeof (string);
                 		case "SPAdPackID_SPAdAssignedHistortyEntity_Alias.Description":
 							return typeof (string);
+                		case "SPAdPackID_SPAdAssignedHistortyEntity_Alias.AdPrice":
+							return typeof (decimal);
           			}
                     break;
 	            case "SPClientID_SPAdAssignedHistortyEntity_Alias":

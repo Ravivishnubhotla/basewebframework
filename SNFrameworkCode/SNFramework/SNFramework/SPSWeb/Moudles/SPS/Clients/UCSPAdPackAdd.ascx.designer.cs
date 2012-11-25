@@ -67,6 +67,15 @@ namespace SPSWeb.Moudles.SPS.Clients {
         protected global::Ext.Net.ComboBox cmbAdPack;
         
         /// <summary>
+        /// numClientPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.NumberField numClientPrice;
+        
+        /// <summary>
         /// btnSavelSPAdPack control.
         /// </summary>
         /// <remarks>

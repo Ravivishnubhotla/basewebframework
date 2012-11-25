@@ -54,6 +54,8 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_SPPACKID_CODE;
 		        case "SPPackID_Description":
 					return PROPERTY_SPPACKID_DESCRIPTION;
+		        case "SPPackID_AdPrice":
+					return PROPERTY_SPPACKID_ADPRICE;
 		        case "SPClientID_Id":
 					return PROPERTY_SPCLIENTID_ID;
 		        case "SPClientID_Name":
@@ -119,6 +121,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ADDOWNCOUNT = "AdDownCount";
 		public static readonly string PROPERTY_NAME_ADCLIENTDOWNCOUNT = "AdClientDownCount";
 		public static readonly string PROPERTY_NAME_ADAMOUNT = "AdAmount";
+		public static readonly string PROPERTY_NAME_CLIENTAMOUNT = "ClientAmount";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -135,6 +138,7 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_SPPACKID_NAME = "SPPackID_SPAdReportEntity_Alias.Name";
 		public const string PROPERTY_SPPACKID_CODE = "SPPackID_SPAdReportEntity_Alias.Code";
 		public const string PROPERTY_SPPACKID_DESCRIPTION = "SPPackID_SPAdReportEntity_Alias.Description";
+		public const string PROPERTY_SPPACKID_ADPRICE = "SPPackID_SPAdReportEntity_Alias.AdPrice";
 		#endregion
 		#region sPClientID字段外键查询字段
         public const string PROPERTY_SPCLIENTID_ALIAS_NAME = "SPClientID_SPAdReportEntity_Alias";
@@ -352,6 +356,21 @@ namespace SPS.Bussiness.Wrappers
 		/// 
 		/// </summary>
 		[DataMember]
+		public decimal? ClientAmount
+		{
+			get
+			{
+				return entity.ClientAmount;
+			}
+			set
+			{
+				entity.ClientAmount = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
 		public int CreateBy
 		{
 			get
@@ -478,6 +497,16 @@ namespace SPS.Bussiness.Wrappers
                 if (this. SPPackID == null)
                     return null;
                 return  SPPackID.Description;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPPACKID_ADPRICE)]
+        public decimal? SPPackID_AdPrice
+        {
+            get
+            {
+                if (this. SPPackID == null)
+                    return null;
+                return  SPPackID.AdPrice;
             }
         }
 		#endregion

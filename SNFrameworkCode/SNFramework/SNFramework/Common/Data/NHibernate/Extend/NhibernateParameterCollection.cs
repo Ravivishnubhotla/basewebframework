@@ -113,5 +113,29 @@ namespace Legendigital.Framework.Common.Data.NHibernate.Extend
         {
             return sortedList.Values.GetEnumerator();
         }
+
+        public object[] GetAllValues()
+        {
+            List<object> values = new List<object>();
+
+            foreach (KeyValuePair<string, NhibernateParameter> nhibernateParameter in sortedList)
+            {
+                values.Add(nhibernateParameter.Value.Value);
+            }
+
+            return values.ToArray();
+        }
+
+        public IType[] GetAllTypes()
+        {
+            List<IType> types = new List<IType>();
+
+            foreach (KeyValuePair<string, NhibernateParameter> nhibernateParameter in sortedList)
+            {
+                types.Add(nhibernateParameter.Value.DbType);
+            }
+
+            return types.ToArray();
+        }
     }
 }

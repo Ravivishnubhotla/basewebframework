@@ -34,7 +34,10 @@ namespace SPSWeb.Moudles.SPS.Ads
                     this.txtCode.Text = ValueConvertUtil.ConvertStringValue(obj.Code);
                     this.txtDescription.Text = ValueConvertUtil.ConvertStringValue(obj.Description);
 
-
+                    if (obj.AdPrice.HasValue)
+                        this.numAdPrice.Value = obj.AdPrice;
+                    else
+                        this.numAdPrice.Value = decimal.Zero;
 
 
                     hidId.Text = id.ToString();
@@ -68,7 +71,7 @@ namespace SPSWeb.Moudles.SPS.Ads
                 obj.Name = this.txtName.Text.Trim();
                 obj.Code = this.txtCode.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
-
+                obj.AdPrice = Convert.ToDecimal(this.numAdPrice.Value);
 
                 SPAdPackWrapper.Update(obj);
 

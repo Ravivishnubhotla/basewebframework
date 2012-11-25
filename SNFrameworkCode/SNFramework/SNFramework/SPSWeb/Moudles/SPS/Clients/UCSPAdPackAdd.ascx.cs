@@ -40,7 +40,9 @@ namespace SPSWeb.Moudles.SPS.Clients
             {
                 SPAdPackWrapper adPack = SPAdPackWrapper.FindById(Convert.ToInt32(cmbAdPack.SelectedItem.Value.ToString()));
 
-                SPAdAssignedHistortyWrapper.ClientAssignedAdPack(SPSClientID,adPack);
+                decimal clientPrice = Convert.ToDecimal(numClientPrice.Value);
+
+                SPAdAssignedHistortyWrapper.ClientAssignedAdPack(SPSClientID, adPack, clientPrice);
  
                 winSPAdPackAdd.Hide();
 
