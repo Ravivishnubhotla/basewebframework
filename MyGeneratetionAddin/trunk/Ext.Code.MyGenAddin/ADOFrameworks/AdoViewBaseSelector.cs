@@ -6,7 +6,7 @@ using MyMeta;
 
 namespace Legendigital.Code.MyGenAddin.ADOFrameworks
 {
-    public abstract class AdoTableBaseSelector<TC> : BaseObjectSelectorForm<TC, ITable> where TC : AdoBaseTableConfig
+    public abstract class AdoViewBaseSelector<TC> : BaseObjectSelectorForm<TC, IView> where TC : AdoBaseViewConfig
     {
         protected override List<string> GetDefaultSelectObject()
         {

@@ -96,12 +96,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADOFrameworks\AdoBaseProcedureConfig.cs" />
     <Compile Include="ADOFrameworks\AdoBaseTableConfig.cs" />
+    <Compile Include="ADOFrameworks\AdoBaseViewConfig.cs" />
     <Compile Include="ADOFrameworks\ADOFrameworkBaseSingleClassConfig.cs" />
     <Compile Include="ADOFrameworks\ADOFrameworkBaseSingleObjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ADOFrameworks\AdoProceduceBaseSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ADOFrameworks\AdoTableBaseSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ADOFrameworks\AdoViewBaseSelector.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ADO\PetShopCodeGenerateConfig.cs" />
@@ -142,6 +150,7 @@
     </Compile>
     <Compile Include="DefaultSettings.cs" />
     <Compile Include="EntityGenerateConfig.cs" />
+    <Compile Include="Enums\CodeGenerateType.cs" />
     <Compile Include="FormUISetting.cs" />
     <Compile Include="GenerateMoudlePages.cs">
       <SubType>Form</SubType>
