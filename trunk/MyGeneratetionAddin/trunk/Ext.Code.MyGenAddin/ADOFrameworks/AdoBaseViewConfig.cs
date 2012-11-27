@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms.Design;
@@ -11,7 +10,7 @@ using MyMeta;
 namespace Legendigital.Code.MyGenAddin.ADOFrameworks
 {
     [Serializable]
-    public class AdoBaseTableConfig
+    public class AdoBaseViewConfig
     {
         #region [代码设置]
 
@@ -48,6 +47,7 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
         private string _DbPrefix;
         private string _DbSchemaName;
         private string _DBConfigurationPropertyName;
+                private int viewPkIndex =1;
 
 
 
@@ -251,7 +251,7 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
             get { return _DbSchemaName; }
             set { _DbSchemaName = value; }
         }
-        [Category("[总体代码设置]"), ReadOnly(false), Description("数据库表名过滤前缀"), Browsable(true)]
+        [Category("[总体代码设置]"), ReadOnly(false), Description("数据库视图名过滤前缀"), Browsable(true)]
         public string DbPrefix
         {
             get { return _DbPrefix; }
@@ -263,6 +263,16 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
             get { return _DBConfigurationPropertyName; }
             set { _DBConfigurationPropertyName = value; }
         }
+
+
+
+        [Category("[总体代码设置]"), ReadOnly(false), Description("强制视图主键索引列"), Browsable(true)]
+        public int ViewPkIndex
+        {
+            get { return viewPkIndex; }
+            set { viewPkIndex = value; }
+        }
+ 
         #endregion
 
 
@@ -281,65 +291,52 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
         /// </summary>
         /// <param name="table">表对象</param>
         /// <returns></returns>
-        public string GenerateCodeClassName(ITable table)
+        public string GenerateCodeClassName(IView view)
         {
-            return TableGenerationHelper.GenerateNameByTable(table, this.EntityCodeClassNameFormat,
+            return ViewGenerationHelper.GenerateNameByView(view, this.EntityCodeClassNameFormat,
                                                              StringCase.PascalCase,
                                                              this.DbPrefix);
         }
 
-        public string GenerateBaseCodeClassName(ITable table)
+        public string GenerateBaseCodeClassName(IView view)
         {
             return string.Format(this.EntityBaseCodeNameFormat,
-                                 TableGenerationHelper.GenerateNameByTable(table, this.EntityCodeClassNameFormat,
+                                 ViewGenerationHelper.GenerateNameByView(view, this.EntityCodeClassNameFormat,
                                                                            StringCase.PascalCase,
                                                                            this.DbPrefix));
         }
 
-        public string GenerateDataCodeClassName(ITable table)
+        public string GenerateDataCodeClassName(IView view)
         {
-            return TableGenerationHelper.GenerateNameByTable(table, this.DataCodeClassNameFormat, StringCase.PascalCase,
+            return ViewGenerationHelper.GenerateNameByView(view, this.DataCodeClassNameFormat, StringCase.PascalCase,
                                                              this.DbPrefix);
         }
 
-        public string GenerateBaseDataCodeClassName(ITable table)
+        public string GenerateBaseDataCodeClassName(IView view)
         {
             return string.Format(this.DataBaseCodeNameFormat,
-                                 TableGenerationHelper.GenerateNameByTable(table, this.DataCodeClassNameFormat,
+                                 ViewGenerationHelper.GenerateNameByView(view, this.DataCodeClassNameFormat,
                                                                            StringCase.PascalCase,
                                                                            this.DbPrefix));
         }
 
-        public string GenerateBusinessCodeClassName(ITable table)
+        public string GenerateBusinessCodeClassName(IView view)
         {
-            return TableGenerationHelper.GenerateNameByTable(table, this.BussinessCodeClassNameFormat,
+            return ViewGenerationHelper.GenerateNameByView(view, this.BussinessCodeClassNameFormat,
                                                              StringCase.PascalCase,
                                                              this.DbPrefix);
         }
 
-        public string GenerateBaseBusinessDataCodeClassName(ITable table)
+        public string GenerateBaseBusinessDataCodeClassName(IView view)
         {
             return string.Format(this.BussinessBaseCodeNameFormat,
-                                 TableGenerationHelper.GenerateNameByTable(table, this.BussinessCodeClassNameFormat,
+                                 ViewGenerationHelper.GenerateNameByView(view, this.BussinessCodeClassNameFormat,
                                                                            StringCase.PascalCase,
                                                                            this.DbPrefix));
         }
 
         #endregion
 
-        #region 生成代码路径
-
-        public string GenerateCodeClassPath(ITable table)
-        {
-            return Path.Combine(this.EntityCodeClassFilePath, GenerateCodeClassName(table) + ".cs");
-        }
-
-        public string GenerateCodeClassDesignerClassPath(ITable table)
-        {
-            return Path.Combine(this.EntityBaseCodeClassFilePath, GenerateBaseCodeClassName(table) + ".cs");
-        }
-
-        #endregion
 
         #region 属性代码生成
 
@@ -394,10 +391,9 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
         #endregion
 
 
-
         #region 代码列生成工具
 
-        public string GenerateCodeClassDescription(ITable table)
+        public string GenerateCodeClassDescription(IView table)
         {
             return table.Description;
         }
@@ -416,39 +412,19 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
 
         #region 获取主键和非主键列
 
-        public List<IColumn> GetAllPkColumn(ITable table)
+        public List<IColumn> GetAllPkColumn(IView view)
         {
-            int primaryKeysCount = table.PrimaryKeys.Count;
-
             List<IColumn> pks = new List<IColumn>();
 
-            if (primaryKeysCount > 0)
+            if (ViewPkIndex >= 0)
             {
-                foreach (IColumn column in table.PrimaryKeys)
-                {
-                    pks.Add(column);
-                }
+                pks.Add(view.Columns[ViewPkIndex]);
             }
 
             return pks;
         }
-
-        public List<IColumn> GetAllCanInsertColumn(ITable table)
-        {
-            List<IColumn> pks = new List<IColumn>();
-
-            foreach (IColumn column in table.Columns)
-            {
-                if (column.IsInPrimaryKey && column.IsAutoKey)
-                    continue;
-
-                pks.Add(column);
-            }
-
-            return pks;
-        }
-
-        public List<IColumn> GetAllNotPkColumn(ITable table)
+  
+        public List<IColumn> GetAllNotPkColumn(IView table)
         {
             List<IColumn> pks = GetAllPkColumn(table);
 
@@ -466,6 +442,5 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
         }
 
         #endregion
-
     }
 }

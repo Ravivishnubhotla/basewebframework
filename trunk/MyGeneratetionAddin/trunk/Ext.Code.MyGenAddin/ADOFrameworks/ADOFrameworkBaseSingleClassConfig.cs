@@ -10,13 +10,6 @@ using MyMeta;
 
 namespace Legendigital.Code.MyGenAddin.ADOFrameworks
 {
-    public enum CodeGenerateType
-    {
-        Inherit,
-        Partial
-    }
-
-
     [Serializable]
     public class ADOFrameworkBaseSingleClassConfig
     {
@@ -54,6 +47,7 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
         private bool _entityIsUseNullAbleType;
         private string _DbPrefix;
         private string _DbSchemaName;
+        private string _DBConfigurationPropertyName;
 
 
 
@@ -263,15 +257,15 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
             get { return _DbPrefix; }
             set { _DbPrefix = value; }
         }
+        [Category("[总体代码设置]"), ReadOnly(false), Description("数据库连接字符串属性名"), Browsable(true)]
+        public string DBConfigurationPropertyName
+        {
+            get { return _DBConfigurationPropertyName; }
+            set { _DBConfigurationPropertyName = value; }
+        }
         #endregion
 
- 
-        //[Category("[代码设置]"), ReadOnly(false), Description("数据库连接字符串属性名"), Browsable(true)]
-        //public string DBConfigurationPropertyName
-        //{
-        //    get { return _DBConfigurationPropertyName; }
-        //    set { _DBConfigurationPropertyName = value; }
-        //}
+
         //[Category("[代码设置]"), ReadOnly(false), Description("存储过程前缀"), Browsable(true)]
         //public string ProcNamePrefix
         //{
@@ -291,6 +285,31 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
         public string GenerateBaseCodeClassName(ITable table)
         {
             return string.Format(this.EntityBaseCodeNameFormat,TableGenerationHelper.GenerateNameByTable(table, this.EntityCodeClassNameFormat, StringCase.PascalCase,
+                                                            this.DbPrefix));
+        }
+
+        public string GenerateDataCodeClassName(ITable table)
+        {
+            return TableGenerationHelper.GenerateNameByTable(table, this.DataCodeClassNameFormat, StringCase.PascalCase,
+                                                            this.DbPrefix);
+        }
+
+        public string GenerateBaseDataCodeClassName(ITable table)
+        {
+            return string.Format(this.DataBaseCodeNameFormat,
+                TableGenerationHelper.GenerateNameByTable(table, this.DataCodeClassNameFormat, StringCase.PascalCase,
+                                                            this.DbPrefix));
+        }
+
+        public string GenerateBusinessCodeClassName(ITable table)
+        {
+            return TableGenerationHelper.GenerateNameByTable(table, this.BussinessCodeClassNameFormat, StringCase.PascalCase,
+                                                            this.DbPrefix);
+        }
+
+        public string GenerateBaseBusinessDataCodeClassName(ITable table)
+        {
+            return string.Format(this.BussinessBaseCodeNameFormat, TableGenerationHelper.GenerateNameByTable(table, this.BussinessCodeClassNameFormat, StringCase.PascalCase,
                                                             this.DbPrefix));
         }
 
@@ -402,6 +421,21 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
                 {
                     pks.Add(column);
                 }
+            }
+
+            return pks;
+        }
+
+        public List<IColumn> GetAllCanInsertColumn(ITable table)
+        {
+            List<IColumn> pks = new List<IColumn>();
+
+            foreach (IColumn column in table.Columns)
+            {
+                if (column.IsInPrimaryKey && column.IsAutoKey)
+                    continue;
+                    
+                pks.Add(column);
             }
 
             return pks;
