@@ -68,6 +68,24 @@ namespace Legendigital.Code.MyGenAddin
 
         #endregion
 
+
+        public static List<IProcedure> GetAllNotSysProcedure(IDatabase database)
+        {
+            List<IProcedure> procedures = new List<IProcedure>();
+
+            foreach (IProcedure procedure in database.Procedures)
+            {
+                if (procedure.Schema == "sys")
+                {
+                    continue;
+                }
+
+                procedures.Add(procedure);
+            }
+
+            return procedures;
+        }
+
         public static IColumn GenerateColumnByProcedure(IParameter parameter, ITable table)
         {
             foreach (IColumn column in table.Columns)
