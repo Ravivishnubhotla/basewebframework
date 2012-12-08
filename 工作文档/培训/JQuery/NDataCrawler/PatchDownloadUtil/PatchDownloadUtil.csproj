@@ -41,6 +41,9 @@
     <Reference Include="Common.Logging.Log4Net">
       <HintPath>..\Dlls\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\Dlls\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\Dlls\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -65,6 +68,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Documents\frmDownloadYouku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documents\frmDownloadYouku.Designer.cs">
+      <DependentUpon>frmDownloadYouku.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +82,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\frmTemplateExplorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\frmTemplateExplorer.Designer.cs">
+      <DependentUpon>frmTemplateExplorer.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Documents\frmDownloadYouku.resx">
+      <DependentUpon>frmDownloadYouku.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +104,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Tools\frmTemplateExplorer.resx">
+      <DependentUpon>frmTemplateExplorer.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -96,6 +117,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kuaichuan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\youku.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kuaichuan.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\youku.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
