@@ -12,9 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dlls", "Dlls", "{2A7F608B-B
 		Dlls\ICSharpCode.SharpZipLib.dll = Dlls\ICSharpCode.SharpZipLib.dll
 		Dlls\log4net.dll = Dlls\log4net.dll
 		Dlls\Lucene.Net.dll = Dlls\Lucene.Net.dll
+		Dlls\Newtonsoft.Json.dll = Dlls\Newtonsoft.Json.dll
 		Dlls\ScrapySharp.Core.dll = Dlls\ScrapySharp.Core.dll
 		Dlls\ScrapySharp.dll = Dlls\ScrapySharp.dll
+		Dlls\WeifenLuo.WinFormsUI.Docking.dll = Dlls\WeifenLuo.WinFormsUI.Docking.dll
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatchDownloadUtil", "PatchDownloadUtil\PatchDownloadUtil.csproj", "{EB6CEC45-FD88-4A14-8002-638FAA7A1C51}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -30,6 +34,10 @@ Global
 		{06D0184C-8CC9-4ACE-B642-2E0DE69A77A6}.Debug|x86.Build.0 = Debug|x86
 		{06D0184C-8CC9-4ACE-B642-2E0DE69A77A6}.Release|x86.ActiveCfg = Release|x86
 		{06D0184C-8CC9-4ACE-B642-2E0DE69A77A6}.Release|x86.Build.0 = Release|x86
+		{EB6CEC45-FD88-4A14-8002-638FAA7A1C51}.Debug|x86.ActiveCfg = Debug|x86
+		{EB6CEC45-FD88-4A14-8002-638FAA7A1C51}.Debug|x86.Build.0 = Debug|x86
+		{EB6CEC45-FD88-4A14-8002-638FAA7A1C51}.Release|x86.ActiveCfg = Release|x86
+		{EB6CEC45-FD88-4A14-8002-638FAA7A1C51}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

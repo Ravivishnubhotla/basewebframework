@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -21,7 +22,8 @@ namespace NDataCrawler
         {
             log.Info("开始获取京东类别树页面......");
 
-            string html = SendRequest("http://www.360buy.com/allSort.aspx",5000);
+            //string html = SendRequest("http://www.360buy.com/allSort.aspx",5000);
+            string html = SendRequest("http://www.youku.com/playlist_show/id_18474474.html", 5000);
 
             log.Info("获取京东类别树成功页面......");
 
@@ -35,13 +37,20 @@ namespace NDataCrawler
 
             log.Info("解析页面成功......");
 
-            var topCategorys = htmlDom.CssSelect("div#allsort div.fl div.m div.mt h2 a");
+            //var topCategorys = htmlDom.CssSelect("div#allsort div.fl div.m div.mt h2 a");
+            var topCategorys = htmlDom.CssSelect("ul.v li.v_link a");
 
             log.Info("开始读取顶级分类......");
 
+ 
+
             foreach (var topCategory in topCategorys)
             {
-                log.Info(topCategory.InnerHtml);
+                log.Info(topCategory.Attributes["href"].Value);
+
+                Process.Start("IExplore.exe", @"iku://|video|http://v.youku.com/v_show/id_XNDc1MDkwMzc2.html|quality=flv|");
+
+                Console.ReadKey();
             }
 
             log.Info("读取顶级分类结束......");
@@ -82,7 +91,7 @@ namespace NDataCrawler
 
                 if (webResponse.StatusCode == HttpStatusCode.OK)
                 {
-                    StreamReader sr = new StreamReader(webResponse.GetResponseStream(),Encoding.GetEncoding("GBK"));
+                    StreamReader sr = new StreamReader(webResponse.GetResponseStream(),Encoding.UTF8);
 
                     string responseText = sr.ReadToEnd();
 
