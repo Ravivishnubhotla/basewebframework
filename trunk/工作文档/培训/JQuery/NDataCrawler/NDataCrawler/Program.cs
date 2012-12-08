@@ -48,9 +48,9 @@ namespace NDataCrawler
             {
                 log.Info(topCategory.Attributes["href"].Value);
 
-                Process.Start("IExplore.exe", @"iku://|video|http://v.youku.com/v_show/id_XNDc1MDkwMzc2.html|quality=flv|");
+                //Process.Start("IExplore.exe", @"iku://|video|http://v.youku.com/v_show/id_XNDc1MDkwMzc2.html|quality=flv|");
 
-                Console.ReadKey();
+                //Console.ReadKey();
             }
 
             log.Info("读取顶级分类结束......");
