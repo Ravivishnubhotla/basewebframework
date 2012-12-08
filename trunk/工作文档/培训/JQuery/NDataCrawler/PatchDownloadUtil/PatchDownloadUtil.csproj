@@ -53,6 +53,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Dlls\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="ScrapySharp">
+      <HintPath>..\Dlls\ScrapySharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ScrapySharp.Core">
+      <HintPath>..\Dlls\ScrapySharp.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -68,11 +74,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Documents\frmDownloadYouku.cs">
+    <Compile Include="AppCode\DownloadLink.cs" />
+    <Compile Include="AppCode\IDownloadLinkParse.cs" />
+    <Compile Include="AppCode\XunleiKuaiChuanDownloadLinkParse.cs.cs" />
+    <Compile Include="AppCode\YoukuDownloadLinkParse.cs" />
+    <Compile Include="Documents\frmDownloadLinkParse.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Documents\frmDownloadYouku.Designer.cs">
-      <DependentUpon>frmDownloadYouku.cs</DependentUpon>
+    <Compile Include="Documents\frmDownloadLinkParse.Designer.cs">
+      <DependentUpon>frmDownloadLinkParse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documents\frmShowText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documents\frmShowText.Designer.cs">
+      <DependentUpon>frmShowText.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -88,8 +104,11 @@
     <Compile Include="Tools\frmTemplateExplorer.Designer.cs">
       <DependentUpon>frmTemplateExplorer.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Documents\frmDownloadYouku.resx">
-      <DependentUpon>frmDownloadYouku.cs</DependentUpon>
+    <EmbeddedResource Include="Documents\frmDownloadLinkParse.resx">
+      <DependentUpon>frmDownloadLinkParse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Documents\frmShowText.resx">
+      <DependentUpon>frmShowText.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -129,6 +148,165 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\youku.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link_go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link_break.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layout_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\image_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\house_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hourglass_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\group_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\film_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\feed_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\email_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dvd_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drive_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\date_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cup_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\computer_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clock_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart_pie_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart_line_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart_curve_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart_bar_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camera_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calculator_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\building_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bug_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brick_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bell_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\world_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\telephone_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shape_square_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\script_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ruby_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plugin_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picture_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\package_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\newspaper_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\monitor_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lorry_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\link_error.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

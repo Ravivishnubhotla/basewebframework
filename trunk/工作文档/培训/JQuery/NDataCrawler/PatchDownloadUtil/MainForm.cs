@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PatchDownloadUtil.AppCode;
 using PatchDownloadUtil.Documents;
 using PatchDownloadUtil.Tools;
 using WeifenLuo.WinFormsUI.Docking;
@@ -33,8 +34,14 @@ namespace PatchDownloadUtil
             {
                 case "tsbNewYoukuTask":
 
-                    frmDownloadYouku downloadYouku = new frmDownloadYouku();
+                    frmDownloadLinkParse downloadYouku = new frmDownloadLinkParse(new YoukuDownloadLinkParse());
                     downloadYouku.Show(dockPanelMain, DockState.Document);      
+
+                    break;
+                case "tsbNewKuaichuanTask":
+
+                    frmDownloadLinkParse downloadKuaichuan = new frmDownloadLinkParse(new XunleiKuaiChuanDownloadLinkParse());
+                    downloadKuaichuan.Show(dockPanelMain, DockState.Document);
 
                     break;
             }
