@@ -20,6 +20,9 @@ namespace NDataCrawler
 
         static void Main(string[] args)
         {
+
+ 
+
             log.Info("开始获取京东类别树页面......");
 
             //string html = SendRequest("http://www.360buy.com/allSort.aspx",5000);
