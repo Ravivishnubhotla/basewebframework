@@ -23,20 +23,20 @@ namespace SPSUtil
             try
             {
 
-                List<SystemConfigWrapper> settings = SystemConfigWrapper.FindAll();
+                //List<SystemConfigWrapper> settings = SystemConfigWrapper.FindAll();
 
-                SystemShortMessageWrapper shortMessage = new SystemShortMessageWrapper();
-                shortMessage.Title = "";
-                shortMessage.MessageType = "1";
-                shortMessage.SendDate = System.DateTime.Now;
-                SystemShortMessageWrapper.Save(shortMessage);
-                Console.WriteLine(shortMessage.Id);
-                Console.WriteLine(settings[0].ConfigGroupID.Code);
-
-
+                //SystemShortMessageWrapper shortMessage = new SystemShortMessageWrapper();
+                //shortMessage.Title = "";
+                //shortMessage.MessageType = "1";
+                //shortMessage.SendDate = System.DateTime.Now;
+                //SystemShortMessageWrapper.Save(shortMessage);
+                //Console.WriteLine(shortMessage.Id);
+                //Console.WriteLine(settings[0].ConfigGroupID.Code);
 
 
-                SPAdvertisementWrapper.TestTransateion();
+
+
+                //SPAdvertisementWrapper.TestTransateion();
 
                 //处理未捕获的异常   
                 Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
