@@ -34,6 +34,8 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
             return ProceduceParameterGenerationHelper.GenerateNameByParameter(parameter, "{0}", StringCase.PascalCase);
         }
 
+ 
+
         public string GenerateParameterDirection(IParameter parameter)
         {
             return ProceduceParameterGenerationHelper.GenerateParameterDirection(parameter);
@@ -47,6 +49,29 @@ namespace Legendigital.Code.MyGenAddin.ADOFrameworks
         public string GenerateParameterDbType(IParameter parameter)
         {
             return parameter.DbTargetType;
+        }
+
+        public string GenerateParameterLanguageType(IParameter parameter)
+        {
+            return parameter.LanguageType;
+        }
+
+        public string GenerateParameterMethodParameterType(IParameter parameter)
+        {
+            switch (parameter.Direction)
+            {
+                case ParamDirection.Input:
+                    return "";
+                case ParamDirection.InputOutput:
+                    return "ref";
+                case ParamDirection.Output:
+                    return "out";
+                case ParamDirection.ReturnValue:
+                    return "out";
+                case ParamDirection.Unknown:
+                    return "";
+            }
+            return "";
         }
 
         #endregion
