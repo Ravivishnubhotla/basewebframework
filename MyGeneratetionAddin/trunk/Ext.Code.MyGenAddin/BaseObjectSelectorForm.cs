@@ -19,6 +19,8 @@ namespace Legendigital.Code.MyGenAddin
         protected IZeusInput zeusInput;
         private Label lblCheckObjectNamePrefix;
         private TextBox txtCheckObjectNamePrefix;
+        private Label lblCodeType;
+        private ComboBox cmbCodeType;
         protected List<string> selectObject = new List<string>();
 
 
@@ -35,6 +37,34 @@ namespace Legendigital.Code.MyGenAddin
             this.zeusInput = input;
             InitializeComponent();
             this.GetSetting();
+        }
+
+        public void ShowCustomList(Dictionary<string,string> dictionarys,string codeTypeText)
+        {
+            //Dictionary<string,string> dictionarys1 = new Dictionary<string, string>();
+
+            //dictionarys1.Add("1","ExecuteNoQuery");
+            //dictionarys1.Add("2", "ExecuteDataSet");
+            //dictionarys1.Add("3", "ExecuteScalar");
+
+            //string codeType = "选择存储过程方法代码类型：";
+
+            this.lblCodeType.Visible = true;
+            this.cmbCodeType.Visible = true;
+
+            this.lblCodeType.Text = "";
+            this.lblCodeType.Text = codeTypeText;
+
+            this.cmbCodeType.Items.Clear();
+
+            foreach (KeyValuePair<string,string> dictionary in dictionarys)
+            {
+                this.cmbCodeType.Items.Add(dictionary.Value);
+            }
+
+            cmbCodeType.SelectedIndex = 0;
+
+
         }
 
         protected void SaveSetting()
@@ -160,6 +190,8 @@ namespace Legendigital.Code.MyGenAddin
                 //MessageBox.Show((selectTables==null).ToString());
                 this.zeusInput["selectObjects"] = selectTables.ToArray();
                 this.zeusInput["codeGenerationSetting"] = config;
+                if (cmbCodeType.SelectedItem!=null)
+                    this.zeusInput["codeType"] = cmbCodeType.SelectedItem.ToString();
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -264,6 +296,8 @@ namespace Legendigital.Code.MyGenAddin
             this.lblConfigDescription = new System.Windows.Forms.Label();
             this.saveFileDialogConfig = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialogConfig = new System.Windows.Forms.OpenFileDialog();
+            this.lblCodeType = new System.Windows.Forms.Label();
+            this.cmbCodeType = new System.Windows.Forms.ComboBox();
             this.tbcMain.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBoxCodeGeneration.SuspendLayout();
@@ -281,7 +315,7 @@ namespace Legendigital.Code.MyGenAddin
             this.tbcMain.Location = new System.Drawing.Point(0, 0);
             this.tbcMain.Name = "tbcMain";
             this.tbcMain.SelectedIndex = 0;
-            this.tbcMain.Size = new System.Drawing.Size(604, 440);
+            this.tbcMain.Size = new System.Drawing.Size(589, 446);
             this.tbcMain.TabIndex = 4;
             this.tbcMain.TabStop = false;
             // 
@@ -291,13 +325,15 @@ namespace Legendigital.Code.MyGenAddin
             this.tabPageData.Location = new System.Drawing.Point(4, 22);
             this.tabPageData.Name = "tabPageData";
             this.tabPageData.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageData.Size = new System.Drawing.Size(596, 414);
+            this.tabPageData.Size = new System.Drawing.Size(581, 420);
             this.tabPageData.TabIndex = 0;
             this.tabPageData.Text = "批量代码生成";
             this.tabPageData.UseVisualStyleBackColor = true;
             // 
             // groupBoxCodeGeneration
             // 
+            this.groupBoxCodeGeneration.Controls.Add(this.cmbCodeType);
+            this.groupBoxCodeGeneration.Controls.Add(this.lblCodeType);
             this.groupBoxCodeGeneration.Controls.Add(this.lblCheckObjectNamePrefix);
             this.groupBoxCodeGeneration.Controls.Add(this.txtCheckObjectNamePrefix);
             this.groupBoxCodeGeneration.Controls.Add(this.lblFilterDbObjectName);
@@ -312,7 +348,7 @@ namespace Legendigital.Code.MyGenAddin
             this.groupBoxCodeGeneration.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxCodeGeneration.Location = new System.Drawing.Point(3, 3);
             this.groupBoxCodeGeneration.Name = "groupBoxCodeGeneration";
-            this.groupBoxCodeGeneration.Size = new System.Drawing.Size(590, 408);
+            this.groupBoxCodeGeneration.Size = new System.Drawing.Size(575, 414);
             this.groupBoxCodeGeneration.TabIndex = 6;
             this.groupBoxCodeGeneration.TabStop = false;
             this.groupBoxCodeGeneration.Text = "代码生成";
@@ -321,7 +357,7 @@ namespace Legendigital.Code.MyGenAddin
             // 
             this.lblCheckObjectNamePrefix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCheckObjectNamePrefix.AutoSize = true;
-            this.lblCheckObjectNamePrefix.Location = new System.Drawing.Point(159, 384);
+            this.lblCheckObjectNamePrefix.Location = new System.Drawing.Point(164, 361);
             this.lblCheckObjectNamePrefix.Name = "lblCheckObjectNamePrefix";
             this.lblCheckObjectNamePrefix.Size = new System.Drawing.Size(113, 12);
             this.lblCheckObjectNamePrefix.TabIndex = 13;
@@ -330,7 +366,7 @@ namespace Legendigital.Code.MyGenAddin
             // txtCheckObjectNamePrefix
             // 
             this.txtCheckObjectNamePrefix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtCheckObjectNamePrefix.Location = new System.Drawing.Point(283, 380);
+            this.txtCheckObjectNamePrefix.Location = new System.Drawing.Point(283, 357);
             this.txtCheckObjectNamePrefix.Name = "txtCheckObjectNamePrefix";
             this.txtCheckObjectNamePrefix.Size = new System.Drawing.Size(112, 21);
             this.txtCheckObjectNamePrefix.TabIndex = 12;
@@ -347,7 +383,7 @@ namespace Legendigital.Code.MyGenAddin
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Location = new System.Drawing.Point(512, 30);
+            this.btnRefresh.Location = new System.Drawing.Point(497, 30);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(61, 23);
             this.btnRefresh.TabIndex = 10;
@@ -359,7 +395,7 @@ namespace Legendigital.Code.MyGenAddin
             // 
             this.chkSelectAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkSelectAll.AutoSize = true;
-            this.chkSelectAll.Location = new System.Drawing.Point(18, 381);
+            this.chkSelectAll.Location = new System.Drawing.Point(18, 360);
             this.chkSelectAll.Name = "chkSelectAll";
             this.chkSelectAll.Size = new System.Drawing.Size(132, 16);
             this.chkSelectAll.TabIndex = 9;
@@ -376,7 +412,7 @@ namespace Legendigital.Code.MyGenAddin
             this.checkedListBoxSelectDbObject.FormattingEnabled = true;
             this.checkedListBoxSelectDbObject.Location = new System.Drawing.Point(17, 101);
             this.checkedListBoxSelectDbObject.Name = "checkedListBoxSelectDbObject";
-            this.checkedListBoxSelectDbObject.Size = new System.Drawing.Size(556, 244);
+            this.checkedListBoxSelectDbObject.Size = new System.Drawing.Size(541, 244);
             this.checkedListBoxSelectDbObject.TabIndex = 8;
             // 
             // txtFilterDbObjectName
@@ -385,14 +421,14 @@ namespace Legendigital.Code.MyGenAddin
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilterDbObjectName.Location = new System.Drawing.Point(256, 66);
             this.txtFilterDbObjectName.Name = "txtFilterDbObjectName";
-            this.txtFilterDbObjectName.Size = new System.Drawing.Size(317, 21);
+            this.txtFilterDbObjectName.Size = new System.Drawing.Size(302, 21);
             this.txtFilterDbObjectName.TabIndex = 7;
             this.txtFilterDbObjectName.Text = "sys|aspnet_";
             // 
             // btnGenarateCode
             // 
             this.btnGenarateCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenarateCode.Location = new System.Drawing.Point(479, 376);
+            this.btnGenarateCode.Location = new System.Drawing.Point(464, 385);
             this.btnGenarateCode.Name = "btnGenarateCode";
             this.btnGenarateCode.Size = new System.Drawing.Size(94, 23);
             this.btnGenarateCode.TabIndex = 6;
@@ -417,7 +453,7 @@ namespace Legendigital.Code.MyGenAddin
             this.cmbSelectDataBase.FormattingEnabled = true;
             this.cmbSelectDataBase.Location = new System.Drawing.Point(98, 30);
             this.cmbSelectDataBase.Name = "cmbSelectDataBase";
-            this.cmbSelectDataBase.Size = new System.Drawing.Size(399, 20);
+            this.cmbSelectDataBase.Size = new System.Drawing.Size(384, 20);
             this.cmbSelectDataBase.TabIndex = 1;
             this.cmbSelectDataBase.SelectedIndexChanged += new System.EventHandler(this.cmbSelectDataBase_SelectedIndexChanged);
             // 
@@ -454,7 +490,7 @@ namespace Legendigital.Code.MyGenAddin
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 411);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 408);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // toolStripTop
@@ -477,7 +513,7 @@ namespace Legendigital.Code.MyGenAddin
             this.toolStripButtonSaveCodeGenerateConifg.Image = global::Legendigital.Code.MyGenAddin.WinResource.Save;
             this.toolStripButtonSaveCodeGenerateConifg.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSaveCodeGenerateConifg.Name = "toolStripButtonSaveCodeGenerateConifg";
-            this.toolStripButtonSaveCodeGenerateConifg.Size = new System.Drawing.Size(112, 24);
+            this.toolStripButtonSaveCodeGenerateConifg.Size = new System.Drawing.Size(112, 22);
             this.toolStripButtonSaveCodeGenerateConifg.Text = "保存为默认配置";
             // 
             // toolStripButtonSaveAs
@@ -485,7 +521,7 @@ namespace Legendigital.Code.MyGenAddin
             this.toolStripButtonSaveAs.Image = global::Legendigital.Code.MyGenAddin.WinResource.Save;
             this.toolStripButtonSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSaveAs.Name = "toolStripButtonSaveAs";
-            this.toolStripButtonSaveAs.Size = new System.Drawing.Size(88, 24);
+            this.toolStripButtonSaveAs.Size = new System.Drawing.Size(88, 22);
             this.toolStripButtonSaveAs.Text = "配置另存为";
             // 
             // toolStripButtonLoadConfig
@@ -493,7 +529,7 @@ namespace Legendigital.Code.MyGenAddin
             this.toolStripButtonLoadConfig.Image = global::Legendigital.Code.MyGenAddin.WinResource.open;
             this.toolStripButtonLoadConfig.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLoadConfig.Name = "toolStripButtonLoadConfig";
-            this.toolStripButtonLoadConfig.Size = new System.Drawing.Size(76, 24);
+            this.toolStripButtonLoadConfig.Size = new System.Drawing.Size(76, 22);
             this.toolStripButtonLoadConfig.Text = "加载配置";
             // 
             // toolStripButtonConfigMygeneration
@@ -501,7 +537,7 @@ namespace Legendigital.Code.MyGenAddin
             this.toolStripButtonConfigMygeneration.Image = global::Legendigital.Code.MyGenAddin.WinResource.setting;
             this.toolStripButtonConfigMygeneration.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonConfigMygeneration.Name = "toolStripButtonConfigMygeneration";
-            this.toolStripButtonConfigMygeneration.Size = new System.Drawing.Size(134, 24);
+            this.toolStripButtonConfigMygeneration.Size = new System.Drawing.Size(134, 22);
             this.toolStripButtonConfigMygeneration.Text = "配置MyGeneration";
             // 
             // propertyGridSetting
@@ -509,7 +545,7 @@ namespace Legendigital.Code.MyGenAddin
             this.propertyGridSetting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGridSetting.Location = new System.Drawing.Point(3, 28);
             this.propertyGridSetting.Name = "propertyGridSetting";
-            this.propertyGridSetting.Size = new System.Drawing.Size(584, 380);
+            this.propertyGridSetting.Size = new System.Drawing.Size(584, 377);
             this.propertyGridSetting.TabIndex = 1;
             // 
             // lblConfigDescription
@@ -530,11 +566,31 @@ namespace Legendigital.Code.MyGenAddin
             this.openFileDialogConfig.DefaultExt = "dat";
             this.openFileDialogConfig.Filter = "代码生成配置文件 (*.dat)|*.dat";
             // 
+            // lblCodeType
+            // 
+            this.lblCodeType.AutoSize = true;
+            this.lblCodeType.Location = new System.Drawing.Point(16, 389);
+            this.lblCodeType.Name = "lblCodeType";
+            this.lblCodeType.Size = new System.Drawing.Size(125, 12);
+            this.lblCodeType.TabIndex = 14;
+            this.lblCodeType.Text = "代码生成自定义选项：";
+            this.lblCodeType.Visible = false;
+            // 
+            // cmbCodeType
+            // 
+            this.cmbCodeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCodeType.FormattingEnabled = true;
+            this.cmbCodeType.Location = new System.Drawing.Point(185, 386);
+            this.cmbCodeType.Name = "cmbCodeType";
+            this.cmbCodeType.Size = new System.Drawing.Size(210, 20);
+            this.cmbCodeType.TabIndex = 15;
+            this.cmbCodeType.Visible = false;
+            // 
             // BaseObjectSelectorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(604, 440);
+            this.ClientSize = new System.Drawing.Size(589, 446);
             this.Controls.Add(this.tbcMain);
             this.Name = "BaseObjectSelectorForm";
             this.ShowInTaskbar = false;

@@ -62,6 +62,8 @@ namespace Legendigital.Code.MyGenAddin
                             break;
                         }
                     }
+                    if (procedure.Schema == "sys")
+                        continue;
                     if (!isFilterTable)
                         objects.Add((ObjectType)procedure);
                 }
