@@ -235,6 +235,12 @@ namespace SPS.Bussiness.Wrappers
             }
 
 	        string mo = this.ChannelParams.MoFromRequset(httpRequestLog);
+
+            if (this.ChannelType == DictionaryConst.Dictionary_ChannelType_IVRChannel_Key)
+            {
+                mo = "ivr";
+            }
+
             string spcode = this.ChannelParams.SPCodeFromRequset(httpRequestLog);
             string mobile = this.ChannelParams.MobileFromRequset(httpRequestLog);
 
@@ -537,9 +543,11 @@ namespace SPS.Bussiness.Wrappers
                 try
                 {
                     SystemPhoneAreaWrapper phoneArea = SystemPhoneAreaWrapper.GetPhoneAreaByMobilePrefix(mobile.Substring(0, 7));
-                
-                    phoneAreaInfo = new PhoneAreaInfo();
 
+                    if (phoneArea == null)
+                        return null;
+
+                    phoneAreaInfo = new PhoneAreaInfo();
                     phoneAreaInfo.MobileOperators = phoneArea.OperatorType;
                     phoneAreaInfo.Province = phoneArea.Province;
                     phoneArea.City = phoneArea.City;

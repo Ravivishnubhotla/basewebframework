@@ -22,7 +22,7 @@ namespace Legendigital.Common.WebApp.Files
             if (X.IsAjaxRequest)
                 return;
 
-            cPath.Value = this.Server.MapPath("~/Files/");
+            cPath.Value = this.Server.MapPath("~/Files/UploadFiles/");
         }
 
         [DirectMethod]
@@ -30,7 +30,7 @@ namespace Legendigital.Common.WebApp.Files
         {
             if (!string.IsNullOrEmpty(rootPath))
             {
-                string root = "~/Files" + rootPath;
+                string root = "~/Files/UploadFiles" + rootPath;
 
                 return BuildDirectorysTree(root).ToJson();
             }
@@ -94,7 +94,7 @@ namespace Legendigital.Common.WebApp.Files
         protected void storeFiles_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
             if(cPath.Value=="")
-                cPath.Value = this.Server.MapPath("~/Files/");
+                cPath.Value = this.Server.MapPath("~/Files/UploadFiles/");
 
             string[] files = System.IO.Directory.GetFiles(cPath.Value.ToString());
 

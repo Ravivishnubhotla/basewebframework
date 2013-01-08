@@ -9,7 +9,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<script type="text/javascript" src="<%= this.ResolveUrl("~/Script/jquery-1.6.4.min.js") %>"></script>
+<script type="text/javascript" src="<%= this.ResolveUrl("~/Scripts/jquery-1.6.4.min.js") %>"></script>
 <body>
     <form id="form1" runat="server">
     <ext:resourcemanager id="ResourceManager1" scriptadapter="jQuery" runat="server">
