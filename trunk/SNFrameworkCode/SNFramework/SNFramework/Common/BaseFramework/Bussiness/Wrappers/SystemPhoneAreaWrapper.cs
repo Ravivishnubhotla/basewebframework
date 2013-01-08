@@ -102,7 +102,7 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 
         public static SystemPhoneAreaWrapper GetPhoneAreaByMobilePrefix(string mobilePrefix)
         {
-            return  new SystemPhoneAreaWrapper(businessProxy.GetPhoneAreaByMobilePrefix(mobilePrefix));
+            return  ConvertEntityToWrapper(businessProxy.GetPhoneAreaByMobilePrefix(mobilePrefix));
         }
 
         public static object GetAllPhoneInfos_Key()

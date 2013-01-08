@@ -175,6 +175,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Files\FileManage.aspx" />
+    <Content Include="Files\FileUploader.aspx" />
     <Content Include="Global.asax" />
     <Content Include="MainPage\App_LocalResources\UCChangePassword.ascx.zh-CHS.xml" />
     <Content Include="MainPage\App_LocalResources\UCChangePassword.ascx.en-US.xml" />
@@ -476,6 +477,16 @@
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.zh-CHS.xml" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\SwfUploadCommon.js" />
+    <Content Include="Scripts\SwfUploadEvent.js" />
+    <Content Include="Scripts\SwfUploadInit.js" />
+    <Content Include="Scripts\SwfUpload\swfupload.cookies.js" />
+    <Content Include="Scripts\SwfUpload\swfupload.js" />
+    <Content Include="Scripts\SwfUpload\swfupload.proxy.js" />
+    <Content Include="Scripts\SwfUpload\swfupload.queue.js" />
+    <Content Include="Scripts\SwfUpload\swfupload.speed.js" />
+    <Content Include="Scripts\SwfUpload\swfupload.swf" />
+    <Content Include="Scripts\SwfUpload\swfupload_fp9.swf" />
     <Content Include="TestCP\0.htm" />
     <Content Include="TestCP\1.htm" />
     <Content Include="TestCP\Error.htm" />
@@ -512,6 +523,16 @@
     </Compile>
     <Compile Include="Files\FileManage.aspx.designer.cs">
       <DependentUpon>FileManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Files\FileUpload.ashx.cs">
+      <DependentUpon>FileUpload.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Files\FileUploader.aspx.cs">
+      <DependentUpon>FileUploader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Files\FileUploader.aspx.designer.cs">
+      <DependentUpon>FileUploader.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1634,10 +1655,10 @@
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
     <Folder Include="App_Themes\Default\" />
-    <Folder Include="Files\Documents\" />
-    <Folder Include="Files\Images\" />
-    <Folder Include="Files\Others\" />
-    <Folder Include="Files\Videos\" />
+    <Folder Include="Files\UploadFiles\Documents\" />
+    <Folder Include="Files\UploadFiles\Images\" />
+    <Folder Include="Files\UploadFiles\Others\" />
+    <Folder Include="Files\UploadFiles\Videos\" />
     <Folder Include="images\FileExts\" />
     <Folder Include="IVRS\" />
     <Folder Include="Logs\" />
@@ -1685,6 +1706,7 @@
     <Content Include="Moudles\SPS\Clients\SPClientHandler.ashx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Files\FileUpload.ashx" />
     <None Include="Properties\PublishProfiles\web.pubxml" />
   </ItemGroup>
   <PropertyGroup>
