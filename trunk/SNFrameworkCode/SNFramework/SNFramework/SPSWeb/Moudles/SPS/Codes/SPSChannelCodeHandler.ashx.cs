@@ -13,6 +13,12 @@ namespace SPSWeb.Moudles.SPS.Codes
 
         public void ProcessRequest(HttpContext context)
         {
+            if (!string.IsNullOrEmpty(context.Request.QueryString["ClientID"]))
+            {
+
+            }
+
+
             context.Response.ContentType = "text/plain";
             context.Response.Write("Hello World");
         }

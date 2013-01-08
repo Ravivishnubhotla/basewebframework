@@ -7,135 +7,99 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SPSWeb.Moudles.SPS.Codes {
+namespace SPSWeb.Moudles.SPS.Data {
     
     
-    public partial class UCSPClientCodeSycnParamsEdit {
+    public partial class SPSDataManage {
         
         /// <summary>
-        /// winSPClientCodeSycnParamsEdit control.
+        /// viewPortMain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winSPClientCodeSycnParamsEdit;
+        protected global::Ext.Net.Viewport viewPortMain;
         
         /// <summary>
-        /// formPanelSPClientCodeSycnParamsEdit control.
+        /// TabPanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FormPanel formPanelSPClientCodeSycnParamsEdit;
+        protected global::Ext.Net.TabPanel TabPanel1;
         
         /// <summary>
-        /// hidId control.
+        /// fpnl1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Hidden hidId;
+        protected global::Ext.Net.FormPanel fpnl1;
         
         /// <summary>
-        /// txtName control.
+        /// cmReportDataRange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtName;
+        protected global::Ext.Net.CompositeField cmReportDataRange;
         
         /// <summary>
-        /// txtDescription control.
+        /// dfStart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextArea txtDescription;
+        protected global::Ext.Net.DateField dfStart;
         
         /// <summary>
-        /// chkIsEnable control.
+        /// dfEnd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Checkbox chkIsEnable;
+        protected global::Ext.Net.DateField dfEnd;
         
         /// <summary>
-        /// chkIsRequired control.
+        /// btnGeneReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Checkbox chkIsRequired;
+        protected global::Ext.Net.Button btnGeneReport;
         
         /// <summary>
-        /// txtCodeID control.
+        /// fpnl2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtCodeID;
+        protected global::Ext.Net.FormPanel fpnl2;
         
         /// <summary>
-        /// txtMappingParams control.
+        /// fpnl3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtMappingParams;
+        protected global::Ext.Net.FormPanel fpnl3;
         
         /// <summary>
-        /// txtTitle control.
+        /// fpnl4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtTitle;
-        
-        /// <summary>
-        /// txtParamsValue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtParamsValue;
-        
-        /// <summary>
-        /// txtParamsType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtParamsType;
-        
-        /// <summary>
-        /// btnSaveSPClientCodeSycnParams control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Button btnSaveSPClientCodeSycnParams;
-        
-        /// <summary>
-        /// btnCancelSPClientCodeSycnParams control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Button btnCancelSPClientCodeSycnParams;
+        protected global::Ext.Net.FormPanel fpnl4;
     }
 }
