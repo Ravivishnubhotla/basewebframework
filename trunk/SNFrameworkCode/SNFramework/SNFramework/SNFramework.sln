@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\Common.Logging.dll = ThirdsDll\Common.Logging.dll
 		ThirdsDll\Common.Logging.Log4Net.dll = ThirdsDll\Common.Logging.Log4Net.dll
 		ThirdsDll\Ext.Net.dll = ThirdsDll\Ext.Net.dll
+		ThirdsDll\Ext.Net.MVC.dll = ThirdsDll\Ext.Net.MVC.dll
 		ThirdsDll\Ext.Net.Utilities.dll = ThirdsDll\Ext.Net.Utilities.dll
 		ThirdsDll\Ext.Net.UX.dll = ThirdsDll\Ext.Net.UX.dll
 		ThirdsDll\ICSharpCode.SharpZipLib.dll = ThirdsDll\ICSharpCode.SharpZipLib.dll
