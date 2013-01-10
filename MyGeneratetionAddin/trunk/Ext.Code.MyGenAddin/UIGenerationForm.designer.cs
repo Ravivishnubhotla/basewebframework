@@ -60,12 +60,25 @@ namespace Legendigital.Code.MyGenAddin
             this.openFileDialogInputUIConfig = new System.Windows.Forms.OpenFileDialog();
             this.tabPageSetting = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.toolStripTop = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonSaveConifg = new System.Windows.Forms.ToolStripButton();
+            this.tsConfigOperation = new System.Windows.Forms.ToolStrip();
+            this.tsbSaveConifgToDefault = new System.Windows.Forms.ToolStripButton();
+            this.tsbSaveConfigToFile = new System.Windows.Forms.ToolStripButton();
+            this.tsbOpenConfigFromFile = new System.Windows.Forms.ToolStripButton();
             this.propertyGridSetting = new System.Windows.Forms.PropertyGrid();
             this.btnSaveSetting = new System.Windows.Forms.Button();
             this.tabPageSingleCode = new System.Windows.Forms.TabPage();
             this.dataGridViewField = new System.Windows.Forms.DataGridView();
+            this.colIsSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colFieldName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFieldNameCn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLanguageType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIsAutoKey = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colInputType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.colDefaultValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIsReqiured = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colSelectItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIndexName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripSingleCodeCommandList = new System.Windows.Forms.ToolStrip();
             this.lblToolStripSelectDataBase = new System.Windows.Forms.ToolStripLabel();
             this.cbxtoolStripSelectDataBase = new System.Windows.Forms.ToolStripComboBox();
@@ -82,20 +95,11 @@ namespace Legendigital.Code.MyGenAddin
             this.toolStripButtonSaveConfig = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonLoadConifg = new System.Windows.Forms.ToolStripButton();
             this.tbcMain = new System.Windows.Forms.TabControl();
-            this.colIndexName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSelectItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIsReqiured = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colDefaultValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colInputType = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.colIsAutoKey = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLanguageType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFieldNameCn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFieldName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIsSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.saveFileDialogConfig = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialogConfig = new System.Windows.Forms.OpenFileDialog();
             this.tabPageSetting.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.toolStripTop.SuspendLayout();
+            this.tsConfigOperation.SuspendLayout();
             this.tabPageSingleCode.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewField)).BeginInit();
             this.toolStripSingleCodeCommandList.SuspendLayout();
@@ -110,10 +114,10 @@ namespace Legendigital.Code.MyGenAddin
             // 
             this.tabPageSetting.Controls.Add(this.tableLayoutPanel1);
             this.tabPageSetting.Controls.Add(this.btnSaveSetting);
-            this.tabPageSetting.Location = new System.Drawing.Point(4, 21);
+            this.tabPageSetting.Location = new System.Drawing.Point(4, 22);
             this.tabPageSetting.Name = "tabPageSetting";
             this.tabPageSetting.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSetting.Size = new System.Drawing.Size(1042, 490);
+            this.tabPageSetting.Size = new System.Drawing.Size(1042, 489);
             this.tabPageSetting.TabIndex = 1;
             this.tabPageSetting.Text = "配置设置";
             this.tabPageSetting.UseVisualStyleBackColor = true;
@@ -122,7 +126,7 @@ namespace Legendigital.Code.MyGenAddin
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.toolStripTop, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tsConfigOperation, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.propertyGridSetting, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
@@ -130,34 +134,52 @@ namespace Legendigital.Code.MyGenAddin
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1036, 484);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1036, 483);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
-            // toolStripTop
+            // tsConfigOperation
             // 
-            this.toolStripTop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toolStripTop.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                                                                          this.toolStripButtonSaveConifg});
-            this.toolStripTop.Location = new System.Drawing.Point(0, 0);
-            this.toolStripTop.Name = "toolStripTop";
-            this.toolStripTop.Size = new System.Drawing.Size(1036, 25);
-            this.toolStripTop.TabIndex = 4;
-            this.toolStripTop.Text = "toolStrip1";
+            this.tsConfigOperation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tsConfigOperation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbSaveConifgToDefault,
+            this.tsbSaveConfigToFile,
+            this.tsbOpenConfigFromFile});
+            this.tsConfigOperation.Location = new System.Drawing.Point(0, 0);
+            this.tsConfigOperation.Name = "tsConfigOperation";
+            this.tsConfigOperation.Size = new System.Drawing.Size(1036, 25);
+            this.tsConfigOperation.TabIndex = 4;
+            this.tsConfigOperation.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.tsConfigOperation_ItemClicked);
             // 
-            // toolStripButtonSaveConifg
+            // tsbSaveConifgToDefault
             // 
-            this.toolStripButtonSaveConifg.Image = global::Legendigital.Code.MyGenAddin.WinResource.Save;
-            this.toolStripButtonSaveConifg.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSaveConifg.Name = "toolStripButtonSaveConifg";
-            this.toolStripButtonSaveConifg.Size = new System.Drawing.Size(75, 22);
-            this.toolStripButtonSaveConifg.Text = "保存配置";
+            this.tsbSaveConifgToDefault.Image = global::Legendigital.Code.MyGenAddin.WinResource.Save;
+            this.tsbSaveConifgToDefault.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSaveConifgToDefault.Name = "tsbSaveConifgToDefault";
+            this.tsbSaveConifgToDefault.Size = new System.Drawing.Size(112, 22);
+            this.tsbSaveConifgToDefault.Text = "保存为默认配置";
+            // 
+            // tsbSaveConfigToFile
+            // 
+            this.tsbSaveConfigToFile.Image = global::Legendigital.Code.MyGenAddin.WinResource.Save;
+            this.tsbSaveConfigToFile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSaveConfigToFile.Name = "tsbSaveConfigToFile";
+            this.tsbSaveConfigToFile.Size = new System.Drawing.Size(76, 22);
+            this.tsbSaveConfigToFile.Text = "保存配置";
+            // 
+            // tsbOpenConfigFromFile
+            // 
+            this.tsbOpenConfigFromFile.Image = global::Legendigital.Code.MyGenAddin.WinResource.open;
+            this.tsbOpenConfigFromFile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbOpenConfigFromFile.Name = "tsbOpenConfigFromFile";
+            this.tsbOpenConfigFromFile.Size = new System.Drawing.Size(76, 22);
+            this.tsbOpenConfigFromFile.Text = "保存配置";
             // 
             // propertyGridSetting
             // 
             this.propertyGridSetting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGridSetting.Location = new System.Drawing.Point(3, 28);
             this.propertyGridSetting.Name = "propertyGridSetting";
-            this.propertyGridSetting.Size = new System.Drawing.Size(1030, 453);
+            this.propertyGridSetting.Size = new System.Drawing.Size(1030, 452);
             this.propertyGridSetting.TabIndex = 1;
             // 
             // btnSaveSetting
@@ -173,9 +195,9 @@ namespace Legendigital.Code.MyGenAddin
             // 
             this.tabPageSingleCode.Controls.Add(this.dataGridViewField);
             this.tabPageSingleCode.Controls.Add(this.toolStripSingleCodeCommandList);
-            this.tabPageSingleCode.Location = new System.Drawing.Point(4, 21);
+            this.tabPageSingleCode.Location = new System.Drawing.Point(4, 22);
             this.tabPageSingleCode.Name = "tabPageSingleCode";
-            this.tabPageSingleCode.Size = new System.Drawing.Size(1042, 490);
+            this.tabPageSingleCode.Size = new System.Drawing.Size(1042, 489);
             this.tabPageSingleCode.TabIndex = 2;
             this.tabPageSingleCode.Text = "片段代码生成";
             this.tabPageSingleCode.UseVisualStyleBackColor = true;
@@ -185,42 +207,130 @@ namespace Legendigital.Code.MyGenAddin
             this.dataGridViewField.AllowUserToAddRows = false;
             this.dataGridViewField.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewField.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-                                                                                                      this.colIsSelect,
-                                                                                                      this.colFieldName,
-                                                                                                      this.colFieldNameCn,
-                                                                                                      this.colLanguageType,
-                                                                                                      this.colSize,
-                                                                                                      this.colIsAutoKey,
-                                                                                                      this.colInputType,
-                                                                                                      this.colDefaultValue,
-                                                                                                      this.colIsReqiured,
-                                                                                                      this.colSelectItem,
-                                                                                                      this.colIndexName});
+            this.colIsSelect,
+            this.colFieldName,
+            this.colFieldNameCn,
+            this.colLanguageType,
+            this.colSize,
+            this.colIsAutoKey,
+            this.colInputType,
+            this.colDefaultValue,
+            this.colIsReqiured,
+            this.colSelectItem,
+            this.colIndexName});
             this.dataGridViewField.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewField.Location = new System.Drawing.Point(0, 25);
             this.dataGridViewField.Name = "dataGridViewField";
             this.dataGridViewField.RowTemplate.Height = 23;
-            this.dataGridViewField.Size = new System.Drawing.Size(1042, 465);
+            this.dataGridViewField.Size = new System.Drawing.Size(1042, 464);
             this.dataGridViewField.TabIndex = 1;
             this.dataGridViewField.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewField_CellValueChanged);
+            // 
+            // colIsSelect
+            // 
+            this.colIsSelect.DataPropertyName = "IsSelect";
+            this.colIsSelect.FillWeight = 50F;
+            this.colIsSelect.HeaderText = "选择";
+            this.colIsSelect.Name = "colIsSelect";
+            this.colIsSelect.Width = 50;
+            // 
+            // colFieldName
+            // 
+            this.colFieldName.DataPropertyName = "FieldName";
+            this.colFieldName.HeaderText = "列名";
+            this.colFieldName.Name = "colFieldName";
+            this.colFieldName.ReadOnly = true;
+            // 
+            // colFieldNameCn
+            // 
+            this.colFieldNameCn.DataPropertyName = "FieldNameCn";
+            this.colFieldNameCn.HeaderText = "中文字段";
+            this.colFieldNameCn.Name = "colFieldNameCn";
+            // 
+            // colLanguageType
+            // 
+            this.colLanguageType.DataPropertyName = "LanguageType";
+            this.colLanguageType.FillWeight = 80F;
+            this.colLanguageType.HeaderText = "数据类型";
+            this.colLanguageType.Name = "colLanguageType";
+            this.colLanguageType.ReadOnly = true;
+            this.colLanguageType.Width = 80;
+            // 
+            // colSize
+            // 
+            this.colSize.DataPropertyName = "Size";
+            this.colSize.FillWeight = 60F;
+            this.colSize.HeaderText = "大小";
+            this.colSize.Name = "colSize";
+            this.colSize.ReadOnly = true;
+            this.colSize.Width = 60;
+            // 
+            // colIsAutoKey
+            // 
+            this.colIsAutoKey.DataPropertyName = "IsAutoKey";
+            this.colIsAutoKey.FillWeight = 60F;
+            this.colIsAutoKey.HeaderText = "主键";
+            this.colIsAutoKey.Name = "colIsAutoKey";
+            this.colIsAutoKey.ReadOnly = true;
+            this.colIsAutoKey.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colIsAutoKey.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colIsAutoKey.Width = 60;
+            // 
+            // colInputType
+            // 
+            this.colInputType.DataPropertyName = "InputType";
+            this.colInputType.FillWeight = 120F;
+            this.colInputType.HeaderText = "输入控件类型";
+            this.colInputType.Name = "colInputType";
+            this.colInputType.Width = 120;
+            // 
+            // colDefaultValue
+            // 
+            this.colDefaultValue.DataPropertyName = "DefaultValue";
+            this.colDefaultValue.HeaderText = "默认值";
+            this.colDefaultValue.Name = "colDefaultValue";
+            // 
+            // colIsReqiured
+            // 
+            this.colIsReqiured.DataPropertyName = "IsReqiured";
+            this.colIsReqiured.FillWeight = 40F;
+            this.colIsReqiured.HeaderText = "必填";
+            this.colIsReqiured.Name = "colIsReqiured";
+            this.colIsReqiured.Width = 40;
+            // 
+            // colSelectItem
+            // 
+            this.colSelectItem.DataPropertyName = "Items";
+            this.colSelectItem.FillWeight = 290F;
+            this.colSelectItem.HeaderText = "选项";
+            this.colSelectItem.Name = "colSelectItem";
+            this.colSelectItem.Width = 290;
+            // 
+            // colIndexName
+            // 
+            this.colIndexName.DataPropertyName = "DbColumnName";
+            this.colIndexName.HeaderText = "数据列名";
+            this.colIndexName.Name = "colIndexName";
+            this.colIndexName.ReadOnly = true;
+            this.colIndexName.Visible = false;
             // 
             // toolStripSingleCodeCommandList
             // 
             this.toolStripSingleCodeCommandList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                                                                                                            this.lblToolStripSelectDataBase,
-                                                                                                            this.cbxtoolStripSelectDataBase,
-                                                                                                            this.toolStripSeparator1,
-                                                                                                            this.SelectObjectType,
-                                                                                                            this.toolStripSelectObjectType,
-                                                                                                            this.toolStripSeparator2,
-                                                                                                            this.lbltoolStriplblSelectTable,
-                                                                                                            this.cbxtoolStripSelectObejct,
-                                                                                                            this.toolStripSeparator3,
-                                                                                                            this.sbtntoolStripComandType,
-                                                                                                            this.toolStripButtonSelectAll,
-                                                                                                            this.toolStripSeparator4,
-                                                                                                            this.toolStripButtonSaveConfig,
-                                                                                                            this.toolStripButtonLoadConifg});
+            this.lblToolStripSelectDataBase,
+            this.cbxtoolStripSelectDataBase,
+            this.toolStripSeparator1,
+            this.SelectObjectType,
+            this.toolStripSelectObjectType,
+            this.toolStripSeparator2,
+            this.lbltoolStriplblSelectTable,
+            this.cbxtoolStripSelectObejct,
+            this.toolStripSeparator3,
+            this.sbtntoolStripComandType,
+            this.toolStripButtonSelectAll,
+            this.toolStripSeparator4,
+            this.toolStripButtonSaveConfig,
+            this.toolStripButtonLoadConifg});
             this.toolStripSingleCodeCommandList.Location = new System.Drawing.Point(0, 0);
             this.toolStripSingleCodeCommandList.Name = "toolStripSingleCodeCommandList";
             this.toolStripSingleCodeCommandList.Size = new System.Drawing.Size(1042, 25);
@@ -230,7 +340,7 @@ namespace Legendigital.Code.MyGenAddin
             // lblToolStripSelectDataBase
             // 
             this.lblToolStripSelectDataBase.Name = "lblToolStripSelectDataBase";
-            this.lblToolStripSelectDataBase.Size = new System.Drawing.Size(55, 22);
+            this.lblToolStripSelectDataBase.Size = new System.Drawing.Size(56, 22);
             this.lblToolStripSelectDataBase.Text = "数据库：";
             // 
             // cbxtoolStripSelectDataBase
@@ -248,15 +358,15 @@ namespace Legendigital.Code.MyGenAddin
             // SelectObjectType
             // 
             this.SelectObjectType.Name = "SelectObjectType";
-            this.SelectObjectType.Size = new System.Drawing.Size(70, 22);
+            this.SelectObjectType.Size = new System.Drawing.Size(72, 22);
             this.SelectObjectType.Text = " 对象类型：";
             // 
             // toolStripSelectObjectType
             // 
             this.toolStripSelectObjectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripSelectObjectType.Items.AddRange(new object[] {
-                                                                           "表",
-                                                                           "视图"});
+            "表",
+            "视图"});
             this.toolStripSelectObjectType.Name = "toolStripSelectObjectType";
             this.toolStripSelectObjectType.Size = new System.Drawing.Size(121, 25);
             // 
@@ -268,15 +378,15 @@ namespace Legendigital.Code.MyGenAddin
             // lbltoolStriplblSelectTable
             // 
             this.lbltoolStriplblSelectTable.Name = "lbltoolStriplblSelectTable";
-            this.lbltoolStriplblSelectTable.Size = new System.Drawing.Size(43, 22);
+            this.lbltoolStriplblSelectTable.Size = new System.Drawing.Size(44, 22);
             this.lbltoolStriplblSelectTable.Text = "对象：";
             // 
             // cbxtoolStripSelectObejct
             // 
             this.cbxtoolStripSelectObejct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxtoolStripSelectObejct.DropDownWidth = 150;
+            this.cbxtoolStripSelectObejct.DropDownWidth = 180;
             this.cbxtoolStripSelectObejct.Name = "cbxtoolStripSelectObejct";
-            this.cbxtoolStripSelectObejct.Size = new System.Drawing.Size(121, 25);
+            this.cbxtoolStripSelectObejct.Size = new System.Drawing.Size(151, 25);
             this.cbxtoolStripSelectObejct.SelectedIndexChanged += new System.EventHandler(this.cbxtoolStripSelectObejct_SelectedIndexChanged);
             // 
             // toolStripSeparator3
@@ -290,7 +400,7 @@ namespace Legendigital.Code.MyGenAddin
             this.sbtntoolStripComandType.Image = ((System.Drawing.Image)(resources.GetObject("sbtntoolStripComandType.Image")));
             this.sbtntoolStripComandType.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.sbtntoolStripComandType.Name = "sbtntoolStripComandType";
-            this.sbtntoolStripComandType.Size = new System.Drawing.Size(71, 22);
+            this.sbtntoolStripComandType.Size = new System.Drawing.Size(72, 22);
             this.sbtntoolStripComandType.Text = "选择操作";
             this.sbtntoolStripComandType.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.sbtntoolStripComandType_DropDownItemClicked);
             // 
@@ -300,7 +410,7 @@ namespace Legendigital.Code.MyGenAddin
             this.toolStripButtonSelectAll.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSelectAll.Image")));
             this.toolStripButtonSelectAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSelectAll.Name = "toolStripButtonSelectAll";
-            this.toolStripButtonSelectAll.Size = new System.Drawing.Size(35, 22);
+            this.toolStripButtonSelectAll.Size = new System.Drawing.Size(36, 22);
             this.toolStripButtonSelectAll.Text = "全选";
             this.toolStripButtonSelectAll.Click += new System.EventHandler(this.toolStripButtonSelectAll_Click);
             // 
@@ -315,7 +425,7 @@ namespace Legendigital.Code.MyGenAddin
             this.toolStripButtonSaveConfig.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonSaveConfig.Image")));
             this.toolStripButtonSaveConfig.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonSaveConfig.Name = "toolStripButtonSaveConfig";
-            this.toolStripButtonSaveConfig.Size = new System.Drawing.Size(59, 22);
+            this.toolStripButtonSaveConfig.Size = new System.Drawing.Size(60, 22);
             this.toolStripButtonSaveConfig.Text = "保存配置";
             this.toolStripButtonSaveConfig.Click += new System.EventHandler(this.toolStripButtonSaveConfig_Click);
             // 
@@ -325,7 +435,7 @@ namespace Legendigital.Code.MyGenAddin
             this.toolStripButtonLoadConifg.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLoadConifg.Image")));
             this.toolStripButtonLoadConifg.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonLoadConifg.Name = "toolStripButtonLoadConifg";
-            this.toolStripButtonLoadConifg.Size = new System.Drawing.Size(59, 22);
+            this.toolStripButtonLoadConifg.Size = new System.Drawing.Size(60, 22);
             this.toolStripButtonLoadConifg.Text = "载入配置";
             this.toolStripButtonLoadConifg.Click += new System.EventHandler(this.toolStripButtonLoadConifg_Click);
             // 
@@ -342,93 +452,13 @@ namespace Legendigital.Code.MyGenAddin
             this.tbcMain.TabIndex = 2;
             this.tbcMain.TabStop = false;
             // 
-            // colIndexName
+            // saveFileDialogConfig
             // 
-            this.colIndexName.DataPropertyName = "DbColumnName";
-            this.colIndexName.HeaderText = "数据列名";
-            this.colIndexName.Name = "colIndexName";
-            this.colIndexName.ReadOnly = true;
-            this.colIndexName.Visible = false;
+            this.saveFileDialogConfig.Filter = "代码生成配置文件|*.cgf";
             // 
-            // colSelectItem
+            // openFileDialogConfig
             // 
-            this.colSelectItem.FillWeight = 290F;
-            this.colSelectItem.HeaderText = "选项";
-            this.colSelectItem.DataPropertyName = "Items";
-            this.colSelectItem.Name = "colSelectItem";
-            this.colSelectItem.Width = 290;
-            // 
-            // colIsReqiured
-            // 
-            this.colIsReqiured.DataPropertyName = "IsReqiured";
-            this.colIsReqiured.FillWeight = 40F;
-            this.colIsReqiured.HeaderText = "必填";
-            this.colIsReqiured.Name = "colIsReqiured";
-            this.colIsReqiured.Width = 40;
-            // 
-            // colDefaultValue
-            // 
-            this.colDefaultValue.DataPropertyName = "DefaultValue";
-            this.colDefaultValue.HeaderText = "默认值";
-            this.colDefaultValue.Name = "colDefaultValue";
-            // 
-            // colInputType
-            // 
-            this.colInputType.DataPropertyName = "InputType";
-            this.colInputType.FillWeight = 120F;
-            this.colInputType.HeaderText = "输入控件类型";
-            this.colInputType.Name = "colInputType";
-            this.colInputType.Width = 120;
-            // 
-            // colIsAutoKey
-            // 
-            this.colIsAutoKey.DataPropertyName = "IsAutoKey";
-            this.colIsAutoKey.FillWeight = 60F;
-            this.colIsAutoKey.HeaderText = "主键";
-            this.colIsAutoKey.Name = "colIsAutoKey";
-            this.colIsAutoKey.ReadOnly = true;
-            this.colIsAutoKey.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colIsAutoKey.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colIsAutoKey.Width = 60;
-            // 
-            // colSize
-            // 
-            this.colSize.DataPropertyName = "Size";
-            this.colSize.FillWeight = 60F;
-            this.colSize.HeaderText = "大小";
-            this.colSize.Name = "colSize";
-            this.colSize.ReadOnly = true;
-            this.colSize.Width = 60;
-            // 
-            // colLanguageType
-            // 
-            this.colLanguageType.DataPropertyName = "LanguageType";
-            this.colLanguageType.FillWeight = 80F;
-            this.colLanguageType.HeaderText = "数据类型";
-            this.colLanguageType.Name = "colLanguageType";
-            this.colLanguageType.ReadOnly = true;
-            this.colLanguageType.Width = 80;
-            // 
-            // colFieldNameCn
-            // 
-            this.colFieldNameCn.DataPropertyName = "FieldNameCn";
-            this.colFieldNameCn.HeaderText = "中文字段";
-            this.colFieldNameCn.Name = "colFieldNameCn";
-            // 
-            // colFieldName
-            // 
-            this.colFieldName.DataPropertyName = "FieldName";
-            this.colFieldName.HeaderText = "列名";
-            this.colFieldName.Name = "colFieldName";
-            this.colFieldName.ReadOnly = true;
-            // 
-            // colIsSelect
-            // 
-            this.colIsSelect.DataPropertyName = "IsSelect";
-            this.colIsSelect.FillWeight = 50F;
-            this.colIsSelect.HeaderText = "选择";
-            this.colIsSelect.Name = "colIsSelect";
-            this.colIsSelect.Width = 50;
+            this.openFileDialogConfig.Filter = "代码生成配置文件|*.cgf";
             // 
             // UIGenerationForm
             // 
@@ -442,8 +472,8 @@ namespace Legendigital.Code.MyGenAddin
             this.tabPageSetting.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.toolStripTop.ResumeLayout(false);
-            this.toolStripTop.PerformLayout();
+            this.tsConfigOperation.ResumeLayout(false);
+            this.tsConfigOperation.PerformLayout();
             this.tabPageSingleCode.ResumeLayout(false);
             this.tabPageSingleCode.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewField)).EndInit();
@@ -479,8 +509,8 @@ namespace Legendigital.Code.MyGenAddin
         private System.Windows.Forms.ToolStripButton toolStripButtonLoadConifg;
         private System.Windows.Forms.TabControl tbcMain;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ToolStrip toolStripTop;
-        private System.Windows.Forms.ToolStripButton toolStripButtonSaveConifg;
+        private System.Windows.Forms.ToolStrip tsConfigOperation;
+        private System.Windows.Forms.ToolStripButton tsbSaveConifgToDefault;
         private System.Windows.Forms.PropertyGrid propertyGridSetting;
         private DataGridViewCheckBoxColumn colIsSelect;
         private DataGridViewTextBoxColumn colFieldName;
@@ -493,5 +523,9 @@ namespace Legendigital.Code.MyGenAddin
         private DataGridViewCheckBoxColumn colIsReqiured;
         private DataGridViewTextBoxColumn colSelectItem;
         private DataGridViewTextBoxColumn colIndexName;
+        private ToolStripButton tsbSaveConfigToFile;
+        private ToolStripButton tsbOpenConfigFromFile;
+        private SaveFileDialog saveFileDialogConfig;
+        private OpenFileDialog openFileDialogConfig;
     }
 }

@@ -99,16 +99,7 @@ namespace Legendigital.Code.MyGenAddin
 
 
 
-        public static T BinaryDeserializeObject<T>(string saveKey, T defaultValue)
-        {
 
-            string[] fileArgs = saveKey.Split('.');
-
-            string filepath = Path.Combine(appRoot, string.Join(@"\", fileArgs) + ".dat");
-
-            return BinaryDeserializeObjectByPath<T>(filepath, defaultValue);
-
-        }
 
 
         public static T BinaryDeserializeObjectByPath<T>(string filePath, T defaultValue)
@@ -155,13 +146,36 @@ namespace Legendigital.Code.MyGenAddin
             }
         }
 
-        public static void BinarySerializeObject<T>(string saveKey, T t)
+
+
+
+        public static void BinarySerializeObject<T>(string saveKey, T defaultValue)
+        {
+            BinarySerializeObject<T>(saveKey, defaultValue, ".dat");
+        }
+
+        public static T BinaryDeserializeObject<T>(string saveKey, T defaultValue)
+        {
+            return BinaryDeserializeObject<T>(saveKey, defaultValue, ".dat");
+        }
+
+        public static void BinarySerializeObject<T>(string saveKey, T t,string configFileExt)
         {
             string[] fileArgs = saveKey.Split('.');
 
-            string filepath = Path.Combine(appRoot, string.Join(@"\", fileArgs) + ".dat");
+            string filepath = Path.Combine(appRoot, string.Join(@"\", fileArgs) + configFileExt);
 
             BinarySerializeObjectByPath<T>(filepath, t);
+        }
+
+        public static T BinaryDeserializeObject<T>(string saveKey, T defaultValue,string configFileExt)
+        {
+            string[] fileArgs = saveKey.Split('.');
+
+            string filepath = Path.Combine(appRoot, string.Join(@"\", fileArgs) + configFileExt);
+
+            return BinaryDeserializeObjectByPath<T>(filepath, defaultValue);
+
         }
 
 

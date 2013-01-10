@@ -1,6 +1,6 @@
 ﻿##|TYPE Template
 ##|UNIQUEID 03fe1be6-f041-4e2e-81bd-642378804296
-##|TITLE SpringNHibernate表现层代码模版
+##|TITLE 表现层代码模版
 ##|NAMESPACE 
 ##|SOURCE_TYPE Source
 ##|OUTPUT_LANGUAGE None
@@ -45,6 +45,14 @@ public class MyUIGenerationForm : UIGenerationForm
             hb.Add("GenerateViewPageHtmlAndPageCode", "生成显示界面HTML和后台代码");
 			hb.Add("GenerateListPageHtmlAndPageCode", "生成列表界面HTML和后台代码");
 			return hb;
+        }
+		
+		public override UICodeGenerationConfig DefaultConfig
+        {
+            get { 
+				UICodeGenerationConfig config = new UICodeGenerationConfig();
+				return config;
+			}
         }
 }
 ##|GUI_END
@@ -102,6 +110,9 @@ public class GeneratedTemplate : DotNetScriptTemplate
 			case "GenerateAddPageHtmlAndPageCode":
 				GenerateAddPageHtml(selectTable,tableUIGenerationParamsListArray);
 				GenerateAddPageCode(selectTable,tableUIGenerationParamsListArray);
+				break;
+			case "GenerateListPageHtmlAndPageCode":
+				GenerateListPageHtmlAndPageCode(selectTable,tableUIGenerationParamsListArray);
 				break;
 			default:
 				break;
@@ -491,7 +502,236 @@ pd.Close();
 		}
 		
 		
+		private void GenerateListPageHtmlAndPageCode( ITable table ,TableUIGenerationParams[] tableUIGenerationParamsListArray)
+	    {
+			string gvControlID = uiftg.GetGridControlName(table);
+			string pkPropertyName = uiftg.GetPkProprtyName(table);
+			string pgControlID = uiftg.GetPageControlName(table);
+			string moudleName = uiftg.GenerateMoudleCodeName(table);
+			string moudleDisplayName = uiftg.GenerateMoudleDisplayName(table);
+			string listPageName = uiftg.GetListPageUrl(table);
+			string addPageName = uiftg.GetAddPageUrl(table);
+			string editPageName = uiftg.GetEditPageUrl(table);
+			string viewPageName = uiftg.GetViewrPageUrl(table);
+			string pkQueryKeName = uiftg.GetPkQueryKey(table);
+			string bllName = uiftg.GenerateWrapperClassName(table);
+			string entityName = uiftg.GenerateEntityClassName(table);
+%>  
 
+---------------------------------------------------------------页面代码---------------------------------------------------
+
+	<div class="formtable_title">
+        <span>查询条件</span>
+    </div>
+    <br />
+    <table class="formtable" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td align="right" class="formtable_td01">
+                &nbsp;
+            </td>
+            <td class="formtable_td02">
+                &nbsp;
+            </td>
+            <td class="formtable_td01" align="right">
+                &nbsp;
+            </td>
+            <td class="formtable_td02">
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+    <br />
+    <div class="button_b_div fr">
+        <asp:Button ID="btnAdd" runat="server" Text="新 建" CssClass="button" OnClick="btnAdd_Click" />&nbsp;
+        <asp:Button ID="btnSearch" runat="server" Text="查 询" CssClass="button" OnClick="btnSearch_Click" />
+    </div>
+    <div class="formtable_title">
+        <span><%= moudleDisplayName %>列表</span>
+    </div>
+    <asp:GridView ID="<%= gvControlID %>" CssClass="listtable" AutoGenerateColumns="false"  DataKeyNames="<%= pkPropertyName%>"
+        RowStyle-HorizontalAlign="Center" runat="server" OnRowCommand="<%= gvControlID %>_RowCommand"
+        OnRowDataBound="<%= gvControlID %>_RowDataBound">
+        <Columns>
+<% 
+for(int i=0;i<tableUIGenerationParamsListArray.Length;i++){
+IColumn column = table.Columns[tableUIGenerationParamsListArray[i].DbColumnName];
+if(!tableUIGenerationParamsListArray[i].IsSelect)
+{
+
+	continue;
+}
+	BulidGridColumn(table ,tableUIGenerationParamsListArray[i]);
+}
+%>			<asp:TemplateField HeaderText="操作">
+                <ItemTemplate>
+                    <asp:LinkButton ID="btnEdit<%= moudleName %>" CommandName="cmdEdit<%= moudleName %>" CommandArgument='<%= AspBeginTaget %>#Eval("<%= pkPropertyName%>") <%= AspEndTaget %>'
+                        CssClass="Icon_group_edit" runat="server">修改</asp:LinkButton>
+                    <asp:LinkButton ID="btnDelete<%= moudleName %>" CommandName="cmdDelete<%= moudleName %>" CommandArgument='<%= AspBeginTaget %>#Eval("<%= pkPropertyName%>") <%= AspEndTaget %>'
+                        CssClass="Icon_group_delete" runat="server" OnClientClick="return confirm('您确定要删除该条记录吗？')">删除</asp:LinkButton>
+                </ItemTemplate>
+                <ItemStyle HorizontalAlign="Center" />
+            </asp:TemplateField>
+        </Columns>
+        <EmptyDataTemplate>
+            <span>没有符合条件的记录</span>
+        </EmptyDataTemplate>
+        <EmptyDataRowStyle HorizontalAlign="Center" Font-Bold="true" />
+    </asp:GridView>
+    <div class="pagein fr">
+        <webdiyer:AspNetPager ID="<%= pgControlID %>" runat="server" CssClass="paginator" AlwaysShow="True"
+            PageSize="10" FirstPageText="首页" PrevPageText="上一页" NextPageText="下一页" LastPageText="尾页"
+            CurrentPageButtonClass="cpb" OnPageChanged="<%= pgControlID %>_OnPageChanged">
+        </webdiyer:AspNetPager>
+    </div>
+	
+	
+	
+	
+------------------------------------------------后台代码--------------------------------------------------------------------
+
+
+
+	public partial class <%= listPageName %> : BasePage
+    {
+ 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                BindList();
+            }
+        }
+
+        /// <summary>
+        /// 绑定页面
+        /// </summary>
+        private void BindList()
+        {
+            int RecordCount = 0;
+            int PageSize = <%= pgControlID %>.PageSize;
+            int PageIndex = <%= pgControlID %>.CurrentPageIndex;
+            DataSet ds_project =
+                <%= bllName %>.Instance.SelectByWhereAndOrderByAndPageToDataSet(
+                "M.[ID], M.[Name],M.[Code],M.[Description],[Leader],[StartDate],[EndDate] ,[Status],WO.Name as WorkOfficeName ",
+                "  inner join TMS_WorkOffice as WO on M.WorkOfficeId=WO.ID  ", BuildSQLWhere(), BuildSQLOrderBy()
+                , PageSize, PageIndex, out RecordCount);
+            <%= pgControlID %>.RecordCount = RecordCount;
+
+            <%= gvControlID %>.DataSource = ds_project.Tables[0];
+            <%= gvControlID %>.DataBind();
+        }
+
+        private string BuildSQLWhere()
+        {
+            StringBuilder sqlWhere = new StringBuilder();
+
+            sqlWhere.Append(" where 1=1 ");
+
+            return sqlWhere.ToString();
+        }
+
+        private string BuildSQLOrderBy()
+        {
+            StringBuilder sqlOrderBy = new StringBuilder();
+
+            sqlOrderBy.Append(" order by <%= pkPropertyName %> DESC ");
+
+            return sqlOrderBy.ToString();
+        }
+
+        /// <summary>
+        /// 分页
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void <%= pgControlID %>_OnPageChanged(object sender, EventArgs e)
+        {
+            BindList();
+        }
+
+
+        /// <summary>
+        /// 跳转到添加页面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("<%= addPageName %>.aspx");
+        }
+
+
+        /// <summary>
+        /// GridView的绑定事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void <%= gvControlID %>_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                <%= entityName %> dataItem = e.Row.DataItem as DataRow;
+            }
+        }
+
+        /// <summary>
+        /// 操作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void <%= gvControlID %>_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int dataID = Convert.ToInt32(e.CommandArgument);
+
+            switch (e.CommandName)
+            {
+                case "cmdEdit<%= moudleName %>":
+                    Response.Redirect("<%= editPageName %>.aspx?<%= pkQueryKeName %>=" + dataID);
+                    break;
+                case "cmdDelete<%= moudleName %>":
+                    try
+                    {
+                        <%= bllName %>.Instance.DeleteById(dataID);
+
+                        BindList();
+
+                        Common.ShowMessage(this, "提示", "删除成功!");
+                    }
+                    catch
+                    {
+                        Common.ShowMessage(this, "错误", "删除失败!");
+                    }
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindList();
+        }
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+
+<%		}
+
+
+		public void BulidGridColumn(ITable table ,TableUIGenerationParams columnParam)
+		{
+%>			<asp:BoundField HeaderText="<%= columnParam.FieldNameCn %>" DataField="<%= columnParam.FieldName %>" <% if(columnParam.LanguageType=="DateTime"){%>DataFormatString="{0:yyyy-MM-dd}"<%}%> />
+<%		
+		}
 
 
 		private string GetMaxLength(TableUIGenerationParams tableUIGenerationParamsListItem)
