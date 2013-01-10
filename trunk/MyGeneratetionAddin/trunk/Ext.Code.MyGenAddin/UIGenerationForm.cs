@@ -22,6 +22,8 @@ namespace Legendigital.Code.MyGenAddin
 
         private const string UIConfigkey = "UI.UIConfig";
 
+        public const string ConfigFileExt = ".cgf";
+
         private void AddInputUI(List<InputUIControl> ius, string name, bool canset, bool canread, bool hasitems, string dataType, string controlIDFormat, string controlGetSetValuePrppertyName)
         {
             InputUIControl iu = new InputUIControl();
@@ -66,18 +68,26 @@ namespace Legendigital.Code.MyGenAddin
         }
 
 
+        protected void SaveSetting()
+        {
+            SerializableHelper.BinarySerializeObject<UICodeGenerationConfig>(UIConfigkey, uiconfig, ConfigFileExt);
+        }
 
+        protected void GetSetting()
+        {
+            uiconfig = SerializableHelper.BinaryDeserializeObject<UICodeGenerationConfig>(UIConfigkey, DefaultConfig, ConfigFileExt);
+        }
 
+        public abstract UICodeGenerationConfig DefaultConfig { get; }
+ 
         public abstract SortedList<string, string> GetDropDownList();
 
 
-        private void GetSetting()
-        {
-            return;
-        }
-
+ 
         private void UIGenerationForm_Load(object sender, EventArgs e)
         {
+            this.openFileDialogConfig.Filter = "代码生成配置文件|*"+ConfigFileExt;
+            this.saveFileDialogConfig.Filter = "代码生成配置文件|*" + ConfigFileExt;
             BindDataBase(this.myMeta.DefaultDatabase, this.cbxtoolStripSelectDataBase.ComboBox, this.cbxtoolStripSelectObejct.ComboBox);
             this.toolStripSelectObjectType.SelectedIndex = 0;
             SortedList<string, string> hb = GetDropDownList();
@@ -90,14 +100,11 @@ namespace Legendigital.Code.MyGenAddin
                 sbtntoolStripComandType.DropDownItems.Add(toolStripMenuItem);
             }
 
-            //foreach (KeyValuePair<string, string> pair in hb)
-            //{
-            //    ToolStripItem toolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            //    toolStripMenuItem.Name = "ToolStripMenuItem" + pair.Key;
-            //    toolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            //    toolStripMenuItem.Text = pair.Value;
-            //    sbtntoolStripComandType.DropDownItems.Add(toolStripMenuItem);
-            //}
+            uiconfig = DefaultConfig;
+
+            GetSetting();
+
+            propertyGridSetting.SelectedObject = uiconfig;
         }
 
 
@@ -333,6 +340,39 @@ namespace Legendigital.Code.MyGenAddin
             this.zeusInput["Uiconfig"] = this.Uiconfig;
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void tsConfigOperation_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            switch (e.ClickedItem.Name)
+            {
+                case "tsbSaveConifgToDefault":
+                    try
+                    {
+                        SaveSetting();
+                        MessageBox.Show("设置保存成功！");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("设置保存失败：" + ex.Message);
+                    }
+                    break;
+                case "tsbSaveConfigToFile":
+                    if (saveFileDialogConfig.ShowDialog() == DialogResult.OK)
+                    {
+                        SerializableHelper.BinarySerializeObjectByPath<UICodeGenerationConfig>(saveFileDialogConfig.FileName,
+                                                                          uiconfig);
+                    }
+                    break;
+                case "tsbOpenConfigFromFile":
+                    if (openFileDialogConfig.ShowDialog() == DialogResult.OK)
+                    {
+                        uiconfig = SerializableHelper.BinaryDeserializeObjectByPath(openFileDialogConfig.FileName,
+                                                                                  DefaultConfig);
+                        propertyGridSetting.SelectedObject = uiconfig;
+                    }
+                    break;
+            }
         }
 
 
