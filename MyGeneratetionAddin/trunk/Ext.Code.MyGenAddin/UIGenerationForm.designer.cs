@@ -386,7 +386,7 @@ namespace Legendigital.Code.MyGenAddin
             this.cbxtoolStripSelectObejct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxtoolStripSelectObejct.DropDownWidth = 180;
             this.cbxtoolStripSelectObejct.Name = "cbxtoolStripSelectObejct";
-            this.cbxtoolStripSelectObejct.Size = new System.Drawing.Size(151, 25);
+            this.cbxtoolStripSelectObejct.Size = new System.Drawing.Size(180, 25);
             this.cbxtoolStripSelectObejct.SelectedIndexChanged += new System.EventHandler(this.cbxtoolStripSelectObejct_SelectedIndexChanged);
             // 
             // toolStripSeparator3
