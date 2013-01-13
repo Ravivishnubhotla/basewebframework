@@ -38,6 +38,8 @@ namespace SPSSiteTask
 
         private static List<int> notSendClientChannelIDList;
 
+        private static List<string> notSendHost;
+
         private static bool ReadAppConfigBoolean(string configkey,bool defaultValue)
         {
             try
@@ -110,6 +112,8 @@ namespace SPSSiteTask
 
             string[] multithreadWebSites = multithreadWebSite.Split(("|").ToCharArray());
 
+            notSendHost = new List<string>(ReadAppConfigString("NotSendHost", "").Split('|'));
+
             SortedList<string, int> multiWebSites = new SortedList<string, int>();
 
             foreach (string multiWebSite in multithreadWebSites)
@@ -163,12 +167,12 @@ namespace SPSSiteTask
 
             switch (cmds[0].ToLower())
             {
-                case "-rsr":
-                    ReSendAllSendTodayNoSendRequest();
-                    break;
-                case "-rhsr":
-                    ReSendAllSendHistoryNoSendRequest();
-                    break;
+                //case "-rsr":
+                //    ReSendAllSendTodayNoSendRequest();
+                //    break;
+                //case "-rhsr":
+                //    ReSendAllSendHistoryNoSendRequest();
+                //    break;
                 case "-rsrtt":
                     ReSendNoSendRequestThreads(System.DateTime.Now.Date, System.DateTime.Now.Date, 3, multiWebSites);
                     break;
@@ -215,7 +219,14 @@ namespace SPSSiteTask
                 catch (Exception ex)
                 {
                     logger.Error("获取host失败！", ex);
+                    continue;
                 }
+
+
+                //if (hashtable.ContainsKey(host))
+                //{
+                //    logger.Info("");
+                //}
 
                 if (!hashtable.ContainsKey(host))
                 {
@@ -236,18 +247,6 @@ namespace SPSSiteTask
 
             foreach (DictionaryEntry dictionaryEntry in hashtable)
             {
-                //if (multiWebSites.ContainsKey(dictionaryEntry.Key.ToString()) && multiWebSites[dictionaryEntry.Key.ToString()]<=0)
-                //{
-
-                //    ThreadPool.QueueUserWorkItem(SendRequest, dictionaryEntry.Value);
-
-                //    multiWebSites[dictionaryEntry.Key.ToString()] = multiWebSites[dictionaryEntry.Key.ToString()] - 1;
-             
-                //    Thread.Sleep(60000);
-
-                //    continue;
-
-                //}
                 ThreadPool.QueueUserWorkItem(SendRequest, dictionaryEntry.Value);
                 Thread.Sleep(10000);
             }
@@ -276,6 +275,11 @@ namespace SPSSiteTask
             {
                 foreach (int channeClientId in sendTask.ChanneClientIds)
                 {
+                    if (notSendHost.Contains(sendTask.Host))
+                    {
+                        logger.Info("域名" + sendTask.Host + "略过。。。");
+                        continue;
+                    }
 
                     if (notSendClientChannelIDList.Contains(channeClientId))
                     {
@@ -312,62 +316,62 @@ namespace SPSSiteTask
             }
         }
 
-        private static void ReSendAllSendHistoryNoSendRequest()
-        {
-            List<SPSSendUrlEntity> sendUrlEntities = null;
+        //private static void ReSendAllSendHistoryNoSendRequest()
+        //{
+        //    List<SPSSendUrlEntity> sendUrlEntities = null;
 
-            try
-            {
-                logger.Info("获取发送请求数据开始....");
+        //    try
+        //    {
+        //        logger.Info("获取发送请求数据开始....");
 
-                DateTime endDate = System.DateTime.Now.AddDays(-1);
+        //        DateTime endDate = System.DateTime.Now.AddDays(-1);
 
-                DateTime startDate = endDate.AddDays(-1*historyDateCount);
+        //        DateTime startDate = endDate.AddDays(-1*historyDateCount);
 
-                sendUrlEntities = client.GetAllClientChannelNeedSendHistoryData(maxDataCount, maxAllDataCount, startDate, endDate);
+        //        sendUrlEntities = client.GetAllClientChannelNeedSendHistoryData(maxDataCount, maxAllDataCount, startDate, endDate);
 
-                logger.Info(string.Format("获取发送请求数据成功,共{0}条请求！", sendUrlEntities.Count));
-            }
-            catch (Exception ex)
-            {
-                logger.Error("获取发送请求数据失败！", ex);
+        //        logger.Info(string.Format("获取发送请求数据成功,共{0}条请求！", sendUrlEntities.Count));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        logger.Error("获取发送请求数据失败！", ex);
 
-                if (isDebug)
-                    Console.ReadKey();
+        //        if (isDebug)
+        //            Console.ReadKey();
 
-                return;
-            }
-
-
-            PatchSend(sendUrlEntities);
-        }
+        //        return;
+        //    }
 
 
-        private static void ReSendAllSendTodayNoSendRequest()
-        {
-            List<SPSSendUrlEntity> sendUrlEntities = null;
-
-            try
-            {
-                logger.Info("获取发送请求数据开始....");
-
-                sendUrlEntities = client.GetAllClientChannelNeedSendData(maxDataCount,maxAllDataCount);
-
-                logger.Info(string.Format("获取发送请求数据成功,共{0}条请求！", sendUrlEntities.Count));
-            }
-            catch (Exception ex)
-            {
-                logger.Error("获取发送请求数据失败！", ex);
-
-                if (isDebug)
-                    Console.ReadKey();
-
-                return;
-            }
+        //    PatchSend(sendUrlEntities);
+        //}
 
 
-            PatchSend(sendUrlEntities);
-        }
+        //private static void ReSendAllSendTodayNoSendRequest()
+        //{
+        //    List<SPSSendUrlEntity> sendUrlEntities = null;
+
+        //    try
+        //    {
+        //        logger.Info("获取发送请求数据开始....");
+
+        //        sendUrlEntities = client.GetAllClientChannelNeedSendData(maxDataCount,maxAllDataCount);
+
+        //        logger.Info(string.Format("获取发送请求数据成功,共{0}条请求！", sendUrlEntities.Count));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        logger.Error("获取发送请求数据失败！", ex);
+
+        //        if (isDebug)
+        //            Console.ReadKey();
+
+        //        return;
+        //    }
+
+
+        //    PatchSend(sendUrlEntities);
+        //}
 
         private static void PatchSend(List<SPSSendUrlEntity> sendUrlEntities)
         {
@@ -420,7 +424,7 @@ namespace SPSSiteTask
 
                             retryTimes++;
 
-                            if (retryTimes >= 3)
+                            if (retryTimes >= 1)
                                 break;
 
                         } while (!requestOk);
@@ -457,7 +461,6 @@ namespace SPSSiteTask
                 Console.ReadKey();
             }
         }
-
 
         private static bool SendRequest(string requesturl, int timeOut, string okMessage, out string errorMessage)
         {

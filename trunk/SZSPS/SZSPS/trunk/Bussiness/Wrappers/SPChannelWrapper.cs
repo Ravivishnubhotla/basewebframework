@@ -661,7 +661,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             List<SPClientChannelSettingWrapper> findMatchedClientChannelSettingHasFilters =
                 allEnableClientChannelSettings.FindAll(p => (p.CommandType == "1" && p.AllowFilter.HasValue && p.AllowFilter.Value) && p.IsMacthByYWID(ywid) && p.IsMacthSPCode(cpid));
 
-            return findMatchedClientChannelSettingHasFilters;
+
+            var filters = from p in findMatchedClientChannelSettingHasFilters orderby p.CommandType,p.CommandCode,p.ChannelCode,p.ChannelClientCode descending select p;
+
+            return filters.ToList();
         }
 
         private SPClientChannelSettingWrapper GetClientChannelSettingFromRequestValue(Hashtable requestValues,
@@ -734,7 +737,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
             else
             {
-                return allmacthClientChannelSettings.Find(p => (p.IsMacthSPCode(requestValues, fieldMappings,"cpid")));
+                var findcode =
+                    allmacthClientChannelSettings.Find(p => (p.IsMacthSPCode(requestValues, fieldMappings, "cpid")));
+                
+                if(findcode!=null)
+                    return findcode;
+
+                return defaultClientChannelSetting;
             }
         }
 

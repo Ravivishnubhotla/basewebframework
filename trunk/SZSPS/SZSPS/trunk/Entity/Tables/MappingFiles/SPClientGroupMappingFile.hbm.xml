@@ -18,7 +18,6 @@
 		<property column="DefaultSycnMRUrl" type="string" name="DefaultSycnMRUrl"   length="1000" />	
 		<property column="DefaultInterceptRate" type="int" name="DefaultInterceptRate"   not-null="true"  />	
 		<property column="DefaultNoInterceptCount" type="int" name="DefaultNoInterceptCount"   not-null="true"  />	
-		<property column="AssignedUserID" type="int" name="AssignedUserID"   />	
 
 
 

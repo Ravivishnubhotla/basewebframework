@@ -1640,6 +1640,166 @@ SELECT DATEADD(day, 1, @EndDate) AS ReportDate,
             return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
         }
 
+        public DataTable GetProvinceCityReport(DateTime startDate, DateTime endDate, int channelId, int channleClientID,string province, bool? isIntercept)
+        {
+            string sql = @"SELECT City,COUNT(*) as CityCount FROM  [dbo].[SPPaymentInfo] with(nolock)
+                           WHERE 1=1 AND (CreateDate >= @startDate) AND (CreateDate <@endDate) ";
+
+            if (channelId > 0)
+            {
+                sql += " AND ( [ChannelID] = @channelID) ";
+            }
+
+            if (channleClientID > 0)
+            {
+                sql += " AND ( [ChannleClientID] = @channleClientID) ";
+            }
+
+            if (!string.IsNullOrEmpty(province))
+            {
+                sql += " AND ( [Province] = @Province) ";
+            }
+
+            if (isIntercept != null)
+            {
+                sql += " AND ( [IsIntercept] = @IsIntercept) ";
+            }
+
+            sql += " GROUP BY  [City] ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            if (channelId > 0)
+            {
+                dbParameters.AddWithValue("channelID", channelId);
+            }
+
+            if (channleClientID > 0)
+            {
+                dbParameters.AddWithValue("channleClientID", channleClientID);
+            }
+
+            if (!string.IsNullOrEmpty(province))
+            {
+                dbParameters.AddWithValue("Province", province);
+            }
+
+            if (isIntercept != null)
+            {
+                dbParameters.AddWithValue("IsIntercept", isIntercept.Value);
+            }
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+        public DataTable GetProvinceReportForClientGroup(DateTime startDate, DateTime endDate, int clientGroupId, int channleClientId, bool? isIntercept)
+        {
+            string sql = @"SELECT [ClientGroupID] ,[ChannleClientID] ,[Province],COUNT(*) as RecordCount FROM  [dbo].[SPPaymentInfo] with(nolock)
+                           WHERE 1=1 AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) ";
+
+            if (clientGroupId > 0)
+            {
+                sql += " AND ( [ClientGroupID] = @ClientGroupID) ";
+            }
+
+            if (channleClientId > 0)
+            {
+                sql += " AND ( [ChannleClientID] = @channleClientID) ";
+            }
+
+            if (isIntercept != null)
+            {
+                sql += " AND ( [IsIntercept] = @IsIntercept) ";
+            }
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            if (clientGroupId > 0)
+            {
+                dbParameters.AddWithValue("ClientGroupID", clientGroupId);
+            }
+
+            if (channleClientId > 0)
+            {
+                dbParameters.AddWithValue("channleClientID", channleClientId);
+            }
+
+            if (isIntercept != null)
+            {
+                dbParameters.AddWithValue("IsIntercept", isIntercept.Value);
+            }
+
+
+            sql += " GROUP BY  [ClientGroupID] ,[ChannleClientID],[Province] ";
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+        public DataTable GetProvinceCityReportForClientGroup(DateTime startDate, DateTime endDate, int clientGroupId, int channleClientID, string province, bool? isIntercept)
+        {
+            string sql = @"SELECT City,COUNT(*) as CityCount FROM  [dbo].[SPPaymentInfo] with(nolock)
+                           WHERE 1=1 AND (CreateDate >= @startDate) AND (CreateDate <@endDate) ";
+
+            if (clientGroupId > 0)
+            {
+                sql += " AND ( [ClientGroupID] = @ClientGroupID) ";
+            }
+
+            if (channleClientID > 0)
+            {
+                sql += " AND ( [ChannleClientID] = @channleClientID) ";
+            }
+
+            if (!string.IsNullOrEmpty(province))
+            {
+                sql += " AND ( [Province] = @Province) ";
+            }
+
+            if (isIntercept != null)
+            {
+                sql += " AND ( [IsIntercept] = @IsIntercept) ";
+            }
+
+            sql += " GROUP BY  [City] ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startDate", startDate.Date);
+
+            dbParameters.AddWithValue("enddate", endDate.AddDays(1).Date);
+
+            if (clientGroupId > 0)
+            {
+                dbParameters.AddWithValue("ClientGroupID", clientGroupId);
+            }
+
+            if (channleClientID > 0)
+            {
+                dbParameters.AddWithValue("channleClientID", channleClientID);
+            }
+
+            if (!string.IsNullOrEmpty(province))
+            {
+                dbParameters.AddWithValue("Province", province);
+            }
+
+            if (isIntercept != null)
+            {
+                dbParameters.AddWithValue("IsIntercept", isIntercept.Value);
+            }
+
+            return this.ExecuteDataSet(sql, CommandType.Text, dbParameters).Tables[0];
+        }
+
+
         public DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channelId, int channleClientID, bool? isIntercept, string mprovince, string moperator)
         {
             string sql = @"select  MobileOperators as Operator,Province,ChannelID,ChannleClientID,COUNT(*) as RecordCount from dbo.SPPaymentInfo with(nolock)
@@ -2067,6 +2227,50 @@ and ChannleClientID =@ChannleClientID";
         }
 
 
- 
+        public int CacultePaymentCount(DateTime dateTime, int clientChannelId, string province)
+        {
+            string sql = @" SELECT  count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE 1=1  AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) 
+
+and ChannleClientID =@ChannleClientID and Province=@Province";
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", dateTime.Date);
+
+            dbParameters.AddWithValue("enddate", dateTime.AddDays(1).Date);
+
+            dbParameters.AddWithValue("ChannleClientID", clientChannelId);
+
+            dbParameters.AddWithValue("Province", province);
+
+            return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
+
+        public int CacultePaymentCountNotInProvince(DateTime dateTime, int clientChannelId, List<string> notInprovinces)
+        {
+            string sql = @" SELECT  count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE 1=1  AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) 
+
+and ChannleClientID =@ChannleClientID ";
+
+            string[] notinprovincesString = notInprovinces.ToArray();
+
+            for (int i = 0; i < notinprovincesString.Length; i++)
+            {
+                notinprovincesString[i] = "'" + notinprovincesString[i] + "'";
+            }
+
+
+            sql += " and Province not in (" + string.Join(",", notinprovincesString) + ") ";
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", dateTime.Date);
+
+            dbParameters.AddWithValue("enddate", dateTime.AddDays(1).Date);
+
+            dbParameters.AddWithValue("ChannleClientID", clientChannelId);
+
+
+            return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
     }
 }

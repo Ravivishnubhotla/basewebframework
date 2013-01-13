@@ -12,7 +12,7 @@ using Microsoft.Reporting.WebForms;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Reports
 {
-    public partial class ReportDataProvinceService : System.Web.UI.Page
+    public partial class ReportCityChartService : System.Web.UI.Page
     {
         public int ReportClientChannleID
         {
@@ -24,13 +24,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             }
         }
 
-        public int ReportChannleID
+        public int ReportID
         {
             get
             {
-                if (string.IsNullOrEmpty(this.Request.QueryString["ChannleID"]))
+                if (string.IsNullOrEmpty(this.Request.QueryString["ReportID"]))
                     return 0;
-                return Convert.ToInt32(this.Request.QueryString["ChannleID"]);
+                return Convert.ToInt32(this.Request.QueryString["ReportID"]);
             }
         }
 
@@ -54,43 +54,93 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             }
         }
 
+        public string Province
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.Request.QueryString["Province"]))
+                    return "";
+                return this.Request.QueryString["Province"].Trim();
+            }
+        }
+
+        public string ReportType
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.Request.QueryString["ReportType"]))
+                    return "";
+                return this.Request.QueryString["ReportType"].Trim();
+            }
+        }
+
+
 
         private void BindData()
         {
-            ReportViewer1.LocalReport.EnableHyperlinks = true;
-
-            DataTable tb = SPDayReportWrapper.GetProvinceReport(StartDate, EndDate,ReportChannleID, ReportClientChannleID);
+            DataTable tb = null;
+                
+            if(ReportType=="1")
+            {
+                tb = SPDayReportWrapper.GetProvinceCityReport(StartDate, EndDate, ReportID, ReportClientChannleID, Province);
+            }
+            else if (ReportType == "2")
+            {
+                tb = SPDayReportWrapper.GetProvinceCityReportForClientGroup(StartDate, EndDate, ReportID, ReportClientChannleID, Province);     
+            }
+                
+               
 
             ReportDataSource rds = new ReportDataSource("DataSet1", tb);
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(rds);
 
-            string reportName = string.Format("【{0}】-【{1}】数据省份分部报表",StartDate.ToString("yyyy-MM-dd"),EndDate.ToString("yyyy-MM-dd"));
 
-            if(ReportChannleID==0)
+            string reporttypeName = "";
+
+            if(ReportType=="1")
+            {
+                reporttypeName = "通道";
+            }
+            else if (ReportType == "2")
+            {
+                reporttypeName = "下家组";           
+            }
+
+            string reportName = string.Format("【{0}】-【{1}】数据分部报表", StartDate.ToString("yyyy-MM-dd"), EndDate.ToString("yyyy-MM-dd"));
+
+            if (ReportID == 0)
             {
                 reportName = "全平台" + reportName;
             }
             else
             {
-                SPChannelWrapper channel = SPChannelWrapper.FindById(ReportChannleID);
-
-                if(ReportClientChannleID==0)
+                string name = "";
+                if (ReportType == "1")
                 {
-                    reportName = string.Format("通道【{0}】", channel.Name) + reportName;
+                    name = SPChannelWrapper.FindById(ReportID).Name;
+                }
+                else if (ReportType == "2")
+                {
+                    name = SPClientGroupWrapper.FindById(ReportID).Name;
+                }
+ 
+
+                if (ReportClientChannleID == 0)
+                {
+                    reportName = string.Format(reporttypeName + "【{0}】", name) + reportName;
                 }
                 else
                 {
                     SPClientChannelSettingWrapper clientChannelSetting = SPClientChannelSettingWrapper.FindById(ReportClientChannleID);
 
-                    reportName = string.Format("通道【{0}】", channel.Name) + string.Format("指令【{0}】", clientChannelSetting.MoCode) + reportName;
+                    reportName = string.Format(reporttypeName + "【{0}】", name) + string.Format("指令【{0}】", clientChannelSetting.MoCode) + reportName;
                 }
             }
 
             ReportParameter rpReportName = new ReportParameter();
             rpReportName.Name = "ReportName";
             rpReportName.Values.Add(reportName);
-
 
             ReportViewer1.LocalReport.SetParameters(
              new ReportParameter[] { rpReportName });
@@ -123,13 +173,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         {
             if (this.IsPostBack)
                 return;
-            FixReportDefinition(this.Server.MapPath("ReportDataProvince.rdl"));
-
-            ReportViewer1.LocalReport.EnableHyperlinks = true;
-
-            ReportViewer1.LocalReport.ReportPath = this.Server.MapPath("ReportDataProvince.rdl");
-            ReportViewer1.LocalReport.EnableHyperlinks = true;
-
+            FixReportDefinition(this.Server.MapPath("ReportCityChart.rdl"));
+            ReportViewer1.LocalReport.ReportPath = this.Server.MapPath("ReportCityChart.rdl");
             BindData();
         }
 

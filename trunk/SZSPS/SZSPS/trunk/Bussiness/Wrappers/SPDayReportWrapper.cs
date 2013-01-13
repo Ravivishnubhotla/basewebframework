@@ -15,8 +15,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 {
     public class ReportDataProvinceItem
     {
+        public int ChannelID { get; set; }
         public string ChannelName { get; set; }
         public string CodeName { get; set; }
+        public int CodeID { get; set; }
         public string Mo { get; set; }
         public string SPCode { get; set; }
         public string MoType { get; set; }
@@ -320,9 +322,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             DataTable dt = new DataTable("DS");
             dt.Columns.Add("ChannelName");
+            dt.Columns.Add("ChannelID");
             dt.Columns.Add("CodeName");
+            dt.Columns.Add("ChannelClentID");
             dt.Columns.Add("Province");
             dt.Columns.Add("RecordCount",typeof(int));
+
             dt.AcceptChanges();
 
             DataTable dtReportQuery = businessProxy.GetProvinceReport(startDate, endDate, channelID, channleClientID,null);
@@ -337,10 +342,13 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 string channelName = channel.Name;
                 string moCode = channelSettingWrapper.ParentClientChannelSetting.MoCode;
                 string province = dr["Province"].ToString();
+
                 int recordCount = (int)dr["RecordCount"];
 
                 ReportDataProvinceItem reportDataProvinceItem = new ReportDataProvinceItem();
-                reportDataProvinceItem.ChannelName = channelName.ToLower();
+                reportDataProvinceItem.ChannelID = (int)dr["ChannelID"];
+                reportDataProvinceItem.ChannelName = channelName;
+                reportDataProvinceItem.CodeID = (int)dr["ChannleClientID"];
                 reportDataProvinceItem.CodeName = moCode.ToLower();
                 if (string.IsNullOrEmpty(province))
                 {
@@ -384,118 +392,123 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 reportDataProvinceItems.Add(reportDataProvinceItem);
             }
 
-
-            //List<ReportDataProvinceItem> orderedItems = (from rap in reportDataProvinceItems
-            //                                             orderby rap.ChannelName, rap.MoType, rap.Mo, rap.SPCode, rap.Province, rap.MoLength
-            //              select rap).ToList();
-
-            //List<ReportDataProvinceItem> groupItems = new List<ReportDataProvinceItem>();
-
-            //foreach (ReportDataProvinceItem oItem in orderedItems)
-            //{
-            //    ReportDataProvinceItem item =
-            //        groupItems.Find(
-            //            p =>
-            //            (p.ChannelName == oItem.ChannelName && p.CodeName == oItem.CodeName &&
-            //             p.Province == oItem.Province));
-
-            //    if (item!=null)
-            //    {
-            //        item.RecordCount = oItem.RecordCount + item.RecordCount;
-            //    }
-            //    else
-            //    {
-            //        if (oItem.MoType == "2")
-            //        {
-            //            //ReportDataProvinceItem mitem = (from rap in groupItems
-            //            //     where
-            //            //         (rap.ChannelName == oItem.ChannelName && rap.SPCode == oItem.SPCode &&
-            //            //          !oItem.Mo.Equals(rap.Mo) && oItem.Mo.Contains(rap.Mo))
-            //            //     orderby rap.MoLength
-            //            //     select rap).FirstOrDefault();
-                            
-            //            //bool hasMain = (mitem != null);
-
-            //            //if(hasMain)
-            //            //{
-            //            //    ReportDataProvinceItem mi = groupItems.Find(p => (p.ChannelName == oItem.ChannelName && p.SPCode == oItem.SPCode && oItem.Mo.Contains(p.Mo) && p.Province == oItem.Province));
-
-            //            //    if(mi!=null)
-            //            //    {
-            //            //        mi.RecordCount = oItem.RecordCount + mi.RecordCount;
-            //            //    }
-            //            //    else
-            //            //    {
-            //                    var maitem = oItem.Copy();
-            //                    maitem.CodeName = oItem.CodeName;
-            //                    maitem.Mo = oItem.Mo;
-            //                    maitem.MoLength = oItem.MoLength;
-            //                    maitem.Province = oItem.Province;
-            //                    //if (string.IsNullOrEmpty(maitem.Province.Trim()))
-            //                    //    throw new Exception("11111");
-
-            //                    groupItems.Add(maitem);       
-            //            //    }
-
-            //            //    continue;
-            //            //}
-            //        }
-
-            //        var addItem = oItem.Copy();
-
-            //        if (string.IsNullOrEmpty(addItem.Province.Trim()))
-            //            throw new Exception("11111");
-
-            //        groupItems.Add(addItem);
-            //        //if (oItem.MoType == "2")
-            //        //{
-            //        //    DataRow dr = FindMainItemInDataTable(dt, oItem);
-
-            //        //    if(dr!=null)
-            //        //    {
-            //        //        dr.BeginEdit();
-            //        //        dr["RecordCount"] = oItem.RecordCount + (int)dr["RecordCount"];
-            //        //        dr.EndEdit();
-            //        //        dt.AcceptChanges();
-            //        //    }
-            //        //    else
-            //        //    {
-            //        //        AddNewProvinceReportRow(dt, oItem.ChannelName, oItem.CodeName, oItem.Province, oItem.RecordCount);                     
-            //        //    }
-            //        //}
-            //        //else
-            //        //{
-            //        //    AddNewProvinceReportRow(dt, oItem.ChannelName, oItem.CodeName, oItem.Province, oItem.RecordCount);
-            //        //}
-            //    }
  
-            //}
 
             foreach (ReportDataProvinceItem groupItem in reportDataProvinceItems)
             {
-                AddNewProvinceReportRow(dt, groupItem.ChannelName, groupItem.CodeName, groupItem.Province, groupItem.RecordCount);
+                AddNewProvinceReportRow(dt, groupItem.ChannelName, groupItem.CodeName, groupItem.Province, groupItem.RecordCount, groupItem.ChannelID, groupItem.CodeID);
             }
  
             return dt;
  
         }
 
-        //private static DataRow FindMainItemInDataTable(DataTable dt, ReportDataProvinceItem oItem)
-        //{
-        //    foreach (DataRow row in dt.Rows)
-        //    {
-        //        if ((row["ChannelName"].ToString() == oItem.ChannelName) && (row["CodeName"].ToString() == oItem.))
-        //        {
-        //        }
-        //    }
-        //    return null;
-        //}
+        public static DataTable GetProvinceReportForClientGroup(DateTime startDate, DateTime endDate, int clientGroupID, int channleClientID)
+        {
+            DataTable dt = new DataTable("DS");
+            dt.Columns.Add("ClientGroupName");
+            dt.Columns.Add("ChannelID");
+            dt.Columns.Add("CodeName");
+            dt.Columns.Add("ChannelClentID");
+            dt.Columns.Add("Province");
+            dt.Columns.Add("RecordCount", typeof(int));
+            dt.AcceptChanges();
 
-        private static void AddNewProvinceReportRow(DataTable dt,string channelName,string codeName,string province,int recordCount)
+            DataTable dtReportQuery = businessProxy.GetProvinceReportForClientGroup(startDate, endDate, clientGroupID, channleClientID, false);
+
+            List<ReportDataProvinceItem> reportDataProvinceItems = new List<ReportDataProvinceItem>();
+
+            foreach (DataRow dr in dtReportQuery.Rows)
+            {
+                SPClientGroupWrapper clientGroup = SPClientGroupWrapper.FindById((int)dr["ClientGroupID"]);
+                SPClientChannelSettingWrapper channelSettingWrapper = SPClientChannelSettingWrapper.FindById((int)dr["ChannleClientID"]);
+
+                string channelName = clientGroup.Name;
+                string moCode = channelSettingWrapper.ParentClientChannelSetting.MoCode;
+                string province = dr["Province"].ToString();
+                int recordCount = (int)dr["RecordCount"];
+
+                ReportDataProvinceItem reportDataProvinceItem = new ReportDataProvinceItem();
+                reportDataProvinceItem.ChannelName = channelName.ToLower();
+                reportDataProvinceItem.ChannelID = clientGroup.Id;
+                reportDataProvinceItem.CodeID = channelSettingWrapper.Id;
+                reportDataProvinceItem.CodeName = moCode.ToLower();
+                if (string.IsNullOrEmpty(province))
+                {
+                    reportDataProvinceItem.Province = "未知省份";
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(province.Trim()))
+                    {
+                        reportDataProvinceItem.Province = "未知省份";
+                    }
+                    else
+                    {
+                        reportDataProvinceItem.Province = province.ToLower();
+                    }
+                }
+
+                reportDataProvinceItem.RecordCount = recordCount;
+                reportDataProvinceItem.Mo = channelSettingWrapper.CommandCode.ToLower();
+                if (channelSettingWrapper.ChannelCode == null)
+                {
+                    reportDataProvinceItem.SPCode = "";
+                }
+                else
+                {
+                    reportDataProvinceItem.SPCode = channelSettingWrapper.ChannelCode.ToLower();
+                }
+
+
+                if (channelSettingWrapper.CommandType == "1")
+                    reportDataProvinceItem.MoType = "1";
+                else if (channelSettingWrapper.CommandType == "2" || channelSettingWrapper.CommandType == "3" || channelSettingWrapper.CommandType == "4")
+                    reportDataProvinceItem.MoType = "2";
+                else
+                {
+                    reportDataProvinceItem.MoType = "0";
+                }
+
+                reportDataProvinceItem.MoLength = reportDataProvinceItem.Mo.Length;
+
+                reportDataProvinceItems.Add(reportDataProvinceItem);
+            }
+
+
+ 
+
+            foreach (ReportDataProvinceItem groupItem in reportDataProvinceItems)
+            {
+                AddNewProvinceReportRow1(dt, groupItem.ChannelName, groupItem.CodeName, groupItem.Province, groupItem.RecordCount, groupItem.ChannelID, groupItem.CodeID);
+            }
+
+            return dt;
+
+        }
+
+
+        private static void AddNewProvinceReportRow1(DataTable dt, string channelName, string codeName, string province, int recordCount, int cid, int codeID)
+        {
+            DataRow dr = dt.NewRow();
+            dr["ClientGroupName"] = channelName;
+            dr["ChannelID"] = cid;
+            dr["CodeName"] = codeName;
+            dr["ChannelClentID"] = codeID;
+            dr["Province"] = province;
+            dr["RecordCount"] = recordCount;
+            dt.Rows.Add(dr);
+            dt.AcceptChanges();
+        }
+
+
+        private static void AddNewProvinceReportRow(DataTable dt,string channelName,string codeName,string province,int recordCount,int cid,int codeID)
         {
             DataRow dr = dt.NewRow();
             dr["ChannelName"] = channelName;
+            dr["ChannelID"] = cid;
             dr["CodeName"] = codeName;
+            dr["ChannelClentID"] = codeID;
             dr["Province"] = province;
             dr["RecordCount"] = recordCount;
             dt.Rows.Add(dr);
@@ -682,6 +695,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         public static DataTable GetClientGroupTotalReport(DateTime startDate, DateTime endDate)
         {
             return businessProxy.GetClientGroupTotalReport(startDate, endDate);
+        }
+
+        public static DataTable GetProvinceCityReport(DateTime startDate, DateTime endDate, int reportId, int reportClientChannleId, string province)
+        {
+            return businessProxy.GetProvinceCityReport(startDate, endDate, reportId, reportClientChannleId, province);
+        }
+
+        public static DataTable GetProvinceCityReportForClientGroup(DateTime startDate, DateTime endDate, int reportId, int reportClientChannleId, string province)
+        {
+            return businessProxy.GetProvinceCityReportForClientGroup(startDate, endDate, reportId, reportClientChannleId, province);
         }
     }
 }

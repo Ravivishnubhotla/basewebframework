@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.UI.WebControls;
 using Coolite.Ext.Web;
 using LD.SPPipeManage.Bussiness.Wrappers;
+using Legendigital.Framework.Common.Utility;
+using Newtonsoft.Json;
 
 namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 {
@@ -60,6 +62,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
                     this.txtDayLimit.Hidden = !chkHasDayMonthLimit.Checked;
                     this.txtMonthLimit.Hidden = !chkHasDayMonthLimit.Checked;
+                    this.chkDayTotalLimitInProvince.Hidden = !chkHasDayTotalLimit.Checked;
  
                     if(this.chkHasDayTotalLimit.Checked)
                     {
@@ -67,6 +70,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                             this.txtDayTotalLimit.Text = obj.DayTotalLimit.Value.ToString();
                         else
                             this.txtDayTotalLimit.Text = "0";
+
+
+                        if (obj.DayTotalLimitInProvince.HasValue && obj.DayTotalLimitInProvince.Value)
+                            this.chkDayTotalLimitInProvince.Checked = true;
+                        else
+                            this.chkDayTotalLimitInProvince.Checked = false;
                     }
                     else
                     {
@@ -79,6 +88,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
  
 
                     hidId.Text = id.ToString();
+
+                    this.storeAreaCountList.DataSource = obj.LimitAreaAssigneds;
+                    this.storeAreaCountList.DataBind();
+
+                    this.grdAreaCountList.Hidden = !this.chkDayTotalLimitInProvince.Checked;
 
                     winSPClientChannelSettingInfoEdit.Show();
 
@@ -111,6 +125,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                 obj.HasDayTotalLimit = this.chkHasDayTotalLimit.Checked;
                 obj.DayTotalLimit = Convert.ToInt32(this.txtDayTotalLimit.Value);
 
+                obj.DayTotalLimitInProvince = chkDayTotalLimitInProvince.Checked;
+
+                List<PhoneLimitAreaAssigned> phoneLimitAreaAssigneds = JsonConvert.DeserializeObject< List < PhoneLimitAreaAssigned >> (hidAreaCountList.Text);
+
+                List<PhoneLimitAreaAssigned> phoneLimits = phoneLimitAreaAssigneds.FindAll(p => (p.LimitCount > 0 && !string.IsNullOrEmpty(p.AreaName)));
+
+                obj.DayTotalLimitInProvinceAssignedCount = SerializeUtil.ToJson2(phoneLimits);
 
                 SPClientChannelSettingWrapper.Update(obj);
 
@@ -125,6 +146,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                 return;
             }
 
+        }
+
+
+        protected void storeAreaCountList_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+            SPClientChannelSettingWrapper obj = SPClientChannelSettingWrapper.FindById(int.Parse(hidId.Text.Trim()));
+
+            this.storeAreaCountList.DataSource = obj.LimitAreaAssigneds;
+            this.storeAreaCountList.DataBind();
         }
     }
 }

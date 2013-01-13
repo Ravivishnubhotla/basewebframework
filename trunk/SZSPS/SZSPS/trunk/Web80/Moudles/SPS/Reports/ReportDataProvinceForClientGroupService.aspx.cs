@@ -12,7 +12,8 @@ using Microsoft.Reporting.WebForms;
 
 namespace Legendigital.Common.Web.Moudles.SPS.Reports
 {
-    public partial class ReportDataProvinceService : System.Web.UI.Page
+
+    public partial class ReportDataProvinceForClientGroupService : System.Web.UI.Page
     {
         public int ReportClientChannleID
         {
@@ -59,31 +60,31 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         {
             ReportViewer1.LocalReport.EnableHyperlinks = true;
 
-            DataTable tb = SPDayReportWrapper.GetProvinceReport(StartDate, EndDate,ReportChannleID, ReportClientChannleID);
+            DataTable tb = SPDayReportWrapper.GetProvinceReportForClientGroup(StartDate, EndDate, ReportChannleID, ReportClientChannleID);
 
             ReportDataSource rds = new ReportDataSource("DataSet1", tb);
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(rds);
 
-            string reportName = string.Format("【{0}】-【{1}】数据省份分部报表",StartDate.ToString("yyyy-MM-dd"),EndDate.ToString("yyyy-MM-dd"));
+            string reportName = string.Format("【{0}】-【{1}】数据省份分部报表", StartDate.ToString("yyyy-MM-dd"), EndDate.ToString("yyyy-MM-dd"));
 
-            if(ReportChannleID==0)
+            if (ReportChannleID == 0)
             {
                 reportName = "全平台" + reportName;
             }
             else
             {
-                SPChannelWrapper channel = SPChannelWrapper.FindById(ReportChannleID);
+                SPClientGroupWrapper channel = SPClientGroupWrapper.FindById(ReportChannleID);
 
-                if(ReportClientChannleID==0)
+                if (ReportClientChannleID == 0)
                 {
-                    reportName = string.Format("通道【{0}】", channel.Name) + reportName;
+                    reportName = string.Format("下家组【{0}】", channel.Name) + reportName;
                 }
                 else
                 {
                     SPClientChannelSettingWrapper clientChannelSetting = SPClientChannelSettingWrapper.FindById(ReportClientChannleID);
 
-                    reportName = string.Format("通道【{0}】", channel.Name) + string.Format("指令【{0}】", clientChannelSetting.MoCode) + reportName;
+                    reportName = string.Format("下家组【{0}】", channel.Name) + string.Format("指令【{0}】", clientChannelSetting.MoCode) + reportName;
                 }
             }
 
@@ -123,13 +124,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         {
             if (this.IsPostBack)
                 return;
-            FixReportDefinition(this.Server.MapPath("ReportDataProvince.rdl"));
-
             ReportViewer1.LocalReport.EnableHyperlinks = true;
-
-            ReportViewer1.LocalReport.ReportPath = this.Server.MapPath("ReportDataProvince.rdl");
-            ReportViewer1.LocalReport.EnableHyperlinks = true;
-
+            FixReportDefinition(this.Server.MapPath("ReportDataProvinceForClientGroup.rdl"));
+            ReportViewer1.LocalReport.ReportPath = this.Server.MapPath("ReportDataProvinceForClientGroup.rdl");
             BindData();
         }
 
@@ -138,4 +135,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             BindData();
         }
     }
+    
+ 
 }

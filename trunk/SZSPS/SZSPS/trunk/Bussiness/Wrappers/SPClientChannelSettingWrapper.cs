@@ -14,6 +14,7 @@ using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using LD.SPPipeManage.Entity.Tables;
 using LD.SPPipeManage.Bussiness.ServiceProxys.Tables;
+using Legendigital.Framework.Common.Utility;
 using Spring.Transaction.Interceptor;
 
 
@@ -137,6 +138,32 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     return string.Format("ÈÕ{0}/ÔÂ{1}", this.DayLimitCount.Value, this.MonthLimitCount.Value);
                 }
                 return "ÎÞ";
+            }
+        }
+
+        public List<PhoneLimitAreaAssigned> LimitAreaAssigneds
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.DayTotalLimitInProvinceAssignedCount))
+                    return new List<PhoneLimitAreaAssigned>();
+
+                List<PhoneLimitAreaAssigned> limitAreaAssigneds;
+
+                try
+                {
+                    limitAreaAssigneds = SerializeUtil.JsonDeserialize2<List<PhoneLimitAreaAssigned>>(this.DayTotalLimitInProvinceAssignedCount);
+                }
+                catch
+                {
+                    return new List<PhoneLimitAreaAssigned>();
+                }
+
+                return limitAreaAssigneds;
+            }
+            set
+            {
+                this.DayTotalLimitInProvinceAssignedCount = SerializeUtil.ToJson2(value);
             }
         }
 
@@ -483,14 +510,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             if (isIntercept)
             {
-                if (this.HasDayMonthLimit.HasValue && this.HasDayMonthLimit.Value && this.MonthLimitCount.HasValue && this.MonthLimitCount.Value>0)
+                if (this.HasDayMonthLimit.HasValue && this.HasDayMonthLimit.Value && this.MonthLimitCount.HasValue && this.MonthLimitCount.Value > 0)
                 {
-                    int todayMonthPhoneCount = CaculteMonthPhoneCount(System.DateTime.Now.Date, this.Id,paymentInfo.MobileNumber);
-
-                    //int maxMonthPhoneCount = Convert.ToInt32(Math.Floor((double) this.MonthLimitCount.Value*(double) interceptRate/100d));
-
-                    //if (maxMonthPhoneCount < 1)
-                    //    maxMonthPhoneCount = 1;
+                    int todayMonthPhoneCount = CaculteMonthPhoneCount(System.DateTime.Now.Date, this.Id, paymentInfo.MobileNumber);
 
                     int maxMonthPhoneCount = this.MonthLimitCount.Value;
 
@@ -504,11 +526,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 {
                     int todayDayPhoneCount = CaculteDayPhoneCount(System.DateTime.Now.Date, this.Id, paymentInfo.MobileNumber);
 
-                    //int maxDayPhoneCount = Convert.ToInt32(Math.Floor((double) this.DayLimitCount.Value*(double) interceptRate/100d));
-
-                    //if (maxDayPhoneCount < 1)
-                    //    maxDayPhoneCount = 1;
-
                     int maxDayPhoneCount = this.DayLimitCount.Value;
 
                     if (todayDayPhoneCount + 1 > maxDayPhoneCount)
@@ -519,42 +536,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 }
             }
 
-            //this.HasDayMonthLimit.HasValue && this.HasDayMonthLimit.Value
-                //if (this.DayLimitCount.HasValue && this.DayLimitCount.Value > 0)
-                //    isIntercept = CaculteDayPhoneIntercept(paymentInfo);
-
-                //if (!isIntercept)
-                //    return isIntercept;
-
-                //if (this.DayLimitCount.HasValue && this.DayLimitCount.Value > 0)
-                //    isIntercept = CaculteMonthPhoneIntercept(paymentInfo);
-
-                //if (!isIntercept)
-                //    return isIntercept;
-            //if ()
-            //{
-
-            //        isIntercept = CaculteDayTotalPhoneIntercept();
-
-            //    if (!isIntercept)
-            //        return isIntercept;
-            //}
-
             return isIntercept;
 
-            //if(interceptRate==0)
-            //    return false;
+ 
+        }
 
-            //decimal rate = GetToDayRate(this.ClinetID.Id, this.ChannelID.Id);
 
-            //if (rate < Convert.ToDecimal(interceptRate))
-            //{
-            //    return CaculteRandom(Math.Min(interceptRate + AddRate, MaxInterceptRate));
-            //}
-            //else
-            //{
-            //    return false;
-            //}
+        private int CacultePaymentCountNotInProvince(DateTime dateTime, int clientChannelId, List<string> notInprovinces)
+        {
+            return businessProxy.CacultePaymentCountNotInProvince(dateTime, clientChannelId, notInprovinces);
+        }
+
+        private int CacultePaymentCount(DateTime dateTime, int clientChannelId, string province)
+        {
+            return businessProxy.CacultePaymentCount(dateTime, clientChannelId, province);
         }
 
         private int CaculteDayPhoneCount(DateTime dateTime, int clientChannelID, string mobileNumber)

@@ -47,6 +47,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         DataTable GetClientGroupDayReport(DateTime startDate, DateTime endDate , int clientGroupId);
         DataTable GetClientGroupTotalReport(DateTime startDate, DateTime endDate);
         List<SPDayReportEntity> GetAllClientGroupDayReport(DateTime startDate, DateTime endDate, int clientGroupId);
+        DataTable GetProvinceReportForClientGroup(DateTime startDate, DateTime endDate, int clientGroupId, int channleClientId, bool? isIntercept);
+        DataTable GetProvinceCityReport(DateTime startDate, DateTime endDate, int reportId, int reportClientChannleId, string province);
+        DataTable GetProvinceCityReportForClientGroup(DateTime startDate, DateTime endDate, int reportId, int reportClientChannleId, string province);
     }
 
     internal partial class SPDayReportServiceProxy :  ISPDayReportServiceProxy
@@ -267,6 +270,22 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             return this.AdoNetDb.GetProvinceReport(startDate, endDate, channelId, channleClientID, isIntercept);
         }
 
+        public DataTable GetProvinceReportForClientGroup(DateTime startDate, DateTime endDate, int clientGroupId, int channleClientId, bool? isIntercept)
+        {
+            return this.AdoNetDb.GetProvinceReportForClientGroup(startDate, endDate, clientGroupId, channleClientId, isIntercept);  
+        }
+
+        public DataTable GetProvinceCityReport(DateTime startDate, DateTime endDate, int reportId, int reportClientChannleId, string province)
+        {
+            return this.AdoNetDb.GetProvinceCityReport(startDate, endDate, reportId, reportClientChannleId,province, null); 
+        }
+
+        public DataTable GetProvinceCityReportForClientGroup(DateTime startDate, DateTime endDate, int reportId, int reportClientChannleId, string province)
+        {
+            return this.AdoNetDb.GetProvinceCityReportForClientGroup(startDate, endDate, reportId, reportClientChannleId, province, null); 
+        }
+
+
         public DataTable GetOperatorReport(DateTime startDate, DateTime endDate, int channleId, int clientChannleId, bool? isIntercept, string mprovince, string moperator)
         {
             return this.AdoNetDb.GetOperatorReport(startDate, endDate, channleId, clientChannleId, isIntercept,mprovince,   moperator);
@@ -430,6 +449,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
             return spDayReports;
         }
+
 
         private List<SPDayReportEntity> GetAllClientGroupDayReport(DateTime reportDate, int clientGroupId)
         {
