@@ -22,7 +22,6 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_DEFAULTSYCNMRURL = "DefaultSycnMRUrl";
 		public static readonly string PROPERTY_NAME_DEFAULTINTERCEPTRATE = "DefaultInterceptRate";
 		public static readonly string PROPERTY_NAME_DEFAULTNOINTERCEPTCOUNT = "DefaultNoInterceptCount";
-		public static readonly string PROPERTY_NAME_ASSIGNEDUSERID = "AssignedUserID";
 		
         #endregion
 	
@@ -39,7 +38,6 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _defaultSycnMRUrl;
 		private int _defaultInterceptRate;
 		private int _defaultNoInterceptCount;
-		private int? _assignedUserID;
 		
 		#endregion
 
@@ -56,8 +54,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_defaultSycnMoUrl = null;
 			_defaultSycnMRUrl = null;
 			_defaultInterceptRate = 5;
-			_defaultNoInterceptCount = 100;
-			_assignedUserID = null;
+			_defaultNoInterceptCount = 20;
 		}
 		#endregion
 
@@ -65,7 +62,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientGroupEntity( int id, string name, string description, int? userID, string defaultSycnMoUrl, string defaultSycnMRUrl, int defaultInterceptRate, int defaultNoInterceptCount, int? assignedUserID)
+		public SPClientGroupEntity( int id, string name, string description, int? userID, string defaultSycnMoUrl, string defaultSycnMRUrl, int defaultInterceptRate, int defaultNoInterceptCount)
 		{
 			_id = id;
 			_name = name;
@@ -75,7 +72,6 @@ namespace LD.SPPipeManage.Entity.Tables
 			_defaultSycnMRUrl = defaultSycnMRUrl;
 			_defaultInterceptRate = defaultInterceptRate;
 			_defaultNoInterceptCount = defaultNoInterceptCount;
-			_assignedUserID = assignedUserID;
 		}
 		#endregion     
 	
@@ -202,20 +198,6 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_defaultNoInterceptCount != value); _defaultNoInterceptCount = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
-		public virtual int? AssignedUserID
-		{
-			get { return _assignedUserID; }
-
-			set	
-			{
-				_isChanged |= (_assignedUserID != value); _assignedUserID = value;
 			}
 		}
 		/// <summary>

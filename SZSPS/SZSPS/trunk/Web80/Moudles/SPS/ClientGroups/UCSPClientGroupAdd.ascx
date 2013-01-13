@@ -19,7 +19,7 @@
                                 <ext:TextField ID="txtDefaultSycnMoUrl" runat="server" FieldLabel="默认同步地址" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:NumberField ID="txtDefaultInterceptRate" runat="server" FieldLabel="默认扣率" Text="11"
+                                <ext:NumberField ID="txtDefaultInterceptRate" runat="server" FieldLabel="默认扣率" Text="20"
                                     DecimalPrecision="0" AllowBlank="False" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">

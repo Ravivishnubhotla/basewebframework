@@ -1,13 +1,13 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
-    CodeBehind="ReportDataProvince.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.ReportDataProvince" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+    CodeBehind="ReportDataProvinceForClientGroup.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.Reports.ReportDataProvinceForClientGroup" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
         <Listeners>
-            <DocumentReady Handler="#{storeSPChannel}.reload();" />
+            <DocumentReady Handler="#{storeSPClientGroup}.reload();" />
         </Listeners>
     </ext:ScriptManagerProxy>
-    <ext:Store ID="storeSPChannel" runat="server" AutoLoad="false" OnRefreshData="storeSPChannel_Refresh">
+    <ext:Store ID="storeSPClientGroup" runat="server" AutoLoad="false" OnRefreshData="storeSPClientGroup_Refresh">
         <Reader>
             <ext:JsonReader ReaderID="Id">
                 <Fields>
@@ -17,7 +17,7 @@
             </ext:JsonReader>
         </Reader>
         <Listeners>
-            <Load Handler="if(#{storeSPChannel}.data.items.length>0) {#{cmbChannelID}.setValue(#{storeSPChannel}.data.items[0].data.Id); #{cmbChannelID}.fireEvent('select'); 
+            <Load Handler="if(#{storeSPClientGroup}.data.items.length>0) {#{cmbChannelID}.setValue(#{storeSPClientGroup}.data.items[0].data.Id); #{cmbChannelID}.fireEvent('select'); 
             };" />
         </Listeners>
         <AjaxEventConfig Timeout="120000">
@@ -36,7 +36,7 @@
             </ext:JsonReader>
         </Reader>
         <BaseParams>
-            <ext:Parameter Name="ChannelID" Value="#{cmbChannelID}.getValue()" Mode="Raw" />
+            <ext:Parameter Name="SPClientGroupID" Value="#{cmbChannelID}.getValue()" Mode="Raw" />
         </BaseParams>
         <Listeners>
             <Load Handler="#{cmbCode}.clearValue();#{cmbCode}.triggers[0].hide();" />
@@ -64,7 +64,8 @@
             color: #222;
         }
     </style>
-    <script type="text/javascript">
+    
+        <script type="text/javascript">
         function showProvinceCityReport(reportID,channleClientSettingID,province) {            
 
 
@@ -87,7 +88,7 @@
                                                    
                 win.autoLoad.params.EndDate =  <%= this.dfReportEndDate.ClientID %>.dateField.getValue();
                 win.autoLoad.params.Province = province;
-                win.autoLoad.params.ReportType = "1";
+                win.autoLoad.params.ReportType = "2";
             
  
         
@@ -115,10 +116,10 @@
                                     </ext:ToolbarTextItem>
                                     <ext:DateFieldMenuItem ID="dfReportEndDate" runat="server">
                                     </ext:DateFieldMenuItem>
-                                    <ext:ToolbarTextItem Text="通道:">
+                                    <ext:ToolbarTextItem Text="下家组:">
                                     </ext:ToolbarTextItem>
-                                    <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="true" StoreID="storeSPChannel"
-                                        TypeAhead="true" Mode="Local" TriggerAction="All" Editable="false" DisplayField="Name"
+                                    <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="true" StoreID="storeSPClientGroup"
+                                        TypeAhead="true" Mode="Local" TriggerAction="All" Editable="true" DisplayField="Name"
                                         ValueField="Id">
                                         <Listeners>
                                             <Select Handler="#{cmbCode}.clearValue();#{storeSPChannelClientSetting}.reload();this.triggers[0].show();" />
@@ -158,11 +159,6 @@
                                             <Click OnEvent="btnRefresh_Click" />
                                         </AjaxEvents>
                                     </ext:ToolbarButton>
-<%--                                    <ext:ToolbarButton ID='ToolbarButton1' runat="server" Text="查询" Icon="Find">
-                                        <Listeners>
-                                            <Click Handler="showProvinceCityReport(1,2,'2222');"></Click>
-                                        </Listeners>
-                                    </ext:ToolbarButton>--%>
                                 </Items>
                             </ext:Toolbar>
                         </TopBar>
@@ -172,7 +168,8 @@
             </ext:FitLayout>
         </Body>
     </ext:ViewPort>
-    <ext:Window ID="winShowCityProvinceReport" runat="server" Title="地市分布报表" Frame="true"
+    
+       <ext:Window ID="winShowCityProvinceReport" runat="server" Title="地市分布报表" Frame="true"
         Width="800" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"

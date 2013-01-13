@@ -395,6 +395,7 @@
     <Compile Include="Wrappers\MongoHelper.cs" />
     <Compile Include="Wrappers\PhoneAreaInfo.cs" />
     <Compile Include="Wrappers\PhoneCache.cs" />
+    <Compile Include="Wrappers\PhoneLimitAreaAssigned.cs" />
     <Compile Include="Wrappers\SPChannelDefaultClientSycnParamsWrapper.cs" />
     <Compile Include="Wrappers\SPChannelDefaultClientSycnParamsWrapper.Designer.cs">
       <DependentUpon>SPChannelDefaultClientSycnParamsWrapper.cs</DependentUpon>

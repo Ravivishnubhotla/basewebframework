@@ -36,7 +36,7 @@
  <object id="SPClientPriceDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPClientPriceDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
- <object id="SPCodeInfoDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPCodeInfoDataObject, LD.SPPipeManage.Data">
+ <object id="SPCustomPhoneAreaDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPCustomPhoneAreaDataObject, LD.SPPipeManage.Data">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
  <object id="SPDayReportDataObjectIocID" type="LD.SPPipeManage.Data.Tables.SPDayReportDataObject, LD.SPPipeManage.Data">
@@ -98,7 +98,7 @@
     <property name="SPClientChannelSycnParamsDataObjectInstance" ref="SPClientChannelSycnParamsDataObjectIocID"/>
     <property name="SPClientGroupDataObjectInstance" ref="SPClientGroupDataObjectIocID"/>
     <property name="SPClientPriceDataObjectInstance" ref="SPClientPriceDataObjectIocID"/>
-    <property name="SPCodeInfoDataObjectInstance" ref="SPCodeInfoDataObjectIocID"/>
+    <property name="SPCustomPhoneAreaDataObjectInstance" ref="SPCustomPhoneAreaDataObjectIocID"/>
     <property name="SPDayReportDataObjectInstance" ref="SPDayReportDataObjectIocID"/>
     <property name="SPFailedRequestDataObjectInstance" ref="SPFailedRequestDataObjectIocID"/>
     <property name="SPInterceptRateDataObjectInstance" ref="SPInterceptRateDataObjectIocID"/>

@@ -17,7 +17,7 @@
       <Query>
         <DataSourceName>DataSource1</DataSourceName>
         <CommandText>SELECT  
-      [Name] as ChannelName,
+      [Name] as ClientGroupName,
 1 as ChannelID,
       '22323' as CodeName,
 1 as ChannelClentID,
@@ -28,8 +28,8 @@
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
-        <Field Name="ChannelName">
-          <DataField>ChannelName</DataField>
+        <Field Name="ClientGroupName">
+          <DataField>ClientGroupName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="CodeName">
@@ -246,7 +246,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>通道</Value>
+                                <Value>下家组</Value>
                                 <Style>
                                   <FontFamily>Tahoma</FontFamily>
                                   <FontSize>11pt</FontSize>
@@ -360,14 +360,14 @@
                   </TablixMembers>
                 </TablixMember>
                 <TablixMember>
-                  <Group Name="ChannelName">
+                  <Group Name="ClientGroupName">
                     <GroupExpressions>
-                      <GroupExpression>=Fields!ChannelName.Value</GroupExpression>
+                      <GroupExpression>=Fields!ClientGroupName.Value</GroupExpression>
                     </GroupExpressions>
                   </Group>
                   <SortExpressions>
                     <SortExpression>
-                      <Value>=Fields!ChannelName.Value</Value>
+                      <Value>=Fields!ClientGroupName.Value</Value>
                     </SortExpression>
                   </SortExpressions>
                   <TablixHeader>
@@ -380,7 +380,7 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>=Fields!ChannelName.Value</Value>
+                                <Value>=Fields!ClientGroupName.Value</Value>
                                 <Style>
                                   <FontFamily>Tahoma</FontFamily>
                                   <FontWeight>Bold</FontWeight>
@@ -811,7 +811,6 @@
       <Hidden>true</Hidden>
     </ReportParameter>
   </ReportParameters>
-  <Language>zh-CN</Language>
   <rd:ReportUnitType>Mm</rd:ReportUnitType>
   <rd:ReportID>d84dc5c2-43b9-4019-8de3-f4cb14b0639c</rd:ReportID>
 </Report>
