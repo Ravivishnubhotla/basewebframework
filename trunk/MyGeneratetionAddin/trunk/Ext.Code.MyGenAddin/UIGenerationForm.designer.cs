@@ -172,7 +172,7 @@ namespace Legendigital.Code.MyGenAddin
             this.tsbOpenConfigFromFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbOpenConfigFromFile.Name = "tsbOpenConfigFromFile";
             this.tsbOpenConfigFromFile.Size = new System.Drawing.Size(76, 22);
-            this.tsbOpenConfigFromFile.Text = "保存配置";
+            this.tsbOpenConfigFromFile.Text = "加载配置";
             // 
             // propertyGridSetting
             // 
