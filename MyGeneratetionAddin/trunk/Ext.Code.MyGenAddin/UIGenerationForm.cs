@@ -195,10 +195,11 @@ namespace Legendigital.Code.MyGenAddin
 
         private void toolStripButtonSaveConfig_Click(object sender, EventArgs e)
         {
-            if ((this.cbxtoolStripSelectDataBase.ComboBox.SelectedIndex >= 0) && (this.cbxtoolStripSelectObejct.ComboBox.SelectedIndex >= 0))
+            if (this.cbxtoolStripSelectObejct.ComboBox.SelectedIndex >= 0)
             {
-                IDatabase database = this.cbxtoolStripSelectDataBase.ComboBox.SelectedValue as IDatabase;
+                
                 ITable selectTable = this.cbxtoolStripSelectObejct.ComboBox.SelectedValue as MyMeta.ITable;
+                IDatabase database = selectTable.Database;
 
                 List<TableUIGenerationParams> tableUIGenerationParamsList = null;
                 if(database!=null&&selectTable!=null)
@@ -263,7 +264,7 @@ namespace Legendigital.Code.MyGenAddin
 
         private void GetSingleInputData(string generateType)
         {
-            IDatabase database = this.cbxtoolStripSelectDataBase.ComboBox.SelectedValue as IDatabase;
+ 
             ITable selectTable = this.cbxtoolStripSelectObejct.ComboBox.SelectedValue as MyMeta.ITable;
             this.zeusInput["GenerateType"] = generateType;
             this.zeusInput["selectTable"] = selectTable;
@@ -300,13 +301,14 @@ namespace Legendigital.Code.MyGenAddin
 
         private void toolStripButtonLoadConifg_Click(object sender, EventArgs e)
         {
-            if ((this.cbxtoolStripSelectDataBase.ComboBox.SelectedIndex >= 0) && (this.cbxtoolStripSelectObejct.ComboBox.SelectedIndex >= 0))
+            if (this.cbxtoolStripSelectObejct.ComboBox.SelectedIndex >= 0)
             {
                 if (this.openFileDialogInputUIConfig.ShowDialog() == DialogResult.OK)
                 {
                     FormUISetting uis = XmlConfigReader.GetConfig<FormUISetting>(this.openFileDialogInputUIConfig.FileName);
 
-                    IDatabase database = this.cbxtoolStripSelectDataBase.ComboBox.SelectedValue as IDatabase;
+                    ITable selectTable = this.cbxtoolStripSelectObejct.ComboBox.SelectedValue as MyMeta.ITable;
+                    IDatabase database = selectTable.Database;
 
                     for (int i = 0; i < this.cbxtoolStripSelectObejct.ComboBox.Items.Count; i++)
                     {
@@ -316,17 +318,7 @@ namespace Legendigital.Code.MyGenAddin
                             this.cbxtoolStripSelectObejct.ComboBox.SelectedIndex = i;
                             break;
                         }
-
-
                     }
-
-                    //foreach (object o in this.cbxtoolStripSelectObejct.ComboBox.Items)
-                    //{
-                    //    ITable table = (ITable) o;
-
-                    //}
-
-                    //this.cbxtoolStripSelectObejct.ComboBox.SelectedValue = database.Tables[uis.TableName];
 
                     this.dataGridViewField.DataSource = uis.Items;
                 }
