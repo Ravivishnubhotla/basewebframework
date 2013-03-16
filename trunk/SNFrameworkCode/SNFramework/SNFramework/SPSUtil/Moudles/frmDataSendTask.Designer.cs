@@ -33,8 +33,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSaveSendText = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSendData = new System.Windows.Forms.Button();
+            this.btnGenerateTestData = new System.Windows.Forms.Button();
             this.txturl = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tsTop = new System.Windows.Forms.ToolStrip();
@@ -94,8 +94,8 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.btnSaveSendText);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnSendData);
+            this.panel1.Controls.Add(this.btnGenerateTestData);
             this.panel1.Controls.Add(this.txturl);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -114,23 +114,25 @@
             this.btnSaveSendText.UseVisualStyleBackColor = true;
             this.btnSaveSendText.Click += new System.EventHandler(this.btnSaveSendText_Click);
             // 
-            // button2
+            // btnSendData
             // 
-            this.button2.Location = new System.Drawing.Point(793, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 21);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "发送数据";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnSendData.Location = new System.Drawing.Point(793, 33);
+            this.btnSendData.Name = "btnSendData";
+            this.btnSendData.Size = new System.Drawing.Size(75, 21);
+            this.btnSendData.TabIndex = 3;
+            this.btnSendData.Text = "发送数据";
+            this.btnSendData.UseVisualStyleBackColor = true;
+            this.btnSendData.Click += new System.EventHandler(this.btnSendData_Click);
             // 
-            // button1
+            // btnGenerateTestData
             // 
-            this.button1.Location = new System.Drawing.Point(683, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 21);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "生成测试链接";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGenerateTestData.Location = new System.Drawing.Point(683, 33);
+            this.btnGenerateTestData.Name = "btnGenerateTestData";
+            this.btnGenerateTestData.Size = new System.Drawing.Size(104, 21);
+            this.btnGenerateTestData.TabIndex = 2;
+            this.btnGenerateTestData.Text = "生成测试链接";
+            this.btnGenerateTestData.UseVisualStyleBackColor = true;
+            this.btnGenerateTestData.Click += new System.EventHandler(this.button1_Click);
             // 
             // txturl
             // 
@@ -235,8 +237,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txturl;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSendData;
+        private System.Windows.Forms.Button btnGenerateTestData;
         private System.Windows.Forms.OpenFileDialog opfLoadExcel;
         private System.Windows.Forms.Button btnSaveSendText;
         private System.Windows.Forms.SaveFileDialog sfdSendText;

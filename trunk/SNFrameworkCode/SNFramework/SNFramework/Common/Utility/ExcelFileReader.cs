@@ -17,7 +17,7 @@ namespace Legendigital.Framework.Common.Utility
  
             conn.Open();
 
-            string sql = string.Format("select * from [Sheet1$]", sheetName);
+            string sql = string.Format("select * from [{0}$]", sheetName);
  
             OleDbCommand olecommand = new OleDbCommand(sql, conn);
 

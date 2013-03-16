@@ -12,5 +12,7 @@ namespace SPSWeb.AppCode
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["BSFWebRoot"]; }
         }
+
+
     }
 }

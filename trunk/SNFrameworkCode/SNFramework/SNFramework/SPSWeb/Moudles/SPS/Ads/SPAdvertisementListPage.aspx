@@ -101,7 +101,7 @@
 
     <ext:Store ID="storeDictionaryAdType" runat="server" AutoLoad="false">
         <Proxy>
-            <ext:HttpProxy Method="POST" Url='<%# this.ResolveUrl("~/Moudles/DataService/DictionaryDataService.ashx") %>' AutoDataBind="True" />
+            <ext:HttpProxy Method="POST" Url='<%# BSFWebRoot + "Moudles/SystemManage/DataService/DictionaryDataService.ashx" %>' AutoDataBind="True" />
         </Proxy>
         <Reader>
             <ext:JsonReader Root="dictionarys" TotalProperty="total">
@@ -119,7 +119,7 @@
 
     <ext:Store ID="storeDictionaryAcountType" runat="server" AutoLoad="false">
         <Proxy>
-            <ext:HttpProxy Method="POST" Url='<%# this.ResolveUrl("~/Moudles/DataService/DictionaryDataService.ashx") %>' AutoDataBind="True" />
+            <ext:HttpProxy Method="POST" Url='<%# BSFWebRoot + "Moudles/SystemManage/DataService/DictionaryDataService.ashx" %>' AutoDataBind="True" />
         </Proxy>
         <Reader>
             <ext:JsonReader Root="dictionarys" TotalProperty="total">

@@ -41,8 +41,7 @@
         <ext:Button ID="btnSavelSPUpper" runat="server" Text="添加" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPUpperAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPUpper_Click"
-                    Success="Ext.MessageBox.alert('操作成功', '添加记录成功' ,callback);function callback(id) {#{formPanelSPUpperAdd}.getForm().reset();#{storeSPUpper}.reload(); };
-" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
+                    Success="ShowMessage('消息提示', '添加记录成功' ,1);#{formPanelSPUpperAdd}.getForm().reset();#{storeSPUpper}.reload();" Failure="Ext.Msg.alert('Operation failed', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请等待....." />
                 </Click>
             </DirectEvents>

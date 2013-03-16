@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Legendigital.Framework.Common.Web.UI;
+using Microsoft.Reporting.WebForms;
 using SPS.Bussiness.Wrappers;
 
 namespace SPSWeb.Moudles.SPS.Reports
@@ -107,6 +108,12 @@ namespace SPSWeb.Moudles.SPS.Reports
         protected void rptvContainer_ReportRefresh(object sender, CancelEventArgs e)
         {
             BindData();
+        }
+
+        protected void rptvContainer_OnDrillthrough(object sender, DrillthroughEventArgs e)
+        {
+            
+
         }
     }
 }
