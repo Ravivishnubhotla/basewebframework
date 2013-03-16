@@ -1,19 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPCodeAdd.ascx.cs" Inherits="SPSWeb.Moudles.SPS.Codes.UCSPCodeAdd" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPCodeAdd1.ascx.cs" Inherits="SPSWeb.Moudles.SPS.Codes.UCSPCodeAdd1" %>
 <%@ Import Namespace="SPSWeb.AppCode" %>
-<script type="text/javascript">
-    function ChangeCodeType(codeType, chkHasSubCode, txtSubCode) {
-        if (codeType == "2") {
-            chkHasSubCode.show();
-            txtSubCode.show();
-            chkHasSubCode.setValue(true);
-        }
-        else {
-            chkHasSubCode.hide();
-            txtSubCode.hide();
-            chkHasSubCode.setValue(false);
-        }
-    }
-</script>
 <ext:Store ID="storeMOType" runat="server" AutoLoad="True">
     <Proxy>
         <ext:HttpProxy Method="POST" Url='<%# BasePage.BSFWebRoot + "Moudles/SystemManage/DataService/DictionaryDataService.ashx" %>' AutoDataBind="True" />
@@ -115,4 +101,3 @@
             </Listeners>
         </ext:Button>
     </Buttons>
-</ext:Window>

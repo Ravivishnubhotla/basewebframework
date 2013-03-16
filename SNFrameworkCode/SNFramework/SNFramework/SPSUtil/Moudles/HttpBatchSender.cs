@@ -69,7 +69,7 @@ namespace SPSUtil.Moudles
 
                         this.rtxtOutput.Clear();
 
-                        HttpGetSenderTask senderTask = new HttpGetSenderTask(alllink);
+                        HttpGetSenderTask senderTask = new HttpGetSenderTask(alllink, "<code>0</code>");
 
 
                         //this.richTextBox1.a

@@ -122,7 +122,7 @@
 
        <ext:Store ID="storeDictionarySPField" runat="server" AutoLoad="false">
         <Proxy>
-            <ext:HttpProxy Method="POST" Url="../../SystemManage/DataService/DictionaryDataService.ashx" />
+            <ext:HttpProxy Method="POST" Url='<%# BSFWebRoot + "Moudles/SystemManage/DataService/DictionaryDataService.ashx" %>' AutoDataBind="True" />
         </Proxy>
         <Reader>
             <ext:JsonReader Root="dictionarys" TotalProperty="total">
@@ -139,7 +139,7 @@
     </ext:Store>
     <ext:Store ID="storeDictionaryChannelParamsType" runat="server" AutoLoad="false">
         <Proxy>
-            <ext:HttpProxy Method="POST" Url="../../SystemManage/DataService/DictionaryDataService.ashx" />
+            <ext:HttpProxy Method="POST" Url='<%# BSFWebRoot + "Moudles/SystemManage/DataService/DictionaryDataService.ashx" %>' AutoDataBind="True"  />
         </Proxy>
         <Reader>
             <ext:JsonReader Root="dictionarys" TotalProperty="total">

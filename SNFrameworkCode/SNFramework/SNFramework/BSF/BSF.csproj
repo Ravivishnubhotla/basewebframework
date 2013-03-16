@@ -121,8 +121,6 @@
     <Content Include="Css\css.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="Files\FileManage.aspx" />
-    <Content Include="Files\UCFileUpload.ascx" />
     <Content Include="Global.asax" />
     <Content Include="images\bg.gif" />
     <Content Include="images\collapse-all.gif" />
@@ -463,6 +461,7 @@
     <Content Include="Moudles\SystemManage\UserManage\UCSystemUserChangePwd.ascx" />
     <Content Include="Moudles\SystemManage\UserManage\UCSystemUserEdit.ascx" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="TestPage\WebForm1.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -487,21 +486,6 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Files\FileInf.cs" />
-    <Compile Include="Files\FileManage.aspx.cs">
-      <DependentUpon>FileManage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Files\FileManage.aspx.designer.cs">
-      <DependentUpon>FileManage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Files\UCFileUpload.ascx.cs">
-      <DependentUpon>UCFileUpload.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Files\UCFileUpload.ascx.designer.cs">
-      <DependentUpon>UCFileUpload.ascx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1013,6 +997,13 @@
       <DependentUpon>UCSystemUserEdit.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestPage\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestPage\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -1021,10 +1012,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Files\Documents\" />
-    <Folder Include="Files\Images\" />
-    <Folder Include="Files\Others\" />
-    <Folder Include="Files\Videos\" />
     <Folder Include="Moudles\Installs\" />
     <Folder Include="Moudles\SystemManage\DataVersionManage\" />
     <Folder Include="Moudles\SystemManage\Samples\UserSelector\" />

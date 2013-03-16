@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPCodeTreeListPage.aspx.cs" Inherits="SPSWeb.Moudles.SPS.Codes.SPCodeTreeListPage" %>
+
 <%@ Register Src="UCSPCodeAdd.ascx" TagName="UCSPCodeAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPCodeEdit.ascx" TagName="UCSPCodeEdit" TagPrefix="uc2" %>
 <%@ Register Src="UCSPCodeView.ascx" TagName="UCSPCodeView" TagPrefix="uc3" %>
@@ -41,92 +42,91 @@
         </DirectEventConfig>
     </ext:Store>
     <script type="text/javascript">
+        function showAddForm() {
+  
+        }
+
+
         function LoadTree(searchfilters) {
             Ext.net.DirectMethods.GetTreeNodes(searchfilters,
-                                                {
-                                                    failure: function (msg) {
-                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
-                                                    },
-                                                    success: function (result) {
-                                                        var tree = <%= TreeGrid1.ClientID %>;
-                                                        var nodes = eval(result);
-                                                        if (nodes.length > 0) {
-                                                            tree.initChildren(nodes);
-                                                        }
-                                                        else {
-                                                            tree.getRootNode().removeChildren();
-                                                        }
+                {
+                    failure: function (msg) {
+                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
+                    },
+                    success: function (result) {
+                        var tree = <%= TreeGrid1.ClientID %>;
+                        var nodes = eval(result);
+                        if (nodes.length > 0) {
+                            tree.initChildren(nodes);
+                        }
+                        else {
+                            tree.getRootNode().removeChildren();
+                        }
 
-                                                    },
-                                                    eventMask: {
-                                                        showMask: true,
-                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>',
-                                                        target: 'customtarget',
-                                                        customTarget: '<%= TreeGrid1.ClientID %>.el'
-                                                    }
-                                                }
-                                             );    
-                                            }
+                    },
+                    eventMask: {
+                        showMask: true,
+                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgLoading").ToString() %>',
+                        target: 'customtarget',
+                        customTarget: '<%= TreeGrid1.ClientID %>.el'
+                    }
+                }
+            );    
+        }
         
 
  
-                                            var RefreshData = function(btn) {
-                                                var pnl = <%= this.Panel2.ClientID %>;
-             LoadTree(Ext.encode(pnl.getForm().getFieldValues(false, 'dataIndex')));
-         };
+        var RefreshData = function(btn) {
+            var pnl = <%= this.Panel2.ClientID %>;
+            LoadTree(Ext.encode(pnl.getForm().getFieldValues(false, 'dataIndex')));
+        };
 
-         function showEditCode(id) {
-             Ext.net.DirectMethods.UCSPCodeEdit.Show(id,
-                                                             {
-                                                                 failure: function(msg) {
-                                                                     Ext.Msg.alert('操作失败', msg,RefreshData);
-                                                                 },
-                                                                 eventMask: {
-                                                                     showMask: true,
-                                                                     msg: '处理中...'
-                                                                 }
-                                                             }              
-             );
-         }
+        function showEditCode(id) {
+            Ext.net.DirectMethods.UCSPCodeEdit.Show(id,
+                {
+                    failure: function(msg) {
+                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                    },
+                    eventMask: {
+                        showMask: true,
+                        msg: '处理中...'
+                    }
+                }              
+            );
+        }
             
-         function showViewCode(id) {
-             Ext.net.DirectMethods.UCSPCodeView.Show(id,
-                                                 {
-                                                     failure: function(msg) {
-                                                         Ext.Msg.alert('操作失败', msg,RefreshData);
-                                                     },
-                                                     eventMask: {
-                                                         showMask: true,
-                                                         msg: '处理中...'
-                                                     }
-                                                 }              
- );
-         }
+        function showViewCode(id) {
+            Ext.net.DirectMethods.UCSPCodeView.Show(id,
+                {
+                    failure: function(msg) {
+                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                    },
+                    eventMask: {
+                        showMask: true,
+                        msg: '处理中...'
+                    }
+                }              
+            );
+        }
             
-         function showSendTest(id,cname,cid) {
-             //                alert(id);
-             //                alert(cname);
-             //                alert(cid);
-             //                return;
-             var win = <%= this.winSendTestRequestForm.ClientID %>;
+        function showSendTest(id,cname,cid) {
+            //                alert(id);
+            //                alert(cname);
+            //                alert(cid);
+            //                return;
+            var win = <%= this.winSendTestRequestForm.ClientID %>;
                 
 
-                win.setTitle(' 通道 ' + cname + '  发送模拟数据 ');
+            win.setTitle(' 通道 ' + cname + '  发送模拟数据 ');
                 
-                win.autoLoad.url = '../Channels/SPChannelSendTestRequestForm.aspx';
+            win.autoLoad.url = '../Channels/SPChannelSendTestRequestForm.aspx';
                 
-                win.autoLoad.params.ChannelID = cid;
+            win.autoLoad.params.ChannelID = cid;
         
-                win.autoLoad.params.CodeID = id;		                
+            win.autoLoad.params.CodeID = id;		                
             			                
-                win.show(); 
-            }
-
-
-
-
-
- 
+            win.show(); 
+        } 
  
     </script>
 </asp:Content>
@@ -138,8 +138,24 @@
         <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <Items>
-                    <ext:Panel ID="Panel1" Region="North" runat="server" Padding="2" Title="指令代码管理" Height="90"
+                    <ext:Panel ID="Panel1" Region="North" runat="server" Padding="2" Title="指令代码管理" Height="190"
                         Frame="True">
+                        <TopBar>
+                            <ext:Toolbar ID="tbTop" runat="server">
+                                <Items>
+                                    <ext:Button ID='btnAdd' runat="server" Text="添加" Icon="Add">
+                                        <Listeners>
+                                            <Click Handler="showAddForm();" />
+                                        </Listeners>
+                                    </ext:Button>
+                                    <ext:Button ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
+                                        <Listeners>
+                                            <Click Handler="LoadTree(Ext.encode(#{Panel2}.getForm().getFieldValues(false, 'dataIndex')));" />
+                                        </Listeners>
+                                    </ext:Button>
+                                </Items>
+                            </ext:Toolbar>
+                        </TopBar>
                         <Items>
                             <ext:FieldSet ID="FieldSet1" runat="server" CheckboxToggle="False" Title="查询条件" AutoHeight="True"
                                 Collapsed="False" LabelWidth="75" Layout="Form">
@@ -179,8 +195,7 @@
                                                 DataIndex="SpNumber" />
                                             <ext:Button ID="Button5" runat="server" Text="搜索">
                                                 <Listeners>
-                                                    <Click Handler="LoadTree(Ext.encode(#{Panel2}.getForm().getFieldValues(false, 'dataIndex')));">
-                                                    </Click>
+                                                    <Click Handler="LoadTree(Ext.encode(#{Panel2}.getForm().getFieldValues(false, 'dataIndex')));"></Click>
                                                 </Listeners>
                                             </ext:Button>
                                         </Items>
@@ -218,7 +233,7 @@
             </ext:BorderLayout>
         </Items>
     </ext:Viewport>
-        <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
+    <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
         Width="640" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
         <AutoLoad Url="../Channels/SPChannelSendTestRequestForm.aspx" Mode="IFrame" NoCache="true"

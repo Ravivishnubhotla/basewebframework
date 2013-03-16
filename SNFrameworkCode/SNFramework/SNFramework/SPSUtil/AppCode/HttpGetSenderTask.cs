@@ -75,9 +75,9 @@ namespace SPSUtil.AppCode
  
         }
 
-        public HttpGetSenderTask(List<string> alllinks)
+        public HttpGetSenderTask(List<string> alllinks,string okMessage)
         {
-            OkMessage = "ok";
+            OkMessage = okMessage;
             TimeOut = 10000;
             SendInterval = 10;
             RetryTimes = 2;

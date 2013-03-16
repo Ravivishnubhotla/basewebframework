@@ -11,7 +11,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
     <rsweb:ReportViewer ID="rptvContainer" runat="server" Width="100%" Height="100%" 
-        AsyncRendering="False" SizeToReportContent="True" OnReportRefresh="rptvContainer_ReportRefresh">
+        AsyncRendering="False" SizeToReportContent="True" OnReportRefresh="rptvContainer_ReportRefresh"  OnDrillthrough="rptvContainer_OnDrillthrough">
     </rsweb:ReportViewer>
     </form>
 </body>

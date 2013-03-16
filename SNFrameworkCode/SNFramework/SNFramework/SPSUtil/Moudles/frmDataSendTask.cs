@@ -22,7 +22,7 @@ namespace SPSUtil.Moudles
         {
             if(opfLoadExcel.ShowDialog()==DialogResult.OK)
             {
-                DataTable loadExcelData = ExcelFileReader.ReadExcelSheet("查询", opfLoadExcel.FileName);
+                DataTable loadExcelData = ExcelFileReader.ReadExcelSheet("Sheet1", opfLoadExcel.FileName);
                 this.dataGridView1.DataSource = loadExcelData;
             }
         }
@@ -51,8 +51,15 @@ namespace SPSUtil.Moudles
                 File.WriteAllLines(sfdSendText.FileName,sendUrls.ToArray());
             }
 
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void btnSendData_Click(object sender, EventArgs e)
+        {
 
         }
 

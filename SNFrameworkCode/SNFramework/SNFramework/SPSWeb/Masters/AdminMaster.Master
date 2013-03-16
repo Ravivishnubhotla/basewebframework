@@ -11,10 +11,37 @@
 <body>
     <form id="form1" runat="server">
     <ext:ResourceManager ID="ResourceManager1" runat="server">
-    </ext:ResourceManager>
+    </ext:ResourceManager>    
+    <script type="text/javascript">
+        function ShowMessage(title, content, messageType) {
+
+            var iconcls = 'icon-information';
+
+            if (messageType == 1) {
+                iconcls = 'icon-information';
+            }
+            else if (messageType == 2) {
+                iconcls = 'icon-error';
+            }
+            else if (messageType == 3) {
+                iconcls = 'icon-information';
+            }
+            else if (messageType == 3) {
+                iconcls = 'icon-information';
+            }
+
+            Ext.net.Notification.show({
+                iconCls: iconcls,
+                pinEvent: 'click',
+                html: content,
+                title: title
+            });
+        }
+    </script>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
     </form>
+
 </body>
 </html>
 

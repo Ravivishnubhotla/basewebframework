@@ -10,195 +10,213 @@
 namespace SPSWeb.Moudles.SPS.Codes {
     
     
-    public partial class SPCodeTreeListPage {
+    public partial class UCSPCodeAdd1 {
         
         /// <summary>
-        /// ResourceManagerProxy1 control.
+        /// storeMOType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ResourceManagerProxy ResourceManagerProxy1;
+        protected global::Ext.Net.Store storeMOType;
         
         /// <summary>
-        /// storeSPChannel control.
+        /// winSPCodeAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeSPChannel;
+        protected global::Ext.Net.Window winSPCodeAdd;
         
         /// <summary>
-        /// storeSPClient control.
+        /// formPanelSPCodeAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeSPClient;
+        protected global::Ext.Net.FormPanel formPanelSPCodeAdd;
         
         /// <summary>
-        /// UCSPCodeAdd1 control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SPSWeb.Moudles.SPS.Codes.UCSPCodeAdd UCSPCodeAdd1;
+        protected global::Ext.Net.TextField txtName;
         
         /// <summary>
-        /// UCSPCodeEdit1 control.
+        /// txtCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SPSWeb.Moudles.SPS.Codes.UCSPCodeEdit UCSPCodeEdit1;
+        protected global::Ext.Net.TextField txtCode;
         
         /// <summary>
-        /// UCSPCodeView1 control.
+        /// cmbMOType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SPSWeb.Moudles.SPS.Codes.UCSPCodeView UCSPCodeView1;
+        protected global::Ext.Net.ComboBox cmbMOType;
         
         /// <summary>
-        /// Viewport1 control.
+        /// txtMO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Viewport Viewport1;
+        protected global::Ext.Net.TextField txtMO;
         
         /// <summary>
-        /// BorderLayout1 control.
+        /// txtSPCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.BorderLayout BorderLayout1;
+        protected global::Ext.Net.TextField txtSPCode;
         
         /// <summary>
-        /// Panel1 control.
+        /// numOrderIndex control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Panel Panel1;
+        protected global::Ext.Net.NumberField numOrderIndex;
         
         /// <summary>
-        /// tbTop control.
+        /// chkHasSubCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbTop;
+        protected global::Ext.Net.Checkbox chkHasSubCode;
         
         /// <summary>
-        /// btnAdd control.
+        /// txtSubCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnAdd;
+        protected global::Ext.Net.TextArea txtSubCode;
         
         /// <summary>
-        /// btnRefresh control.
+        /// txtProvince control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnRefresh;
+        protected global::Ext.Net.TextArea txtProvince;
         
         /// <summary>
-        /// FieldSet1 control.
+        /// txtDisableCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FieldSet FieldSet1;
+        protected global::Ext.Net.TextArea txtDisableCity;
         
         /// <summary>
-        /// Panel2 control.
+        /// cmbOperateType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FormPanel Panel2;
+        protected global::Ext.Net.ComboBox cmbOperateType;
         
         /// <summary>
-        /// cmbChannel control.
+        /// txtDayLimit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbChannel;
+        protected global::Ext.Net.TextField txtDayLimit;
         
         /// <summary>
-        /// cmbClient control.
+        /// txtMonthLimit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ComboBox cmbClient;
+        protected global::Ext.Net.TextField txtMonthLimit;
         
         /// <summary>
-        /// txtMo control.
+        /// txtCodeSendText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtMo;
+        protected global::Ext.Net.TextArea txtCodeSendText;
         
         /// <summary>
-        /// txtSpNumber control.
+        /// txtPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TextField txtSpNumber;
+        protected global::Ext.Net.NumberField txtPrice;
         
         /// <summary>
-        /// Button5 control.
+        /// chkHasFilters control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button Button5;
+        protected global::Ext.Net.Checkbox chkHasFilters;
         
         /// <summary>
-        /// TreeGrid1 control.
+        /// chkHasParamsConvert control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.TreeGrid TreeGrid1;
+        protected global::Ext.Net.Checkbox chkHasParamsConvert;
         
         /// <summary>
-        /// winSendTestRequestForm control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winSendTestRequestForm;
+        protected global::Ext.Net.TextArea txtDescription;
+        
+        /// <summary>
+        /// btnSavelSPCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button btnSavelSPCode;
+        
+        /// <summary>
+        /// btnCancelSPCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button btnCancelSPCode;
     }
 }
