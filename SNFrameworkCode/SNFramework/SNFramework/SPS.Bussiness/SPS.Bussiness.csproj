@@ -44,8 +44,8 @@
     <Reference Include="Spring.Data">
       <HintPath>..\ThirdsDll\Spring.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Spring.Data.NHibernate32">
-      <HintPath>..\ThirdsDll\Spring.Data.NHibernate32.dll</HintPath>
+    <Reference Include="Spring.Data.NHibernate33">
+      <HintPath>..\ThirdsDll\Spring.Data.NHibernate33.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
