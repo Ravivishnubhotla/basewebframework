@@ -1,9 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPCodeTreeListPage.aspx.cs" Inherits="SPSWeb.Moudles.SPS.Codes.SPCodeTreeListPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
+    CodeBehind="SPCodeTreeListPage.aspx.cs" Inherits="SPSWeb.Moudles.SPS.Codes.SPCodeTreeListPage" %>
 
 <%@ Register Src="UCSPCodeAdd.ascx" TagName="UCSPCodeAdd" TagPrefix="uc1" %>
 <%@ Register Src="UCSPCodeEdit.ascx" TagName="UCSPCodeEdit" TagPrefix="uc2" %>
 <%@ Register Src="UCSPCodeView.ascx" TagName="UCSPCodeView" TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .cellClass
+        {
+            padding: 5px;
+        }
+    </style>
     <ext:ResourceManagerProxy ID="ResourceManagerProxy1" runat="server">
         <Listeners>
             <DocumentReady Handler="LoadTree('');"></DocumentReady>
@@ -41,9 +48,29 @@
             <EventMask ShowMask="true" />
         </DirectEventConfig>
     </ext:Store>
+    <ext:Store ID="storeAreaCountList" runat="server">
+        <Reader>
+            <ext:JsonReader>
+                <Fields>
+                    <ext:RecordField Name="AreaName" />
+                    <ext:RecordField Name="LimitCount" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+    </ext:Store>
     <script type="text/javascript">
         function showAddForm() {
-  
+              Ext.net.DirectMethods.UCSPCodeAdd.Show(
+                {
+                    failure: function(msg) {
+                        Ext.Msg.alert('操作失败', msg,RefreshData);
+                    },
+                    eventMask: {
+                        showMask: true,
+                        msg: '处理中...'
+                    }
+                }              
+            );
         }
 
 
@@ -131,14 +158,14 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <uc1:UCSPCodeAdd ID="UCSPCodeAdd1" runat="server" />
-    <uc2:UCSPCodeEdit ID="UCSPCodeEdit1" runat="server" />
-    <uc3:UCSPCodeView ID="UCSPCodeView1" runat="server" />
+        <uc1:UCSPCodeAdd ID="UCSPCodeAdd1" runat="server" />
+   <%-- <uc2:UCSPCodeEdit ID="UCSPCodeEdit1" runat="server" />
+    <uc3:UCSPCodeView ID="UCSPCodeView1" runat="server" />--%>
     <ext:Viewport ID="Viewport1" runat="server" Layout="Fit">
         <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
                 <Items>
-                    <ext:Panel ID="Panel1" Region="North" runat="server" Padding="2" Title="指令代码管理" Height="190"
+                    <ext:Panel ID="Panel1" Region="North" runat="server" Padding="2" Title="指令代码管理" Height="120"
                         Frame="True">
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
@@ -195,7 +222,8 @@
                                                 DataIndex="SpNumber" />
                                             <ext:Button ID="Button5" runat="server" Text="搜索">
                                                 <Listeners>
-                                                    <Click Handler="LoadTree(Ext.encode(#{Panel2}.getForm().getFieldValues(false, 'dataIndex')));"></Click>
+                                                    <Click Handler="LoadTree(Ext.encode(#{Panel2}.getForm().getFieldValues(false, 'dataIndex')));">
+                                                    </Click>
                                                 </Listeners>
                                             </ext:Button>
                                         </Items>
@@ -209,8 +237,9 @@
                         <Columns>
                             <ext:TreeGridColumn Header="指令代码" Width="230" DataIndex="MoCode" />
                             <ext:TreeGridColumn Header="所属通道" Width="100" DataIndex="ChannelName" />
-                            <ext:TreeGridColumn Header="分配下家" Width="100" DataIndex="AssignedClientName" Align="Center">
+                            <ext:TreeGridColumn Header="分配下家" Width="100" DataIndex="AssignedClientName" Align="Center">                          
                             </ext:TreeGridColumn>
+                            <ext:TreeGridColumn Header="扣率" Width="50" DataIndex="InterceptRate" />
                             <ext:TreeGridColumn Header="禁用" Width="50" DataIndex="Disable" />
                             <ext:TreeGridColumn Header="管理" Width="100" Align="Center">
                                 <XTemplate ID="XTemplate1" runat="server">

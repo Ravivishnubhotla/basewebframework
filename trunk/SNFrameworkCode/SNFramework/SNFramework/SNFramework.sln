@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Templates", "Code Templates", "{6510D54F-B017-443F-A2AF-B7A9A0173BD4}"
 	ProjectSection(SolutionItems) = preProject
 		Code Templates\BaseTableConfig.dat = Code Templates\BaseTableConfig.dat
@@ -21,11 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBaseScript", "DataBaseS
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{C7ED35BE-FFFD-46F0-9A76-225AFD1BC408}"
 	ProjectSection(SolutionItems) = preProject
-		ThirdsDll\AjaxControlToolkit.dll = ThirdsDll\AjaxControlToolkit.dll
 		ThirdsDll\Antlr3.Runtime.dll = ThirdsDll\Antlr3.Runtime.dll
 		ThirdsDll\AspNetPager.dll = ThirdsDll\AspNetPager.dll
 		ThirdsDll\Common.Logging.dll = ThirdsDll\Common.Logging.dll
-		ThirdsDll\Common.Logging.Log4Net.dll = ThirdsDll\Common.Logging.Log4Net.dll
+		ThirdsDll\Common.Logging.Log4Net1210.dll = ThirdsDll\Common.Logging.Log4Net1210.dll
 		ThirdsDll\Ext.Net.dll = ThirdsDll\Ext.Net.dll
 		ThirdsDll\Ext.Net.MVC.dll = ThirdsDll\Ext.Net.MVC.dll
 		ThirdsDll\Ext.Net.Utilities.dll = ThirdsDll\Ext.Net.Utilities.dll
@@ -45,20 +44,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\Spring.Aop.dll = ThirdsDll\Spring.Aop.dll
 		ThirdsDll\Spring.Core.dll = ThirdsDll\Spring.Core.dll
 		ThirdsDll\Spring.Data.dll = ThirdsDll\Spring.Data.dll
-		ThirdsDll\Spring.Data.NHibernate21.dll = ThirdsDll\Spring.Data.NHibernate21.dll
-		ThirdsDll\Spring.Data.NHibernate32.dll = ThirdsDll\Spring.Data.NHibernate32.dll
-		ThirdsDll\Spring.Scheduling.Quartz.dll = ThirdsDll\Spring.Scheduling.Quartz.dll
 		ThirdsDll\Spring.Services.dll = ThirdsDll\Spring.Services.dll
 		ThirdsDll\Spring.Template.Velocity.dll = ThirdsDll\Spring.Template.Velocity.dll
 		ThirdsDll\Spring.Web.dll = ThirdsDll\Spring.Web.dll
 		ThirdsDll\Spring.Web.Extensions.dll = ThirdsDll\Spring.Web.Extensions.dll
-		ThirdsDll\Spring.Web.Mvc.dll = ThirdsDll\Spring.Web.Mvc.dll
 		ThirdsDll\SubSonic.Core.dll = ThirdsDll\SubSonic.Core.dll
 		ThirdsDll\System.Data.SQLite.DLL = ThirdsDll\System.Data.SQLite.DLL
 		ThirdsDll\WeifenLuo.WinFormsUI.Docking.dll = ThirdsDll\WeifenLuo.WinFormsUI.Docking.dll
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{6207A1E5-E7A5-49D1-A396-F094C0657845}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPS.Entity", "SPS.Entity\SPS.Entity.csproj", "{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}"
 EndProject
@@ -91,21 +84,6 @@ Global
 		WebDebug|x86 = WebDebug|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.Release|x86.ActiveCfg = Release|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.WebDebug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.WebDebug|Any CPU.Build.0 = Debug|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.WebDebug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.WebDebug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{6207A1E5-E7A5-49D1-A396-F094C0657845}.WebDebug|x86.ActiveCfg = Debug|Any CPU
 		{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C8E6C53-9555-4D88-BDD4-D3521EB8A1BE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

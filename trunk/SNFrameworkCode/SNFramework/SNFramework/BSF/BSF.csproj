@@ -46,11 +46,13 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\ThirdsDll\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging">
+    <Reference Include="Common.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Common.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging.Log4Net">
-      <HintPath>..\ThirdsDll\Common.Logging.Log4Net.dll</HintPath>
+    <Reference Include="Common.Logging.Log4Net1210, Version=2.1.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Common.Logging.Log4Net1210.dll</HintPath>
     </Reference>
     <Reference Include="Ext.Net">
       <HintPath>..\ThirdsDll\Ext.Net.dll</HintPath>
@@ -72,9 +74,6 @@
     <Reference Include="NVelocity">
       <HintPath>..\ThirdsDll\NVelocity.dll</HintPath>
     </Reference>
-    <Reference Include="Quartz">
-      <HintPath>..\ThirdsDll\Quartz.dll</HintPath>
-    </Reference>
     <Reference Include="Spring.Aop">
       <HintPath>..\ThirdsDll\Spring.Aop.dll</HintPath>
     </Reference>
@@ -84,11 +83,13 @@
     <Reference Include="Spring.Data">
       <HintPath>..\ThirdsDll\Spring.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Spring.Data.NHibernate32">
-      <HintPath>..\ThirdsDll\Spring.Data.NHibernate32.dll</HintPath>
+    <Reference Include="Spring.Data.NHibernate33, Version=2.0.0.40000, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Data.NHibernate33.dll</HintPath>
     </Reference>
-    <Reference Include="Spring.Scheduling.Quartz">
-      <HintPath>..\ThirdsDll\Spring.Scheduling.Quartz.dll</HintPath>
+    <Reference Include="Spring.Scheduling.Quartz20, Version=2.0.0.40000, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ThirdsDll\Spring.Scheduling.Quartz20.dll</HintPath>
     </Reference>
     <Reference Include="Spring.Services">
       <HintPath>..\ThirdsDll\Spring.Services.dll</HintPath>

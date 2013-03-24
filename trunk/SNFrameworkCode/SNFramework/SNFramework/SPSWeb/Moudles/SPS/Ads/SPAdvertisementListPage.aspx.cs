@@ -19,8 +19,6 @@ namespace SPSWeb.Moudles.SPS.Ads
             if (X.IsAjaxRequest)
                 return;
 
-
-
             this.gridPanelSPAdvertisement.Reload();
         }
 

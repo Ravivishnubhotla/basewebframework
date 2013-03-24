@@ -46,7 +46,7 @@ namespace SPSWeb.Moudles.SPS.Codes {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl UCSPCodeEdit1;
+        protected global::SPSWeb.Moudles.SPS.Codes.UCSPCodeEdit UCSPCodeEdit1;
         
         /// <summary>
         /// UCSPCodeView1 control.
@@ -55,7 +55,7 @@ namespace SPSWeb.Moudles.SPS.Codes {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl UCSPCodeView1;
+        protected global::SPSWeb.Moudles.SPS.Codes.UCSPCodeView UCSPCodeView1;
         
         /// <summary>
         /// viewPortMain control.
