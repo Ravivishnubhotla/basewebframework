@@ -404,7 +404,7 @@ namespace SPS.Bussiness.Wrappers
 	    public SPCodeWrapper GetMatchCodeFromIVRRequest(IDataAdapter httpRequestLog, string spcode, string province, string city)
 	    {
             var findCode = (from cc in Codes
-                            where (cc.SPCode.Equals(spcode) && (cc.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key))
+                            where (cc.CheckIsMatchCode(spcode) && (cc.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key))
                             orderby cc.Priority ascending, cc.Mo.Length descending
                             select cc).FirstOrDefault();
 
@@ -520,7 +520,7 @@ namespace SPS.Bussiness.Wrappers
         public SPCodeWrapper GetMatchCodeFromRequest(IDataAdapter httpRequestLog, string mo, string spcode, string province, string city)
         {
             var findCode = (from cc in Codes
-                            where (cc.CheckIsMatchCode(mo, spcode) && (cc.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key))
+                            where (cc.CheckIsMatchSPCode(spcode) && cc.CheckIsMatchCode(mo) && (cc.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key))
                             orderby cc.Priority ascending , cc.Mo.Length descending 
                                  select cc).FirstOrDefault();
 

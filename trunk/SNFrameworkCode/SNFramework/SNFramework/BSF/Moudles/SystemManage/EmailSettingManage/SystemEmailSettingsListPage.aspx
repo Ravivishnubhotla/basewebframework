@@ -1,9 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SystemEmailSettingsListPage.aspx.cs" Inherits="SNFramework.BSF.Moudles.SystemManage.EmailSettingManage.SystemEmailSettingsListPage" %>
+
 <%@ Register Src="UCSystemEmailSettingsAdd.ascx" TagName="UCSystemEmailSettingsAdd"
     TagPrefix="uc1" %>
 <%@ Register Src="UCSystemEmailSettingsEdit.ascx" TagName="UCSystemEmailSettingsEdit"
     TagPrefix="uc2" %>
- 
+<%@ Register TagPrefix="uc3" Src="UCSystemEmailSettingsTest.ascx" TagName="UCSystemEmailSettingsTest" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
@@ -23,51 +25,67 @@
         };
         
         function showAddForm() {
-                Ext.net.DirectMethods.UCSystemEmailSettingsAdd.Show( 
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
+            Ext.net.DirectMethods.UCSystemEmailSettingsAdd.Show( 
+                                                            {
+                                                                failure: function(msg) {
+                                                                    Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
-                                                                               }
+                                                                        showMask: true,
+                                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                    }
                                                                 });    
         
-        }
+                                                                    }
 
-        function processcmd(cmd, id) {
+                                                                    function processcmd(cmd, id) {
 
-            if (cmd == "cmdEdit") {
-                Ext.net.DirectMethods.UCSystemEmailSettingsEdit.Show(id.id,
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
+                                                                        if (cmd == "cmdEdit") {
+                                                                            Ext.net.DirectMethods.UCSystemEmailSettingsEdit.Show(id.id,
+                                                                                                                            {
+                                                                                                                                failure: function(msg) {
+                                                                                                                                    Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
-                                                                               }
+                                                                        showMask: true,
+                                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                    }
                                                                 }              
                 );
-            }
+                                                                    }
+            
+
+
+                                                                    if (cmd == "cmdTest") {
+                                                                        Ext.net.DirectMethods.UCSystemEmailSettingsTest.Show(id.id,
+                                                                                                                        {
+                                                                                                                            failure: function(msg) {
+                                                                                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
+                                                                    },
+                                                                    eventMask: {
+                                                                        showMask: true,
+                                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                    }
+                                                                }              
+                );
+                                                            }
 			
-			            if (cmd == "cmdView") {
-                Ext.net.DirectMethods.UCSystemEmailSettingsView.Show(id.id,
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
+                                                            if (cmd == "cmdView") {
+                                                                Ext.net.DirectMethods.UCSystemEmailSettingsView.Show(id.id,
+                                                                                                                {
+                                                                                                                    failure: function(msg) {
+                                                                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
                                                                     },
                                                                     eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
-                                                                               }
+                                                                        showMask: true,
+                                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                    }
                                                                 }              
                 );
-            }
+                                                                    }
 
-            if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %> ',
+                                                                    if (cmd == "cmdDelete") {
+                                                                        Ext.MessageBox.confirm('<%= GetGlobalResourceObject("GlobalResource","msgWarning").ToString() %>','<%= GetGlobalResourceObject("GlobalResource","msgDeleteWarning").ToString() %> ',
                     function(e) {
                         if (e == 'yes')
                             Ext.net.DirectMethods.DeleteRecord(
@@ -80,15 +98,15 @@
                                                                         Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>',RefreshData);         
                                                                     },
                                                                     eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
-                                                                               }
+                                                                        showMask: true,
+                                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                    }
                                                                 }
                                                             );
                     }
                     );
-            }
-        }
+                                                            }
+                                                        }
 
     </script>
     <ext:Store ID="storeSystemEmailSettings" runat="server" AutoLoad="true" RemoteSort="true"
@@ -105,7 +123,7 @@
                 <Fields>
                     <ext:RecordField Name="EmailSettingID" Type="int" />
                     <ext:RecordField Name="Name" />
-                     <ext:RecordField Name="Code" />
+                    <ext:RecordField Name="Code" />
                     <ext:RecordField Name="Descriprsion" />
                     <ext:RecordField Name="Host" />
                     <ext:RecordField Name="Port" />
@@ -126,7 +144,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:UCSystemEmailSettingsAdd ID="UCSystemEmailSettingsAdd1" runat="server" />
     <uc2:UCSystemEmailSettingsEdit ID="UCSystemEmailSettingsEdit1" runat="server" />
- 
+    <uc3:UCSystemEmailSettingsTest ID="UCSystemEmailSettingsTest1" runat="server" />
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSystemEmailSettings" runat="server" StoreID="storeSystemEmailSettings"
@@ -191,6 +209,8 @@
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="<%$ Resources : GlobalResource, msgDelete  %>">
                                             </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="Mail" CommandName="cmdTest" Text="<%$ Resources : GlobalResource, msgTest  %>">
+                                            </ext:MenuCommand>
                                         </Items>
                                     </Menu>
                                 </ext:SplitCommand>
@@ -201,7 +221,7 @@
                 <LoadMask ShowMask="true" />
                 <BottomBar>
                     <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSystemEmailSettings"
-                        DisplayInfo="true"  DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
+                        DisplayInfo="true" DisplayMsg="<%$ Resources : GlobalResource, msgPageInfo  %>" EmptyMsg="<%$ Resources : GlobalResource, msgNoRecordInfo  %>" />
                 </BottomBar>
                 <Listeners>
                     <Command Handler="processcmd(command, record);" />

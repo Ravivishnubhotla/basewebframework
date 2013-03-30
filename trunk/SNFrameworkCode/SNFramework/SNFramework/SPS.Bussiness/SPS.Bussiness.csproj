@@ -57,6 +57,7 @@
     <Compile Include="Code\LinkIDQueryCache.cs" />
     <Compile Include="Code\PhoneAreaInfo.cs" />
     <Compile Include="Code\PhoneCache.cs" />
+    <Compile Include="Code\PhoneLimitAreaAssigned.cs" />
     <Compile Include="Code\SPDayReport.cs" />
     <Compile Include="Code\SPInterceptRateCache.cs" />
     <Compile Include="Code\SPInterceptRateItem.cs" />

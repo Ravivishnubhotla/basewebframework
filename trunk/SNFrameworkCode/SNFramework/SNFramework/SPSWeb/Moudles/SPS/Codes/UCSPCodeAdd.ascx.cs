@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using SPS.Bussiness.Code;
 using SPS.Bussiness.Wrappers;
 
 namespace SPSWeb.Moudles.SPS.Codes
@@ -82,6 +83,13 @@ namespace SPSWeb.Moudles.SPS.Codes
                 ResourceManager.AjaxSuccess = false;
                 ResourceManager.AjaxErrorMessage = "Error Message:" + ex.Message;
             }
+        }
+
+        protected void storeAreaCountList_Refresh(object sender, StoreRefreshDataEventArgs e)
+        {
+            storeAreaCountList.DataSource = new List<PhoneLimitAreaAssigned>();
+
+            storeAreaCountList.DataBind();
         }
     }
 }

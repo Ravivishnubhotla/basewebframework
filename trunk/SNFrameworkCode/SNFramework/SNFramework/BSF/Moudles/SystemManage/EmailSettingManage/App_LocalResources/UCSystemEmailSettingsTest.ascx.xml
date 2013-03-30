@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="System Email Settings Test" />
+  <add name="msgFiledMail" value="Mail Address" />
+  <add name="msgFiledTitle" value="Title" />
+  <add name="msgFiledContext" value="Context" />
+  <add name="msgSend" value="Send Test Mail" />
+  <add name="msgSendScript" value="#{formPanelSystemEmailSettingsTest}.getForm().reset();Ext.MessageBox.alert('Operation successful', 'Test Email Settings success');" />
+</resources>

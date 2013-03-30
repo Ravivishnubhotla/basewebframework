@@ -285,9 +285,13 @@
     <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsEdit.ascx.zh-CHS.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsTest.ascx.en-US.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsTest.ascx.xml" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\App_LocalResources\UCSystemEmailSettingsTest.ascx.zh-CHS.xml" />
     <Content Include="Moudles\SystemManage\EmailSettingManage\SystemEmailSettingsListPage.aspx" />
     <Content Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsAdd.ascx" />
     <Content Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsEdit.ascx" />
+    <Content Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsTest.ascx" />
     <Content Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsView.ascx" />
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\SystemEmailTemplateListPage.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\EmailTemplates\App_LocalResources\SystemEmailTemplateListPage.aspx.xml" />
@@ -674,6 +678,13 @@
     </Compile>
     <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsEdit.ascx.designer.cs">
       <DependentUpon>UCSystemEmailSettingsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsTest.ascx.cs">
+      <DependentUpon>UCSystemEmailSettingsTest.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsTest.ascx.designer.cs">
+      <DependentUpon>UCSystemEmailSettingsTest.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SystemManage\EmailSettingManage\UCSystemEmailSettingsView.ascx.cs">
       <DependentUpon>UCSystemEmailSettingsView.ascx</DependentUpon>

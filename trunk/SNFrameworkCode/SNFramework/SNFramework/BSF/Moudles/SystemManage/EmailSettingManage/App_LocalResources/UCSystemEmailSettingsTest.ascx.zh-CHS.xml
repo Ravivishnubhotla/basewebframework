@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <add name="msgFormTitle" value="邮件配置测试" />
+  <add name="msgFiledMail" value="邮件地址" />
+  <add name="msgFiledTitle" value="标题" />
+  <add name="msgFiledContext" value="内容" />
+  <add name="msgSend" value="发送测试邮件" />
+  <add name="msgSendScript" value="#{formPanelSystemEmailSettingsTest}.getForm().reset();Ext.MessageBox.alert('操作成功', '邮件配置测试成功！');" />
+</resources>
