@@ -8,6 +8,7 @@ using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Legendigital.Framework.Common.BaseFramework.Entity.Tables;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.ServiceProxys.Tables;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
+using Legendigital.Framework.Common.SevenZip;
 
 
 namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
@@ -123,20 +124,11 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             if (systemEmailSettingsWrapper != null)
             {
                 SendMail(toMails, subject, body, isHtmlFormat, systemEmailSettingsWrapper.Name, mailType);
-
             }
-
         }
 
-        private static void SendMail(List<string> toMails, string subject, string body, bool isHtmlFormat, string mailSettingName, MailType mailType)
+        public static void SendMail(List<string> toMails, string subject, string body, bool isHtmlFormat, SystemEmailSettingsWrapper mailSetting, MailType mailType)
         {
-            SystemEmailSettingsWrapper mailSetting = null;
-
-            if (string.IsNullOrEmpty(mailSettingName))
-                mailSetting = GetDefaultSetting();
-            else
-                mailSetting = GetSettingByName(mailSettingName);
-
             SmtpClient objSmtpClient = mailSetting.GetSmtpClientByMailSetting(mailSetting);
 
             MailMessage mailMessage = new MailMessage();
@@ -187,6 +179,19 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
             }
 
 
+        }
+
+
+        public static void SendMail(List<string> toMails, string subject, string body, bool isHtmlFormat, string mailSettingName, MailType mailType)
+        {
+            SystemEmailSettingsWrapper mailSetting = null;
+
+            if (string.IsNullOrEmpty(mailSettingName))
+                throw new Exception("mailSettingName is null");
+
+            mailSetting = GetSettingByName(mailSettingName);
+
+            SendMail(toMails, subject, body, isHtmlFormat, mailSetting, mailType);
         }
 
         private static void objSmtpClient_SendCompleted(object sender, AsyncCompletedEventArgs e)

@@ -295,7 +295,7 @@
                 </ColumnModel>
                 <LoadMask ShowMask="true" />
                 <BottomBar>
-                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSPChannel"
+                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSPChannel" 
                         DisplayInfo="true" DisplayMsg="显示通道 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的通道" />
                 </BottomBar>
                 <Listeners>

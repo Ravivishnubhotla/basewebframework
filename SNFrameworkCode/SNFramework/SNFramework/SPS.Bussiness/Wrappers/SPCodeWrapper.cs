@@ -109,15 +109,16 @@ namespace SPS.Bussiness.Wrappers
 	        businessProxy.QuickAddCode(spCodeWrapper.entity, hasSubCode, subCode);
 	    }
 
+        public bool CheckIsMatchSPCode(string spcode)
+        {
+            return spcode.ToLower().Equals(this.SPCode.ToLower());
+        }
+
         public bool CheckIsMatchCode(string mo, string spcode, string province, string city)
         {
             return false;
         }
-
-        public bool CheckIsMatchCode(string mo, string spcode)
-        {
-            return CheckIsMatchCode(mo) && spcode.ToLower().Equals(this.SPCode.ToLower());
-        }
+ 
 
         public int Priority
 	    {

@@ -49,6 +49,15 @@ namespace SNFramework.BSF.Moudles.SystemManage.EmailSettingManage {
         protected global::SNFramework.BSF.Moudles.SystemManage.EmailSettingManage.UCSystemEmailSettingsEdit UCSystemEmailSettingsEdit1;
         
         /// <summary>
+        /// UCSystemEmailSettingsTest1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SNFramework.BSF.Moudles.SystemManage.EmailSettingManage.UCSystemEmailSettingsTest UCSystemEmailSettingsTest1;
+        
+        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>

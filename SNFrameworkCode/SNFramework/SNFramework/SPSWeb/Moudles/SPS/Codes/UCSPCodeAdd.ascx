@@ -61,11 +61,78 @@
         CheckDayMonthTotalLimit();
         CheckDayTotalLimit();
     }
-
     function ResetProvinceCount() {
-  
+        var fsLimitProvince = <%= fsLimitProvince.ClientID %>;
+        var mfLimitProvinceArea = <%= mfLimitProvinceArea.ClientID %>;
+        var storeAreaCountList = <%= storeAreaCountList.ClientID %>;
+
+        storeAreaCountList.removeAll();
+
+        if (fsLimitProvince.collapsed) {
+
+            var selectValues = mfLimitProvinceArea.getSelectedValues();
+
+            if (selectValues != null && selectValues != '' && selectValues.length>0) {
+                //alert(selectValues);
+                //alert(selectValues.length);
+                //var selValues  = selectValues.split(",");
+                //alert(selValues);
+                
+                for (var i = 0; i < selectValues.length; i++) {
+                    
+                    var insertRecord = Ext.data.Record.create([
+                      {name: 'AreaName'},
+                      {name: 'LimitCount', type: 'int'}
+                    ]);
+
+                    var ir=new insertRecord({
+                        AreaName:selectValues[i],
+                        LimitCount:0
+                    });
+
+                    storeAreaCountList.add(ir);
+                }
+            }
+
+
+            
+            //var selValues  = selectValues.split(",");
+            //for (var i = 0; i < selValues.length; i++) {
+
+
+            //    var insertRecord = Ext.data.Record.create([
+            //      {name: 'AreaName'},
+            //      {name: 'LimitCount', type: 'int'}
+            //    ]);
+
+            //    var ir=new insertRecord({
+            //        AreaName:selValues[i],
+            //        LimitCount:0
+            //    });
+
+
+            //    storeAreaCountList.add(ir);
+
+            //}
+        } 
+
+        storeAreaCountList.commitChanges();
     }
+
 </script>
+
+
+<ext:Store ID="storeAreaCountList" runat="server" AutoLoad="true" OnRefreshData="storeAreaCountList_Refresh">
+    <Reader>
+        <ext:JsonReader>
+            <Fields>
+                <ext:RecordField Name="AreaName" />
+                <ext:RecordField Name="LimitCount" />
+            </Fields>
+        </ext:JsonReader>
+    </Reader>
+</ext:Store>
+
 <ext:Window ID="winSPCodeAdd" runat="server" Icon="ApplicationAdd" Title="快速添加指令"
     Width="820" Height="380" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     ConstrainHeader="true" Resizable="true" Layout="Fit">
@@ -228,6 +295,7 @@
                                                 </Items>
                                                 <Listeners>
                                                     <BeforeExpand Handler="ResetProvinceCount();"></BeforeExpand>
+                                                    <BeforeCollapse Handler="ResetProvinceCount();"></BeforeCollapse>
                                                 </Listeners>
                                             </ext:FieldSet>
                                         </Items>

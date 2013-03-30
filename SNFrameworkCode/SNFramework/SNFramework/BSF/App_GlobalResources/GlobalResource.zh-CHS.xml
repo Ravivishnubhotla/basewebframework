@@ -10,6 +10,7 @@
   <add name="msgSearch" value="搜索" />
   <add name="msgManage" value="管理" />
   <add name="msgAction" value="操作" />
+  <add name="msgTest" value="测试" />
   <add name="msgDataAction" value="数据操作" />
   <add name="msgPageInfo" value="显示记录 {0} - {1} 共 {2}" />
   <add name="msgNoRecordInfo" value="没有匹配的记录" />
