@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
@@ -18,20 +19,17 @@ namespace SPSUtil
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             try
             {
 
-                //List<SystemConfigWrapper> settings = SystemConfigWrapper.FindAll();
-
-                //SystemShortMessageWrapper shortMessage = new SystemShortMessageWrapper();
-                //shortMessage.Title = "";
-                //shortMessage.MessageType = "1";
-                //shortMessage.SendDate = System.DateTime.Now;
-                //SystemShortMessageWrapper.Save(shortMessage);
-                //Console.WriteLine(shortMessage.Id);
-                //Console.WriteLine(settings[0].ConfigGroupID.Code);
+                //命令行方式批处理运行
+                if (args.Length > 0 && args[0].ToLower() == "-c")
+                {
+                    RunAsCmd(args);
+                    return;
+                }
 
 
 
@@ -57,6 +55,15 @@ namespace SPSUtil
             {
                 ProcessError(ex);
             }
+        }
+
+        private static void RunAsCmd(string[] args)
+        {
+            AllocConsole();
+
+            Console.WriteLine("短信发送程序命令行方式启动,按任意键盘退出。");
+
+            Console.ReadKey();
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -87,5 +94,19 @@ namespace SPSUtil
         {
             ProcessError(e.Exception as Exception);
         }
+
+
+        /// <summary>
+        /// 启动控制台
+        /// </summary>
+        /// <returns></returns>
+        [DllImport("kernel32.dll")]
+        public static extern bool AllocConsole();
+        /// <summary>
+        /// 释放控制台
+        /// </summary>
+        /// <returns></returns>
+        [DllImport("kernel32.dll")]
+        public static extern bool FreeConsole();
     }
 }
