@@ -68,6 +68,7 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_SPCLIENTID_INTERCEPTRATE = "SPClientID_SPAdReportEntity_Alias.InterceptRate";
 		public const string PROPERTY_SPCLIENTID_DEFAULTPRICE = "SPClientID_SPAdReportEntity_Alias.DefaultPrice";
 		public const string PROPERTY_SPCLIENTID_DEFAULTSHOWRECORDDAYS = "SPClientID_SPAdReportEntity_Alias.DefaultShowRecordDays";
+		public const string PROPERTY_SPCLIENTID_CHANNELSTATUS = "SPClientID_SPAdReportEntity_Alias.ChannelStatus";
 		public const string PROPERTY_SPCLIENTID_CREATEBY = "SPClientID_SPAdReportEntity_Alias.CreateBy";
 		public const string PROPERTY_SPCLIENTID_CREATEAT = "SPClientID_SPAdReportEntity_Alias.CreateAt";
 		public const string PROPERTY_SPCLIENTID_LASTMODIFYBY = "SPClientID_SPAdReportEntity_Alias.LastModifyBy";

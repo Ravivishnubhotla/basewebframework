@@ -56,6 +56,11 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_SPCODEID_LIMITPROVINCE = new BoolProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".LimitProvince"));
 		public static readonly StringProperty PROPERTY_SPCODEID_LIMITPROVINCEAREA = new StringProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".LimitProvinceArea"));
 		public static readonly EntityProperty<SPCodeEntity> PROPERTY_SPCODEID_PARENTID = new EntityProperty<SPCodeEntity>(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".ParentID"));
+		public static readonly BoolProperty PROPERTY_SPCODEID_ISMATCHCASE = new BoolProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".IsMatchCase"));
+		public static readonly BoolProperty PROPERTY_SPCODEID_ISDAYTIMELIMIT = new BoolProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".IsDayTimeLimit"));
+		public static readonly DateTimeProperty PROPERTY_SPCODEID_DAYTIMELIMITRANGESTART = new DateTimeProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".DayTimeLimitRangeStart"));
+		public static readonly DateTimeProperty PROPERTY_SPCODEID_DAYTIMELIMITRANGEEND = new DateTimeProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".DayTimeLimitRangeEnd"));
+		public static readonly StringProperty PROPERTY_SPCODEID_CHANNELSTATUS = new StringProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".ChannelStatus"));
 		public static readonly IntProperty PROPERTY_SPCODEID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".CreateBy"));
 		public static readonly DateTimeProperty PROPERTY_SPCODEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".CreateAt"));
 		public static readonly IntProperty PROPERTY_SPCODEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".LastModifyBy"));
@@ -177,6 +182,16 @@ namespace SPS.Data.Tables
 							return typeof (string);
                 		case "SPCodeID_SPCodeInfoEntity_Alias.ParentID":
 							return typeof (int);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.IsMatchCase":
+							return typeof (bool);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.IsDayTimeLimit":
+							return typeof (bool);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.DayTimeLimitRangeStart":
+							return typeof (DateTime);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.DayTimeLimitRangeEnd":
+							return typeof (DateTime);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.ChannelStatus":
+							return typeof (string);
                 		case "SPCodeID_SPCodeInfoEntity_Alias.CreateBy":
 							return typeof (int);
                 		case "SPCodeID_SPCodeInfoEntity_Alias.CreateAt":

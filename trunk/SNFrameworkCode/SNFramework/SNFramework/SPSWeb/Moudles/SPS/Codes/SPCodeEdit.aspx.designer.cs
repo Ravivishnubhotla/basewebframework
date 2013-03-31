@@ -10,25 +10,16 @@
 namespace SPSWeb.Moudles.SPS.Codes {
     
     
-    public partial class UCSPCodeEdit {
+    public partial class SPCodeEdit {
         
         /// <summary>
-        /// winSPCodeEdit control.
+        /// viewPortMain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winSPCodeEdit;
-        
-        /// <summary>
-        /// tpMain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TabPanel tpMain;
+        protected global::Ext.Net.Viewport viewPortMain;
         
         /// <summary>
         /// formPanelSPCodeEdit control.
@@ -38,15 +29,6 @@ namespace SPSWeb.Moudles.SPS.Codes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.FormPanel formPanelSPCodeEdit;
-        
-        /// <summary>
-        /// hidSPCodeID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Hidden hidSPCodeID;
         
         /// <summary>
         /// tblCode control.
@@ -166,76 +148,13 @@ namespace SPSWeb.Moudles.SPS.Codes {
         protected global::Ext.Net.TextArea txtDescription;
         
         /// <summary>
-        /// frmCodeTextInfo control.
+        /// hidSPCodeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.FormPanel frmCodeTextInfo;
-        
-        /// <summary>
-        /// txtProvince control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextArea txtProvince;
-        
-        /// <summary>
-        /// txtDisableCity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextArea txtDisableCity;
-        
-        /// <summary>
-        /// cmbOperateType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.ComboBox cmbOperateType;
-        
-        /// <summary>
-        /// txtDayLimit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtDayLimit;
-        
-        /// <summary>
-        /// txtMonthLimit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextField txtMonthLimit;
-        
-        /// <summary>
-        /// txtCodeSendText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.TextArea txtCodeSendText;
-        
-        /// <summary>
-        /// txtPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.NumberField txtPrice;
+        protected global::Ext.Net.Hidden hidSPCodeID;
         
         /// <summary>
         /// btnSaveSPCode control.

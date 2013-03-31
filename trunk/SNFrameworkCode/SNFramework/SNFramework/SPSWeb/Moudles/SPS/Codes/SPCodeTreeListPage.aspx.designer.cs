@@ -40,15 +40,6 @@ namespace SPSWeb.Moudles.SPS.Codes {
         protected global::Ext.Net.Store storeSPClient;
         
         /// <summary>
-        /// storeAreaCountList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Store storeAreaCountList;
-        
-        /// <summary>
         /// UCSPCodeAdd1 control.
         /// </summary>
         /// <remarks>
@@ -191,5 +182,23 @@ namespace SPSWeb.Moudles.SPS.Codes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Window winSendTestRequestForm;
+        
+        /// <summary>
+        /// winEditCodeSetting control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winEditCodeSetting;
+        
+        /// <summary>
+        /// winEditCodeInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winEditCodeInfo;
     }
 }

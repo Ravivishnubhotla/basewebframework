@@ -21,6 +21,13 @@ namespace SPSWeb.Moudles.SPS.Codes
             {
                 this.cmbChannel.Hidden = true;
                 this.cmbClient.Hidden = true;
+                this.btnAdd.Hidden = false;
+            }
+            else
+            {
+                this.cmbChannel.Hidden = false;
+                this.cmbClient.Hidden = false;
+                this.btnAdd.Hidden = true;     
             }
 
         }
@@ -50,8 +57,6 @@ namespace SPSWeb.Moudles.SPS.Codes
 
             nodes.Add(root);
 
-            //if (menus == null || menus.Count == 0)
-            //    return nodes;
             List<SPCodeWrapper> allcodes = null;
 
             Dictionary<string, string> search = null;

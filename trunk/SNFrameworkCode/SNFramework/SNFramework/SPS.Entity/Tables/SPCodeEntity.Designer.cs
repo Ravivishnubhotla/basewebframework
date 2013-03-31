@@ -49,6 +49,11 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_LIMITPROVINCE = "LimitProvince";
 		public static readonly string PROPERTY_NAME_LIMITPROVINCEAREA = "LimitProvinceArea";
 		public static readonly string PROPERTY_NAME_PARENTID = "ParentID";
+		public static readonly string PROPERTY_NAME_ISMATCHCASE = "IsMatchCase";
+		public static readonly string PROPERTY_NAME_ISDAYTIMELIMIT = "IsDayTimeLimit";
+		public static readonly string PROPERTY_NAME_DAYTIMELIMITRANGESTART = "DayTimeLimitRangeStart";
+		public static readonly string PROPERTY_NAME_DAYTIMELIMITRANGEEND = "DayTimeLimitRangeEnd";
+		public static readonly string PROPERTY_NAME_CHANNELSTATUS = "ChannelStatus";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -139,6 +144,11 @@ namespace SPS.Entity.Tables
 		private bool? _limitProvince;
 		private string _limitProvinceArea;
 		private SPCodeEntity _parentID;
+		private bool? _isMatchCase;
+		private bool? _isDayTimeLimit;
+		private DateTime? _dayTimeLimitRangeStart;
+		private DateTime? _dayTimeLimitRangeEnd;
+		private string _channelStatus;
 		private int? _createBy;
 		private DateTime? _createAt;
 		private int? _lastModifyBy;
@@ -180,6 +190,11 @@ namespace SPS.Entity.Tables
 			_limitProvince = false;
 			_limitProvinceArea = null;
 			_parentID = null;
+			_isMatchCase = false;
+			_isDayTimeLimit = null;
+			_dayTimeLimitRangeStart = null;
+			_dayTimeLimitRangeEnd = null;
+			_channelStatus = null;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;
@@ -192,7 +207,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPCodeEntity( int id, string name, string description, string code, string codeType, SPChannelEntity channelID, string mo, string mOType, int? mOLength, int orderIndex, string sPCode, string sPCodeType, int? sPCodeLength, bool hasFilters, bool hasParamsConvert, bool isDiable, decimal? price, string operationType, bool hasDayTotalLimit, int dayTotalLimitCount, bool hasPhoneLimit, int phoneLimitDayCount, int phoneLimitMonthCount, int phoneLimitType, bool? limitProvince, string limitProvinceArea, SPCodeEntity parentID, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPCodeEntity( int id, string name, string description, string code, string codeType, SPChannelEntity channelID, string mo, string mOType, int? mOLength, int orderIndex, string sPCode, string sPCodeType, int? sPCodeLength, bool hasFilters, bool hasParamsConvert, bool isDiable, decimal? price, string operationType, bool hasDayTotalLimit, int dayTotalLimitCount, bool hasPhoneLimit, int phoneLimitDayCount, int phoneLimitMonthCount, int phoneLimitType, bool? limitProvince, string limitProvinceArea, SPCodeEntity parentID, bool? isMatchCase, bool? isDayTimeLimit, DateTime? dayTimeLimitRangeStart, DateTime? dayTimeLimitRangeEnd, string channelStatus, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -221,6 +236,11 @@ namespace SPS.Entity.Tables
 			_limitProvince = limitProvince;
 			_limitProvinceArea = limitProvinceArea;
 			_parentID = parentID;
+			_isMatchCase = isMatchCase;
+			_isDayTimeLimit = isDayTimeLimit;
+			_dayTimeLimitRangeStart = dayTimeLimitRangeStart;
+			_dayTimeLimitRangeEnd = dayTimeLimitRangeEnd;
+			_channelStatus = channelStatus;
 			_createBy = createBy;
 			_createAt = createAt;
 			_lastModifyBy = lastModifyBy;
@@ -636,6 +656,79 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_parentID != value); _parentID = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsMatchCase
+		{
+			get { return _isMatchCase; }
+
+			set	
+			{
+				_isChanged |= (_isMatchCase != value); _isMatchCase = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? IsDayTimeLimit
+		{
+			get { return _isDayTimeLimit; }
+
+			set	
+			{
+				_isChanged |= (_isDayTimeLimit != value); _isDayTimeLimit = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? DayTimeLimitRangeStart
+		{
+			get { return _dayTimeLimitRangeStart; }
+
+			set	
+			{
+				_isChanged |= (_dayTimeLimitRangeStart != value); _dayTimeLimitRangeStart = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual DateTime? DayTimeLimitRangeEnd
+		{
+			get { return _dayTimeLimitRangeEnd; }
+
+			set	
+			{
+				_isChanged |= (_dayTimeLimitRangeEnd != value); _dayTimeLimitRangeEnd = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ChannelStatus
+		{
+			get { return _channelStatus; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for ChannelStatus", value, value.ToString());
+				_isChanged |= (_channelStatus != value); _channelStatus = value;
 			}
 		}
 

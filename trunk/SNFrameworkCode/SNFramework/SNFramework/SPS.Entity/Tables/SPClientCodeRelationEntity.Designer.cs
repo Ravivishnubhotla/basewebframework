@@ -36,6 +36,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_ISENABLE = "IsEnable";
 		public static readonly string PROPERTY_NAME_SYCNNOTINTERCEPTCOUNT = "SycnNotInterceptCount";
 		public static readonly string PROPERTY_NAME_DEFAULTSHOWRECORDDAYS = "DefaultShowRecordDays";
+		public static readonly string PROPERTY_NAME_CHANNELSTATUS = "ChannelStatus";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -74,6 +75,11 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CODEID_LIMITPROVINCE = "CodeID_SPClientCodeRelationEntity_Alias.LimitProvince";
 		public const string PROPERTY_CODEID_LIMITPROVINCEAREA = "CodeID_SPClientCodeRelationEntity_Alias.LimitProvinceArea";
 		public const string PROPERTY_CODEID_PARENTID = "CodeID_SPClientCodeRelationEntity_Alias.ParentID";
+		public const string PROPERTY_CODEID_ISMATCHCASE = "CodeID_SPClientCodeRelationEntity_Alias.IsMatchCase";
+		public const string PROPERTY_CODEID_ISDAYTIMELIMIT = "CodeID_SPClientCodeRelationEntity_Alias.IsDayTimeLimit";
+		public const string PROPERTY_CODEID_DAYTIMELIMITRANGESTART = "CodeID_SPClientCodeRelationEntity_Alias.DayTimeLimitRangeStart";
+		public const string PROPERTY_CODEID_DAYTIMELIMITRANGEEND = "CodeID_SPClientCodeRelationEntity_Alias.DayTimeLimitRangeEnd";
+		public const string PROPERTY_CODEID_CHANNELSTATUS = "CodeID_SPClientCodeRelationEntity_Alias.ChannelStatus";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPClientCodeRelationEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPClientCodeRelationEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPClientCodeRelationEntity_Alias.LastModifyBy";
@@ -95,6 +101,7 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CLIENTID_INTERCEPTRATE = "ClientID_SPClientCodeRelationEntity_Alias.InterceptRate";
 		public const string PROPERTY_CLIENTID_DEFAULTPRICE = "ClientID_SPClientCodeRelationEntity_Alias.DefaultPrice";
 		public const string PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS = "ClientID_SPClientCodeRelationEntity_Alias.DefaultShowRecordDays";
+		public const string PROPERTY_CLIENTID_CHANNELSTATUS = "ClientID_SPClientCodeRelationEntity_Alias.ChannelStatus";
 		public const string PROPERTY_CLIENTID_CREATEBY = "ClientID_SPClientCodeRelationEntity_Alias.CreateBy";
 		public const string PROPERTY_CLIENTID_CREATEAT = "ClientID_SPClientCodeRelationEntity_Alias.CreateAt";
 		public const string PROPERTY_CLIENTID_LASTMODIFYBY = "ClientID_SPClientCodeRelationEntity_Alias.LastModifyBy";
@@ -146,6 +153,7 @@ namespace SPS.Entity.Tables
 		private bool _isEnable;
 		private int _sycnNotInterceptCount;
 		private int _defaultShowRecordDays;
+		private string _channelStatus;
 		private int? _createBy;
 		private DateTime? _createAt;
 		private int? _lastModifyBy;
@@ -174,6 +182,7 @@ namespace SPS.Entity.Tables
 			_isEnable = false;
 			_sycnNotInterceptCount = 0;
 			_defaultShowRecordDays = 0;
+			_channelStatus = null;
 			_createBy = null;
 			_createAt = null;
 			_lastModifyBy = null;
@@ -186,7 +195,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientCodeRelationEntity( int id, SPCodeEntity codeID, SPSClientEntity clientID, decimal price, decimal interceptRate, bool useClientDefaultSycnSetting, bool syncData, string sycnRetryTimes, SPSDataSycnSettingEntity syncDataSetting, DateTime? startDate, DateTime? endDate, bool isEnable, int sycnNotInterceptCount, int defaultShowRecordDays, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPClientCodeRelationEntity( int id, SPCodeEntity codeID, SPSClientEntity clientID, decimal price, decimal interceptRate, bool useClientDefaultSycnSetting, bool syncData, string sycnRetryTimes, SPSDataSycnSettingEntity syncDataSetting, DateTime? startDate, DateTime? endDate, bool isEnable, int sycnNotInterceptCount, int defaultShowRecordDays, string channelStatus, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_codeID = codeID;
@@ -202,6 +211,7 @@ namespace SPS.Entity.Tables
 			_isEnable = isEnable;
 			_sycnNotInterceptCount = sycnNotInterceptCount;
 			_defaultShowRecordDays = defaultShowRecordDays;
+			_channelStatus = channelStatus;
 			_createBy = createBy;
 			_createAt = createAt;
 			_lastModifyBy = lastModifyBy;
@@ -408,6 +418,23 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_defaultShowRecordDays != value); _defaultShowRecordDays = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string ChannelStatus
+		{
+			get { return _channelStatus; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 40)
+					throw new ArgumentOutOfRangeException("Invalid value for ChannelStatus", value, value.ToString());
+				_isChanged |= (_channelStatus != value); _channelStatus = value;
 			}
 		}
 

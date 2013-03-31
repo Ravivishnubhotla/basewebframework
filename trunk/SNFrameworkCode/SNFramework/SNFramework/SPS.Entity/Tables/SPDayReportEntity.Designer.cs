@@ -54,6 +54,7 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CLIENTID_INTERCEPTRATE = "ClientID_SPDayReportEntity_Alias.InterceptRate";
 		public const string PROPERTY_CLIENTID_DEFAULTPRICE = "ClientID_SPDayReportEntity_Alias.DefaultPrice";
 		public const string PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS = "ClientID_SPDayReportEntity_Alias.DefaultShowRecordDays";
+		public const string PROPERTY_CLIENTID_CHANNELSTATUS = "ClientID_SPDayReportEntity_Alias.ChannelStatus";
 		public const string PROPERTY_CLIENTID_CREATEBY = "ClientID_SPDayReportEntity_Alias.CreateBy";
 		public const string PROPERTY_CLIENTID_CREATEAT = "ClientID_SPDayReportEntity_Alias.CreateAt";
 		public const string PROPERTY_CLIENTID_LASTMODIFYBY = "ClientID_SPDayReportEntity_Alias.LastModifyBy";
@@ -130,6 +131,11 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CODEID_LIMITPROVINCE = "CodeID_SPDayReportEntity_Alias.LimitProvince";
 		public const string PROPERTY_CODEID_LIMITPROVINCEAREA = "CodeID_SPDayReportEntity_Alias.LimitProvinceArea";
 		public const string PROPERTY_CODEID_PARENTID = "CodeID_SPDayReportEntity_Alias.ParentID";
+		public const string PROPERTY_CODEID_ISMATCHCASE = "CodeID_SPDayReportEntity_Alias.IsMatchCase";
+		public const string PROPERTY_CODEID_ISDAYTIMELIMIT = "CodeID_SPDayReportEntity_Alias.IsDayTimeLimit";
+		public const string PROPERTY_CODEID_DAYTIMELIMITRANGESTART = "CodeID_SPDayReportEntity_Alias.DayTimeLimitRangeStart";
+		public const string PROPERTY_CODEID_DAYTIMELIMITRANGEEND = "CodeID_SPDayReportEntity_Alias.DayTimeLimitRangeEnd";
+		public const string PROPERTY_CODEID_CHANNELSTATUS = "CodeID_SPDayReportEntity_Alias.ChannelStatus";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPDayReportEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPDayReportEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPDayReportEntity_Alias.LastModifyBy";

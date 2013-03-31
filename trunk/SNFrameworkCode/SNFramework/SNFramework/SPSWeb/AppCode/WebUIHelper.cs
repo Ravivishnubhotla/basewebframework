@@ -177,6 +177,9 @@ namespace Legendigital.Common.WebApp.AppCode
 
         public static string GetSelectMutilItems(ComboBoxBaseMulti<ListItem> cmb,string splitChar)
         {
+            if (cmb==null || cmb.SelectedItems.Count <= 0)
+                return "";
+
             List<string> selectItems = new List<string>();
             foreach (var selectItem in cmb.SelectedItems)
             {
@@ -188,6 +191,9 @@ namespace Legendigital.Common.WebApp.AppCode
 
         public static void SetSelectMutilItems(ComboBoxBaseMulti<ListItem> cmb, string splitChar,string selectValue)
         {
+            if (cmb == null || cmb.Items.Count <= 0)
+                return;
+
             List<string> selectItems = new List<string>(selectValue.Split(splitChar.ToCharArray(), StringSplitOptions.None));
 
             cmb.SelectedItems.Clear();

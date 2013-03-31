@@ -70,6 +70,8 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_CLIENTID_DEFAULTPRICE;
 		        case "ClientID_DefaultShowRecordDays":
 					return PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS;
+		        case "ClientID_ChannelStatus":
+					return PROPERTY_CLIENTID_CHANNELSTATUS;
 		        case "ClientID_CreateBy":
 					return PROPERTY_CLIENTID_CREATEBY;
 		        case "ClientID_CreateAt":
@@ -210,6 +212,16 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_CODEID_LIMITPROVINCEAREA;
 		        case "CodeID_ParentID":
 					return PROPERTY_CODEID_PARENTID;
+		        case "CodeID_IsMatchCase":
+					return PROPERTY_CODEID_ISMATCHCASE;
+		        case "CodeID_IsDayTimeLimit":
+					return PROPERTY_CODEID_ISDAYTIMELIMIT;
+		        case "CodeID_DayTimeLimitRangeStart":
+					return PROPERTY_CODEID_DAYTIMELIMITRANGESTART;
+		        case "CodeID_DayTimeLimitRangeEnd":
+					return PROPERTY_CODEID_DAYTIMELIMITRANGEEND;
+		        case "CodeID_ChannelStatus":
+					return PROPERTY_CODEID_CHANNELSTATUS;
 		        case "CodeID_CreateBy":
 					return PROPERTY_CODEID_CREATEBY;
 		        case "CodeID_CreateAt":
@@ -287,6 +299,7 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_CLIENTID_INTERCEPTRATE = "ClientID_SPDayReportEntity_Alias.InterceptRate";
 		public const string PROPERTY_CLIENTID_DEFAULTPRICE = "ClientID_SPDayReportEntity_Alias.DefaultPrice";
 		public const string PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS = "ClientID_SPDayReportEntity_Alias.DefaultShowRecordDays";
+		public const string PROPERTY_CLIENTID_CHANNELSTATUS = "ClientID_SPDayReportEntity_Alias.ChannelStatus";
 		public const string PROPERTY_CLIENTID_CREATEBY = "ClientID_SPDayReportEntity_Alias.CreateBy";
 		public const string PROPERTY_CLIENTID_CREATEAT = "ClientID_SPDayReportEntity_Alias.CreateAt";
 		public const string PROPERTY_CLIENTID_LASTMODIFYBY = "ClientID_SPDayReportEntity_Alias.LastModifyBy";
@@ -363,6 +376,11 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_CODEID_LIMITPROVINCE = "CodeID_SPDayReportEntity_Alias.LimitProvince";
 		public const string PROPERTY_CODEID_LIMITPROVINCEAREA = "CodeID_SPDayReportEntity_Alias.LimitProvinceArea";
 		public const string PROPERTY_CODEID_PARENTID = "CodeID_SPDayReportEntity_Alias.ParentID";
+		public const string PROPERTY_CODEID_ISMATCHCASE = "CodeID_SPDayReportEntity_Alias.IsMatchCase";
+		public const string PROPERTY_CODEID_ISDAYTIMELIMIT = "CodeID_SPDayReportEntity_Alias.IsDayTimeLimit";
+		public const string PROPERTY_CODEID_DAYTIMELIMITRANGESTART = "CodeID_SPDayReportEntity_Alias.DayTimeLimitRangeStart";
+		public const string PROPERTY_CODEID_DAYTIMELIMITRANGEEND = "CodeID_SPDayReportEntity_Alias.DayTimeLimitRangeEnd";
+		public const string PROPERTY_CODEID_CHANNELSTATUS = "CodeID_SPDayReportEntity_Alias.ChannelStatus";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPDayReportEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPDayReportEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPDayReportEntity_Alias.LastModifyBy";
@@ -722,6 +740,16 @@ namespace SPS.Bussiness.Wrappers
                 if (this. ClientID == null)
                     return null;
                 return  ClientID.DefaultShowRecordDays;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_CHANNELSTATUS)]
+        public string ClientID_ChannelStatus
+        {
+            get
+            {
+                if (this. ClientID == null)
+                    return null;
+                return  ClientID.ChannelStatus;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CLIENTID_CREATEBY)]
@@ -1426,6 +1454,56 @@ namespace SPS.Bussiness.Wrappers
                 if (this. CodeID == null)
                     return null;
                 return  CodeID.ParentID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_ISMATCHCASE)]
+        public bool? CodeID_IsMatchCase
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.IsMatchCase;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_ISDAYTIMELIMIT)]
+        public bool? CodeID_IsDayTimeLimit
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.IsDayTimeLimit;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_DAYTIMELIMITRANGESTART)]
+        public DateTime? CodeID_DayTimeLimitRangeStart
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.DayTimeLimitRangeStart;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_DAYTIMELIMITRANGEEND)]
+        public DateTime? CodeID_DayTimeLimitRangeEnd
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.DayTimeLimitRangeEnd;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CHANNELSTATUS)]
+        public string CodeID_ChannelStatus
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.ChannelStatus;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CREATEBY)]

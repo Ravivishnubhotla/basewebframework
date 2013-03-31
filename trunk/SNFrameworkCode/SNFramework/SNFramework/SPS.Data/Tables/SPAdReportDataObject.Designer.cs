@@ -57,6 +57,7 @@ namespace SPS.Data.Tables
 		public static readonly DecimalProperty PROPERTY_SPCLIENTID_INTERCEPTRATE = new DecimalProperty(Property.ForName(PROPERTY_SPCLIENTID_ALIAS_NAME + ".InterceptRate"));
 		public static readonly DecimalProperty PROPERTY_SPCLIENTID_DEFAULTPRICE = new DecimalProperty(Property.ForName(PROPERTY_SPCLIENTID_ALIAS_NAME + ".DefaultPrice"));
 		public static readonly IntProperty PROPERTY_SPCLIENTID_DEFAULTSHOWRECORDDAYS = new IntProperty(Property.ForName(PROPERTY_SPCLIENTID_ALIAS_NAME + ".DefaultShowRecordDays"));
+		public static readonly StringProperty PROPERTY_SPCLIENTID_CHANNELSTATUS = new StringProperty(Property.ForName(PROPERTY_SPCLIENTID_ALIAS_NAME + ".ChannelStatus"));
 		public static readonly IntProperty PROPERTY_SPCLIENTID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_SPCLIENTID_ALIAS_NAME + ".CreateBy"));
 		public static readonly DateTimeProperty PROPERTY_SPCLIENTID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_SPCLIENTID_ALIAS_NAME + ".CreateAt"));
 		public static readonly IntProperty PROPERTY_SPCLIENTID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_SPCLIENTID_ALIAS_NAME + ".LastModifyBy"));
@@ -198,6 +199,8 @@ namespace SPS.Data.Tables
 							return typeof (decimal);
                 		case "SPClientID_SPAdReportEntity_Alias.DefaultShowRecordDays":
 							return typeof (int);
+                		case "SPClientID_SPAdReportEntity_Alias.ChannelStatus":
+							return typeof (string);
                 		case "SPClientID_SPAdReportEntity_Alias.CreateBy":
 							return typeof (int);
                 		case "SPClientID_SPAdReportEntity_Alias.CreateAt":

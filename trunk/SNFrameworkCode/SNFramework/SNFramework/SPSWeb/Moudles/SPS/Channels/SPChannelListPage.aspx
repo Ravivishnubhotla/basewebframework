@@ -370,7 +370,7 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-    <ext:Window ID="winCodes" runat="server" Title="Window" Frame="true" Width="800"
+    <ext:Window ID="winCodes" runat="server" Title="Window" Frame="true" Width="810"
         Icon="Script" ConstrainHeader="true" Height="500" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true">
         <AutoLoad Url="../Codes/SPCodeTreeListPage.aspx" Mode="IFrame" NoCache="true"

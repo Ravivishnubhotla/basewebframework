@@ -56,6 +56,7 @@ namespace SPS.Data.Tables
 		public static readonly DecimalProperty PROPERTY_INTERCEPTRATE = new DecimalProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_INTERCEPTRATE));		
 		public static readonly DecimalProperty PROPERTY_DEFAULTPRICE = new DecimalProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_DEFAULTPRICE));		
 		public static readonly IntProperty PROPERTY_DEFAULTSHOWRECORDDAYS = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_DEFAULTSHOWRECORDDAYS));		
+		public static readonly StringProperty PROPERTY_CHANNELSTATUS = new StringProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_CHANNELSTATUS));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_CREATEBY));		
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPSClientEntity.PROPERTY_NAME_LASTMODIFYBY));		
@@ -116,6 +117,8 @@ namespace SPS.Data.Tables
                     return typeof (decimal);
                 case "DefaultShowRecordDays":
                     return typeof (int);
+                case "ChannelStatus":
+                    return typeof (string);
                 case "CreateBy":
                     return typeof (int);
                 case "CreateAt":
