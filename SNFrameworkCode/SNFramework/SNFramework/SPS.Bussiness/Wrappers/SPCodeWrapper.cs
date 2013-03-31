@@ -309,7 +309,7 @@ namespace SPS.Bussiness.Wrappers
 
                 if (this.LimitProvince.HasValue && this.LimitProvince.Value)
                 {
-                    provinceLimit += "  (" + this.LimitProvinceArea +")";
+                    provinceLimit += "--ÏÞÊ¡(" + this.LimitProvinceArea +")";
                 }
 
                 return  moCode + provinceLimit;
