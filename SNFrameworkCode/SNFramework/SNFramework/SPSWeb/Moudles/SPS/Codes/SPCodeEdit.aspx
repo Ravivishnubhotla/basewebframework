@@ -125,8 +125,7 @@
                     <ext:Button ID="btnSaveSPCode" runat="server" Text="编辑" Icon="ApplicationEdit">
                         <DirectEvents>
                             <Click Before="if(!#{formPanelSPCodeEdit}.getForm().isValid()) return false;" OnEvent="btnSaveSPCode_Click"
-                                Success="Ext.MessageBox.alert('Operation successful', 'Update a record success',callback);function callback(id) {#{formPanelSPCodeEdit}.getForm().reset();parent.CloseCodeEdit();parent.RefreshDataList(); };
-"
+                                Success="#{formPanelSPCodeEdit}.getForm().reset();parent.ShowMessage('操作成功','更新指令成功！',1);parent.CloseCodeEdit();parent.RefreshDataList();"
                                 Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                                 <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
                             </Click>

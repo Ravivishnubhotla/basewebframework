@@ -288,27 +288,31 @@ namespace SPS.Bussiness.Wrappers
                 if (!string.IsNullOrEmpty(this.SPCode))
                     spcode = this.SPCode;
 
-
-
+                string moCode = string.Empty;
+ 
                 if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeEQ_Key)
-                    return this.Mo + " (精准) 到 " + spcode;
+                    moCode = this.Mo + " (精准) 到 " + spcode;
+                else if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeContain_Key)
+                    moCode = "包含" + this.Mo + " (模糊) 到 " + spcode;
+                else if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeStartWith_Key)
+                    moCode = this.Mo + " (模糊) 到 " + spcode;
+                else if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeEndWith_Key)
+                    moCode =  "结尾" + this.Mo + " (模糊) 到 " + spcode;
+                else if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeRegex_Key)
+                    moCode =  "正则" + this.Mo + " (模糊) 到 " + spcode;
+                else if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeCustom_Key)
+                    moCode = "自定义" + this.Mo + " (模糊) 到 " + spcode;
+                else
+                    moCode = this.Mo + " " + this.SPCode;
 
-                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeContain_Key)
-                    return "包含" + this.Mo + " (模糊) 到 " + spcode;
+                string provinceLimit = "";
 
-                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeStartWith_Key)
-                    return this.Mo + " (模糊) 到 " + spcode;
+                if (this.LimitProvince.HasValue && this.LimitProvince.Value)
+                {
+                    provinceLimit += "  (" + this.LimitProvinceArea +")";
+                }
 
-                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeEndWith_Key)
-                    return "结尾" + this.Mo + " (模糊) 到 " + spcode;
-
-                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeRegex_Key)
-                    return "正则" + this.Mo + " (模糊) 到 " + spcode;
-
-                if (this.MOType == DictionaryConst.Dictionary_CodeType_CodeCustom_Key)
-                    return "自定义" + this.Mo + " (模糊) 到 " + spcode;
-
-                return this.Mo + " " + this.SPCode;
+                return  moCode + provinceLimit;
             }
         }
 
