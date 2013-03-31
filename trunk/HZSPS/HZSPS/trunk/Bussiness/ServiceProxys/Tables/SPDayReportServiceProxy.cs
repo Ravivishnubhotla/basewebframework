@@ -136,7 +136,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
 
 
-        [Transaction(ReadOnly = false)]
+        [Transaction(ReadOnly = false,Timeout = 300)]
         public void ReBulidReport(DateTime date)
         {
             this.AdoNetDb.ResetAllReportedData(date);

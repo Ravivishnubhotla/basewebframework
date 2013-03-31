@@ -72,6 +72,8 @@ namespace DataSendTools
 
                         string errorMessage = string.Empty;
 
+                        //requestOk = true;
+
                         requestOk = SendRequest(sendurl, 10000, "ok", out errorMessage);
 
                         if (!requestOk)
@@ -97,7 +99,7 @@ namespace DataSendTools
                     logger.Error(string.Format("请求失败，ID{0}", dr[ConfigurationManager.AppSettings["fieldLinkID"]].ToString()), ex);
                 }
             }
-        
+ 
         }
 
         private static bool SendRequest(string requesturl, int timeOut, string okMessage, out string errorMessage)

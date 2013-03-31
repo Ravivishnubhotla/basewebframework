@@ -66,6 +66,10 @@ namespace LD.SPPipeManage.Bussiness.Commons
             set { requestParams = value; }
         }
 
+        public string GetRequestData()
+        {
+            return SerializeUtil.ToJson(requestParams);
+        }
 
         public HttpGetPostRequest(HttpRequest request)
         {

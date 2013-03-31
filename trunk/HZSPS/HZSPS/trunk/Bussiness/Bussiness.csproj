@@ -219,7 +219,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Common.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=9ad232b50c3e6444, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=9ad232b50c3e6444, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Spring.Core, Version=1.3.0.20349, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Spring.Core.dll</HintPath>
@@ -256,28 +259,72 @@
     <Compile Include="Commons\HttpSP0025PostRequest.cs" />
     <Compile Include="Commons\HttpXmlPostRequest.cs" />
     <Compile Include="Commons\IHttpRequest.cs" />
-    <Compile Include="DataContracts\Tables\SPChannelDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPChannelDefaultClientSycnParamsDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPChannelFiltersDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPChannelParamsDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPClientChannelSettingDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPClientChannelSycnParamsDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPClientDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPClientGroupDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPDayReportDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPFailedRequestDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPInterceptRateDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPMemoDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPMonitoringRequestDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPPaymentInfoDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPPhoneAreaDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPRequestInfoDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPSendClientParamsDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPSendRequestInfoDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPSStatePaymentInfoDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPStatReportDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPTestRecievedDataContract.cs" />
-    <Compile Include="DataContracts\Tables\SPUperDataContract.cs" />
+    <Compile Include="DataContracts\Tables\SPChannelDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPChannelDefaultClientSycnParamsDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPChannelFiltersDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPChannelParamsDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPClientChannelSettingDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPClientChannelSycnParamsDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPClientDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPClientGroupDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPDayReportDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPFailedRequestDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPInterceptRateDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPMemoDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPMonitoringRequestDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPPaymentInfoDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPPhoneAreaDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPRequestInfoDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPSendClientParamsDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPSendRequestInfoDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPSStatePaymentInfoDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPStatReportDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPTestRecievedDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataContracts\Tables\SPUperDataContract.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.cs" />
     <Compile Include="ServiceProxys\Tables\Container\ServiceProxyContainer.Designer.cs">

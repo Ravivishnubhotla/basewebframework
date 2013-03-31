@@ -26,6 +26,19 @@
                 grdAreaCountList.show();
             }
         }
+        
+        function CheckDayTimeLimit(checkValue) {
+            var mfTimeRange = <%= mfTimeRange.ClientID %>;
+ 
+            if (!checkValue) {
+                mfTimeRange.hide();
+            }
+            else {
+                mfTimeRange.show();
+            }
+        }
+
+        
 
         function setAreaCountList() {
             var grdAreaCountList = <%= grdAreaCountList.ClientID %>;
@@ -107,6 +120,22 @@
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:Label ID="lblChannelClientCode" runat="server" FieldLabel="指令" AllowBlank="False" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:Checkbox ID="chkHasDayTimeLimit" runat="server" FieldLabel="指令时间范围限制">
+                                    <Listeners>
+                                        <Check Handler="CheckDayTimeLimit(#{chkHasDayTimeLimit}.getValue());"></Check>
+                                    </Listeners>
+                                </ext:Checkbox>
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:MultiField ID="mfTimeRange" runat="server" FieldLabel="时间范围">
+                                    <Fields>
+                                        <ext:TimeField ID="tfStart" runat="server" Width="60"  />
+                                        <ext:Label ID="lblStart" runat="server" Text="--" />
+                                        <ext:TimeField ID="tfEnd" runat="server" Width="60" />
+                                    </Fields>
+                                </ext:MultiField>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:Checkbox ID="chkHasDayTotalLimit" runat="server" FieldLabel="日总限量">
@@ -255,7 +284,7 @@
         </ext:Button>
     </Buttons>
     <Listeners>
-        <BeforeShow Handler="CheckDayTotalLimitInProvince(#{chkDayTotalLimitInProvince}.getValue());CheckDayTotalLimitInProvince(#{chkDayTotalLimitInProvince}.getValue());">
+        <BeforeShow Handler="CheckDayTotalLimitInProvince(#{chkDayTotalLimitInProvince}.getValue());CheckDayTotalLimitInProvince(#{chkDayTotalLimitInProvince}.getValue());CheckDayTimeLimit(#{chkHasDayTimeLimit}.getValue());">
         </BeforeShow>
     </Listeners>
 </ext:Window>

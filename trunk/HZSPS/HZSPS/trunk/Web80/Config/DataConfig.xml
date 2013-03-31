@@ -45,6 +45,7 @@
   </object>
   <object id="adoTemplate" type="Spring.Data.Generic.AdoTemplate, Spring.Data">
     <property name="DbProvider" ref="DbProvider"/>
+    <property name="CommandTimeout" value="240" />
     <property name="DataReaderWrapperType" value="Spring.Data.Support.NullMappingDataReader, Spring.Data"/>
   </object>
 </objects>

@@ -176,8 +176,10 @@ namespace LD.SPPipeManage.Bussiness.Commons
         }
 
 
- 
-
+        public string GetRequestData()
+        {
+            return SerializeUtil.ToJson(requestParams);
+        }
 
         public bool IsRequestContainValues(string fieldName, string value)
         {

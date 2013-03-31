@@ -36,7 +36,6 @@
 		<property column="ExtendField7" type="string" name="ExtendField7"   length="100" />	
 		<property column="ExtendField8" type="string" name="ExtendField8"   length="100" />	
 		<property column="MobileOperators" type="string" name="MobileOperators"   length="100" />	
-		<property column="IsReport" type="Boolean" name="IsReport"   not-null="true"  />	
 		<property column="RequestContent" type="string" name="RequestContent"   length="2147483646" />	
 		<property column="City" type="string" name="City"   length="20" />	
 		<property column="Province" type="string" name="Province"   length="20" />	
@@ -45,6 +44,7 @@
 		<property column="IsSycnData" type="Boolean" name="IsSycnData"   />	
 		<property column="sSycnDataUrl" type="string" name="SSycnDataUrl"   length="600" />	
 		<property column="SycnRetryTimes" type="int" name="SycnRetryTimes"   />	
+		<property column="IsReport" type="Boolean" name="IsReport"   not-null="true"  />	
 
 
 

@@ -54,6 +54,16 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                     }
 
 
+                    if (obj.Status.HasValue && obj.Status.Value==0)
+                    {
+                        cmbStatus.SetValue(0);
+                    }
+                    else
+                    {
+                        cmbStatus.SetValue(2);
+                    }
+
+
                     winSPChannelEditInfo.Show();
 
                 }
@@ -87,6 +97,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.Rate = Convert.ToInt32(numRate.Value);
 
                 obj.Price = Convert.ToDecimal(txtPrice.Value);
+
+                obj.Status = Convert.ToInt32(cmbStatus.SelectedItem.Value);
 
                 SPChannelWrapper.Update(obj);
 

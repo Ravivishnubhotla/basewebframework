@@ -100,6 +100,8 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_DEFAULTPRICE = "DefaultPrice";
 		public static readonly string PROPERTY_NAME_DAYTOTALLIMITINPROVINCE = "DayTotalLimitInProvince";
 		public static readonly string PROPERTY_NAME_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT = "DayTotalLimitInProvinceAssignedCount";
+		public static readonly string PROPERTY_NAME_HASDAYTIMELIMIT = "HasDayTimeLimit";
+		public static readonly string PROPERTY_NAME_DAYTIMELIMIT = "DayTimeLimit";
 		
         #endregion
 
@@ -565,6 +567,34 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.DayTotalLimitInProvinceAssignedCount = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool? HasDayTimeLimit
+		{
+			get
+			{
+				return entity.HasDayTimeLimit;
+			}
+			set
+			{
+				entity.HasDayTimeLimit = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public string DayTimeLimit
+		{
+			get
+			{
+				return entity.DayTimeLimit;
+			}
+			set
+			{
+				entity.DayTimeLimit = value;
 			}
 		}
 		#endregion 

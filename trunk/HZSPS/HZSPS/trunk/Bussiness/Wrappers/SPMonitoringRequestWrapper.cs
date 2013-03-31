@@ -145,7 +145,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 spFailedRequestWrapper.RecievedDate = DateTime.Now;
 
-                spFailedRequestWrapper.RecievedContent = httpRequest.RequestData;
+                spFailedRequestWrapper.RecievedContent = httpRequest.GetRequestData();
 
                 spFailedRequestWrapper.RecievedIP = httpRequest.RequestIp;
 

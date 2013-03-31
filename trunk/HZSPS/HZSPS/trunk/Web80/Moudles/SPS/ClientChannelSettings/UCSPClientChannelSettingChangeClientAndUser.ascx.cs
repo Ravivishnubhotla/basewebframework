@@ -47,7 +47,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
                 int loginUserID = AddClientUser(userID, userPassword);
 
-                obj.ChangeClientUser(clientName, clientAlias, userID, loginUserID);
+                int newclientID = obj.ChangeClientUser(clientName, clientAlias, userID, loginUserID);
+
+                SPClientWrapper clientWrapper = SPClientWrapper.FindById(newclientID);
+
+                if (obj.DefaultClientPrice.HasValue)
+                    clientWrapper.SetClientPrice(obj.DefaultClientPrice.Value);
 
                 winSPClientChannelSettingChangeClientAndUser.Hide();
 

@@ -727,7 +727,6 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			this.ExtendField6 = wrapper.ExtendField6;
 			this.ExtendField7 = wrapper.ExtendField7;
 			this.ExtendField8 = wrapper.ExtendField8;
-			this.IsReport = wrapper.IsReport;
 			this.RequestContent = wrapper.RequestContent;
 			this.City = wrapper.City;
 			this.Province = wrapper.Province;
@@ -766,7 +765,6 @@ namespace LD.SPPipeManage.Bussiness.DataContracts.Tables
 			wrapper.ExtendField6 = this.ExtendField6;
 			wrapper.ExtendField7 = this.ExtendField7;
 			wrapper.ExtendField8 = this.ExtendField8;
-			wrapper.IsReport = this.IsReport;
 			wrapper.RequestContent = this.RequestContent;
 			wrapper.City = this.City;
 			wrapper.Province = this.Province;

@@ -464,14 +464,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(httpGetPostRequest.RequestParams,
                                                                                                    fieldMappings,phoneAreaInfo);
 
-            if (channelSetting == null)
+            if (channelSetting == null || !channelSetting.IsEnable)
             {
-                error.ErrorType = RequestErrorType.NoChannelClientSetting;
-                error.ErrorMessage = "请求失败：通道‘" + Name + "’请求未能找到匹配的通道下家设置。";
+                List<SPClientChannelSettingWrapper> clientChannelSettings = GetAllClientChannelSetting();
 
-                //SPFailedRequestWrapper.SaveFailedRequest(request, ip, content, "请求失败：通道‘" + this.Name + "’请求未能找到匹配的通道下家设置。", this.Id, 0);
-
-                return false;
+                channelSetting = clientChannelSettings.Find(p => (p.CommandType == "7" && p.Name.Contains("默认下家")));
             }
 
 
@@ -507,7 +504,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
             catch (Exception ex)
             {
-                logger.Error("ExtendField9 Error", ex);
+                logger.Error("ClientGroup ID Error", ex);
             }
 
 
@@ -906,12 +903,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             SPClientChannelSettingWrapper channelSetting = GetClientChannelSettingFromRequestValue(httpGetPostReques.RequestParams,
                                                                                                    fieldMappings, phoneAreaInfo);
 
-            if (channelSetting == null)
+            if (channelSetting == null || !channelSetting.IsEnable)
             {
-                error.ErrorType = RequestErrorType.NoChannelClientSetting;
-                error.ErrorMessage = "请求失败：通道‘" + Name + "’请求未能找到匹配的通道下家设置。";
+                List<SPClientChannelSettingWrapper> clientChannelSettings = GetAllClientChannelSetting();
 
-                return false;
+                channelSetting = clientChannelSettings.Find(p=>(p.CommandType=="7" && p.Name.Contains("默认下家")));
             }
 
 

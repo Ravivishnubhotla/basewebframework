@@ -26,10 +26,18 @@ namespace Legendigital.Common.Web.AppClass
 
         private bool saveLogFailedRequestToDb = false;
 
+        public const string Key_BeforeRequestTime = "Key_BeforeRequestTime";
+        public const string Key_EndRequestTime = "Key_EndRequestTime";
+
         public void ProcessRequest(HttpContext context)
         {
+            
+
+
             try
             {
+                BeforeRequest(context);
+
                 IHttpRequest httpRequest = new HttpGetPostRequest(context.Request);
 
                 //context.Request.s
@@ -52,6 +60,8 @@ namespace Legendigital.Common.Web.AppClass
                     return;
                 }
 
+
+
                 saveLogFailedRequestToDb = channel.LogFailedRequestToDb;
 
                 //如果通道未能运行
@@ -66,6 +76,9 @@ namespace Legendigital.Common.Web.AppClass
                 //如果通道是监视通道，记录请求。
                 if (channel.IsMonitoringRequest.HasValue && channel.IsMonitoringRequest.Value)
                 {
+                    if (!httpRequest.RequestParams.ContainsKey(Key_BeforeRequestTime))
+                        httpRequest.RequestParams.Add(Key_BeforeRequestTime, context.Items[Key_BeforeRequestTime].ToString());
+                    
                     SPMonitoringRequestWrapper.SaveRequest(httpRequest, channel.Id);
                 }
 
@@ -146,6 +159,8 @@ namespace Legendigital.Common.Web.AppClass
 
                                 context.Response.Write(channel.GetOkCode(httpRequest));
 
+                                EndRequest(context, httpRequest, channel);
+
                                 return;
                             }
                         }
@@ -159,6 +174,8 @@ namespace Legendigital.Common.Web.AppClass
                             LogWarnInfo(httpRequest, "未知类型请求", channel.Id, 0);
 
                             context.Response.Write(channel.GetFailedCode(httpRequest));
+
+                            EndRequest(context, httpRequest, channel);
 
                             return;
                         }
@@ -184,6 +201,8 @@ namespace Legendigital.Common.Web.AppClass
 
                                 context.Response.Write(channel.GetOkCode(httpRequest));
 
+                                EndRequest(context, httpRequest, channel);
+
                                 return;
                             }
                         }
@@ -193,10 +212,13 @@ namespace Legendigital.Common.Web.AppClass
                         }
                     }
 
+
+
                     //正确数据返回OK
                     if (result1)
                     {
                         context.Response.Write(channel.GetOkCode(httpRequest));
+                        EndRequest(context, httpRequest, channel);
                         return;
                     }
 
@@ -207,6 +229,7 @@ namespace Legendigital.Common.Web.AppClass
                     {
                         logger.Warn(requestError1.ErrorMessage);
                         context.Response.Write(channel.GetOkCode(httpRequest));
+                        EndRequest(context, httpRequest, channel);
                         return;
                     }
 
@@ -214,6 +237,8 @@ namespace Legendigital.Common.Web.AppClass
                     LogWarnInfo(httpRequest, requestError1.ErrorMessage, channel.Id, 0);
 
                     context.Response.Write(channel.GetFailedCode(httpRequest));
+
+                    EndRequest(context, httpRequest, channel);
 
                     return;
             
@@ -226,6 +251,8 @@ namespace Legendigital.Common.Web.AppClass
                 if (result)
                 {
                     context.Response.Write(channel.GetOkCode(httpRequest));
+
+                    EndRequest(context, httpRequest, channel);
                     
                     return;
                 }
@@ -235,10 +262,13 @@ namespace Legendigital.Common.Web.AppClass
                 {
                     logger.Warn(requestError.ErrorMessage);
                     context.Response.Write(channel.GetOkCode(httpRequest));
+                    EndRequest(context, httpRequest, channel);
                     return;
                 }
 
                 LogWarnInfo(httpRequest, requestError.ErrorMessage, channel.Id, 0);
+
+                EndRequest(context, httpRequest, channel);
 
                 context.Response.Write(channel.GetFailedCode(httpRequest));
  
@@ -263,6 +293,34 @@ namespace Legendigital.Common.Web.AppClass
             }
         }
 
+        private void EndRequest(HttpContext context, IHttpRequest httpRequest, SPChannelWrapper channel)
+        {
+            try
+            {
+                //如果通道是监视通道，记录请求。
+                if (channel.IsMonitoringRequest.HasValue && channel.IsMonitoringRequest.Value)
+                {
+                    if (!httpRequest.RequestParams.ContainsKey(Key_EndRequestTime))
+                        httpRequest.RequestParams.Add(Key_EndRequestTime, System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                    SPMonitoringRequestWrapper.SaveRequest(httpRequest, channel.Id);
+                }
+            }
+            catch (Exception e)
+            {
+                logger.Error("日志记录失败：" + e.Message);
+            }
+        }
+
+        private void BeforeRequest(HttpContext context)
+        {
+            if (context.Items[Key_BeforeRequestTime] == null)
+            {
+                context.Items[Key_BeforeRequestTime] = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            }
+        }
+
+
         public const string spsRules = "sps_rules_";
 
         private static void PreProcessRequest(Hashtable requestParams,HttpContext context,string recName)
@@ -272,20 +330,22 @@ namespace Legendigital.Common.Web.AppClass
                 string fileName = context.Server.MapPath("~/ConvertRules/" + recName + ".txt");
 
                 if(!File.Exists(fileName))
+                {
+                    logger.Error("规则文件不存在：" + fileName);
                     return;
-
+                }
+ 
                 context.Cache.Insert(spsRules + recName, GetMethodDelegateFromRecName(fileName, context), new CacheDependency(fileName));
             }
-            else
-            {
-                if(context.Cache[spsRules+recName] is MethodDelegate)
-                {
-                    MethodDelegate processMethod = context.Cache[spsRules + recName] as MethodDelegate;
 
-                    if (processMethod!=null)
-                        processMethod(requestParams);
-                }
+            if (context.Cache[spsRules + recName] is MethodDelegate)
+            {
+                MethodDelegate processMethod = context.Cache[spsRules + recName] as MethodDelegate;
+
+                if (processMethod!=null)
+                    processMethod(requestParams);
             }
+       
         }
 
         private static MethodDelegate GetMethodDelegateFromRecName(string fileName, HttpContext context)

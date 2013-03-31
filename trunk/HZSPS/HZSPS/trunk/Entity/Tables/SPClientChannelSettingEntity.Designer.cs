@@ -47,6 +47,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_DEFAULTPRICE = "DefaultPrice";
 		public static readonly string PROPERTY_NAME_DAYTOTALLIMITINPROVINCE = "DayTotalLimitInProvince";
 		public static readonly string PROPERTY_NAME_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT = "DayTotalLimitInProvinceAssignedCount";
+		public static readonly string PROPERTY_NAME_HASDAYTIMELIMIT = "HasDayTimeLimit";
+		public static readonly string PROPERTY_NAME_DAYTIMELIMIT = "DayTimeLimit";
 		
         #endregion
 	
@@ -88,6 +90,8 @@ namespace LD.SPPipeManage.Entity.Tables
 		private decimal? _defaultPrice;
 		private bool? _dayTotalLimitInProvince;
 		private string _dayTotalLimitInProvinceAssignedCount;
+		private bool? _hasDayTimeLimit;
+		private string _dayTimeLimit;
 		
 		#endregion
 
@@ -130,6 +134,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_defaultPrice = null;
 			_dayTotalLimitInProvince = null;
 			_dayTotalLimitInProvinceAssignedCount = null;
+			_hasDayTimeLimit = null;
+			_dayTimeLimit = null;
 		}
 		#endregion
 
@@ -137,7 +143,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex, string channelCode, bool? allowFilter, string allowAndDisableArea, string settlementPeriod, string dayLimit, string monthLimit, string sendText, string getway, int defaultNoInterceptCount, bool? hasDayTotalLimit, int? dayTotalLimit, decimal? defaultPrice, bool? dayTotalLimitInProvince, string dayTotalLimitInProvinceAssignedCount)
+		public SPClientChannelSettingEntity( int id, string name, string description, SPChannelEntity channelID, SPClientEntity clinetID, int? interceptRate, int? upRate, int? downRate, string commandType, string commandCode, bool? disable, string commandColumn, string interceptRateType, bool? syncData, string syncDataUrl, string okMessage, string failedMessage, string syncType, int? orderIndex, string channelCode, bool? allowFilter, string allowAndDisableArea, string settlementPeriod, string dayLimit, string monthLimit, string sendText, string getway, int defaultNoInterceptCount, bool? hasDayTotalLimit, int? dayTotalLimit, decimal? defaultPrice, bool? dayTotalLimitInProvince, string dayTotalLimitInProvinceAssignedCount, bool? hasDayTimeLimit, string dayTimeLimit)
 		{
 			_id = id;
 			_name = name;
@@ -172,6 +178,8 @@ namespace LD.SPPipeManage.Entity.Tables
 			_defaultPrice = defaultPrice;
 			_dayTotalLimitInProvince = dayTotalLimitInProvince;
 			_dayTotalLimitInProvinceAssignedCount = dayTotalLimitInProvinceAssignedCount;
+			_hasDayTimeLimit = hasDayTimeLimit;
+			_dayTimeLimit = dayTimeLimit;
 		}
 		#endregion     
 	
@@ -690,6 +698,37 @@ namespace LD.SPPipeManage.Entity.Tables
 				if( value != null && value.Length > 8000)
 					throw new ArgumentOutOfRangeException("Invalid value for DayTotalLimitInProvinceAssignedCount", value, value.ToString());
 				_isChanged |= (_dayTotalLimitInProvinceAssignedCount != value); _dayTotalLimitInProvinceAssignedCount = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? HasDayTimeLimit
+		{
+			get { return _hasDayTimeLimit; }
+
+			set	
+			{
+				_isChanged |= (_hasDayTimeLimit != value); _hasDayTimeLimit = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string DayTimeLimit
+		{
+			get { return _dayTimeLimit; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 400)
+					throw new ArgumentOutOfRangeException("Invalid value for DayTimeLimit", value, value.ToString());
+				_isChanged |= (_dayTimeLimit != value); _dayTimeLimit = value;
 			}
 		}
 		/// <summary>

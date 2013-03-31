@@ -23,6 +23,8 @@ namespace LD.SPPipeManage.Bussiness.Commons
 
         string GetChannelCode();
 
+        string GetRequestData();
+
         bool IsRequestContainValues(string fieldName, string value);
     }
 }

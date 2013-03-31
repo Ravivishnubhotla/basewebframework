@@ -142,6 +142,17 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+        public string DayTimeLimitInfo
+        {
+            get
+            {
+                if (!(this.HasDayTimeLimit.HasValue && this.HasDayTimeLimit.Value))
+                    return "";
+
+                return string.Format("{0}/{1}", this.DaylimitStartTime.ToString(), this.DaylimitEndTime.ToString());
+            }
+        }
+
         public string ClientGroupName
         {
             get
@@ -314,7 +325,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     SPClientChannelSettingWrapper pClientChannelSetting = (from rap in clientChannelSettings
                                                                            where
                                                                                ((rap.CommandType == "1" && rap.AllowFilter.HasValue && rap.AllowFilter.Value)
-                                                                               && rap.CommandCode == this.CommandCode && rap.ChannelCode == this.ChannelCode
+                                                                               && rap.CommandCode == this.CommandCode && rap.ChannelCode == this.ChannelCode && rap.DefaultPrice.HasValue && rap.DefaultPrice > 0
                                                                                )
                                                                            orderby rap.DefaultPrice descending
                                                                            select rap).FirstOrDefault();
@@ -322,8 +333,27 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     if (pClientChannelSetting != null)
                     {
                         return pClientChannelSetting.DefaultPrice;
-                    }
+                    }       
 
+                }
+
+
+                if (this.CommandType == "1")
+                {
+                    List<SPClientChannelSettingWrapper> clientChannelSettings = FindAllByChannelID(this.ChannelID);
+
+                    SPClientChannelSettingWrapper pClientChannelSetting1 = (from rap in clientChannelSettings
+                                                                            where
+                                                                                (rap.CommandType == "1"
+                                                                                && rap.CommandCode == this.CommandCode
+                                                                                && rap.ChannelCode == this.ChannelCode
+                                                                                )
+                                                                            orderby rap.DefaultPrice descending
+                                                                            select rap).FirstOrDefault();
+                    if (pClientChannelSetting1 != null)
+                    {
+                        return pClientChannelSetting1.DefaultPrice;
+                    }
                 }
 
 
@@ -333,6 +363,35 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
                 return ParentClientChannelSetting.DefaultPrice;
+            }
+        }
+
+        public TimeSpan DaylimitStartTime
+        {
+            get
+            {
+                if(this.HasDayTimeLimit.HasValue && this.HasDayTimeLimit.Value && !string.IsNullOrEmpty(this.DayTimeLimit))
+                {
+                    List<TimeSpan> times = JsonConvert.DeserializeObject<List<TimeSpan>>(this.DayTimeLimit);
+
+                    return times[0];
+                }
+                throw new Exception("指令日限制时间错误 startTime！");
+            }
+        }
+
+
+        public TimeSpan DaylimitEndTime
+        {
+            get
+            {
+                if (this.HasDayTimeLimit.HasValue && this.HasDayTimeLimit.Value && !string.IsNullOrEmpty(this.DayTimeLimit))
+                {
+                    List<TimeSpan> times = JsonConvert.DeserializeObject<List<TimeSpan>>(this.DayTimeLimit);
+
+                    return times[1];
+                }
+                throw new Exception("指令日限制时间错误 endTime！");
             }
         }
 
@@ -598,6 +657,22 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
 
+                }
+            }
+
+            //限制时间强制扣除(无条件全扣)
+            if (!isIntercept && this.HasDayTimeLimit.HasValue && this.HasDayTimeLimit.Value && !string.IsNullOrEmpty(this.DayTimeLimit))
+            {
+                TimeSpan ts = DaylimitEndTime;
+
+                if(ts.Hours==0)
+                {
+                    ts = DaylimitEndTime.Add(new TimeSpan(24, 0, 0));
+                }
+
+                if (DateTime.Now.TimeOfDay < DaylimitStartTime || DateTime.Now.TimeOfDay > ts)
+                {
+                    isIntercept = true;
                 }
             }
 
@@ -946,9 +1021,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             return ConvertToWrapperList(businessProxy.GetSettingByClient(spClientWrapper.entity));
         }
 
-        public void ChangeClientUser(string clientName, string clientAlias, string userLoginId, int userID)
+        public int ChangeClientUser(string clientName, string clientAlias, string userLoginId, int userID)
         {
-            businessProxy.ChangeClientUser(this.entity, clientName, clientAlias, userLoginId, userID);
+            decimal? defaultClientPrice = this.DefaultClientPrice;
+
+            return businessProxy.ChangeClientUser(this.entity, clientName, clientAlias, userLoginId, userID, defaultClientPrice);
         }
 
         public void ResetAllSycnCount(DateTime date)

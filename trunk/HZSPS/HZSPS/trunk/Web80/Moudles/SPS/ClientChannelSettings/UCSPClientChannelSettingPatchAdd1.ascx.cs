@@ -80,7 +80,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     return;
                 }
 
-                this.winSPChannelClientSetingQuickAdd.Title = "为指令“{0}”快速添加子指令";
+                this.winSPChannelClientSetingQuickAdd.Title = string.Format("为指令“{0}”快速添加子指令", channelSettingWrapper.CommandCode);
 
                 this.txtLoginID.Text = channelSettingWrapper.ClinetID.UserLoginID + subCode;
 
@@ -90,6 +90,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                 this.txtCode.Text = channelSettingWrapper.CommandCode + subCode;
 
                 this.numOrderIndex.Text = (channelSettingWrapper.OrderIndex + 1).ToString();
+
+                if (channelSettingWrapper.DefaultClientPrice.HasValue)
+                    this.numDefaultPrice.Text = channelSettingWrapper.DefaultClientPrice.Value.ToString();
+                else
+                    this.numDefaultPrice.Text = "0";
 
                 this.txtChannelCode.Text = channelSettingWrapper.ChannelCode;
 

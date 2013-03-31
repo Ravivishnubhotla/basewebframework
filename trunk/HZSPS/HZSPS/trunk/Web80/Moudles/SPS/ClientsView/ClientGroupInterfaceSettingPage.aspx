@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="ClientGroupInterfaceSettingPage.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.ClientsView.ClientGroupInterfaceSettingPage" %>
-
+<%@ Register Src="UCClientSycnInfoSetting.ascx" TagName="UCClientSycnInfoSetting"
+    TagPrefix="uc5" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ScriptManagerProxy>
@@ -12,7 +13,10 @@
                 return '是';
             else
                 return '否';
-        }
+        };
+        
+
+
 
   
         function RefreshSPClientList() {
@@ -24,22 +28,41 @@
         };
  
         function processcmd(cmd, id) {
+ 
 
-            if (cmd == "cmdEdit") {
-                Coolite.AjaxMethods.UCSPClientChannelSettingEdit.Show(id.id,
+
+
+            if (cmd == "cmdParamsEdit") {
+                //alert(id.data.DefaultClientChannelSettingID);
+                Coolite.AjaxMethods.UCClientSycnInfoSetting.Show(id.data.DefaultClientChannelSettingID,
                                                                 {
                                                                     failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPClientChannelSettingData);
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPClientData);
                                                                     },
                                                                     eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '加载中...'
-                                                                               }
+                                                                        showMask: true,
+                                                                        msg: '加载中...'
+                                                                    }
                                                                 }              
                 );
             }
+            
 
-  
+
+            
+            if (cmd == "cmdTestClient") {
+
+                var win = <%= this.WindwinSendClientTestRequestFormow1.ClientID %>;
+                
+
+               win.setTitle("  "+id.data.Name + "  " + " 下家发送模拟数据 ");
+                
+               win.autoLoad.url = '../ClientChannelSettings/SPChannelClientSendClientTestRequestForm.aspx';
+                
+               win.autoLoad.params.ChannleClientID = id.data.Id;
+        
+               win.show();    
+           }  
         }
                 function columnWrap(val){
     return '<div style="white-space:normal !important;">'+ val +'</div>';
@@ -62,6 +85,7 @@
                     <ext:RecordField Name="DayLimitAndMonthLimit" />
                     <ext:RecordField Name="SendText" />
                     <ext:RecordField Name="Getway" />
+                    <ext:RecordField Name="DefaultClientChannelSettingID" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -71,6 +95,7 @@
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+        <uc5:UCClientSycnInfoSetting ID="UCClientSycnInfoSetting1" runat="server" />
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -128,7 +153,7 @@
                                             <Menu>
                                                 <Items>
                                                     <ext:MenuCommand Icon="ServerConnect" CommandName="cmdParamsEdit" Text="设置" />
-                                                    <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdTest" Text="发送测试数据" />
+                                                    <ext:MenuCommand Icon="TelephoneGo" Hidden="True" CommandName="cmdTestClient" Text="发送测试数据" />
                                                 </Items>
                                             </Menu>
                                             <ToolTip Text="Menu" />
@@ -152,4 +177,18 @@
     </ext:ViewPort>
     <ext:Hidden ID="hidId" runat="server">
     </ext:Hidden>
+        <ext:Window ID="WindwinSendClientTestRequestFormow1" runat="server" Title="下家模拟数据测试"
+        Frame="true" Width="640" ConstrainHeader="true" Height="320" Maximizable="true"
+        Closable="true" Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

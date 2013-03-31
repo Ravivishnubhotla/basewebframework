@@ -34,7 +34,17 @@
                                 </ext:NumberField>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:NumberField ID="txtPrice" runat="server" FieldLabel="单价" DecimalPrecision="2" AllowBlank="True" />
+                                <ext:NumberField ID="txtPrice" runat="server" FieldLabel="单价" DecimalPrecision="2"
+                                    AllowBlank="True" />
+                            </ext:Anchor>
+                            <ext:Anchor Horizontal="95%">
+                                <ext:ComboBox ID="cmbStatus" Editable="false" runat="server" FieldLabel="通道状态"
+                                    AllowBlank="False" SelectedIndex="0">
+                                    <Items>
+                                        <ext:ListItem Value="0" Text="运行"></ext:ListItem>
+                                        <ext:ListItem Value="2" Text="禁用"></ext:ListItem>
+                                    </Items>
+                                </ext:ComboBox>
                             </ext:Anchor>
                         </Anchors>
                     </ext:FormLayout>

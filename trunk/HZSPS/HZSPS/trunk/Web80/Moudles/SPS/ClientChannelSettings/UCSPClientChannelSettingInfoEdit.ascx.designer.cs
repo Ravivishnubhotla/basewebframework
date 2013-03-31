@@ -121,6 +121,51 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.Label lblChannelClientCode;
         
         /// <summary>
+        /// chkHasDayTimeLimit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkHasDayTimeLimit;
+        
+        /// <summary>
+        /// mfTimeRange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.MultiField mfTimeRange;
+        
+        /// <summary>
+        /// tfStart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TimeField tfStart;
+        
+        /// <summary>
+        /// lblStart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Label lblStart;
+        
+        /// <summary>
+        /// tfEnd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TimeField tfEnd;
+        
+        /// <summary>
         /// chkHasDayTotalLimit control.
         /// </summary>
         /// <remarks>

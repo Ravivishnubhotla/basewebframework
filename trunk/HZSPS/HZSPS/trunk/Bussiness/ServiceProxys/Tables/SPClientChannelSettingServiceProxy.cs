@@ -21,7 +21,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         List<SPClientChannelSycnParamsEntity> GetAllEnableParams(SPClientChannelSettingEntity entity);
         List<SPClientChannelSettingEntity> GetAllNeedRendSetting();
         List<SPClientChannelSettingEntity> GetSettingByClient(SPClientEntity spClientEntity);
-        void ChangeClientUser(SPClientChannelSettingEntity oldClientEntity, string clientName, string clientAlias, string userLoginId, int userId);
+        int ChangeClientUser(SPClientChannelSettingEntity oldClientEntity, string clientName, string clientAlias, string userLoginId, int userId, decimal? defaultClientPrice);
         void ResetAllSycnCount(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date);
         int GetSycnFailedCount(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date);
         void ResetIntercept(SPClientChannelSettingEntity spClientChannelSettingEntity, DateTime date, int dataCount);
@@ -84,8 +84,9 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         {
             return this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.GetSettingByClient(spClientEntity);
         }
-                [Transaction(ReadOnly = false)]
-        public void ChangeClientUser(SPClientChannelSettingEntity oldClientEntity, string clientName, string clientAlias, string userLoginId, int userId)
+        
+        [Transaction(ReadOnly = false)]
+        public int ChangeClientUser(SPClientChannelSettingEntity oldClientEntity, string clientName, string clientAlias, string userLoginId, int userId, decimal? defaultClientPrice)
         {
             SPClientEntity mainclientEntity = new SPClientEntity();
             mainclientEntity.Name = oldClientEntity.ChannelID.Name + userLoginId;
@@ -117,12 +118,15 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
             mainChannelClient.OkMessage = "ok";
             mainChannelClient.SyncDataUrl = "";
             mainChannelClient.SyncType = "2";
+            mainChannelClient.DefaultPrice = defaultClientPrice;
 
             this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(mainChannelClient);
 
             oldClientEntity.Disable = true;
 
             this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(oldClientEntity);
+
+            return mainclientEntity.Id;
 
 
         }
