@@ -1,5 +1,6 @@
-ï»¿Convert.ToInt32(Math.Ceiling(Convert.ToDouble( <%@ Page Language="C#" %>
+<%@ Page Language="C#" %>
 
+<%@ Import Namespace="System.Globalization" %>
 <%@ Import Namespace="Common.Logging" %>
 <%@ Import Namespace="LD.SPPipeManage.Bussiness.Commons" %>
 <%@ Import Namespace="LD.SPPipeManage.Bussiness.Wrappers" %>
@@ -18,55 +19,68 @@
         {
             IHttpRequest httpRequest = new HttpGetPostRequest(Request);
 
-            SPChannelWrapper channel = SPChannelWrapper.FindByAlias("zdtivr");
+            SPChannelWrapper channel = SPChannelWrapper.FindByAlias("spcaimenivr");
 
-            //å¦‚æœæ²¡æœ‰æ‰¾åˆ°é€šé“
+            //Èç¹ûÃ»ÓĞÕÒµ½Í¨µÀ
             if (channel == null)
             {
-                LogWarnInfo(httpRequest, "å¤„ç†è¯·æ±‚å¤±è´¥ï¼šæ— æ³•æ‰¾åˆ°å¯¹åº”çš„é€šé“ã€‚\n", 0, 0);
+                LogWarnInfo(httpRequest, "´¦ÀíÇëÇóÊ§°Ü£ºÎŞ·¨ÕÒµ½¶ÔÓ¦µÄÍ¨µÀ¡£\n", 0, 0);
 
                 return;
             }
 
             saveLogFailedRequestToDb = channel.LogFailedRequestToDb;
 
-            //å¦‚æœé€šé“æœªèƒ½è¿è¡Œ
+            //Èç¹ûÍ¨µÀÎ´ÄÜÔËĞĞ
             if (channel.CStatus != ChannelStatus.Run)
             {
-                LogWarnInfo(httpRequest, "è¯·æ±‚å¤±è´¥ï¼š\n" + "é€šé“â€œ" + channel.Name + "â€æœªè¿è¡Œã€‚\n", channel.Id, 0);
+                LogWarnInfo(httpRequest, "ÇëÇóÊ§°Ü£º\n" + "Í¨µÀ¡°" + channel.Name + "¡±Î´ÔËĞĞ¡£\n", channel.Id, 0);
 
                 this.Response.Write(channel.GetFailedCode(httpRequest));
 
                 return;
             }
-            //å¦‚æœé€šé“æ˜¯ç›‘è§†é€šé“ï¼Œè®°å½•è¯·æ±‚ã€‚
+            //Èç¹ûÍ¨µÀÊÇ¼àÊÓÍ¨µÀ£¬¼ÇÂ¼ÇëÇó¡£
             if (channel.IsMonitoringRequest.HasValue && channel.IsMonitoringRequest.Value)
             {
                 SPMonitoringRequestWrapper.SaveRequest(httpRequest, channel.Id);
             }
-
-
 
  
 
             RequestError requestError1 = new RequestError();
 
             bool result1 = false;
+ 
+            IFormatProvider ifp = CultureInfo.CurrentCulture;
 
-            DateTime startdate = DateTime.ParseExact(this.Request.QueryString["BeginTime"], "yyyyMMddHHmmss", null);  
-            DateTime enddate = DateTime.ParseExact(this.Request.QueryString["EndTime"], "yyyyMMddHHmmss", null);
+            //Response.Write(this.Request.QueryString["starttime"]);
+            //return;
+  
+            DateTime startdate = DateTime.ParseExact(this.Request.QueryString["starttime"], "yyyy-MM-dd HH:mm:ss", ifp);
 
+            DateTime enddate = DateTime.ParseExact(this.Request.QueryString["endtime"], "yyyy-MM-dd HH:mm:ss", ifp); 
+            
+            //if (DateTime.TryParse(this.Request.QueryString["starttime"], out startdate))
+            //    throw new ArgumentException("starttime parse error.", "startdate");
 
-            Response.Write(Convert.ToDouble((enddate - startdate).TotalSeconds)/60);
-            Response.Write(enddate);
-            int feetime = Convert.ToInt32(Math.Ceiling(Convert.ToDouble((enddate - startdate).TotalSeconds)/60));
+            //DateTime enddate;
+            //if (DateTime.TryParse(this.Request.QueryString["endtime"], out enddate))
+            //    throw new ArgumentException("endtime parse error.", "enddate");
+ 
+ 
 
-            string linkid = this.Request.QueryString["ani"]+this.Request.QueryString["BeginTime"];
+            int feetime = Convert.ToInt32(Math.Ceiling(Convert.ToDouble((enddate - startdate).TotalSeconds)/60)) ;
+ 
+
+            string linkid = this.Request.QueryString["mobile"]+this.Request.QueryString["starttime"];
 
             for (int i = 0; i < feetime; i++)
             {
                 HttpGetPostRequest request = new HttpGetPostRequest(httpRequest);
 
+
+		
 		if (request.RequestParams["linkid"]==null)
 		{
 			request.RequestParams.Add("linkid",linkid + "-" + i.ToString());
@@ -76,34 +90,34 @@
 			request.RequestParams["linkid"]=linkid + "-" + i.ToString();
 		}
  
+
+ request.RequestParams.Add("feetime",feetime.ToString());
+
+ 
+
                 request.RequestParams.Add("fcount","1");
 
-
+ 
 
                 result1 = channel.ProcessRequest(request, out requestError1);
             }
 
-
-
-            //æ­£ç¡®æ•°æ®è¿”å›OK
+            //ÕıÈ·Êı¾İ·µ»ØOK
             if (result1)
             {
- 
                 Response.Write(channel.GetOkCode(httpRequest));
                 return;
             }
 
-            //é‡å¤æ•°æ®è¿”å›OK
+            //ÖØ¸´Êı¾İ·µ»ØOK
             if (requestError1.ErrorType == RequestErrorType.RepeatLinkID)
             {
- 
                 logger.Warn(requestError1.ErrorMessage);
                 Response.Write(channel.GetOkCode(httpRequest));
                 return;
             }
 
-            //å…¶ä»–é”™è¯¯ç±»å‹è®°å½•é”™è¯¯è¯·æ±‚
- 
+            //ÆäËû´íÎóÀàĞÍ¼ÇÂ¼´íÎóÇëÇó
             LogWarnInfo(httpRequest, requestError1.ErrorMessage, channel.Id, 0);
 
             Response.Write(channel.GetFailedCode(httpRequest));
@@ -121,16 +135,16 @@
             {
                 IHttpRequest failRequest = new HttpGetPostRequest(Request);
 
-                string errorMessage = "å¤„ç†è¯·æ±‚å¤±è´¥:\né”™è¯¯ä¿¡æ¯ï¼š" + ex.Message;
+                string errorMessage = "´¦ÀíÇëÇóÊ§°Ü:\n´íÎóĞÅÏ¢£º" + ex.Message;
 
-                logger.Error(errorMessage + "\nè¯·æ±‚ä¿¡æ¯:\n" + failRequest.RequestData, ex);
+                logger.Error(errorMessage + "\nÇëÇóĞÅÏ¢:\n" + failRequest.RequestData, ex);
 
-                if (1==1)
+                if (saveLogFailedRequestToDb)
                     SPFailedRequestWrapper.SaveFailedRequest(failRequest, errorMessage, 0, 0);
             }
             catch (Exception exx)
             {
-                logger.Error("å¤„ç†è¯·æ±‚å¤±è´¥:\né”™è¯¯ä¿¡æ¯ï¼š" + exx.Message);
+                logger.Error("´¦ÀíÇëÇóÊ§°Ü:\n´íÎóĞÅÏ¢£º" + exx.Message);
             }
         }
 
@@ -144,7 +158,7 @@
 
     private void LogWarnInfo(IHttpRequest httpRequest, string errorInfo, int channelID, int clientID)
     {
-        logger.Warn(errorInfo + "è¯·æ±‚ä¿¡æ¯ï¼š\n" + httpRequest.RequestData);
+        logger.Warn(errorInfo + "ÇëÇóĞÅÏ¢£º\n" + httpRequest.RequestData);
 
         if (saveLogFailedRequestToDb)
             SPFailedRequestWrapper.SaveFailedRequest(httpRequest, errorInfo, channelID, clientID);

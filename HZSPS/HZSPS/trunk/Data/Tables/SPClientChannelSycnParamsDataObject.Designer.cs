@@ -58,6 +58,8 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_DEFAULTPRICE = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".DefaultPrice");
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_DAYTOTALLIMITINPROVINCE = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".DayTotalLimitInProvince");
 		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".DayTotalLimitInProvinceAssignedCount");
+		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_HASDAYTIMELIMIT = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".HasDayTimeLimit");
+		public static readonly Property PROPERTY_CLIENTCHANNELSETTINGID_DAYTIMELIMIT = Property.ForName(PROPERTY_CLIENTCHANNELSETTINGID_ALIAS_NAME + ".DayTimeLimit");
 		#endregion
 		public static readonly Property PROPERTY_MAPPINGPARAMS = Property.ForName(SPClientChannelSycnParamsEntity.PROPERTY_NAME_MAPPINGPARAMS);
 		public static readonly Property PROPERTY_TITLE = Property.ForName(SPClientChannelSycnParamsEntity.PROPERTY_NAME_TITLE);

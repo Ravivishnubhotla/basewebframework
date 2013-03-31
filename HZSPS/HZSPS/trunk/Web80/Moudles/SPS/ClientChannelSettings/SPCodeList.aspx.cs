@@ -13,8 +13,14 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+ 
+
+
             if (Ext.IsAjaxRequest)
                 return;
+
+
+
 
 
         }
@@ -71,6 +77,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
             {
                 sortFieldName = "HasDayTotalLimit";
             }
+            else if (sortFieldName == "DayTimeLimitInfo")
+            {
+                sortFieldName = "HasDayTimeLimit";
+            }
+
+
+            
 
             int startIndex = 0;
 

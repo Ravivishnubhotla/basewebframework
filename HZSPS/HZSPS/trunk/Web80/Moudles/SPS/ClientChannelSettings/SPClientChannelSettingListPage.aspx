@@ -293,6 +293,7 @@
                     <ext:RecordField Name="ClientName" />
                     <ext:RecordField Name="ChannelName" />
                     <ext:RecordField Name="SyncData" Type="Boolean" />
+                    <ext:RecordField Name="DefaultClientPrice" />
                     <ext:RecordField Name="OrderIndex" />
                     <ext:RecordField Name="IsEnable" Type="Boolean" />
                     <ext:RecordField Name="AllowFilter" Type="Boolean" />
@@ -358,6 +359,9 @@
                                 <ext:Column ColumnID="colIsEnable" DataIndex="IsEnable" Header="启用" Sortable="true"
                                     Width="30">
                                     <Renderer Fn="change" />
+                                </ext:Column>
+                                <ext:Column ColumnID="colDefaultPrice" DataIndex="DefaultClientPrice" Header="价格"
+                                    Sortable="true" Width="30">
                                 </ext:Column>
                                 <ext:Column ColumnID="colCommandType" DataIndex="ChannelClientRuleMatch" Header="指令匹配规则"
                                     Sortable="true" Width="120">
@@ -443,9 +447,9 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-        <ext:Window ID="WindwinSendClientTestRequestFormow1" runat="server" Title="下家模拟数据测试" Frame="true"
-        Width="640" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
-        Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
+    <ext:Window ID="WindwinSendClientTestRequestFormow1" runat="server" Title="下家模拟数据测试"
+        Frame="true" Width="640" ConstrainHeader="true" Height="380" Maximizable="true"
+        Closable="true" Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">
             <Params>

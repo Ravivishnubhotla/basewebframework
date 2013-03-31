@@ -40,7 +40,6 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_EXTENDFIELD7 = "ExtendField7";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD8 = "ExtendField8";
 		public static readonly string PROPERTY_NAME_MOBILEOPERATORS = "MobileOperators";
-		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		public static readonly string PROPERTY_NAME_CITY = "City";
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
@@ -49,6 +48,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		public static readonly string PROPERTY_NAME_ISSYCNDATA = "IsSycnData";
 		public static readonly string PROPERTY_NAME_SSYCNDATAURL = "SSycnDataUrl";
 		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
+		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
 		
         #endregion
 	
@@ -83,7 +83,6 @@ namespace LD.SPPipeManage.Entity.Tables
 		private string _extendField7;
 		private string _extendField8;
 		private string _mobileOperators;
-		private bool _isReport;
 		private string _requestContent;
 		private string _city;
 		private string _province;
@@ -92,6 +91,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		private bool? _isSycnData;
 		private string _sSycnDataUrl;
 		private int? _sycnRetryTimes;
+		private bool _isReport;
 		
 		#endregion
 
@@ -127,7 +127,6 @@ namespace LD.SPPipeManage.Entity.Tables
 			_extendField7 = null;
 			_extendField8 = null;
 			_mobileOperators = null;
-			_isReport = false;
 			_requestContent = null;
 			_city = null;
 			_province = null;
@@ -136,6 +135,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_isSycnData = null;
 			_sSycnDataUrl = null;
 			_sycnRetryTimes = 0;
+			_isReport = false;
 		}
 		#endregion
 
@@ -143,7 +143,7 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? clientGroupID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string mobileOperators, bool isReport, string requestContent, string city, string province, bool? isTestData, int? channleClientID, bool? isSycnData, string sSycnDataUrl, int? sycnRetryTimes)
+		public SPPaymentInfoEntity( int id, string mobileNumber, SPChannelEntity channelID, SPClientEntity clientID, string message, bool? isIntercept, DateTime? createDate, int? clientGroupID, string cpid, string mid, string port, string ywid, string linkid, string dest, string price, string ip, bool? sucesssToSend, string extendField1, string extendField2, string extendField3, string extendField4, string extendField5, string extendField6, string extendField7, string extendField8, string mobileOperators, string requestContent, string city, string province, bool? isTestData, int? channleClientID, bool? isSycnData, string sSycnDataUrl, int? sycnRetryTimes, bool isReport)
 		{
 			_id = id;
 			_mobileNumber = mobileNumber;
@@ -171,7 +171,6 @@ namespace LD.SPPipeManage.Entity.Tables
 			_extendField7 = extendField7;
 			_extendField8 = extendField8;
 			_mobileOperators = mobileOperators;
-			_isReport = isReport;
 			_requestContent = requestContent;
 			_city = city;
 			_province = province;
@@ -180,6 +179,7 @@ namespace LD.SPPipeManage.Entity.Tables
 			_isSycnData = isSycnData;
 			_sSycnDataUrl = sSycnDataUrl;
 			_sycnRetryTimes = sycnRetryTimes;
+			_isReport = isReport;
 		}
 		#endregion     
 	
@@ -610,20 +610,6 @@ namespace LD.SPPipeManage.Entity.Tables
 		/// 
 		/// </summary>
 		[DataMember]
-		public virtual bool IsReport
-		{
-			get { return _isReport; }
-
-			set	
-			{
-				_isChanged |= (_isReport != value); _isReport = value;
-			}
-		}
-
-		/// <summary>
-		/// 
-		/// </summary>
-		[DataMember]
 		public virtual string RequestContent
 		{
 			get { return _requestContent; }
@@ -741,6 +727,20 @@ namespace LD.SPPipeManage.Entity.Tables
 			set	
 			{
 				_isChanged |= (_sycnRetryTimes != value); _sycnRetryTimes = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool IsReport
+		{
+			get { return _isReport; }
+
+			set	
+			{
+				_isChanged |= (_isReport != value); _isReport = value;
 			}
 		}
 		/// <summary>

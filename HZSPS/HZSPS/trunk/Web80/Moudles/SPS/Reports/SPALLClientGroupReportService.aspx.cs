@@ -69,7 +69,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                 }
 
 
-                row["ClientAliasName"] = row["ClientAliasName"] + " " + moCode;
+                row["ClientAliasName"] = row["ClientAliasName"] + " " + row["ClientID"].ToString() + " " + moCode;
             }
             
 

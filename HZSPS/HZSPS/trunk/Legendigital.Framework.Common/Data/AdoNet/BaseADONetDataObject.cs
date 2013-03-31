@@ -5,6 +5,7 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using Common.Logging;
+using Spring.Data;
 using Spring.Data.Common;
 using Spring.Data.Generic;
 
@@ -177,18 +178,18 @@ namespace Legendigital.Framework.Common.Data.AdoNet
         /// <param name="commandType"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public virtual IDataReader ExcuteDataReader(string commandText, CommandType commandType, DbParameters parameters)
-        {
-            Logger.Info(string.Format("commandText:{0}", commandText));
-            Logger.Info(string.Format("commandType:{0}", commandType));
-            IDbCommand cmd = GetCommandByCommandTextAndCommandTypeAndParameterList(commandText, commandType, parameters);
-            return cmd.ExecuteReader();
-        }
+        //public virtual IDataReader ExcuteDataReader(string commandText, CommandType commandType, DbParameters parameters)
+        //{
+        //    Logger.Info(string.Format("commandText:{0}", commandText));
+        //    Logger.Info(string.Format("commandType:{0}", commandType));
+        //    IDbCommand cmd = GetCommandByCommandTextAndCommandTypeAndParameterList(commandText, commandType, parameters);
+        //    return cmd.ExecuteReader();
+        //}
 
-        public virtual IDataReader ExcuteDataReader(string commandText, CommandType commandType)
-        {
-            return ExcuteDataReader(commandText, commandType, CreateNewDbParameters());
-        }
+        //public virtual IDataReader ExcuteDataReader(string commandText, CommandType commandType)
+        //{
+        //    return ExcuteDataReader(commandText, commandType, CreateNewDbParameters());
+        //}
 
         protected void AddParameterToCmmand(IDbCommand cmd, IDataParameter parameter)
         {
@@ -197,21 +198,35 @@ namespace Legendigital.Framework.Common.Data.AdoNet
             obj.DbType = parameter.DbType;
             obj.Direction = parameter.Direction;
             obj.Value = parameter.Value;
-            cmd.Parameters.Add(parameter);
+            cmd.Parameters.Add(obj);
         }
 
-        protected IDbCommand GetCommandByCommandTextAndCommandTypeAndParameterList(string commandText, CommandType commandType, DbParameters parameters)
-        {
-            IDbCommand cmd = this.DbProvider.CreateCommand();
-            cmd.CommandText = commandText;
-            cmd.CommandType = commandType;
-            cmd.CommandTimeout = 90;
-            for (int i = 0; i < parameters.Count; i++)
-            {
-                AddParameterToCmmand(cmd, parameters[i]);
-            }
-            return cmd;
-        }
+        //protected IDbCommand GetCommandByCommandTextAndCommandTypeAndParameterList(string commandText, CommandType commandType, DbParameters parameters)
+        //{
+        //    //IDbCommand cmd = this.DbProvider.CreateCommand();
+        //    //cmd.CommandText = commandText;
+        //    //cmd.CommandType = commandType;
+        //    //cmd.CommandTimeout = 90;
+        //    //for (int i = 0; i < parameters.Count; i++)
+        //    //{
+        //    //    AddParameterToCmmand(cmd, parameters[i]);
+        //    //}
+        //    //return cmd;
+        //    return GetCommandByCommandTextAndCommandTypeAndParameterList(commandText, commandType, parameters, 90);
+        //}
+
+        //protected IDbCommand GetCommandByCommandTextAndCommandTypeAndParameterList(string commandText, CommandType commandType, DbParameters parameters,int timeOut)
+        //{
+        //    IDbCommand cmd = this.DbProvider.CreateCommand();
+        //    cmd.CommandText = commandText;
+        //    cmd.CommandType = commandType;
+        //    cmd.CommandTimeout = timeOut;
+        //    for (int i = 0; i < parameters.Count; i++)
+        //    {
+        //        AddParameterToCmmand(cmd, parameters[i]);
+        //    }
+        //    return cmd;
+        //}
 
         public virtual void ExecuteNoQuery(string commandText, CommandType commandType)
         {
@@ -225,32 +240,37 @@ namespace Legendigital.Framework.Common.Data.AdoNet
             this.AdoTemplate.ExecuteNonQuery(commandType, commandText, parameters);
         }
 
+        //public virtual void ExecuteNoQuery(string commandText, CommandType commandType, DbParameters parameters,int timeOut)
+        //{
+        //    Logger.Info(string.Format("commandText:{0}", commandText));
+        //    Logger.Info(string.Format("commandType:{0}", commandType));
+        //    this.AdoTemplate.ExecuteNonQuery(commandType, commandText, parameters);
+        //}
 
+        //protected IDbCommand GetCommandByCommandTextAndCommandTypeAndParameterList(string commandText, CommandType commandType)
+        //{
+        //    return GetCommandByCommandTextAndCommandTypeAndParameterList(commandText, commandType,this.CreateNewDbParameters());
+        //}
 
-        protected IDbCommand GetCommandByCommandTextAndCommandTypeAndParameterList(string commandText, CommandType commandType)
-        {
-            return GetCommandByCommandTextAndCommandTypeAndParameterList(commandText, commandType,this.CreateNewDbParameters());
-        }
+        //public DataTable GetSchema(string tableName)
+        //{
+        //    string getSchemaSql = string.Format("select * from {0} where 1=0 ", tableName);
+        //    using (IDbCommand cmd = GetCommandByCommandTextAndCommandTypeAndParameterList(tableName, CommandType.TableDirect))
+        //    {
+        //        using (IDbConnection conn = this.DbProvider.CreateConnection())
+        //        {
+        //            conn.Open();
+        //            cmd.Connection = conn;
+        //            DataTable dt = null;
+        //            using (IDataReader dr = cmd.ExecuteReader(CommandBehavior.SchemaOnly))
+        //            {
+        //                dt = dr.GetSchemaTable();
+        //            }
+        //            conn.Close();
+        //            return dt;
+        //        }
 
-        public DataTable GetSchema(string tableName)
-        {
-            string getSchemaSql = string.Format("select * from {0} where 1=0 ", tableName);
-            using (IDbCommand cmd = GetCommandByCommandTextAndCommandTypeAndParameterList(tableName, CommandType.TableDirect))
-            {
-                using (IDbConnection conn = this.DbProvider.CreateConnection())
-                {
-                    conn.Open();
-                    cmd.Connection = conn;
-                    DataTable dt = null;
-                    using (IDataReader dr = cmd.ExecuteReader(CommandBehavior.SchemaOnly))
-                    {
-                        dt = dr.GetSchemaTable();
-                    }
-                    conn.Close();
-                    return dt;
-                }
-
-            }
-        }
+        //    }
+        //}
     }
 }

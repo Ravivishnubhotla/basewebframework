@@ -205,6 +205,16 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
 	    }
 
+        public int DefaultClientChannelSettingID
+        {
+            get
+            {
+                if (DefaultClientChannelSetting != null)
+                    return DefaultClientChannelSetting.Id;
+                return 0;
+            }
+        }
+
 
 
 
@@ -397,11 +407,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 }
             }
         }
-
-
-
-
-
 
 	    public void SetClientPrice(decimal price)
 	    {

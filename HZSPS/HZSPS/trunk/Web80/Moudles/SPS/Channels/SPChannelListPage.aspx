@@ -270,10 +270,7 @@
                                             <Click Handler="ShowSPChannelQuickAdd();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
-                                    <ext:ToolbarButton ID='ToolbarButton2' runat="server" Text="刷新所有通道信息" Icon="Reload">
-                                        <Listeners>
-                                            <Click Handler="ReloadAllChannelInfo();" />
-                                        </Listeners>
+                                    <ext:ToolbarButton ID='ToolbarButton2' runat="server" Text="刷新所有通道信息" Icon="Reload" Hidden="True">
                                     </ext:ToolbarButton>
                                     <ext:ToolbarSeparator>
                                     </ext:ToolbarSeparator>

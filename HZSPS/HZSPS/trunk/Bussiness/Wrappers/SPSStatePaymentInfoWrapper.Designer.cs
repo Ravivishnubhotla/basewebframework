@@ -93,7 +93,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_EXTENDFIELD7 = "ExtendField7";
 		public static readonly string PROPERTY_NAME_EXTENDFIELD8 = "ExtendField8";
 		public static readonly string PROPERTY_NAME_MOBILEOPERATORS = "MobileOperators";
-		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
 		public static readonly string PROPERTY_NAME_REQUESTCONTENT = "RequestContent";
 		public static readonly string PROPERTY_NAME_CITY = "City";
 		public static readonly string PROPERTY_NAME_PROVINCE = "Province";
@@ -102,6 +101,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ISSYCNDATA = "IsSycnData";
 		public static readonly string PROPERTY_NAME_SSYCNDATAURL = "SSycnDataUrl";
 		public static readonly string PROPERTY_NAME_SYCNRETRYTIMES = "SycnRetryTimes";
+		public static readonly string PROPERTY_NAME_ISREPORT = "IsReport";
 		
         #endregion
 
@@ -474,20 +474,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 		/// <summary>
 		/// 
 		/// </summary>		
-		public bool? IsReport
-		{
-			get
-			{
-				return entity.IsReport;
-			}
-			set
-			{
-				entity.IsReport = value;
-			}
-		}
-		/// <summary>
-		/// 
-		/// </summary>		
 		public string RequestContent
 		{
 			get
@@ -595,6 +581,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 			set
 			{
 				entity.SycnRetryTimes = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>		
+		public bool IsReport
+		{
+			get
+			{
+				return entity.IsReport;
+			}
+			set
+			{
+				entity.IsReport = value;
 			}
 		}
 		#endregion 

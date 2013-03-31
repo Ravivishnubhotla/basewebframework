@@ -40,9 +40,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     this.lblChannelClientCode.Text = obj.ChannelClientCode;
 
                     chkHasDayTotalLimit.Checked = obj.HasDayTotalLimit.HasValue && obj.HasDayTotalLimit.Value;
-
-
-
+ 
                     if (this.chkHasDayTotalLimit.Checked)
                     {
                         if (obj.DayTotalLimit.HasValue)
@@ -62,6 +60,14 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                     {
                         this.txtDayTotalLimit.Text = "0";
                         this.chkDayTotalLimitInProvince.Checked = false;
+                    }
+
+                    chkHasDayTimeLimit.Checked = obj.HasDayTimeLimit.HasValue && obj.HasDayTimeLimit.Value;
+
+                    if (chkHasDayTimeLimit.Checked)
+                    {
+                        this.tfStart.Value = obj.DaylimitStartTime;
+                        this.tfEnd.Value = obj.DaylimitEndTime;
                     }
 
 
@@ -118,6 +124,26 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                 List<PhoneLimitAreaAssigned> phoneLimits = phoneLimitAreaAssigneds.FindAll(p => (p.LimitCount > 0 && !string.IsNullOrEmpty(p.AreaName)));
 
                 obj.DayTotalLimitInProvinceAssignedCount = JsonConvert.SerializeObject(phoneLimits);
+
+
+
+                obj.HasDayTimeLimit = chkHasDayTimeLimit.Checked;
+
+                if (obj.HasDayTimeLimit.Value)
+                {
+                    List<TimeSpan> times = new List<TimeSpan>();
+
+                    times.Add(this.tfStart.SelectedTime);
+                    times.Add(this.tfEnd.SelectedTime);
+
+                    obj.DayTimeLimit = JsonConvert.SerializeObject(times);
+
+                }
+                else
+                {
+                    obj.DayTimeLimit = "";
+                }
+
 
                 SPClientChannelSettingWrapper.Update(obj);
 

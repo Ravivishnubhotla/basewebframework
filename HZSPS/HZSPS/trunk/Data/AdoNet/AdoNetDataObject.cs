@@ -224,15 +224,19 @@ namespace LD.SPPipeManage.Data.AdoNet
 
         public void ClearAllReportedData(DateTime date)
         {
-            string sql = "update SPPaymentInfo set  IsReport = 1  where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and  IsReport = 0";
+            string sql = "update SPPaymentInfo set  IsReport = 1  where CreateDate>=@startDate and CreateDate<@endDate and  IsReport = 0";
 
             DbParameters dbParameters = this.CreateNewDbParameters();
 
-            dbParameters.AddWithValue("year", date.Year.ToString());
+            dbParameters.AddWithValue("startDate", date.Date);
 
-            dbParameters.AddWithValue("month", date.Month.ToString());
+            dbParameters.AddWithValue("endDate", date.Date.AddDays(1));
 
-            dbParameters.AddWithValue("day", date.Day.ToString());
+            //dbParameters.AddWithValue("year", date.Year.ToString());
+
+            //dbParameters.AddWithValue("month", date.Month.ToString());
+
+            //dbParameters.AddWithValue("day", date.Day.ToString());
 
             this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
         }
@@ -240,15 +244,19 @@ namespace LD.SPPipeManage.Data.AdoNet
 
         public void ResetAllReportedData(DateTime date)
         {
-            string sql = "update SPPaymentInfo set  IsReport = 0  where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and  (IsReport = 1 or IsReport is null)";
+            string sql = "update SPPaymentInfo set  IsReport = 0   where CreateDate>=@startDate and CreateDate<@endDate and  (IsReport = 1 or IsReport is null)";
 
             DbParameters dbParameters = this.CreateNewDbParameters();
 
-            dbParameters.AddWithValue("year", date.Year.ToString());
+            dbParameters.AddWithValue("startDate", date.Date);
 
-            dbParameters.AddWithValue("month", date.Month.ToString());
+            dbParameters.AddWithValue("endDate", date.Date.AddDays(1));
 
-            dbParameters.AddWithValue("day", date.Day.ToString());
+            //dbParameters.AddWithValue("year", date.Year.ToString());
+
+            //dbParameters.AddWithValue("month", date.Month.ToString());
+
+            //dbParameters.AddWithValue("day", date.Day.ToString());
 
             this.ExecuteNoQuery(sql, CommandType.Text, dbParameters);
         }
@@ -308,7 +316,7 @@ namespace LD.SPPipeManage.Data.AdoNet
 
         public DataSet GetAllReportData(DateTime date)
         {
-            string sql = "Select * from SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day and IsReport = 1";
+            string sql = "Select * from SPPaymentInfo where Year(CreateDate) = @year and  Month(CreateDate) =  @month and  Day(CreateDate)=@day";
 
             DbParameters dbParameters = this.CreateNewDbParameters();
 

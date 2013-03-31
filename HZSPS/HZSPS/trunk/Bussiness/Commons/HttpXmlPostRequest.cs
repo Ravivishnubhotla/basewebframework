@@ -123,7 +123,7 @@ namespace LD.SPPipeManage.Bussiness.Commons
 
             foreach (XmlNode subnode in node.ChildNodes)
             {
-                hb.Add(subnode.Name, subnode.InnerText);
+                hb.Add(subnode.Name.ToLower(), subnode.InnerText);
             }
 
 
@@ -151,8 +151,11 @@ namespace LD.SPPipeManage.Bussiness.Commons
             return fileContent.ToString();
         }
 
- 
 
+        public string GetRequestData()
+        {
+            return SerializeUtil.ToJson(requestParams);
+        }
 
         public bool IsRequestContainValues(string fieldName, string value)
         {

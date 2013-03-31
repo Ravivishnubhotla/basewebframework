@@ -39,7 +39,6 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_EXTENDFIELD7 = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD7);
 		public static readonly Property PROPERTY_EXTENDFIELD8 = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_EXTENDFIELD8);
 		public static readonly Property PROPERTY_MOBILEOPERATORS = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_MOBILEOPERATORS);
-		public static readonly Property PROPERTY_ISREPORT = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_ISREPORT);
 		public static readonly Property PROPERTY_REQUESTCONTENT = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_REQUESTCONTENT);
 		public static readonly Property PROPERTY_CITY = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_CITY);
 		public static readonly Property PROPERTY_PROVINCE = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_PROVINCE);
@@ -48,6 +47,7 @@ namespace LD.SPPipeManage.Data.Tables
 		public static readonly Property PROPERTY_ISSYCNDATA = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_ISSYCNDATA);
 		public static readonly Property PROPERTY_SSYCNDATAURL = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_SSYCNDATAURL);
 		public static readonly Property PROPERTY_SYCNRETRYTIMES = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_SYCNRETRYTIMES);
+		public static readonly Property PROPERTY_ISREPORT = Property.ForName(SPSStatePaymentInfoEntity.PROPERTY_NAME_ISREPORT);
       
 		#region 子类集合字段查询字段
 	
@@ -117,8 +117,6 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "MobileOperators":
                     return typeof (string);
-                case "IsReport":
-                    return typeof (bool);
                 case "RequestContent":
                     return typeof (string);
                 case "City":
@@ -135,6 +133,8 @@ namespace LD.SPPipeManage.Data.Tables
                     return typeof (string);
                 case "SycnRetryTimes":
                     return typeof (int);
+                case "IsReport":
+                    return typeof (bool);
           }
 			return typeof(string);
         }

@@ -204,9 +204,11 @@
                     <ext:RecordField Name="IsEnable" Type="Boolean" />
                     <ext:RecordField Name="AllowFilter" Type="Boolean" />
                     <ext:RecordField Name="DayTotalLimitInfo" />
-                    <ext:RecordField Name="DefaultPrice" />
-                     <ext:RecordField Name="DefaultClientPrice" />                   
+                    <ext:RecordField Name="DayTimeLimitInfo" />                  
                     
+                    
+                    <ext:RecordField Name="DefaultPrice" />
+                    <ext:RecordField Name="DefaultClientPrice" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -269,9 +271,16 @@
                                 <ext:Column ColumnID="colMoCode" DataIndex="ChannelClientCode" Header="指令" Sortable="True"
                                     Width="120">
                                 </ext:Column>
-                                <ext:Column ColumnID="colDefaultPrice" DataIndex="DefaultClientPrice" Header="价格" Sortable="true">
+                                                                <ext:Column ColumnID="colInterceptRate" DataIndex="InterceptRate" Header="扣率"
+                                    Sortable="true">
+                                </ext:Column>
+                                <ext:Column ColumnID="colDefaultPrice" DataIndex="DefaultClientPrice" Header="价格"
+                                    Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colDayTotalLimitInfo" DataIndex="DayTotalLimitInfo" Header="日总限"
+                                    Sortable="True">
+                                </ext:Column>
+                                <ext:Column ColumnID="colDayTimeLimitInfo" DataIndex="DayTimeLimitInfo" Header="放量时间限制"
                                     Sortable="True">
                                 </ext:Column>
                                 <ext:CommandColumn Header="设置管理" Width="50">
