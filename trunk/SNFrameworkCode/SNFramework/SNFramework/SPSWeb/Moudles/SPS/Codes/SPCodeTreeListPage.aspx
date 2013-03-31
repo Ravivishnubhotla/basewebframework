@@ -223,7 +223,7 @@
                     <ext:TreeGrid ID="TreeGrid1" Region="Center" runat="server" Header="False" NoLeafIcon="true"
                         EnableDD="true">
                         <Columns>
-                            <ext:TreeGridColumn Header="指令代码" Width="230" DataIndex="MoCode" />
+                            <ext:TreeGridColumn Header="指令代码" Width="300" DataIndex="MoCode" />
                             <ext:TreeGridColumn Header="所属通道" Width="100" DataIndex="ChannelName" />
                             <ext:TreeGridColumn Header="分配下家" Width="100" DataIndex="AssignedClientName" Align="Center">
                             </ext:TreeGridColumn>
