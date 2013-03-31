@@ -48,6 +48,7 @@ namespace SPSWeb.Moudles.SPS.Channels
             if (sortFieldName == "ChannelTypeName")
                 sortFieldName = "ChannelType";
 
+
             int startIndex = 0;
 
             if (e.Start > -1)

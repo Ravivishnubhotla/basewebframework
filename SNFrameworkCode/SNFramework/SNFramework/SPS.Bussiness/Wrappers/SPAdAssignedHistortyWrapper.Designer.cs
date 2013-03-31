@@ -82,6 +82,8 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_SPCLIENTID_DEFAULTPRICE;
 		        case "SPClientID_DefaultShowRecordDays":
 					return PROPERTY_SPCLIENTID_DEFAULTSHOWRECORDDAYS;
+		        case "SPClientID_ChannelStatus":
+					return PROPERTY_SPCLIENTID_CHANNELSTATUS;
 		        case "SPClientID_CreateBy":
 					return PROPERTY_SPCLIENTID_CREATEBY;
 		        case "SPClientID_CreateAt":
@@ -149,6 +151,7 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_SPCLIENTID_INTERCEPTRATE = "SPClientID_SPAdAssignedHistortyEntity_Alias.InterceptRate";
 		public const string PROPERTY_SPCLIENTID_DEFAULTPRICE = "SPClientID_SPAdAssignedHistortyEntity_Alias.DefaultPrice";
 		public const string PROPERTY_SPCLIENTID_DEFAULTSHOWRECORDDAYS = "SPClientID_SPAdAssignedHistortyEntity_Alias.DefaultShowRecordDays";
+		public const string PROPERTY_SPCLIENTID_CHANNELSTATUS = "SPClientID_SPAdAssignedHistortyEntity_Alias.ChannelStatus";
 		public const string PROPERTY_SPCLIENTID_CREATEBY = "SPClientID_SPAdAssignedHistortyEntity_Alias.CreateBy";
 		public const string PROPERTY_SPCLIENTID_CREATEAT = "SPClientID_SPAdAssignedHistortyEntity_Alias.CreateAt";
 		public const string PROPERTY_SPCLIENTID_LASTMODIFYBY = "SPClientID_SPAdAssignedHistortyEntity_Alias.LastModifyBy";
@@ -543,6 +546,16 @@ namespace SPS.Bussiness.Wrappers
                 if (this. SPClientID == null)
                     return null;
                 return  SPClientID.DefaultShowRecordDays;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPCLIENTID_CHANNELSTATUS)]
+        public string SPClientID_ChannelStatus
+        {
+            get
+            {
+                if (this. SPClientID == null)
+                    return null;
+                return  SPClientID.ChannelStatus;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPCLIENTID_CREATEBY)]

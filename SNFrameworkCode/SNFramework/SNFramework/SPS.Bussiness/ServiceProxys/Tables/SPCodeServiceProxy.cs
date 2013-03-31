@@ -10,6 +10,7 @@ using SPS.Bussiness.ConstClass;
 using SPS.Bussiness.Wrappers;
 using SPS.Data.Tables;
 using SPS.Entity.Tables;
+using Spring.Transaction.Interceptor;
 
 
 namespace SPS.Bussiness.ServiceProxys.Tables
@@ -48,6 +49,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             return code;
         }
 
+        [Transaction(ReadOnly = false)]
         public void QuickAddCode(SPCodeEntity codeEntity, bool hasSubCode, string subCode)
         {
             if (this.SelfDataObj.GetCodeByCode(codeEntity.Code)!=null)
@@ -74,19 +76,27 @@ namespace SPS.Bussiness.ServiceProxys.Tables
                     subcode.ChannelID = codeEntity.ChannelID;
                     subcode.Mo = codeEntity.Mo + subc;
                     subcode.MOType = codeEntity.MOType;
-                    subcode.OrderIndex = codeEntity.OrderIndex + 1;
+                    subcode.MOLength = subcode.Mo.Length;
                     subcode.SPCode = codeEntity.SPCode;
-                    //subcode.Province = codeEntity.Province;
-                    //subcode.DisableCity = codeEntity.DisableCity;
-                    subcode.IsDiable = false;
                     subcode.SPCodeType = "1";
-                    subcode.MOLength = codeEntity.Mo.Length;
-                    //subcode.DayLimit = codeEntity.DayLimit;
-                    //subcode.MonthLimit = codeEntity.MonthLimit;
+                    subcode.SPCodeLength = subcode.SPCode.Length;
+
+                    subcode.OrderIndex = codeEntity.OrderIndex + 1;
+
+                    subcode.IsDiable = codeEntity.IsDiable;
+                    subcode.IsMatchCase = codeEntity.IsMatchCase;
+                    subcode.LimitProvince = false;
+                    subcode.LimitProvinceArea = "";
+
+                    subcode.ParentID = codeEntity;
+
+                    subcode.HasPhoneLimit = false;
+ 
+ 
                     subcode.Price = codeEntity.Price;
-                    //subcode.SendText = codeEntity.SendText;
-                    subcode.HasFilters = codeEntity.HasFilters;
-                    subcode.HasParamsConvert = codeEntity.HasParamsConvert;
+ 
+                    subcode.HasFilters = false;
+                    subcode.HasParamsConvert = false;
 
                     this.SelfDataObj.Save(subcode);
                 }

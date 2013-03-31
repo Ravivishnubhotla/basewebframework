@@ -93,6 +93,11 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_LIMITPROVINCE = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_LIMITPROVINCE));		
 		public static readonly StringProperty PROPERTY_LIMITPROVINCEAREA = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_LIMITPROVINCEAREA));		
 		public static readonly EntityProperty<SPCodeEntity> PROPERTY_PARENTID = new EntityProperty<SPCodeEntity>(Property.ForName(SPCodeEntity.PROPERTY_NAME_PARENTID));
+		public static readonly BoolProperty PROPERTY_ISMATCHCASE = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_ISMATCHCASE));		
+		public static readonly BoolProperty PROPERTY_ISDAYTIMELIMIT = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_ISDAYTIMELIMIT));		
+		public static readonly DateTimeProperty PROPERTY_DAYTIMELIMITRANGESTART = new DateTimeProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_DAYTIMELIMITRANGESTART));		
+		public static readonly DateTimeProperty PROPERTY_DAYTIMELIMITRANGEEND = new DateTimeProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_DAYTIMELIMITRANGEEND));		
+		public static readonly StringProperty PROPERTY_CHANNELSTATUS = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CHANNELSTATUS));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CREATEBY));		
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CREATEAT));		
 		public static readonly IntProperty PROPERTY_LASTMODIFYBY = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_LASTMODIFYBY));		
@@ -181,6 +186,16 @@ namespace SPS.Data.Tables
                     return typeof (string);
                 case "ParentID":
                     return typeof (int);
+                case "IsMatchCase":
+                    return typeof (bool);
+                case "IsDayTimeLimit":
+                    return typeof (bool);
+                case "DayTimeLimitRangeStart":
+                    return typeof (DateTime);
+                case "DayTimeLimitRangeEnd":
+                    return typeof (DateTime);
+                case "ChannelStatus":
+                    return typeof (string);
                 case "CreateBy":
                     return typeof (int);
                 case "CreateAt":

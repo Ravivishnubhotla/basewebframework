@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Legendigital.Common.WebApp.AppCode;
 using SPS.Bussiness.Code;
 using SPS.Bussiness.Wrappers;
 
@@ -50,30 +51,49 @@ namespace SPSWeb.Moudles.SPS.Codes
         {
             try
             {
-                //SPCodeWrapper obj = new SPCodeWrapper();
+                SPCodeWrapper obj = new SPCodeWrapper();
 
-                //obj.Name = ChannelID.Name + "-" + this.txtMO.Text.Trim() + "-" + this.txtSPCode.Text.Trim() + "-" + this.cmbMOType.SelectedItem.Value;
-                //obj.Code = ChannelID.Name + "-" + this.txtMO.Text.Trim() + "-" + this.txtSPCode.Text.Trim() + "-" + this.cmbMOType.SelectedItem.Value;
-                //obj.Description = this.txtDescription.Text.Trim();
-                //obj.ChannelID = ChannelID;
-                //obj.Mo = this.txtMO.Text.Trim();
-                //obj.MOType = this.cmbMOType.SelectedItem.Value;
-                //obj.OrderIndex = Convert.ToInt32(this.numOrderIndex.Text.Trim());
-                //obj.SPCode = this.txtSPCode.Text.Trim();
-                ////obj.Province = this.txtProvince.Text.Trim();
-                ////obj.DisableCity = this.txtDisableCity.Text.Trim();
-                //obj.IsDiable = false;
+                obj.Name = ChannelID.Name + "-" + this.txtMO.Text.Trim() + "-" + this.txtSPCode.Text.Trim() + "-" + this.cmbCodeType.SelectedItem.Value;
+                obj.Code = ChannelID.Name + "-" + this.txtMO.Text.Trim() + "-" + this.txtSPCode.Text.Trim() + "-" + this.cmbCodeType.SelectedItem.Value;
+                obj.Description = this.txtDescription.Text.Trim();
+                obj.ChannelID = ChannelID;
 
-                ////obj.SPType = "1";
-                ////obj.CodeLength = obj.Mo.Length;
-                ////obj.DayLimit =  this.txtDayLimit.Text.Trim()  ;
-                ////obj.MonthLimit = this.txtMonthLimit.Text.Trim();
-                //obj.Price = Convert.ToDecimal(this.txtPrice.Text.Trim());
-                ////obj.SendText = this.txtCodeSendText.Text.Trim();
-                ////obj.HasFilters = this.chkHasFilters.Checked;
-                ////obj.HasParamsConvert = this.chkHasParamsConvert.Checked;
+                obj.IsMatchCase = chkIsMatchCase.Checked;
 
-                ////SPCodeWrapper.QuickAddCode(obj, this.chkHasSubCode.Checked, this.txtSubCode.Text.Trim());
+
+                if (!chkIsMatchCase.Checked)
+                    obj.Mo = this.txtMO.Text.Trim();
+                else
+                    obj.Mo = this.txtMO.Text;
+
+
+                obj.MOType = this.cmbCodeType.SelectedItem.Value;
+                obj.MOLength = obj.Mo.Length;
+                obj.MOType = this.cmbCodeType.SelectedItem.Value;
+                obj.OrderIndex = 1;
+                obj.SPCode = this.txtSPCode.Text.Trim();
+                obj.SPCodeType = "1";
+                obj.SPCodeLength = obj.SPCode.Length;
+                obj.IsDiable = this.chkIsDiable.Checked;
+
+                obj.LimitProvince = this.chkLimitProvince.Checked;
+                obj.LimitProvinceArea = WebUIHelper.GetSelectMutilItems(this.mfLimitProvinceArea, ",");
+
+                obj.HasPhoneLimit = this.chkHasPhoneLimit.Checked;
+
+                obj.HasFilters = this.chkHasFilters.Checked;
+                obj.HasParamsConvert = this.chkHasParamsConvert.Checked;
+                obj.HasPhoneLimit = this.chkHasPhoneLimit.Checked;
+
+                obj.Price = Convert.ToDecimal(this.nfPrice.Text.Trim());
+
+                obj.Description = this.txtDescription.Text.Trim();
+
+                //obj.SendText = this.txtCodeSendText.Text.Trim();
+
+                
+
+                SPCodeWrapper.QuickAddCode(obj,this.txtSubCodes.Text);
 
                 winSPCodeAdd.Hide();
 
@@ -85,11 +105,6 @@ namespace SPSWeb.Moudles.SPS.Codes
             }
         }
 
-        protected void storeAreaCountList_Refresh(object sender, StoreRefreshDataEventArgs e)
-        {
-            storeAreaCountList.DataSource = new List<PhoneLimitAreaAssigned>();
-
-            storeAreaCountList.DataBind();
-        }
+ 
     }
 }

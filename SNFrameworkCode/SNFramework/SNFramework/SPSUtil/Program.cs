@@ -31,11 +31,6 @@ namespace SPSUtil
                     return;
                 }
 
-
-
-
-                //SPAdvertisementWrapper.TestTransateion();
-
                 //处理未捕获的异常   
                 Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
                 //处理UI线程异常   
@@ -45,7 +40,6 @@ namespace SPSUtil
                 AppDomain.CurrentDomain.UnhandledException +=
                     new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
-                //DbRepository = new SimpleRepository("SPSDb", SimpleRepositoryOptions.RunMigrations);
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);

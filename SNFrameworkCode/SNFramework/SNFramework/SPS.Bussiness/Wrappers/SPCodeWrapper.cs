@@ -104,8 +104,10 @@ namespace SPS.Bussiness.Wrappers
         #endregion
 
 
-	    public static void QuickAddCode(SPCodeWrapper spCodeWrapper, bool hasSubCode, string subCode)
+	    public static void QuickAddCode(SPCodeWrapper spCodeWrapper, string subCode)
 	    {
+	        bool hasSubCode = !string.IsNullOrEmpty(subCode);
+
 	        businessProxy.QuickAddCode(spCodeWrapper.entity, hasSubCode, subCode);
 	    }
 

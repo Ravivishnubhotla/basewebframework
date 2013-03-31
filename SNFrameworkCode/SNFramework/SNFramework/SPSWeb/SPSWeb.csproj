@@ -132,7 +132,8 @@
     <Content Include="MainPage\Default.aspx" />
     <Content Include="MainPage\Login.aspx" />
     <Content Include="MainPage\UCChangePassword.ascx" />
-    <Content Include="Moudles\SPS\Codes\UCSPCodeAdd1.ascx" />
+    <Content Include="Moudles\SPS\Codes\SPCodeEdit.aspx" />
+    <Content Include="Moudles\SPS\Codes\SPCodeLimitSetting.aspx" />
     <Content Include="Moudles\SPS\Images\application_delete.png" />
     <Content Include="Moudles\SPS\Images\application_edit.png" />
     <Content Include="Moudles\SPS\Images\application_view_detail.png" />
@@ -672,12 +673,26 @@
     <Compile Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx.designer.cs">
       <DependentUpon>SPClientCodeSycnParamsListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeEdit.aspx.cs">
+      <DependentUpon>SPCodeEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeEdit.aspx.designer.cs">
+      <DependentUpon>SPCodeEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Codes\SPCodeFilterListPage.aspx.cs">
       <DependentUpon>SPCodeFilterListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Codes\SPCodeFilterListPage.aspx.designer.cs">
       <DependentUpon>SPCodeFilterListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeLimitSetting.aspx.cs">
+      <DependentUpon>SPCodeLimitSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeLimitSetting.aspx.designer.cs">
+      <DependentUpon>SPCodeLimitSetting.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Codes\SPCodeListPage.aspx.cs">
       <DependentUpon>SPCodeListPage.aspx</DependentUpon>
@@ -723,13 +738,6 @@
     </Compile>
     <Compile Include="Moudles\SPS\Codes\UCSPCodeAdd.ascx.designer.cs">
       <DependentUpon>UCSPCodeAdd.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SPS\Codes\UCSPCodeAdd1.ascx.cs">
-      <DependentUpon>UCSPCodeAdd1.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SPS\Codes\UCSPCodeAdd1.ascx.designer.cs">
-      <DependentUpon>UCSPCodeAdd1.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Codes\UCSPCodeEdit.ascx.cs">
       <DependentUpon>UCSPCodeEdit.ascx</DependentUpon>

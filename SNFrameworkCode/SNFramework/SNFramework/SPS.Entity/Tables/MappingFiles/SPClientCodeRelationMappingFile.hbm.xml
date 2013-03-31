@@ -24,6 +24,7 @@
 		<property column="IsEnable" type="Boolean" name="IsEnable"   not-null="true"  />	
 		<property column="SycnNotInterceptCount" type="int" name="SycnNotInterceptCount"   not-null="true"  />	
 		<property column="DefaultShowRecordDays" type="int" name="DefaultShowRecordDays"   not-null="true"  />	
+		<property column="ChannelStatus" type="string" name="ChannelStatus"   length="40" />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

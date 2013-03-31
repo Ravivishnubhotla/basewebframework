@@ -37,6 +37,11 @@
 		<property column="LimitProvince" type="Boolean" name="LimitProvince"   />	
 		<property column="LimitProvinceArea" type="string" name="LimitProvinceArea"   length="400" />	
 		<many-to-one column="ParentID" name="ParentID" class="SPS.Entity.Tables.SPCodeEntity,SPS.Entity" />		
+		<property column="IsMatchCase" type="Boolean" name="IsMatchCase"   />	
+		<property column="IsDayTimeLimit" type="Boolean" name="IsDayTimeLimit"   />	
+		<property column="DayTimeLimitRangeStart" type="DateTime" name="DayTimeLimitRangeStart"   />	
+		<property column="DayTimeLimitRangeEnd" type="DateTime" name="DayTimeLimitRangeEnd"   />	
+		<property column="ChannelStatus" type="string" name="ChannelStatus"   length="40" />	
 		<property column="CreateBy" type="int" name="CreateBy"   />	
 		<property column="CreateAt" type="DateTime" name="CreateAt"   />	
 		<property column="LastModifyBy" type="int" name="LastModifyBy"   />	

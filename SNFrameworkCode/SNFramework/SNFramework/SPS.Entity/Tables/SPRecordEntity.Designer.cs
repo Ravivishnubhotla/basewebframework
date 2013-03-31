@@ -103,6 +103,7 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CLIENTID_INTERCEPTRATE = "ClientID_SPRecordEntity_Alias.InterceptRate";
 		public const string PROPERTY_CLIENTID_DEFAULTPRICE = "ClientID_SPRecordEntity_Alias.DefaultPrice";
 		public const string PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS = "ClientID_SPRecordEntity_Alias.DefaultShowRecordDays";
+		public const string PROPERTY_CLIENTID_CHANNELSTATUS = "ClientID_SPRecordEntity_Alias.ChannelStatus";
 		public const string PROPERTY_CLIENTID_CREATEBY = "ClientID_SPRecordEntity_Alias.CreateBy";
 		public const string PROPERTY_CLIENTID_CREATEAT = "ClientID_SPRecordEntity_Alias.CreateAt";
 		public const string PROPERTY_CLIENTID_LASTMODIFYBY = "ClientID_SPRecordEntity_Alias.LastModifyBy";
@@ -138,6 +139,11 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CODEID_LIMITPROVINCE = "CodeID_SPRecordEntity_Alias.LimitProvince";
 		public const string PROPERTY_CODEID_LIMITPROVINCEAREA = "CodeID_SPRecordEntity_Alias.LimitProvinceArea";
 		public const string PROPERTY_CODEID_PARENTID = "CodeID_SPRecordEntity_Alias.ParentID";
+		public const string PROPERTY_CODEID_ISMATCHCASE = "CodeID_SPRecordEntity_Alias.IsMatchCase";
+		public const string PROPERTY_CODEID_ISDAYTIMELIMIT = "CodeID_SPRecordEntity_Alias.IsDayTimeLimit";
+		public const string PROPERTY_CODEID_DAYTIMELIMITRANGESTART = "CodeID_SPRecordEntity_Alias.DayTimeLimitRangeStart";
+		public const string PROPERTY_CODEID_DAYTIMELIMITRANGEEND = "CodeID_SPRecordEntity_Alias.DayTimeLimitRangeEnd";
+		public const string PROPERTY_CODEID_CHANNELSTATUS = "CodeID_SPRecordEntity_Alias.ChannelStatus";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPRecordEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPRecordEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPRecordEntity_Alias.LastModifyBy";
@@ -160,6 +166,7 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CLIENTCODERELATIONID_ISENABLE = "ClientCodeRelationID_SPRecordEntity_Alias.IsEnable";
 		public const string PROPERTY_CLIENTCODERELATIONID_SYCNNOTINTERCEPTCOUNT = "ClientCodeRelationID_SPRecordEntity_Alias.SycnNotInterceptCount";
 		public const string PROPERTY_CLIENTCODERELATIONID_DEFAULTSHOWRECORDDAYS = "ClientCodeRelationID_SPRecordEntity_Alias.DefaultShowRecordDays";
+		public const string PROPERTY_CLIENTCODERELATIONID_CHANNELSTATUS = "ClientCodeRelationID_SPRecordEntity_Alias.ChannelStatus";
 		public const string PROPERTY_CLIENTCODERELATIONID_CREATEBY = "ClientCodeRelationID_SPRecordEntity_Alias.CreateBy";
 		public const string PROPERTY_CLIENTCODERELATIONID_CREATEAT = "ClientCodeRelationID_SPRecordEntity_Alias.CreateAt";
 		public const string PROPERTY_CLIENTCODERELATIONID_LASTMODIFYBY = "ClientCodeRelationID_SPRecordEntity_Alias.LastModifyBy";

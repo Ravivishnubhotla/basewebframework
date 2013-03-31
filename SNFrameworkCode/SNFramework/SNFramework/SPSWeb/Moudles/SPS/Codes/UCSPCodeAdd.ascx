@@ -5,141 +5,42 @@
     function CheckLimitProvince() {
         var chkLimitProvince = <%= chkLimitProvince.ClientID %>;
         var mfLimitProvinceArea = <%= mfLimitProvinceArea.ClientID %>;
-        //alert(chkLimitProvince.getValue());
         if (chkLimitProvince.getValue()) {
             mfLimitProvinceArea.show();
         } else {
             mfLimitProvinceArea.hide();
         }
     }
-    function CheckDayTimeLimit() {
-        var chkIsDayTimeLimit = <%= chkIsDayTimeLimit.ClientID %>;
-        var tfDayTimeLimitRangeStart = <%= tfDayTimeLimitRangeStart.ClientID %>;
-        var dfDayTimeLimitRangeEnd = <%= dfDayTimeLimitRangeEnd.ClientID %>;
-        var tfDayTimeLimitRangeEnd = <%= tfDayTimeLimitRangeEnd.ClientID %>;
-        //alert(chkIsDayTimeLimit.getValue());
-        if (chkIsDayTimeLimit.getValue()) {
-            //alert(chkIsDayTimeLimit.getValue());
-            tfDayTimeLimitRangeStart.show();
-            dfDayTimeLimitRangeEnd.show();
-            tfDayTimeLimitRangeEnd.show();
+
+    function SetSubCode() {
+        var txtSubCodes = <%= txtSubCodes.ClientID %>;
+        var cmbCodeType = <%= cmbCodeType.ClientID %>;
+
+        if (cmbCodeType.getValue() == '2') {
+            txtSubCodes.show();
         } else {
-            tfDayTimeLimitRangeStart.hide();
-            dfDayTimeLimitRangeEnd.hide();
-            tfDayTimeLimitRangeEnd.hide();
+            txtSubCodes.hide();
         }
+
     }
-    function CheckDayMonthTotalLimit() {
-        var chkDayMonthTotalLimit = <%= chkDayMonthTotalLimit.ClientID %>;
-        var nfPhoneLimitDayCount = <%= nfPhoneLimitDayCount.ClientID %>;
-                        var dfPhoneLimitDayCount = <%= dfPhoneLimitDayCount.ClientID %>;
-                        var nfPhoneLimitMonthCount = <%= nfPhoneLimitMonthCount.ClientID %>;
-        //alert(chkLimitProvince.getValue());
-        if (chkDayMonthTotalLimit.getValue()) {
-            nfPhoneLimitDayCount.show();
-            dfPhoneLimitDayCount.show();
-            nfPhoneLimitMonthCount.show();
-        } else {
-            nfPhoneLimitDayCount.hide();
-            dfPhoneLimitDayCount.hide();
-            nfPhoneLimitMonthCount.hide();
-        }
-    }
-    function CheckDayTotalLimit() {
-        var chkDayTotalLimit = <%= chkDayTotalLimit.ClientID %>;
-        var nfDayTotalLimit = <%= nfDayTotalLimit.ClientID %>;
-        //alert(chkLimitProvince.getValue());
-        if (chkDayTotalLimit.getValue()) {
-            nfDayTotalLimit.show();
-        } else {
-            nfDayTotalLimit.hide();
-        }
-    }
+ 
     function CheckAllAddUI() {
+        var formPanelSPCodeAdd = <%= formPanelSPCodeAdd.ClientID %>;
+        var frmCodeTextInfo = <%= frmCodeTextInfo.ClientID %>;
+        formPanelSPCodeAdd.getForm().reset();
+        frmCodeTextInfo.getForm().reset(); 
         CheckLimitProvince();
-        CheckDayTimeLimit();
-        CheckDayMonthTotalLimit();
-        CheckDayTotalLimit();
+        SetSubCode();
     }
-    function ResetProvinceCount() {
-        var fsLimitProvince = <%= fsLimitProvince.ClientID %>;
-        var mfLimitProvinceArea = <%= mfLimitProvinceArea.ClientID %>;
-        var storeAreaCountList = <%= storeAreaCountList.ClientID %>;
-
-        storeAreaCountList.removeAll();
-
-        if (fsLimitProvince.collapsed) {
-
-            var selectValues = mfLimitProvinceArea.getSelectedValues();
-
-            if (selectValues != null && selectValues != '' && selectValues.length>0) {
-                //alert(selectValues);
-                //alert(selectValues.length);
-                //var selValues  = selectValues.split(",");
-                //alert(selValues);
-                
-                for (var i = 0; i < selectValues.length; i++) {
-                    
-                    var insertRecord = Ext.data.Record.create([
-                      {name: 'AreaName'},
-                      {name: 'LimitCount', type: 'int'}
-                    ]);
-
-                    var ir=new insertRecord({
-                        AreaName:selectValues[i],
-                        LimitCount:0
-                    });
-
-                    storeAreaCountList.add(ir);
-                }
-            }
-
-
-            
-            //var selValues  = selectValues.split(",");
-            //for (var i = 0; i < selValues.length; i++) {
-
-
-            //    var insertRecord = Ext.data.Record.create([
-            //      {name: 'AreaName'},
-            //      {name: 'LimitCount', type: 'int'}
-            //    ]);
-
-            //    var ir=new insertRecord({
-            //        AreaName:selValues[i],
-            //        LimitCount:0
-            //    });
-
-
-            //    storeAreaCountList.add(ir);
-
-            //}
-        } 
-
-        storeAreaCountList.commitChanges();
-    }
-
+   
 </script>
-
-
-<ext:Store ID="storeAreaCountList" runat="server" AutoLoad="true" OnRefreshData="storeAreaCountList_Refresh">
-    <Reader>
-        <ext:JsonReader>
-            <Fields>
-                <ext:RecordField Name="AreaName" />
-                <ext:RecordField Name="LimitCount" />
-            </Fields>
-        </ext:JsonReader>
-    </Reader>
-</ext:Store>
-
 <ext:Window ID="winSPCodeAdd" runat="server" Icon="ApplicationAdd" Title="快速添加指令"
-    Width="820" Height="380" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
+    Width="780" Height="380" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
         <ext:TabPanel ID="tpMain" runat="server" ActiveTabIndex="0" Plain="true">
             <Items>
-                <ext:FormPanel ID="pnlCode" runat="server" Title="指令设置" Frame="true" PaddingSummary="0"
+                <ext:FormPanel ID="formPanelSPCodeAdd" runat="server" Title="指令设置" Frame="true" PaddingSummary="0"
                     ButtonAlign="Center" Layout="fit" AutoScroll="True">
                     <Items>
                         <ext:TableLayout ID="tblCode" runat="server" Columns="3" ColumnWidth="0.33" padding="15">
@@ -151,6 +52,9 @@
                                             <ext:ListItem Value="1" Text="精准指令"></ext:ListItem>
                                             <ext:ListItem Value="2" Text="模糊指令"></ext:ListItem>
                                         </Items>
+                                        <Listeners>
+                                            <Select Handler="SetSubCode();"></Select>
+                                        </Listeners>
                                     </ext:ComboBox>
                                 </ext:Cell>
                                 <ext:Cell CellCls="cellClass">
@@ -162,14 +66,14 @@
                                     </ext:Checkbox>
                                 </ext:Cell>
                                 <ext:Cell CellCls="cellClass">
-                                    <ext:TextField ID="txtMO" runat="server" FieldLabel="指 令" />
+                                    <ext:TextField ID="txtMO" runat="server" FieldLabel="指 令"  AllowBlank="false" />
                                 </ext:Cell>
                                 <ext:Cell CellCls="cellClass">
-                                    <ext:TextField ID="txtSPCode" runat="server" FieldLabel="通道号码" />
+                                    <ext:TextField ID="txtSPCode" runat="server" FieldLabel="通道号码"  AllowBlank="false" />
                                 </ext:Cell>
                                 <ext:Cell CellCls="cellClass">
                                     <ext:NumberField ID="nfPrice" runat="server" FieldLabel="默认价格" DecimalPrecision="2"
-                                        Text="0.00">
+                                        Text="1.00">
                                     </ext:NumberField>
                                 </ext:Cell>
                                 <ext:Cell CellCls="cellClass">
@@ -221,85 +125,17 @@
                                     <ext:Checkbox ID="chkHasFilters" runat="server" FieldLabel="是否过滤">
                                     </ext:Checkbox>
                                 </ext:Cell>
-                                <ext:Cell CellCls="cellClass" ColSpan="2">
+                                <ext:Cell CellCls="cellClass">
                                     <ext:Checkbox ID="chkHasParamsConvert" runat="server" FieldLabel="是否转换">
                                     </ext:Checkbox>
                                 </ext:Cell>
+                                <ext:Cell CellCls="cellClass">
+                                    <ext:Checkbox ID="chkHasPhoneLimit" runat="server" FieldLabel="是否限量">
+                                    </ext:Checkbox>
+                                </ext:Cell>
                                 <ext:Cell CellCls="cellClass" ColSpan="3">
-                                    <ext:FieldSet ID="fsHasPhoneLimit" runat="server" CheckboxToggle="True" Collapsed="True"
-                                        Title="是否限量" AutoHeight="true" LabelWidth="75" Layout="Form">
-                                        <Items>
-                                            <ext:CompositeField ID="cfIsDayTimeLimit" runat="server" FieldLabel="时段限制" AnchorHorizontal="100%">
-                                                <Items>
-                                                    <ext:Checkbox ID="chkIsDayTimeLimit" runat="server">
-                                                        <Listeners>
-                                                            <Check Handler="CheckDayTimeLimit();"></Check>
-                                                        </Listeners>
-                                                    </ext:Checkbox>
-                                                    <ext:TimeField ID="tfDayTimeLimitRangeStart" runat="server" MinTime="0:00" Increment="30"
-                                                        Format="H:mm" Width="60" />
-                                                    <ext:DisplayField ID="dfDayTimeLimitRangeEnd" runat="server" Text="-" />
-                                                    <ext:TimeField ID="tfDayTimeLimitRangeEnd" runat="server" MinTime="0:00" Increment="30"
-                                                        Format="H:mm" Width="60" />
-                                                </Items>
-                                            </ext:CompositeField>
-                                            <ext:CompositeField ID="cfDayMonthTotalLimit" runat="server" FieldLabel="号码日月限量"
-                                                AnchorHorizontal="100%">
-                                                <Items>
-                                                    <ext:Checkbox ID="chkDayMonthTotalLimit" runat="server">
-                                                        <Listeners>
-                                                            <Check Handler="CheckDayMonthTotalLimit();"></Check>
-                                                        </Listeners>
-                                                    </ext:Checkbox>
-                                                    <ext:NumberField ID="nfPhoneLimitDayCount" runat="server" Width="60" />
-                                                    <ext:DisplayField ID="dfPhoneLimitDayCount" runat="server" Text="/" />
-                                                    <ext:NumberField ID="nfPhoneLimitMonthCount" runat="server" Width="60" />
-                                                </Items>
-                                            </ext:CompositeField>
-                                            <ext:CompositeField ID="cfDayTotalLimit" runat="server" FieldLabel="日总限量" AnchorHorizontal="100%">
-                                                <Items>
-                                                    <ext:Checkbox ID="chkDayTotalLimit" runat="server">
-                                                        <Listeners>
-                                                            <Check Handler="CheckDayTotalLimit();"></Check>
-                                                        </Listeners>
-                                                    </ext:Checkbox>
-                                                    <ext:NumberField ID="nfDayTotalLimit" runat="server" Width="60" />
-                                                </Items>
-                                            </ext:CompositeField>
-                                            <ext:FieldSet ID="fsLimitProvince" runat="server" CheckboxToggle="true" Collapsed="True"
-                                                Title="省份日总限量分配" AutoHeight="true" LabelWidth="75" Layout="Form">
-                                                <Items>
-                                                    <ext:GridPanel FieldLabel="省份日总限量分布" ID="grdAreaCountList" runat="server" StoreID="storeAreaCountList"
-                                                        StripeRows="true" Header="False" Height="180" Frame="True">
-                                                        <View>
-                                                            <ext:GridView ForceFit="true" ID="GridView1">
-                                                                <GetRowClass Handler="" FormatHandler="False"></GetRowClass>
-                                                            </ext:GridView>
-                                                        </View>
-                                                        <ColumnModel ID="ColumnModel1" runat="server">
-                                                            <Columns>
-                                                                <ext:RowNumbererColumn>
-                                                                </ext:RowNumbererColumn>
-                                                                <ext:Column ColumnID="colAreaName" DataIndex="AreaName" Header="省份" Sortable="true">
-                                                                </ext:Column>
-                                                                <ext:Column ColumnID="colLimitCount" DataIndex="LimitCount" Header="限量" Sortable="true">
-                                                                    <Editor>
-                                                                        <ext:NumberField ID="NumberField3" runat="server">
-                                                                        </ext:NumberField>
-                                                                    </Editor>
-                                                                </ext:Column>
-                                                            </Columns>
-                                                        </ColumnModel>
-                                                        <LoadMask ShowMask="true" />
-                                                    </ext:GridPanel>
-                                                </Items>
-                                                <Listeners>
-                                                    <BeforeExpand Handler="ResetProvinceCount();"></BeforeExpand>
-                                                    <BeforeCollapse Handler="ResetProvinceCount();"></BeforeCollapse>
-                                                </Listeners>
-                                            </ext:FieldSet>
-                                        </Items>
-                                    </ext:FieldSet>
+                                    <ext:TextField ID="txtSubCodes" NoteAlign="Down" Note="多个指令使用|分隔，例：( 1|2|3 )" runat="server" FieldLabel="子指令列表" AllowBlank="True"
+                                        Width="600" />
                                 </ext:Cell>
                                 <ext:Cell CellCls="cellClass" ColSpan="3">
                                     <ext:TextArea ID="txtDescription" runat="server" FieldLabel="备注信息" AllowBlank="True"
@@ -309,13 +145,13 @@
                         </ext:TableLayout>
                     </Items>
                 </ext:FormPanel>
-                <ext:FormPanel ID="Tab2" runat="server" Title="指令信息" Padding="6" AutoScroll="True">
+                <ext:FormPanel ID="frmCodeTextInfo" runat="server" Title="指令信息" Padding="6" AutoScroll="True" Hidden="True">
                     <Items>
                         <ext:TextArea ID="txtProvince" runat="server" FieldLabel="开通省份" AllowBlank="True"
                             AnchorHorizontal="95%" />
                         <ext:TextArea ID="txtDisableCity" runat="server" FieldLabel="屏蔽地市" AllowBlank="True"
                             AnchorHorizontal="95%" />
-                        <ext:ComboBox ID="cmbOperateType" Editable="false" runat="server" FieldLabel="运营商"
+                        <ext:ComboBox ID="cmbOperateType" Editable="false" runat="server" FieldLabel="运营商" AllowBlank="True"
                             LabelWidth="40" Width="120" TriggerAction="All">
                             <Items>
                                 <ext:ListItem Value="移动" Text="移动"></ext:ListItem>
@@ -346,8 +182,19 @@
     </Content>
     <Buttons>
         <ext:Button ID="btnSavelSPCode" runat="server" Text="保存" Icon="Add">
+
+            <DirectEvents>
+                <Click Before="if(!#{formPanelSPCodeAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPCode_Click"
+                    Success="Ext.MessageBox.alert('操作成功', '添加指令成功' ,RefreshData);"
+                    Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
+                    <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
+                </Click>
+            </DirectEvents>
         </ext:Button>
         <ext:Button ID="btnCancelSPCode" runat="server" Text="取消" Icon="Cancel">
+            <Listeners>
+                <Click Handler="#{winSPCodeAdd}.hide()"></Click>
+            </Listeners>
         </ext:Button>
     </Buttons>
     <Listeners>

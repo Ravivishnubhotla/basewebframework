@@ -164,6 +164,11 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_LIMITPROVINCE = "LimitProvince";
 		public static readonly string PROPERTY_NAME_LIMITPROVINCEAREA = "LimitProvinceArea";
 		public static readonly string PROPERTY_NAME_PARENTID = "ParentID";
+		public static readonly string PROPERTY_NAME_ISMATCHCASE = "IsMatchCase";
+		public static readonly string PROPERTY_NAME_ISDAYTIMELIMIT = "IsDayTimeLimit";
+		public static readonly string PROPERTY_NAME_DAYTIMELIMITRANGESTART = "DayTimeLimitRangeStart";
+		public static readonly string PROPERTY_NAME_DAYTIMELIMITRANGEEND = "DayTimeLimitRangeEnd";
+		public static readonly string PROPERTY_NAME_CHANNELSTATUS = "ChannelStatus";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -628,6 +633,81 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.ParentID = ((value == null) ? null : value.Entity);
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? IsMatchCase
+		{
+			get
+			{
+				return entity.IsMatchCase;
+			}
+			set
+			{
+				entity.IsMatchCase = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? IsDayTimeLimit
+		{
+			get
+			{
+				return entity.IsDayTimeLimit;
+			}
+			set
+			{
+				entity.IsDayTimeLimit = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public DateTime? DayTimeLimitRangeStart
+		{
+			get
+			{
+				return entity.DayTimeLimitRangeStart;
+			}
+			set
+			{
+				entity.DayTimeLimitRangeStart = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public DateTime? DayTimeLimitRangeEnd
+		{
+			get
+			{
+				return entity.DayTimeLimitRangeEnd;
+			}
+			set
+			{
+				entity.DayTimeLimitRangeEnd = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ChannelStatus
+		{
+			get
+			{
+				return entity.ChannelStatus;
+			}
+			set
+			{
+				entity.ChannelStatus = value;
 			}
 		}
 		/// <summary>

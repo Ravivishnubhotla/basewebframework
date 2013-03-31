@@ -70,6 +70,11 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CODEID_LIMITPROVINCE = "CodeID_SPClientCodeSycnParamsEntity_Alias.LimitProvince";
 		public const string PROPERTY_CODEID_LIMITPROVINCEAREA = "CodeID_SPClientCodeSycnParamsEntity_Alias.LimitProvinceArea";
 		public const string PROPERTY_CODEID_PARENTID = "CodeID_SPClientCodeSycnParamsEntity_Alias.ParentID";
+		public const string PROPERTY_CODEID_ISMATCHCASE = "CodeID_SPClientCodeSycnParamsEntity_Alias.IsMatchCase";
+		public const string PROPERTY_CODEID_ISDAYTIMELIMIT = "CodeID_SPClientCodeSycnParamsEntity_Alias.IsDayTimeLimit";
+		public const string PROPERTY_CODEID_DAYTIMELIMITRANGESTART = "CodeID_SPClientCodeSycnParamsEntity_Alias.DayTimeLimitRangeStart";
+		public const string PROPERTY_CODEID_DAYTIMELIMITRANGEEND = "CodeID_SPClientCodeSycnParamsEntity_Alias.DayTimeLimitRangeEnd";
+		public const string PROPERTY_CODEID_CHANNELSTATUS = "CodeID_SPClientCodeSycnParamsEntity_Alias.ChannelStatus";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPClientCodeSycnParamsEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPClientCodeSycnParamsEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPClientCodeSycnParamsEntity_Alias.LastModifyBy";

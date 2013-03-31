@@ -98,6 +98,16 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_CODEID_LIMITPROVINCEAREA;
 		        case "CodeID_ParentID":
 					return PROPERTY_CODEID_PARENTID;
+		        case "CodeID_IsMatchCase":
+					return PROPERTY_CODEID_ISMATCHCASE;
+		        case "CodeID_IsDayTimeLimit":
+					return PROPERTY_CODEID_ISDAYTIMELIMIT;
+		        case "CodeID_DayTimeLimitRangeStart":
+					return PROPERTY_CODEID_DAYTIMELIMITRANGESTART;
+		        case "CodeID_DayTimeLimitRangeEnd":
+					return PROPERTY_CODEID_DAYTIMELIMITRANGEEND;
+		        case "CodeID_ChannelStatus":
+					return PROPERTY_CODEID_CHANNELSTATUS;
 		        case "CodeID_CreateBy":
 					return PROPERTY_CODEID_CREATEBY;
 		        case "CodeID_CreateAt":
@@ -173,6 +183,11 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_CODEID_LIMITPROVINCE = "CodeID_SPClientCodeSycnParamsEntity_Alias.LimitProvince";
 		public const string PROPERTY_CODEID_LIMITPROVINCEAREA = "CodeID_SPClientCodeSycnParamsEntity_Alias.LimitProvinceArea";
 		public const string PROPERTY_CODEID_PARENTID = "CodeID_SPClientCodeSycnParamsEntity_Alias.ParentID";
+		public const string PROPERTY_CODEID_ISMATCHCASE = "CodeID_SPClientCodeSycnParamsEntity_Alias.IsMatchCase";
+		public const string PROPERTY_CODEID_ISDAYTIMELIMIT = "CodeID_SPClientCodeSycnParamsEntity_Alias.IsDayTimeLimit";
+		public const string PROPERTY_CODEID_DAYTIMELIMITRANGESTART = "CodeID_SPClientCodeSycnParamsEntity_Alias.DayTimeLimitRangeStart";
+		public const string PROPERTY_CODEID_DAYTIMELIMITRANGEEND = "CodeID_SPClientCodeSycnParamsEntity_Alias.DayTimeLimitRangeEnd";
+		public const string PROPERTY_CODEID_CHANNELSTATUS = "CodeID_SPClientCodeSycnParamsEntity_Alias.ChannelStatus";
 		public const string PROPERTY_CODEID_CREATEBY = "CodeID_SPClientCodeSycnParamsEntity_Alias.CreateBy";
 		public const string PROPERTY_CODEID_CREATEAT = "CodeID_SPClientCodeSycnParamsEntity_Alias.CreateAt";
 		public const string PROPERTY_CODEID_LASTMODIFYBY = "CodeID_SPClientCodeSycnParamsEntity_Alias.LastModifyBy";
@@ -690,6 +705,56 @@ namespace SPS.Bussiness.Wrappers
                 if (this. CodeID == null)
                     return null;
                 return  CodeID.ParentID;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_ISMATCHCASE)]
+        public bool? CodeID_IsMatchCase
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.IsMatchCase;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_ISDAYTIMELIMIT)]
+        public bool? CodeID_IsDayTimeLimit
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.IsDayTimeLimit;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_DAYTIMELIMITRANGESTART)]
+        public DateTime? CodeID_DayTimeLimitRangeStart
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.DayTimeLimitRangeStart;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_DAYTIMELIMITRANGEEND)]
+        public DateTime? CodeID_DayTimeLimitRangeEnd
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.DayTimeLimitRangeEnd;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CHANNELSTATUS)]
+        public string CodeID_ChannelStatus
+        {
+            get
+            {
+                if (this. CodeID == null)
+                    return null;
+                return  CodeID.ChannelStatus;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_CODEID_CREATEBY)]

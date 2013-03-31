@@ -2,8 +2,6 @@
     CodeBehind="SPCodeTreeListPage.aspx.cs" Inherits="SPSWeb.Moudles.SPS.Codes.SPCodeTreeListPage" %>
 
 <%@ Register Src="UCSPCodeAdd.ascx" TagName="UCSPCodeAdd" TagPrefix="uc1" %>
-<%@ Register Src="UCSPCodeEdit.ascx" TagName="UCSPCodeEdit" TagPrefix="uc2" %>
-<%@ Register Src="UCSPCodeView.ascx" TagName="UCSPCodeView" TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .cellClass
@@ -48,19 +46,9 @@
             <EventMask ShowMask="true" />
         </DirectEventConfig>
     </ext:Store>
-    <ext:Store ID="storeAreaCountList" runat="server">
-        <Reader>
-            <ext:JsonReader>
-                <Fields>
-                    <ext:RecordField Name="AreaName" />
-                    <ext:RecordField Name="LimitCount" />
-                </Fields>
-            </ext:JsonReader>
-        </Reader>
-    </ext:Store>
     <script type="text/javascript">
         function showAddForm() {
-              Ext.net.DirectMethods.UCSPCodeAdd.Show(
+            Ext.net.DirectMethods.UCSPCodeAdd.Show(
                 {
                     failure: function(msg) {
                         Ext.Msg.alert('操作失败', msg,RefreshData);
@@ -72,8 +60,7 @@
                 }              
             );
         }
-
-
+ 
         function LoadTree(searchfilters) {
             Ext.net.DirectMethods.GetTreeNodes(searchfilters,
                 {
@@ -101,25 +88,32 @@
             );    
         }
         
+        function CloseCodeEdit() {
+            var win = <%= this.winEditCodeSetting.ClientID %>;
+            win.hide();
+        }
 
+        function RefreshDataList() {
+            var pnl = <%= this.Panel2.ClientID %>;
+            LoadTree(Ext.encode(pnl.getForm().getFieldValues(false, 'dataIndex')));
+        }
  
         var RefreshData = function(btn) {
             var pnl = <%= this.Panel2.ClientID %>;
             LoadTree(Ext.encode(pnl.getForm().getFieldValues(false, 'dataIndex')));
         };
 
-        function showEditCode(id) {
-            Ext.net.DirectMethods.UCSPCodeEdit.Show(id,
-                {
-                    failure: function(msg) {
-                        Ext.Msg.alert('操作失败', msg,RefreshData);
-                    },
-                    eventMask: {
-                        showMask: true,
-                        msg: '处理中...'
-                    }
-                }              
-            );
+        function showEditCode(id,mocode) {
+            
+            var win = <%= this.winEditCodeSetting.ClientID %>;
+                
+            win.setTitle(' 编辑指令 ' + mocode + '  设置 ');
+                
+            win.autoLoad.url = 'SPCodeEdit.aspx';
+        
+            win.autoLoad.params.CodeID = id;		                
+            			                
+            win.show(); 
         }
             
         function showViewCode(id) {
@@ -137,10 +131,7 @@
         }
             
         function showSendTest(id,cname,cid) {
-            //                alert(id);
-            //                alert(cname);
-            //                alert(cid);
-            //                return;
+ 
             var win = <%= this.winSendTestRequestForm.ClientID %>;
                 
 
@@ -158,9 +149,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <uc1:UCSPCodeAdd ID="UCSPCodeAdd1" runat="server" />
-   <%-- <uc2:UCSPCodeEdit ID="UCSPCodeEdit1" runat="server" />
-    <uc3:UCSPCodeView ID="UCSPCodeView1" runat="server" />--%>
+    <uc1:UCSPCodeAdd ID="UCSPCodeAdd1" runat="server" />
     <ext:Viewport ID="Viewport1" runat="server" Layout="Fit">
         <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
@@ -222,8 +211,7 @@
                                                 DataIndex="SpNumber" />
                                             <ext:Button ID="Button5" runat="server" Text="搜索">
                                                 <Listeners>
-                                                    <Click Handler="LoadTree(Ext.encode(#{Panel2}.getForm().getFieldValues(false, 'dataIndex')));">
-                                                    </Click>
+                                                    <Click Handler="LoadTree(Ext.encode(#{Panel2}.getForm().getFieldValues(false, 'dataIndex')));"></Click>
                                                 </Listeners>
                                             </ext:Button>
                                         </Items>
@@ -237,20 +225,22 @@
                         <Columns>
                             <ext:TreeGridColumn Header="指令代码" Width="230" DataIndex="MoCode" />
                             <ext:TreeGridColumn Header="所属通道" Width="100" DataIndex="ChannelName" />
-                            <ext:TreeGridColumn Header="分配下家" Width="100" DataIndex="AssignedClientName" Align="Center">                          
+                            <ext:TreeGridColumn Header="分配下家" Width="100" DataIndex="AssignedClientName" Align="Center">
                             </ext:TreeGridColumn>
                             <ext:TreeGridColumn Header="扣率" Width="50" DataIndex="InterceptRate" />
                             <ext:TreeGridColumn Header="禁用" Width="50" DataIndex="Disable" />
                             <ext:TreeGridColumn Header="管理" Width="100" Align="Center">
                                 <XTemplate ID="XTemplate1" runat="server">
                                     <Html>
-                                        <a href="#" title="编辑" onclick="showEditCode('{CodeID}');"><img src="../Images/application_edit.png"></img></a>
+                                        <a href="#" title="编辑" onclick="showEditCode('{CodeID}','{MoCode}');"><img src="../Images/application_edit.png"></img></a>
                                         &nbsp;
                                         <a href="#" title="删除" onclick="alert('Node id - {CodeID}')"><img src="../Images/application_delete.png"></img></a>
                                         &nbsp;
                                         <a href="#" title="查看" onclick="showViewCode('{CodeID}');"><img src="../Images/application_view_detail.png"></img></a>
                                         &nbsp;
                                         <a href="#" title="测试" onclick="showSendTest('{CodeID}','{ChannelName}','{ChannelID}');"><img src="../Images/telephone_go.png"></img></a>
+                                        &nbsp;
+                                        <a href="#" title="指令限量设置" onclick="showSendTest('{CodeID}','{ChannelName}','{ChannelID}');"><img src="../Images/application_edit.png"></img></a>
                                     </Html>
                                 </XTemplate>
                             </ext:TreeGridColumn>
@@ -270,6 +260,34 @@
             <Params>
                 <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
                 </ext:Parameter>
+                <ext:Parameter Name="CodeID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winEditCodeSetting" runat="server" Title="编辑通道设置" Frame="true"
+        Width="780" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
+        <AutoLoad Url="SPCodeEdit.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="CodeID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winEditCodeInfo" runat="server" Title="编辑通道信息" Frame="true"
+        Width="780" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
+        <AutoLoad Url="SPCodeEdit.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
                 <ext:Parameter Name="CodeID" Mode="Raw" Value="0">
                 </ext:Parameter>
             </Params>

@@ -104,6 +104,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_INTERCEPTRATE = "InterceptRate";
 		public static readonly string PROPERTY_NAME_DEFAULTPRICE = "DefaultPrice";
 		public static readonly string PROPERTY_NAME_DEFAULTSHOWRECORDDAYS = "DefaultShowRecordDays";
+		public static readonly string PROPERTY_NAME_CHANNELSTATUS = "ChannelStatus";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
 		public static readonly string PROPERTY_NAME_LASTMODIFYBY = "LastModifyBy";
@@ -335,6 +336,21 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.DefaultShowRecordDays = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string ChannelStatus
+		{
+			get
+			{
+				return entity.ChannelStatus;
+			}
+			set
+			{
+				entity.ChannelStatus = value;
 			}
 		}
 		/// <summary>

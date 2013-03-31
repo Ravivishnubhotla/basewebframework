@@ -50,6 +50,7 @@ namespace SPS.Data.Tables
 		public static readonly DecimalProperty PROPERTY_CLIENTID_INTERCEPTRATE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".InterceptRate"));
 		public static readonly DecimalProperty PROPERTY_CLIENTID_DEFAULTPRICE = new DecimalProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".DefaultPrice"));
 		public static readonly IntProperty PROPERTY_CLIENTID_DEFAULTSHOWRECORDDAYS = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".DefaultShowRecordDays"));
+		public static readonly StringProperty PROPERTY_CLIENTID_CHANNELSTATUS = new StringProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".ChannelStatus"));
 		public static readonly IntProperty PROPERTY_CLIENTID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".CreateBy"));
 		public static readonly DateTimeProperty PROPERTY_CLIENTID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".CreateAt"));
 		public static readonly IntProperty PROPERTY_CLIENTID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_CLIENTID_ALIAS_NAME + ".LastModifyBy"));
@@ -136,6 +137,11 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_CODEID_LIMITPROVINCE = new BoolProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LimitProvince"));
 		public static readonly StringProperty PROPERTY_CODEID_LIMITPROVINCEAREA = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LimitProvinceArea"));
 		public static readonly EntityProperty<SPCodeEntity> PROPERTY_CODEID_PARENTID = new EntityProperty<SPCodeEntity>(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".ParentID"));
+		public static readonly BoolProperty PROPERTY_CODEID_ISMATCHCASE = new BoolProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".IsMatchCase"));
+		public static readonly BoolProperty PROPERTY_CODEID_ISDAYTIMELIMIT = new BoolProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".IsDayTimeLimit"));
+		public static readonly DateTimeProperty PROPERTY_CODEID_DAYTIMELIMITRANGESTART = new DateTimeProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".DayTimeLimitRangeStart"));
+		public static readonly DateTimeProperty PROPERTY_CODEID_DAYTIMELIMITRANGEEND = new DateTimeProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".DayTimeLimitRangeEnd"));
+		public static readonly StringProperty PROPERTY_CODEID_CHANNELSTATUS = new StringProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".ChannelStatus"));
 		public static readonly IntProperty PROPERTY_CODEID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".CreateBy"));
 		public static readonly DateTimeProperty PROPERTY_CODEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".CreateAt"));
 		public static readonly IntProperty PROPERTY_CODEID_LASTMODIFYBY = new IntProperty(Property.ForName(PROPERTY_CODEID_ALIAS_NAME + ".LastModifyBy"));
@@ -253,6 +259,8 @@ namespace SPS.Data.Tables
 							return typeof (decimal);
                 		case "ClientID_SPDayReportEntity_Alias.DefaultShowRecordDays":
 							return typeof (int);
+                		case "ClientID_SPDayReportEntity_Alias.ChannelStatus":
+							return typeof (string);
                 		case "ClientID_SPDayReportEntity_Alias.CreateBy":
 							return typeof (int);
                 		case "ClientID_SPDayReportEntity_Alias.CreateAt":
@@ -403,6 +411,16 @@ namespace SPS.Data.Tables
 							return typeof (string);
                 		case "CodeID_SPDayReportEntity_Alias.ParentID":
 							return typeof (int);
+                		case "CodeID_SPDayReportEntity_Alias.IsMatchCase":
+							return typeof (bool);
+                		case "CodeID_SPDayReportEntity_Alias.IsDayTimeLimit":
+							return typeof (bool);
+                		case "CodeID_SPDayReportEntity_Alias.DayTimeLimitRangeStart":
+							return typeof (DateTime);
+                		case "CodeID_SPDayReportEntity_Alias.DayTimeLimitRangeEnd":
+							return typeof (DateTime);
+                		case "CodeID_SPDayReportEntity_Alias.ChannelStatus":
+							return typeof (string);
                 		case "CodeID_SPDayReportEntity_Alias.CreateBy":
 							return typeof (int);
                 		case "CodeID_SPDayReportEntity_Alias.CreateAt":
