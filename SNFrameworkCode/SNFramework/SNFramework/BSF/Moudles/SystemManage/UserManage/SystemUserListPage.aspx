@@ -232,7 +232,7 @@
                 <TopBar>
                     <ext:Toolbar ID="tbTop" runat="server">
                         <Items>
-                            <ext:TextField ID="txtSearchName" FieldLabel="User Name" LabelWidth="70" runat="server" EmptyText="[Enter user Name]" />
+                            <ext:TextField ID="txtSearchName" FieldLabel="<%$ Resources:msgLableSearchName %>" LabelWidth="70" runat="server" EmptyText="<%$ Resources:msgEmptyTextSearchName %>" />
                             <ext:Button ID='btnFind' runat="server" Text="<%$ Resources : GlobalResource, msgSearch  %>"
                                 Icon="Find">
                                 <Listeners>

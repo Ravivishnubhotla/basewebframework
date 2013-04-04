@@ -11,8 +11,7 @@
   <add name="msgManage" value="Manage" />
   <add name="msgAction" value="Action" />
   <add name="msgTest" value="Test" />
-
-  
+  <add name="msgSelect" value="Select" />
   <add name="msgDataAction" value="Data Action" />
   <add name="msgPageInfo" value="Show record {0} - {1} total {2}" />
   <add name="msgNoRecordInfo" value="No matched record" />

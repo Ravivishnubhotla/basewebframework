@@ -227,6 +227,9 @@
     <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigEdit.ascx" />
     <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupAdd.ascx" />
     <Content Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupEdit.ascx" />
+    <Content Include="Moudles\SystemManage\DataSelector\RoleSelector.aspx" />
+    <Content Include="Moudles\SystemManage\DataSelector\SelectForm.aspx" />
+    <Content Include="Moudles\SystemManage\DataSelector\UserSelector.aspx" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\SystemDepartmentListPage.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\SystemDepartmentListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\DepartmentManage\App_LocalResources\SystemDepartmentListPage.aspx.zh-CHS.xml" />
@@ -458,7 +461,6 @@
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.en-US.xml" />
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.xml" />
     <Content Include="Moudles\SystemManage\UserManage\App_LocalResources\UCSystemUserEdit.ascx.zh-CHS.xml" />
-    <Content Include="Moudles\SystemManage\UserManage\DialogUserSelector.aspx" />
     <Content Include="Moudles\SystemManage\UserManage\SystemUserAssignedGroup.aspx" />
     <Content Include="Moudles\SystemManage\UserManage\SystemUserAssignedRole.aspx" />
     <Content Include="Moudles\SystemManage\UserManage\SystemUserListPage.aspx" />
@@ -567,6 +569,27 @@
     </Compile>
     <Compile Include="Moudles\SystemManage\ConfigManage\UCSystemConfigGroupEdit.ascx.designer.cs">
       <DependentUpon>UCSystemConfigGroupEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DataSelector\RoleSelector.aspx.cs">
+      <DependentUpon>RoleSelector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DataSelector\RoleSelector.aspx.designer.cs">
+      <DependentUpon>RoleSelector.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DataSelector\SelectForm.aspx.cs">
+      <DependentUpon>SelectForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DataSelector\SelectForm.aspx.designer.cs">
+      <DependentUpon>SelectForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DataSelector\UserSelector.aspx.cs">
+      <DependentUpon>UserSelector.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\DataSelector\UserSelector.aspx.designer.cs">
+      <DependentUpon>UserSelector.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SystemManage\DataService\CountryProvinceCityDataService.ashx.cs">
       <DependentUpon>CountryProvinceCityDataService.ashx</DependentUpon>
@@ -958,13 +981,6 @@
     </Compile>
     <Compile Include="Moudles\SystemManage\UserGroupManage\UCSystemUserGroupEdit.ascx.designer.cs">
       <DependentUpon>UCSystemUserGroupEdit.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\UserManage\DialogUserSelector.aspx.cs">
-      <DependentUpon>DialogUserSelector.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SystemManage\UserManage\DialogUserSelector.aspx.designer.cs">
-      <DependentUpon>DialogUserSelector.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SystemManage\UserManage\SystemUserAssignedGroup.aspx.cs">
       <DependentUpon>SystemUserAssignedGroup.aspx</DependentUpon>
