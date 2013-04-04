@@ -4,9 +4,9 @@
   <add name="msgLocked" value="锁定" />
   <add name="msgNormal" value="正常" />
   <add name="msgcolID" value="主键" />
-  <add name="msgcolUserLoginID" value="登录ID" />
+  <add name="msgcolUserLoginID" value="登录帐号" />
   <add name="msgcolUserName" value="用户名称" />
-  <add name="msgcolUserEmail" value="Email" />
+  <add name="msgcolUserEmail" value="电子邮件" />
   <add name="msgcolUserStatus" value="状态" />
   <add name="msgcolUserCreateDate" value="创建时间" />
   <add name="msgcolIsApproved" value="审批通过" />
