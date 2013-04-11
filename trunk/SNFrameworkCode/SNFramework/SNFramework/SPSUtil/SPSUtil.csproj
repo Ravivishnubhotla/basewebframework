@@ -42,8 +42,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Common.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging.Log4Net">
-      <HintPath>..\ThirdsDll\Common.Logging.Log4Net.dll</HintPath>
+    <Reference Include="Common.Logging.Log4Net1210">
+      <HintPath>..\ThirdsDll\Common.Logging.Log4Net1210.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\ThirdsDll\log4net.dll</HintPath>
@@ -190,6 +190,7 @@
     </Compile>
     <None Include="App.config">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

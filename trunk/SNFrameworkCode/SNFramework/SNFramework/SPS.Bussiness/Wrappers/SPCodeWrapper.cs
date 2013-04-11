@@ -116,10 +116,7 @@ namespace SPS.Bussiness.Wrappers
             return spcode.ToLower().Equals(this.SPCode.ToLower());
         }
 
-        public bool CheckIsMatchCode(string mo, string spcode, string province, string city)
-        {
-            return false;
-        }
+
  
 
         public int Priority
@@ -152,7 +149,7 @@ namespace SPS.Bussiness.Wrappers
 	        }
 	    }
 
-	    public bool CheckIsMatchCode(string mo)
+	    private bool CheckIsMatchCode(string mo)
         {
             switch (this.MOType)
             {
@@ -175,6 +172,26 @@ namespace SPS.Bussiness.Wrappers
                     return true;
             }
             return false;
+        }
+
+        public bool CheckIsMatchCode(string mo, string spcode, string province, string city)
+        {
+            bool codeIsMatch = CheckIsMatchCode(mo);
+
+            if (this.LimitProvince.HasValue && this.LimitProvince.Value)
+            {
+                if (!string.IsNullOrEmpty(this.LimitProvinceArea))
+                {
+                    List<string> limitProvinceAreaList = new List<string>(this.LimitProvinceArea.Split(("|").ToArray(), StringSplitOptions.None));
+
+                    codeIsMatch = limitProvinceAreaList.Contains(province);
+                }
+                else
+                {
+                    codeIsMatch = false;
+                }
+            }
+            return codeIsMatch;
         }
 
 

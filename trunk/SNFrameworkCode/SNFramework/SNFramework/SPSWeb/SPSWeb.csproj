@@ -109,6 +109,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Css\css.css" />
+    <Content Include="DataService\SPDataService.asmx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -199,7 +200,6 @@
     <Content Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsEdit.ascx" />
     <Content Include="Moudles\SPS\Codes\UCSPClientCodeSycnParamsView.ascx" />
     <Content Include="Moudles\SPS\Codes\UCSPCodeAdd.ascx" />
-    <Content Include="Moudles\SPS\Codes\UCSPCodeEdit.ascx" />
     <Content Include="Moudles\SPS\Codes\UCSPCodeView.ascx" />
     <Content Include="Moudles\SPS\Data\SPSDataManage.aspx" />
     <Content Include="Moudles\SPS\Reports\Blank.htm" />
@@ -245,6 +245,10 @@
     </Compile>
     <Compile Include="AppCode\SPSDataRecievedHandler.cs" />
     <Compile Include="AppCode\WebUIHelper.cs" />
+    <Compile Include="DataService\SPDataService.asmx.cs">
+      <DependentUpon>SPDataService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -738,13 +742,6 @@
     </Compile>
     <Compile Include="Moudles\SPS\Codes\UCSPCodeAdd.ascx.designer.cs">
       <DependentUpon>UCSPCodeAdd.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="Moudles\SPS\Codes\UCSPCodeEdit.ascx.cs">
-      <DependentUpon>UCSPCodeEdit.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SPS\Codes\UCSPCodeEdit.ascx.designer.cs">
-      <DependentUpon>UCSPCodeEdit.ascx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Codes\UCSPCodeView.ascx.cs">
       <DependentUpon>UCSPCodeView.ascx</DependentUpon>

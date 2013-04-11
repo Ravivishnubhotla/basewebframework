@@ -21,13 +21,13 @@ namespace SPSWeb.Moudles.SPS.Codes
             {
                 this.cmbChannel.Hidden = true;
                 this.cmbClient.Hidden = true;
-                this.btnAdd.Hidden = false;
+                this.btnAdd.Disabled = false;
             }
             else
             {
                 this.cmbChannel.Hidden = false;
                 this.cmbClient.Hidden = false;
-                this.btnAdd.Hidden = true;     
+                this.btnAdd.Disabled = true;     
             }
 
         }
