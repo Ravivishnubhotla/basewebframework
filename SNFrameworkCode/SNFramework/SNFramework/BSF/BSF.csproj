@@ -309,6 +309,10 @@
     <Content Include="Moudles\SystemManage\EmailTemplates\UCSystemEmailTemplateAdd.ascx" />
     <Content Include="Moudles\SystemManage\EmailTemplates\UCSystemEmailTemplateEdit.ascx" />
     <Content Include="Moudles\SystemManage\EmailTemplates\UCSystemEmailTemplateView.ascx" />
+    <Content Include="Moudles\SystemManage\FileManage\DialogFileUploader.aspx" />
+    <Content Include="Moudles\SystemManage\FileManage\fileUpload.js" />
+    <Content Include="Moudles\SystemManage\FileManage\InitSwfUpload.js" />
+    <Content Include="Moudles\SystemManage\FileManage\swfuploadevent.js" />
     <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogListPage.aspx.en-US.xml" />
     <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogListPage.aspx.xml" />
     <Content Include="Moudles\SystemManage\LogManage\App_LocalResources\SystemLogListPage.aspx.zh-CHS.xml" />
@@ -468,6 +472,12 @@
     <Content Include="Moudles\SystemManage\UserManage\UCSystemUserChangePwd.ascx" />
     <Content Include="Moudles\SystemManage\UserManage\UCSystemUserEdit.ascx" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\SwfUpload\swfupload.cookies.js" />
+    <Content Include="Scripts\SwfUpload\swfupload.js" />
+    <Content Include="Scripts\SwfUpload\swfupload.queue.js" />
+    <Content Include="Scripts\SwfUpload\swfupload.speed.js" />
+    <Content Include="Scripts\SwfUpload\swfupload.swf" />
+    <Content Include="Scripts\SwfUpload\swfupload.swfobject.js" />
     <Content Include="TestPage\WebForm1.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -743,6 +753,16 @@
     </Compile>
     <Compile Include="Moudles\SystemManage\EmailTemplates\UCSystemEmailTemplateView.ascx.designer.cs">
       <DependentUpon>UCSystemEmailTemplateView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\FileManage\DialogFileUploader.aspx.cs">
+      <DependentUpon>DialogFileUploader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\FileManage\DialogFileUploader.aspx.designer.cs">
+      <DependentUpon>DialogFileUploader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SystemManage\FileManage\FileUpload.ashx.cs">
+      <DependentUpon>FileUpload.ashx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SystemManage\LogManage\SystemLogListPage.aspx.cs">
       <DependentUpon>SystemLogListPage.aspx</DependentUpon>
@@ -1042,6 +1062,7 @@
   <ItemGroup>
     <Folder Include="Moudles\Installs\" />
     <Folder Include="Moudles\SystemManage\DataVersionManage\" />
+    <Folder Include="Moudles\SystemManage\FileManage\UploadFiles\" />
     <Folder Include="Moudles\SystemManage\Samples\UserSelector\" />
   </ItemGroup>
   <ItemGroup>
@@ -1057,6 +1078,7 @@
     <Content Include="Moudles\SystemManage\DataService\DictionaryDataService.ashx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Moudles\SystemManage\FileManage\FileUpload.ashx" />
     <None Include="Properties\PublishProfiles\BSF.pubxml" />
   </ItemGroup>
   <PropertyGroup>

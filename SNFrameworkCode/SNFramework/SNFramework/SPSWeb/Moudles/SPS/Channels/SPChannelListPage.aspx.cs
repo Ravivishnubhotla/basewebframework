@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Ext.Net;
+using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.Data.NHibernate.DynamicQuery;
 using SPS.Bussiness.Wrappers;
 using SPSWeb.AppCode;
@@ -48,29 +49,17 @@ namespace SPSWeb.Moudles.SPS.Channels
             if (sortFieldName == "ChannelTypeName")
                 sortFieldName = "ChannelType";
 
+            bool isDesc = (e.Dir == Ext.Net.SortDirection.DESC);
 
-            int startIndex = 0;
+            PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e, this.PagingToolBar1.PageSize);
 
-            if (e.Start > -1)
+            if (string.IsNullOrEmpty(sortFieldName))
             {
-                startIndex = e.Start;
+                sortFieldName = "Id";
+                isDesc = true;
             }
 
-            int limit = this.PagingToolBar1.PageSize;
-
-            int pageIndex = 1;
-
-            if ((startIndex % limit) == 0)
-                pageIndex = startIndex / limit + 1;
-            else
-                pageIndex = startIndex / limit;
-
-
-            PageQueryParams pageQueryParams = new PageQueryParams();
-            pageQueryParams.PageSize = limit;
-            pageQueryParams.PageIndex = pageIndex;
-
-            storeSPChannel.DataSource = SPChannelWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);
+            storeSPChannel.DataSource = SPChannelWrapper.FindAllByOrderBy(sortFieldName,isDesc, pageQueryParams);
             e.Total = pageQueryParams.RecordCount;
 
             storeSPChannel.DataBind();

@@ -86,12 +86,12 @@ namespace SPS.Bussiness.Wrappers
 
         public static List<SPChannelWrapper> FindAllByPage(PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(FindAll(businessProxy));
+            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
         }
 
         public static List<SPChannelWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
+            return ConvertToWrapperList(FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams,businessProxy));
         }
 
 
@@ -99,20 +99,20 @@ namespace SPS.Bussiness.Wrappers
         {
             orderByColumnName = ProcessColumnName(orderByColumnName);
 
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+            ProcessQueryFilters(filters);
+
+            return ConvertToWrapperList(FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc, pageQueryParams,businessProxy));
         }
 
 
         public static List<SPChannelWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
         {
-            List<SPChannelWrapper> results = null;
+            orderByFieldName = ProcessColumnName(orderByFieldName);
 
             ProcessQueryFilters(filters);
 
-            results = ConvertToWrapperList(
+            return ConvertToWrapperList(
                     FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
-
-            return results;
         }
 
         #endregion
@@ -171,7 +171,6 @@ namespace SPS.Bussiness.Wrappers
         public const string ChannelType_IVRCS = "IVRCS";
         public const string ChannelType_CustomCS = "CustomCS";
 
-
         public string ChannelTypeString
 	    {
             get
@@ -193,7 +192,6 @@ namespace SPS.Bussiness.Wrappers
             }
 	    }
         
-
 	    public string InterfaceUrl
         {
             get
@@ -286,8 +284,7 @@ namespace SPS.Bussiness.Wrappers
             }
 
             SPClientCodeRelationWrapper clientCodeRelation = matchCode.GetRelateClientCodeRelation();
-
-
+ 
             //如果存在指令，但是不存在对应的分配关系，转到默认匹配
             if (clientCodeRelation == null)
             {
@@ -404,7 +401,7 @@ namespace SPS.Bussiness.Wrappers
 	    public SPCodeWrapper GetMatchCodeFromIVRRequest(IDataAdapter httpRequestLog, string spcode, string province, string city)
 	    {
             var findCode = (from cc in Codes
-                            where (cc.CheckIsMatchCode(spcode) && (cc.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key))
+                            where (cc.CheckIsMatchCode("IVR",spcode,province,city) && (cc.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key))
                             orderby cc.Priority ascending, cc.Mo.Length descending
                             select cc).FirstOrDefault();
 
@@ -520,7 +517,7 @@ namespace SPS.Bussiness.Wrappers
         public SPCodeWrapper GetMatchCodeFromRequest(IDataAdapter httpRequestLog, string mo, string spcode, string province, string city)
         {
             var findCode = (from cc in Codes
-                            where (cc.CheckIsMatchSPCode(spcode) && cc.CheckIsMatchCode(mo) && (cc.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key))
+                            where (cc.CheckIsMatchSPCode(spcode) && cc.CheckIsMatchCode(mo, spcode, province, city) && (cc.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key))
                             orderby cc.Priority ascending , cc.Mo.Length descending 
                                  select cc).FirstOrDefault();
 
@@ -602,24 +599,21 @@ namespace SPS.Bussiness.Wrappers
 
                     return newID.GetHashCode().ToString("D" + (linkIDMaxLength-1).ToString()).Replace("-","1");
                 }
-                else
+
+                string[] fields = this.AutoLinkIDFields.Split(',');
+
+                string totalIDString = "";
+
+                foreach (string field in fields)
                 {
-                    string[] fields = this.AutoLinkIDFields.Split(',');
-
-                    string totalIDString = "";
-
-                    foreach (string field in fields)
-                    {
-                        totalIDString += httpRequestLog.RequestParams[field.ToLower()];
-                    }
-
-                    return totalIDString;//.GetHashCode().ToString("D" + (linkIDMaxLength-1).ToString()).Replace("-","1");
+                    totalIDString += httpRequestLog.RequestParams[field.ToLower()];
                 }
+
+                return totalIDString;//.GetHashCode().ToString("D" + (linkIDMaxLength-1).ToString()).Replace("-","1");
+
 	        }
-	        else
-	        {
-	            return this.ChannelParams.LinkIDFromRequset(httpRequestLog);
-	        }
+
+	        return this.ChannelParams.LinkIDFromRequset(httpRequestLog);
 	    }
 
 	    private SPChannelParamsCollection channelParams = null;
@@ -658,23 +652,21 @@ namespace SPS.Bussiness.Wrappers
 	            {
 	                return "只同步成功";
 	            }
-	            else
-	            {
-                    if (this.StateReportType == DictionaryConst.Dictionary_ChannelStateReportType_SendOnce_Key)
-                    {
-                        return "单次请求";
-                    }
-                    else if (this.StateReportType == DictionaryConst.Dictionary_ChannelStateReportType_SendTwice_Key)
-                    {
-                        return "双次请求";
-                    }
-                    else if (this.StateReportType == DictionaryConst.Dictionary_ChannelStateReportType_SendTwice_Key)
-                    {
-                        return "双次请求(分类型)";
-                    }
-	                return "未知类型";
-	            }
 
+                if (this.StateReportType == DictionaryConst.Dictionary_ChannelStateReportType_SendOnce_Key)
+                {
+                    return "单次请求";
+                }
+                else if (this.StateReportType == DictionaryConst.Dictionary_ChannelStateReportType_SendTwice_Key)
+                {
+                    return "双次请求";
+                }
+                else if (this.StateReportType == DictionaryConst.Dictionary_ChannelStateReportType_SendTwiceTypeRequest_Key)
+                {
+                    return "双次请求(分类型)";
+                }
+                
+	            return "未知类型";
 	        }
 	    }
 
@@ -695,10 +687,9 @@ namespace SPS.Bussiness.Wrappers
                  {
                      return RequestType.StatusReport;
                  }
-                 else
-                 {
-                     return RequestType.DataReport;
-                 }
+
+                 return RequestType.DataReport;
+
             }
             else if (this.StateReportType == DictionaryConst.Dictionary_ChannelStateReportType_SendTwiceTypeRequest_Key)
             {
@@ -712,10 +703,8 @@ namespace SPS.Bussiness.Wrappers
                 {
                     return RequestType.StatusReport;
                 }
-                else
-                {
-                    return RequestType.UnKnow;
-                }
+
+                return RequestType.UnKnow;
             }
             return RequestType.UnKnow;
 	    }

@@ -60,6 +60,12 @@
                 }              
             );
         }
+
+
+        function reloadCodes() {
+            var pnl = <%= Panel2.ClientID %>;
+            LoadTree(Ext.encode(pnl.getForm().getFieldValues(false, 'dataIndex')));
+        }
  
         function LoadTree(searchfilters) {
             Ext.net.DirectMethods.GetTreeNodes(searchfilters,
@@ -164,16 +170,11 @@
                                             <Click Handler="showAddForm();" />
                                         </Listeners>
                                     </ext:Button>
-                                    <ext:Button ID='btnRefresh' runat="server" Text="刷新" Icon="Reload">
-                                        <Listeners>
-                                            <Click Handler="LoadTree(Ext.encode(#{Panel2}.getForm().getFieldValues(false, 'dataIndex')));" />
-                                        </Listeners>
-                                    </ext:Button>
                                 </Items>
                             </ext:Toolbar>
                         </TopBar>
                         <Items>
-                            <ext:FieldSet ID="FieldSet1" runat="server" CheckboxToggle="False" Title="查询条件" AutoHeight="True"
+                            <ext:FieldSet ID="FieldSet1" runat="server" Frame="True" CheckboxToggle="False" Title="查询条件" AutoHeight="True"
                                 Collapsed="False" LabelWidth="75" Layout="Form">
                                 <Items>
                                     <ext:FormPanel ID="Panel2" runat="server" AnchorHorizontal="100%" Layout="HBoxLayout">
@@ -211,7 +212,7 @@
                                                 DataIndex="SpNumber" />
                                             <ext:Button ID="Button5" runat="server" Text="搜索">
                                                 <Listeners>
-                                                    <Click Handler="LoadTree(Ext.encode(#{Panel2}.getForm().getFieldValues(false, 'dataIndex')));"></Click>
+                                                    <Click Handler="reloadCodes();"></Click>
                                                 </Listeners>
                                             </ext:Button>
                                         </Items>
