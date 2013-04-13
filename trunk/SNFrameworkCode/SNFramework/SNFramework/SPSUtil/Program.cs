@@ -102,6 +102,8 @@ namespace SPSUtil
 
                     sendobj += " 所有数据 ";
 
+                    
+
                     logger.Info("开始发送“" + sendobj + "”当日数据。。。");
 
                     logger.Info("发送“" + sendobj + "”当日数据完成。。。");
