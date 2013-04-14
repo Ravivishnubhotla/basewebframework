@@ -79,7 +79,27 @@ namespace SPSUtil
 
  
                     break;
+                case "tsbLoadPhoneData":
 
+                    DockContent tsbLoadPhoneDatadDock = FindFormType(typeof(FrmLoadPhoneData));
+
+                    if (tsbLoadPhoneDatadDock == null)
+                    {
+                        if (ofdLoadPhoneText.ShowDialog() == DialogResult.OK)
+                        {
+                            FrmLoadPhoneData frmLoadPhoneData = new FrmLoadPhoneData();
+
+                            frmLoadPhoneData.Show(this.dpnlMain);
+
+                            frmLoadPhoneData.LoadText(ofdLoadPhoneText.FileName);
+                        }
+                    }
+                    else
+                    {
+                        tsbLoadPhoneDatadDock.Activate();
+                    }
+ 
+                    break;
                     
                     
             }
@@ -97,5 +117,7 @@ namespace SPSUtil
             }
             return null;
         }
+
+ 
     }
 }

@@ -18,7 +18,7 @@
 
   <!-- Database and NHibernate Configuration  -->
 
-  <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate32">
+  <object id="NHibernateSessionFactory" type="Spring.Data.NHibernate.LocalSessionFactoryObject, Spring.Data.NHibernate33">
     <property name="DbProvider" ref="DbProvider"/>
     <property name="MappingAssemblies">
       <list>
@@ -39,14 +39,14 @@
         <entry key="show_sql" value="false"/>
         <entry key="command_timeout" value="60"/>
         <entry key="query.substitutions" value="true 1, false 0, yes 'Y', no 'N'"/>
-
+        <entry key="adonet.batch_size" value="100"/>
       </dictionary>
     </property>
  
   </object>
 
   <object id="transactionManager"
-		  type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate32">
+		  type="Spring.Data.NHibernate.HibernateTransactionManager, Spring.Data.NHibernate33">
     <property name="DbProvider" ref="DbProvider"/>
     <property name="SessionFactory" ref="NHibernateSessionFactory"/>
   </object>

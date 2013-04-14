@@ -539,7 +539,7 @@ namespace SPS.Bussiness.Wrappers
             {
                 try
                 {
-                    SystemPhoneAreaWrapper phoneArea = SystemPhoneAreaWrapper.GetPhoneAreaByMobilePrefix(mobile.Substring(0, 7));
+                    SystemPhoneAreaWrapper phoneArea = SystemPhoneAreaWrapper.FindByPhonePrefix(mobile.Substring(0, 7));
 
                     if (phoneArea == null)
                         return null;

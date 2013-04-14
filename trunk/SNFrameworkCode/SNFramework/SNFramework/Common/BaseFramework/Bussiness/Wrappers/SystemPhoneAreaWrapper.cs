@@ -100,14 +100,27 @@ namespace Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers
 			
 		#endregion
 
-        public static SystemPhoneAreaWrapper GetPhoneAreaByMobilePrefix(string mobilePrefix)
+        public static SystemPhoneAreaWrapper FindByPhonePrefix(string mobilePrefix)
         {
             return  ConvertEntityToWrapper(businessProxy.GetPhoneAreaByMobilePrefix(mobilePrefix));
         }
 
-        public static object GetAllPhoneInfos_Key()
+        public static HashSet<string> GetAllPhonePrefix()
         {
-            return null;
+            List<SystemPhoneAreaWrapper> phoneAreaWrappers = SystemPhoneAreaWrapper.FindAll();
+
+            HashSet<string> allPhonePrefix = new HashSet<string>();
+
+            foreach (SystemPhoneAreaWrapper phoneAreaWrapper in phoneAreaWrappers)
+            {
+                allPhonePrefix.Add(phoneAreaWrapper.PhonePrefix);
+            }
+
+            return allPhonePrefix;
         }
+
+
+
+ 
     }
 }

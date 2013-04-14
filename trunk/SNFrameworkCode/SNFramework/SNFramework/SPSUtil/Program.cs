@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Common.Logging;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using SPS.Bussiness.Wrappers;
+using SPSUtil.Moudles;
 using SubSonic.Repository;
 
 namespace SPSUtil
@@ -26,11 +27,11 @@ namespace SPSUtil
             {
 
                 //命令行方式批处理运行
-                if (args.Length > 0 && args[0].ToLower() == "-c")
-                {
-                    RunAsCmd(args);
-                    return;
-                }
+                //if (args.Length > 0 && args[0].ToLower() == "-c")
+                //{
+                //    RunAsCmd(args);
+                //    return;
+                //}
 
                 //处理未捕获的异常   
                 Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
