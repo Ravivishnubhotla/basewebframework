@@ -1605,6 +1605,24 @@
     <Compile Include="Bussiness\NHibernate\BaseSpringNHibernateWrapper.cs" />
     <Compile Include="Bussiness\NHibernate\IAuditableWrapper.cs" />
     <Compile Include="Bussiness\NHibernate\PropertyChangeInfo.cs" />
+    <Compile Include="Csv\CachedCsvReader.cs" />
+    <Compile Include="Csv\CachedCsvReader.CsvBindingList.cs" />
+    <Compile Include="Csv\CachedCsvReader.CsvPropertyDescriptor.cs" />
+    <Compile Include="Csv\CachedCsvReader.CsvRecordComparer.cs" />
+    <Compile Include="Csv\CsvReader.cs" />
+    <Compile Include="Csv\CsvReader.DataReaderValidations.cs" />
+    <Compile Include="Csv\CsvReader.RecordEnumerator.cs" />
+    <Compile Include="Csv\Events\ParseErrorEventArgs.cs" />
+    <Compile Include="Csv\Exceptions\MalformedCsvException.cs" />
+    <Compile Include="Csv\Exceptions\MissingFieldCsvException.cs" />
+    <Compile Include="Csv\MissingFieldAction.cs" />
+    <Compile Include="Csv\ParseErrorAction.cs" />
+    <Compile Include="Csv\Resources\ExceptionText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExceptionText.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Csv\ValueTrimmingOptions.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\NhibernateQueryPropertyAttribute.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\PageQueryParams.cs" />
     <Compile Include="Data\NHibernate\DynamicQuery\Propertys\BoolProperty.cs" />
@@ -1787,6 +1805,10 @@
     <EmbeddedResource Include="BaseFramework\Providers\NHibernateProviderSR.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>NHibernateProviderSR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Csv\Resources\ExceptionText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExceptionText.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Win\Process\ProcessForm.resx">
       <DependentUpon>ProcessForm.cs</DependentUpon>
