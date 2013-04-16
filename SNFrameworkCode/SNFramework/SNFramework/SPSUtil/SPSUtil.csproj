@@ -48,11 +48,11 @@
     <Reference Include="log4net">
       <HintPath>..\ThirdsDll\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB">
-      <HintPath>..\ThirdsDll\MongoDB.dll</HintPath>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\ThirdsDll\MongoDB.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.GridFS">
-      <HintPath>..\ThirdsDll\MongoDB.GridFS.dll</HintPath>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\ThirdsDll\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.0.8.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -101,6 +101,7 @@
     <Compile Include="AppCode\IProgressTask.cs" />
     <Compile Include="AppCode\IProgressTaskItem.cs" />
     <Compile Include="AppCode\NumberGenerator.cs" />
+    <Compile Include="AppCode\PhoneArea.cs" />
     <Compile Include="AppCode\ProcessResult.cs" />
     <Compile Include="AppCode\SPSRequestTest.cs" />
     <Compile Include="AppCode\SPSTestParams.cs" />
