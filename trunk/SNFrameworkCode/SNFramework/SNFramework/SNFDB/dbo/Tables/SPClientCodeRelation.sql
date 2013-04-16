@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[SPClientCodeRelation] (
+    [ID]                          INT             IDENTITY (1, 1) NOT NULL,
+    [CodeID]                      INT             NOT NULL,
+    [ClientID]                    INT             NOT NULL,
+    [Price]                       DECIMAL (18, 2) NOT NULL,
+    [InterceptRate]               DECIMAL (18, 2) NOT NULL,
+    [UseClientDefaultSycnSetting] BIT             NOT NULL,
+    [SyncData]                    BIT             NOT NULL,
+    [SycnRetryTimes]              NCHAR (10)      NOT NULL,
+    [SyncDataSetting]             INT             NULL,
+    [StartDate]                   DATETIME        NULL,
+    [EndDate]                     DATETIME        NULL,
+    [IsEnable]                    BIT             NOT NULL,
+    [SycnNotInterceptCount]       INT             NOT NULL,
+    [DefaultShowRecordDays]       INT             NOT NULL,
+    [ChannelStatus]               NVARCHAR (20)   NULL,
+    [CreateBy]                    INT             NULL,
+    [CreateAt]                    DATETIME        NULL,
+    [LastModifyBy]                INT             NULL,
+    [LastModifyAt]                DATETIME        NULL,
+    [LastModifyComment]           NVARCHAR (300)  NULL,
+    CONSTRAINT [PK_SPClientCodeRelation] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [FK_SPClientCodeRelation_SPCode] FOREIGN KEY ([CodeID]) REFERENCES [dbo].[SPCode] ([ID]) ON DELETE CASCADE,
+    CONSTRAINT [FK_SPClientCodeRelation_SPSClient] FOREIGN KEY ([ClientID]) REFERENCES [dbo].[SPSClient] ([ID]) ON DELETE CASCADE,
+    CONSTRAINT [FK_SPClientCodeRelation_SPSDataSycnSetting1] FOREIGN KEY ([SyncDataSetting]) REFERENCES [dbo].[SPSDataSycnSetting] ([ID]) ON DELETE SET NULL
+);
+

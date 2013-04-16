@@ -240,6 +240,8 @@
     <Compile Include="AppCode\DataRecievedHandler.cs" />
     <Compile Include="AppCode\IVRDataRecievedHandler.cs" />
     <Compile Include="AppCode\JSonResult.cs" />
+    <Compile Include="AppCode\MongodbHelper.cs" />
+    <Compile Include="AppCode\PhoneArea.cs" />
     <Compile Include="AppCode\SPClientViewPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -913,6 +915,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

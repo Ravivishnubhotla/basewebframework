@@ -48,6 +48,12 @@
     <Reference Include="log4net">
       <HintPath>..\ThirdsDll\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB">
+      <HintPath>..\ThirdsDll\MongoDB.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.GridFS">
+      <HintPath>..\ThirdsDll\MongoDB.GridFS.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.0.8.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ThirdsDll\Newtonsoft.Json.dll</HintPath>
@@ -117,6 +123,12 @@
     <Compile Include="Moudles\FrmLoadPhoneData.Designer.cs">
       <DependentUpon>FrmLoadPhoneData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\FrmPhoneDataToNoSQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Moudles\FrmPhoneDataToNoSQL.Designer.cs">
+      <DependentUpon>FrmPhoneDataToNoSQL.cs</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\frmTestSender.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Moudles\FrmLoadPhoneData.resx">
       <DependentUpon>FrmLoadPhoneData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moudles\FrmPhoneDataToNoSQL.resx">
+      <DependentUpon>FrmPhoneDataToNoSQL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Moudles\frmTestSender.resx">
       <DependentUpon>frmTestSender.cs</DependentUpon>
@@ -565,6 +580,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_table.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_connect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_go.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_lightning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

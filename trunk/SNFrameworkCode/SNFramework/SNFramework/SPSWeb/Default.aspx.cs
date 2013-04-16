@@ -6,6 +6,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Legendigital.Framework.Common.Securitys.SSO;
+using SPSWeb.AppCode;
 
 namespace SPSWeb
 {
@@ -13,6 +14,7 @@ namespace SPSWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            MongodbHelper.RefreshDbPhoneArea();
             if (SSOConfig.SystemAuthenticationMode == SSOConfig.AuthenticationMode.SSOMode)
             {
                 SSOProvider.RedirectToBSFDefaultUrl(this);

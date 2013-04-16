@@ -438,5 +438,10 @@ namespace SPS.Bussiness.Wrappers
             Update(this);
 
         }
+
+        public static List<SPRecordWrapper> FindAllSendRecordByClientAndCodeAndDateRange(SPSClientWrapper client, SPCodeWrapper code, DateTime startDate, DateTime endDate)
+        {
+            return ConvertToWrapperList(businessProxy.FindAllSendRecordByClientAndCodeAndDateRange(client.Entity, code.Entity, startDate, endDate));
+        }
     }
 }

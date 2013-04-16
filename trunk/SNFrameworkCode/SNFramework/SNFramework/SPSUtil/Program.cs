@@ -6,6 +6,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Common.Logging;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
+using Legendigital.Framework.Common.Utility;
 using SPS.Bussiness.Wrappers;
 using SPSUtil.Moudles;
 using SubSonic.Repository;
@@ -16,6 +17,19 @@ namespace SPSUtil
     {
         public static ILog logger = LogManager.GetLogger("ConsoleLog");
         //public static SimpleRepository DbRepository = null; 
+
+        public static string NoSQL_DBConnString
+        {
+            get { return ConfigurationUtil.GetConfigValue("NoSQL.DBConnString", ""); }
+        }
+        public static string NoSQL_DbName
+        {
+            get { return ConfigurationUtil.GetConfigValue("NoSQL.DbName", ""); }
+        }
+        public static string NoSQL_CollectionName
+        {
+            get { return ConfigurationUtil.GetConfigValue("NoSQL.CollectionName", ""); }
+        }
 
         /// <summary>
         /// The main entry point for the application.
@@ -102,6 +116,12 @@ namespace SPSUtil
                     }
 
                     sendobj += " 所有数据 ";
+
+                    List<SPRecordWrapper> sendRecords = SPRecordWrapper.FindAllSendRecordByClientAndCodeAndDateRange(client, code, DateTime.Now.Date, DateTime.Now.AddDays(1).Date);
+
+
+
+                    
 
                     
 
