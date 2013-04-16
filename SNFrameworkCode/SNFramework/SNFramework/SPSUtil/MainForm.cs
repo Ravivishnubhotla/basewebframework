@@ -100,6 +100,27 @@ namespace SPSUtil
                     }
  
                     break;
+
+                case "tsbSycnDataToNoSQL":
+
+                    DockContent tsbSycnDataToNoSQLDock = FindFormType(typeof(FrmPhoneDataToNoSQL));
+
+                    if (tsbSycnDataToNoSQLDock == null)
+                    {
+
+                        FrmPhoneDataToNoSQL frmLoadPhoneData = new FrmPhoneDataToNoSQL();
+
+                        frmLoadPhoneData.Show(this.dpnlMain);
+
+                    }
+                    else
+                    {
+                        tsbSycnDataToNoSQLDock.Activate();
+                    }
+ 
+                    break;
+
+                    
                     
                     
             }

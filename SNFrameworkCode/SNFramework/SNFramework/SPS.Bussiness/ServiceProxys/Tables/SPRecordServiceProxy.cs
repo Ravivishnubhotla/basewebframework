@@ -27,6 +27,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
         List<SPRecordEntity> QueryRecord(SPChannelEntity channel, SPCodeEntity code, SPSClientEntity client, string dataType, DateTime? startDate, DateTime? endDate, List<QueryFilter> filters, string orderByColumnName, bool isDesc);
         decimal CaculteActualInterceptRate(SPClientCodeRelationEntity clientCodeRelation, DateTime date);
         //void AutoMatch(int channelId, int codeId, int clientId, DateTime startDate, DateTime endDate);
+        List<SPRecordEntity> FindAllSendRecordByClientAndCodeAndDateRange(SPSClientEntity client, SPCodeEntity code, DateTime startDate, DateTime endDate);
     }
 
     internal partial class SPRecordServiceProxy : BaseSpringNHibernateEntityServiceProxy<SPRecordEntity,int>, ISPRecordServiceProxy
@@ -111,6 +112,10 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             return this.AdoNetDb.CaculteActualInterceptRate(clientCodeRelation, date);
         }
 
- 
+        public List<SPRecordEntity> FindAllSendRecordByClientAndCodeAndDateRange(SPSClientEntity client, SPCodeEntity code, DateTime startDate, DateTime endDate)
+        {
+            return this.SelfDataObj.QueryRecordByPage(null, code, client, "DownNotSycn", startDate, endDate, new List<QueryFilter>(),
+                                                     SPRecordWrapper.PROPERTY_NAME_CREATEDATE, false);
+        }
     }
 }

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>SNFDB.DataBase</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{1f83d3c7-cbdf-4ef8-8b30-7d23a3078a15}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>SNFDB</RootNamespace>
+    <AssemblyName>SNFDB</AssemblyName>
+    <ModelCollation>2052,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Chinese_PRC_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="dbo\Functions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\SPRecord.sql" />
+    <Build Include="dbo\Tables\SystemTimeZone.sql" />
+    <Build Include="dbo\Tables\SystemPrivilege.sql" />
+    <Build Include="dbo\Tables\SystemTerminology.sql" />
+    <Build Include="dbo\Tables\SystemPrivilegeParameter.sql" />
+    <Build Include="dbo\Tables\SystemTemplate.sql" />
+    <Build Include="dbo\Tables\SystemPrivilegeInRoles.sql" />
+    <Build Include="dbo\Tables\SystemTask.sql" />
+    <Build Include="dbo\Tables\SystemShortMessageLog.sql" />
+    <Build Include="dbo\Tables\SystemShortMessage.sql" />
+    <Build Include="dbo\Tables\SystemSetting.sql" />
+    <Build Include="dbo\Tables\SystemRole.sql" />
+    <Build Include="dbo\Tables\SystemRichText.sql" />
+    <Build Include="dbo\Tables\SystemWorkFlowStep.sql" />
+    <Build Include="dbo\Tables\SystemWorkFlow.sql" />
+    <Build Include="dbo\Tables\SPCode.sql" />
+    <Build Include="dbo\Tables\SystemUserProfilePropertys.sql" />
+    <Build Include="dbo\Tables\SPMemo.sql" />
+    <Build Include="dbo\Tables\SPFilterRule.sql" />
+    <Build Include="dbo\Tables\SPParamsConvertRule.sql" />
+    <Build Include="dbo\Tables\SystemDataType.sql" />
+    <Build Include="dbo\Tables\SystemCountry.sql" />
+    <Build Include="dbo\Tables\SystemConfigGroup.sql" />
+    <Build Include="dbo\Tables\SystemEmailTemplate.sql" />
+    <Build Include="dbo\Tables\SystemEmailSettings.sql" />
+    <Build Include="dbo\Tables\SystemEmailQueue.sql" />
+    <Build Include="dbo\Tables\SPSClient.sql" />
+    <Build Include="dbo\Tables\SystemDictionaryGroup.sql" />
+    <Build Include="dbo\Tables\SystemOrganization.sql" />
+    <Build Include="dbo\Tables\SystemNumberSeed.sql" />
+    <Build Include="dbo\Tables\SystemLog.sql" />
+    <Build Include="dbo\Tables\SPClientCodeRelation.sql" />
+    <Build Include="dbo\Tables\SystemIPLocation.sql" />
+    <Build Include="dbo\Tables\SystemAttachment.sql" />
+    <Build Include="dbo\Tables\SystemApplication.sql" />
+    <Build Include="dbo\Tables\SystemAddress.sql" />
+    <Build Include="dbo\Tables\SPUpper.sql" />
+    <Build Include="dbo\Tables\SystemPhoneArea.sql" />
+    <Build Include="dbo\Tables\SPSDataSycnSetting.sql" />
+    <Build Include="dbo\Tables\SPChannel.sql" />
+    <Build Include="dbo\Tables\SystemEmployee.sql" />
+    <Build Include="dbo\Tables\SPAdPack.sql" />
+    <Build Include="dbo\Tables\SystemMoudle.sql" />
+    <Build Include="dbo\Tables\SystemMenu.sql" />
+    <Build Include="dbo\Tables\SystemDictionary.sql" />
+    <Build Include="dbo\Tables\SystemDepartment.sql" />
+    <Build Include="dbo\Tables\SystemConfig.sql" />
+    <Build Include="dbo\Tables\SystemUserProfile.sql" />
+    <Build Include="dbo\Tables\SPAdvertisement.sql" />
+    <Build Include="dbo\Tables\SystemUserGroupUserRelation.sql" />
+    <Build Include="dbo\Tables\SystemUserGroupRoleRelation.sql" />
+    <Build Include="dbo\Tables\SystemRoleApplication.sql" />
+    <Build Include="dbo\Tables\SystemAttachmentContent.sql" />
+    <Build Include="dbo\Tables\SPAdAssignedHistorty.sql" />
+    <Build Include="dbo\Tables\SystemView.sql" />
+    <Build Include="dbo\Tables\SystemUserRoleRelation.sql" />
+    <Build Include="dbo\Tables\SPAdReport.sql" />
+    <Build Include="dbo\Tables\SPRecordExtendInfo.sql" />
+    <Build Include="dbo\Tables\SystemPost.sql" />
+    <Build Include="dbo\Tables\SystemPersonalizationSettings.sql" />
+    <Build Include="dbo\Tables\SystemProvince.sql" />
+    <Build Include="dbo\Tables\SystemRoleMenuRelation.sql" />
+    <Build Include="dbo\Tables\SystemResources.sql" />
+    <Build Include="dbo\Tables\SystemVersion.sql" />
+    <Build Include="dbo\Tables\SystemViewItem.sql" />
+    <Build Include="dbo\Tables\SystemCity.sql" />
+    <Build Include="dbo\Tables\SPMonitoringRequest.sql" />
+    <Build Include="dbo\Tables\SPChannelSycnParams.sql" />
+    <Build Include="dbo\Tables\SPChannelParams.sql" />
+    <Build Include="dbo\Tables\SystemDepartmentPostRoleRelation.sql" />
+    <Build Include="dbo\Tables\SystemMoudleField.sql" />
+    <Build Include="dbo\Tables\SPClientCodeSycnParams.sql" />
+    <Build Include="dbo\Tables\SystemOperation.sql" />
+    <Build Include="dbo\Tables\SPDayReport.sql" />
+    <Build Include="dbo\Tables\SystemUserGroup.sql" />
+    <Build Include="dbo\Tables\SPCodeInfo.sql" />
+    <Build Include="dbo\Tables\SystemUser.sql" />
+    <Build Include="dbo\Views\vw_DayReportForLine.sql" />
+    <Build Include="dbo\Functions\GetProvinceID.sql" />
+  </ItemGroup>
+</Project>

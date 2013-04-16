@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[SystemOrganization] (
+    [ID]                 INT             IDENTITY (1, 1) NOT NULL,
+    [Name]               NVARCHAR (50)   NULL,
+    [ShortName]          NVARCHAR (50)   NULL,
+    [Code]               NVARCHAR (50)   NULL,
+    [Description]        NVARCHAR (2000) NULL,
+    [LogoUrl]            NVARCHAR (200)  NULL,
+    [Type]               NVARCHAR (50)   NULL,
+    [MasterName]         NVARCHAR (50)   NULL,
+    [IsMainOrganization] BIT             NULL,
+    [ParentID]           INT             NULL,
+    [AddressID]          INT             NULL,
+    [TelPhone]           NVARCHAR (30)   NULL,
+    [FaxNumber]          NVARCHAR (30)   NULL,
+    [WebSite]            NVARCHAR (50)   NULL,
+    [Email]              NVARCHAR (50)   NULL,
+    [CreateBy]           INT             NULL,
+    [CreateAt]           DATETIME        NULL,
+    [LastModifyBy]       INT             NULL,
+    [LastModifyAt]       DATETIME        NULL,
+    [LastModifyComment]  NVARCHAR (300)  NULL,
+    CONSTRAINT [PK_SystemOrganization] PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [FK_SystemOrganization_SystemOrganization] FOREIGN KEY ([ParentID]) REFERENCES [dbo].[SystemOrganization] ([ID])
+);
+

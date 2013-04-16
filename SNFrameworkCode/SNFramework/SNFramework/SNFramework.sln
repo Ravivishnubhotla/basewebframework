@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2010
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Code Templates", "Code Templates", "{6510D54F-B017-443F-A2AF-B7A9A0173BD4}"
 	ProjectSection(SolutionItems) = preProject
 		Code Templates\BaseTableConfig.dat = Code Templates\BaseTableConfig.dat
@@ -35,6 +35,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\itextsharp.dll = ThirdsDll\itextsharp.dll
 		ThirdsDll\log4net.dll = ThirdsDll\log4net.dll
 		ThirdsDll\Microsoft.ReportViewer.WebForms.dll = ThirdsDll\Microsoft.ReportViewer.WebForms.dll
+		ThirdsDll\MongoDB.Bson.dll = ThirdsDll\MongoDB.Bson.dll
+		ThirdsDll\MongoDB.Driver.dll = ThirdsDll\MongoDB.Driver.dll
 		ThirdsDll\MySql.Data.dll = ThirdsDll\MySql.Data.dll
 		ThirdsDll\Newtonsoft.Json.dll = ThirdsDll\Newtonsoft.Json.dll
 		ThirdsDll\NHibernate.dll = ThirdsDll\NHibernate.dll
@@ -44,6 +46,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{
 		ThirdsDll\Spring.Aop.dll = ThirdsDll\Spring.Aop.dll
 		ThirdsDll\Spring.Core.dll = ThirdsDll\Spring.Core.dll
 		ThirdsDll\Spring.Data.dll = ThirdsDll\Spring.Data.dll
+		ThirdsDll\Spring.Data.NHibernate33.dll = ThirdsDll\Spring.Data.NHibernate33.dll
+		ThirdsDll\Spring.Scheduling.Quartz20.dll = ThirdsDll\Spring.Scheduling.Quartz20.dll
 		ThirdsDll\Spring.Services.dll = ThirdsDll\Spring.Services.dll
 		ThirdsDll\Spring.Template.Velocity.dll = ThirdsDll\Spring.Template.Velocity.dll
 		ThirdsDll\Spring.Web.dll = ThirdsDll\Spring.Web.dll
@@ -66,6 +70,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSF", "BSF\BSF.csproj", "{EE885813-ECF3-403D-A4B5-C7CD00EA5B60}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSWeb", "SPSWeb\SPSWeb.csproj", "{4214970B-6082-4874-B6F4-186E619EC001}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SNFDB.DataBase", "SNFDB\SNFDB.DataBase.sqlproj", "{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -189,6 +195,27 @@ Global
 		{4214970B-6082-4874-B6F4-186E619EC001}.WebDebug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{4214970B-6082-4874-B6F4-186E619EC001}.WebDebug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{4214970B-6082-4874-B6F4-186E619EC001}.WebDebug|x86.ActiveCfg = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Debug|Mixed Platforms.Deploy.0 = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.Release|x86.ActiveCfg = Release|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.WebDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.WebDebug|Any CPU.Build.0 = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.WebDebug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.WebDebug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.WebDebug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.WebDebug|Mixed Platforms.Deploy.0 = Debug|Any CPU
+		{1F83D3C7-CBDF-4EF8-8B30-7D23A3078A15}.WebDebug|x86.ActiveCfg = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

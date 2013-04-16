@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[SystemEmailQueue] (
+    [QueueID]         INT            IDENTITY (1, 1) NOT NULL,
+    [Title]           NVARCHAR (200) NULL,
+    [Body]            NTEXT          NULL,
+    [FromAddress]     NVARCHAR (200) NULL,
+    [FromName]        NVARCHAR (200) NULL,
+    [ToAddresss]      NTEXT          NULL,
+    [ToNames]         NTEXT          NULL,
+    [CCAddresss]      NTEXT          NULL,
+    [CCNames]         NTEXT          NULL,
+    [BCCAddresss]     NTEXT          NULL,
+    [BCCNames]        NTEXT          NULL,
+    [EmailTemplateID] INT            NOT NULL,
+    [Statues]         NVARCHAR (200) NULL,
+    [SendRetry]       INT            NULL,
+    [MaxRetryTime]    INT            NULL,
+    [MailLog]         NTEXT          NULL,
+    [CreateDate]      DATETIME       NULL,
+    [CreateBy]        INT            NULL,
+    [SendConfig]      NCHAR (10)     NULL,
+    [SendDate]        DATETIME       NULL,
+    [OrderIndex]      INT            NULL,
+    CONSTRAINT [PK_SystemEmailQueue] PRIMARY KEY CLUSTERED ([QueueID] ASC)
+);
+
