@@ -10,16 +10,16 @@ namespace SPS.Bussiness.Cache
         public static IPhoneAreaCache GetPhoneAreaCache()
         {
             if (NOSQLConfig.NoSQL_Enable)
-                return new PhoneAreaMemoryCache();
+                return new PhoneAreaNOSQLCache();
 
-            return new PhoneAreaNOSQLCache();
+            return new PhoneAreaMemoryCache();
         }
         public static ILinkIDCache GetLinkIDCache()
         {
             //if (NOSQLConfig.NoSQL_Enable)
-            //    return new LinkIDMemoryCache();
+            //    return new LinkIDNOSQLCache();
 
-            return new LinkIDNOSQLCache();
+            return new LinkIDMemoryCache();
         }
 
 
