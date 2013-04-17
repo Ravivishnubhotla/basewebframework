@@ -64,7 +64,10 @@
     <Compile Include="Cache\ILinkIDCache.cs" />
     <Compile Include="Cache\IPhoneAreaCache.cs" />
     <Compile Include="Cache\LinkIDMemoryCache.cs" />
+    <Compile Include="Cache\LinkIDNOSQLCache.cs" />
+    <Compile Include="Cache\NOSQLConfig.cs" />
     <Compile Include="Cache\PhoneAreaMemoryCache.cs" />
+    <Compile Include="Cache\PhoneAreaNOSQLCache.cs" />
     <Compile Include="Code\PhoneArea.cs" />
     <Compile Include="Code\PhoneLimitAreaAssigned.cs" />
     <Compile Include="Code\SPDayReport.cs" />

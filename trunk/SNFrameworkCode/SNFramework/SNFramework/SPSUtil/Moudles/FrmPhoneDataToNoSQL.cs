@@ -63,7 +63,7 @@ namespace SPSUtil.Moudles
             SetTitle(title, rowCounts);
 
             var client = new MongoClient(Program.NoSQL_DBConnString);
-
+         
             var server = client.GetServer();
 
             var database = server.GetDatabase(Program.NoSQL_DbName);
@@ -113,66 +113,7 @@ namespace SPSUtil.Moudles
 
                 collection.Save(entity, mongoInsert);
             }
-
-            //using (Mongo mongo = new Mongo(Program.NoSQL_DBConnString))
-            //{
-            //    //获取databaseName对应的数据库，不存在则自动创建
-            //    MongoDatabase mongoDatabase = mongo.GetDatabase(Program.NoSQL_DbName) as MongoDatabase;
-
-            //    //获取collectionName对应的集合，不存在则自动创建
-            //    MongoCollection<Document> mongoCollection = mongoDatabase.GetCollection<Document>(Program.NoSQL_CollectionName) as MongoCollection<Document>;
-
-            //    //链接数据库
-            //    mongo.Connect();
-
-            //    int i = 0;
-
-            //    foreach (SystemPhoneAreaWrapper phoneAreaWrapper in phoneAreaWrappers)
-            //    {
-            //        i++;
-
-            //        Document findOne = new Document
-            //                               {
-            //                                   {"PhonePrefix", phoneAreaWrapper.PhonePrefix}
-            //                               };
-
-            //        ////在集合中查找键值对为ID=1的文档对象
-            //        Document docFind = mongoCollection.FindOne(findOne);
-
-            //        if (docFind != null)
-            //        {
-            //            this.Invoke(new Action(delegate()
-            //            {
-            //                this.lblProcessProgress.Text = "号码数据导入中（ " + i.ToString() + "/" + rowCounts.ToString() + "）。。。";
-            //            }));
-            //            continue;
-            //        }
-                    
-            //        Document documentInsert = new Document();
-            //        documentInsert["ID"] = System.Guid.NewGuid().ToString();
-            //        documentInsert["PhonePrefix"] = phoneAreaWrapper.PhonePrefix;
-            //        documentInsert["Province"] = phoneAreaWrapper.Province;
-            //        documentInsert["City"] = phoneAreaWrapper.City;
-            //        documentInsert["OperatorType"] = phoneAreaWrapper.OperatorType;
-
-            //        mongoCollection.Save(documentInsert,false);
-
-            //        rowSuccessCounts++;
-
-            //        this.Invoke(new Action(delegate()
-            //        {
-            //            this.lblProcessProgress.Text = "号码数据导入中（ " + i .ToString() + "/" + rowCounts.ToString() + "）。。。";
-            //        }));
  
-            //    }
-
-            //    mongo.Disconnect();
- 
-            //}
-
-            
-
-
         }
 
         private void bgwDataToNoSQL_ProgressChanged(object sender, ProgressChangedEventArgs e)
