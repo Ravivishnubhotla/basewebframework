@@ -14,7 +14,6 @@ namespace SPSWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            MongodbHelper.RefreshDbPhoneArea();
             if (SSOConfig.SystemAuthenticationMode == SSOConfig.AuthenticationMode.SSOMode)
             {
                 SSOProvider.RedirectToBSFDefaultUrl(this);

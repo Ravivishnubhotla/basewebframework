@@ -14,6 +14,7 @@ using System.Web;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
 using Newtonsoft.Json;
+using SPS.Bussiness.Cache;
 using SPS.Bussiness.Code;
 using SPS.Bussiness.ConstClass;
 using SPS.Bussiness.DataAdapter;
@@ -246,7 +247,7 @@ namespace SPS.Bussiness.Wrappers
 	        string city = "";
             string mobileOperator    = "";        
 
-            PhoneAreaInfo phoneArea = this.GetProvinceAndCity(mobile);
+            PhoneArea phoneArea = this.GetProvinceAndCity(mobile);
 
             if(phoneArea!=null)
             {
@@ -258,8 +259,8 @@ namespace SPS.Bussiness.Wrappers
                     city = phoneArea.City;
                 else
                     city = "";
-                if (!string.IsNullOrEmpty(phoneArea.MobileOperators))
-                    mobileOperator = phoneArea.MobileOperators;
+                if (!string.IsNullOrEmpty(phoneArea.OperatorType))
+                    mobileOperator = phoneArea.OperatorType;
                 else
                     mobileOperator = "";
             }
@@ -379,7 +380,7 @@ namespace SPS.Bussiness.Wrappers
                 errorMessage = "";
                 try
                 {
-                    LinkIDQueryCache.AddLinkIDs(linkid, this.Id);
+                    CacheProviderFactory.GetLinkIDCache().AddLinkIDs(linkid, this.Id);
                 }
                 catch (Exception ex)
                 {
@@ -529,12 +530,10 @@ namespace SPS.Bussiness.Wrappers
             return defaultCode;
         }
 
-        private PhoneAreaInfo GetProvinceAndCity(string mobile)
+        public static PhoneArea GetPhoneAreaInfo(string mobile)
 	    {
+            PhoneArea phoneAreaInfo = null;
 
-            PhoneAreaInfo phoneAreaInfo = null;
-
-//#if DEBUG
             if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
             {
                 try
@@ -544,10 +543,10 @@ namespace SPS.Bussiness.Wrappers
                     if (phoneArea == null)
                         return null;
 
-                    phoneAreaInfo = new PhoneAreaInfo();
-                    phoneAreaInfo.MobileOperators = phoneArea.OperatorType;
+                    phoneAreaInfo = new PhoneArea();
+                    phoneAreaInfo.OperatorType = phoneArea.OperatorType;
                     phoneAreaInfo.Province = phoneArea.Province;
-                    phoneArea.City = phoneArea.City;
+                    phoneAreaInfo.City = phoneArea.City;
 
                 }
                 catch (Exception ex)
@@ -557,26 +556,37 @@ namespace SPS.Bussiness.Wrappers
             }
 
             return phoneAreaInfo;
-//#else
-//            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
-//            {
-//                try
-//                {
-//                    try
-//                    {
-//                        phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
-//                    }
-//                    catch (Exception)
-//                    {
-//                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
-//                    }
-//                }
-//                catch (Exception ex)
-//                {
-//                    Logger.Error(ex.Message);
-//                }
-//            }
-//#endif
+	    }
+
+        private PhoneArea GetProvinceAndCity(string mobile)
+	    {
+
+            PhoneArea phoneAreaInfo = null;
+
+#if DEBUG
+            phoneAreaInfo = GetPhoneAreaInfo(mobile);
+
+            return phoneAreaInfo;
+#else
+            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
+            {
+                try
+                {
+                    try
+                    {
+                        phoneAreaInfo = PhoneAreaMemoryCache.GetPhoneAreaByPhoneNumber(mobile);
+                    }
+                    catch (Exception)
+                    {
+                        phoneAreaInfo = GetPhoneAreaInfo(mobile);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
+            }
+#endif
 
 
 	    }
@@ -584,7 +594,7 @@ namespace SPS.Bussiness.Wrappers
 	    private bool CheckLinkIDIsExisted(string linkid)
 	    {
 	        return false;
-            //return LinkIDQueryCache.CheckLinkIDAndChannelIDIsExisted(linkid,this.Id);
+            //return LinkIDMemoryCache.CheckLinkIDAndChannelIDIsExisted(linkid,this.Id);
 	    }
 
 	    private const int linkIDMaxLength = 20;
