@@ -563,32 +563,33 @@ namespace SPS.Bussiness.Wrappers
 
             PhoneArea phoneAreaInfo = null;
 
-#if DEBUG
-            phoneAreaInfo = GetPhoneAreaInfo(mobile);
+//#if DEBUG
+//            phoneAreaInfo = GetPhoneAreaInfo(mobile);
 
-            return phoneAreaInfo;
-#else
+           
+//#else
             if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
             {
                 try
                 {
                     try
                     {
-                        phoneAreaInfo = PhoneAreaMemoryCache.GetPhoneAreaByPhoneNumber(mobile);
+                        phoneAreaInfo = CacheProviderFactory.GetPhoneAreaCache().GetPhoneAreaByPhoneNumber(mobile);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
+                        Logger.Error("NOSQL∂¡»°¥ÌŒÛ°£",ex);
                         phoneAreaInfo = GetPhoneAreaInfo(mobile);
                     }
                 }
                 catch (Exception ex)
                 {
-                    Logger.Error(ex.Message);
+                    Logger.Error(" ÷ª˙∫≈∂Œ∂¡»° ß∞‹°£",ex);
                 }
             }
-#endif
+//#endif
 
-
+            return phoneAreaInfo;
 	    }
 
 	    private bool CheckLinkIDIsExisted(string linkid)

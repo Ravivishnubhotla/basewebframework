@@ -117,7 +117,7 @@ namespace SPSUtil
 
                     sendobj += " 所有数据 ";
 
-                    List<SPRecordWrapper> sendRecords = SPRecordWrapper.FindAllSendRecordByClientAndCodeAndDateRange(client, code, DateTime.Now.Date, DateTime.Now.AddDays(1).Date);
+                    //List<SPRecordWrapper> sendRecords = SPRecordWrapper.FindAllSendRecordByClientAndCodeAndDateRange(client, code, DateTime.Now.Date, DateTime.Now.AddDays(1).Date);
 
 
 
