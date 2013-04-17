@@ -35,6 +35,12 @@
     <Reference Include="Common.Logging">
       <HintPath>..\ThirdsDll\Common.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\ThirdsDll\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\ThirdsDll\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\ThirdsDll\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -54,9 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\LinkIDQueryCache.cs" />
-    <Compile Include="Code\PhoneAreaInfo.cs" />
-    <Compile Include="Code\PhoneCache.cs" />
+    <Compile Include="Cache\CacheProviderFactory.cs" />
+    <Compile Include="Cache\ILinkIDCache.cs" />
+    <Compile Include="Cache\IPhoneAreaCache.cs" />
+    <Compile Include="Cache\LinkIDMemoryCache.cs" />
+    <Compile Include="Cache\PhoneAreaMemoryCache.cs" />
+    <Compile Include="Code\PhoneArea.cs" />
     <Compile Include="Code\PhoneLimitAreaAssigned.cs" />
     <Compile Include="Code\SPDayReport.cs" />
     <Compile Include="Code\SPInterceptRateCache.cs" />
@@ -266,7 +275,9 @@
       <Name>SPS.Entity</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

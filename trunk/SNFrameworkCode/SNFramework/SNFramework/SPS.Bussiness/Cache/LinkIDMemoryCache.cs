@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Common.Logging;
 
-namespace SPS.Bussiness.Code
+namespace SPS.Bussiness.Cache
 {
-    public static class LinkIDQueryCache
+    public class LinkIDMemoryCache : ILinkIDCache
     {
-
-        private static ILog logger = LogManager.GetLogger(typeof(LinkIDQueryCache));
+        private static ILog logger = LogManager.GetLogger(typeof(LinkIDMemoryCache));
 
         public static HashSet<string> cachedLinkIDs;
 
@@ -35,9 +32,9 @@ namespace SPS.Bussiness.Code
             }
         }
 
-        public const int MaxCacheItems = 200000;
+        protected const int MaxCacheItems = 800000;
 
-        public static void AddLinkIDs(string linkid, int channelid)
+        public void AddLinkIDs(string linkid, int channelid)
         {
 
             try
@@ -69,7 +66,7 @@ namespace SPS.Bussiness.Code
             return channelid.ToString("D5") + "-" + linkid;
         }
 
-        public static bool CheckLinkIDIsExisted(string linkid, int channelid)
+        public bool CheckLinkIDIsExisted(string linkid, int channelid)
         {
             try
             {
