@@ -428,7 +428,7 @@ namespace SPS.Bussiness.Wrappers
             {
                 clientCodeRelation = this.ChannelID.GetDefaultClientCodeRelation();
 
-                matchCode = clientCodeRelation.CodeID;
+                //matchCode = clientCodeRelation.CodeID;
             }
 
             this.CodeID = matchCode;

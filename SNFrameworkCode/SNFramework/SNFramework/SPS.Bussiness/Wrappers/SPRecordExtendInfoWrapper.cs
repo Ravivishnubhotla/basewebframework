@@ -102,7 +102,7 @@ namespace SPS.Bussiness.Wrappers
 
 	    public IDataAdapter GetHttpRequestLog()
 	    {
-	        throw new NotImplementedException();
+	        return new RequestContentAdapter(this.RequestContent);
 	    }
     }
 }
