@@ -94,15 +94,6 @@ namespace SPSWeb.Moudles.SPS.Codes {
         protected global::Ext.Net.Button btnAdd;
         
         /// <summary>
-        /// btnRefresh control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Button btnRefresh;
-        
-        /// <summary>
         /// FieldSet1 control.
         /// </summary>
         /// <remarks>

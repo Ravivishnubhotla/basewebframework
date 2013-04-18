@@ -103,15 +103,6 @@ namespace SPSWeb.Moudles.SPS.Clients {
         protected global::Ext.Net.Checkbox chkSyncData;
         
         /// <summary>
-        /// Checkbox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.Checkbox Checkbox1;
-        
-        /// <summary>
         /// txtSycnRetryTimes control.
         /// </summary>
         /// <remarks>

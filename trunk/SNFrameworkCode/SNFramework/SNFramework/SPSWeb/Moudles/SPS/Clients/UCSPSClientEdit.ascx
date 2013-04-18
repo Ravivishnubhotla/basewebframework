@@ -67,8 +67,8 @@
         <ext:Button ID="btnSaveSPSClient" runat="server" Text="Edit" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPSClientEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSPSClient_Click" Success="Ext.MessageBox.alert('操作成功', '更新客户信息成功！',callback);function callback(id) {#{formPanelSPSClientEdit}.getForm().reset();#{storeSPSClient}.reload(); };
-" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
+                    OnEvent="btnSaveSPSClient_Click" 
+                    Success="ShowMessage('操作成功','编辑客户成功！',1);#{formPanelSPSClientEdit}.getForm().reset();#{storeSPSClient}.reload();" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="保存中,请稍候....." />
                 </Click>
             </DirectEvents>

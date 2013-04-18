@@ -125,7 +125,7 @@
         OnRefreshData="storeSPSClient_Refresh">
         <AutoLoadParams>
             <ext:Parameter Name="start" Value="0" Mode="Raw" />
-            <ext:Parameter Name="limit" Value="8" Mode="Raw" />
+            <ext:Parameter Name="limit" Value="15" Mode="Raw" />
         </AutoLoadParams>
         <Proxy>
             <ext:PageProxy />
@@ -220,7 +220,7 @@
                 </ColumnModel>
                 <LoadMask ShowMask="true" />
                 <BottomBar>
-                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSPSClient"
+                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="15" StoreID="storeSPSClient"
                         DisplayInfo="true" DisplayMsg="显示客户 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的客户" />
                 </BottomBar>
                 <Listeners>

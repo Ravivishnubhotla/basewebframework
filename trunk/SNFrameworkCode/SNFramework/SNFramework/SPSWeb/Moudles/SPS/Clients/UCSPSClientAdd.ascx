@@ -69,8 +69,7 @@
         <ext:Button ID="btnSavelSPSClient" runat="server" Text="添加" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPSClientAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPSClient_Click"
-                    Success="Ext.MessageBox.alert('操作成功', '添加客户成功！' ,callback);function callback(id) {#{formPanelSPSClientAdd}.getForm().reset();#{storeSPSClient}.reload(); };
-"
+                    Success="#{formPanelSPSClientAdd}.getForm().reset();ShowMessage('操作成功','添加客户成功！',1);#{storeSPSClient}.reload();"
                     Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>

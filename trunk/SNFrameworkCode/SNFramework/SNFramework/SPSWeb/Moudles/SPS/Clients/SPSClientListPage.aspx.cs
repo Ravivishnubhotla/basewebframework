@@ -45,10 +45,16 @@ namespace SPSWeb.Moudles.SPS.Clients
         protected void storeSPSClient_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
             string sortFieldName = "";
+
             if (e.Sort != null)
                 sortFieldName = e.Sort;
 
- 
+            if (string.IsNullOrEmpty(sortFieldName))
+            {
+                sortFieldName = SPSClientWrapper.PROPERTY_NAME_ID;
+            }
+
+
             PageQueryParams pageQueryParams = WebUIHelper.GetPageQueryParamFromStoreRefreshDataEventArgs(e, this.PagingToolBar1);
 
             storeSPSClient.DataSource = SPSClientWrapper.FindAllByOrderBy(sortFieldName, (e.Dir == Ext.Net.SortDirection.DESC), pageQueryParams);

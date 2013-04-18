@@ -225,7 +225,7 @@
                         EnableDD="true">
                         <Columns>
                             <ext:TreeGridColumn Header="指令代码" Width="300" DataIndex="MoCode" />
-                            <ext:TreeGridColumn Header="所属通道" Width="100" DataIndex="ChannelName" />
+                            <ext:TreeGridColumn Header="所属通道" Width="100" DataIndex="ChannelName" Hidden='<%# (ChannelID != null) %>' AutoDataBind="True" />
                             <ext:TreeGridColumn Header="分配下家" Width="100" DataIndex="AssignedClientName" Align="Center">
                             </ext:TreeGridColumn>
                             <ext:TreeGridColumn Header="扣率" Width="50" DataIndex="InterceptRate" />

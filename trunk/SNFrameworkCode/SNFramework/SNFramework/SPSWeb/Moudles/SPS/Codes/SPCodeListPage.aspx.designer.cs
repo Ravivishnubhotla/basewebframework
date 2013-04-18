@@ -39,7 +39,14 @@ namespace SPSWeb.Moudles.SPS.Codes {
         /// </remarks>
         protected global::SPSWeb.Moudles.SPS.Codes.UCSPCodeAdd UCSPCodeAdd1;
         
- 
+        /// <summary>
+        /// UCSPCodeEdit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UserControl UCSPCodeEdit1;
         
         /// <summary>
         /// UCSPCodeView1 control.
