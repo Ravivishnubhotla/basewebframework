@@ -35,7 +35,6 @@
                     hideDelay: 1000,
                     closeVisible: true,
                     autoHide: true,
-                    pinEvent: 'click',
                     html: content,
                     title: title
                 });

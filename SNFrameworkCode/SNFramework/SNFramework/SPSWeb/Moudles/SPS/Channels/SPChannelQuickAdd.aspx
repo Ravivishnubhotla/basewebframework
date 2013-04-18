@@ -405,8 +405,7 @@
                     <ext:Button ID="btnAdd" runat="server" Text="添加" Icon="Accept">
                         <DirectEvents>
                             <Click Before="if(!#{panlQuickAddChannel}.getForm().isValid()) return false;" OnEvent="btnAdd_Click"
-                                Success="Ext.MessageBox.alert('操作成功', '快速添加通道成功！' ,callback);function callback(id) {#{panlQuickAddChannel}.getForm().reset();parent.RefreshSPChannelData();parent.CloseQuickAdd(); };
-" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
+                                Success="#{panlQuickAddChannel}.getForm().reset();parent.ShowMessage('操作成功','快速添加通道成功！',1);parent.RefreshSPChannelData();parent.CloseQuickAdd(); " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                                 <EventMask ShowMask="true" Msg="数据保存中,请稍等....." />
                             </Click>
                         </DirectEvents>

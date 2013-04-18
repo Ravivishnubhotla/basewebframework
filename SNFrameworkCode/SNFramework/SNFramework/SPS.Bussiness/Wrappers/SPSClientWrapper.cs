@@ -78,7 +78,7 @@ namespace SPS.Bussiness.Wrappers
 
         public static List<SPSClientWrapper> FindAllByOrderBy(string orderByColumnName, bool isDesc, PageQueryParams pageQueryParams)
         {
-            return ConvertToWrapperList(FindAllByPage(pageQueryParams, businessProxy));
+            return ConvertToWrapperList(FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams, businessProxy));
         }
 
 
@@ -86,20 +86,20 @@ namespace SPS.Bussiness.Wrappers
         {
             orderByColumnName = ProcessColumnName(orderByColumnName);
 
-            return FindAllByOrderByAndFilter(new List<QueryFilter>(), orderByColumnName, isDesc, pageQueryParams);
+            ProcessQueryFilters(filters);
+
+            return ConvertToWrapperList(FindAllByOrderByAndFilter(filters, orderByColumnName, isDesc, pageQueryParams, businessProxy));
         }
 
 
         public static List<SPSClientWrapper> FindAllByOrderByAndFilter(List<QueryFilter> filters, string orderByFieldName, bool isDesc)
         {
-            List<SPSClientWrapper> results = null;
+            orderByFieldName = ProcessColumnName(orderByFieldName);
 
             ProcessQueryFilters(filters);
 
-            results = ConvertToWrapperList(
+            return ConvertToWrapperList(
                     FindAllByOrderByAndFilter(filters, orderByFieldName, isDesc, businessProxy));
-
-            return results;
         }
 
         #endregion

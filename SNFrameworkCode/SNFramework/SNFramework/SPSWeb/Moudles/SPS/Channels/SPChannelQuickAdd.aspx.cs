@@ -134,7 +134,7 @@ namespace SPSWeb.Moudles.SPS.Channels
                 }
 
 
-
+                ResourceManager.AjaxSuccess = true;
 
                 //SPChannelFiltersWrapper.Save(obj);
 

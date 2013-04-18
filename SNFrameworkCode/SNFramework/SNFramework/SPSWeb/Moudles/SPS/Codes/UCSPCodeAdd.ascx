@@ -35,7 +35,7 @@
    
 </script>
 <ext:Window ID="winSPCodeAdd" runat="server" Icon="ApplicationAdd" Title="快速添加指令"
-    Width="780" Height="380" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
+    Width="780" Height="360" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
         <ext:TabPanel ID="tpMain" runat="server" ActiveTabIndex="0" Plain="true">
@@ -185,7 +185,7 @@
 
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPCodeAdd}.getForm().isValid()) return false;" OnEvent="btnSaveSPCode_Click"
-                    Success="Ext.MessageBox.alert('操作成功', '添加指令成功' ,RefreshData);"
+                    Success="ShowMessage('操作成功','添加指令成功！',1);reloadCodes();"
                     Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
                 </Click>

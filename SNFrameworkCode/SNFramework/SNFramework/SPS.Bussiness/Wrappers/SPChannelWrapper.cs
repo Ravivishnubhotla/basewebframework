@@ -559,7 +559,7 @@ namespace SPS.Bussiness.Wrappers
         {
             var findCode = (from cc in Codes
                             where (cc.CheckIsMatchSPCode(spcode) && cc.CheckIsMatchCode(mo, spcode, province, city) && (cc.MOType != DictionaryConst.Dictionary_CodeType_CodeDefault_Key))
-                            orderby cc.Priority ascending , cc.Mo.Length descending 
+                            orderby cc.Priority ascending, cc.Mo.Length descending, cc.LimitProvince descending 
                                  select cc).FirstOrDefault();
 
             if (findCode != null)
