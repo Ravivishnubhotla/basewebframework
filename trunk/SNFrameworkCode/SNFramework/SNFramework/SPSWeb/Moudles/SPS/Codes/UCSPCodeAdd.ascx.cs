@@ -53,8 +53,7 @@ namespace SPSWeb.Moudles.SPS.Codes
             {
                 SPCodeWrapper obj = new SPCodeWrapper();
 
-                obj.Name = ChannelID.Name + "-" + this.txtMO.Text.Trim() + "-" + this.txtSPCode.Text.Trim() + "-" + this.cmbCodeType.SelectedItem.Value;
-                obj.Code = ChannelID.Name + "-" + this.txtMO.Text.Trim() + "-" + this.txtSPCode.Text.Trim() + "-" + this.cmbCodeType.SelectedItem.Value;
+
                 obj.Description = this.txtDescription.Text.Trim();
                 obj.ChannelID = ChannelID;
 
@@ -91,7 +90,8 @@ namespace SPSWeb.Moudles.SPS.Codes
 
                 //obj.SendText = this.txtCodeSendText.Text.Trim();
 
-                
+                obj.Name = ChannelID.Name + "-" + obj.MoCode;
+                obj.Code = ChannelID.Name + "-" + obj.MoCode;
 
                 SPCodeWrapper.QuickAddCode(obj,this.txtSubCodes.Text);
 

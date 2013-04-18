@@ -23,7 +23,7 @@ namespace SPS.Data.Tables
             return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);
         }
 
-        public SPCodeEntity GetCodeByMoAndSPCodeAndMoTypeAndNoFilter(string mo, string spCode, string moType, string spCodeType,string codeType)
+        public SPCodeEntity GetCodeByMoAndSPCodeAndMoTypeAndNoFilter(string mo, string spCode, string moType, string spCodeType,string codeType,bool? limitProvince,string limitProvinceArea)
         {
             NHibernateDynamicQueryGenerator<SPCodeEntity> dynamicQueryGenerator = this.GetNewQueryBuilder();
 
@@ -34,7 +34,8 @@ namespace SPS.Data.Tables
             dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_MOTYPE.Eq(moType));
             dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_SPCODE.Eq(spCode));
             dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_SPCODETYPE.Eq(spCodeType));
-
+            dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_LIMITPROVINCE.Eq(limitProvince.Value));
+            dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_LIMITPROVINCEAREA.Eq(limitProvinceArea));
             dynamicQueryGenerator.AddWhereClause(SPCodeDataObject.PROPERTY_HASFILTERS.Eq(false));
 
             return this.FindSingleEntityByQueryBuilder(dynamicQueryGenerator);

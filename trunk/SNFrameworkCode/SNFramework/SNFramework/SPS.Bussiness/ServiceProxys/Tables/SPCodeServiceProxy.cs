@@ -56,7 +56,7 @@ namespace SPS.Bussiness.ServiceProxys.Tables
             {
                 throw new Exception("编码已存在！");
             }
-            if (!codeEntity.HasFilters && this.SelfDataObj.GetCodeByMoAndSPCodeAndMoTypeAndNoFilter(codeEntity.Mo, codeEntity.SPCode, codeEntity.MOType, codeEntity.SPCodeType, codeEntity.CodeType) != null)
+            if (!codeEntity.HasFilters && this.SelfDataObj.GetCodeByMoAndSPCodeAndMoTypeAndNoFilter(codeEntity.Mo, codeEntity.SPCode, codeEntity.MOType, codeEntity.SPCodeType, codeEntity.CodeType, codeEntity.LimitProvince, codeEntity.LimitProvinceArea) != null)
             {
                 throw new Exception("该指令已存在！");
             }
