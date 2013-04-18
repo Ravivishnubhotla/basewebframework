@@ -119,7 +119,26 @@ namespace SPS.Bussiness.Wrappers
         #endregion
 
  
-
+        /// <summary>
+        /// 快速添加短信通道
+        /// </summary>
+        /// <param name="pLinkId"></param>
+        /// <param name="pMo"></param>
+        /// <param name="pMobile"></param>
+        /// <param name="pSpCode"></param>
+        /// <param name="pCreateDate"></param>
+        /// <param name="pProvince"></param>
+        /// <param name="pCity"></param>
+        /// <param name="pExtend1"></param>
+        /// <param name="pExtend2"></param>
+        /// <param name="pExtend3"></param>
+        /// <param name="pExtend4"></param>
+        /// <param name="pExtend5"></param>
+        /// <param name="pExtend6"></param>
+        /// <param name="pExtend7"></param>
+        /// <param name="pExtend8"></param>
+        /// <param name="pExtend9"></param>
+        /// <param name="pExtend10"></param>
 	    public void QuickAddSPChannel(string pLinkId, string pMo, string pMobile, string pSpCode, string pCreateDate, string pProvince, string pCity, string pExtend1, string pExtend2, string pExtend3, string pExtend4, string pExtend5, string pExtend6, string pExtend7, string pExtend8, string pExtend9, string pExtend10)
 	    {
             businessProxy.QuickAddSPChannel(this.entity, pLinkId, pMo, pMobile, pSpCode, pCreateDate, pProvince, pCity,
@@ -128,6 +147,27 @@ namespace SPS.Bussiness.Wrappers
 
 	    }
 
+        /// <summary>
+        /// 快速添加IVR通道
+        /// </summary>
+        /// <param name="pIvrLinkId"></param>
+        /// <param name="pIvrFeetime"></param>
+        /// <param name="pIvrMobile"></param>
+        /// <param name="pIvrspCode"></param>
+        /// <param name="pIvrStartTime"></param>
+        /// <param name="pIvrEndTime"></param>
+        /// <param name="pIvrProvince"></param>
+        /// <param name="pIvrCity"></param>
+        /// <param name="pIvrExtend1"></param>
+        /// <param name="pIvrExtend2"></param>
+        /// <param name="pIvrExtend3"></param>
+        /// <param name="pIvrExtend4"></param>
+        /// <param name="pIvrExtend5"></param>
+        /// <param name="pIvrExtend6"></param>
+        /// <param name="pIvrExtend7"></param>
+        /// <param name="pIvrExtend8"></param>
+        /// <param name="pIvrExtend9"></param>
+        /// <param name="pIvrExtend10"></param>
 	    public void QuickAddIVRChannel(string pIvrLinkId, string pIvrFeetime, string pIvrMobile, string pIvrspCode, string pIvrStartTime, string pIvrEndTime, 
                                         string pIvrProvince, string pIvrCity, string pIvrExtend1, string pIvrExtend2, string pIvrExtend3, string pIvrExtend4, 
                                         string pIvrExtend5, string pIvrExtend6, string pIvrExtend7, string pIvrExtend8, string pIvrExtend9, string pIvrExtend10)
@@ -290,8 +330,8 @@ namespace SPS.Bussiness.Wrappers
             if (clientCodeRelation == null)
             {
                 clientCodeRelation = this.GetDefaultClientCodeRelation();
-
-                matchCode = clientCodeRelation.CodeID;
+                //如果是指令没有分配下家如何处理。
+                //matchCode = clientCodeRelation.CodeID;
             }
 
             SPRecordWrapper record = new SPRecordWrapper();
@@ -445,21 +485,21 @@ namespace SPS.Bussiness.Wrappers
 	        return 1;
 	    }
 
-	    private DateTime ParseTime(string feeTime)
-	    {
-	        if(!string.IsNullOrEmpty(this.IVRTimeFormat))
-	        {
-	            return Convert.ToDateTime(feeTime);
-	        }
-	        else
-	        {
-                DateTimeFormatInfo   dtfi = new CultureInfo("zh-CN", false).DateTimeFormat;
-                DateTime output;
-                DateTime.TryParseExact(feeTime, this.IVRTimeFormat, dtfi, DateTimeStyles.None, out output);
+        //private DateTime ParseTime(string feeTime)
+        //{
+        //    if(!string.IsNullOrEmpty(this.IVRTimeFormat))
+        //    {
+        //        return Convert.ToDateTime(feeTime);
+        //    }
+        //    else
+        //    {
+        //        DateTimeFormatInfo   dtfi = new CultureInfo("zh-CN", false).DateTimeFormat;
+        //        DateTime output;
+        //        DateTime.TryParseExact(feeTime, this.IVRTimeFormat, dtfi, DateTimeStyles.None, out output);
 
-	            return output;
-	        }
-	    }
+        //        return output;
+        //    }
+        //}
 
         private DateTime GetRecordTime(IDataAdapter httpRequestLog)
 	    {
@@ -829,21 +869,26 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 
+	    public DateTime ParseIVRTime(string timeString)
+	    {
+            DateTimeFormatInfo dtfi = new CultureInfo("zh-CN", false).DateTimeFormat;
+            DateTime pTime = DateTime.MinValue;
+            DateTime.TryParseExact(timeString, this.IVRTimeFormat, dtfi, DateTimeStyles.None, out pTime);
+            return pTime;
+	    }
+
 	    public int GetFeetime(IDataAdapter httpRequestLog)
 	    {
             if (this.IVRFeeTimeType == null || this.IVRFeeTimeType =="0")
 	            return Convert.ToInt32(this.ChannelParams.FeeTimeFromRequset(httpRequestLog));
 
-            DateTimeFormatInfo dtfi = new CultureInfo("zh-CN", false).DateTimeFormat;
-            DateTime startTime = DateTime.MinValue;
-            DateTime.TryParseExact(this.ChannelParams.StartTimeFromRequset(httpRequestLog), this.IVRTimeFormat, dtfi, DateTimeStyles.None, out startTime);
+            DateTime startTime = ParseIVRTime(this.ChannelParams.StartTimeFromRequset(httpRequestLog));
 
             if(startTime==DateTime.MinValue)
                 throw new ArgumentNullException("startTime");
 
-            DateTime endTime = DateTime.MinValue;
-            DateTime.TryParseExact(this.ChannelParams.EndTimeFromRequset(httpRequestLog), this.IVRTimeFormat, dtfi, DateTimeStyles.None, out startTime);
-
+            DateTime endTime =  ParseIVRTime(this.ChannelParams.EndTimeFromRequset(httpRequestLog));
+ 
             if (endTime == DateTime.MinValue)
                 throw new ArgumentNullException("endTime");
 

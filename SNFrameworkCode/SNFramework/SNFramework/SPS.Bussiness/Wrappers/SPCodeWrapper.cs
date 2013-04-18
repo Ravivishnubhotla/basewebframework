@@ -178,11 +178,11 @@ namespace SPS.Bussiness.Wrappers
         {
             bool codeIsMatch = CheckIsMatchCode(mo);
 
-            if (this.LimitProvince.HasValue && this.LimitProvince.Value)
+            if (codeIsMatch && this.LimitProvince.HasValue && this.LimitProvince.Value)
             {
                 if (!string.IsNullOrEmpty(this.LimitProvinceArea))
                 {
-                    List<string> limitProvinceAreaList = new List<string>(this.LimitProvinceArea.Split(("|").ToArray(), StringSplitOptions.None));
+                    List<string> limitProvinceAreaList = new List<string>(this.LimitProvinceArea.Split((",").ToArray(), StringSplitOptions.None));
 
                     codeIsMatch = limitProvinceAreaList.Contains(province);
                 }
