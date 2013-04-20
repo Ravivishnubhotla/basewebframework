@@ -84,6 +84,46 @@
 
             return dataUrl;
         }
+        
+        function BuildReportStatusUrlTypeRequest() {
+            
+            var dataUrl = <%= txtChannelSubmitUrl.ClientID %>.getText();
+
+                    var dataParams = <%= this.hidDataStatusParam.ClientID %>.getValue().toString().split(',');
+            
+                    var len=dataParams.length;
+            
+                    for(var i=0; i<len; i++) {
+	            
+                        var pvalue = dataParams[i];
+
+                        var paramName = pvalue;
+                        
+                
+                        if(paramName.indexOf('ctl00_ContentPlaceHolder1_')==-1) {
+                            paramName = 'ctl00_ContentPlaceHolder1_' + paramName;
+                        }
+
+
+                        var qparam = paramName.replace('ctl00_ContentPlaceHolder1_txt', '');
+
+                        var qvalue = decodeURI(GetParamFromField(pvalue));
+
+                        if (qparam == '<%= this.ChannelID.StateReportParamName %>') {
+                            qvalue = '<%= this.ChannelID.StateReportParamValue %>';
+                        }                        
+                
+	            
+                        if(i==0) {
+                            dataUrl = dataUrl + '?' + paramName.replace('ctl00_ContentPlaceHolder1_txt','') + '=' + qvalue;
+                        } else {
+                            dataUrl = dataUrl + '&' + paramName.replace('ctl00_ContentPlaceHolder1_txt','') + '=' + qvalue;
+                        }
+
+                    }
+
+                    return dataUrl;
+                }
 
 
         function TestUrl() {
@@ -109,7 +149,7 @@
                     method: "GET",
                     success: function (response, opts) {
                         var rtext = response.responseText.toLowerCase();
-                        if (rtext == '<%= ChannelID.DataOkMessage %>')
+                        if (rtext == '<%= ChannelID.DataOkMessage.ToLower() %>')
                             Ext.Msg.alert('消息', '请求成功，响应字符串："' + response.responseText + '"');
                         else
                             Ext.Msg.alert('消息', '请求失败，响应字符串："' + response.responseText + '"');
@@ -142,7 +182,7 @@
 
                          var showtext = '';
 
-                         if (rtext == '<%= ChannelID.DataOkMessage %>')
+                         if (rtext == '<%= ChannelID.DataOkMessage.ToLower() %>')
                             showtext = '数据请求成功，响应字符串："' + response.responseText + '"';
                         else
                             showtext = '数据请求失败，响应字符串："' + response.responseText + '"';
@@ -157,7 +197,7 @@
                         
                                 var showtext2 = '';
 
-                                if (rtext == '<%= ChannelID.DataOkMessage %>')
+                                if (rtext == '<%= ChannelID.DataOkMessage.ToLower() %>')
                             showtext2 = '状态请求成功，响应字符串："' + response.responseText + '"';
                         else
                             showtext2 = '状态请求失败，响应字符串："' + response.responseText + '"';
@@ -183,7 +223,68 @@
                 
     }
     if(isStateReport == 'true' && stateReportType=='2') {
+                
+        
+
+        var dataUrl = BuildReportDataUrl()+'&' + '<%= this.ChannelID.RequestTypeParamName %>' +'=' + '<%= this.ChannelID.RequestTypeParamDataReportValue %>';
+
+        <%= lblSendUrl.ClientID %>.setText(dataUrl);
                  
+        var statusUrl = BuildReportStatusUrlTypeRequest() +'&' + '<%= this.ChannelID.RequestTypeParamName %>' +'=' + '<%= this.ChannelID.RequestTypeParamStateReportValue %>';
+
+        <%= lblStatusSendUrl.ClientID %>.setText(statusUrl);
+                 
+
+        Ext.Ajax.request({
+            url: dataUrl,
+            method: "GET",
+            success: function (response, opts) {
+                var rtext = response.responseText.toLowerCase();
+
+                var showtext = '';
+
+                if (rtext == '<%= ChannelID.DataOkMessage.ToLower() %>')
+                             showtext = '数据请求成功，响应字符串："' + response.responseText + '"';
+                         else
+                             showtext = '数据请求失败，响应字符串："' + response.responseText + '"';
+                        
+                         <%= lblDataTestResult.ClientID %>.setText(showtext);
+ 
+                         Ext.Ajax.request({
+                             url: statusUrl,
+                             method: "GET",
+                             success: function (response, opts) {
+                                 var rtext = response.responseText.toLowerCase();
+                        
+                                 var showtext2 = '';
+
+                                 if (rtext == '<%= ChannelID.DataOkMessage.ToLower() %>')
+                                    showtext2 = '状态请求成功，响应字符串："' + response.responseText + '"';
+                                else
+                                    showtext2 = '状态请求失败，响应字符串："' + response.responseText + '"';
+                        
+
+                                <%= lblDataStatusTestResult.ClientID %>.setText(showtext2);
+
+                                RefreshValue();
+
+                            },
+                            failure: function () {
+                                alert('请求失败！');
+                            }
+                        });
+
+
+                     },
+                     failure: function () {
+                         alert('请求失败！');
+                     }
+                 });
+
+
+
+
+
     }
 
             // if(isStateReport && stateReportType!=0) {

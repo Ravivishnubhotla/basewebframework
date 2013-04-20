@@ -39,6 +39,8 @@ namespace SPSWeb.Moudles.SPS.Channels
             foreach (SPChannelParamsWrapper spChannelParamsWrapper in channelParamsWrappers.Items)
             {
 
+
+
                 TextField txt = new TextField();
                 txt.ID = "txt" + spChannelParamsWrapper.Name;
                 txt.FieldLabel = spChannelParamsWrapper.Name;
@@ -103,9 +105,22 @@ namespace SPSWeb.Moudles.SPS.Channels
 
                 if (spChannelParamsWrapper.ParamsMappingName == DictionaryConst.Dictionary_SPField_State_Key)
                 {
-                    statusField = txt;
+                    TextField tf = this.FormPanel1.Items.Find(p => p.ID == txt.ClientID) as TextField;
 
-                    hidStatusName.Text = txt.ClientID;
+                    if (tf != null)
+                    {
+                        statusField = tf;
+
+                        hidStatusName.Text = tf.ClientID;
+
+                        continue;
+                    }
+                    else
+                    {
+                        statusField = txt;
+
+                        hidStatusName.Text = txt.ClientID;
+                    }
                 }
 
                 if (spChannelParamsWrapper.ParamsMappingName != DictionaryConst.Dictionary_SPField_State_Key)
@@ -130,7 +145,7 @@ namespace SPSWeb.Moudles.SPS.Channels
                 dataStatusParams.Add(statusField.ClientID);
             }
 
-            if (this.ChannelID.IsStateReport && statusField != null)
+            if (this.ChannelID.IsStateReport && statusField != null && this.ChannelID.StateReportType != DictionaryConst.Dictionary_ChannelStateReportType_SendTwiceTypeRequest_Key)
             {
                 statusField.Value = this.ChannelID.StateReportParamValue;
             }
