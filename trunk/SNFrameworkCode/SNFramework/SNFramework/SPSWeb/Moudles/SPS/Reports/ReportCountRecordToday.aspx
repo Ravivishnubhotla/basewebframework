@@ -365,7 +365,7 @@
         </Items>
     </ext:Viewport>
     <ext:Window ID="winShowRecordList" runat="server" Title="Window" Frame="true" Width="900"
-        ConstrainHeader="true" Height="600" Maximizable="true" Closable="true" Resizable="true"
+        ConstrainHeader="true" Height="510" Maximizable="true" Closable="true" Resizable="true"
         Modal="true" Hidden="true">
         <AutoLoad Url="ReportDetailPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
@@ -389,7 +389,7 @@
         </Listeners>
     </ext:Window>
     <ext:Window ID="winShowProvinceChart" runat="server" Title="Window" Frame="true"
-        Width="900" ConstrainHeader="true" Height="600" Maximizable="true" Closable="true"
+        Width="900" ConstrainHeader="true" Height="510" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true">
         <AutoLoad Url="ReportProvinceChart.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
