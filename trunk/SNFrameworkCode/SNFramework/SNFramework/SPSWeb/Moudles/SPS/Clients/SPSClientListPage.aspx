@@ -69,6 +69,13 @@
                 );
             }
             
+            if (cmd == "cmdView") {
+                var win = <%= winClientView.ClientID %>;
+                win.autoLoad.params.SPSClientID = id.id;
+                win.setTitle(String.format('客户“{0}”详细信息',id.data.Name));
+                win.show(); 
+            }
+            
             if (cmd == "cmdChangeUserLoginInfo") {
                 Ext.net.DirectMethods.UCSPClientChangeUserLoginInfo.Show(id.id,
                                                                 {
@@ -91,10 +98,10 @@
             }
             if (cmd == "cmdAssignedAdPack") {
                 var win = <%= winClientAdPack.ClientID %>;
-                            win.autoLoad.params.SPSClientID = id.id;
-                            win.setTitle(String.format('客户“{0}”广告包分配管理',id.data.Name));
-                            win.show(); 
-                        }
+                win.autoLoad.params.SPSClientID = id.id;
+                win.setTitle(String.format('客户“{0}”广告包分配管理',id.data.Name));
+                win.show(); 
+            }
             
             if (cmd == "cmdDelete") {
                 Ext.MessageBox.confirm('警告','确认删除该条记录？ ',
@@ -204,6 +211,8 @@
                                         <Items>
                                             <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
                                             </ext:MenuCommand>
+                                            <ext:MenuCommand Icon="ApplicationForm" CommandName="cmdView" Text="查看">
+                                            </ext:MenuCommand>
                                             <ext:MenuCommand Icon="ScriptEdit" CommandName="cmdAssignedCode" Text="分配代码">
                                             </ext:MenuCommand>
                                             <ext:MenuCommand Icon="ScriptEdit" CommandName="cmdAssignedAdPack" Text="分配广告包">
@@ -229,7 +238,7 @@
             </ext:GridPanel>
         </Items>
     </ext:Viewport>
-        <ext:Window ID="winClientCode" runat="server" Title="winClientCode" Frame="true"
+    <ext:Window ID="winClientCode" runat="server" Title="winClientCode" Frame="true"
         Width="700" ConstrainHeader="true" Height="350" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true">
         <AutoLoad Url="SPClientCodeRelationListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
@@ -248,6 +257,22 @@
         Width="700" ConstrainHeader="true" Height="350" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true">
         <AutoLoad Url="SPAdPackListPage.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
+            ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="SPSClientID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+
+
+    <ext:Window ID="winClientView" runat="server" Title="winClientAdPack" Frame="true"
+        Width="700" ConstrainHeader="true" Height="350" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true">
+        <AutoLoad Url="SPClientView.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show"
             ReloadOnEvent="true" ShowMask="true">
             <Params>
                 <ext:Parameter Name="SPSClientID" Mode="Raw" Value="0">

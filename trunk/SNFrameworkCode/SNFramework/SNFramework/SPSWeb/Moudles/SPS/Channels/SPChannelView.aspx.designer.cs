@@ -10,168 +10,186 @@
 namespace SPSWeb.Moudles.SPS.Channels {
     
     
-    public partial class SPChannelListPage {
+    public partial class SPChannelView {
         
         /// <summary>
-        /// ScriptManagerProxy1 control.
+        /// Viewport1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
+        protected global::Ext.Net.Viewport Viewport1;
         
         /// <summary>
-        /// storeSPChannel control.
+        /// tbMainInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Store storeSPChannel;
+        protected global::Ext.Net.TabPanel tbMainInfo;
         
         /// <summary>
-        /// viewPortMain control.
+        /// formPanelSPChannelView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Viewport viewPortMain;
+        protected global::Ext.Net.Panel formPanelSPChannelView;
         
         /// <summary>
-        /// gridPanelSPChannel control.
+        /// Container1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridPanel gridPanelSPChannel;
+        protected global::Ext.Net.Container Container1;
         
         /// <summary>
-        /// tbTop control.
+        /// Container2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Toolbar tbTop;
+        protected global::Ext.Net.Container Container2;
         
         /// <summary>
-        /// btnAdd control.
+        /// lblName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnAdd;
+        protected global::Ext.Net.DisplayField lblName;
         
         /// <summary>
-        /// btnRefresh control.
+        /// lblChannelType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Button btnRefresh;
+        protected global::Ext.Net.DisplayField lblChannelType;
         
         /// <summary>
-        /// GridView1 control.
+        /// lblIsMonitorRequest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.GridView GridView1;
+        protected global::Ext.Net.DisplayField lblIsMonitorRequest;
         
         /// <summary>
-        /// PagingToolBar1 control.
+        /// lblIsDisable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.PagingToolbar PagingToolBar1;
+        protected global::Ext.Net.DisplayField lblIsDisable;
         
         /// <summary>
-        /// winQuickAddChannel control.
+        /// lblPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winQuickAddChannel;
+        protected global::Ext.Net.DisplayField lblPrice;
         
         /// <summary>
-        /// winChannelEdit control.
+        /// lblChannelStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winChannelEdit;
+        protected global::Ext.Net.DisplayField lblChannelStatus;
         
         /// <summary>
-        /// winChannelParamsManage control.
+        /// Container3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winChannelParamsManage;
+        protected global::Ext.Net.Container Container3;
         
         /// <summary>
-        /// winChannelFiltersManage control.
+        /// lblCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winChannelFiltersManage;
+        protected global::Ext.Net.DisplayField lblCode;
         
         /// <summary>
-        /// winSycnParams control.
+        /// lblStateReportType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winSycnParams;
+        protected global::Ext.Net.DisplayField lblStateReportType;
         
         /// <summary>
-        /// winCodes control.
+        /// lblIsLogRequest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winCodes;
+        protected global::Ext.Net.DisplayField lblIsLogRequest;
         
         /// <summary>
-        /// winParamsConvert control.
+        /// lblHasFilters control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winParamsConvert;
+        protected global::Ext.Net.DisplayField lblHasFilters;
         
         /// <summary>
-        /// winSendTestRequestForm control.
+        /// lblDefaultRate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winSendTestRequestForm;
+        protected global::Ext.Net.DisplayField lblDefaultRate;
         
         /// <summary>
-        /// winChannelView control.
+        /// lblUpper control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Ext.Net.Window winChannelView;
+        protected global::Ext.Net.DisplayField lblUpper;
+        
+        /// <summary>
+        /// Container4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Container Container4;
+        
+        /// <summary>
+        /// lblChannelDetailInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.DisplayField lblChannelDetailInfo;
     }
 }

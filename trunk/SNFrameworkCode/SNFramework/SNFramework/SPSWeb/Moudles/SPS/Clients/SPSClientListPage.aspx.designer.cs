@@ -146,5 +146,14 @@ namespace SPSWeb.Moudles.SPS.Clients {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Window winClientAdPack;
+        
+        /// <summary>
+        /// winClientView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winClientView;
     }
 }

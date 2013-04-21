@@ -232,6 +232,14 @@ namespace SPS.Bussiness.Wrappers
                 return DictionaryConst.ParseChannelTypeDictionaryKey(this.ChannelType);
             }
 	    }
+
+        public string ChannelStatusName
+        {
+            get
+            {
+                return DictionaryConst.ParseChannelStatusDictionaryKey(this.ChannelStatus);
+            }
+        }
         
 	    public string InterfaceUrl
         {
@@ -507,7 +515,7 @@ namespace SPS.Bussiness.Wrappers
 	        return DateTime.Now;
 	    }
 
-        private bool CaculteRandom(int rate)
+        public static bool CaculteRandom(int rate)
         {
             Random random = new Random(unchecked((int)DateTime.Now.Ticks));
 

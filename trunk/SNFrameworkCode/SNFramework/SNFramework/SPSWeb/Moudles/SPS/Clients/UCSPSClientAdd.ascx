@@ -1,7 +1,22 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPSClientAdd.ascx.cs" Inherits="SPSWeb.Moudles.SPS.Clients.UCSPSClientAdd" %>
- 
+<script type="text/javascript">
+    function ShowSycnSetting() {
+        var chkSyncData = <%= chkSyncData.ClientID %>;
+        var txtSycnRetryTimes  = <%= txtSycnRetryTimes.ClientID %>;
+        var fsSyncMO  = <%= fsSyncMO.ClientID %>;
+        if (chkSyncData.getValue()) {
+            txtSycnRetryTimes.show();
+            fsSyncMO.show();            
+        } else {
+            txtSycnRetryTimes.hide();
+            fsSyncMO.hide();
+        }
+    }
+
+    ShowSycnSetting();
+</script>
 <ext:Window ID="winSPSClientAdd" runat="server" Icon="ApplicationAdd" Title="添加客户"
-    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
+    Width="500" Height="370" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     AutoScroll="true" ConstrainHeader="true" Resizable="true" Layout="Fit">
     <Content>
         <ext:FormPanel ID="formPanelSPSClientAdd" runat="server" Frame="true" Header="false"
@@ -23,14 +38,16 @@
                     AnchorHorizontal="95%" />
                 <ext:TextField ID="txtUserPasword" runat="server" FieldLabel="登陆用户密码" AllowBlank="false"
                     AnchorHorizontal="95%" />
-                <ext:Checkbox ID="chkSyncData" runat="server" FieldLabel="是否同步数据" Checked="false" Hidden="True"
+                <ext:Checkbox ID="chkSyncData" runat="server" FieldLabel="是否同步数据" Checked="false" 
                     AnchorHorizontal="95%">
- 
+                   <Listeners>
+                       <Check Handler="ShowSycnSetting();"></Check>
+                   </Listeners>
                 </ext:Checkbox>
                 <ext:TextField ID="txtSycnRetryTimes" runat="server" FieldLabel="默认重发次数" AllowBlank="True"
                     AnchorHorizontal="95%" Hidden="true" />
                 <ext:FieldSet ID="fsSyncMO" runat="server" CheckboxToggle="true" Title="同步MO" AutoHeight="true"
-                    Collapsed="true" LabelWidth="75" Layout="Form" Hidden="True">
+                    Collapsed="False" LabelWidth="75" Layout="Form" Hidden="True">
                     <Items>
                         <ext:TextField ID="txtSycnMOUrl" runat="server" FieldLabel="同步地址" AllowBlank="True"
                             AnchorHorizontal="95%" />
@@ -52,7 +69,7 @@
                     </Items>
                 </ext:FieldSet>
                 <ext:FieldSet ID="fsSyncState" runat="server" CheckboxToggle="true" Title="同步状态"
-                    AutoHeight="true" Collapsed="true" LabelWidth="75" Layout="Form" Hidden="True">
+                    AutoHeight="true" Collapsed="False" LabelWidth="75" Layout="Form" Hidden="True">
                     <Items>
                         <ext:TextField ID="txtSycnStateUrl" runat="server" FieldLabel="同步地址" AllowBlank="True"
                             AnchorHorizontal="95%" />
@@ -83,5 +100,6 @@
     </Buttons>
     <Listeners>
         <Close Handler="#{formPanelSPSClientAdd}.getForm().reset();"></Close>
+        <BeforeShow Handler="ShowSycnSetting();"></BeforeShow>
     </Listeners>
 </ext:Window>
