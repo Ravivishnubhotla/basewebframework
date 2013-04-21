@@ -61,20 +61,11 @@ namespace SPSWeb.Moudles.SPS.Clients
                 SPSClientWrapper obj = new SPSClientWrapper();
                 obj.Name = this.txtName.Text.Trim();
                 obj.Description = this.txtDescription.Text.Trim();
-                //obj.RecieveDataUrl = this.txtRecieveDataUrl.Text.Trim();
-                //obj.UserID = Convert.ToInt32(this.txtUserID.Text.Trim());
-                //obj.SyncData = this.chkSyncData.Checked;
-                //obj.OkMessage = this.txtOkMessage.Text.Trim();
-                //obj.FailedMessage = this.txtFailedMessage.Text.Trim();
-                //obj.SyncType = this.txtSyncType.Text.Trim();
-                //obj.Alias = this.txtAlias.Text.Trim();
                 obj.InterceptRate = Convert.ToDecimal(this.txtInterceptRate.Text.Trim());
                 obj.DefaultPrice = Convert.ToDecimal(this.txtDefaultPrice.Text.Trim());
                 obj.SycnNotInterceptCount = Convert.ToInt32(this.txtNotInterceptCount.Text.Trim());
                 obj.DefaultShowRecordDays = Convert.ToInt32(this.numShowDayRecord.Text.Trim());
                 obj.SyncData = chkSyncData.Checked;
-
-
 
                 if (obj.SyncData)
                 {
@@ -82,7 +73,7 @@ namespace SPSWeb.Moudles.SPS.Clients
 
                     spsDataSycnSetting.SycnRetryTimes = Convert.ToInt32(txtSycnRetryTimes.Text);
 
-                    spsDataSycnSetting.SycnMO = fsSyncMO.Collapsed;
+                    spsDataSycnSetting.SycnMO = !fsSyncMO.Collapsed;
 
                     if (spsDataSycnSetting.SycnMO.HasValue && spsDataSycnSetting.SycnMO.Value)
                     {
@@ -97,7 +88,7 @@ namespace SPSWeb.Moudles.SPS.Clients
                         spsDataSycnSetting.SycnMOFailedMessage = "";
                     }
 
-                    spsDataSycnSetting.SycnMR = fsSyncMR.Collapsed;
+                    spsDataSycnSetting.SycnMR = !fsSyncMR.Collapsed;
 
                     if (spsDataSycnSetting.SycnMR.HasValue && spsDataSycnSetting.SycnMR.Value)
                     {
@@ -112,7 +103,7 @@ namespace SPSWeb.Moudles.SPS.Clients
                         spsDataSycnSetting.SycnMRFailedMessage = "";
                     }
 
-                    spsDataSycnSetting.SycnSate = fsSyncState.Collapsed;
+                    spsDataSycnSetting.SycnSate = !fsSyncState.Collapsed;
 
                     if (spsDataSycnSetting.SycnSate.HasValue && spsDataSycnSetting.SycnSate.Value)
                     {

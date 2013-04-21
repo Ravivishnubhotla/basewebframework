@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPChannelListPage.aspx.cs" Inherits="SPSWeb.Moudles.SPS.Channels.SPChannelListPage" %>
-<%@ Register Src="UCSPChannelView.ascx" TagName="UCSPChannelView" TagPrefix="uc3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
     </ext:ResourceManagerProxy>
@@ -51,120 +50,112 @@
         }
 
         function ShowQuickAdd() {
-              var win = <%= winQuickAddChannel.ClientID %>;
-              win.setTitle('快速添加通道');
-              win.show();
+            var win = <%= winQuickAddChannel.ClientID %>;
+            win.setTitle('快速添加通道');
+            win.show();
             win.maximize();
         }
         
-     function CloseQuickAdd()
-     {
-        <%= winQuickAddChannel.ClientID %>.hide();
+        function CloseQuickAdd()
+        {
+            <%= winQuickAddChannel.ClientID %>.hide();
      }
                   
      function CloseEdit()
      {
-        <%= winChannelEdit.ClientID %>.hide();
+         <%= winChannelEdit.ClientID %>.hide();
      }
  
 
-        function processcmd(cmd, id) {
+     function processcmd(cmd, id) {
 
             if (cmd == "cmdEdit") {
- 
-               var win = <%= winChannelEdit.ClientID %>;
-               win.autoLoad.params.ChannelID = id.id;
-               win.setTitle(String.format('通道“{0}”编辑',id.data.Name));
-               win.show();
-               win.maximize();
+                var win = <%= winChannelEdit.ClientID %>;
+                win.autoLoad.params.ChannelID = id.id;
+                win.setTitle(String.format('通道“{0}”编辑',id.data.Name));
+                win.show();
+                win.maximize();
             }
 			
-			            if (cmd == "cmdView") {
-                Ext.net.DirectMethods.UCSPChannelView.Show(id.id,
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg,RefreshData);
-                                                                    },
-                                                                    eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
-                                                                               }
-                                                                }              
-                );
+            if (cmd == "cmdView") {
+                var win = <%= winChannelView.ClientID %>;
+                win.autoLoad.params.ChannelID = id.id;
+                win.setTitle(String.format('通道“{0}”信息查看',id.data.Name));
+                win.show();  
             }
 
             if (cmd == "cmdDelete") {
                 Ext.MessageBox.confirm('警告','确认删除该条记录？ ',
-                    function(e) {
-                        if (e == 'yes')
-                            Ext.net.DirectMethods.DeleteRecord(
-                                                                id.id,
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
+                                        function(e) {
+                                                                                if (e == 'yes')
+                                                                                    Ext.net.DirectMethods.DeleteRecord(
+                                                                                                                        id.id,
+                                                                                                                        {
+                                                                                                                            failure: function(msg) {
+                                                                                                                                Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpFailed").ToString() %>', msg);
                                                                     },
                                                                     success: function(result) { 
                                                                         Ext.Msg.alert('<%= GetGlobalResourceObject("GlobalResource","msgOpSuccessful").ToString() %>', '<%= GetGlobalResourceObject("GlobalResource","msgDeleteSuccessful").ToString() %>',RefreshData);                
                                                                     },
                                                                     eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
-                                                                               }
+                                                                        showMask: true,
+                                                                        msg: '<%= GetGlobalResourceObject("GlobalResource","msgProcessing").ToString() %>'
+                                                                    }
                                                                 }
                                                             );
                     }
                     );
-            }
+           }
             
  
             
             if (cmd == "cmdManageParams") {
-              var win = <%= winChannelParamsManage.ClientID %>;
-              win.autoLoad.params.ChannelID = id.id;
-              win.setTitle(String.format('通道“{0}”接收参数管理',id.data.Name));
-              win.show();   
+                var win = <%= winChannelParamsManage.ClientID %>;
+                win.autoLoad.params.ChannelID = id.id;
+                win.setTitle(String.format('通道“{0}”接收参数管理',id.data.Name));
+                win.show();   
             }
             if (cmd == "cmdManageFilters") {
-              var win = <%= winChannelFiltersManage.ClientID %>;
-              win.autoLoad.params.ChannelID = id.id;
-              win.setTitle(String.format('通道“{0}”过滤条件管理',id.data.Name));
-              win.show();   
+                var win = <%= winChannelFiltersManage.ClientID %>;
+                win.autoLoad.params.ChannelID = id.id;
+                win.setTitle(String.format('通道“{0}”过滤条件管理',id.data.Name));
+                win.show();   
             }
             if (cmd == "cmdManageCoverts") {
-              var win = <%= winParamsConvert.ClientID %>;
-              win.autoLoad.params.ChannelID = id.id;
-              win.setTitle(String.format('通道“{0}”数据转换管理',id.data.Name));
-              win.show();   
+                var win = <%= winParamsConvert.ClientID %>;
+                win.autoLoad.params.ChannelID = id.id;
+                win.setTitle(String.format('通道“{0}”数据转换管理',id.data.Name));
+                win.show();   
             }           
-             if (cmd == "cmdManageSycns") {
-              var win = <%= winSycnParams.ClientID %>;
-              win.autoLoad.params.ChannelID = id.id;
-              win.setTitle(String.format('通道“{0}”同步参数管理',id.data.Name));
-              win.show();   
-            }    
+            if (cmd == "cmdManageSycns") {
+                var win = <%= winSycnParams.ClientID %>;
+                 win.autoLoad.params.ChannelID = id.id;
+                 win.setTitle(String.format('通道“{0}”同步参数管理',id.data.Name));
+                 win.show();   
+             }    
             
-                         if (cmd == "cmdManageCodes") {
-              var win = <%= winCodes.ClientID %>;
-              win.autoLoad.params.ChannelID = id.id;
-              win.setTitle(String.format('通道“{0}”代码管理',id.data.Name));
-              win.show();   
-            }    
+             if (cmd == "cmdManageCodes") {
+                 var win = <%= winCodes.ClientID %>;
+                             win.autoLoad.params.ChannelID = id.id;
+                             win.setTitle(String.format('通道“{0}”代码管理',id.data.Name));
+                             win.show();   
+                         }    
             
-                   if (cmd == "cmdSendTestRequest") {
+                         if (cmd == "cmdSendTestRequest") {
 
-                var win = <%= this.winSendTestRequestForm.ClientID %>;
+                             var win = <%= this.winSendTestRequestForm.ClientID %>;
                 
 
-                win.setTitle(" 通道 "+id.data.Name+"  " + " 发送模拟数据 ");
+                       win.setTitle(" 通道 "+id.data.Name+"  " + " 发送模拟数据 ");
                 
-                win.autoLoad.url = 'SPChannelSendTestRequestForm.aspx';
+                       win.autoLoad.url = 'SPChannelSendTestRequestForm.aspx';
                 
-                win.autoLoad.params.ChannelID = id.data.Id;
+                       win.autoLoad.params.ChannelID = id.data.Id;
         
-                win.show();    
-            }                                                    
+                       win.show();    
+                   }                                                    
                                             
-        }
+               }
 
     </script>
     <ext:Store ID="storeSPChannel" runat="server" AutoLoad="true" RemoteSort="true" RemotePaging="true"
@@ -199,7 +190,6 @@
     </ext:Store>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <uc3:UCSPChannelView ID="UCSPChannelView1" runat="server" />
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:GridPanel ID="gridPanelSPChannel" runat="server" StoreID="storeSPChannel" StripeRows="true"
@@ -295,7 +285,7 @@
                 </ColumnModel>
                 <LoadMask ShowMask="true" />
                 <BottomBar>
-                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSPChannel" 
+                    <ext:PagingToolbar ID="PagingToolBar1" runat="server" PageSize="8" StoreID="storeSPChannel"
                         DisplayInfo="true" DisplayMsg="显示通道 {0} - {1} 共 {2}" EmptyMsg="没有符合条件的通道" />
                 </BottomBar>
                 <Listeners>
@@ -402,6 +392,20 @@
         Width="640" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
         <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winChannelView" runat="server" Title="通道信息查看" Frame="true"
+        Width="640" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
+        <AutoLoad Url="SPChannelView.aspx" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
             ShowMask="true">
             <Params>
                 <ext:Parameter Name="ChannelID" Mode="Raw" Value="0">

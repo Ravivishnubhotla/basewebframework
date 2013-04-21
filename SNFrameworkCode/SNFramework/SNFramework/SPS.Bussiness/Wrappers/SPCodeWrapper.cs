@@ -154,16 +154,30 @@ namespace SPS.Bussiness.Wrappers
             switch (this.MOType)
             {
                 case DictionaryConst.Dictionary_CodeType_CodeEQ_Key:
+                    if(this.IsMatchCase.HasValue && this.IsMatchCase.Value)
+                        return mo.Equals(this.Mo);
                     return mo.ToLower().Equals(this.Mo.ToLower());
                 case DictionaryConst.Dictionary_CodeType_CodeContain_Key:
+                    if (this.IsMatchCase.HasValue && this.IsMatchCase.Value)
+                        return mo.Contains(this.Mo);
                     return mo.ToLower().Contains(this.Mo.ToLower());
                 case DictionaryConst.Dictionary_CodeType_CodeStartWith_Key:
+                    if (this.IsMatchCase.HasValue && this.IsMatchCase.Value)
+                        return mo.StartsWith(this.Mo);
                     return mo.ToLower().StartsWith(this.Mo.ToLower());
                 case DictionaryConst.Dictionary_CodeType_CodeEndWith_Key:
+                    if (this.IsMatchCase.HasValue && this.IsMatchCase.Value)
+                        return mo.EndsWith(this.Mo);
                     return mo.ToLower().EndsWith(this.Mo.ToLower());
                 case DictionaryConst.Dictionary_CodeType_CodeRegex_Key:
+                    if (this.IsMatchCase.HasValue && this.IsMatchCase.Value)
+                        return Regex.IsMatch(mo, this.Mo);
                     return Regex.IsMatch(mo.ToLower(), this.Mo.ToLower());
                 case DictionaryConst.Dictionary_CodeType_CodeCustom_Key:
+                    if (this.IsMatchCase.HasValue && this.IsMatchCase.Value)
+                    {
+                        return Regex.IsMatch(mo, this.Mo.Replace("*", "[S]*").Replace("?", "[S]{1}"));
+                    }
                     string newRegCommandCode = this.Mo.ToLower().Replace("*", "[S]*").Replace("?", "[S]{1}");
                     return Regex.IsMatch(mo.ToLower(), newRegCommandCode, RegexOptions.IgnoreCase);
                 //case DictionaryConst.di:

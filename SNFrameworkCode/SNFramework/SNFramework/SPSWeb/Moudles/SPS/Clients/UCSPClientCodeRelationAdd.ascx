@@ -153,6 +153,7 @@
         <ext:Button ID="btnSavelSPClientCodeRelation" runat="server" Text="分配代码" Icon="Add">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPClientCodeRelationAdd}.getForm().isValid()) return false;"
+                    Success="ShowMessage('操作成功','分配指令成功！',1);RefreshSPClientCodeRelationList();"
                     OnEvent="btnSaveSPClientCodeRelation_Click" >
                     <EventMask ShowMask="true" Msg="saving,Please waiting....." />
                 </Click>

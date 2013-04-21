@@ -133,8 +133,12 @@
     <Content Include="MainPage\Default.aspx" />
     <Content Include="MainPage\Login.aspx" />
     <Content Include="MainPage\UCChangePassword.ascx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelView.aspx" />
+    <Content Include="Moudles\SPS\Clients\SPClientView.aspx" />
+    <Content Include="Moudles\SPS\Codes\SPCodeChangeClient.aspx" />
     <Content Include="Moudles\SPS\Codes\SPCodeEdit.aspx" />
     <Content Include="Moudles\SPS\Codes\SPCodeLimitSetting.aspx" />
+    <Content Include="Moudles\SPS\Codes\SPCodeView.aspx" />
     <Content Include="Moudles\SPS\Images\application_delete.png" />
     <Content Include="Moudles\SPS\Images\application_edit.png" />
     <Content Include="Moudles\SPS\Images\application_view_detail.png" />
@@ -172,7 +176,6 @@
     <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsAdd.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsEdit.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelSycnParamsView.ascx" />
-    <Content Include="Moudles\SPS\Channels\UCSPChannelView.ascx" />
     <Content Include="Moudles\SPS\Clients\SPAdPackListPage.aspx" />
     <Content Include="Moudles\SPS\Clients\SPClientCodeRelationListPage.aspx" />
     <Content Include="Moudles\SPS\Clients\SPSClientCodeSycnTestForm.aspx" />
@@ -247,6 +250,9 @@
     </Compile>
     <Compile Include="AppCode\SPSDataRecievedHandler.cs" />
     <Compile Include="AppCode\WebUIHelper.cs" />
+    <Compile Include="Channels\TestClientChannel.ashx.cs">
+      <DependentUpon>TestClientChannel.ashx</DependentUpon>
+    </Compile>
     <Compile Include="DataService\SPDataService.asmx.cs">
       <DependentUpon>SPDataService.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -438,6 +444,13 @@
     <Compile Include="Moudles\SPS\Channels\SPChannelSycnParamsListPage.aspx.designer.cs">
       <DependentUpon>SPChannelSycnParamsListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelView.aspx.cs">
+      <DependentUpon>SPChannelView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelView.aspx.designer.cs">
+      <DependentUpon>SPChannelView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Channels\UCSPChannelFiltersAdd.ascx.cs">
       <DependentUpon>UCSPChannelFiltersAdd.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -529,13 +542,6 @@
     <Compile Include="Moudles\SPS\Channels\UCSPChannelSycnParamsView.ascx.designer.cs">
       <DependentUpon>UCSPChannelSycnParamsView.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Moudles\SPS\Channels\UCSPChannelView.ascx.cs">
-      <DependentUpon>UCSPChannelView.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Moudles\SPS\Channels\UCSPChannelView.ascx.designer.cs">
-      <DependentUpon>UCSPChannelView.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Moudles\SPS\Clients\SPAdPackListPage.aspx.cs">
       <DependentUpon>SPAdPackListPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -552,6 +558,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPClientHandler.ashx.cs">
       <DependentUpon>SPClientHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientView.aspx.cs">
+      <DependentUpon>SPClientView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Clients\SPClientView.aspx.designer.cs">
+      <DependentUpon>SPClientView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Clients\SPSClientCodeSycnTestForm.aspx.cs">
       <DependentUpon>SPSClientCodeSycnTestForm.aspx</DependentUpon>
@@ -679,6 +692,13 @@
     <Compile Include="Moudles\SPS\Codes\SPClientCodeSycnParamsListPage.aspx.designer.cs">
       <DependentUpon>SPClientCodeSycnParamsListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeChangeClient.aspx.cs">
+      <DependentUpon>SPCodeChangeClient.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeChangeClient.aspx.designer.cs">
+      <DependentUpon>SPCodeChangeClient.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Codes\SPCodeEdit.aspx.cs">
       <DependentUpon>SPCodeEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -713,6 +733,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Codes\SPCodeTreeListPage.aspx.designer.cs">
       <DependentUpon>SPCodeTreeListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeView.aspx.cs">
+      <DependentUpon>SPCodeView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Codes\SPCodeView.aspx.designer.cs">
+      <DependentUpon>SPCodeView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Codes\SPSChannelCodeHandler.ashx.cs">
       <DependentUpon>SPSChannelCodeHandler.ashx</DependentUpon>
@@ -911,6 +938,7 @@
     <Content Include="Moudles\SPS\Reports\ClientReport.rdl" />
     <Content Include="Moudles\SPS\Reports\RecordExportTemplateForChannel.rdl" />
     <Content Include="Moudles\SPS\Reports\ReportProvinceChart.rdl" />
+    <Content Include="Channels\TestClientChannel.ashx" />
     <None Include="Properties\PublishProfiles\SPSWEB.pubxml" />
   </ItemGroup>
   <ItemGroup>

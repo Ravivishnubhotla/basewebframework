@@ -1,6 +1,22 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPSClientEdit.ascx.cs" Inherits="SPSWeb.Moudles.SPS.Clients.UCSPSClientEdit" %>
+<script type="text/javascript">
+    function ShowSycnSetting1() {
+        var chkSyncData = <%= chkSyncData.ClientID %>;
+        var txtSycnRetryTimes  = <%= txtSycnRetryTimes.ClientID %>;
+        var fsSyncMO  = <%= fsSyncMO.ClientID %>;
+        if (chkSyncData.getValue()) {
+            txtSycnRetryTimes.show();
+            fsSyncMO.show();            
+        } else {
+            txtSycnRetryTimes.hide();
+            fsSyncMO.hide();
+        }
+    }
+
+    ShowSycnSetting();
+</script>
 <ext:Window ID="winSPSClientEdit" runat="server" Icon="ApplicationEdit" Title="编辑客户信息"
-    Width="400" Height="270" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
+    Width="500" Height="370" AutoShow="false" Maximizable="true" Modal="true" Hidden="true"
     AutoScroll="true" ConstrainHeader="true" Resizable="true" Layout="fit">
     <Content>
         <ext:FormPanel ID="formPanelSPSClientEdit" runat="server" Frame="true" Header="false"
@@ -21,18 +37,19 @@
                 <ext:NumberField ID="txtDefaultPrice" runat="server" FieldLabel="默认价格" AllowBlank="false"
                     AnchorHorizontal="95%" />
                 <ext:Checkbox ID="chkSyncData" runat="server" FieldLabel="是否同步数据" Checked="false"
-                    AnchorHorizontal="95%" Hidden="True">
- 
+                    AnchorHorizontal="95%">
+                    <Listeners>
+                        <Check Handler="ShowSycnSetting1();"></Check>
+                    </Listeners>
                 </ext:Checkbox>
- 
                 <ext:TextField ID="txtSycnRetryTimes" runat="server" FieldLabel="默认重发次数" AllowBlank="True"
                     AnchorHorizontal="95%" Hidden="true" />
                 <ext:FieldSet ID="fsSyncMO" runat="server" CheckboxToggle="true" Title="同步MO" AutoHeight="true"
-                    Collapsed="true" LabelWidth="75" Layout="Form" Hidden="True">
+                    Collapsed="False" LabelWidth="75" Layout="Form" Hidden="True">
                     <Items>
                         <ext:TextField ID="txtSycnMOUrl" runat="server" FieldLabel="同步地址" AllowBlank="True"
                             AnchorHorizontal="95%" />
-                        <ext:TextField ID="txtSycnMOOkMessage" runat="server" FieldLabel="同步成功返回参数" Text="ok" 
+                        <ext:TextField ID="txtSycnMOOkMessage" runat="server" FieldLabel="同步成功返回参数" Text="ok"
                             AllowBlank="True" AnchorHorizontal="95%" />
                         <ext:TextField ID="txtSycnMOFailedMessage" runat="server" FieldLabel="同步失败返回参数" Text="failed"
                             AllowBlank="True" AnchorHorizontal="95%" />
@@ -41,33 +58,33 @@
                 <ext:FieldSet ID="fsSyncMR" runat="server" CheckboxToggle="true" Title="同步MR" AutoHeight="true"
                     Collapsed="true" LabelWidth="75" Layout="Form" Hidden="True">
                     <Items>
-                        <ext:TextField ID="txtSycnMRUrl" runat="server" FieldLabel="同步地址"  AllowBlank="True"
+                        <ext:TextField ID="txtSycnMRUrl" runat="server" FieldLabel="同步地址" AllowBlank="True"
                             AnchorHorizontal="95%" />
-                        <ext:TextField ID="txtSycnMROkMessage" runat="server" FieldLabel="同步成功返回参数" Text="ok" 
+                        <ext:TextField ID="txtSycnMROkMessage" runat="server" FieldLabel="同步成功返回参数" Text="ok"
                             AllowBlank="True" AnchorHorizontal="95%" />
                         <ext:TextField ID="txtSycnMRFailedMessage" runat="server" FieldLabel="同步失败返回参数" Text="failed"
-                             AllowBlank="True" AnchorHorizontal="95%" />
+                            AllowBlank="True" AnchorHorizontal="95%" />
                     </Items>
                 </ext:FieldSet>
                 <ext:FieldSet ID="fsSyncState" runat="server" CheckboxToggle="true" Title="同步状态"
                     AutoHeight="true" Collapsed="true" LabelWidth="75" Layout="Form" Hidden="True">
                     <Items>
-                        <ext:TextField ID="txtSycnStateUrl" runat="server" FieldLabel="同步地址"  AllowBlank="True"
+                        <ext:TextField ID="txtSycnStateUrl" runat="server" FieldLabel="同步地址" AllowBlank="True"
                             AnchorHorizontal="95%" />
-                        <ext:TextField ID="txtSycnStateOkMessage" runat="server" FieldLabel="同步成功返回参数" Text="ok" 
+                        <ext:TextField ID="txtSycnStateOkMessage" runat="server" FieldLabel="同步成功返回参数" Text="ok"
                             AllowBlank="True" AnchorHorizontal="95%" />
                         <ext:TextField ID="txtSycnStateFailedMessage" runat="server" FieldLabel="同步失败返回参数" Text="failed"
-                             AllowBlank="True" AnchorHorizontal="95%" />
+                            AllowBlank="True" AnchorHorizontal="95%" />
                     </Items>
                 </ext:FieldSet>
             </Items>
         </ext:FormPanel>
     </Content>
     <Buttons>
-        <ext:Button ID="btnSaveSPSClient" runat="server" Text="Edit" Icon="ApplicationEdit">
+        <ext:Button ID="btnSaveSPSClient" runat="server" Text="编辑" Icon="ApplicationEdit">
             <DirectEvents>
                 <Click Before="if(!#{formPanelSPSClientEdit}.getForm().isValid()) return false;"
-                    OnEvent="btnSaveSPSClient_Click" 
+                    OnEvent="btnSaveSPSClient_Click"
                     Success="ShowMessage('操作成功','编辑客户成功！',1);#{formPanelSPSClientEdit}.getForm().reset();#{storeSPSClient}.reload();" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="保存中,请稍候....." />
                 </Click>
@@ -79,4 +96,7 @@
             </Listeners>
         </ext:Button>
     </Buttons>
+    <Listeners>
+        <BeforeShow Handler="ShowSycnSetting();"></BeforeShow>
+    </Listeners>
 </ext:Window>
