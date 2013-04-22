@@ -98,6 +98,8 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_ISDAYTIMELIMIT = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_ISDAYTIMELIMIT));		
 		public static readonly DateTimeProperty PROPERTY_DAYTIMELIMITRANGESTART = new DateTimeProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_DAYTIMELIMITRANGESTART));		
 		public static readonly DateTimeProperty PROPERTY_DAYTIMELIMITRANGEEND = new DateTimeProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_DAYTIMELIMITRANGEEND));		
+		public static readonly BoolProperty PROPERTY_DAYTOTALLIMITINPROVINCE = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_DAYTOTALLIMITINPROVINCE));		
+		public static readonly StringProperty PROPERTY_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT));		
 		public static readonly StringProperty PROPERTY_CHANNELSTATUS = new StringProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CHANNELSTATUS));		
 		public static readonly IntProperty PROPERTY_CREATEBY = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CREATEBY));		
 		public static readonly DateTimeProperty PROPERTY_CREATEAT = new DateTimeProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_CREATEAT));		
@@ -197,6 +199,10 @@ namespace SPS.Data.Tables
                     return typeof (DateTime);
                 case "DayTimeLimitRangeEnd":
                     return typeof (DateTime);
+                case "DayTotalLimitInProvince":
+                    return typeof (bool);
+                case "DayTotalLimitInProvinceAssignedCount":
+                    return typeof (string);
                 case "ChannelStatus":
                     return typeof (string);
                 case "CreateBy":

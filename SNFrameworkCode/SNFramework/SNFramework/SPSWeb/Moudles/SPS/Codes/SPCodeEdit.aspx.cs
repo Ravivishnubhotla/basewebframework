@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Ext.Net;
 using Legendigital.Common.WebApp.AppCode;
 using Legendigital.Framework.Common.Utility;
+using SPS.Bussiness.Code;
 using SPS.Bussiness.Wrappers;
 
 namespace SPSWeb.Moudles.SPS.Codes
@@ -81,7 +82,29 @@ namespace SPSWeb.Moudles.SPS.Codes
                 obj.IsDiable = this.chkIsDiable.Checked;
 
                 obj.LimitProvince = this.chkLimitProvince.Checked;
+
+                string oldLimitProvinceArea = obj.LimitProvinceArea;
+
+
+
+
+
                 obj.LimitProvinceArea = WebUIHelper.GetSelectMutilItems(this.mfLimitProvinceArea,",");
+
+
+                if (obj.LimitProvinceArea != oldLimitProvinceArea)
+                {
+                    List<PhoneLimitAreaAssigned>  phoneLimitAreas = new List<PhoneLimitAreaAssigned>();
+
+                    string[] provinces = obj.LimitProvinceArea.Split((",").ToCharArray());
+
+                    foreach (string province in provinces)
+                    {
+                        phoneLimitAreas.Add(new PhoneLimitAreaAssigned() { AreaName = province, LimitCount = 0 });
+                    }
+
+                    obj.DayTotalLimitInProvinceAssignedCount = SerializeUtil.ToJson(phoneLimitAreas);
+                }
 
                 obj.HasPhoneLimit = this.chkHasPhoneLimit.Checked;
 

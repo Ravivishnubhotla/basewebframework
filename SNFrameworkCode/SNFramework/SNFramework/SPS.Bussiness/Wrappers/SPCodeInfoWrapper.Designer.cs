@@ -108,6 +108,10 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_SPCODEID_DAYTIMELIMITRANGESTART;
 		        case "SPCodeID_DayTimeLimitRangeEnd":
 					return PROPERTY_SPCODEID_DAYTIMELIMITRANGEEND;
+		        case "SPCodeID_DayTotalLimitInProvince":
+					return PROPERTY_SPCODEID_DAYTOTALLIMITINPROVINCE;
+		        case "SPCodeID_DayTotalLimitInProvinceAssignedCount":
+					return PROPERTY_SPCODEID_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT;
 		        case "SPCodeID_ChannelStatus":
 					return PROPERTY_SPCODEID_CHANNELSTATUS;
 		        case "SPCodeID_CreateBy":
@@ -182,6 +186,8 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_SPCODEID_ISDAYTIMELIMIT = "SPCodeID_SPCodeInfoEntity_Alias.IsDayTimeLimit";
 		public const string PROPERTY_SPCODEID_DAYTIMELIMITRANGESTART = "SPCodeID_SPCodeInfoEntity_Alias.DayTimeLimitRangeStart";
 		public const string PROPERTY_SPCODEID_DAYTIMELIMITRANGEEND = "SPCodeID_SPCodeInfoEntity_Alias.DayTimeLimitRangeEnd";
+		public const string PROPERTY_SPCODEID_DAYTOTALLIMITINPROVINCE = "SPCodeID_SPCodeInfoEntity_Alias.DayTotalLimitInProvince";
+		public const string PROPERTY_SPCODEID_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT = "SPCodeID_SPCodeInfoEntity_Alias.DayTotalLimitInProvinceAssignedCount";
 		public const string PROPERTY_SPCODEID_CHANNELSTATUS = "SPCodeID_SPCodeInfoEntity_Alias.ChannelStatus";
 		public const string PROPERTY_SPCODEID_CREATEBY = "SPCodeID_SPCodeInfoEntity_Alias.CreateBy";
 		public const string PROPERTY_SPCODEID_CREATEAT = "SPCodeID_SPCodeInfoEntity_Alias.CreateAt";
@@ -630,6 +636,26 @@ namespace SPS.Bussiness.Wrappers
                 if (this. SPCodeID == null)
                     return null;
                 return  SPCodeID.DayTimeLimitRangeEnd;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPCODEID_DAYTOTALLIMITINPROVINCE)]
+        public bool? SPCodeID_DayTotalLimitInProvince
+        {
+            get
+            {
+                if (this. SPCodeID == null)
+                    return null;
+                return  SPCodeID.DayTotalLimitInProvince;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPCODEID_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT)]
+        public string SPCodeID_DayTotalLimitInProvinceAssignedCount
+        {
+            get
+            {
+                if (this. SPCodeID == null)
+                    return null;
+                return  SPCodeID.DayTotalLimitInProvinceAssignedCount;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPCODEID_CHANNELSTATUS)]
