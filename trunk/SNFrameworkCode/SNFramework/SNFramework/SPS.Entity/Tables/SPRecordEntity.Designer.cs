@@ -133,6 +133,7 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_CODEID_HASDAYTOTALLIMIT = "CodeID_SPRecordEntity_Alias.HasDayTotalLimit";
 		public const string PROPERTY_CODEID_DAYTOTALLIMITCOUNT = "CodeID_SPRecordEntity_Alias.DayTotalLimitCount";
 		public const string PROPERTY_CODEID_HASPHONELIMIT = "CodeID_SPRecordEntity_Alias.HasPhoneLimit";
+		public const string PROPERTY_CODEID_HASDAYMONTHLIMIT = "CodeID_SPRecordEntity_Alias.HasDayMonthLimit";
 		public const string PROPERTY_CODEID_PHONELIMITDAYCOUNT = "CodeID_SPRecordEntity_Alias.PhoneLimitDayCount";
 		public const string PROPERTY_CODEID_PHONELIMITMONTHCOUNT = "CodeID_SPRecordEntity_Alias.PhoneLimitMonthCount";
 		public const string PROPERTY_CODEID_PHONELIMITTYPE = "CodeID_SPRecordEntity_Alias.PhoneLimitType";

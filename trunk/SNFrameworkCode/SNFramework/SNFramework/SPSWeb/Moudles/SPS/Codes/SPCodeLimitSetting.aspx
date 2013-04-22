@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPCodeLimitSetting.aspx.cs" Inherits="SPSWeb.Moudles.SPS.Codes.SPCodeLimitSetting" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
+            <Listeners>
+                <DocumentReady Handler="CheckAllAddUI();"></DocumentReady>
+            </Listeners>
+    </ext:ResourceManagerProxy>
     <ext:Store ID="storeAreaCountList" runat="server" AutoLoad="true" OnRefreshData="storeAreaCountList_Refresh">
     <Reader>
         <ext:JsonReader>
@@ -62,22 +67,19 @@
         }
     }
     function CheckAllAddUI() {
-        CheckLimitProvince();
         CheckDayTimeLimit();
         CheckDayMonthTotalLimit();
         CheckDayTotalLimit();
     }
- 
-
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <ext:Viewport ID="viewPortMain" runat="server" Layout="fit">
         <Items>
             <ext:FormPanel ID="pnlCode" runat="server" Title="指令设置" Frame="true" PaddingSummary="0"
-                ButtonAlign="Center" Layout="fit" AutoScroll="True">
+                ButtonAlign="Center" Layout="Form" AutoScroll="True">
                 <Items>
-                    <ext:CompositeField ID="cfIsDayTimeLimit" runat="server" FieldLabel="时段限制" AnchorHorizontal="100%">
+                    <ext:CompositeField ID="cfIsDayTimeLimit" runat="server" FieldLabel="时段限制" AnchorHorizontal="95%">
                         <Items>
                             <ext:Checkbox ID="chkIsDayTimeLimit" runat="server">
                                 <Listeners>

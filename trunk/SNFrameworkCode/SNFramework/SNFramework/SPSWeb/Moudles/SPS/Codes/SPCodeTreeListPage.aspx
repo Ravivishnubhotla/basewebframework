@@ -150,8 +150,37 @@
             win.autoLoad.params.CodeID = id;		                
             			                
             win.show(); 
-        } 
+        }
+
+
+        function  showCodeChangeClient(id) {
+
+            var win = <%= this.winChangeClient.ClientID %>;
+                
+            win.setTitle('设置指令限量');
+                
+            win.autoLoad.url = 'SPCodeChangeClient.aspx';
+        
+            win.autoLoad.params.CodeID = id;		                
+            			                
+            win.show(); 
+        }
  
+
+
+        function  showCodeLimit(id) {
+            
+            var win = <%= this.winCodeLimitSetting.ClientID %>;
+                
+
+                    win.setTitle('设置指令限量');
+                
+                    win.autoLoad.url = 'SPCodeLimitSetting.aspx';
+        
+                    win.autoLoad.params.CodeID = id;		                
+            			                
+                    win.show(); 
+                }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -224,13 +253,13 @@
                     <ext:TreeGrid ID="TreeGrid1" Region="Center" runat="server" Header="False" NoLeafIcon="true"
                         EnableDD="true">
                         <Columns>
-                            <ext:TreeGridColumn Header="指令代码" Width="300" DataIndex="MoCode" />
+                            <ext:TreeGridColumn Header="指令代码" Width="350" DataIndex="MoCode" />
                             <ext:TreeGridColumn Header="所属通道" Width="100" DataIndex="ChannelName" Hidden='<%# (ChannelID != null) %>' AutoDataBind="True" />
                             <ext:TreeGridColumn Header="分配下家" Width="100" DataIndex="AssignedClientName" Align="Center">
                             </ext:TreeGridColumn>
                             <ext:TreeGridColumn Header="扣率" Width="50" DataIndex="InterceptRate" />
                             <ext:TreeGridColumn Header="禁用" Width="50" DataIndex="Disable" />
-                            <ext:TreeGridColumn Header="管理" Width="100" Align="Center">
+                            <ext:TreeGridColumn Header="管理" Width="130" Align="Center">
                                 <XTemplate ID="XTemplate1" runat="server">
                                     <Html>
                                         <a href="#" title="编辑" onclick="showEditCode('{CodeID}','{MoCode}');"><img src="../Images/application_edit.png"></img></a>
@@ -241,7 +270,11 @@
                                         &nbsp;
                                         <a href="#" title="测试" onclick="showSendTest('{CodeID}','{ChannelName}','{ChannelID}');"><img src="../Images/telephone_go.png"></img></a>
                                         &nbsp;
-                                        <a href="#" title="指令限量设置" onclick="showSendTest('{CodeID}','{ChannelName}','{ChannelID}');"><img src="../Images/application_edit.png"></img></a>
+                                        <a href="#" title="分配指令下家" onclick="showCodeChangeClient('{CodeID}');"><img src="../Images/user_go.png"></img></a>
+                                        <tpl if="HasPhoneLimit=='True'">
+                                        &nbsp;
+                                        <a href="#" title="指令限量设置" onclick="showCodeLimit('{CodeID}');"><img src="../Images/hourglass.png"></img></a>
+                                        </tpl>
                                     </Html>
                                 </XTemplate>
                             </ext:TreeGridColumn>
@@ -253,7 +286,7 @@
             </ext:BorderLayout>
         </Items>
     </ext:Viewport>
-    <ext:Window ID="winSendTestRequestForm" runat="server" Title="通道模拟数据测试" Frame="true"
+    <ext:Window ID="winSendTestRequestForm" runat="server" Title="指令模拟数据测试" Frame="true"
         Width="640" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
         <AutoLoad Url="../Channels/SPChannelSendTestRequestForm.aspx" Mode="IFrame" NoCache="true"
@@ -269,7 +302,7 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-    <ext:Window ID="winEditCodeSetting" runat="server" Title="编辑通道设置" Frame="true"
+    <ext:Window ID="winEditCodeSetting" runat="server" Title="编辑指令设置" Frame="true"
         Width="780" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
         <AutoLoad Url="SPCodeEdit.aspx" Mode="IFrame" NoCache="true"
@@ -283,7 +316,7 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-    <ext:Window ID="winEditCodeInfo" runat="server" Title="编辑通道信息" Frame="true"
+    <ext:Window ID="winEditCodeInfo" runat="server" Title="编辑指令信息" Frame="true"
         Width="780" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
         <AutoLoad Url="SPCodeEdit.aspx" Mode="IFrame" NoCache="true"
@@ -297,4 +330,38 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
+     <ext:Window ID="winCodeLimitSetting" runat="server" Title="设置指令限量信息" Frame="true"
+        Width="780" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
+        <AutoLoad Url="SPCodeLimitSetting.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="CodeID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>   
+      <ext:Window ID="winChangeClient" runat="server" Title="指令分配下家" Frame="true"
+        Width="780" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
+        <AutoLoad Url="SPCodeChangeClient.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="CodeID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>     
+    
+    
+    
+    
+    
+    
 </asp:Content>

@@ -1,15 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPCodeEdit.aspx.cs" Inherits="SPSWeb.Moudles.SPS.Codes.SPCodeEdit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    
+            <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
+            <Listeners>
+                <DocumentReady Handler="CheckLimitProvince1();"></DocumentReady>
+            </Listeners>
+    </ext:ResourceManagerProxy>
+
     <style type="text/css">
         .cellClass
         {
             padding: 5px;
         }
     </style>
-
-
-
     <script type="text/javascript">
         
         function CheckLimitProvince1() {
@@ -61,7 +65,7 @@
                                 </ext:Checkbox>
                             </ext:Cell>
                             <ext:Cell CellCls="cellClass" ColSpan="2">
-                                <ext:MultiCombo ID="mfLimitProvinceArea" runat="server" Width="500" FieldLabel="所属省份">
+                                <ext:MultiCombo ID="mfLimitProvinceArea" runat="server" Width="470" FieldLabel="所属省份">
                                     <Items>
                                         <ext:ListItem Value="安徽" Text="安徽"></ext:ListItem>
                                         <ext:ListItem Value="北京" Text="北京"></ext:ListItem>
@@ -139,8 +143,5 @@
                 </Buttons>
             </ext:FormPanel>
         </Items>
-        <Listeners>
-            <BeforeShow Handler="CheckLimitProvince1();"></BeforeShow>
-        </Listeners>
     </ext:Viewport>
 </asp:Content>

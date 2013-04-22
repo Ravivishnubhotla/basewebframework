@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.Bussiness.NHibernate;
+using Legendigital.Framework.Common.Utility;
+using SPS.Bussiness.Code;
 using SPS.Bussiness.ConstClass;
 using SPS.Entity.Tables;
 using SPS.Bussiness.ServiceProxys.Tables;
@@ -454,5 +456,26 @@ namespace SPS.Bussiness.Wrappers
         {
             return ConvertToWrapperList(businessProxy.FindAllByChannelIDAndClientIDAndMoAndSpNumber(channelID, clientID, mo, spcode));
         }
+
+	    public List<PhoneLimitAreaAssigned> PhoneLimitAreas
+	    {
+	        get
+	        {
+                List<PhoneLimitAreaAssigned> phoneLimitAreas = new List<PhoneLimitAreaAssigned>();
+
+                if (!string.IsNullOrEmpty(this.LimitProvinceArea))
+                {
+                    try
+                    {
+                        phoneLimitAreas = SerializeUtil.JsonDeserialize<List<PhoneLimitAreaAssigned>>(this.LimitProvinceArea);
+                    }
+                    catch
+                    {
+                    }
+                }
+
+	            return phoneLimitAreas;
+	        }
+	    }
     }
 }

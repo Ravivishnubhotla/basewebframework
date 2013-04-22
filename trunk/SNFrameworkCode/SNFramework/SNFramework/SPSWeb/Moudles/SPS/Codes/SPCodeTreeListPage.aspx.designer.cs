@@ -191,5 +191,23 @@ namespace SPSWeb.Moudles.SPS.Codes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Window winEditCodeInfo;
+        
+        /// <summary>
+        /// winCodeLimitSetting control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winCodeLimitSetting;
+        
+        /// <summary>
+        /// winChangeClient control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winChangeClient;
     }
 }

@@ -87,6 +87,7 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_HASDAYTOTALLIMIT = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_HASDAYTOTALLIMIT));		
 		public static readonly IntProperty PROPERTY_DAYTOTALLIMITCOUNT = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_DAYTOTALLIMITCOUNT));		
 		public static readonly BoolProperty PROPERTY_HASPHONELIMIT = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_HASPHONELIMIT));		
+		public static readonly BoolProperty PROPERTY_HASDAYMONTHLIMIT = new BoolProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_HASDAYMONTHLIMIT));		
 		public static readonly IntProperty PROPERTY_PHONELIMITDAYCOUNT = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_PHONELIMITDAYCOUNT));		
 		public static readonly IntProperty PROPERTY_PHONELIMITMONTHCOUNT = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_PHONELIMITMONTHCOUNT));		
 		public static readonly IntProperty PROPERTY_PHONELIMITTYPE = new IntProperty(Property.ForName(SPCodeEntity.PROPERTY_NAME_PHONELIMITTYPE));		
@@ -173,6 +174,8 @@ namespace SPS.Data.Tables
                 case "DayTotalLimitCount":
                     return typeof (int);
                 case "HasPhoneLimit":
+                    return typeof (bool);
+                case "HasDayMonthLimit":
                     return typeof (bool);
                 case "PhoneLimitDayCount":
                     return typeof (int);

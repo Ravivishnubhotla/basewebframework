@@ -43,6 +43,7 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_HASDAYTOTALLIMIT = "HasDayTotalLimit";
 		public static readonly string PROPERTY_NAME_DAYTOTALLIMITCOUNT = "DayTotalLimitCount";
 		public static readonly string PROPERTY_NAME_HASPHONELIMIT = "HasPhoneLimit";
+		public static readonly string PROPERTY_NAME_HASDAYMONTHLIMIT = "HasDayMonthLimit";
 		public static readonly string PROPERTY_NAME_PHONELIMITDAYCOUNT = "PhoneLimitDayCount";
 		public static readonly string PROPERTY_NAME_PHONELIMITMONTHCOUNT = "PhoneLimitMonthCount";
 		public static readonly string PROPERTY_NAME_PHONELIMITTYPE = "PhoneLimitType";
@@ -138,6 +139,7 @@ namespace SPS.Entity.Tables
 		private bool _hasDayTotalLimit;
 		private int _dayTotalLimitCount;
 		private bool _hasPhoneLimit;
+		private bool? _hasDayMonthLimit;
 		private int _phoneLimitDayCount;
 		private int _phoneLimitMonthCount;
 		private int _phoneLimitType;
@@ -184,6 +186,7 @@ namespace SPS.Entity.Tables
 			_hasDayTotalLimit = false;
 			_dayTotalLimitCount = 0;
 			_hasPhoneLimit = false;
+			_hasDayMonthLimit = null;
 			_phoneLimitDayCount = 0;
 			_phoneLimitMonthCount = 0;
 			_phoneLimitType = 1;
@@ -207,7 +210,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPCodeEntity( int id, string name, string description, string code, string codeType, SPChannelEntity channelID, string mo, string mOType, int? mOLength, int orderIndex, string sPCode, string sPCodeType, int? sPCodeLength, bool hasFilters, bool hasParamsConvert, bool isDiable, decimal? price, string operationType, bool hasDayTotalLimit, int dayTotalLimitCount, bool hasPhoneLimit, int phoneLimitDayCount, int phoneLimitMonthCount, int phoneLimitType, bool? limitProvince, string limitProvinceArea, SPCodeEntity parentID, bool? isMatchCase, bool? isDayTimeLimit, DateTime? dayTimeLimitRangeStart, DateTime? dayTimeLimitRangeEnd, string channelStatus, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPCodeEntity( int id, string name, string description, string code, string codeType, SPChannelEntity channelID, string mo, string mOType, int? mOLength, int orderIndex, string sPCode, string sPCodeType, int? sPCodeLength, bool hasFilters, bool hasParamsConvert, bool isDiable, decimal? price, string operationType, bool hasDayTotalLimit, int dayTotalLimitCount, bool hasPhoneLimit, bool? hasDayMonthLimit, int phoneLimitDayCount, int phoneLimitMonthCount, int phoneLimitType, bool? limitProvince, string limitProvinceArea, SPCodeEntity parentID, bool? isMatchCase, bool? isDayTimeLimit, DateTime? dayTimeLimitRangeStart, DateTime? dayTimeLimitRangeEnd, string channelStatus, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -230,6 +233,7 @@ namespace SPS.Entity.Tables
 			_hasDayTotalLimit = hasDayTotalLimit;
 			_dayTotalLimitCount = dayTotalLimitCount;
 			_hasPhoneLimit = hasPhoneLimit;
+			_hasDayMonthLimit = hasDayMonthLimit;
 			_phoneLimitDayCount = phoneLimitDayCount;
 			_phoneLimitMonthCount = phoneLimitMonthCount;
 			_phoneLimitType = phoneLimitType;
@@ -569,6 +573,20 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_hasPhoneLimit != value); _hasPhoneLimit = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? HasDayMonthLimit
+		{
+			get { return _hasDayMonthLimit; }
+
+			set	
+			{
+				_isChanged |= (_hasDayMonthLimit != value); _hasDayMonthLimit = value;
 			}
 		}
 
