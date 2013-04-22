@@ -142,6 +142,7 @@
     <Content Include="Moudles\SPS\Images\application_delete.png" />
     <Content Include="Moudles\SPS\Images\application_edit.png" />
     <Content Include="Moudles\SPS\Images\application_view_detail.png" />
+    <Content Include="Moudles\SPS\Images\hourglass.png" />
     <Content Include="Moudles\SPS\Images\telephone_go.png" />
     <Content Include="Moudles\SPS\Ads\SPAdAssignedHistortyListPage.aspx" />
     <Content Include="Moudles\SPS\Ads\SPAdPackListPage.aspx" />
@@ -205,6 +206,7 @@
     <Content Include="Moudles\SPS\Codes\UCSPCodeAdd.ascx" />
     <Content Include="Moudles\SPS\Codes\UCSPCodeView.ascx" />
     <Content Include="Moudles\SPS\Data\SPSDataManage.aspx" />
+    <Content Include="Moudles\SPS\Images\user_go.png" />
     <Content Include="Moudles\SPS\Reports\Blank.htm" />
     <Content Include="Moudles\SPS\Reports\ReportChannelInvoice.aspx" />
     <Content Include="Moudles\SPS\Reports\ReportChannelInvoiceService.aspx" />

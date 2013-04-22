@@ -86,6 +86,8 @@ namespace SPS.Bussiness.Wrappers
 					return PROPERTY_SPCODEID_DAYTOTALLIMITCOUNT;
 		        case "SPCodeID_HasPhoneLimit":
 					return PROPERTY_SPCODEID_HASPHONELIMIT;
+		        case "SPCodeID_HasDayMonthLimit":
+					return PROPERTY_SPCODEID_HASDAYMONTHLIMIT;
 		        case "SPCodeID_PhoneLimitDayCount":
 					return PROPERTY_SPCODEID_PHONELIMITDAYCOUNT;
 		        case "SPCodeID_PhoneLimitMonthCount":
@@ -169,6 +171,7 @@ namespace SPS.Bussiness.Wrappers
 		public const string PROPERTY_SPCODEID_HASDAYTOTALLIMIT = "SPCodeID_SPCodeInfoEntity_Alias.HasDayTotalLimit";
 		public const string PROPERTY_SPCODEID_DAYTOTALLIMITCOUNT = "SPCodeID_SPCodeInfoEntity_Alias.DayTotalLimitCount";
 		public const string PROPERTY_SPCODEID_HASPHONELIMIT = "SPCodeID_SPCodeInfoEntity_Alias.HasPhoneLimit";
+		public const string PROPERTY_SPCODEID_HASDAYMONTHLIMIT = "SPCodeID_SPCodeInfoEntity_Alias.HasDayMonthLimit";
 		public const string PROPERTY_SPCODEID_PHONELIMITDAYCOUNT = "SPCodeID_SPCodeInfoEntity_Alias.PhoneLimitDayCount";
 		public const string PROPERTY_SPCODEID_PHONELIMITMONTHCOUNT = "SPCodeID_SPCodeInfoEntity_Alias.PhoneLimitMonthCount";
 		public const string PROPERTY_SPCODEID_PHONELIMITTYPE = "SPCodeID_SPCodeInfoEntity_Alias.PhoneLimitType";
@@ -517,6 +520,16 @@ namespace SPS.Bussiness.Wrappers
                 if (this. SPCodeID == null)
                     return null;
                 return  SPCodeID.HasPhoneLimit;
+            }
+        }
+		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPCODEID_HASDAYMONTHLIMIT)]
+        public bool? SPCodeID_HasDayMonthLimit
+        {
+            get
+            {
+                if (this. SPCodeID == null)
+                    return null;
+                return  SPCodeID.HasDayMonthLimit;
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SPCODEID_PHONELIMITDAYCOUNT)]

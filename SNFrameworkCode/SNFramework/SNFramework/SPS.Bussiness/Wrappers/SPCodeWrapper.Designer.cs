@@ -158,6 +158,7 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_HASDAYTOTALLIMIT = "HasDayTotalLimit";
 		public static readonly string PROPERTY_NAME_DAYTOTALLIMITCOUNT = "DayTotalLimitCount";
 		public static readonly string PROPERTY_NAME_HASPHONELIMIT = "HasPhoneLimit";
+		public static readonly string PROPERTY_NAME_HASDAYMONTHLIMIT = "HasDayMonthLimit";
 		public static readonly string PROPERTY_NAME_PHONELIMITDAYCOUNT = "PhoneLimitDayCount";
 		public static readonly string PROPERTY_NAME_PHONELIMITMONTHCOUNT = "PhoneLimitMonthCount";
 		public static readonly string PROPERTY_NAME_PHONELIMITTYPE = "PhoneLimitType";
@@ -543,6 +544,21 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.HasPhoneLimit = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? HasDayMonthLimit
+		{
+			get
+			{
+				return entity.HasDayMonthLimit;
+			}
+			set
+			{
+				entity.HasDayMonthLimit = value;
 			}
 		}
 		/// <summary>

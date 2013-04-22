@@ -115,6 +115,7 @@ namespace SPSWeb.Moudles.SPS.Codes
                     mainNode.CustomAttributes.Add(new ConfigItem("AssignedClientName", allcodes[i].AssignedClientName, ParameterMode.Value));
                     mainNode.CustomAttributes.Add(new ConfigItem("CodeID", allcodes[i].Id.ToString(), ParameterMode.Value));
                     mainNode.CustomAttributes.Add(new ConfigItem("Disable", allcodes[i].IsDiable.ToString(), ParameterMode.Value));
+                    mainNode.CustomAttributes.Add(new ConfigItem("HasPhoneLimit", allcodes[i].HasPhoneLimit.ToString(), ParameterMode.Value));
                     GenerateSubTreeNode(mainNode, allcodes[i], allcodes);
                     root.Nodes.Add(mainNode);
                 }
@@ -142,6 +143,7 @@ namespace SPSWeb.Moudles.SPS.Codes
                 subNode.CustomAttributes.Add(new ConfigItem("AssignedClientName", subCode.AssignedClientName, ParameterMode.Value));
                 subNode.CustomAttributes.Add(new ConfigItem("CodeID", subCode.Id.ToString(), ParameterMode.Value));
                 subNode.CustomAttributes.Add(new ConfigItem("Disable", subCode.IsDiable.ToString(), ParameterMode.Value));
+                mainNode.CustomAttributes.Add(new ConfigItem("HasPhoneLimit", subCode.HasPhoneLimit.ToString(), ParameterMode.Value));
                 GenerateSubTreeNode(subNode, subCode, allcodes);
                 mainNode.Nodes.Add(subNode);
             }

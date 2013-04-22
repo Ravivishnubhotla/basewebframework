@@ -84,7 +84,7 @@
                                     </ext:Checkbox>
                                 </ext:Cell>
                                 <ext:Cell CellCls="cellClass" ColSpan="2">
-                                    <ext:MultiCombo ID="mfLimitProvinceArea" runat="server" Width="500" FieldLabel="所属省份">
+                                    <ext:MultiCombo ID="mfLimitProvinceArea" runat="server" Width="470" FieldLabel="所属省份">
                                         <Items>
                                             <ext:ListItem Value="安徽" Text="安徽"></ext:ListItem>
                                             <ext:ListItem Value="北京" Text="北京"></ext:ListItem>

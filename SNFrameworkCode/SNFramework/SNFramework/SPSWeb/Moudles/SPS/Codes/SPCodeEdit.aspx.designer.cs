@@ -13,6 +13,15 @@ namespace SPSWeb.Moudles.SPS.Codes {
     public partial class SPCodeEdit {
         
         /// <summary>
+        /// ScriptManagerProxy1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ResourceManagerProxy ScriptManagerProxy1;
+        
+        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>

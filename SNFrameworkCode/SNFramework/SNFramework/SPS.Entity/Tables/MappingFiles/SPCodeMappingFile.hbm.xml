@@ -31,6 +31,7 @@
 		<property column="HasDayTotalLimit" type="Boolean" name="HasDayTotalLimit"   not-null="true"  />	
 		<property column="DayTotalLimitCount" type="int" name="DayTotalLimitCount"   not-null="true"  />	
 		<property column="HasPhoneLimit" type="Boolean" name="HasPhoneLimit"   not-null="true"  />	
+		<property column="HasDayMonthLimit" type="Boolean" name="HasDayMonthLimit"   />	
 		<property column="PhoneLimitDayCount" type="int" name="PhoneLimitDayCount"   not-null="true"  />	
 		<property column="PhoneLimitMonthCount" type="int" name="PhoneLimitMonthCount"   not-null="true"  />	
 		<property column="PhoneLimitType" type="int" name="PhoneLimitType"   not-null="true"  />	
