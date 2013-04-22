@@ -98,6 +98,11 @@
             var win = <%= this.winEditCodeSetting.ClientID %>;
             win.hide();
         }
+        
+        function CloseCodeLimitSetting() {
+            var win = <%= this.winCodeLimitSetting.ClientID %>;
+                    win.hide();
+                }
 
         function RefreshDataList() {
             var pnl = <%= this.Panel2.ClientID %>;
@@ -110,6 +115,8 @@
         };
 
         function showEditCode(id,mocode) {
+
+ 
             
             var win = <%= this.winEditCodeSetting.ClientID %>;
                 

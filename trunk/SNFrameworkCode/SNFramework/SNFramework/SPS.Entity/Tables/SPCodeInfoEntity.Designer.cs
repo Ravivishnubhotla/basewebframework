@@ -67,6 +67,8 @@ namespace SPS.Entity.Tables
 		public const string PROPERTY_SPCODEID_ISDAYTIMELIMIT = "SPCodeID_SPCodeInfoEntity_Alias.IsDayTimeLimit";
 		public const string PROPERTY_SPCODEID_DAYTIMELIMITRANGESTART = "SPCodeID_SPCodeInfoEntity_Alias.DayTimeLimitRangeStart";
 		public const string PROPERTY_SPCODEID_DAYTIMELIMITRANGEEND = "SPCodeID_SPCodeInfoEntity_Alias.DayTimeLimitRangeEnd";
+		public const string PROPERTY_SPCODEID_DAYTOTALLIMITINPROVINCE = "SPCodeID_SPCodeInfoEntity_Alias.DayTotalLimitInProvince";
+		public const string PROPERTY_SPCODEID_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT = "SPCodeID_SPCodeInfoEntity_Alias.DayTotalLimitInProvinceAssignedCount";
 		public const string PROPERTY_SPCODEID_CHANNELSTATUS = "SPCodeID_SPCodeInfoEntity_Alias.ChannelStatus";
 		public const string PROPERTY_SPCODEID_CREATEBY = "SPCodeID_SPCodeInfoEntity_Alias.CreateBy";
 		public const string PROPERTY_SPCODEID_CREATEAT = "SPCodeID_SPCodeInfoEntity_Alias.CreateAt";

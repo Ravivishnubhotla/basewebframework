@@ -463,14 +463,28 @@ namespace SPS.Bussiness.Wrappers
 	        {
                 List<PhoneLimitAreaAssigned> phoneLimitAreas = new List<PhoneLimitAreaAssigned>();
 
-                if (!string.IsNullOrEmpty(this.LimitProvinceArea))
+                if (!string.IsNullOrEmpty(this.DayTotalLimitInProvinceAssignedCount))
                 {
                     try
                     {
-                        phoneLimitAreas = SerializeUtil.JsonDeserialize<List<PhoneLimitAreaAssigned>>(this.LimitProvinceArea);
+                        phoneLimitAreas = SerializeUtil.JsonDeserialize<List<PhoneLimitAreaAssigned>>(this.DayTotalLimitInProvinceAssignedCount);
                     }
                     catch
                     {
+                    }
+
+
+                }
+
+                if (phoneLimitAreas == null || phoneLimitAreas.Count == 0)
+                {
+                    phoneLimitAreas = new List<PhoneLimitAreaAssigned>();
+
+                    string[] provinces = this.LimitProvinceArea.Split((",").ToCharArray());
+
+                    foreach (string province in provinces)
+                    {
+                        phoneLimitAreas.Add(new PhoneLimitAreaAssigned() { AreaName = province, LimitCount = 0 });
                     }
                 }
 

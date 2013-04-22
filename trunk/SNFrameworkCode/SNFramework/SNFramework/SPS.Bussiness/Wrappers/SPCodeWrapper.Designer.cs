@@ -169,6 +169,8 @@ namespace SPS.Bussiness.Wrappers
 		public static readonly string PROPERTY_NAME_ISDAYTIMELIMIT = "IsDayTimeLimit";
 		public static readonly string PROPERTY_NAME_DAYTIMELIMITRANGESTART = "DayTimeLimitRangeStart";
 		public static readonly string PROPERTY_NAME_DAYTIMELIMITRANGEEND = "DayTimeLimitRangeEnd";
+		public static readonly string PROPERTY_NAME_DAYTOTALLIMITINPROVINCE = "DayTotalLimitInProvince";
+		public static readonly string PROPERTY_NAME_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT = "DayTotalLimitInProvinceAssignedCount";
 		public static readonly string PROPERTY_NAME_CHANNELSTATUS = "ChannelStatus";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
@@ -709,6 +711,36 @@ namespace SPS.Bussiness.Wrappers
 			set
 			{
 				entity.DayTimeLimitRangeEnd = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public bool? DayTotalLimitInProvince
+		{
+			get
+			{
+				return entity.DayTotalLimitInProvince;
+			}
+			set
+			{
+				entity.DayTotalLimitInProvince = value;
+			}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public string DayTotalLimitInProvinceAssignedCount
+		{
+			get
+			{
+				return entity.DayTotalLimitInProvinceAssignedCount;
+			}
+			set
+			{
+				entity.DayTotalLimitInProvinceAssignedCount = value;
 			}
 		}
 		/// <summary>

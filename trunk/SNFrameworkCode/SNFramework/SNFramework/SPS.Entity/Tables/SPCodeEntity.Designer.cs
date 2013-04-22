@@ -54,6 +54,8 @@ namespace SPS.Entity.Tables
 		public static readonly string PROPERTY_NAME_ISDAYTIMELIMIT = "IsDayTimeLimit";
 		public static readonly string PROPERTY_NAME_DAYTIMELIMITRANGESTART = "DayTimeLimitRangeStart";
 		public static readonly string PROPERTY_NAME_DAYTIMELIMITRANGEEND = "DayTimeLimitRangeEnd";
+		public static readonly string PROPERTY_NAME_DAYTOTALLIMITINPROVINCE = "DayTotalLimitInProvince";
+		public static readonly string PROPERTY_NAME_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT = "DayTotalLimitInProvinceAssignedCount";
 		public static readonly string PROPERTY_NAME_CHANNELSTATUS = "ChannelStatus";
 		public static readonly string PROPERTY_NAME_CREATEBY = "CreateBy";
 		public static readonly string PROPERTY_NAME_CREATEAT = "CreateAt";
@@ -150,6 +152,8 @@ namespace SPS.Entity.Tables
 		private bool? _isDayTimeLimit;
 		private DateTime? _dayTimeLimitRangeStart;
 		private DateTime? _dayTimeLimitRangeEnd;
+		private bool? _dayTotalLimitInProvince;
+		private string _dayTotalLimitInProvinceAssignedCount;
 		private string _channelStatus;
 		private int? _createBy;
 		private DateTime? _createAt;
@@ -197,6 +201,8 @@ namespace SPS.Entity.Tables
 			_isDayTimeLimit = null;
 			_dayTimeLimitRangeStart = null;
 			_dayTimeLimitRangeEnd = null;
+			_dayTotalLimitInProvince = null;
+			_dayTotalLimitInProvinceAssignedCount = null;
 			_channelStatus = null;
 			_createBy = null;
 			_createAt = null;
@@ -210,7 +216,7 @@ namespace SPS.Entity.Tables
 		/// <summary>
 		/// 全构造函数
 		/// </summary>
-		public SPCodeEntity( int id, string name, string description, string code, string codeType, SPChannelEntity channelID, string mo, string mOType, int? mOLength, int orderIndex, string sPCode, string sPCodeType, int? sPCodeLength, bool hasFilters, bool hasParamsConvert, bool isDiable, decimal? price, string operationType, bool hasDayTotalLimit, int dayTotalLimitCount, bool hasPhoneLimit, bool? hasDayMonthLimit, int phoneLimitDayCount, int phoneLimitMonthCount, int phoneLimitType, bool? limitProvince, string limitProvinceArea, SPCodeEntity parentID, bool? isMatchCase, bool? isDayTimeLimit, DateTime? dayTimeLimitRangeStart, DateTime? dayTimeLimitRangeEnd, string channelStatus, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
+		public SPCodeEntity( int id, string name, string description, string code, string codeType, SPChannelEntity channelID, string mo, string mOType, int? mOLength, int orderIndex, string sPCode, string sPCodeType, int? sPCodeLength, bool hasFilters, bool hasParamsConvert, bool isDiable, decimal? price, string operationType, bool hasDayTotalLimit, int dayTotalLimitCount, bool hasPhoneLimit, bool? hasDayMonthLimit, int phoneLimitDayCount, int phoneLimitMonthCount, int phoneLimitType, bool? limitProvince, string limitProvinceArea, SPCodeEntity parentID, bool? isMatchCase, bool? isDayTimeLimit, DateTime? dayTimeLimitRangeStart, DateTime? dayTimeLimitRangeEnd, bool? dayTotalLimitInProvince, string dayTotalLimitInProvinceAssignedCount, string channelStatus, int? createBy, DateTime? createAt, int? lastModifyBy, DateTime? lastModifyAt, string lastModifyComment)
 		{
 			_id = id;
 			_name = name;
@@ -244,6 +250,8 @@ namespace SPS.Entity.Tables
 			_isDayTimeLimit = isDayTimeLimit;
 			_dayTimeLimitRangeStart = dayTimeLimitRangeStart;
 			_dayTimeLimitRangeEnd = dayTimeLimitRangeEnd;
+			_dayTotalLimitInProvince = dayTotalLimitInProvince;
+			_dayTotalLimitInProvinceAssignedCount = dayTotalLimitInProvinceAssignedCount;
 			_channelStatus = channelStatus;
 			_createBy = createBy;
 			_createAt = createAt;
@@ -730,6 +738,37 @@ namespace SPS.Entity.Tables
 			set	
 			{
 				_isChanged |= (_dayTimeLimitRangeEnd != value); _dayTimeLimitRangeEnd = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual bool? DayTotalLimitInProvince
+		{
+			get { return _dayTotalLimitInProvince; }
+
+			set	
+			{
+				_isChanged |= (_dayTotalLimitInProvince != value); _dayTotalLimitInProvince = value;
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		[DataMember]
+		public virtual string DayTotalLimitInProvinceAssignedCount
+		{
+			get { return _dayTotalLimitInProvinceAssignedCount; }
+
+			set	
+			{
+
+				if( value != null && value.Length > 8000)
+					throw new ArgumentOutOfRangeException("Invalid value for DayTotalLimitInProvinceAssignedCount", value, value.ToString());
+				_isChanged |= (_dayTotalLimitInProvinceAssignedCount != value); _dayTotalLimitInProvinceAssignedCount = value;
 			}
 		}
 

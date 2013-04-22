@@ -61,6 +61,8 @@ namespace SPS.Data.Tables
 		public static readonly BoolProperty PROPERTY_SPCODEID_ISDAYTIMELIMIT = new BoolProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".IsDayTimeLimit"));
 		public static readonly DateTimeProperty PROPERTY_SPCODEID_DAYTIMELIMITRANGESTART = new DateTimeProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".DayTimeLimitRangeStart"));
 		public static readonly DateTimeProperty PROPERTY_SPCODEID_DAYTIMELIMITRANGEEND = new DateTimeProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".DayTimeLimitRangeEnd"));
+		public static readonly BoolProperty PROPERTY_SPCODEID_DAYTOTALLIMITINPROVINCE = new BoolProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".DayTotalLimitInProvince"));
+		public static readonly StringProperty PROPERTY_SPCODEID_DAYTOTALLIMITINPROVINCEASSIGNEDCOUNT = new StringProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".DayTotalLimitInProvinceAssignedCount"));
 		public static readonly StringProperty PROPERTY_SPCODEID_CHANNELSTATUS = new StringProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".ChannelStatus"));
 		public static readonly IntProperty PROPERTY_SPCODEID_CREATEBY = new IntProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".CreateBy"));
 		public static readonly DateTimeProperty PROPERTY_SPCODEID_CREATEAT = new DateTimeProperty(Property.ForName(PROPERTY_SPCODEID_ALIAS_NAME + ".CreateAt"));
@@ -193,6 +195,10 @@ namespace SPS.Data.Tables
 							return typeof (DateTime);
                 		case "SPCodeID_SPCodeInfoEntity_Alias.DayTimeLimitRangeEnd":
 							return typeof (DateTime);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.DayTotalLimitInProvince":
+							return typeof (bool);
+                		case "SPCodeID_SPCodeInfoEntity_Alias.DayTotalLimitInProvinceAssignedCount":
+							return typeof (string);
                 		case "SPCodeID_SPCodeInfoEntity_Alias.ChannelStatus":
 							return typeof (string);
                 		case "SPCodeID_SPCodeInfoEntity_Alias.CreateBy":

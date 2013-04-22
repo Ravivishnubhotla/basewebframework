@@ -1,21 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPCodeLimitSetting.aspx.cs" Inherits="SPSWeb.Moudles.SPS.Codes.SPCodeLimitSetting" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
-            <Listeners>
-                <DocumentReady Handler="CheckAllAddUI();"></DocumentReady>
-            </Listeners>
+    <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="CheckAllAddUI();"></DocumentReady>
+        </Listeners>
     </ext:ResourceManagerProxy>
     <ext:Store ID="storeAreaCountList" runat="server" AutoLoad="true" OnRefreshData="storeAreaCountList_Refresh">
-    <Reader>
-        <ext:JsonReader>
-            <Fields>
-                <ext:RecordField Name="AreaName" />
-                <ext:RecordField Name="LimitCount" />
-            </Fields>
-        </ext:JsonReader>
-    </Reader>
-</ext:Store>
+        <Reader>
+            <ext:JsonReader>
+                <Fields>
+                    <ext:RecordField Name="AreaName" />
+                    <ext:RecordField Name="LimitCount" />
+                </Fields>
+            </ext:JsonReader>
+        </Reader>
+    </ext:Store>
     <style type="text/css">
         .cellClass
         {
@@ -42,22 +42,22 @@
         }
         function CheckDayMonthTotalLimit() {
             var chkDayMonthTotalLimit = <%= chkDayMonthTotalLimit.ClientID %>;
-        var nfPhoneLimitDayCount = <%= nfPhoneLimitDayCount.ClientID %>;
-        var dfPhoneLimitDayCount = <%= dfPhoneLimitDayCount.ClientID %>;
-        var nfPhoneLimitMonthCount = <%= nfPhoneLimitMonthCount.ClientID %>;
-        //alert(chkLimitProvince.getValue());
-        if (chkDayMonthTotalLimit.getValue()) {
-            nfPhoneLimitDayCount.show();
-            dfPhoneLimitDayCount.show();
-            nfPhoneLimitMonthCount.show();
-        } else {
-            nfPhoneLimitDayCount.hide();
-            dfPhoneLimitDayCount.hide();
-            nfPhoneLimitMonthCount.hide();
+            var nfPhoneLimitDayCount = <%= nfPhoneLimitDayCount.ClientID %>;
+            var dfPhoneLimitDayCount = <%= dfPhoneLimitDayCount.ClientID %>;
+            var nfPhoneLimitMonthCount = <%= nfPhoneLimitMonthCount.ClientID %>;
+            //alert(chkLimitProvince.getValue());
+            if (chkDayMonthTotalLimit.getValue()) {
+                nfPhoneLimitDayCount.show();
+                dfPhoneLimitDayCount.show();
+                nfPhoneLimitMonthCount.show();
+            } else {
+                nfPhoneLimitDayCount.hide();
+                dfPhoneLimitDayCount.hide();
+                nfPhoneLimitMonthCount.hide();
+            }
         }
-    }
-    function CheckDayTotalLimit() {
-        var chkDayTotalLimit = <%= chkDayTotalLimit.ClientID %>;
+        function CheckDayTotalLimit() {
+            var chkDayTotalLimit = <%= chkDayTotalLimit.ClientID %>;
         var nfDayTotalLimit = <%= nfDayTotalLimit.ClientID %>;
         //alert(chkLimitProvince.getValue());
         if (chkDayTotalLimit.getValue()) {
@@ -65,7 +65,18 @@
         } else {
             nfDayTotalLimit.hide();
         }
-    }
+        }
+        
+        function setAreaCountList() {
+            var grdAreaCountList = <%= grdAreaCountList.ClientID %>;
+            
+                        var hidAreaCountList = <%= hidAreaCountList.ClientID %>;
+
+                        hidAreaCountList.setValue(Ext.encode(grdAreaCountList.getRowsValues(false)));
+            
+                        //            alert(grdAreaCountList.getRowsValues(false));
+                        //            alert(Ext.encode(grdAreaCountList.getRowsValues(false)));
+                    }
     function CheckAllAddUI() {
         CheckDayTimeLimit();
         CheckDayMonthTotalLimit();
@@ -116,6 +127,7 @@
                             <ext:NumberField ID="nfDayTotalLimit" runat="server" Width="60" />
                         </Items>
                     </ext:CompositeField>
+                    <ext:Hidden ID="hidAreaCountList" runat="server" />
                     <ext:FieldSet ID="fsLimitProvince" runat="server" CheckboxToggle="true" Collapsed="True"
                         Title="省份日总限量分配" AutoHeight="true" LabelWidth="75" Layout="Form">
                         <Items>
@@ -145,6 +157,22 @@
                         </Items>
                     </ext:FieldSet>
                 </Items>
+                <Buttons>
+                    <ext:Button ID="btnSaveSPCode" runat="server" Text="编辑" Icon="ApplicationEdit">
+                        <DirectEvents>
+                            <Click Before="setAreaCountList();if(!#{pnlCode}.getForm().isValid()) return false;" OnEvent="btnSaveSPCodeLimitSetting_Click"
+                                Success="#{pnlCode}.getForm().reset();parent.ShowMessage('操作成功','更新指令限量设置成功！',1);parent.reloadCodes();parent.CloseCodeLimitSetting();"
+                                Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
+                                <EventMask ShowMask="true" Msg="Saving,Please waiting....." />
+                            </Click>
+                        </DirectEvents>
+                    </ext:Button>
+                    <ext:Button ID="btnCancelSPCode" runat="server" Text="取消" Icon="Cancel">
+                        <Listeners>
+                            <Click Handler="#{pnlCode}.getForm().reset();parent.CloseCodeEdit();" />
+                        </Listeners>
+                    </ext:Button>
+                </Buttons>
             </ext:FormPanel>
         </Items>
     </ext:Viewport>

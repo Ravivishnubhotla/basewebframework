@@ -166,6 +166,15 @@ namespace SPSWeb.Moudles.SPS.Codes {
         protected global::Ext.Net.NumberField nfDayTotalLimit;
         
         /// <summary>
+        /// hidAreaCountList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Hidden hidAreaCountList;
+        
+        /// <summary>
         /// fsLimitProvince control.
         /// </summary>
         /// <remarks>
@@ -200,5 +209,23 @@ namespace SPSWeb.Moudles.SPS.Codes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.NumberField NumberField3;
+        
+        /// <summary>
+        /// btnSaveSPCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button btnSaveSPCode;
+        
+        /// <summary>
+        /// btnCancelSPCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Button btnCancelSPCode;
     }
 }
