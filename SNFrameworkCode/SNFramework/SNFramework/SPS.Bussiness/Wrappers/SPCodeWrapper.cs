@@ -491,5 +491,116 @@ namespace SPS.Bussiness.Wrappers
 	            return phoneLimitAreas;
 	        }
 	    }
+
+	    public string ProvinceLimitInfo
+	    {
+	        get {
+                if (this.LimitProvince.HasValue && this.LimitProvince.Value)
+                {
+                    return "--限省(" + this.LimitProvinceArea + ")";
+                }
+                else
+                {
+                    return "不限省";
+                }
+            }
+	    }
+
+	    public string PhoneLimitInfo
+	    {
+	        get { 
+                string phoneLimitInfo = "";
+
+	            if (this.IsDayTimeLimit.HasValue && this.IsDayTimeLimit.Value)
+	            {
+                    phoneLimitInfo += string.Format("{0} - {1} <br/>", this.DayTimeLimitRangeStart.Value.ToString("hh:mm"), this.DayTimeLimitRangeEnd.Value.ToString("hh:mm"));
+	            }
+	            else
+	            {
+                    phoneLimitInfo += "无时间限制<br/>";
+	            }
+
+                if (this.HasDayMonthLimit.HasValue && this.HasDayMonthLimit.Value)
+                {
+                    phoneLimitInfo += string.Format("日月限制号码 ： 日{0} - 月{1} <br/>", this.PhoneLimitDayCount.ToString(), this.PhoneLimitMonthCount.ToString());
+                }
+                else
+                {
+                    phoneLimitInfo += "无日月号码限制<br/>";
+                }
+
+                if (this.HasDayTotalLimit)
+                {
+                    phoneLimitInfo += string.Format("日总量限制：{0} <br/>", this.DayTotalLimitCount.ToString());
+                }
+                else
+                {
+                    phoneLimitInfo += "无日总量限制<br/>";
+                }
+
+                if (this.DayTotalLimitInProvince.HasValue && this.DayTotalLimitInProvince.Value)
+                {
+                    phoneLimitInfo += "日总量分省限制：";
+
+                    foreach (PhoneLimitAreaAssigned phoneLimitAreaAssigned in this.PhoneLimitAreas)
+                    {
+                        phoneLimitInfo += string.Format(" {0}：{1} ,", phoneLimitAreaAssigned.AreaName, phoneLimitAreaAssigned.LimitCount);
+                    }
+
+                    phoneLimitInfo += "<br/>";
+                }
+
+	            return phoneLimitInfo;
+	        }
+	    }
+
+	    public void ChangeClient(SPSClientWrapper client,
+                                    DateTime changeDate,
+                                      int changeUserID,
+                                      decimal price,
+                                      decimal interceptRate,
+                                      bool syncData,
+                                      int sycnNotInterceptCount,
+                                      string sycnRetryTimes,
+                                      SPSDataSycnSettingWrapper dataSycnSetting)
+	    {
+            //如果存在分配客户，终止上次指令分配记录。
+            if (this.ClientCodeRelation != null)
+            {
+                if (this.ClientCodeRelation.ClientID.Id == client.Id)
+                    return;
+
+                this.ClientCodeRelation.IsEnable = false;
+                this.ClientCodeRelation.EndDate = changeDate;
+
+                SPClientCodeRelationWrapper.Update(this.ClientCodeRelation);
+            }
+
+            SPClientCodeRelationWrapper obj = new SPClientCodeRelationWrapper();
+
+            if (syncData)
+                SPSDataSycnSettingWrapper.Save(dataSycnSetting);
+
+            obj.Price = price;
+            obj.InterceptRate = interceptRate;
+            obj.UseClientDefaultSycnSetting = false;
+            obj.SyncData = syncData;
+            obj.ClientID = client;
+            obj.CodeID = this;
+            obj.SycnRetryTimes = sycnRetryTimes;
+            if (obj.SyncData)
+                obj.SyncDataSetting = dataSycnSetting;
+            obj.StartDate = changeDate;
+            obj.EndDate = null;
+            obj.IsEnable = true;
+	        obj.SycnNotInterceptCount = sycnNotInterceptCount;
+            obj.CreateBy = changeUserID;
+            obj.CreateAt = changeDate;
+	        obj.LastModifyBy = changeUserID;
+            obj.LastModifyAt = changeDate;
+
+
+            SPClientCodeRelationWrapper.Save(obj);
+	    }
     }
 }

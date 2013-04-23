@@ -942,7 +942,8 @@ namespace <%= config.GenerateBussinessEncapsulationClassNameSpace %>
 						type = type+"?";
 					}
 %>		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_<%= config.GenerateEntityPorpertyName(field).ToUpper() %>_<%= config.GenerateEntityPorpertyName(pfield).ToUpper() %>)]
-        public <%= type %> <%= config.GenerateEntityPorpertyName(field) %>_<%= config.GenerateEntityPorpertyName(pfield) %>
+        [DataMember]
+		public <%= type %> <%= config.GenerateEntityPorpertyName(field) %>_<%= config.GenerateEntityPorpertyName(pfield) %>
         {
             get
             {

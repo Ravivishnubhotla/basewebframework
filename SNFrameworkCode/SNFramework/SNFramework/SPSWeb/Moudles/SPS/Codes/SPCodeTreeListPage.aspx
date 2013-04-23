@@ -92,17 +92,17 @@
                     }
                 }
             );    
-        }
+            }
         
-        function CloseCodeEdit() {
-            var win = <%= this.winEditCodeSetting.ClientID %>;
+            function CloseCodeEdit() {
+                var win = <%= this.winEditCodeSetting.ClientID %>;
             win.hide();
         }
         
         function CloseCodeLimitSetting() {
             var win = <%= this.winCodeLimitSetting.ClientID %>;
-                    win.hide();
-                }
+            win.hide();
+        }
 
         function RefreshDataList() {
             var pnl = <%= this.Panel2.ClientID %>;
@@ -128,19 +128,28 @@
             			                
             win.show(); 
         }
+
+
+        function CloseChangeClient() {
+
+
+            var win = <%= this.winChangeClient.ClientID %>;
+
+            win.hide();
+        }                
+ 
             
         function showViewCode(id) {
-            Ext.net.DirectMethods.UCSPCodeView.Show(id,
-                {
-                    failure: function(msg) {
-                        Ext.Msg.alert('操作失败', msg,RefreshData);
-                    },
-                    eventMask: {
-                        showMask: true,
-                        msg: '处理中...'
-                    }
-                }              
-            );
+ 
+            var win = <%= this.winCodeView.ClientID %>;
+                
+            win.setTitle(' 编辑指令设置 ');
+                
+            win.autoLoad.url = 'SPCodeView.aspx';
+        
+            win.autoLoad.params.CodeID = id;		                
+            			                
+            win.show();   
         }
             
         function showSendTest(id,cname,cid) {
@@ -180,14 +189,14 @@
             var win = <%= this.winCodeLimitSetting.ClientID %>;
                 
 
-                    win.setTitle('设置指令限量');
+            win.setTitle('设置指令限量');
                 
-                    win.autoLoad.url = 'SPCodeLimitSetting.aspx';
+            win.autoLoad.url = 'SPCodeLimitSetting.aspx';
         
-                    win.autoLoad.params.CodeID = id;		                
+            win.autoLoad.params.CodeID = id;		                
             			                
-                    win.show(); 
-                }
+            win.show(); 
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -261,7 +270,7 @@
                         EnableDD="true">
                         <Columns>
                             <ext:TreeGridColumn Header="指令代码" Width="350" DataIndex="MoCode" />
-                            <ext:TreeGridColumn Header="所属通道" Width="100" DataIndex="ChannelName" Hidden='<%# (ChannelID != null) %>' AutoDataBind="True" />
+                            <ext:TreeGridColumn Header="所属通道" Width="80" DataIndex="ChannelName"/>
                             <ext:TreeGridColumn Header="分配下家" Width="100" DataIndex="AssignedClientName" Align="Center">
                             </ext:TreeGridColumn>
                             <ext:TreeGridColumn Header="扣率" Width="50" DataIndex="InterceptRate" />
@@ -337,7 +346,7 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
-     <ext:Window ID="winCodeLimitSetting" runat="server" Title="设置指令限量信息" Frame="true"
+    <ext:Window ID="winCodeLimitSetting" runat="server" Title="设置指令限量信息" Frame="true"
         Width="780" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
         <AutoLoad Url="SPCodeLimitSetting.aspx" Mode="IFrame" NoCache="true"
@@ -350,9 +359,9 @@
         <Listeners>
             <Hide Handler="this.clearContent();" />
         </Listeners>
-    </ext:Window>   
-      <ext:Window ID="winChangeClient" runat="server" Title="指令分配下家" Frame="true"
-        Width="780" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
+    </ext:Window>
+    <ext:Window ID="winChangeClient" runat="server" Title="指令分配下家" Frame="true"
+        Width="630" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
         <AutoLoad Url="SPCodeChangeClient.aspx" Mode="IFrame" NoCache="true"
             TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
@@ -364,11 +373,19 @@
         <Listeners>
             <Hide Handler="this.clearContent();" />
         </Listeners>
-    </ext:Window>     
-    
-    
-    
-    
-    
-    
+    </ext:Window>
+    <ext:Window ID="winCodeView" runat="server" Title="查看指令信息" Frame="true"
+        Width="580" ConstrainHeader="true" Height="380" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" Hidden="true" AutoScroll="true">
+        <AutoLoad Url="SPCodeView.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="CodeID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
 </asp:Content>

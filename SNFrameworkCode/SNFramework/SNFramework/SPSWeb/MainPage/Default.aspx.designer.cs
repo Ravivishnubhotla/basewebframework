@@ -256,6 +256,15 @@ namespace SPSWeb.MainPage {
         protected global::Ext.Net.Portlet Portlet4;
         
         /// <summary>
+        /// Portlet7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Portlet Portlet7;
+        
+        /// <summary>
         /// Portlet5 control.
         /// </summary>
         /// <remarks>
@@ -299,6 +308,24 @@ namespace SPSWeb.MainPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Portlet Portlet2;
+        
+        /// <summary>
+        /// Portlet3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Portlet Portlet3;
+        
+        /// <summary>
+        /// Portlet6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Portlet Portlet6;
         
         /// <summary>
         /// TabScrollerMenu1 control.

@@ -132,7 +132,8 @@
                         BodyBorder="false">
                         <Content>
                             <div class="menu south">
-                                <asp:Localize ID="locCopyRight" runat="server"></asp:Localize></div>
+                                <asp:Localize ID="locCopyRight" runat="server"></asp:Localize>
+                            </div>
                         </Content>
                     </ext:Panel>
                 </South>
@@ -164,22 +165,28 @@
                                                 <Items>
                                                     <ext:Portal ID="Portal1" runat="server" Border="false" Layout="Column" Closable="True">
                                                         <Items>
-                                                            <ext:PortalColumn ID="PortalColumn3" runat="server" Cls="x-column-padding1" ColumnWidth=".66"
+                                                            <ext:PortalColumn ID="PortalColumn3" runat="server" Cls="x-column-padding1" ColumnWidth=".50"
                                                                 Layout="Anchor">
                                                                 <Items>
-                                                                    <ext:Portlet ID="Portlet4" runat="server" Title="代办事宜">
+                                                                    <ext:Portlet ID="Portlet4" runat="server" Title="今日-所有未分配下家的指令" Icon="ScriptError">
                                                                         <Tools>
                                                                             <ext:Tool Type="Close" />
                                                                             <ext:Tool Type="Refresh" />
                                                                         </Tools>
                                                                     </ext:Portlet>
-                                                                    <ext:Portlet ID="Portlet5" runat="server" Title="最新公告">
+                                                                    <ext:Portlet ID="Portlet7" runat="server" Title="今日-所有未创建指令数据" Icon="TableError">
                                                                         <Tools>
                                                                             <ext:Tool Type="Close" />
                                                                             <ext:Tool Type="Refresh" />
                                                                         </Tools>
                                                                     </ext:Portlet>
-                                                                    <ext:Portlet ID="Portlet1" runat="server" Title="我的任务">
+                                                                    <ext:Portlet ID="Portlet5" runat="server" Title="价格为0下家" Icon="GroupGear">
+                                                                        <Tools>
+                                                                            <ext:Tool Type="Close" />
+                                                                            <ext:Tool Type="Refresh" />
+                                                                        </Tools>
+                                                                    </ext:Portlet>
+                                                                    <ext:Portlet ID="Portlet1" runat="server" Title="扣率为0下家" Icon="GroupGear">
                                                                         <Tools>
                                                                             <ext:Tool Type="Close" />
                                                                             <ext:Tool Type="Refresh" />
@@ -187,16 +194,29 @@
                                                                     </ext:Portlet>
                                                                 </Items>
                                                             </ext:PortalColumn>
-                                                            <ext:PortalColumn ID="PortalColumn1" runat="server" Cls="x-column-padding" ColumnWidth=".33"
+                                                            <ext:PortalColumn ID="PortalColumn1" runat="server" Cls="x-column-padding" ColumnWidth=".50"
                                                                 Layout="Anchor">
                                                                 <Items>
-                                                                    <ext:Portlet ID="plServerInfo" runat="server" Title="我的消息" Icon="Server" Closable="True">
+                                                                    <ext:Portlet ID="plServerInfo" runat="server" Title="今日-同步失败率较高的下家" Closable="True" Icon="GroupError">
+                                                                        <Tools>
+                                                                            <ext:Tool Type="Gear" Qtip="同步失败率监控设置" />
+                                                                            <ext:Tool Type="Close" />
+                                                                            <ext:Tool Type="Refresh" />
+                                                                        </Tools>
+                                                                    </ext:Portlet>
+                                                                    <ext:Portlet ID="Portlet2" runat="server" Title="服务器系统占用预警" Icon="Exclamation" Closable="True">
                                                                         <Tools>
                                                                             <ext:Tool Type="Close" />
                                                                             <ext:Tool Type="Refresh" />
                                                                         </Tools>
                                                                     </ext:Portlet>
-                                                                    <ext:Portlet ID="Portlet2" runat="server" Title="我的日程" Icon="Server" Closable="True">
+                                                                    <ext:Portlet ID="Portlet3" runat="server" Title="价格为0指令" Icon="ScriptGear">
+                                                                        <Tools>
+                                                                            <ext:Tool Type="Close" />
+                                                                            <ext:Tool Type="Refresh" />
+                                                                        </Tools>
+                                                                    </ext:Portlet>
+                                                                    <ext:Portlet ID="Portlet6" runat="server" Title="扣率为0指令" Icon="ScriptGear">
                                                                         <Tools>
                                                                             <ext:Tool Type="Close" />
                                                                             <ext:Tool Type="Refresh" />
