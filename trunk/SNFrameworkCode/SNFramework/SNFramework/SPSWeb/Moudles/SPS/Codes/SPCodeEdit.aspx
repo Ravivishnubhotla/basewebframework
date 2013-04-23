@@ -1,13 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true" CodeBehind="SPCodeEdit.aspx.cs" Inherits="SPSWeb.Moudles.SPS.Codes.SPCodeEdit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
-            <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
-            <Listeners>
-                <DocumentReady Handler="CheckLimitProvince1();"></DocumentReady>
-            </Listeners>
+    <ext:ResourceManagerProxy ID="ScriptManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="CheckLimitProvince1();"></DocumentReady>
+        </Listeners>
     </ext:ResourceManagerProxy>
-
     <style type="text/css">
         .cellClass
         {
@@ -18,13 +16,13 @@
         
         function CheckLimitProvince1() {
             var chkLimitProvince = <%= chkLimitProvince.ClientID %>;
-         var mfLimitProvinceArea = <%= mfLimitProvinceArea.ClientID %>;
-         if (chkLimitProvince.getValue()) {
-             mfLimitProvinceArea.show();
-         } else {
-             mfLimitProvinceArea.hide();
-         }
-     }
+            var mfLimitProvinceArea = <%= mfLimitProvinceArea.ClientID %>;
+            if (chkLimitProvince.getValue()) {
+                mfLimitProvinceArea.show();
+            } else {
+                mfLimitProvinceArea.hide();
+            }
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

@@ -98,55 +98,40 @@ namespace SPSWeb.Moudles.SPS.Clients
 
             SPCodeWrapper codeWrapper = SPCodeWrapper.FindById(Convert.ToInt32(cmbCode.SelectedItem.Value));
 
-            if (codeWrapper.ClientCodeRelation != null)
+            DateTime changeDate = System.DateTime.Now;
+            
+            int changeUserID = this.ParentPage.CurrentLoginUser.UserID;
+            
+            decimal price = Convert.ToDecimal(this.txtPrice.Text.Trim());
+
+            decimal interceptRate = Convert.ToDecimal(this.txtInterceptRate.Text.Trim());
+                                      
+            bool syncData = this.chkSyncData.Checked;
+
+            int sycnNotInterceptCount = Convert.ToInt32(this.txtSycnNotInterceptCount.Text.Trim());
+
+            string sycnRetryTimes = this.txtSycnRetryTimes.Text.Trim();
+
+            SPSDataSycnSettingWrapper dataSycnSetting = null;
+
+            if (syncData)
             {
-                if (codeWrapper.ClientCodeRelation.ClientID.Id == SPSClientID.Id)
-                    return;
+                dataSycnSetting = new SPSDataSycnSettingWrapper();
 
-                codeWrapper.ClientCodeRelation.IsEnable = false;
-                codeWrapper.ClientCodeRelation.EndDate = System.DateTime.Now;
-
-                SPClientCodeRelationWrapper.Update(codeWrapper.ClientCodeRelation);
+                dataSycnSetting.SycnMO = true;
+                dataSycnSetting.SyncType = "1";
+                dataSycnSetting.SycnMOUrl = this.txtSycnDataUrl.Text.Trim();
+                dataSycnSetting.SycnMOOkMessage = this.txtSycnOkMessage.Text.Trim();
+                dataSycnSetting.SycnMOFailedMessage = this.txtSycnFailedMessage.Text.Trim();
             }
 
+ 
             try
             {
-                SPClientCodeRelationWrapper obj = new SPClientCodeRelationWrapper();
 
-                obj.Price = Convert.ToDecimal(this.txtPrice.Text.Trim());
-                obj.InterceptRate = Convert.ToDecimal(this.txtInterceptRate.Text.Trim());
-                obj.UseClientDefaultSycnSetting = false;
-                obj.SyncData = this.chkSyncData.Checked;
-                obj.ClientID = SPSClientID;
-                obj.CodeID = codeWrapper;
-                obj.SycnRetryTimes = this.txtSycnRetryTimes.Text.Trim();
-
-                if (obj.SyncData)
-                {
-                    SPSDataSycnSettingWrapper spsDataSycnSetting = new SPSDataSycnSettingWrapper();
-
-                    spsDataSycnSetting.SycnMO = true;
-                    spsDataSycnSetting.SyncType = "1";
-                    spsDataSycnSetting.SycnMOUrl = this.txtSycnDataUrl.Text.Trim();
-                    spsDataSycnSetting.SycnMOOkMessage = this.txtSycnOkMessage.Text.Trim();
-                    spsDataSycnSetting.SycnMOFailedMessage = this.txtSycnFailedMessage.Text.Trim();
-
-                    SPSDataSycnSettingWrapper.Save(spsDataSycnSetting);
-
-                    obj.SyncDataSetting = spsDataSycnSetting;
-                }
-
-                obj.StartDate = System.DateTime.Now;
-                obj.EndDate = null;
-                obj.IsEnable = true;
-                obj.SycnNotInterceptCount = Convert.ToInt32(this.txtSycnNotInterceptCount.Text.Trim());
-                obj.CreateBy = this.ParentPage.CurrentLoginUser.UserID;
-                obj.CreateAt = System.DateTime.Now;
-                obj.LastModifyBy = this.ParentPage.CurrentLoginUser.UserID;
-                obj.LastModifyAt = System.DateTime.Now;
-
-
-                SPClientCodeRelationWrapper.Save(obj);
+                codeWrapper.ChangeClient(SPSClientID,
+                                    changeDate, changeUserID, price, interceptRate, syncData, sycnNotInterceptCount,sycnRetryTimes,dataSycnSetting
+                                    );
 
                 winSPClientCodeRelationAdd.Hide();
 

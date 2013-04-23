@@ -84,11 +84,7 @@ namespace SPSWeb.Moudles.SPS.Codes
                 obj.LimitProvince = this.chkLimitProvince.Checked;
 
                 string oldLimitProvinceArea = obj.LimitProvinceArea;
-
-
-
-
-
+ 
                 obj.LimitProvinceArea = WebUIHelper.GetSelectMutilItems(this.mfLimitProvinceArea,",");
 
 

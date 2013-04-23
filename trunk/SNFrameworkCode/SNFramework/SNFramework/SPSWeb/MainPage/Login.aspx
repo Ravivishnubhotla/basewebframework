@@ -75,7 +75,7 @@
                             </ext:TextField>
                             <ext:CompositeField ID="mfCheckCode" runat="server" FieldLabel="验证码" AnchorHorizontal="98%">
                                 <Items>
-                                    <ext:TextField ID="txtCheckCode" HideLabel="True" runat="server" Flex="1" />
+                                    <ext:TextField ID="txtCheckCode" HideLabel="True" runat="server" Flex="1" Icon="Keyboard" />
                                     <ext:Image ID="imgCheckCode" runat="server" >
 
                                     </ext:Image>

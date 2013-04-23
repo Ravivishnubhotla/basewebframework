@@ -436,6 +436,7 @@ namespace SPS.Bussiness.Wrappers
 		
 		#region syncDataSetting字段外键查询字段
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_ID)]
+        [DataMember]
         public int? SyncDataSetting_Id
         {
             get
@@ -446,6 +447,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNRETRYTIMES)]
+        [DataMember]
         public int? SyncDataSetting_SycnRetryTimes
         {
             get
@@ -456,6 +458,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYNCTYPE)]
+        [DataMember]
         public string SyncDataSetting_SyncType
         {
             get
@@ -466,6 +469,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMO)]
+        [DataMember]
         public bool? SyncDataSetting_SycnMO
         {
             get
@@ -476,6 +480,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMOURL)]
+        [DataMember]
         public string SyncDataSetting_SycnMOUrl
         {
             get
@@ -486,6 +491,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMOOKMESSAGE)]
+        [DataMember]
         public string SyncDataSetting_SycnMOOkMessage
         {
             get
@@ -496,6 +502,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMOFAILEDMESSAGE)]
+        [DataMember]
         public string SyncDataSetting_SycnMOFailedMessage
         {
             get
@@ -506,6 +513,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMR)]
+        [DataMember]
         public bool? SyncDataSetting_SycnMR
         {
             get
@@ -516,6 +524,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMRURL)]
+        [DataMember]
         public string SyncDataSetting_SycnMRUrl
         {
             get
@@ -526,6 +535,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMROKMESSAGE)]
+        [DataMember]
         public string SyncDataSetting_SycnMROkMessage
         {
             get
@@ -536,6 +546,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNMRFAILEDMESSAGE)]
+        [DataMember]
         public string SyncDataSetting_SycnMRFailedMessage
         {
             get
@@ -546,6 +557,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNSATE)]
+        [DataMember]
         public bool? SyncDataSetting_SycnSate
         {
             get
@@ -556,6 +568,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNSATEURL)]
+        [DataMember]
         public string SyncDataSetting_SycnSateUrl
         {
             get
@@ -566,6 +579,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNSATEOKMESSAGE)]
+        [DataMember]
         public string SyncDataSetting_SycnSateOkMessage
         {
             get
@@ -576,6 +590,7 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 		[NhibernateQueryPropertyAttribute(MappingColumnName = PROPERTY_SYNCDATASETTING_SYCNSATEFAILEDMESSAGE)]
+        [DataMember]
         public string SyncDataSetting_SycnSateFailedMessage
         {
             get

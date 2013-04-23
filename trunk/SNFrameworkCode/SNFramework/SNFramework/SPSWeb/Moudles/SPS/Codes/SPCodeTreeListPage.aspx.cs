@@ -22,6 +22,7 @@ namespace SPSWeb.Moudles.SPS.Codes
                 this.cmbChannel.Hidden = true;
                 this.cmbClient.Hidden = true;
                 this.btnAdd.Disabled = false;
+                //TreeGrid1.SetColumnVisible(1,false);
             }
             else
             {
@@ -110,7 +111,8 @@ namespace SPSWeb.Moudles.SPS.Codes
                     mainNode.NodeID = "nod" + allcodes[i].Id.ToString();
                     mainNode.Icon = Icon.Script;
                     mainNode.CustomAttributes.Add(new ConfigItem("MoCode", allcodes[i].MoCode, ParameterMode.Value));
-                    mainNode.CustomAttributes.Add(new ConfigItem("ChannelName", allcodes[i].ChannelID_Name, ParameterMode.Value));
+                    //if (ChannelID == null)
+                        mainNode.CustomAttributes.Add(new ConfigItem("ChannelName", allcodes[i].ChannelID_Name, ParameterMode.Value));
                     mainNode.CustomAttributes.Add(new ConfigItem("ChannelID", allcodes[i].ChannelID.Id.ToString(), ParameterMode.Value));
                     mainNode.CustomAttributes.Add(new ConfigItem("AssignedClientName", allcodes[i].AssignedClientName, ParameterMode.Value));
                     mainNode.CustomAttributes.Add(new ConfigItem("CodeID", allcodes[i].Id.ToString(), ParameterMode.Value));

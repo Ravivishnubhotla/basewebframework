@@ -209,5 +209,14 @@ namespace SPSWeb.Moudles.SPS.Codes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.Window winChangeClient;
+        
+        /// <summary>
+        /// winCodeView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.Window winCodeView;
     }
 }
