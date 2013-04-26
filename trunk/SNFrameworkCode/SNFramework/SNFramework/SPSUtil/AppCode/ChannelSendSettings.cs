@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -23,7 +24,17 @@ namespace SPSUtil.AppCode
         public string ParamsSPCodeValue { get; set; }
         public string ParamsMobileName { get; set; }
         public string ParamsMobileValue { get; set; }
+
+
+        public string ParamsFeeTimeName { get; set; }
+        public string ParamsStartTimeName { get; set; }
+        public string ParamsEndTimeName { get; set; }
+
+        public string IVRType { get; set; }
+
         public bool IsStatusReport { get; set; }
+        public string DataOkMessage { get; set; }
+        public string ReportOkMesage { get; set; }
         public int RequestType { get; set; }
         public string ParamsStatusName { get; set; }
         public string ParamsStatusValue { get; set; }
@@ -169,6 +180,74 @@ namespace SPSUtil.AppCode
             return string.Format("{0}?{1}", this.SubmitSendUrl, queryString.ToString());
         }
 
+        private string BuildDataUrl(DataRow dr)
+        {
+            NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
+
+            queryString.Add(ParamsLinkidName, dr[ParamsLinkidValue].ToString());
+            queryString.Add(ParamsMoName, dr[ParamsMoValue].ToString());
+            queryString.Add(ParamsSPCodeName, dr[ParamsSPCodeValue].ToString());
+            queryString.Add(ParamsMobileName, dr[ParamsMobileValue].ToString());
+
+            if (IsStatusReport)
+            {
+                if (RequestType == 0)
+                {
+                    queryString.Add(ParamsStatusName, ParamsStatusValue);
+                }
+                else if (RequestType == 2)
+                {
+                    queryString.Add(ParamsRequestTypeName, ParamsRequestTypeDataValue);
+                }
+            }
+
+            Uri uri = new Uri(this.SubmitSendUrl);
+
+            if (string.IsNullOrEmpty(queryString.ToString()))
+            {
+                return this.SubmitSendUrl;
+            }
+
+            if (!string.IsNullOrEmpty(uri.Query.Trim()))
+                return string.Format("{0}&{1}", this.SubmitSendUrl, queryString.ToString());
+
+            return string.Format("{0}?{1}", this.SubmitSendUrl, queryString.ToString());
+        }
+
+        private string BuildReportUrl(DataRow dr)
+        {
+            if (!IsStatusReport)
+                return "";
+
+
+            NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
+
+            queryString.Add(ParamsLinkidName, dr[ParamsLinkidValue].ToString());
+
+            if (RequestType == 1)
+            {
+                queryString.Add(ParamsStatusName, ParamsStatusValue);
+            }
+            else if (RequestType == 2)
+            {
+                queryString.Add(ParamsStatusName, ParamsStatusValue);
+                queryString.Add(ParamsRequestTypeName, ParamsRequestTypeReportValue);
+            }
+
+
+            Uri uri = new Uri(this.SubmitSendUrl);
+
+            if (string.IsNullOrEmpty(queryString.ToString()))
+            {
+                return this.SubmitSendUrl;
+            }
+
+            if (!string.IsNullOrEmpty(uri.Query.Trim()))
+                return string.Format("{0}&{1}", this.SubmitSendUrl, queryString.ToString());
+
+            return string.Format("{0}?{1}", this.SubmitSendUrl, queryString.ToString());
+        }
+
         private string BuildReportUrl()
         {
             if (!IsStatusReport)
@@ -206,6 +285,23 @@ namespace SPSUtil.AppCode
         public bool SendTwice()
         {
             return RequestType>0;
+        }
+
+        public List<string> GenerateDataUrls(DataRow row)
+        {
+            List<string> dataUrls = new List<string>();
+
+            if (RequestType == 0)
+            {
+                dataUrls.Add(BuildDataUrl(row));
+            }
+            else
+            {
+                dataUrls.Add(BuildDataUrl(row));
+                dataUrls.Add(BuildReportUrl(row));
+            }
+
+            return dataUrls;
         }
     }
 }

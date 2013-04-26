@@ -21,7 +21,7 @@ namespace SPSUtil.Moudles
         {
             get
             {
-                HttpGetSenderTask senderTask = new HttpGetSenderTask(this.ucChannelParams1.SendSetting, this.txtOkMessage.Text.Trim(), Convert.ToInt32(this.nudTimeOut.Value), Convert.ToInt32(this.nudIntreval.Value)
+                HttpGetSenderTask senderTask = new HttpGetSenderTask(this.ucChannelParams1.ChannelSetting, this.txtOkMessage.Text.Trim(), Convert.ToInt32(this.nudTimeOut.Value), Convert.ToInt32(this.nudIntreval.Value)
                     , Convert.ToInt32(this.nudRetryTime.Value), Convert.ToInt32(this.nudSendCount.Value));
 
                 return senderTask;
