@@ -9,13 +9,35 @@ namespace Legendigital.Framework.Common.Utility
 {
     public static class ExcelFileReader
     {
-        public static DataTable ReadExcelSheet(string sheetName, string excelPath)
+
+        public static string GetFirstTableName(OleDbConnection conn)
+        {
+            DataTable dt = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+            string tableName = dt.Rows[0][2].ToString().Trim();
+            return tableName;
+        }
+
+
+        public static DataTable ReadExcelSheet(string excelPath,bool firstRowAsHeader)
         {
             OleDbConnection conn = new OleDbConnection();
 
-            conn.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + excelPath + "; Extended Properties='Excel 8.0;HDR=Yes;IMEX=1'";
+            string hdr = "HDR=";
+
+            if (firstRowAsHeader)
+            {
+                hdr += "Yes";
+            }
+            else
+            {
+                hdr += "No";
+            }
+
+            conn.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + excelPath + "; Extended Properties='Excel 8.0;" + hdr + ";IMEX=1'";
  
             conn.Open();
+
+            string sheetName = GetFirstTableName(conn);
 
             string sql = string.Format("select * from [{0}$]", sheetName);
  

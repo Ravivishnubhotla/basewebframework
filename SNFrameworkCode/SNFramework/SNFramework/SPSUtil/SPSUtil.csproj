@@ -172,6 +172,12 @@
     <Compile Include="Moudles\UCChannelParams.Designer.cs">
       <DependentUpon>UCChannelParams.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\UCSendParams.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Moudles\UCSendParams.Designer.cs">
+      <DependentUpon>UCSendParams.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
@@ -179,6 +185,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Moudles\frmDataSendTask.resx">
       <DependentUpon>frmDataSendTask.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Moudles\FrmLoadPhoneData.resx">
       <DependentUpon>FrmLoadPhoneData.cs</DependentUpon>
@@ -206,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Moudles\UCChannelParams.resx">
       <DependentUpon>UCChannelParams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Moudles\UCSendParams.resx">
+      <DependentUpon>UCSendParams.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

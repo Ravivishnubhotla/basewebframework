@@ -260,6 +260,11 @@ namespace SPS.Bussiness.Wrappers
             }
         }
 
+        public string GetInterfaceUrl(string hosturl)
+        {
+            return string.Format("{0}/{3}/{1}{3}{2}", hosturl, this.Code, this.DataAdapterUrl, this.ChannelTypeString);
+        }
+
         public bool ProcessRequest(IDataAdapter httpRequestLog, bool statusOk, out RequestErrorType requestError, out string errorMessage)
 	    {
             requestError = RequestErrorType.NoError;

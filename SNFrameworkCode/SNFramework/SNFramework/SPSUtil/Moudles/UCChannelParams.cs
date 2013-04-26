@@ -23,7 +23,7 @@ namespace SPSUtil.Moudles
         }
 
 
-        public ChannelSendSettings SendSetting
+        public ChannelSendSettings ChannelSetting
         {
             get
             {
@@ -44,8 +44,42 @@ namespace SPSUtil.Moudles
                 sendSetting.ParamsRequestTypeName = this.txtParamsRequestTypeName.Text.Trim();
                 sendSetting.ParamsRequestTypeDataValue = this.txtParamsRequestTypeDataValue.Text.Trim();
                 sendSetting.ParamsRequestTypeReportValue = this.txtParamsRequestTypeReportValue.Text.Trim();
+                sendSetting.RequestType = this.cmbRequestType.SelectedIndex;
 
                 return sendSetting;
+            }
+            set
+            {
+                if (value == null)
+                    return;
+
+                this.txtSubmitUrl.Text = value.SubmitSendUrl;
+
+                this.cmbRequestType.SelectedIndex = value.RequestType;
+
+                this.chkIsStatusReport.Checked = value.IsStatusReport;
+
+                this.txtParamsStatusName.Text = value.ParamsStatusName;
+
+                this.txtParamsStatusValue.Text = value.ParamsStatusValue;
+
+                this.txtParamsRequestTypeName.Text = value.ParamsRequestTypeName;
+
+                this.txtParamsRequestTypeDataValue.Text = value.ParamsRequestTypeDataValue;
+
+                this.txtParamsRequestTypeReportValue.Text = value.ParamsRequestTypeReportValue;
+
+                this.txtParamsLinkidName.Text = value.ParamsLinkidName;
+
+                this.txtParamsMoName.Text = value.ParamsMoName;
+
+                this.txtParamsMobileName.Text = value.ParamsMobileName;
+
+                this.txtParamsSPCodeName.Text = value.ParamsSPCodeName;
+
+                this.txtReportOkMessage.Text = value.ReportOkMesage;
+
+                this.txtDataOkMessage.Text = value.DataOkMessage;
             }
         }
 
