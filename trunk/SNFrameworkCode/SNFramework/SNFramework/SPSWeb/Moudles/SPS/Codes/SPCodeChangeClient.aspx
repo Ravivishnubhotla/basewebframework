@@ -66,14 +66,14 @@
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="RecieveDataUrl" />
                     <ext:RecordField Name="SyncData" Type="Boolean" />
-                    <ext:RecordField Name="OkMessage" />
+                    <ext:RecordField Name="DataOkMessage" />
                     <ext:RecordField Name="FailedMessage" />
                     <ext:RecordField Name="InterceptRate" Type="int" />
                     <ext:RecordField Name="DefaultPrice" Type="int" />
                     <ext:RecordField Name="SycnNotInterceptCount" Type="int" />
                                         <ext:RecordField Name="SyncDataSetting_SycnRetryTimes" Type="int" />  
                                         <ext:RecordField Name="SyncDataSetting_SycnMOUrl"   />  
-                                        <ext:RecordField Name="SyncDataSetting_SycnMOOkMessage"   />  
+                                        <ext:RecordField Name="SyncDataSetting_SycnMODataOkMessage"   />  
                                         <ext:RecordField Name="SyncDataSetting_SycnMOFailedMessage"   />                    
                     
                     

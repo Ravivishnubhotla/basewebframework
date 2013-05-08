@@ -84,7 +84,10 @@
     <Compile Include="DataAdapter\RequestContentAdapter.cs" />
     <Compile Include="HttpUtils\RequestErrorType.cs" />
     <Compile Include="HttpUtils\RequestType.cs" />
+    <Compile Include="HttpUtils\UrlPatchSender.cs" />
+    <Compile Include="HttpUtils\UrlPatchSendSetting.cs" />
     <Compile Include="HttpUtils\UrlSender.cs" />
+    <Compile Include="HttpUtils\UrlSendEventArgs.cs" />
     <Compile Include="HttpUtils\UrlSendTask.cs" />
     <Compile Include="HttpUtils\XmlSender.cs" />
     <Compile Include="HttpUtils\XmlSendTask.cs" />

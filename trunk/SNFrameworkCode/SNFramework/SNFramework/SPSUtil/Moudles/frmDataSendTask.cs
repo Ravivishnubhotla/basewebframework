@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.SystemConst;
 using Legendigital.Framework.Common.Utility;
+using SPS.Bussiness.HttpUtils;
 using SPS.Bussiness.Wrappers;
 using SPSUtil.AppCode;
 
@@ -60,6 +61,22 @@ namespace SPSUtil.Moudles
 
         private void btnSendData_Click(object sender, EventArgs e)
         {
+            DataTable dt = this.dataGridView1.DataSource as DataTable;
+
+            if (dt == null)
+            {
+                MessageBox.Show("加载数据存在");
+                return;
+            }
+
+            ChannelSendSettings channelSetting = this.ucChannelParams1.ChannelSetting;
+
+            frmSendData sendData = new frmSendData();
+
+            sendData.ShowSendData(channelSetting, dt);
+
+            //channelSetting.SendData(dt);
+
 
         }
 
@@ -74,9 +91,7 @@ namespace SPSUtil.Moudles
 
         private void frmDataSendTask_Shown(object sender, EventArgs e)
         {
-            List<SPChannelWrapper> channels = SPChannelWrapper.FindAll();
 
-            this.cmbChannelList.DataSource = channels;
         }
 
         private void cmbChannelList_SelectedIndexChanged(object sender, EventArgs e)
@@ -147,27 +162,46 @@ namespace SPSUtil.Moudles
 
         private void btnGenerateTestData_Click(object sender, EventArgs e)
         {
-            List<string> sendUrls = new List<string>();
+
 
             DataTable dt = this.dataGridView1.DataSource as DataTable;
 
             if (dt == null)
             {
-                MessageBox.Show("加载数据存在");
+                MessageBox.Show("加载数据不存在，请加载Excel或者Txt数据文件");
                 return;
             }
 
             ChannelSendSettings channelSetting = this.ucChannelParams1.ChannelSetting;
 
-            foreach (DataRow row in dt.Rows)
+            if (rbLoadDataSend.Checked)
             {
-                sendUrls.AddRange(channelSetting.GenerateDataUrls(row));
+                channelSetting.ParamsLinkidValue = dt.Columns[0].ColumnName;
+                channelSetting.ParamsMobileValue = dt.Columns[1].ColumnName;
+                channelSetting.ParamsMoValue = dt.Columns[2].ColumnName;
+                channelSetting.ParamsSPCodeValue = dt.Columns[3].ColumnName;
             }
 
             if (sfdSendText.ShowDialog() == DialogResult.OK)
             {
-                File.WriteAllLines(sfdSendText.FileName, sendUrls.ToArray());
+                List<UrlSendTask> sendTasks = channelSetting.GenerateSendUrls(dt);
+                using (StreamWriter sw = new StreamWriter(sfdSendText.FileName))
+                {
+                    foreach (UrlSendTask urlSendTask in sendTasks)
+                    {
+
+                            sw.WriteLine(urlSendTask.ToFileLine());
+
+                    }
+                }
             }
+        }
+
+        private void frmDataSendTask_Load(object sender, EventArgs e)
+        {
+            List<SPChannelWrapper> channels = SPChannelWrapper.FindAll();
+
+            this.cmbChannelList.DataSource = channels;
         }
 
  

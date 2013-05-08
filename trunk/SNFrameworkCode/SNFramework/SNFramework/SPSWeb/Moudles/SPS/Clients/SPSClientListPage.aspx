@@ -147,7 +147,7 @@
                     <ext:RecordField Name="UserID" Type="int" />
                     <ext:RecordField Name="RelateUserLoginID" />
                     <ext:RecordField Name="SyncData" Type="Boolean" />
-                    <ext:RecordField Name="OkMessage" />
+                    <ext:RecordField Name="DataOkMessage" />
                     <ext:RecordField Name="FailedMessage" />
                     <ext:RecordField Name="SyncType" />
                     <ext:RecordField Name="InterceptRate" Type="int" />

@@ -11,8 +11,6 @@ namespace SPS.Bussiness.HttpUtils
 {
     public class UrlSender
     {
-        
-
         public static void SendRequest(object request)
         {
             UrlSendTask sendTask = request as UrlSendTask;
@@ -27,21 +25,21 @@ namespace SPS.Bussiness.HttpUtils
 
                 string errorMessage = string.Empty;
 
-                requestOk = SendRequest(sendTask.SendUrl, 3000, sendTask.OkMessage, out errorMessage);
+                requestOk = SendRequest(sendTask.SendDataUrl, 3000, sendTask.DataOkMessage, out errorMessage);
 
                 if (requestOk)
                 {
-                    SPRecordWrapper.UpdateUrlSuccessSend(sendTask.RecordID, sendTask.SendUrl);
+                    SPRecordWrapper.UpdateUrlSuccessSend(sendTask.RecordID, sendTask.SendDataUrl);
                 }
                 else
                 {
-                    SPRecordWrapper.UpdateUrlFailedSend(sendTask.RecordID, sendTask.SendUrl, errorMessage);
+                    SPRecordWrapper.UpdateUrlFailedSend(sendTask.RecordID, sendTask.SendDataUrl, errorMessage);
                 }
 
             }
             catch (Exception ex)
             {
-                SPRecordWrapper.UpdateUrlFailedSend(sendTask.RecordID, sendTask.SendUrl, ex.Message);
+                SPRecordWrapper.UpdateUrlFailedSend(sendTask.RecordID, sendTask.SendDataUrl, ex.Message);
             }
         }
 

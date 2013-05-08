@@ -19,7 +19,7 @@
 					
 					<ext:DisplayField ID="lblSyncData" runat="server" FieldLabel="SyncData" AnchorHorizontal="95%" />
 					
-					<ext:DisplayField ID="lblOkMessage" runat="server" FieldLabel="OkMessage" AnchorHorizontal="95%" />
+					<ext:DisplayField ID="lblOkMessage" runat="server" FieldLabel="DataOkMessage" AnchorHorizontal="95%" />
 					
 					<ext:DisplayField ID="lblFailedMessage" runat="server" FieldLabel="FailedMessage" AnchorHorizontal="95%" />
 					
