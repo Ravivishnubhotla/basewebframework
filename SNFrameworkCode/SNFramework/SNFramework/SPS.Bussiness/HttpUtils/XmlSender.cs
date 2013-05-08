@@ -30,17 +30,17 @@ namespace SPS.Bussiness.HttpUtils
 
                 if (requestOk)
                 {
-                    //SPRecordWrapper.UpdateXmlSuccessSend(sendTask.RecordID, sendTask.SendUrl);
+                    //SPRecordWrapper.UpdateXmlSuccessSend(sendTask.RecordID, sendTask.SendDataUrl);
                 }
                 else
                 {
-                    //SPRecordWrapper.UpdateXmlFailedSend(sendTask.RecordID, sendTask.SendUrl, errorMessage);
+                    //SPRecordWrapper.UpdateXmlFailedSend(sendTask.RecordID, sendTask.SendDataUrl, errorMessage);
                 }
 
             }
             catch (Exception ex)
             {
-                //SPRecordWrapper.UpdateXmlFailedSend(sendTask.RecordID, sendTask.SendUrl, ex.Message);
+                //SPRecordWrapper.UpdateXmlFailedSend(sendTask.RecordID, sendTask.SendDataUrl, ex.Message);
             }
         }
 

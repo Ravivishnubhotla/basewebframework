@@ -35,8 +35,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.ucChannelParams1 = new SPSUtil.Moudles.UCChannelParams();
             this.gbDataSendType = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rbLoadDataSend = new System.Windows.Forms.RadioButton();
+            this.rbTestDataSend = new System.Windows.Forms.RadioButton();
             this.cmbChannelList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ucSendParams1 = new SPSUtil.Moudles.UCSendParams();
@@ -119,16 +119,16 @@
             // 
             // ucChannelParams1
             // 
+            this.ucChannelParams1.ChannelSetting = ((SPSUtil.AppCode.ChannelSendSettings)(resources.GetObject("ucChannelParams1.ChannelSetting")));
             this.ucChannelParams1.Location = new System.Drawing.Point(12, 49);
             this.ucChannelParams1.Name = "ucChannelParams1";
-            this.ucChannelParams1.ChannelSetting = ((SPSUtil.AppCode.ChannelSendSettings)(resources.GetObject("ucChannelParams1.ChannelSetting")));
             this.ucChannelParams1.Size = new System.Drawing.Size(830, 200);
             this.ucChannelParams1.TabIndex = 27;
             // 
             // gbDataSendType
             // 
-            this.gbDataSendType.Controls.Add(this.radioButton2);
-            this.gbDataSendType.Controls.Add(this.radioButton1);
+            this.gbDataSendType.Controls.Add(this.rbLoadDataSend);
+            this.gbDataSendType.Controls.Add(this.rbTestDataSend);
             this.gbDataSendType.Location = new System.Drawing.Point(523, 300);
             this.gbDataSendType.Name = "gbDataSendType";
             this.gbDataSendType.Size = new System.Drawing.Size(319, 60);
@@ -136,27 +136,27 @@
             this.gbDataSendType.TabStop = false;
             this.gbDataSendType.Text = "发送数据类型";
             // 
-            // radioButton2
+            // rbLoadDataSend
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(95, 25);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(71, 16);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "加载数据";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbLoadDataSend.AutoSize = true;
+            this.rbLoadDataSend.Checked = true;
+            this.rbLoadDataSend.Location = new System.Drawing.Point(95, 25);
+            this.rbLoadDataSend.Name = "rbLoadDataSend";
+            this.rbLoadDataSend.Size = new System.Drawing.Size(71, 16);
+            this.rbLoadDataSend.TabIndex = 1;
+            this.rbLoadDataSend.TabStop = true;
+            this.rbLoadDataSend.Text = "加载数据";
+            this.rbLoadDataSend.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbTestDataSend
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(17, 25);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(71, 16);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "模拟数据";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbTestDataSend.AutoSize = true;
+            this.rbTestDataSend.Location = new System.Drawing.Point(17, 25);
+            this.rbTestDataSend.Name = "rbTestDataSend";
+            this.rbTestDataSend.Size = new System.Drawing.Size(71, 16);
+            this.rbTestDataSend.TabIndex = 0;
+            this.rbTestDataSend.Text = "模拟数据";
+            this.rbTestDataSend.UseVisualStyleBackColor = true;
             // 
             // cmbChannelList
             // 
@@ -265,6 +265,10 @@
             // 
             this.opfLoadExcel.Filter = "Excel 97-2003 File|*.xls";
             // 
+            // sfdSendText
+            // 
+            this.sfdSendText.Filter = "文本文件|*.txt";
+            // 
             // opfLoadText
             // 
             this.opfLoadText.Filter = "CSV 文件|*.csv|文本文件|*.txt";
@@ -279,6 +283,7 @@
             this.Controls.Add(this.ssBottom);
             this.Name = "frmDataSendTask";
             this.Text = "批量发送数据";
+            this.Load += new System.EventHandler(this.frmDataSendTask_Load);
             this.Shown += new System.EventHandler(this.frmDataSendTask_Shown);
             this.pnlMain.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -318,8 +323,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbChannelList;
         private System.Windows.Forms.GroupBox gbDataSendType;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rbTestDataSend;
+        private System.Windows.Forms.RadioButton rbLoadDataSend;
         private UCChannelParams ucChannelParams1;
     }
 }

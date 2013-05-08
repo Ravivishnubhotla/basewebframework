@@ -45,6 +45,8 @@ namespace SPSUtil.Moudles
                 sendSetting.ParamsRequestTypeDataValue = this.txtParamsRequestTypeDataValue.Text.Trim();
                 sendSetting.ParamsRequestTypeReportValue = this.txtParamsRequestTypeReportValue.Text.Trim();
                 sendSetting.RequestType = this.cmbRequestType.SelectedIndex;
+                sendSetting.ReportOkMesage = this.txtReportOkMessage.Text.Trim();
+                sendSetting.DataOkMessage = this.txtDataOkMessage.Text.Trim();
 
                 return sendSetting;
             }

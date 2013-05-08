@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using SPS.Bussiness.HttpUtils;
 
 namespace SPSUtil.AppCode
 {
@@ -31,6 +32,8 @@ namespace SPSUtil.AppCode
         public string ParamsEndTimeName { get; set; }
 
         public string IVRType { get; set; }
+
+        public int DataSendType { get; set; }
 
         public bool IsStatusReport { get; set; }
         public string DataOkMessage { get; set; }
@@ -287,21 +290,36 @@ namespace SPSUtil.AppCode
             return RequestType>0;
         }
 
-        public List<string> GenerateDataUrls(DataRow row)
+        public UrlSendTask GenerateSendUrls(DataRow row)
         {
-            List<string> dataUrls = new List<string>();
+            UrlSendTask sendTask = new UrlSendTask();
 
             if (RequestType == 0)
             {
-                dataUrls.Add(BuildDataUrl(row));
+                sendTask.DataOkMessage = this.DataOkMessage;
+                sendTask.SendDataUrl = BuildDataUrl(row);
             }
             else
             {
-                dataUrls.Add(BuildDataUrl(row));
-                dataUrls.Add(BuildReportUrl(row));
+                sendTask.DataOkMessage = this.DataOkMessage;
+                sendTask.SendDataUrl = BuildDataUrl(row);
+                sendTask.ReportOkMessage = this.ReportOkMesage;
+                sendTask.SendReportUrl = BuildReportUrl(row);
             }
 
-            return dataUrls;
+            return sendTask;
+        }
+
+        public List<UrlSendTask>  GenerateSendUrls(DataTable dt)
+        {
+            List<UrlSendTask> sendUrls = new List<UrlSendTask>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                sendUrls.Add(this.GenerateSendUrls(row));
+            }
+
+            return sendUrls;
         }
     }
 }

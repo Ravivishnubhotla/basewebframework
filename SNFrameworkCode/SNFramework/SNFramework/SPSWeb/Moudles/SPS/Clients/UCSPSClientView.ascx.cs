@@ -38,7 +38,7 @@ namespace SPSWeb.Moudles.SPS.Clients
                     //this.lblRecieveDataUrl.Text = ValueConvertUtil.ConvertStringValue(obj.RecieveDataUrl);
                     //this.lblUserID.Text = obj.UserID.ToString();
                     ////this.lblSyncData.Text = ValueConvertUtil.ConvertNullableValue<bool>(obj.SyncData);
-                    //this.lblOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.OkMessage);
+                    //this.lblOkMessage.Text = ValueConvertUtil.ConvertStringValue(obj.DataOkMessage);
                     //this.lblFailedMessage.Text = ValueConvertUtil.ConvertStringValue(obj.FailedMessage);
                     if (obj.SyncDataSetting != null)
                         this.lblSyncType.Text = ValueConvertUtil.ConvertStringValue(obj.SyncDataSetting.SyncType);

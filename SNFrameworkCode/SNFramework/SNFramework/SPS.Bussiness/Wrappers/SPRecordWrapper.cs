@@ -240,8 +240,8 @@ namespace SPS.Bussiness.Wrappers
 
             UrlSendTask urlSendTask = new UrlSendTask();
             urlSendTask.RecordID = this.Id;
-            urlSendTask.OkMessage = this.ClientCodeRelationID.SyncDataSetting.SycnMOOkMessage;
-            urlSendTask.SendUrl = this.ClientCodeRelationID.GenerateSendMOUrl(this);
+            urlSendTask.DataOkMessage = this.ClientCodeRelationID.SyncDataSetting.SycnMOOkMessage;
+            urlSendTask.SendDataUrl = this.ClientCodeRelationID.GenerateSendMOUrl(this);
 
             return urlSendTask;
         }
