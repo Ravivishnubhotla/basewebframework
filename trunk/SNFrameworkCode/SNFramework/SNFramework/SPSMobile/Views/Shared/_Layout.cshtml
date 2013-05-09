@@ -6,21 +6,57 @@
     <title>@ViewBag.Title</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
     <link href="~/Content/jquery.mobile/jquery.mobile-1.3.1.min.css" rel="stylesheet" />
-    @RenderSection("HeadStyle", false);
+    @RenderSection("HeadStyle", false)
     <script src="~/Content/jquery.mobile/jquery-1.9.1.min.js"></script>
     <script src="~/Content/jquery.mobile/jquery.mobile-1.3.1.min.js"></script>
+    
+    <script type="text/javascript">
+        function alertMessage(title, message) {
+
+            $("#dlAlert-Title").html(title);
+            $("#dlAlert-Message").html(message);
+
+            $.mobile.changePage('#dlAlert', {
+                transition: 'pop',
+                reverse: false,
+                changeHash: true
+            });
+        }
+
+    </script>
+    @RenderSection("HeadScript", false)  
+    
+    
+    
+
 </head>
 <body>
     <!-- begin first page -->
     <section id="page1" data-role="page">
         <header data-role="header" data-theme="b">
             <h1>短信业务平台移动版</h1>
-        </header>      
+        </header>
         @RenderBody()
         <footer data-role="footer">
             <h1>©X-Soft工作室</h1>
         </footer>
     </section>
     <!-- end first page -->
+    
+
+
+
+    <div data-role="dialog" id="dlAlert">
+        <div data-role="header">
+            <h2 id="dlAlert-Title">提示信息</h2>
+        </div>
+        <div data-role="content">
+            <p id="dlAlert-Message">I am a dialog</p>
+        </div>
+    </div>
+    
+    
+    
+ 
 </body>
 </html>
