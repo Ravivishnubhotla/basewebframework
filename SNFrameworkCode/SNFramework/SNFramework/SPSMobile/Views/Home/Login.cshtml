@@ -3,15 +3,58 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script type="text/javascript">    
+
+    $(document).ready(function () {
+
+        $("#submit").click(function () {
+
+            valid();
+            
+
+        });
+
+    });
+
+
+    function valid() {
+
+        if ($("#LoginID").val() == '') {
+
+            alertMessage('提示消息','请输入用户名!');
+ 
+            return false;
+
+        }
+        
+        if ($("#Password").val() == '') {
+
+            alertMessage('提示消息', '请输入登陆密码!');
+
+            return false;
+
+        }
+
+        return true;
+    };
+
+</script>
+
 <div data-role="content" class="content">
-            <p style="font-size: 1.5em;font-weight: bold;"><font color="#2EB1E8">登录</font></p>
-            <form method="post" id="loginform">
-                <input type="text" name="username" id="username" value="" /><br>
-                <input type="password" name="password" id="password" value="" />
-                <fieldset data-role="controlgroup">
-                    <input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
-                    <label for="checkbox-1">保持登录状态</label>
-                </fieldset>
-                <a data-role="button" id="submit" data-theme="b" style="float: center; margin: 10px;">登录</a>
-            </form>
-        </div>
+    <p style="font-size: 1.5em; font-weight: bold;"><font color="#2EB1E8">登录短信业务平台移动版</font></p>
+    @using (Html.BeginForm("CheckUser", "Home", FormMethod.Post))
+    {               
+        <label for="LoginID">用户ID：</label>
+        <input type="text" name="LoginID" id="LoginID" value="" />
+        <br>
+        <label for="Password">用户密码：</label>
+        <input type="password" name="Password" id="Password" value="" />
+        <fieldset data-role="controlgroup">
+            <input type="checkbox" name="SaveLoginStatus" id="SaveLoginStatus" class="custom" />
+            <label for="SaveLoginStatus">保持登录状态</label>
+        </fieldset>
+        <a data-role="button" id="submit" data-theme="b" style="float: center; margin: 10px;">登录</a>
+    }
+</div>
+
+
