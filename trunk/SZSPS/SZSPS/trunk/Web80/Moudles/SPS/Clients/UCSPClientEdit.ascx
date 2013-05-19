@@ -1,22 +1,22 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UCSPClientEdit.ascx.cs"
     Inherits="Legendigital.Common.Web.Moudles.SPS.Clients.UCSPClientEdit" %>
 
-    <ext:Store ID="storeSPChannelGroup" runat="server" AutoLoad="true" OnRefreshData="storeSPChannelGroup_Refresh">
-        <Reader>
-            <ext:JsonReader>
-                <Fields>
-                    <ext:RecordField Name="Id" Type="Int" />
-                    <ext:RecordField Name="Name" />
-                </Fields>
-            </ext:JsonReader>
-        </Reader>
+<ext:Store ID="storeSPChannelGroup" runat="server" AutoLoad="true" OnRefreshData="storeSPChannelGroup_Refresh">
+    <Reader>
+        <ext:JsonReader>
+            <Fields>
+                <ext:RecordField Name="Id" Type="Int" />
+                <ext:RecordField Name="Name" />
+            </Fields>
+        </ext:JsonReader>
+    </Reader>
     <Listeners>
         <Load Handler="if (GetGroupID()!='') {#{cmbClientGroupID}.setValue(GetGroupID());} #{formPanelSPClientEdit}.setDisabled(false);" />
     </Listeners>
-    </ext:Store>
+</ext:Store>
 
 
- 
+
 <script type="text/javascript">
     function GetGroupID() {
         var hidClientGroupID = <%=  hidClientGroupID.ClientID %>;
@@ -86,7 +86,8 @@
             <AjaxEvents>
                 <Click Before="if(!#{formPanelSPClientEdit}.getForm().isValid()) return false;" OnEvent="btnSaveSPClient_Click"
                     Success="Ext.MessageBox.alert('操作成功', '成功的编辑了下家。',callback);function callback(id) { #{storeSPClient}.reload(); };
-" Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
+"
+                    Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
                 </Click>
             </AjaxEvents>

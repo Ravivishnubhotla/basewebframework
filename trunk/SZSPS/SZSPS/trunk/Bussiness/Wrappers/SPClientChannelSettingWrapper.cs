@@ -493,23 +493,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             bool isIntercept = CaculteRandom(interceptRate);
 
-            //如果没有扣除，如果该通道日总量有限制，超过了日总量，必须改成扣除
-            if (!isIntercept && this.HasDayTotalLimit.HasValue && this.HasDayTotalLimit.Value)
-            {
-                if (this.DayTotalLimit.HasValue && this.DayTotalLimit.Value > 0)
-                {
-                    int todayPaymentCount = CacultePaymentCount(System.DateTime.Now.Date, this.Id);
 
-                    if(todayPaymentCount>=this.DayTotalLimit.Value)
-                        isIntercept = true;
-                }
-            }
 
             //如果是扣除的，如果该通道有号码日限制月限制，超过日限月限制的，先检查月限制，超过月限制乘以扣率，则放行（直接返回不检查日限制）
             //没有超过，在检查日限制，超过日限制乘以扣率，则放行
 
             if (isIntercept)
             {
+                bool monthPhoneCount = false;
+                 
                 if (this.HasDayMonthLimit.HasValue && this.HasDayMonthLimit.Value && this.MonthLimitCount.HasValue && this.MonthLimitCount.Value > 0)
                 {
                     int todayMonthPhoneCount = CaculteMonthPhoneCount(System.DateTime.Now.Date, this.Id, paymentInfo.MobileNumber);
@@ -519,10 +511,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     if (todayMonthPhoneCount + 1 > maxMonthPhoneCount)
                     {
                         isIntercept = false;
-                        return isIntercept;
+                        monthPhoneCount = true;
                     }
                 }
-                if (this.HasDayMonthLimit.HasValue && this.HasDayMonthLimit.Value && this.DayLimitCount.HasValue && this.DayLimitCount.Value > 0)
+                if (!monthPhoneCount && this.HasDayMonthLimit.HasValue && this.HasDayMonthLimit.Value && this.DayLimitCount.HasValue && this.DayLimitCount.Value > 0)
                 {
                     int todayDayPhoneCount = CaculteDayPhoneCount(System.DateTime.Now.Date, this.Id, paymentInfo.MobileNumber);
 
@@ -531,8 +523,20 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     if (todayDayPhoneCount + 1 > maxDayPhoneCount)
                     {
                         isIntercept = false;
-                        return isIntercept;
                     }
+                }
+            }
+
+
+            //如果没有扣除，如果该通道日总量有限制，超过了日总量，必须改成扣除
+            if (!isIntercept && this.HasDayTotalLimit.HasValue && this.HasDayTotalLimit.Value)
+            {
+                if (this.DayTotalLimit.HasValue && this.DayTotalLimit.Value > 0)
+                {
+                    int todayPaymentCount = CacultePaymentCount(System.DateTime.Now.Date, this.Id);
+
+                    if (todayPaymentCount >= this.DayTotalLimit.Value)
+                        isIntercept = true;
                 }
             }
 

@@ -175,6 +175,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups {
         protected global::Coolite.Ext.Web.Window winClientGroupPriceReport1;
         
         /// <summary>
+        /// winClientGroupCodes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Window winClientGroupCodes;
+        
+        /// <summary>
         /// winShowLoginLog control.
         /// </summary>
         /// <remarks>

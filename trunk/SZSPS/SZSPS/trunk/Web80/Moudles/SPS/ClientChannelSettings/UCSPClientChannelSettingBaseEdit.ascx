@@ -125,8 +125,7 @@
     <Buttons>
         <ext:Button ID="btnSaveSPClientChannelSetting" runat="server" Text="编辑" Icon="ApplicationEdit">
             <AjaxEvents>
-                <Click Before="if (!AllValidate(#{pnlSPClientChannelSettingAdd1},#{pnlSPClientChannelSettingAdd2},#{pnlSPClientChannelSettingAdd3})) return false;"
-                    OnEvent="btnSaveSPClientChannelSetting_Click" Success="Ext.MessageBox.alert('操作成功', '成功的编辑了通道下家设置。',RefreshSPClientChannelSettingData);
+                <Click   OnEvent="btnSaveSPClientChannelSetting_Click" Success="Ext.MessageBox.alert('操作成功', '成功的编辑了通道下家设置。',RefreshSPClientChannelSettingData);
 " Failure="Ext.Msg.alert('操作失败', result.errorMessage);">
                     <EventMask ShowMask="true" Msg="数据保存中，请稍候....." />
                 </Click>

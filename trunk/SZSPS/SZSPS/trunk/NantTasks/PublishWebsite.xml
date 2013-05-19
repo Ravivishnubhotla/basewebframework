@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project name="Aaron.Guo.NAnt.Project" default="run" basedir="E:\Dev\My\Projects\SZSPS\">
+  <loadtasks assembly="F:\nant-0.92\nantcontrib-0.92\bin\NAnt.Contrib.Tasks.dll" />
+  
+  
+  <property name="MSBuildPath" value="C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"/> 
+  <property name="BuildWebProjectPath" value="E:\Dev\My\Projects\SZSPS\SZSPS\trunk\Web80\Web.csproj"/>
+  <property name="DeployOutputPath" value="E:\Dev\My\Projects\SZSPS\Deploy"/>
+  <property name="BuildResult" value="0"/>
+  
+    
+  <target name="run">
+    <call target="build1"/>
+  </target>
+  <target name="build1">
+
+    <delete dir="Deploy" if="${directory::exists('Deploy')}" />
+
+    <!--<msbuild project="${BuildWebProjectPath}" verbose="true" failonerror="false">
+      <arg value="/t:ResolveReferences;Compile" />
+      <arg value="/t:_WPPCopyWebApplication" />
+      <arg value="/p:Configuration=Release" />
+      <arg value="/p:WebProjectOutputDir=${DeployOutputPath}" />
+    </msbuild>-->
+    
+      
+    <exec program="${MSBuildPath}" verbose="true" failonerror="false" resultproperty="BuildResult">
+      <arg line="${BuildWebProjectPath}" ></arg>
+      <arg value="/t:ResolveReferences;Compile" />
+      <arg value="/t:_WPPCopyWebApplication" />
+      <arg value="/p:Configuration=Release" />
+      <arg value="/p:WebProjectOutputDir=${DeployOutputPath}" />
+    </exec>
+    
+      <echo message="web publish result ${BuildResult}"/>
+        
+    <delete>
+      <fileset basedir="Deploy">
+        <include name="*.*"/>
+        <exclude name="*/"/>
+        <exclude name="bin/*"/>
+        <exclude name="Moudles/*" />
+      </fileset>
+    </delete>
+    <delete>
+      <fileset>
+        <include name="Deploy\bin\*.pdb" />
+      </fileset>
+    </delete>
+  </target>
+</project>
+
+<!--
+
+nant -buildfile:"F:\NAntTasks\PublishWebsite.xml" -l:"F:\NAntTasks\1.log" 
+
+msbuild "E:\Dev\My\Projects\SZSPS\SZSPS\trunk\Web80\Web.csproj" /t:ResolveReferences;Compile /t:_WPPCopyWebApplication /p:Configuration=Release /p:WebProjectOutputDir="E:\Dev\My\Projects\SZSPS\Deploy"-->
