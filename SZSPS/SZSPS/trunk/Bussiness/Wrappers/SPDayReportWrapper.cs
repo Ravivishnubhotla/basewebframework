@@ -706,5 +706,10 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
         {
             return businessProxy.GetProvinceCityReportForClientGroup(startDate, endDate, reportId, reportClientChannleId, province);
         }
+
+        public static DataTable GetDataChangeReport(DateTime startDate, DateTime endDate, int reportChannleId, int reportClientChannleId, int timeIntercept)
+        {
+            return businessProxy.GetDataChangeReport(startDate, endDate, reportChannleId, reportClientChannleId, timeIntercept);
+        }
     }
 }

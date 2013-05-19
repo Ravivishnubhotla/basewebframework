@@ -20,13 +20,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             if (Ext.IsAjaxRequest)
                 return;
 
-            //dfReportEndDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1);
+            dfReportEndDate.DateField.MaxDate = System.DateTime.Now.Date;
 
-            //dfReportEndDate.DateField.Value = System.DateTime.Now.AddDays(-1);
+            dfReportEndDate.DateField.Value = System.DateTime.Now.Date;
 
-            //dfReportStartDate.DateField.MaxDate = System.DateTime.Now.AddDays(-1);
+            dfReportStartDate.DateField.MaxDate = System.DateTime.Now.Date;
 
-            //dfReportStartDate.DateField.Value = System.DateTime.Now.AddDays(-8);
+            dfReportStartDate.DateField.Value = System.DateTime.Now.Date;
         }
 
 
@@ -36,9 +36,19 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                 return;
 
             this.ReportPanel.AutoLoad.Params.Clear();
-            this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("ChannleClientSettingID", cmbCode.SelectedItem.Value.ToString()));
-            this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("StartDate", System.DateTime.Now.Date.AddDays(-2).ToShortDateString()));
-            this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("EndDate", System.DateTime.Now.Date.AddDays(-1).ToShortDateString()));
+            if (cmbChannelID.SelectedItem != null)
+                this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("ChannleID", cmbChannelID.SelectedItem.Value.ToString()));
+            else
+                this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("ChannleID", "0"));
+
+            if (cmbCode.SelectedItem != null)
+                this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("ChannleClientSettingID", cmbCode.SelectedItem.Value.ToString()));
+            else
+                this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("ChannleClientSettingID", "0"));
+
+            this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("StartDate", dfReportStartDate.DateField.SelectedDate.ToShortDateString()));
+            this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("EndDate", dfReportEndDate.DateField.SelectedDate.ToShortDateString()));
+            this.ReportPanel.AutoLoad.Params.Add(new Coolite.Ext.Web.Parameter("TimeIntercept", cmbCommandType.SelectedItem.Value.ToString()));
             this.ReportPanel.AutoLoad.Url = "ReportDataChangeService.aspx";
             this.ReportPanel.LoadContent();
         }
@@ -59,13 +69,22 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
         protected void storeSPChannelClientSetting_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            int channelID = int.Parse(e.Parameters["ChannelID"].ToString());
-            
-            SPChannelWrapper channelWrapper =  SPChannelWrapper.FindById(channelID);
+            if (!string.IsNullOrEmpty(e.Parameters["ChannelID"]))
+            {
+                int channelID = int.Parse(e.Parameters["ChannelID"].ToString());
 
-            storeSPChannelClientSetting.DataSource = channelWrapper.GetAllClientChannelSetting();
+                SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(channelID);
 
-            storeSPChannelClientSetting.DataBind();
+                storeSPChannelClientSetting.DataSource = SPClientChannelSettingWrapper.GetSettingByChannel(channelWrapper);
+
+                storeSPChannelClientSetting.DataBind();
+            }
+            else
+            {
+                storeSPChannelClientSetting.DataSource = new List<SPClientChannelSettingWrapper>();
+
+                storeSPChannelClientSetting.DataBind();
+            }
         }
     }
 }

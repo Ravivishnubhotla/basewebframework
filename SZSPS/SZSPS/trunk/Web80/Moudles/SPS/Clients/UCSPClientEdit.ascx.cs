@@ -60,6 +60,17 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                     if (obj.SPClientGroupID != null)
                         this.hidClientGroupID.Text = obj.SPClientGroupID.Id.ToString();
 
+                    //if (obj.SPClientGroupID != null && obj.DefaultClientChannelSetting!=null)
+                    //{
+                    //    this.txtSyncDataUrl.Hidden = false;
+                    //    this.txtSyncDataUrl.Text = obj.DefaultClientChannelSetting.SyncDataUrl;
+                    //}
+                    //else
+                    //{
+                    //    this.txtSyncDataUrl.Hidden = true;
+                    //    this.txtSyncDataUrl.Text = "";
+                    //}
+
                     numPrice.Text = obj.Price.ToString("N2");
 
 
@@ -128,6 +139,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Clients
                 }
 
                 obj.SetClientPrice(Convert.ToDecimal(numPrice.Value));
+
+                //if (obj.SPClientGroupID != null && obj.DefaultClientChannelSetting != null)
+                //{
+                //    obj.DefaultClientChannelSetting.SyncDataUrl = this.txtSyncDataUrl.Text;
+
+                //    SPClientChannelSettingWrapper.Update(obj.DefaultClientChannelSetting);
+                //}
 
                 winSPClientEdit.Hide();
                 

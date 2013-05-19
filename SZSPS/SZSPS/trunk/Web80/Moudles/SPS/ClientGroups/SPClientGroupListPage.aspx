@@ -154,10 +154,23 @@
                 
                 win.autoLoad.url = '<%= this.ResolveUrl("~/Moudles/SystemManage/LogViews/SystemLogList.aspx") %>';
                 
-                win.autoLoad.params.ParentID = id.data.UserID;
+                win.autoLoad.params.ClientGroupID = id.data.UserID;
         
                 win.show();    
             }             
+            
+
+
+            
+            if (cmd == "cmdSetCodes") {
+                var win = <%= this.winClientGroupCodes.ClientID %>;
+                
+                win.setTitle(" 下家组 "+id.data.Name+"  " + " 指令设置 ");
+                
+                win.autoLoad.params.ClientGroupID = id.data.Id;
+        
+                win.show();   
+            }     
             
             if (cmd == "cmdQueryData") {
                 Coolite.AjaxMethods.UCSPClientGroupQuery.Show(id.id,
@@ -298,6 +311,9 @@
                                                     <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" />
                                                     <ext:MenuCommand Icon="ApplicationFormEdit" CommandName="cmdClientManage" Text="下家管理" />
                                                     <ext:MenuCommand Icon="Report" CommandName="cmdClientGroupPriceReport1" Text="结算报表" />
+                                                              <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdSetCodes" Text="设置指令" />                                          
+                                                    
+                                                    
                                                     <ext:MenuCommand Icon="Find" CommandName="cmdQueryData" Text="查询" />
                                                 </Items>
                                             </Menu>
@@ -362,6 +378,20 @@
         Width="850" ConstrainHeader="true" Height="390" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" ShowOnLoad="false">
         <AutoLoad Url="../Clients/SPClientGroupReportContainer1.aspx" Mode="IFrame" NoCache="true"
+            TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ClientGroupID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+        <ext:Window ID="winClientGroupCodes" runat="server" Title="Window" Frame="true"
+        Width="850" ConstrainHeader="true" Height="390" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" ShowOnLoad="false">
+        <AutoLoad Url="../Clients/SPClientGroupCodeListPage.aspx" Mode="IFrame" NoCache="true"
             TriggerEvent="show" ReloadOnEvent="true" ShowMask="true">
             <Params>
                 <ext:Parameter Name="ClientGroupID" Mode="Raw" Value="0">

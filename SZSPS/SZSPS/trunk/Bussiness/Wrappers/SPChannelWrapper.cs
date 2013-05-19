@@ -469,19 +469,19 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
                 {
                     paymentInfo.IsSycnData = true;
-                    if (!string.IsNullOrEmpty(channelSetting.SyncType) && channelSetting.SyncType.Equals("2"))
-                    {
-                        paymentInfo.SucesssToSend = false;
-                    }
-                    else
-                    {
+                    //if (!string.IsNullOrEmpty(channelSetting.SyncType) && channelSetting.SyncType.Equals("2"))
+                    //{
+                    //    paymentInfo.SucesssToSend = false;
+                    //}
+                    //else
+                    //{
                         paymentInfo.SucesssToSend = false;
 
                         sendTask = new UrlSendTask();
 
                         sendTask.SendUrl = channelSetting.BulidUrl(paymentInfo);
                         sendTask.OkMessage = channelSetting.OkMessage;
-                    }
+                    //}
                 }
                 else
                 {
@@ -1153,12 +1153,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
                 {
                     paymentInfo.IsSycnData = true;
-                    if (!string.IsNullOrEmpty(channelSetting.SyncType) && channelSetting.SyncType.Equals("2"))
-                    {
-                        paymentInfo.SucesssToSend = false;
-                    }
-                    else
-                    {
+                    //if (!string.IsNullOrEmpty(channelSetting.SyncType) && channelSetting.SyncType.Equals("2"))
+                    //{
+                    //    paymentInfo.SucesssToSend = false;
+                    //}
+                    //else
+                    //{
                         paymentInfo.SucesssToSend = false;
 
                         sendTask = new UrlSendTask();
@@ -1166,7 +1166,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                         sendTask.SendUrl = channelSetting.BulidUrl(paymentInfo);
                         sendTask.OkMessage = channelSetting.OkMessage;
 
-                    }
+                    //}
                 }
                 else
                     paymentInfo.SucesssToSend = false;

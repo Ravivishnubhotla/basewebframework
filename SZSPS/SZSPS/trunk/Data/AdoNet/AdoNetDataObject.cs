@@ -2100,7 +2100,7 @@ ORDER BY ClientGroupName";
 
         public int CacultePaymentCount(DateTime dateTime, int clientChannelId)
         {
-            string sql = @" SELECT  count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE 1=1  AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) 
+            string sql = @" SELECT  count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE 1=1 AND IsIntercept=0 AND  (CreateDate >= @startDate) AND  (CreateDate <@endDate) 
 
 and ChannleClientID =@ChannleClientID";
             DbParameters dbParameters = this.CreateNewDbParameters();
@@ -2269,6 +2269,33 @@ and ChannleClientID =@ChannleClientID ";
 
             dbParameters.AddWithValue("ChannleClientID", clientChannelId);
 
+
+            return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
+        }
+
+        public int GetDataCount(DateTime startDate, DateTime endDate, int reportChannleId, int reportClientChannleId, int timeIntercept, string dataTypeAll)
+        {
+            string sql = @" SELECT  count(*) as DataCount FROM  [dbo].[SPPaymentInfo] with(nolock)  WHERE 1=1  AND (CreateDate >= @startDate) AND  (CreateDate <@endDate) ";
+
+            if (reportChannleId > 0)
+                sql += " And ChannelID=@reportChannleId ";
+
+            if (reportClientChannleId > 0)
+                sql += " And ChannleClientID=@reportClientChannleId ";
+
+            sql += BuildFilterSqlByDataType(dataTypeAll);
+
+            DbParameters dbParameters = this.CreateNewDbParameters();
+
+            dbParameters.AddWithValue("startdate", startDate);
+
+            dbParameters.AddWithValue("enddate", endDate);
+
+            if (reportChannleId > 0)
+                dbParameters.AddWithValue("reportChannleId", reportChannleId);
+
+            if (reportClientChannleId > 0)
+                dbParameters.AddWithValue("reportClientChannleId", reportClientChannleId);
 
             return ExecuteScalar<int>(sql, CommandType.Text, dbParameters);
         }

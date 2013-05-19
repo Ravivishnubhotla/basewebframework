@@ -28,7 +28,7 @@
                     <ext:RecordField Name="Id" Type="int" />
                     <ext:RecordField Name="Name" />
                     <ext:RecordField Name="ClientName" />
-                    <ext:RecordField Name="ChannelClientCode" />             
+                    <ext:RecordField Name="ChannelClientCode" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -49,14 +49,14 @@
             white-space: normal;
             color: #555;
         }
-        
-        .list-item h3
-        {
-            display: block;
-            font: inherit;
-            font-weight: bold;
-            color: #222;
-        }
+
+            .list-item h3
+            {
+                display: block;
+                font: inherit;
+                font-weight: bold;
+                color: #222;
+            }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -68,18 +68,31 @@
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
+                                                                        <ext:ToolbarTextItem Text="日期从">
+                                    </ext:ToolbarTextItem>
+                                    <ext:DateFieldMenuItem ID="dfReportStartDate" runat="server">
+                                    </ext:DateFieldMenuItem>
+                                    <ext:ToolbarTextItem Text="到">
+                                    </ext:ToolbarTextItem>
+                                    <ext:DateFieldMenuItem ID="dfReportEndDate" runat="server">
+                                    </ext:DateFieldMenuItem>
                                     <ext:ToolbarTextItem Text="通道:">
                                     </ext:ToolbarTextItem>
                                     <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="false" StoreID="storeSPChannel"
-                                        TypeAhead="true" Mode="Local" Editable="false" DisplayField="Name" ValueField="Id">
+                                        TypeAhead="true" Mode="Local" TriggerAction="All" Editable="true" DisplayField="Name" ValueField="Id">
                                         <Listeners>
-                                            <Select Handler="#{cmbCode}.clearValue();#{storeSPChannelClientSetting}.reload();" />
+                                            <Select Handler="#{cmbCode}.clearValue();#{storeSPChannelClientSetting}.reload();this.triggers[0].show();" />
+                                            <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                                            <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide();#{cmbCode}.clearValue(); #{cmbCode}.triggers[0].hide(); }" />
                                         </Listeners>
+                                        <Triggers>
+                                            <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                                        </Triggers>
                                     </ext:ComboBox>
                                     <ext:ToolbarTextItem Text="指令:">
                                     </ext:ToolbarTextItem>
-                                    <ext:ComboBox ID="cmbCode" runat="server" AllowBlank="false" StoreID="storeSPChannelClientSetting"
-                                        TypeAhead="true" Mode="Local" Editable="false" DisplayField="Name" ValueField="Id"
+                                    <ext:ComboBox ID="cmbCode" runat="server" AllowBlank="true" StoreID="storeSPChannelClientSetting"
+                                        TypeAhead="true" Mode="Local" Editable="true" DisplayField="Name" ValueField="Id" TriggerAction="All"
                                         ItemSelector="div.list-item">
                                         <Template ID="Template1" runat="server">
                 <Html>
@@ -91,6 +104,38 @@
 					</tpl>
 				</Html>
                                         </Template>
+
+                                        <Listeners>
+                                            <Select Handler="this.triggers[0].show();" />
+                                            <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                                            <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
+                                        </Listeners>
+                                        <Triggers>
+                                            <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                                        </Triggers>
+                                    </ext:ComboBox>
+
+                                    <ext:ToolbarTextItem Text="时间间隔:">
+                                    </ext:ToolbarTextItem>
+
+                                    <ext:ComboBox ID="cmbCommandType" runat="server" AllowBlank="False"
+                                        Editable="false" TypeAhead="true" Width="80" ForceSelection="true" Mode="Local" TriggerAction="All"
+                                        SelectedIndex="0">
+                                        <Items>
+                                            <ext:ListItem Text="30分钟" Value="30" />
+                                            <ext:ListItem Text="1小时" Value="60" />
+                                            <ext:ListItem Text="4小时" Value="240" />
+                                            <ext:ListItem Text="12小时" Value="720" />
+                                            <ext:ListItem Text="1天" Value="1440" />
+                                        </Items>
+                                        <Listeners>
+                                            <Select Handler="this.triggers[0].show();" />
+                                            <BeforeQuery Handler="this.triggers[0][ this.getRawValue().toString().length == 0 ? 'hide' : 'show']();" />
+                                            <TriggerClick Handler="if (index == 0) { this.clearValue(); this.triggers[0].hide(); }" />
+                                        </Listeners>
+                                        <Triggers>
+                                            <ext:FieldTrigger Icon="Clear" HideTrigger="true" />
+                                        </Triggers>
                                     </ext:ComboBox>
                                     <ext:ToolbarButton ID='btnRefresh' runat="server" Text="查询" Icon="Find">
                                         <AjaxEvents>

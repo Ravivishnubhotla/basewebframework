@@ -22,7 +22,6 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
         }
 
-
         protected void btnRefresh_Click(object sender, AjaxEventArgs e)
         {
             if (cmbCode.SelectedItem == null)
@@ -53,13 +52,25 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
         protected void storeSPChannelClientSetting_Refresh(object sender, StoreRefreshDataEventArgs e)
         {
-            int channelID = int.Parse(e.Parameters["ChannelID"].ToString());
+            if (!string.IsNullOrEmpty(e.Parameters["ChannelID"]))
+            {
+                int channelID = int.Parse(e.Parameters["ChannelID"].ToString());
 
-            SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(channelID);
+                SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(channelID);
 
-            storeSPChannelClientSetting.DataSource = channelWrapper.GetAllClientChannelSetting();
+                storeSPChannelClientSetting.DataSource = SPClientChannelSettingWrapper.GetSettingByChannel(channelWrapper);
 
-            storeSPChannelClientSetting.DataBind();
+                storeSPChannelClientSetting.DataBind();
+            }
+            else
+            {
+                storeSPChannelClientSetting.DataSource = new List<SPClientChannelSettingWrapper>();
+
+                storeSPChannelClientSetting.DataBind();      
+            }
+
+
+
         }
     }
 }

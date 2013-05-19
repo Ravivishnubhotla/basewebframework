@@ -50,6 +50,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         DataTable GetProvinceReportForClientGroup(DateTime startDate, DateTime endDate, int clientGroupId, int channleClientId, bool? isIntercept);
         DataTable GetProvinceCityReport(DateTime startDate, DateTime endDate, int reportId, int reportClientChannleId, string province);
         DataTable GetProvinceCityReportForClientGroup(DateTime startDate, DateTime endDate, int reportId, int reportClientChannleId, string province);
+        DataTable GetDataChangeReport(DateTime startDate, DateTime endDate, int reportChannleId, int reportClientChannleId, int timeIntercept);
     }
 
     internal partial class SPDayReportServiceProxy :  ISPDayReportServiceProxy
@@ -283,6 +284,77 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         public DataTable GetProvinceCityReportForClientGroup(DateTime startDate, DateTime endDate, int reportId, int reportClientChannleId, string province)
         {
             return this.AdoNetDb.GetProvinceCityReportForClientGroup(startDate, endDate, reportId, reportClientChannleId, province, null); 
+        }
+
+
+        [Transaction(IsolationLevel.ReadUncommitted)]
+        public DataTable GetDataChangeReport(DateTime startDate, DateTime endDate, int reportChannleId, int reportClientChannleId,
+                                             int timeIntercept)
+        {
+            startDate = startDate.Date;
+            endDate = endDate.Date.AddDays(1);
+
+            int dataCount = Convert.ToInt32(Math.Ceiling((endDate - startDate).TotalMinutes))/timeIntercept;
+
+            DateTime currentStartTime;
+            DateTime currentEndTime;
+
+ 
+            DataTable dt = new DataTable();
+            dt.Columns.Add("StartTime", typeof(DateTime));
+            dt.Columns.Add("EndTime", typeof(DateTime));
+            dt.Columns.Add("DataCount", typeof(int));
+            dt.Columns.Add("DataType", typeof(string));
+
+            for (int i = 0; i < dataCount; i++)
+            {
+                currentStartTime = startDate.AddMinutes(i*timeIntercept);
+                currentEndTime = startDate.AddMinutes((i + 1) * timeIntercept);
+
+                int allDataCount = this.AdoNetDb.GetDataCount(currentStartTime, currentEndTime, reportChannleId, reportClientChannleId, timeIntercept, DataType_All);
+                int allInterceptDataCount = this.AdoNetDb.GetDataCount(currentStartTime, currentEndTime, reportChannleId, reportClientChannleId, timeIntercept, DataType_Intercept);
+                int allClientDataCount = allDataCount - allInterceptDataCount;
+
+                DataRow dr1 = dt.NewRow();
+
+                dr1["StartTime"] = currentStartTime;
+                dr1["EndTime"] = currentEndTime;
+                dr1["DataCount"] = allDataCount;
+                dr1["DataType"] = "总点播量";
+
+                dt.Rows.Add(dr1);
+
+                dt.AcceptChanges();
+
+                DataRow dr2 = dt.NewRow();
+
+                dr2["StartTime"] = currentStartTime;
+                dr2["EndTime"] = currentEndTime;
+                dr2["DataCount"] = allInterceptDataCount;
+                dr2["DataType"] = "总扣除量";
+
+                dt.Rows.Add(dr2);
+
+                dt.AcceptChanges();
+
+                DataRow dr3 = dt.NewRow();
+
+                dr3["StartTime"] = currentStartTime;
+                dr3["EndTime"] = currentEndTime;
+                dr3["DataCount"] = allClientDataCount;
+                dr3["DataType"] = "总下发量";
+
+                dt.Rows.Add(dr3);
+
+                dt.AcceptChanges();
+
+
+            }
+
+
+
+            return dt;
+
         }
 
 

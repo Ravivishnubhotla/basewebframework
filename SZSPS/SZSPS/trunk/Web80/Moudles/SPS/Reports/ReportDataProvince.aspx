@@ -55,14 +55,14 @@
             white-space: normal;
             color: #555;
         }
-        
-        .list-item h3
-        {
-            display: block;
-            font: inherit;
-            font-weight: bold;
-            color: #222;
-        }
+
+            .list-item h3
+            {
+                display: block;
+                font: inherit;
+                font-weight: bold;
+                color: #222;
+            }
     </style>
     <script type="text/javascript">
         function showProvinceCityReport(reportID,channleClientSettingID,province) {            
@@ -70,28 +70,28 @@
 
 
             
-                var win = <%= this.winShowCityProvinceReport.ClientID %>;
+            var win = <%= this.winShowCityProvinceReport.ClientID %>;
                 
-                win.autoLoad.url = 'ReportCityChartService.aspx';
+            win.autoLoad.url = 'ReportCityChartService.aspx';
                 
 
 
-                win.autoLoad.params.ReportID = reportID;
-                win.autoLoad.params.ChannleClientSettingID = channleClientSettingID;
+            win.autoLoad.params.ReportID = reportID;
+            win.autoLoad.params.ChannleClientSettingID = channleClientSettingID;
             
-             //alert(province);
+            //alert(province);
 
-                win.autoLoad.params.StartDate = <%= this.dfReportStartDate.ClientID %>.dateField.getValue();
+            win.autoLoad.params.StartDate = <%= this.dfReportStartDate.ClientID %>.dateField.getValue();
             
 
                                                    
-                win.autoLoad.params.EndDate =  <%= this.dfReportEndDate.ClientID %>.dateField.getValue();
-                win.autoLoad.params.Province = province;
-                win.autoLoad.params.ReportType = "1";
+            win.autoLoad.params.EndDate =  <%= this.dfReportEndDate.ClientID %>.dateField.getValue();
+            win.autoLoad.params.Province = province;
+            win.autoLoad.params.ReportType = "1";
             
  
         
-                win.show();  
+            win.show();  
         }
 
     </script>
@@ -118,7 +118,7 @@
                                     <ext:ToolbarTextItem Text="通道:">
                                     </ext:ToolbarTextItem>
                                     <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="true" StoreID="storeSPChannel"
-                                        TypeAhead="true" Mode="Local" TriggerAction="All" Editable="false" DisplayField="Name"
+                                        TypeAhead="true" Mode="Local" TriggerAction="All" Editable="true" DisplayField="Name"
                                         ValueField="Id">
                                         <Listeners>
                                             <Select Handler="#{cmbCode}.clearValue();#{storeSPChannelClientSetting}.reload();this.triggers[0].show();" />
@@ -132,7 +132,7 @@
                                     <ext:ToolbarTextItem Text="指令:">
                                     </ext:ToolbarTextItem>
                                     <ext:ComboBox ID="cmbCode" runat="server" AllowBlank="true" StoreID="storeSPChannelClientSetting"
-                                        TypeAhead="true" Mode="Local" TriggerAction="All" Editable="false" DisplayField="Name"
+                                        TypeAhead="true" Mode="Local" TriggerAction="All" Editable="true" DisplayField="Name"
                                         ValueField="Id" ItemSelector="div.list-item">
                                         <Template ID="Template1" runat="server">
                 <Html>
@@ -158,11 +158,6 @@
                                             <Click OnEvent="btnRefresh_Click" />
                                         </AjaxEvents>
                                     </ext:ToolbarButton>
-<%--                                    <ext:ToolbarButton ID='ToolbarButton1' runat="server" Text="查询" Icon="Find">
-                                        <Listeners>
-                                            <Click Handler="showProvinceCityReport(1,2,'2222');"></Click>
-                                        </Listeners>
-                                    </ext:ToolbarButton>--%>
                                 </Items>
                             </ext:Toolbar>
                         </TopBar>
