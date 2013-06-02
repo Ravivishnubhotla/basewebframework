@@ -1,0 +1,61 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Process
+{
+    public static class ProcessRule
+    {
+        public static void ProcessHashTable(Hashtable hb)
+        {
+            string spcode = hb["content"].ToString();
+
+            if (hb["content"].ToString()=="SH")
+            {
+                hb["content"] = "sh1";
+            }
+            else if (hb["content"].ToString() == "Sh")
+            {
+                hb["content"] = "sh2";
+            }
+            else if (hb["content"].ToString() == "sH")
+            {
+                hb["content"] = "sh3";
+            }
+            else if (hb["content"].ToString() == "sh")
+            {
+                hb["content"] = "sh4";
+            }
+            else if (hb["content"].ToString() == "AB")
+            {
+                hb["content"] = "ab1";
+            }
+            else if (hb["content"].ToString() == "Ab")
+            {
+                hb["content"] = "ab2";
+            }
+            else if (hb["content"].ToString() == "aB")
+            {
+                hb["content"] = "ab3";
+            }
+            else if (hb["content"].ToString() == "ab")
+            {
+                hb["content"] = "ab4";
+            }
+            else if (hb["content"].ToString() == "Q")
+            {
+                hb["content"] = "q1";
+            }
+            else if (hb["content"].ToString() == "q")
+            {
+                hb["content"] = "q2";
+            }
+
+            hb.Add("spnumber1", spcode);
+            
+ 
+        }
+    }
+}

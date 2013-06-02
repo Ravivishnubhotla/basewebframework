@@ -37,7 +37,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
-        public const int MaxCacheItems = 200000;
+        public const int MaxCacheItems = 900000;
 
         public static void AddLinkIDs(string linkid, int channelid)
         {

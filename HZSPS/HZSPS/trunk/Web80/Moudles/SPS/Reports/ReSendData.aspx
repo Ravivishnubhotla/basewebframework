@@ -39,12 +39,12 @@
                                 <ext:Label ID="lblClientName" runat="server" FieldLabel="下家名" AllowBlank="True" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:Hidden ID="hidMaxChangeCount" runat="server" Text="100">
+                                <ext:Hidden ID="hidMaxChangeCount" runat="server" Text="3000">
                                 </ext:Hidden>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:NumberField ID="numMaxCount" runat="server" FieldLabel="最大重发数" MinValue="0"
-                                    MaxValue="100" DecimalPrecision="0" Text="20">
+                                    MaxValue="3000" DecimalPrecision="0" Text="20">
                                 </ext:NumberField>
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
