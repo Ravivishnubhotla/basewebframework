@@ -686,14 +686,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
                 {
                     this.IsSycnData = true;
-                    if (!string.IsNullOrEmpty(channelSetting.SyncType) && channelSetting.SyncType.Equals("2"))
-                    {
-                        this.SucesssToSend = false;
-                    }
-                    else
-                    {
+                    //if (!string.IsNullOrEmpty(channelSetting.SyncType) && channelSetting.SyncType.Equals("2"))
+                    //{
+                    //    this.SucesssToSend = false;
+                    //}
+                    //else
+                    //{
                         this.SucesssToSend = channelSetting.SendMsg(this);
-                    }
+                    //}
                 }
                 else
                     this.SucesssToSend = false;
@@ -703,6 +703,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 this.SucesssToSend = false;
             }
         }
+
         public static List<SPPaymentInfoWrapper> FindAllByOrderByAndClientIDAndDateNoIntercept(int spClientID, DateTime startDate, DateTime endDate, string sortFieldName, bool isdesc, int pageIndex, int limit, out int recordCount)
         {
             return

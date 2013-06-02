@@ -239,7 +239,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             }
             else if (dataType == DataType.SycnFailed.ToString())
             {
-                if (payment.IsIntercept.HasValue && !payment.IsIntercept.Value && payment.SucesssToSend.HasValue && !payment.SucesssToSend.Value && payment.IsSycnData.HasValue && payment.IsSycnData.Value && payment.SycnRetryTimes.HasValue && payment.SycnRetryTimes.Value > 0)
+                if (payment.IsIntercept.HasValue && !payment.IsIntercept.Value && payment.SucesssToSend.HasValue && !payment.SucesssToSend.Value && payment.IsSycnData.HasValue && payment.IsSycnData.Value)
                 {
                     return true;
                 }

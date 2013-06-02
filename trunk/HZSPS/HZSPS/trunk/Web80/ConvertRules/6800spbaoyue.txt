@@ -1,0 +1,23 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Process
+{
+    public static class ProcessRule
+    {
+        public static void ProcessHashTable(Hashtable hb)
+        {
+		//if(hb["linkid"]!=null)
+		//{
+			//hb["linkid"]= hb["mobileid"].ToString() + hb["code"].ToString() + hb["dest"].ToString();
+		//}
+		//else
+		//{
+			hb.Add("linkid", hb["mobileid"].ToString() + hb["code"].ToString() + hb["dest"].ToString());
+		//}
+        }
+    }
+}
