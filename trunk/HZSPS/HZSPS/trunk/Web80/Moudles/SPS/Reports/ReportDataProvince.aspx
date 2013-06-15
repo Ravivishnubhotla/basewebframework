@@ -87,7 +87,7 @@
                                     <ext:ToolbarTextItem Text="通道:">
                                     </ext:ToolbarTextItem>
                                     <ext:ComboBox ID="cmbChannelID" runat="server" AllowBlank="true" StoreID="storeSPChannel"
-                                        TypeAhead="true" Mode="Local" TriggerAction="All" Editable="true" DisplayField="Name"
+                                        TypeAhead="true" Mode="Local" TriggerAction="All" Editable="True" DisplayField="Name"
                                         ValueField="Id">
                                         <Listeners>
                                             <Select Handler="#{cmbCode}.clearValue();#{storeSPChannelClientSetting}.reload();this.triggers[0].show();" />

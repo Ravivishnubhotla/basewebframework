@@ -1,4 +1,4 @@
-﻿Convert.ToInt32(Math.Ceiling(Convert.ToDouble( <%@ Page Language="C#" %>
+﻿<%@ Page Language="C#" %>
 
 <%@ Import Namespace="Common.Logging" %>
 <%@ Import Namespace="LD.SPPipeManage.Bussiness.Commons" %>
@@ -9,8 +9,6 @@
     protected static ILog logger = LogManager.GetLogger(typeof(SPRecievedHandler));
     private bool saveLogFailedRequestToDb = false;
 
-
-
     protected void Page_Load(object sender, EventArgs e)
     {
         this.Response.Clear();
@@ -18,7 +16,7 @@
         {
             IHttpRequest httpRequest = new HttpGetPostRequest(Request);
 
-            SPChannelWrapper channel = SPChannelWrapper.FindByAlias("zdtivr");
+            SPChannelWrapper channel = SPChannelWrapper.FindByAlias("IVR8996");
 
             //如果没有找到通道
             if (channel == null)
@@ -45,40 +43,26 @@
                 SPMonitoringRequestWrapper.SaveRequest(httpRequest, channel.Id);
             }
 
-
-
- 
-
             RequestError requestError1 = new RequestError();
 
             bool result1 = false;
 
-            DateTime startdate = DateTime.ParseExact(this.Request.QueryString["BeginTime"], "yyyyMMddHHmmss", null);  
-            DateTime enddate = DateTime.ParseExact(this.Request.QueryString["EndTime"], "yyyyMMddHHmmss", null);
+            int feetime = Convert.ToInt32(this.Request.QueryString["feetime"]);
 
-
-            Response.Write(Convert.ToDouble((enddate - startdate).TotalSeconds)/60);
-            Response.Write(enddate);
-            int feetime = Convert.ToInt32(Math.Ceiling(Convert.ToDouble((enddate - startdate).TotalSeconds)/60));
-
-            string linkid = this.Request.QueryString["ani"]+this.Request.QueryString["BeginTime"];
+	    if (feetime>6)
+            {
+	    	feetime = 6;
+            }
 
             for (int i = 0; i < feetime; i++)
             {
                 HttpGetPostRequest request = new HttpGetPostRequest(httpRequest);
 
-		if (request.RequestParams["linkid"]==null)
-		{
-			request.RequestParams.Add("linkid",linkid + "-" + i.ToString());
-		}
-		else
-		{
-			request.RequestParams["linkid"]=linkid + "-" + i.ToString();
-		}
- 
-                request.RequestParams.Add("fcount","1");
+                request.RequestParams["mobpwd"] = request.RequestParams["mobpwd"] + "-" + i.ToString();
 
+                request.RequestParams.Add("fcount", "1");
 
+                request.RequestParams.Add("spywid", request.RequestParams["extdata"]);
 
                 result1 = channel.ProcessRequest(request, out requestError1);
             }
@@ -88,7 +72,6 @@
             //正确数据返回OK
             if (result1)
             {
- 
                 Response.Write(channel.GetOkCode(httpRequest));
                 return;
             }
@@ -96,14 +79,12 @@
             //重复数据返回OK
             if (requestError1.ErrorType == RequestErrorType.RepeatLinkID)
             {
- 
                 logger.Warn(requestError1.ErrorMessage);
                 Response.Write(channel.GetOkCode(httpRequest));
                 return;
             }
 
             //其他错误类型记录错误请求
- 
             LogWarnInfo(httpRequest, requestError1.ErrorMessage, channel.Id, 0);
 
             Response.Write(channel.GetFailedCode(httpRequest));
@@ -116,7 +97,6 @@
         }
         catch (Exception ex)
         {
-	    Response.Write(ex.Message);	
             try
             {
                 IHttpRequest failRequest = new HttpGetPostRequest(Request);
@@ -125,7 +105,7 @@
 
                 logger.Error(errorMessage + "\n请求信息:\n" + failRequest.RequestData, ex);
 
-                if (1==1)
+                if (saveLogFailedRequestToDb)
                     SPFailedRequestWrapper.SaveFailedRequest(failRequest, errorMessage, 0, 0);
             }
             catch (Exception exx)
@@ -135,7 +115,7 @@
         }
 
 
- 
+
 
 
 
