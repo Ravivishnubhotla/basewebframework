@@ -9,6 +9,8 @@
     protected static ILog logger = LogManager.GetLogger(typeof(SPRecievedHandler));
     private bool saveLogFailedRequestToDb = false;
 
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         this.Response.Clear();
@@ -16,7 +18,7 @@
         {
             IHttpRequest httpRequest = new HttpGetPostRequest(Request);
 
-            SPChannelWrapper channel = SPChannelWrapper.FindByAlias("IVR8996");
+            SPChannelWrapper channel = SPChannelWrapper.FindByAlias("IVRXL");
 
             //如果没有找到通道
             if (channel == null)
@@ -46,18 +48,28 @@
             RequestError requestError1 = new RequestError();
 
             bool result1 = false;
+ 
 
-            int feetime = Convert.ToInt32(this.Request.QueryString["feetime"]);
+            DateTime startdate = Convert.ToDateTime(this.Request.QueryString["startdate"]);
+            DateTime enddate = Convert.ToDateTime(this.Request.QueryString["enddate"]);
+
+ 
+
+            int feetime = Convert.ToInt32(Math.Ceiling(Convert.ToDouble((enddate - startdate).TotalSeconds)/60)) ;
+
+            string linkid = this.Request.QueryString["mobile"]+startdate.Ticks;
 
             for (int i = 0; i < feetime; i++)
             {
                 HttpGetPostRequest request = new HttpGetPostRequest(httpRequest);
 
-                request.RequestParams["linkid"] = request.RequestParams["linkid"] + "-" + i.ToString();
+		request.RequestParams.Add("linkid",linkid + "-" + i.ToString());
 
-                request.RequestParams.Add("fcount", "1");
+		request.RequestParams.Add("feetime",feetime.ToString());
 
-                request.RequestParams.Add("spywid", request.RequestParams["extdata"]);
+		request.RequestParams.Add("spywid", request.RequestParams["spnumber"]);
+
+                request.RequestParams.Add("fcount","1");
 
                 result1 = channel.ProcessRequest(request, out requestError1);
             }
@@ -92,6 +104,7 @@
         }
         catch (Exception ex)
         {
+	    Response.Write(ex.Message);
             try
             {
                 IHttpRequest failRequest = new HttpGetPostRequest(Request);
@@ -110,7 +123,7 @@
         }
 
 
-
+ 
 
 
 

@@ -39,6 +39,7 @@
                                             <ext:ListItem Value="宁夏" Text="宁夏"></ext:ListItem>
                                             <ext:ListItem Value="青海" Text="青海"></ext:ListItem>
                                             <ext:ListItem Value="山东" Text="山东"></ext:ListItem>
+                                            <ext:ListItem Value="山西" Text="山西"></ext:ListItem>
                                             <ext:ListItem Value="陕西" Text="陕西"></ext:ListItem>
                                             <ext:ListItem Value="上海" Text="上海"></ext:ListItem>
                                             <ext:ListItem Value="四川" Text="四川"></ext:ListItem>

@@ -11,14 +11,9 @@ namespace Process
         public static void ProcessHashTable(Hashtable hb)
         {
 
-		//if(hb["spnumber"]!=null)
-		//{
-			//hb["spnumber"]= "10668600";
-		//}
-		//else
-		//{/
+
 			hb.Add("spnumber", "10668600");
-		//}
+
         }
     }
 }
