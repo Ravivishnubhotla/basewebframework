@@ -5,8 +5,12 @@
 <%@ Register Src="UCSPChannelEdit.ascx" TagName="UCSPChannelEdit" TagPrefix="uc2" %>
 <%@ Register Src="UCChannelParamsManage.ascx" TagName="UCChannelParamsManage" TagPrefix="uc3" %>
 <%@ Register Src="SPChannelQuickAdd.ascx" TagName="SPChannelQuickAdd" TagPrefix="uc4" %>
+<%@ Register Src="SPChannelQuickAddIVR.ascx" TagName="SPChannelQuickAddIVR" TagPrefix="uc6" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
+        <Listeners>
+            <DocumentReady Handler="#{storeSPUper}.reload();"></DocumentReady>
+        </Listeners>
     </ext:ScriptManagerProxy>
     <script type="text/javascript">
         var rooturl ='<%=this.ResolveUrl("~/")%>';
@@ -73,11 +77,45 @@
                                                                 });    
         
         }
+        
+
+        function ShowSPChannelQuickAddIVR() {
+            Coolite.AjaxMethods.SPChannelQuickAddIVR.Show( 
+                                                            {
+                                                                failure: function(msg) {
+                                                                    Ext.Msg.alert('操作失败', msg,RefreshSPChannelData);
+                                                                },
+                                                                eventMask: {
+                                                                    showMask: true,
+                                                                    msg: '加载中...'
+                                                                }
+                                                            });    
+        
+        }
+        
+        
 
 
         
 
         function processcmd(cmd, id) {
+
+
+        
+            if (cmd == "cmdEditInfo") {
+                Coolite.AjaxMethods.UCSPChannelEditInfo.Show(id.id,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPChannelData);
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '加载中...'
+                                                                               }
+                                                                }              
+                );
+            }
+
 
             if (cmd == "cmdEdit") {
                 Coolite.AjaxMethods.UCSPChannelEdit.Show(id.id,
@@ -171,10 +209,25 @@
                 win.autoLoad.params.ChannleID = id.data.Id;
         
                 win.show();    
-            }      
+            }
             
+ 
             
                    
+        }
+
+        function manageChannelSource(channleFileType) {
+
+                var win = <%= this.winChannelFileList.ClientID %>;
+                
+ 
+                win.setTitle('管理通道代码');
+                
+                win.autoLoad.url = 'SPChannelFilesList.aspx';
+            
+                win.autoLoad.params.ChannleFileType = channleFileType;
+
+                win.show();  
         }
 
     </script>
@@ -199,13 +252,14 @@
                     <ext:RecordField Name="AccurateCommand" />
                     <ext:RecordField Name="Port" />
                     <ext:RecordField Name="ChannelType" />
-                    <ext:RecordField Name="Price" Type="int" />
-                    <ext:RecordField Name="Rate" Type="int" />
+                    <ext:RecordField Name="Price" Type="Float" />
+                    <ext:RecordField Name="Rate" Type="Int" />
                     <ext:RecordField Name="Status" Type="int" />
                     <ext:RecordField Name="CStatusString" />
                     <ext:RecordField Name="CreateTime" Type="Date" />
                     <ext:RecordField Name="CreateBy" Type="int" />
                     <ext:RecordField Name="InterfaceUrl" />
+                    <ext:RecordField Name="UperName" />
                 </Fields>
             </ext:JsonReader>
         </Reader>
@@ -218,6 +272,8 @@
     <uc2:UCSPChannelEdit ID="UCSPChannelEdit1" runat="server" />
     <uc3:UCChannelParamsManage ID="UCChannelParamsManage1" runat="server" />
     <uc4:SPChannelQuickAdd ID="SPChannelQuickAdd1" runat="server" />
+    <uc6:SPChannelQuickAddIVR ID="SPChannelQuickAddIVR1" runat="server" />   
+    
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -227,19 +283,25 @@
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
-                                    <ext:ToolbarButton ID='btnAdd' runat="server" Text="添加" Icon="ApplicationAdd">
-                                        <Listeners>
-                                            <Click Handler="ShowAddSPChannelForm();" />
-                                        </Listeners>
-                                    </ext:ToolbarButton>
+
                                     <ext:ToolbarButton ID='ToolbarButton1' runat="server" Text="快速添加" Icon="ApplicationAdd">
                                         <Listeners>
                                             <Click Handler="ShowSPChannelQuickAdd();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
-                                    <ext:ToolbarButton ID='ToolbarButton2' runat="server" Text="刷新所有通道信息" Icon="Reload">
+                                   <ext:ToolbarButton ID='ToolbarButton8' runat="server" Text="快速添加IVR" Icon="ApplicationAdd">
                                         <Listeners>
-                                            <Click Handler="ReloadAllChannelInfo();" />
+                                            <Click Handler="ShowSPChannelQuickAddIVR();" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>
+                                     <ext:ToolbarButton ID='btnAdd' runat="server" Text="管理通道代码" Icon="PageCode">
+                                        <Listeners>
+                                            <Click Handler="manageChannelSource('1');" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>
+                                    <ext:ToolbarButton ID='ToolbarButton2' runat="server" Text="管理通道规则" Icon="Cog">
+                                         <Listeners>
+                                            <Click Handler="manageChannelSource('2');" />
                                         </Listeners>
                                     </ext:ToolbarButton>
                                     <ext:ToolbarSeparator>
@@ -269,40 +331,48 @@
                             <Columns>
                                 <ext:RowNumbererColumn>
                                 </ext:RowNumbererColumn>
-                                <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Sortable="true">
-                                </ext:Column>
-                                <ext:Column ColumnID="colArea" DataIndex="Area" Header="支持省份" Hidden="true" Sortable="true">
+                                <ext:Column ColumnID="colName" DataIndex="Name" Header="名称" Width="80" Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelCode" DataIndex="ChannelCode" Header="通道编码" Sortable="true"
                                     Hidden="true">
                                 </ext:Column>
-                                <ext:Column ColumnID="colFuzzyCommand" DataIndex="FuzzyCommand" Header="提交别名" Sortable="true">
+                                <ext:Column ColumnID="colFuzzyCommand" DataIndex="FuzzyCommand" Header="提交别名" Width="80"
+                                    Sortable="true">
                                 </ext:Column>
                                 <ext:Column ColumnID="colPort" DataIndex="Port" Header="端口" Hidden="true" Sortable="true"
                                     Width="50">
                                 </ext:Column>
-                                <ext:Column ColumnID="colChannelType" DataIndex="ChannelType" Header="通道类型" Hidden="true"
-                                    Sortable="true">
+                                <ext:Column ColumnID="colRate" DataIndex="Rate" Header="默认扣率" Sortable="true" Width="50">
                                 </ext:Column>
-                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="单价" Hidden="true" Sortable="true"
-                                    Width="50">
-                                </ext:Column>
-                                <ext:Column ColumnID="colRate" DataIndex="Rate" Header="分成比例" Hidden="true" Sortable="true"
-                                    Width="50">
+                                <ext:Column ColumnID="colPrice" DataIndex="Price" Header="通道价格" Sortable="true" Width="50">
                                 </ext:Column>
                                 <ext:Column ColumnID="colStatus" DataIndex="CStatusString" Header="状态" Sortable="true"
                                     Width="30">
                                 </ext:Column>
-                                <ext:CommandColumn Header="通道管理" Width="172">
+                                <ext:CommandColumn Header="通道管理" Width="80">
                                     <Commands>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑">
-                                            <ToolTip Text="编辑" />
+                                        <ext:GridCommand Icon="ApplicationForm" Text="选择操作" ToolTip-Text="选择操作">
+                                            <Menu>
+                                                <Items>
+                                                    <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEditInfo" Text="分配上家" />
+                                                    <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑"
+                                                        AutoDataBind="True" />
+                                                    <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdSendTestRequest" Text="测试" />
+                                                    <ext:MenuCommand Icon="ApplicationFormEdit" CommandName="cmdClientSetting" Text="指令分配" />
+                                                    <ext:MenuCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理"
+                                                        AutoDataBind="True" />
+                                                    <ext:MenuCommand Icon="ApplicationFormEdit" CommandName="cmdnChannelDefaultSendParams"
+                                                        Text="默认下发参数"  />
+                                                </Items>
+                                            </Menu>
+                                            <ToolTip Text="Menu" />
                                         </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
-                                            <ToolTip Text="删除" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理">
-                                            <ToolTip Text="参数管理" />
+                                    </Commands>
+                                </ext:CommandColumn>
+                                <ext:CommandColumn Header="通道管理" Width="172" Hidden="True">
+                                    <Commands>
+                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEditInfo" Text="分配上家">
+                                            <ToolTip Text="测试" />
                                         </ext:GridCommand>
                                         <ext:GridCommand Icon="TelephoneGo" CommandName="cmdSendTestRequest" Text="测试">
                                             <ToolTip Text="测试" />
@@ -310,8 +380,17 @@
                                         <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdClientSetting" Text="指令分配">
                                             <ToolTip Text="指令分配" />
                                         </ext:GridCommand>
+                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑"  >
+                                            <ToolTip Text="编辑" />
+                                        </ext:GridCommand>
+                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
+                                            <ToolTip Text="删除" />
+                                        </ext:GridCommand>
+                                        <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理" >
+                                            <ToolTip Text="参数管理" />
+                                        </ext:GridCommand>
                                         <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdnChannelDefaultSendParams"
-                                            Text="默认下发参数">
+                                            Text="默认下发参数"  runat="server" >
                                             <ToolTip Text="默认下发参数" />
                                         </ext:GridCommand>
                                     </Commands>
@@ -375,6 +454,20 @@
             ShowMask="true">
             <Params>
                 <ext:Parameter Name="ChannleID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winChannelFileList" runat="server" Title="管理通道文件" Frame="true"
+        Width="850" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+                        <Params>
+                <ext:Parameter Name="ChannleFileType" Mode="Raw" Value="0">
                 </ext:Parameter>
             </Params>
         </AutoLoad>

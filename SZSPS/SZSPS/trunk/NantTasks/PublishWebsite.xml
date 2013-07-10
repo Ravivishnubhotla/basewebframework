@@ -1,52 +1,109 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<project name="Aaron.Guo.NAnt.Project" default="run" basedir="E:\Dev\My\Projects\SZSPS\">
+<project xmlns="http://nant.sf.net/release/0.92/nant.xsd" name="Aaron.Guo.NAnt.Project" default="run" >
   <loadtasks assembly="F:\nant-0.92\nantcontrib-0.92\bin\NAnt.Contrib.Tasks.dll" />
-  
-  
-  <property name="MSBuildPath" value="C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"/> 
-  <property name="BuildWebProjectPath" value="E:\Dev\My\Projects\SZSPS\SZSPS\trunk\Web80\Web.csproj"/>
-  <property name="DeployOutputPath" value="E:\Dev\My\Projects\SZSPS\Deploy"/>
+  <loadtasks assembly="F:\nant-0.92\bin\W3CValidationTasks.Core.dll" />
+  <loadtasks assembly="F:\nant-0.92\bin\W3CValidationTasks.dll" /> 
+  <property name="MSBuildPath" value="C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"/>
+  <property name="SlnPath" value="E:\Dev\My\Projects\SZSPS\SZSPS\trunk\"/>
+  <property name="BuildWebProjectPath" value="${SlnPath}Web80\Web.csproj"/>
+  <property name="DeployOutputPath" value="${SlnPath}WebDeploy\"/>
+  <property name="DeployPatchPath" value="${SlnPath}Patches\"/>
   <property name="BuildResult" value="0"/>
-  
-    
+  <property name="DateFormat" value="yyyyMMddHHmmss"/>
+  <script language="C#" prefix="util">  
+    <code><![CDATA[  
+    [Function("get-datetime-string")]  
+    public static string GetDateTimeString(string dateFormat)  
+    {  
+        return System.DateTime.Now.ToString(dateFormat);  
+    }  
+    ]]></code>  
+</script>
+
+  <property name="PackageName" value="szsps${util::get-datetime-string(DateFormat)}.zip"/>
+
   <target name="run">
     <call target="build1"/>
   </target>
   <target name="build1">
 
-    <delete dir="Deploy" if="${directory::exists('Deploy')}" />
-
-    <!--<msbuild project="${BuildWebProjectPath}" verbose="true" failonerror="false">
-      <arg value="/t:ResolveReferences;Compile" />
-      <arg value="/t:_WPPCopyWebApplication" />
-      <arg value="/p:Configuration=Release" />
-      <arg value="/p:WebProjectOutputDir=${DeployOutputPath}" />
-    </msbuild>-->
-    
-      
-    <exec program="${MSBuildPath}" verbose="true" failonerror="false" resultproperty="BuildResult">
-      <arg line="${BuildWebProjectPath}" ></arg>
-      <arg value="/t:ResolveReferences;Compile" />
-      <arg value="/t:_WPPCopyWebApplication" />
-      <arg value="/p:Configuration=Release" />
-      <arg value="/p:WebProjectOutputDir=${DeployOutputPath}" />
-    </exec>
-    
-      <echo message="web publish result ${BuildResult}"/>
-        
     <delete>
-      <fileset basedir="Deploy">
+      <fileset basedir="${DeployOutputPath}">
+        <include name="*\"/>
         <include name="*.*"/>
-        <exclude name="*/"/>
-        <exclude name="bin/*"/>
-        <exclude name="Moudles/*" />
       </fileset>
     </delete>
+
+    <exec program="${MSBuildPath}" verbose="true" failonerror="true">
+      <arg line="${SlnPath}Legendigital.Framework.Common\Common.csproj" ></arg>
+      <arg value="/t:rebuild" />
+      <arg value="/p:Configuration=Release" />
+    </exec>
+
+    <exec program="${MSBuildPath}" verbose="true" failonerror="true">
+      <arg line="${SlnPath}Entity\Entity.csproj" ></arg>
+      <arg value="/t:rebuild" />
+      <arg value="/p:Configuration=Release" />
+    </exec>
+
+    <exec program="${MSBuildPath}" verbose="true" failonerror="true">
+      <arg line="${SlnPath}Data\Data.csproj" ></arg>
+      <arg value="/t:rebuild" />
+      <arg value="/p:Configuration=Release" />
+    </exec>
+
+    <exec program="${MSBuildPath}" verbose="true" failonerror="true">
+      <arg line="${SlnPath}Bussiness\Bussiness.csproj" ></arg>
+      <arg value="/t:rebuild" />
+      <arg value="/p:Configuration=Release" />
+    </exec>
+
+    <exec program="${MSBuildPath}" verbose="true" failonerror="true">
+      <arg line="${SlnPath}Web80\Web.csproj" ></arg>
+      <arg value="/t:rebuild" />
+      <arg value="/p:Configuration=Release" />
+    </exec>
+
+    <exec program="${MSBuildPath}" verbose="true" failonerror="true">
+      <arg line="${BuildWebProjectPath}" ></arg>
+      <arg value="/t:Build;PipelinePreDeployCopyAllFilesToOneFolder" />
+      <arg value="/p:Configuration=Release;_PackageTempDir=${DeployOutputPath};AutoParameterizationWebConfigConnectionStrings=false" />
+    </exec>
+
     <delete>
-      <fileset>
-        <include name="Deploy\bin\*.pdb" />
+      <fileset basedir="${DeployOutputPath}">
+        <include name="*\"/>
+        <include name="*.*"/>
+        <exclude name="bin\"/>
+        <exclude name="Moudles\"/>
       </fileset>
     </delete>
+
+    <delete>
+      <fileset basedir="${DeployOutputPath}">
+        <include name="*.*"/>
+        <exclude name="LD.*.dll"/>
+        <exclude name="Legendigital.*.dll"/>
+      </fileset>
+    </delete>
+
+    <zip zipfile="${DeployPatchPath}${PackageName}">
+      <fileset basedir="${DeployOutputPath}">
+        <include name="*\"/>
+        <include name="*.*"/>
+      </fileset>
+    </zip>
+
+    <echo message="Start to upload package ${PackageName}"/>
+
+    <ftpUpload host="121.52.210.144" username="fileuser" password="14325876" todir="/">
+      <fileset>
+        <include name="${DeployPatchPath}${PackageName}" />
+      </fileset>
+    </ftpUpload>
+
+    <echo message="Upload package ${PackageName} success"/>
+    <!---->
   </target>
 </project>
 

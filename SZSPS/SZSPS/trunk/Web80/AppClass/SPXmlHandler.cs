@@ -15,6 +15,10 @@ namespace Legendigital.Common.Web.AppClass
     {
         protected override string GetXmlNodeName()
         {
+            if (!string.IsNullOrEmpty(HttpContext.Current.Request.QueryString["xmlNodeName"]))
+            {
+                return HttpContext.Current.Request.QueryString["xmlNodeName"];
+            }
             return "message";
         }
 
