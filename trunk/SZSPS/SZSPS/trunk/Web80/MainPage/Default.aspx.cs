@@ -25,6 +25,7 @@ namespace Legendigital.Common.Web.MainPage
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             //foreach (Portlet portlet in ControlUtils.FindControls<Portlet>(this.Page))
             //{
             //    portlet.AjaxEvents.Hide.Event += Portlet_Hide;

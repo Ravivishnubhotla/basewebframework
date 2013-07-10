@@ -22,6 +22,7 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
         List<SPChannelParamsEntity> GetAllShowParams(SPChannelEntity entity);
         List<SPChannelDefaultClientSycnParamsEntity> GetAllEnableDefaultSendParams(SPChannelEntity spChannelEntity);
         void QuickAdd(SPChannelEntity spChannelWrapper, string linkPName, string mobilePName, string spCodePName, string moPName, int userID);
+        void QuickAddIVR(SPChannelEntity spChannelWrapper, string linkPName, string mobilePName, string spCodePName, string startTimePName, string endTimePName, string feetimePName, int userID);
     }
 
     internal partial class SPChannelServiceProxy : ISPChannelServiceProxy
@@ -219,6 +220,178 @@ namespace LD.SPPipeManage.Bussiness.ServiceProxys.Tables
 
 
 
+        }
+
+        [Transaction(ReadOnly = false)]
+        public void QuickAddIVR(SPChannelEntity spChannelWrapper, string linkPName, string mobilePName, string spCodePName, string startTimePName,
+                                string endTimePName, string feetimePName, int userID)
+        {
+            spChannelWrapper.Rate = 11;
+            spChannelWrapper.Price = Convert.ToDecimal("1.00");
+            this.SelfDataObj.Save(spChannelWrapper);
+
+            SPClientEntity spClientEntity = new SPClientEntity();
+            spClientEntity.Name = spChannelWrapper.Name + "默认下家";
+            spClientEntity.Description = spChannelWrapper.Name + "默认下家";
+            spClientEntity.UserID = userID;
+            spClientEntity.IsDefaultClient = true;
+            spClientEntity.Alias = "";
+
+
+            this.DataObjectsContainerIocID.SPClientDataObjectInstance.Save(spClientEntity);
+
+
+            SPClientChannelSettingEntity obj = new SPClientChannelSettingEntity();
+
+            obj.Name = spChannelWrapper.Name + "默认下家";
+            obj.Description = spChannelWrapper.Name + "默认下家";
+            obj.ChannelID = spChannelWrapper;
+            obj.ClinetID = spClientEntity;
+            obj.InterceptRate = 0;
+            obj.OrderIndex = 0;
+            obj.UpRate = 0;
+            obj.DownRate = 0;
+            obj.CommandColumn = "ywid";
+            obj.CommandType = "7";
+            obj.CommandCode = "";
+            obj.SyncData = false;
+
+            this.DataObjectsContainerIocID.SPClientChannelSettingDataObjectInstance.Save(obj);
+
+            SPChannelParamsEntity linkidParamsEntity = CreateNewChannelParams(spChannelWrapper, linkPName, "唯一标识", "linkid");
+
+            this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(linkidParamsEntity);
+
+            SPChannelParamsEntity mobileParamsEntity = CreateNewChannelParams(spChannelWrapper, mobilePName, "手机号码", "mobile");
+
+            this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(mobileParamsEntity);
+
+            SPChannelParamsEntity spCodeParamsEntity = CreateNewChannelParams(spChannelWrapper, spCodePName, "通道号码", "cpid");
+
+            this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(spCodeParamsEntity);
+
+            SPChannelParamsEntity moCodeParamsEntity = CreateNewChannelParams(spChannelWrapper, spCodePName, "上行内容", "ywid");
+
+            this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(moCodeParamsEntity);
+
+            SPChannelParamsEntity fcountCodeParamsEntity = CreateNewChannelParams(spChannelWrapper, "fcount", "fcount", "extendfield3");
+
+            this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(fcountCodeParamsEntity);
+
+            if (!string.IsNullOrEmpty(startTimePName))
+            {
+                SPChannelParamsEntity startTimeParamsEntity = CreateNewChannelParams(spChannelWrapper, startTimePName, "计费开始时间", "extendfield1");
+
+                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(startTimeParamsEntity);
+            }
+
+            if (!string.IsNullOrEmpty(endTimePName))
+            {
+                SPChannelParamsEntity endTimeParamsEntity = CreateNewChannelParams(spChannelWrapper, endTimePName, "计费结束时间", "extendfield2");
+
+                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(endTimeParamsEntity);
+            }
+
+            if (!string.IsNullOrEmpty(feetimePName))
+            {
+                SPChannelParamsEntity feetimeParamsEntity = CreateNewChannelParams(spChannelWrapper, feetimePName, "计费时长", "extendfield5");
+
+                this.DataObjectsContainerIocID.SPChannelParamsDataObjectInstance.Save(feetimeParamsEntity);
+            }
+
+
+            string sycnParamNameFeetime = "feetime";
+
+            SPChannelDefaultClientSycnParamsEntity feetimeSendParamsEntity = new SPChannelDefaultClientSycnParamsEntity();
+
+            feetimeSendParamsEntity.ChannelID = spChannelWrapper;
+            feetimeSendParamsEntity.Name = sycnParamNameFeetime;
+            feetimeSendParamsEntity.Title = sycnParamNameFeetime;
+            feetimeSendParamsEntity.Description = "计费时长";
+            feetimeSendParamsEntity.IsEnable = true;
+            feetimeSendParamsEntity.IsRequired = true;
+            feetimeSendParamsEntity.MappingParams = "extendfield3";
+
+            this.DataObjectsContainerIocID.SPChannelDefaultClientSycnParamsDataObjectInstance.Save(feetimeSendParamsEntity);
+
+            string sycnParamNameLinkID = "linkid";
+
+            if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameLinkID"]))
+            {
+                sycnParamNameLinkID = System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameLinkID"];
+            }
+
+            SPChannelDefaultClientSycnParamsEntity linkidSendParamsEntity = new SPChannelDefaultClientSycnParamsEntity();
+
+            linkidSendParamsEntity.ChannelID = spChannelWrapper;
+            linkidSendParamsEntity.Name = sycnParamNameLinkID;
+            linkidSendParamsEntity.Title = sycnParamNameLinkID;
+            linkidSendParamsEntity.Description = "唯一标识";
+            linkidSendParamsEntity.IsEnable = true;
+            linkidSendParamsEntity.IsRequired = true;
+            linkidSendParamsEntity.MappingParams = "linkid";
+
+            this.DataObjectsContainerIocID.SPChannelDefaultClientSycnParamsDataObjectInstance.Save(linkidSendParamsEntity);
+
+
+            string sycnParamNameMobile = "mobile";
+
+            if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameMobile"]))
+            {
+                sycnParamNameMobile = System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameMobile"];
+            }
+
+            SPChannelDefaultClientSycnParamsEntity mobileSendParamsEntity = new SPChannelDefaultClientSycnParamsEntity();
+
+            mobileSendParamsEntity.ChannelID = spChannelWrapper;
+            mobileSendParamsEntity.Name = sycnParamNameMobile;
+            mobileSendParamsEntity.Title = sycnParamNameMobile;
+            mobileSendParamsEntity.Description = "手机号码";
+            mobileSendParamsEntity.IsEnable = true;
+            mobileSendParamsEntity.IsRequired = true;
+            mobileSendParamsEntity.MappingParams = "mobile";
+
+            this.DataObjectsContainerIocID.SPChannelDefaultClientSycnParamsDataObjectInstance.Save(mobileSendParamsEntity);
+
+
+            string sycnParamNameSPCode = "spCode";
+
+            if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameSPCode"]))
+            {
+                sycnParamNameSPCode = System.Configuration.ConfigurationManager.AppSettings["DefaultSycnParamNameSPCode"];
+            }
+
+
+
+            SPChannelDefaultClientSycnParamsEntity spCodeSendParamsEntity = new SPChannelDefaultClientSycnParamsEntity();
+
+            spCodeSendParamsEntity.ChannelID = spChannelWrapper;
+            spCodeSendParamsEntity.Name = sycnParamNameSPCode;
+            spCodeSendParamsEntity.Title = sycnParamNameSPCode;
+            spCodeSendParamsEntity.Description = "通道号码";
+            spCodeSendParamsEntity.IsEnable = true;
+            spCodeSendParamsEntity.IsRequired = true;
+            spCodeSendParamsEntity.MappingParams = "cpid";
+
+            this.DataObjectsContainerIocID.SPChannelDefaultClientSycnParamsDataObjectInstance.Save(spCodeSendParamsEntity);
+        }
+
+
+        private SPChannelParamsEntity CreateNewChannelParams(SPChannelEntity channelEntity, string paramName, string paramDesciption, string paramsMappingName)
+        {
+            SPChannelParamsEntity paramsEntity = new SPChannelParamsEntity();
+
+            paramsEntity.ChannelID = channelEntity;
+            paramsEntity.Name = paramName;
+            paramsEntity.Title = paramName;
+            paramsEntity.Description = paramDesciption;
+            paramsEntity.IsEnable = true;
+            paramsEntity.IsRequired = true;
+            paramsEntity.IsUnique = false;
+            paramsEntity.ParamsMappingName = paramsMappingName;
+            paramsEntity.ParamsType = "普通参数";
+
+            return paramsEntity;
         }
     }
 }
