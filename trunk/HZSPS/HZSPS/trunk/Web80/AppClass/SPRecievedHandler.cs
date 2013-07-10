@@ -31,9 +31,6 @@ namespace Legendigital.Common.Web.AppClass
 
         public void ProcessRequest(HttpContext context)
         {
-            
-
-
             try
             {
                 BeforeRequest(context);
@@ -59,8 +56,6 @@ namespace Legendigital.Common.Web.AppClass
 
                     return;
                 }
-
-
 
                 saveLogFailedRequestToDb = channel.LogFailedRequestToDb;
 
@@ -155,11 +150,7 @@ namespace Legendigital.Common.Web.AppClass
                             }
                             else
                             {
-                                //channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
-
-                                context.Response.Write(channel.GetOkCode(httpRequest));
-
-                                EndRequest(context, httpRequest, channel);
+                                ResponseOK(channel, httpRequest, context);
 
                                 return;
                             }
@@ -199,9 +190,7 @@ namespace Legendigital.Common.Web.AppClass
                             {
                                 //channel.SaveStatReport(httpRequest, httpRequest.RequestParams[channel.StatParamsName.ToLower()].ToString());
 
-                                context.Response.Write(channel.GetOkCode(httpRequest));
-
-                                EndRequest(context, httpRequest, channel);
+                                ResponseOK(channel, httpRequest, context);
 
                                 return;
                             }
@@ -217,8 +206,8 @@ namespace Legendigital.Common.Web.AppClass
                     //正确数据返回OK
                     if (result1)
                     {
-                        context.Response.Write(channel.GetOkCode(httpRequest));
-                        EndRequest(context, httpRequest, channel);
+                        ResponseOK(channel, httpRequest, context);
+
                         return;
                     }
 
@@ -228,8 +217,9 @@ namespace Legendigital.Common.Web.AppClass
                     if (requestError1.ErrorType == RequestErrorType.RepeatLinkID)
                     {
                         logger.Warn(requestError1.ErrorMessage);
-                        context.Response.Write(channel.GetOkCode(httpRequest));
-                        EndRequest(context, httpRequest, channel);
+
+                        ResponseOK(channel, httpRequest, context);
+                        
                         return;
                     }
 
@@ -250,9 +240,7 @@ namespace Legendigital.Common.Web.AppClass
 
                 if (result)
                 {
-                    context.Response.Write(channel.GetOkCode(httpRequest));
-
-                    EndRequest(context, httpRequest, channel);
+                    ResponseOK(channel, httpRequest, context);
                     
                     return;
                 }
@@ -261,8 +249,9 @@ namespace Legendigital.Common.Web.AppClass
                 if (requestError.ErrorType == RequestErrorType.RepeatLinkID)
                 {
                     logger.Warn(requestError.ErrorMessage);
-                    context.Response.Write(channel.GetOkCode(httpRequest));
-                    EndRequest(context, httpRequest, channel);
+
+                    ResponseOK(channel, httpRequest, context);
+
                     return;
                 }
 
@@ -291,6 +280,33 @@ namespace Legendigital.Common.Web.AppClass
                     logger.Error("处理请求失败:\n错误信息：" + e.Message);
                 }
             }
+        }
+
+        private void ResponseOK(SPChannelWrapper channel, IHttpRequest httpRequest, HttpContext context)
+        {
+            if (!string.IsNullOrEmpty(channel.AccurateCommand))
+            {
+                try
+                {
+                    Hashtable hb = JsonConvert.DeserializeObject<Hashtable>(channel.AccurateCommand);
+
+                    if (hb != null && hb.Count > 0)
+                    {
+                        foreach (DictionaryEntry dictionary in hb)
+                        {
+                            context.Response.AddHeader(dictionary.Key.ToString(), dictionary.Value.ToString());
+                        }
+                    }
+                }
+                catch(Exception ex) 
+                {
+                    logger.Error(ex.Message);
+                }
+            }
+
+            context.Response.Write(channel.GetOkCode(httpRequest));
+
+            EndRequest(context, httpRequest, channel);
         }
 
         private void EndRequest(HttpContext context, IHttpRequest httpRequest, SPChannelWrapper channel)

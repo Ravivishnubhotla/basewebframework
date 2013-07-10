@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2010
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdsDll", "ThirdsDll", "{5DCFF4E5-BC86-4FF9-8BFB-92022C1218C5}"
 	ProjectSection(SolutionItems) = preProject
 		ThirdsDll\Antlr3.Runtime.dll = ThirdsDll\Antlr3.Runtime.dll
@@ -81,6 +81,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlPatchSender", "UrlPatchSender\UrlPatchSender.csproj", "{A3799C78-D7D4-45F1-A54C-62699587ED67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SendDataWinTools", "SendDataWinTools\SendDataWinTools.csproj", "{B7161CA9-9A99-4412-9B59-8F32B101C9B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NantTasks", "NantTasks", "{EACBB23F-0128-488C-94A3-EF3616799A7E}"
+	ProjectSection(SolutionItems) = preProject
+		NantTasks\PublishWebsite.xml = NantTasks\PublishWebsite.xml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution

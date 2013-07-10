@@ -6,6 +6,7 @@
 <%@ Register Src="UCSPChannelEditInfo.ascx" TagName="UCSPChannelEditInfo" TagPrefix="uc5" %>
 <%@ Register Src="UCChannelParamsManage.ascx" TagName="UCChannelParamsManage" TagPrefix="uc3" %>
 <%@ Register Src="SPChannelQuickAdd.ascx" TagName="SPChannelQuickAdd" TagPrefix="uc4" %>
+<%@ Register Src="SPChannelQuickAddIVR.ascx" TagName="SPChannelQuickAddIVR" TagPrefix="uc6" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <ext:ScriptManagerProxy ID="ScriptManagerProxy1" runat="server">
         <Listeners>
@@ -77,6 +78,23 @@
                                                                 });    
         
         }
+        
+
+        function ShowSPChannelQuickAddIVR() {
+            Coolite.AjaxMethods.SPChannelQuickAddIVR.Show( 
+                                                            {
+                                                                failure: function(msg) {
+                                                                    Ext.Msg.alert('操作失败', msg,RefreshSPChannelData);
+                                                                },
+                                                                eventMask: {
+                                                                    showMask: true,
+                                                                    msg: '加载中...'
+                                                                }
+                                                            });    
+        
+        }
+        
+        
 
 
         
@@ -192,10 +210,25 @@
                 win.autoLoad.params.ChannleID = id.data.Id;
         
                 win.show();    
-            }      
+            }
             
+ 
             
                    
+        }
+
+        function manageChannelSource(channleFileType) {
+
+                var win = <%= this.winChannelFileList.ClientID %>;
+                
+ 
+                win.setTitle('管理通道代码');
+                
+                win.autoLoad.url = 'SPChannelFilesList.aspx';
+            
+                win.autoLoad.params.ChannleFileType = channleFileType;
+
+                win.show();  
         }
 
     </script>
@@ -251,6 +284,8 @@
     <uc3:UCChannelParamsManage ID="UCChannelParamsManage1" runat="server" />
     <uc4:SPChannelQuickAdd ID="SPChannelQuickAdd1" runat="server" />
     <uc5:UCSPChannelEditInfo ID="UCSPChannelEditInfo1" runat="server" />
+    <uc6:SPChannelQuickAddIVR ID="SPChannelQuickAddIVR1" runat="server" />   
+    
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
             <ext:FitLayout ID="fitLayoutMain" runat="server">
@@ -260,17 +295,26 @@
                         <TopBar>
                             <ext:Toolbar ID="tbTop" runat="server">
                                 <Items>
-                                    <ext:ToolbarButton ID='btnAdd' runat="server" Text="添加" Icon="ApplicationAdd">
-                                        <Listeners>
-                                            <Click Handler="ShowAddSPChannelForm();" />
-                                        </Listeners>
-                                    </ext:ToolbarButton>
+
                                     <ext:ToolbarButton ID='ToolbarButton1' runat="server" Text="快速添加" Icon="ApplicationAdd">
                                         <Listeners>
                                             <Click Handler="ShowSPChannelQuickAdd();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
-                                    <ext:ToolbarButton ID='ToolbarButton2' runat="server" Text="刷新所有通道信息" Icon="Reload" Hidden="True">
+                                   <ext:ToolbarButton ID='ToolbarButton8' runat="server" Text="快速添加IVR" Icon="ApplicationAdd">
+                                        <Listeners>
+                                            <Click Handler="ShowSPChannelQuickAddIVR();" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>
+                                     <ext:ToolbarButton ID='btnAdd' runat="server" Text="管理通道代码" Icon="PageCode">
+                                        <Listeners>
+                                            <Click Handler="manageChannelSource('1');" />
+                                        </Listeners>
+                                    </ext:ToolbarButton>
+                                    <ext:ToolbarButton ID='ToolbarButton2' runat="server" Text="管理通道规则" Icon="Cog">
+                                         <Listeners>
+                                            <Click Handler="manageChannelSource('2');" />
+                                        </Listeners>
                                     </ext:ToolbarButton>
                                     <ext:ToolbarSeparator>
                                     </ext:ToolbarSeparator>
@@ -427,6 +471,20 @@
             ShowMask="true">
             <Params>
                 <ext:Parameter Name="ChannleID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    <ext:Window ID="winChannelFileList" runat="server" Title="管理通道文件" Frame="true"
+        Width="850" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+                        <Params>
+                <ext:Parameter Name="ChannleFileType" Mode="Raw" Value="0">
                 </ext:Parameter>
             </Params>
         </AutoLoad>
