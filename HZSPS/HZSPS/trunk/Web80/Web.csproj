@@ -341,8 +341,12 @@
     <Content Include="Images\logon\Logon_8.gif" />
     <Content Include="Images\logon\Logon_9.gif" />
     <Content Include="Moudles\SPS\Channels\SPChannelDefaultSycnParamsListPage.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelFilesList.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelQuickAdd.ascx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelQuickAddIVR.ascx" />
     <Content Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPSourceCodeAdd.aspx" />
+    <Content Include="Moudles\SPS\Channels\SPSourceCodeEditor.aspx" />
     <Content Include="Moudles\SPS\Channels\UCSPChannelEditInfo.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPClientChannelParamsAdd.ascx" />
     <Content Include="Moudles\SPS\Channels\UCSPClientChannelParamsEdit.ascx" />
@@ -457,6 +461,7 @@
     <Content Include="SPSInterface\haimivrIVRChannel.aspx" />
     <Content Include="SPSInterface\haotianIVRIVRChannel.aspx" />
     <Content Include="SPSInterface\haotiansp.aspx" />
+    <Content Include="SPSInterface\hfanzhuowy1.aspx" />
     <Content Include="SPSInterface\hualeihuiIVRIVRChannel.aspx" />
     <Content Include="SPSInterface\huizhouivrIVRChannel.aspx" />
     <Content Include="SPSInterface\IVRChannel.aspx" />
@@ -603,6 +608,13 @@
     <Compile Include="Moudles\SPS\Channels\SPChannelDefaultSycnParamsListPage.aspx.designer.cs">
       <DependentUpon>SPChannelDefaultSycnParamsListPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelFilesList.aspx.cs">
+      <DependentUpon>SPChannelFilesList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelFilesList.aspx.designer.cs">
+      <DependentUpon>SPChannelFilesList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelHandler.ashx.cs">
       <DependentUpon>SPChannelHandler.ashx</DependentUpon>
     </Compile>
@@ -623,12 +635,33 @@
     <Compile Include="Moudles\SPS\Channels\SPChannelQuickAdd.ascx.designer.cs">
       <DependentUpon>SPChannelQuickAdd.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelQuickAddIVR.ascx.cs">
+      <DependentUpon>SPChannelQuickAddIVR.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelQuickAddIVR.ascx.designer.cs">
+      <DependentUpon>SPChannelQuickAddIVR.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx.cs">
       <DependentUpon>SPChannelSendTestRequestForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx.designer.cs">
       <DependentUpon>SPChannelSendTestRequestForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPSourceCodeAdd.aspx.cs">
+      <DependentUpon>SPSourceCodeAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPSourceCodeAdd.aspx.designer.cs">
+      <DependentUpon>SPSourceCodeAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPSourceCodeEditor.aspx.cs">
+      <DependentUpon>SPSourceCodeEditor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPSourceCodeEditor.aspx.designer.cs">
+      <DependentUpon>SPSourceCodeEditor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\UCChannelParamsManage.ascx.cs">
       <DependentUpon>UCChannelParamsManage.ascx</DependentUpon>

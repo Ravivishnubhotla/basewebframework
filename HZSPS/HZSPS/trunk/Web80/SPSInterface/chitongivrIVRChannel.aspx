@@ -1,4 +1,4 @@
- <%@ Page Language="C#" %>
+ï»¿ <%@ Page Language="C#" %>
 
 <%@ Import Namespace="Common.Logging" %>
 <%@ Import Namespace="LD.SPPipeManage.Bussiness.Commons" %>
@@ -20,26 +20,26 @@
 
             SPChannelWrapper channel = SPChannelWrapper.FindByAlias("chitongivr");
 
-            //Èç¹ûÃ»ÓĞÕÒµ½Í¨µÀ
+            //å¦‚æœæ²¡æœ‰æ‰¾åˆ°é€šé“
             if (channel == null)
             {
-                LogWarnInfo(httpRequest, "´¦ÀíÇëÇóÊ§°Ü£ºÎŞ·¨ÕÒµ½¶ÔÓ¦µÄÍ¨µÀ¡£\n", 0, 0);
+                LogWarnInfo(httpRequest, "å¤„ç†è¯·æ±‚å¤±è´¥ï¼šæ— æ³•æ‰¾åˆ°å¯¹åº”çš„é€šé“ã€‚\n", 0, 0);
 
                 return;
             }
 
             saveLogFailedRequestToDb = channel.LogFailedRequestToDb;
 
-            //Èç¹ûÍ¨µÀÎ´ÄÜÔËĞĞ
+            //å¦‚æœé€šé“æœªèƒ½è¿è¡Œ
             if (channel.CStatus != ChannelStatus.Run)
             {
-                LogWarnInfo(httpRequest, "ÇëÇóÊ§°Ü£º\n" + "Í¨µÀ¡°" + channel.Name + "¡±Î´ÔËĞĞ¡£\n", channel.Id, 0);
+                LogWarnInfo(httpRequest, "è¯·æ±‚å¤±è´¥ï¼š\n" + "é€šé“â€œ" + channel.Name + "â€æœªè¿è¡Œã€‚\n", channel.Id, 0);
 
                 this.Response.Write(channel.GetFailedCode(httpRequest));
 
                 return;
             }
-            //Èç¹ûÍ¨µÀÊÇ¼àÊÓÍ¨µÀ£¬¼ÇÂ¼ÇëÇó¡£
+            //å¦‚æœé€šé“æ˜¯ç›‘è§†é€šé“ï¼Œè®°å½•è¯·æ±‚ã€‚
             if (channel.IsMonitoringRequest.HasValue && channel.IsMonitoringRequest.Value)
             {
                 SPMonitoringRequestWrapper.SaveRequest(httpRequest, channel.Id);
@@ -96,7 +96,7 @@
 
 
 
-            //ÕıÈ·Êı¾İ·µ»ØOK
+            //æ­£ç¡®æ•°æ®è¿”å›OK
             if (result1)
             {
  
@@ -104,7 +104,7 @@
                 return;
             }
 
-            //ÖØ¸´Êı¾İ·µ»ØOK
+            //é‡å¤æ•°æ®è¿”å›OK
             if (requestError1.ErrorType == RequestErrorType.RepeatLinkID)
             {
  
@@ -113,7 +113,7 @@
                 return;
             }
 
-            //ÆäËû´íÎóÀàĞÍ¼ÇÂ¼´íÎóÇëÇó
+            //å…¶ä»–é”™è¯¯ç±»å‹è®°å½•é”™è¯¯è¯·æ±‚
  
             LogWarnInfo(httpRequest, requestError1.ErrorMessage, channel.Id, 0);
 
@@ -132,16 +132,16 @@
             {
                 IHttpRequest failRequest = new HttpGetPostRequest(Request);
 
-                string errorMessage = "´¦ÀíÇëÇóÊ§°Ü:\n´íÎóĞÅÏ¢£º" + ex.Message;
+                string errorMessage = "å¤„ç†è¯·æ±‚å¤±è´¥:\né”™è¯¯ä¿¡æ¯ï¼š" + ex.Message;
 
-                logger.Error(errorMessage + "\nÇëÇóĞÅÏ¢:\n" + failRequest.RequestData, ex);
+                logger.Error(errorMessage + "\nè¯·æ±‚ä¿¡æ¯:\n" + failRequest.RequestData, ex);
 
                 if (1==1)
                     SPFailedRequestWrapper.SaveFailedRequest(failRequest, errorMessage, 0, 0);
             }
             catch (Exception exx)
             {
-                logger.Error("´¦ÀíÇëÇóÊ§°Ü:\n´íÎóĞÅÏ¢£º" + exx.Message);
+                logger.Error("å¤„ç†è¯·æ±‚å¤±è´¥:\né”™è¯¯ä¿¡æ¯ï¼š" + exx.Message);
             }
         }
 
@@ -155,7 +155,7 @@
 
     private void LogWarnInfo(IHttpRequest httpRequest, string errorInfo, int channelID, int clientID)
     {
-        logger.Warn(errorInfo + "ÇëÇóĞÅÏ¢£º\n" + httpRequest.RequestData);
+        logger.Warn(errorInfo + "è¯·æ±‚ä¿¡æ¯ï¼š\n" + httpRequest.RequestData);
 
         if (saveLogFailedRequestToDb)
             SPFailedRequestWrapper.SaveFailedRequest(httpRequest, errorInfo, channelID, clientID);

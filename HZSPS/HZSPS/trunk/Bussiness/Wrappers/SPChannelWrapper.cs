@@ -826,6 +826,12 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             businessProxy.QuickAdd(spChannelWrapper.entity, linkPName, mobilePName, spCodePName, moPName, userID);
         }
 
+        public static void QuickAddIVR(SPChannelWrapper spChannelWrapper, string linkPName, string mobilePName,
+                            string spCodePName, string startTimePName, string endTimePName, string feetimePName, int userID)
+        {
+            businessProxy.QuickAddIVR(spChannelWrapper.entity, linkPName, mobilePName, spCodePName, startTimePName, endTimePName, feetimePName, userID);
+        }
+
 
         public bool ProcessStateRequest(IHttpRequest httpGetPostReques, out RequestError error)
         {

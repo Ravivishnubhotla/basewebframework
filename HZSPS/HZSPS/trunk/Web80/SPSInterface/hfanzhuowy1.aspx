@@ -1,4 +1,4 @@
-﻿ <%@ Page Language="C#" %>
+﻿<%@ Page Language="C#" %>
 
 <%@ Import Namespace="Common.Logging" %>
 <%@ Import Namespace="LD.SPPipeManage.Bussiness.Commons" %>
@@ -9,16 +9,28 @@
     protected static ILog logger = LogManager.GetLogger(typeof(SPRecievedHandler));
     private bool saveLogFailedRequestToDb = false;
 
+    protected void AddParams(HttpGetPostRequest request,string key,string value)
+    {
 
+        if (request.RequestParams[key] == null)
+        {
+            request.RequestParams.Add(key, value);
+        }
+        else
+        {
+            request.RequestParams[key] = value;
+        }
+    
+    }
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        this.Response.Clear();
+        //this.Response.Clear();
         try
         {
             IHttpRequest httpRequest = new HttpGetPostRequest(Request);
 
-            SPChannelWrapper channel = SPChannelWrapper.FindByAlias("1012ivr");
+            SPChannelWrapper channel = SPChannelWrapper.FindByAlias("hfanzhuowy");
 
             //如果没有找到通道
             if (channel == null)
@@ -45,51 +57,30 @@
                 SPMonitoringRequestWrapper.SaveRequest(httpRequest, channel.Id);
             }
 
-            //if (channel.RecStatReport.HasValue && channel.RecStatReport.Value)
-            //{
-			//if(!httpRequest.RequestParams.ContainsKey(channel.StatParamsName.ToLower()))
-			//{
-				//this.Response.Write(channel.GetFailedCode(httpRequest));
-
-                                //return;
-			//}
-                        //if (!httpRequest.IsRequestContainValues(channel.StatParamsName, channel.StatParamsValues))
-                        //{
-				//this.Response.Write(channel.GetOkCode(httpRequest));
-
-                                //return;
-                        //}
-            //}
-
-
-
-
-
             RequestError requestError1 = new RequestError();
 
             bool result1 = false;
- 
-            int feetime = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Convert.ToInt32(this.Request.Params["minute"]))/60));
 
-            string linkid = this.Request.Params["mobile"] + this.Request.Params["begintime"];
+            if (this.Request.QueryString["rs"]!="0")
+            {
+                Response.Write(channel.GetOkCode(httpRequest));
+                return;
+            }
+
+            int feetime =  1;
+ 
 
             for (int i = 0; i < feetime; i++)
             {
                 HttpGetPostRequest request = new HttpGetPostRequest(httpRequest);
 
-		if (request.RequestParams["linkid"]==null)
-		{
-			request.RequestParams.Add("linkid",linkid + "-" + i.ToString());
-		}
-		else
-		{
-			request.RequestParams["linkid"]=linkid + "-" + i.ToString();
-		}
- 
-                request.RequestParams.Add("fcount","1");
+                AddParams(request, "smsid", System.DateTime.Now.Ticks.ToString());
 
-		request.RequestParams.Add("feetime",feetime.ToString());
+                AddParams(request, "servicecode", "10660001");
 
+                AddParams(request, "mocontent", "C1");
+
+                AddParams(request, "phone", "13567182812");
 
                 result1 = channel.ProcessRequest(request, out requestError1);
             }
@@ -99,7 +90,6 @@
             //正确数据返回OK
             if (result1)
             {
- 
                 Response.Write(channel.GetOkCode(httpRequest));
                 return;
             }
@@ -107,14 +97,12 @@
             //重复数据返回OK
             if (requestError1.ErrorType == RequestErrorType.RepeatLinkID)
             {
- 
                 logger.Warn(requestError1.ErrorMessage);
                 Response.Write(channel.GetOkCode(httpRequest));
                 return;
             }
 
             //其他错误类型记录错误请求
- 
             LogWarnInfo(httpRequest, requestError1.ErrorMessage, channel.Id, 0);
 
             Response.Write(channel.GetFailedCode(httpRequest));
@@ -136,7 +124,7 @@
 
                 logger.Error(errorMessage + "\n请求信息:\n" + failRequest.RequestData, ex);
 
-                if (1==1)
+                if (saveLogFailedRequestToDb)
                     SPFailedRequestWrapper.SaveFailedRequest(failRequest, errorMessage, 0, 0);
             }
             catch (Exception exx)
