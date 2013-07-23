@@ -40,90 +40,101 @@
             <%= this.Store1.ClientID %>.reload();
         };
 
-         var RefreshReportData = function(btn) {
+        var RefreshReportData = function(btn) {
             <%= this.Store1.ClientID %>.reload();
-        };
+         };
          
          
-                 function CloseInterceptReset()
-        {
-                var win = <%= this.winResetIntercept.ClientID %>;
+         function CloseInterceptReset()
+         {
+             var win = <%= this.winResetIntercept.ClientID %>;
                 
  
                                          
-                win.hide();   
-        }
+                     win.hide();   
+                 }
 
 
-        var prepareCellCommandTotalCount = function(grid, command, record, row, col, value) {
-            if ((command.command == 'TotalCountDetail'||command.command == 'InterceptCountDetail'||command.command == 'DownCountDetail'||command.command == 'DownSycnCountDetail') && value > 0) {
-                command.hidden = false;
-                command.hideMode = 'display';
-            }
-            if(command.command == 'ReSend')
-            {
-                if(record.data.IsSycnData)
-                {
-                    command.hidden = false;
-                    command.hideMode = 'display';  
-                }
-                else{
-                    command.hidden = true;
-                    command.hideMode = 'display';  
-                }
-            }
-
+                 var prepareCellCommandTotalCount = function(grid, command, record, row, col, value) {
+                     if ((command.command == 'TotalCountDetail'||command.command == 'InterceptCountDetail'||command.command == 'DownCountDetail'||command.command == 'DownSycnCountDetail') && value > 0) {
+                         command.hidden = false;
+                         command.hideMode = 'display';
+                     }
+                     if(command.command == 'ReSend')
+                     {
+                         if(record.data.IsSycnData)
+                         {
+                             command.hidden = false;
+                             command.hideMode = 'display';  
+                         }
+                         else{
+                             command.hidden = true;
+                             command.hideMode = 'display';  
+                         }
+                     }
+                     if(command.command == 'cmdAutoMatch')
+                     {
+                         //if(record.data.IsSycnData.indexOf("默认下家")>=0)
+                         //{
+                         command.hidden = true;
+                         command.hideMode = 'display';  
+                         //}
+                         //else{
+                         //    command.hidden = true;
+                         //    command.hideMode = 'display';  
+                         //}
+                     }
             
-//            if(command.command == 'InterceptCountChange')
-//            {
-//                if(!record.data.IsSycnData)
-//                {
-//                    command.hidden = false;
-//                    command.hideMode = 'display';  
-//                }
-//                else{
-//                    command.hidden = true;
-//                    command.hideMode = 'display';  
-//                }
-//            }
+                     //            if(command.command == 'InterceptCountChange')
+                     //            {
+                     //                if(!record.data.IsSycnData)
+                     //                {
+                     //                    command.hidden = false;
+                     //                    command.hideMode = 'display';  
+                     //                }
+                     //                else{
+                     //                    command.hidden = true;
+                     //                    command.hideMode = 'display';  
+                     //                }
+                     //            }
 
-            if(command.command == 'InterceptReset')
-            {
-                if(record.data.IsSycnData&&(record.data.InterceptCount > 0))
-                {
-                    command.hidden = false;
-                    command.hideMode = 'display';  
-                }
-                else{
-                    command.hidden = true;
-                    command.hideMode = 'display';  
-                }
-            }
+                     if(command.command == 'InterceptReset')
+                     {
+                         if(record.data.IsSycnData&&(record.data.InterceptCount > 0))
+                         {
+                             command.hidden = false;
+                             command.hideMode = 'display';  
+                         }
+                         else{
+                             command.hidden = true;
+                             command.hideMode = 'display';  
+                         }
+                     }
 
-        };
+                 };
 
 
-        var gridCommand = function(command, record, row, col) {
+                 var gridCommand = function(command, record, row, col) {
     
-             if (command == "cmdEditChannelClient") {
-                Coolite.AjaxMethods.UCSPClientChannelSettingEdit.Show(record.data.ChannelClientID,
-                                                                {
-                                                                    failure: function(msg) {
-                                                                        Ext.Msg.alert('操作失败', msg);
-                                                                    },
-                                                                    eventMask: {
-                                                                                showMask: true,
-                                                                                msg: '加载中...'
-                                                                               }
-                                                                }              
-                );
-            }
+                     if (command == "cmdEditChannelClient") {
+                         Coolite.AjaxMethods.UCSPClientChannelSettingEdit.Show(record.data.ChannelClientID,
+                                                                         {
+                                                                             failure: function(msg) {
+                                                                                 Ext.Msg.alert('操作失败', msg);
+                                                                             },
+                                                                             eventMask: {
+                                                                                 showMask: true,
+                                                                                 msg: '加载中...'
+                                                                             }
+                                                                         }              
+                         );
+                     }
 
 
-            if (command == "ReSend") {
+                     if (command == "ReSend") {
                              
                              
-                var win = <%= this.winReSendData.ClientID %>;
+                         var win = <%= this.winReSendData.ClientID %>;
                 
                 win.setTitle("补发数据");
                 
@@ -135,47 +146,46 @@
             }
 
 
-           if (command == "InterceptReset") {
+            if (command == "InterceptReset") {
                                          
                 var win = <%= this.winResetIntercept.ClientID %>;
                 
-                win.setTitle("取消扣除的数据");
+               win.setTitle("取消扣除的数据");
                 
-                win.autoLoad.url = 'ResetInterceptToSycn.aspx';
+               win.autoLoad.url = 'ResetInterceptToSycn.aspx';
                 
-                win.autoLoad.params.ClientChannelID = record.data.ChannelClientID;
+               win.autoLoad.params.ClientChannelID = record.data.ChannelClientID;
                                          
-                win.show();                      
-                                         
-            }
+               win.show();                                          
+           }
 
 
-             if (command == 'InterceptCountChange')  {
+            if (command == 'InterceptCountChange')  {
                 var title = "修改通道‘"+record.data.ChannelName+"’-下家‘"+record.data.ClientName+"' "+record.data.ReportDate.dateFormat('Y/m/d')+" 扣量,原扣量："+record.data.InterceptCount.toString();
                 Ext.MessageBox.prompt(
                                         title,
                                         '新的扣量:',
                                         function(button,text){ 
-                                                                if(button=="ok")
-                                                                {
-                                                                        Coolite.AjaxMethods.ChangeInterceptCount(
-                                                                                    record.data.ReportDate.dateFormat('Y/m/d'),record.data.ClientID,text,
-                                                                                    {
-                                                                                        failure: function(msg) {
-                                                                                            Ext.Msg.alert('操作失败', msg,RefreshReportData);
-                                                                                        },
-                                                                                        success: function(result) { 
-                                                                                            Ext.Msg.alert('操作成功', '成功修改扣量！',RefreshReportData);            
-                                                                                        },
-                                                                                        eventMask: {
-                                                                                            showMask: true,
-                                                                                            msg: '加载中...'
-                                                                                        }
-                                                                                    });                                      
+                                            if(button=="ok")
+                                            {
+                                                Coolite.AjaxMethods.ChangeInterceptCount(
+                                                            record.data.ReportDate.dateFormat('Y/m/d'),record.data.ClientID,text,
+                                                            {
+                                                                failure: function(msg) {
+                                                                    Ext.Msg.alert('操作失败', msg,RefreshReportData);
+                                                                },
+                                                                success: function(result) { 
+                                                                    Ext.Msg.alert('操作成功', '成功修改扣量！',RefreshReportData);            
+                                                                },
+                                                                eventMask: {
+                                                                    showMask: true,
+                                                                    msg: '加载中...'
                                                                 }
-                                                             } 
+                                                            });                                      
+                                            }
+                                        } 
                                       );
-             }
+            }
 
 
             if (command == 'TotalCountDetail'||command == 'InterceptCountDetail'||command == 'DownCountDetail'||command == 'DownSycnCountDetail')  {
@@ -351,6 +361,9 @@
                                         <ext:ImageCommand Icon="Table" CommandName="TotalCountDetail" Hidden="true">
                                             <ToolTip Text="显示所有明细数据" />
                                         </ext:ImageCommand>
+                                        <ext:ImageCommand CommandName="cmdAutoMatch" Icon="TableRelationship">
+                                            <ToolTip Text="自动转移" />
+                                        </ext:ImageCommand>
                                     </Commands>
                                     <PrepareCommand Fn="prepareCellCommandTotalCount" Args="grid,command,record,row,col,value" />
                                 </ext:Column>
@@ -469,4 +482,5 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
+    
 </asp:Content>

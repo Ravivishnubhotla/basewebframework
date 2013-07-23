@@ -91,6 +91,51 @@ namespace LD.SPPipeManage.Data.Tables
             queryBuilder.SetMaxResults(pageSize);
 
             return FindListByPageByQueryBuilder(queryBuilder, out recordCount);        
+        }
+
+
+        public List<SPPaymentInfoEntity> FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(SPChannelEntity channelId, SPClientEntity clientId, DateTime startDateTime, DateTime enddateTime, string dataType, string sortFieldName, bool isDesc)
+        {
+            var queryBuilder = new NHibernateDynamicQueryGenerator<SPPaymentInfoEntity>();
+
+            if (channelId != null)
+                queryBuilder.AddWhereClause(PROPERTY_CHANNELID.Eq(channelId));
+
+            if (clientId != null)
+                queryBuilder.AddWhereClause(PROPERTY_CLIENTID.Eq(clientId));
+
+
+            if (startDateTime == DateTime.MinValue)
+                startDateTime = DateTime.Now;
+
+
+            if (enddateTime == DateTime.MinValue)
+                enddateTime = DateTime.Now;
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Ge(startDateTime.Date));
+
+            queryBuilder.AddWhereClause(PROPERTY_CREATEDATE.Lt(enddateTime.AddDays(1).Date));
+
+            switch (dataType)
+            {
+                case "All":
+                    break;
+                case "Intercept":
+                    queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(true));
+                    break;
+                case "Down":
+                    queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
+                    break;
+                case "DownSycn":
+                    queryBuilder.AddWhereClause(PROPERTY_ISINTERCEPT.Eq(false));
+                    queryBuilder.AddWhereClause(PROPERTY_SUCESSSTOSEND.Eq(true));
+                    break;
+            }
+
+            AddDefaultOrderByToQueryGenerator(sortFieldName, isDesc, queryBuilder);
+
+
+            return FindListByQueryBuilder(queryBuilder);
 
 
         }

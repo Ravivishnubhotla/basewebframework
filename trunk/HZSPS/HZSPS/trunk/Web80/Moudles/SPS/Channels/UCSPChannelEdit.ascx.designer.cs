@@ -166,13 +166,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels {
         protected global::Coolite.Ext.Web.Checkbox chkIsAllowNullLinkID;
         
         /// <summary>
-        /// chkHasFilters control.
+        /// chkHasConvertRule control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Checkbox chkHasFilters;
+        protected global::Coolite.Ext.Web.Checkbox chkHasConvertRule;
         
         /// <summary>
         /// chkIsMonitoringRequest control.

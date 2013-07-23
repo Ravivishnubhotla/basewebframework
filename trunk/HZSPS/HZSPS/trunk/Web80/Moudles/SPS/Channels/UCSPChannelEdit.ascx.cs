@@ -88,10 +88,10 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                         chkStatSendOnce.Checked = false;
 
 
-                    if (obj.HasFilters.HasValue)
-                        chkHasFilters.Checked = obj.HasFilters.Value;
+                    if (obj.HasConvertRule.HasValue)
+                        chkHasConvertRule.Checked = obj.HasConvertRule.Value;
                     else
-                        chkHasFilters.Checked = false;
+                        chkHasConvertRule.Checked = false;
 
 
 
@@ -157,7 +157,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.RequestTypeValues = txtRequestTypeValues.Text.Trim();
 
 
-                obj.HasFilters = chkHasFilters.Checked;
+                obj.HasConvertRule = chkHasConvertRule.Checked;
                 obj.StatSendOnce = chkStatSendOnce.Checked;
                 obj.IsMonitoringRequest = chkIsMonitoringRequest.Checked;
 

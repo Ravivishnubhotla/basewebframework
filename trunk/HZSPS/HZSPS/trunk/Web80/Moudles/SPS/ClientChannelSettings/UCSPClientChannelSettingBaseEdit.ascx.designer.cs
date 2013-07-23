@@ -184,6 +184,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Coolite.Ext.Web.NumberField txtInterceptRate;
         
         /// <summary>
+        /// chkAllowSpaceInCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Checkbox chkAllowSpaceInCode;
+        
+        /// <summary>
         /// pnlSPClientChannelSettingAdd3 control.
         /// </summary>
         /// <remarks>
@@ -218,6 +227,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Coolite.Ext.Web.Checkbox chkAllowFilter;
+        
+        /// <summary>
+        /// txtCommandCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.TextField txtCommandCode;
         
         /// <summary>
         /// txtChannleCode control.

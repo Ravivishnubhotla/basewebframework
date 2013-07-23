@@ -56,6 +56,10 @@
                                                                     <ext:NumberField ID="txtInterceptRate" runat="server" FieldLabel="扣率(%)" AllowBlank="False"
                                                                         Text="50" DecimalPrecision="0" MinValue="0" MaxValue="100" />
                                                                 </ext:Anchor>
+                                                                <ext:Anchor Horizontal="95%">
+                                                                    <ext:CheckBox ID="chkAllowSpaceInCode" runat="server" FieldLabel="更新空格指令" AllowBlank="true">
+                                                                    </ext:CheckBox>
+                                                                </ext:Anchor>
                                                             </Anchors>
                                                         </ext:FormLayout>
                                                     </Body>
@@ -73,6 +77,10 @@
                                                                 <ext:Anchor Horizontal="95%">
                                                                     <ext:Checkbox ID="chkAllowFilter" runat="server" FieldLabel="允许省份过滤">
                                                                     </ext:Checkbox>
+                                                                </ext:Anchor>
+                                                               <ext:Anchor Horizontal="95%">
+                                                                    <ext:TextField ID="txtCommandCode" runat="server" FieldLabel="指令" AllowBlank="true">
+                                                                    </ext:TextField>
                                                                 </ext:Anchor>
                                                                 <ext:Anchor Horizontal="95%">
                                                                     <ext:Hidden ID="txtChannleCode" runat="server" FieldLabel="通道号" AllowBlank="true">

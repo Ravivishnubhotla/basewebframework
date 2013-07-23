@@ -58,6 +58,15 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings {
         protected global::Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingInfoEdit UCSPClientChannelSettingInfoEdit1;
         
         /// <summary>
+        /// UCSPClientChannelSettingBaseEdit1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.UCSPClientChannelSettingBaseEdit UCSPClientChannelSettingBaseEdit1;
+        
+        /// <summary>
         /// viewPortMain control.
         /// </summary>
         /// <remarks>

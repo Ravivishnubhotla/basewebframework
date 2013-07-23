@@ -82,7 +82,7 @@
                                 <ext:Checkbox ID="chkIsAllowNullLinkID" runat="server" FieldLabel="允许空ID" Checked="false" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
-                                <ext:Checkbox ID="chkHasFilters" runat="server" FieldLabel="是否过滤请求" Checked="false" />
+                                <ext:Checkbox ID="chkHasConvertRule" runat="server" FieldLabel="是否允许自定义规则" Checked="false" />
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:Checkbox ID="chkIsMonitoringRequest" runat="server" FieldLabel="是否监控请求" Checked="false" />

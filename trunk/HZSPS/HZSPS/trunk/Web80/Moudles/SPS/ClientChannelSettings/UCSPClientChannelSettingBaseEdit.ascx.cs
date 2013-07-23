@@ -47,6 +47,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
 
                     this.txtShowCode.Text = obj.ChannelClientCode;
 
+                    chkAllowSpaceInCode.Checked = false;
+
 
                     if (obj.Name != null)
                         this.txtName.Text = obj.Name.ToString();
@@ -100,6 +102,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                             this.txtOkMessage.Text = obj.OkMessage;
                         else
                             this.txtOkMessage.Text = "";
+
+
+
 
 
                         if (obj.FailedMessage != null)
@@ -161,6 +166,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings
                         Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
                         Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：提交地址一定要以http://开头";
                         return;
+                    }
+
+                    if (chkAllowSpaceInCode.Checked)
+                    {
+                        obj.CommandCode = this.txtCommandCode.Text;
                     }
 
                     obj.SyncData = true;
