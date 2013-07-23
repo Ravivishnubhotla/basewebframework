@@ -66,7 +66,11 @@
         function CloseSourceAdd() {
             var win = <%= this.winChannelFileSourceAdd.ClientID %>;
                    win.hide();
-               }
+        }
+        
+
+
+        
 
        function CloseSourceEdit() {
            var win = <%= this.winChannelFileSourceEditor.ClientID %>;

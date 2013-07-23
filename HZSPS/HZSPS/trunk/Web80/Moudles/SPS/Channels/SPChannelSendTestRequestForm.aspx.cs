@@ -106,17 +106,23 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                     hidMobileName.Text = txt.ClientID;
                 }
 
-                if (spChannelParamsWrapper.ParamsMappingName == "cpid")
+                if (ClientChannelID != null)
                 {
-                    if (!string.IsNullOrEmpty(ClientChannelID.ChannelCode))
-                        txt.Value = ClientChannelID.ChannelCode;
+                    if (spChannelParamsWrapper.ParamsMappingName == "cpid")
+                    {
+                        if (!string.IsNullOrEmpty(ClientChannelID.ChannelCode))
+                            txt.Value = ClientChannelID.ChannelCode;
+                    }
+
+                    if (spChannelParamsWrapper.ParamsMappingName == "ywid")
+                    {
+                        if (!string.IsNullOrEmpty(ClientChannelID.CommandCode))
+                            txt.Value = ClientChannelID.CommandCode;
+                    }
                 }
 
-                if (spChannelParamsWrapper.ParamsMappingName == "ywid")
-                {
-                    if (!string.IsNullOrEmpty(ClientChannelID.CommandCode))
-                        txt.Value = ClientChannelID.CommandCode;
-                }
+                if (dataParams.Contains(txt.ClientID))
+                    continue;
 
                 if (spChannelParamsWrapper.Name != this.ChannelID.StatParamsName)
                 {

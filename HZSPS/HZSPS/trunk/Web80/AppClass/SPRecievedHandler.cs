@@ -364,7 +364,7 @@ namespace Legendigital.Common.Web.AppClass
        
         }
 
-        private static MethodDelegate GetMethodDelegateFromRecName(string fileName, HttpContext context)
+        public static MethodDelegate GetMethodDelegateFromRecName(string fileName, HttpContext context)
         {
             string codeText = File.ReadAllText(fileName);
 

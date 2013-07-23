@@ -206,11 +206,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 if (context == null)
                     return "";
 
+                string handle = "Recieved.ashx";
+
+                if (this.FuzzyCommand.ToLower().EndsWith("ivr"))
+                {
+                    handle = "IVRChannel.aspx";
+                }
+                else if (this.FuzzyCommand.ToLower().EndsWith("cspc"))
+                {
+                }
+
                 if (context.Request.Url.Port == 80)
-                    return string.Format("{0}://{1}/SPSInterface/{2}Recieved.ashx", context.Request.Url.Scheme,
+                    return string.Format("{0}://{1}/SPSInterface/{2}" + handle, context.Request.Url.Scheme,
                                          context.Request.Url.Host, FuzzyCommand);
 
-                return string.Format("{0}://{1}:{2}/SPSInterface/{3}Recieved.ashx", context.Request.Url.Scheme,
+                return string.Format("{0}://{1}:{2}/SPSInterface/{3}" + handle, context.Request.Url.Scheme,
                                      context.Request.Url.Host,
                                      context.Request.Url.Port, FuzzyCommand);
             }
@@ -753,6 +763,68 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 return allmacthClientChannelSettings.Find(p => (p.IsMacthSPCode(requestValues, fieldMappings,"cpid")));
             }
         }
+
+        public SPClientChannelSettingWrapper GetClientChannelSettingFromRequestValue(string cpid,string ywid,
+                                                                              PhoneAreaInfo phoneAreaInfo)
+        {
+            //获取所有的指令
+            List<SPClientChannelSettingWrapper> allEnableClientChannelSettings = GetAllClientChannelSetting();
+            //或者默认指令
+            SPClientChannelSettingWrapper defaultClientChannelSetting = FindDefaultClientChannelSetting(allEnableClientChannelSettings);
+            //如果有分省份指令
+            if (CheckClientChannelSettingHasFilters(allEnableClientChannelSettings))
+            {
+                List<SPClientChannelSettingWrapper> findMatchedClientChannelSettingHasFilters = FindMatchedClientChannelSettingHasFilters(allEnableClientChannelSettings, ywid, cpid);
+
+                if (findMatchedClientChannelSettingHasFilters != null && findMatchedClientChannelSettingHasFilters.Count > 0)
+                {
+                    SPClientChannelSettingWrapper macthedYWIDAndProvinceClientChannelSettingWrapper = null;
+
+                    if (phoneAreaInfo != null)
+                        macthedYWIDAndProvinceClientChannelSettingWrapper = findMatchedClientChannelSettingHasFilters.Find(p => (p.InArea(phoneAreaInfo) && p.IsEnable));
+
+                    if (macthedYWIDAndProvinceClientChannelSettingWrapper != null)
+                        return macthedYWIDAndProvinceClientChannelSettingWrapper;
+
+                    foreach (SPClientChannelSettingWrapper findMatchedClientChannelSettingHasFilter in findMatchedClientChannelSettingHasFilters)
+                    {
+                        if (findMatchedClientChannelSettingHasFilter.Filters != null && findMatchedClientChannelSettingHasFilter.Filters.Count > 0)
+                        {
+                            allEnableClientChannelSettings.Remove(findMatchedClientChannelSettingHasFilter);
+                        }
+                    }
+
+                }
+            }
+
+            SPClientChannelSettingWrapper macthClientChannelSetting = (from cc in allEnableClientChannelSettings
+                                                                       where (cc.IsMacthByYWID(ywid))
+                                                                       orderby cc.OrderIndex descending
+                                                                       select cc).FirstOrDefault();
+
+            if (macthClientChannelSetting == null)
+                return defaultClientChannelSetting;
+
+            int orderIndex = macthClientChannelSetting.OrderIndex.HasValue ? macthClientChannelSetting.OrderIndex.Value : 0;
+
+            List<SPClientChannelSettingWrapper> allmacthClientChannelSettings = (from cc in allEnableClientChannelSettings
+                                                                                 where (cc.IsMacthByYWID(ywid) && cc.OrderIndex == orderIndex)
+                                                                                 select cc).ToList();
+
+            if (allmacthClientChannelSettings.Count <= 0)
+            {
+                return defaultClientChannelSetting;
+            }
+            else if (allmacthClientChannelSettings.Count <= 1)
+            {
+                return allmacthClientChannelSettings[0];
+            }
+            else
+            {
+                return allmacthClientChannelSettings.Find(p => (p.IsMacthSPCode(cpid)));
+            }
+        }
+
 
         public static string GetMappedParamValueFromRequest(Hashtable requestValues, string mapName,
                                                             Hashtable fieldMappings)

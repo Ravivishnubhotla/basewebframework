@@ -50,6 +50,11 @@
             <%= this.storeSPChannel.ClientID %>.reload();
         };
         
+        function CloseTestRule() {
+            var win = <%= this.winChannelRuleCheck.ClientID %>;
+                    win.hide();
+        }
+        
         function ShowAddSPChannelForm() {
                 Coolite.AjaxMethods.UCSPChannelAdd.Show( 
                                                                 {
@@ -197,6 +202,23 @@
         
                 win.show();    
             }
+            
+            if (cmd == "cmdRuleTest") {
+
+                var win = <%= this.winChannelRuleCheck.ClientID %>;
+                
+
+                win.setTitle(" 通道 "+id.data.Name+"  " + " 规则管理 ");
+                
+                win.autoLoad.url = 'SPChannelRuleCheck.aspx';
+                
+                win.autoLoad.params.ChannleID = id.data.Id;
+        
+                win.show();    
+            }
+
+
+            
             
             if (cmd == "cmdnChannelDefaultSendParams") {
 
@@ -374,44 +396,19 @@
                                                         AutoDataBind="True" />
                                                     <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdSendTestRequest" Text="测试" />
                                                     <ext:MenuCommand Icon="ApplicationFormEdit" CommandName="cmdClientSetting" Text="指令分配" />
+                                                    <ext:MenuCommand Icon="ScriptGear" CommandName="cmdRuleTest" Text="规则测试">
+                                                    </ext:MenuCommand>
                                                     <ext:MenuCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理" Hidden='<%# IsSPCommUser %>'
                                                         AutoDataBind="True" />
                                                     <ext:MenuCommand Icon="ApplicationFormEdit" CommandName="cmdnChannelDefaultSendParams"
                                                         Text="默认下发参数" Hidden='<%# IsSPCommUser %>' AutoDataBind="True" />
                                                 </Items>
                                             </Menu>
-                                            <ToolTip Text="Menu" />
+                                            <ToolTip Text="Menu" />                                           
                                         </ext:GridCommand>
                                     </Commands>
                                 </ext:CommandColumn>
-                                <ext:CommandColumn Header="通道管理" Width="172" Hidden="True">
-                                    <Commands>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEditInfo" Text="分配上家">
-                                            <ToolTip Text="测试" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="TelephoneGo" CommandName="cmdSendTestRequest" Text="测试">
-                                            <ToolTip Text="测试" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdClientSetting" Text="指令分配">
-                                            <ToolTip Text="指令分配" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationEdit" CommandName="cmdEdit" Text="编辑" Hidden='<%# IsSPCommUser %>'
-                                            runat="server" AutoDataBind="True">
-                                            <ToolTip Text="编辑" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationDelete" CommandName="cmdDelete" Text="删除" Hidden="true">
-                                            <ToolTip Text="删除" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ServerEdit" CommandName="cmdParams" Text="参数管理" Hidden='<%# IsSPCommUser %>'
-                                            runat="server" AutoDataBind="True">
-                                            <ToolTip Text="参数管理" />
-                                        </ext:GridCommand>
-                                        <ext:GridCommand Icon="ApplicationFormEdit" CommandName="cmdnChannelDefaultSendParams"
-                                            Text="默认下发参数" Hidden='<%# IsSPCommUser %>' runat="server" AutoDataBind="True">
-                                            <ToolTip Text="默认下发参数" />
-                                        </ext:GridCommand>
-                                    </Commands>
-                                </ext:CommandColumn>
+
                             </Columns>
                         </ColumnModel>
                         <LoadMask ShowMask="true" />
@@ -478,6 +475,22 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
+    
+    <ext:Window ID="winChannelRuleCheck" runat="server" Title="通道规则管理" Frame="true"
+        Width="850" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
+        Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
+        <AutoLoad Url="Blank.htm" Mode="IFrame" NoCache="true" TriggerEvent="show" ReloadOnEvent="true"
+            ShowMask="true">
+            <Params>
+                <ext:Parameter Name="ChannleID" Mode="Raw" Value="0">
+                </ext:Parameter>
+            </Params>
+        </AutoLoad>
+        <Listeners>
+            <Hide Handler="this.clearContent();" />
+        </Listeners>
+    </ext:Window>
+    
     <ext:Window ID="winChannelFileList" runat="server" Title="管理通道文件" Frame="true"
         Width="850" ConstrainHeader="true" Height="480" Maximizable="true" Closable="true"
         Resizable="true" Modal="true" ShowOnLoad="false" AutoScroll="true">
@@ -492,4 +505,6 @@
             <Hide Handler="this.clearContent();" />
         </Listeners>
     </ext:Window>
+    
+    
 </asp:Content>

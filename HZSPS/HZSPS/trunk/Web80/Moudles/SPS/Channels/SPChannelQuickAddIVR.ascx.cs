@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -77,6 +79,18 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.StatParamsName = "";
                 obj.StatParamsValues = "";
                 obj.IsDisable = false;
+
+                Uri url = new Uri(obj.InterfaceUrl);
+
+                string fileName = Path.GetFileName(url.AbsolutePath);
+
+                string saveivrPath = HttpContext.Current.Server.MapPath("~/SPSInterface/") + fileName;
+
+                if (obj.FuzzyCommand.ToLower().EndsWith("ivr"))
+                {
+                    if (!File.Exists(saveivrPath))
+                        File.WriteAllText(saveivrPath,"",Encoding.UTF8);
+                }
 
 
                 Membership.CreateUser(loginID, "123456", loginID + "@163.com");
