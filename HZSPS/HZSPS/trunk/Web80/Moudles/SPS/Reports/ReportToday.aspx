@@ -47,10 +47,7 @@
          
          function CloseInterceptReset()
          {
-             var win = <%= this.winResetIntercept.ClientID %>;
-                
- 
-                                         
+             var win = <%= this.winResetIntercept.ClientID %>;                
                      win.hide();   
                  }
 
@@ -74,15 +71,15 @@
                      }
                      if(command.command == 'cmdAutoMatch')
                      {
-                         //if(record.data.IsSycnData.indexOf("默认下家")>=0)
-                         //{
-                         command.hidden = true;
-                         command.hideMode = 'display';  
-                         //}
-                         //else{
-                         //    command.hidden = true;
-                         //    command.hideMode = 'display';  
-                         //}
+                         if(record.data.ClientName.indexOf("默认下家")>=0)
+                         {
+                            command.hidden = false;
+                            command.hideMode = 'display';  
+                         }
+                         else{
+                             command.hidden = true;
+                             command.hideMode = 'display';  
+                         }
                      }
             
                      //            if(command.command == 'InterceptCountChange')
@@ -185,6 +182,30 @@
                                             }
                                         } 
                                       );
+            }
+                     
+
+            if (command == 'cmdAutoMatch') {
+
+                try {
+                    Coolite.AjaxMethods.AutoMatch(record.data.ChannelID,record.data.ClientID,
+                              {
+                                  failure: function(msg) {
+                                      Ext.Msg.alert('操作失败', msg,RefreshReportData);
+                                  },
+                                  success: function(result) { 
+                                      Ext.Msg.alert('操作成功', '成功重新分配数据！',RefreshReportData);            
+                                  },
+                                  eventMask: {
+                                      showMask: true,
+                                      msg: '加载中...'
+                                  }
+                              });   
+                } catch(e) {
+                    alert(e);
+                } 
+
+ 
             }
 
 

@@ -29,9 +29,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
         }
 
         [AjaxMethod]
-        public void AutoMatch(int channelID, int clientID, string startDate, string endDate,string dataType)
+        public void AutoMatch(int channelID, int clientID)
         {
-            SPPaymentInfoWrapper.AutoMatch(channelID, clientID, DateTime.Parse(startDate), DateTime.Parse(endDate), dataType);
+            SPPaymentInfoWrapper.AutoMatch(channelID, clientID, DateTime.Now.Date, DateTime.Now.Date.AddDays(1), DataType.All.ToString());
         }
 
         //,int channelID,int clinetID,int newintercept,int oldIntercept,int totalcont

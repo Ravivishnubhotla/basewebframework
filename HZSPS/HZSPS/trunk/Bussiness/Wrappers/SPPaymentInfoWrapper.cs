@@ -943,7 +943,7 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
             foreach (SPPaymentInfoWrapper record in dt)
             {
-                //record.ReAutoMatch();
+                record.ReAutoMatch();
             }
         }
 
