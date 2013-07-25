@@ -16,7 +16,7 @@
 
         var filterfn = function(rec, id) {
             return (rec.data.TotalCount > 0);
-        }
+        };
 
 
 
