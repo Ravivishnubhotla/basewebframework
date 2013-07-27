@@ -1,0 +1,25 @@
+﻿<project xmlns="http://nant.sf.net/release/0.92/nant.xsd" name="Aaron.Guo.NAnt.Project" default="run" >
+  <property name="SVNClientPath" value="C:\Program Files\CollabNet\Subversion Client\"/>
+  <property name="SVNCodePath" value="E:\Dev\My\Projects\HZSPS\HZSPS\trunk\"/>
+  <property name="LastReversion" value="0"/>
+  <property name="CurrentReversion" value="0"/>
+  <property name="OutTextPath" value="E:\Dev\My\Projects\HZSPS\HZSPS\Changes\"/>
+  <property name="NantTaskPath" value="E:\Dev\My\Projects\HZSPS\HZSPS\Nant\"/>
+  <target name="run">
+    <echo message="开始解析当前版本号......"/>
+
+    <exec program="${SVNClientPath}svnversion.exe" verbose="true" failonerror="true" output="${NantTaskPath}CurrentReversion.txt">
+      <arg line="${SVNCodePath}" ></arg>
+    </exec>
+    
+    <loadfile
+    file="${NantTaskPath}CurrentReversion.txt"
+    property="CurrentReversion" />
+
+
+    <echo message="当前版本号为：${CurrentReversion}"/>
+    
+    
+  </target>
+ 
+</project>
