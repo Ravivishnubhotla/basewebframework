@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Web;
+using System.Web.Caching;
+using CSScriptLibrary;
 using Common.Logging;
 using LD.SPPipeManage.Bussiness.Commons;
 using LD.SPPipeManage.Bussiness.Wrappers;
@@ -64,6 +69,21 @@ namespace Legendigital.Common.Web.AppClass
                 {
                     SPMonitoringRequestWrapper.SaveRequest(httpRequest, channel.Id);
                 }
+
+                if (channel.HasConvertRule.HasValue && channel.HasConvertRule.Value)
+                {
+                    try
+                    {
+                        PreProcessRequest(httpRequest.RequestParams, context, channel.FuzzyCommand);
+                    }
+                    catch (Exception ex)
+                    {
+                        LogWarnInfo(httpRequest, "数据转换错误：" + ex.Message, channel.Id, 0);
+                    }
+                }
+
+
+
                 //如果状态报告通道
                 if (channel.RecStatReport.HasValue && channel.RecStatReport.Value)
                 {
@@ -200,6 +220,42 @@ namespace Legendigital.Common.Web.AppClass
                     logger.Error("处理请求失败:\n错误信息：" + e.Message + xmlString);
                 }
             }
+        }
+
+        public static MethodDelegate GetMethodDelegateFromRecName(string fileName, HttpContext context)
+        {
+            string codeText = File.ReadAllText(fileName);
+
+            Assembly assembly = CSScript.LoadCode(codeText);
+
+            return new AsmHelper(assembly).GetStaticMethod();
+        }
+
+        public const string spsRules = "sps_rules_";
+
+        private static void PreProcessRequest(Hashtable requestParams, HttpContext context, string recName)
+        {
+            if (context.Cache[spsRules + recName] == null)
+            {
+                string fileName = context.Server.MapPath("~/ConvertRules/" + recName + ".txt");
+
+                if (!File.Exists(fileName))
+                {
+                    logger.Error("规则文件不存在：" + fileName);
+                    return;
+                }
+
+                context.Cache.Insert(spsRules + recName, GetMethodDelegateFromRecName(fileName, context), new CacheDependency(fileName));
+            }
+
+            if (context.Cache[spsRules + recName] is MethodDelegate)
+            {
+                MethodDelegate processMethod = context.Cache[spsRules + recName] as MethodDelegate;
+
+                if (processMethod != null)
+                    processMethod(requestParams);
+            }
+
         }
 
         private void LogWarnInfo(IHttpRequest httpRequest, string errorInfo, int channelID, int clientID)
