@@ -1,47 +1,86 @@
-﻿<project xmlns="http://nant.sf.net/release/0.92/nant.xsd" name="Aaron.Guo.NAnt.Project" default="run" >
-  <property name="SVNClientPath" value="C:\Program Files\CollabNet\Subversion Client\"/>
-  <property name="SVNCodePath" value="E:\Dev\My\Projects\HZSPS\HZSPS\trunk\"/>
-  <property name="LastReversion" value="1054"/>
+﻿<project xmlns="http://nant.sf.net/release/0.92/nant.xsd" name="Aaron.Guo.NAnt.Project" default="run" basedir="E:\Dev\My\Projects\HZSPS\HZSPS\Changes\" >
+  <property name="SVNCodePath" value="E:\Dev\My\Projects\HZSPS\"/>
+  <property name="v1Path" value="E:\Dev\My\Projects\HZSPS\HZSPS\trunk"/>
+  <property name="v2Path" value="E:\Dev\My\Projects\SZSPS\SZSPS\trunk"/>
+  <property name="LastReversion" value="1052"/>
   <property name="CurrentReversion" value="0"/>
   <property name="OutTextPath" value="E:\Dev\My\Projects\HZSPS\HZSPS\Changes\"/>
   <property name="NantTaskPath" value="E:\Dev\My\Projects\HZSPS\HZSPS\Nant\"/>
   <property name="ChangeDir" value=""/>
+  <property name="ChangeTxt" value=""/>
+  <property name="NewCopyPath" value=""/>
   <target name="run">
     <echo message="开始解析当前版本号......"/>
 
-    <exec program="${SVNClientPath}svnversion.exe" verbose="true" failonerror="true" output="${NantTaskPath}CurrentReversion.txt">
+    <exec program="svnversion.exe" verbose="true" failonerror="true" output="${NantTaskPath}CurrentReversion.txt">
       <arg line="${SVNCodePath}" ></arg>
     </exec>
-    
+
     <loadfile
     file="${NantTaskPath}CurrentReversion.txt"
     property="CurrentReversion" />
-    
- 
-  <property name="CurrentReversion" value="${string::replace(CurrentReversion, 'M', '')}"/>
+
+
+    <property name="CurrentReversion" value="${string::replace(CurrentReversion, 'M', '')}"/>
+    <property name="CurrentReversion" value="${string::replace(CurrentReversion, environment::newline(), '')}"/>
 
     <echo message="当前版本号为：${CurrentReversion}"/>
-    
+
     <echo message="导出上次版本${LastReversion}到当前版本${CurrentReversion}差异文件到changes目录"/>
-    
+
     <property name="ChangeDir" value="${OutTextPath}${LastReversion}-${CurrentReversion}"/>
-    
+
+    <delete dir="${ChangeDir}"></delete>
+
     <mkdir  dir="${ChangeDir}"></mkdir>
-    
-    <echo message="${SVNClientPath}svn.exe diff -r ${LastReversion}:${CurrentReversion} --summarize ${SVNCodePath}|sort>codechange.txt"/>
-    
-    
-    
-        <exec program="${SVNClientPath}svn.exe" verbose="true" failonerror="true">
-      <arg line="diff -r ${LastReversion}:${CurrentReversion}" ></arg>
-        <arg line="--summarize" ></arg>
-    <arg line='${SVNCodePath}|sort>"codechange.txt"' ></arg>
+
+    <echo message="svn.exe diff -r ${LastReversion}:${CurrentReversion} --summarize"/>
+ 
+    <exec program="svn.exe"
+          commandline="diff ${SVNCodePath}"
+          output="${ChangeDir}\codechange.txt">
+      <arg line="-r ${LastReversion}:${CurrentReversion} "></arg>
+      <arg line="--summarize"></arg>
     </exec>
+
+
  
-    
-    
-    
-    
+ 
+    <foreach item="Line" in="${ChangeDir}\codechange.txt"  property="x">
+
+      <property name="fileLength" value="${string::get-length(x)}"/>
+      <property name="alength" value="${string::get-length('M       ')}"/>
+      <property name="clength" value="${( int::parse(fileLength) - int::parse(alength) )}"/>
+
+      <property name="filePath" value="${string::substring(x, alength, clength)}"/>
+      <property name="fileAction" value="${string::substring(x, 0, 1)}"/>
+
+
+      <property name="fileName" value="${path::get-file-name(filePath)}"/>
+
+      <property name="filePath1" value="${string::replace(filePath, v1Path, v2Path)}"/>
+
+      
+      <echo message="${filePath}"/>
+      <echo message="${filePath1}"/>
+      <echo message="${fileAction}"/>
+      <echo message="${fileName}"/>
+
+
+      <copy file="${filePath}" tofile="${ChangeDir}\v1\${fileName}"></copy>
+
+
+
+      <if test="${file::exists(filePath1)}">
+        <copy file="${filePath1}" tofile="${ChangeDir}\v2\${fileName}"></copy>
+      </if>
+
+
+
+
+      
+    </foreach>
+
   </target>
- 
+
 </project>

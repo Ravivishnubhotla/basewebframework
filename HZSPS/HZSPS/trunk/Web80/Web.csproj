@@ -545,6 +545,7 @@
     </Compile>
     <Compile Include="AppClass\SPNoEncodeHandler.cs" />
     <Compile Include="AppClass\SPXml2Handler.cs" />
+    <Compile Include="AppClass\SPXml3Handler.cs" />
     <Compile Include="AppClass\SPXmlHandler.cs" />
     <Compile Include="AppClass\SPSClientViewPage.cs">
       <SubType>ASPXCodeBehind</SubType>

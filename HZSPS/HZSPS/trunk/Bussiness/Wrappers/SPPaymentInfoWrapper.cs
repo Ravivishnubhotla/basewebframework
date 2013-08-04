@@ -966,18 +966,18 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 }
             }
 #else
-            if (!string.IsNullOrEmpty(mobile) && mobile.Length > 7)
+            if (!string.IsNullOrEmpty(this.MobileNumber) && this.MobileNumber.Length > 7)
             {
                 try
                 {
                     try
                     {
-                        phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(mobile);
+                        phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(this.MobileNumber);
                     }
                     catch (Exception ex)
                     {
                         Logger.Error("∫≈∂Œ∂¡»°¥ÌŒÛ£∫" + ex.Message);
-                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(mobile.Substring(0, 7));
+                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(this.MobileNumber.Substring(0, 7));
                     }
                 }
                 catch (Exception ex)
@@ -985,17 +985,6 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                     Logger.Error("∫≈∂Œ∂¡»°¥ÌŒÛ£∫" + ex.Message);
                 }
             }
-            //else
-            //{
-            //    if (string.IsNullOrEmpty(mobile))
-            //    {
-            //        Logger.Error("ø’∫≈¥ÌŒÛ");
-            //    }
-            //    else
-            //    {
-            //        Logger.Error("∫≈¬Î¥ÌŒÛ£∫" + mobile);               
-            //    }
-            //}
 #endif
 
             if (phoneAreaInfo != null)
