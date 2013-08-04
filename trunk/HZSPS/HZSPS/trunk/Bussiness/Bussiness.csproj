@@ -254,6 +254,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfig.cs" />
     <Compile Include="Commons\ChannelStatus.cs" />
     <Compile Include="Commons\HttpGetPostRequest.cs" />
     <Compile Include="Commons\HttpSP0025PostRequest.cs" />

@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using Common.Logging;
 using Coolite.Ext.Web;
 using Coolite.Utilities;
+using LD.SPPipeManage.Bussiness.Wrappers;
 using Legendigital.Common.Web.Jobs;
 using Legendigital.Framework.Common.BaseFramework;
 using Legendigital.Framework.Common.BaseFramework.Bussiness.Wrappers;
@@ -22,6 +23,20 @@ namespace Legendigital.Common.Web.MainPage
     {
         private ILog logger = LogManager.GetLogger(typeof(BaseSecurityPage));
 
+
+        public int ClientGroupID
+        {
+            get
+            {
+                if (this.CurrentLoginUser == null)
+                    return 0;
+                if (!this.Context.User.IsInRole("SPDownGroupUser") && !this.Context.User.IsInRole("SPDownGroupUser2"))
+                    return 0;
+
+                return SPClientGroupWrapper.GetByUserID(this.CurrentLoginUser.UserID).Id;
+            }
+
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -93,7 +108,21 @@ namespace Legendigital.Common.Web.MainPage
                 var subNode = new TreeNode(submenu.Id);
                 subNode.Text = submenu.Name;
                 SetIcon(submenu.Icon, submenu.IsCategory, subNode);
+
                 subNode.Href = ResolveUrl(submenu.NavUrl);
+
+                //if (ClientGroupID>0 && subNode.Text.Equals("资料维护"))
+                //{
+                //    SPClientGroupWrapper spclientGroup = SPClientGroupWrapper.FindById(ClientGroupID);
+
+                //    if (spclientGroup != null)
+                //    {
+
+                //        ResolveUrl(submenu.NavUrl)
+                //        //subNode.Href = "http://114.80.208.81:8082/management/tab/CompanyReportInfo.aspx?usernamedif=" + Server.UrlEncode(spclientGroup.UserName);
+                //    }
+                //}
+
                 subNode.CustomAttributes.Add(new ConfigItem("isCategory", submenu.IsCategory.ToString(),
                                                             ParameterMode.Value));
                 mainNode.Nodes.Add(subNode);

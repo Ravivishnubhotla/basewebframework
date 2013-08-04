@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using System.Xml;
 using System.Xml.Xsl;
 using Coolite.Ext.Web;
+using LD.SPPipeManage.Bussiness;
 using LD.SPPipeManage.Bussiness.Wrappers;
 using ScriptManager = Coolite.Ext.Web.ScriptManager;
 
@@ -89,7 +90,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             dt.Columns.Add(new DataColumn("SetInterceptRate"));
             dt.Columns.Add(new DataColumn("ChannelClientCode"));
             dt.Columns.Add(new DataColumn("IsSycnData",typeof(bool)));
-            dt.Columns.Add(new DataColumn("Price" ,typeof(decimal)));
+            dt.Columns.Add(new DataColumn("Price" ,typeof(string)));
 
             
 
@@ -99,6 +100,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             {
                 SPClientWrapper  client  = SPClientWrapper.FindById((int)item["ClientID"]);
 
+                
+
                 if (client == null)
                 {
                     item["ChannelClientID"] = 0;
@@ -107,7 +110,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                     item["ChannelClientCode"] = "";
                     item["IsSycnData"] = false;
                     item["AssignedUser"] = "";
-                    item["Price"] = 0.00;
+                    item["Price"] = "0.00/0.00";
                     
                 }
                 else
@@ -121,7 +124,25 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
                         item["AssignedUser"] = client.SPClientGroupID.AssigedUserLoginID;
                     else
                         item["AssignedUser"] = "";
-                    item["Price"] = client.Price;
+
+                    if (AppConfig.IsGamePlatform)
+                    {
+                        decimal channlePrice = 0;
+
+                        if (client.DefaultClientChannelSetting.ChannelID != null &&
+                            client.DefaultClientChannelSetting.ChannelID.Price.HasValue)
+                        {
+                            channlePrice = client.DefaultClientChannelSetting.ChannelID.Price.Value;
+                        }
+
+                        item["Price"] = client.Price.ToString("N2") + "/" + channlePrice.ToString("N2");
+                    }
+                    else
+                    {
+                        item["Price"] = client.Price.ToString();
+                    }
+
+
                 }
             }
 

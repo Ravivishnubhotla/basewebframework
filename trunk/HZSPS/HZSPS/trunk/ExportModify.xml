@@ -1,10 +1,11 @@
 ﻿<project xmlns="http://nant.sf.net/release/0.92/nant.xsd" name="Aaron.Guo.NAnt.Project" default="run" >
   <property name="SVNClientPath" value="C:\Program Files\CollabNet\Subversion Client\"/>
   <property name="SVNCodePath" value="E:\Dev\My\Projects\HZSPS\HZSPS\trunk\"/>
-  <property name="LastReversion" value="0"/>
+  <property name="LastReversion" value="1054"/>
   <property name="CurrentReversion" value="0"/>
   <property name="OutTextPath" value="E:\Dev\My\Projects\HZSPS\HZSPS\Changes\"/>
   <property name="NantTaskPath" value="E:\Dev\My\Projects\HZSPS\HZSPS\Nant\"/>
+  <property name="ChangeDir" value=""/>
   <target name="run">
     <echo message="开始解析当前版本号......"/>
 
@@ -15,9 +16,30 @@
     <loadfile
     file="${NantTaskPath}CurrentReversion.txt"
     property="CurrentReversion" />
-
+    
+ 
+  <property name="CurrentReversion" value="${string::replace(CurrentReversion, 'M', '')}"/>
 
     <echo message="当前版本号为：${CurrentReversion}"/>
+    
+    <echo message="导出上次版本${LastReversion}到当前版本${CurrentReversion}差异文件到changes目录"/>
+    
+    <property name="ChangeDir" value="${OutTextPath}${LastReversion}-${CurrentReversion}"/>
+    
+    <mkdir  dir="${ChangeDir}"></mkdir>
+    
+    <echo message="${SVNClientPath}svn.exe diff -r ${LastReversion}:${CurrentReversion} --summarize ${SVNCodePath}|sort>codechange.txt"/>
+    
+    
+    
+        <exec program="${SVNClientPath}svn.exe" verbose="true" failonerror="true">
+      <arg line="diff -r ${LastReversion}:${CurrentReversion}" ></arg>
+        <arg line="--summarize" ></arg>
+    <arg line='${SVNCodePath}|sort>"codechange.txt"' ></arg>
+    </exec>
+ 
+    
+    
     
     
   </target>

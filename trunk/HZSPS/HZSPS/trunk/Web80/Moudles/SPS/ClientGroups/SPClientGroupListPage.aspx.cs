@@ -27,7 +27,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups
         {
             try
             {
-                SPClientGroupWrapper.DeleteByID(id);
+                //SPClientGroupWrapper.DeleteByID(id);
 
                 ScriptManager.AjaxSuccess = true;
             }
@@ -45,9 +45,9 @@ namespace Legendigital.Common.Web.Moudles.SPS.ClientGroups
         {
             try
             {
-                SPClientWrapper clientWrapper = SPClientWrapper.FindById(id);
+                //SPClientWrapper clientWrapper = SPClientWrapper.FindById(id);
 
-                SystemUserWrapper user = SystemUserWrapper.FindById(clientWrapper.UserID);
+                SystemUserWrapper user = SystemUserWrapper.FindById(id);
 
                 if (user != null)
                 {
