@@ -30,10 +30,12 @@
                                             <Click Handler="#{storeData}.reload();" />
                                         </Listeners>
                                     </ext:ToolbarButton>
-                                    <ext:ToolbarButton ID='btnAdd' runat="server" Text="导出" Icon="PageExcel">
+                                    <ext:ToolbarButton ID='btnAdd' runat="server" Text="导出当页数据" Icon="PageExcel">
                                         <Listeners>
                                             <Click Handler="#{GridPanel1}.submitData(false);" />
                                         </Listeners>
+                                    </ext:ToolbarButton>
+                                    <ext:ToolbarButton ID='btnExportAll' OnClick="ToExcel" runat="server" Text="导出所有的数据" Icon="PageExcel" AutoPostBack="True">
                                     </ext:ToolbarButton>
                                 </Items>
                             </ext:Toolbar>

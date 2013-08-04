@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -37,22 +38,61 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
 
         protected void storeData_Submit(object sender, StoreSubmitDataEventArgs e)
         {
- 
+
 
             XmlNode xml = e.Xml;
 
             this.Response.Clear();
 
- 
+
             this.Response.ContentType = "application/vnd.ms-excel";
-            this.Response.AddHeader("Content-Disposition", "attachment; filename=submittedData.xls");
+            this.Response.AddHeader("Content-Disposition", "attachment; filename=downloaddata.xls");
             XslCompiledTransform xtExcel = new XslCompiledTransform();
             xtExcel.Load(Server.MapPath("Excel.xsl"));
             xtExcel.Transform(xml, null, Response.OutputStream);
- 
+
 
             this.Response.End();
         }
+
+
+        protected void ToExcel(object sender, EventArgs e)
+        {
+            DataTable dt =
+                SPPaymentInfoWrapper.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(ChannleID,
+                this.SPClientID, Convert.ToDateTime(this.StartDate),
+                Convert.ToDateTime(this.EndDate), DType, "CreateDate", true);
+
+            this.Response.Clear();
+            this.Response.ContentType = "application/vnd.ms-excel";
+            this.Response.AddHeader("Content-Disposition", "attachment; filename=submittedData.xls");
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("<table>");
+            sb.AppendLine("<tr>");
+            for (int i = 0; i < dt.Columns.Count; i++)
+            {
+                sb.AppendLine("<td>" + dt.Columns[i].ColumnName + "</td>");
+            }
+            sb.AppendLine("</tr>");
+            for (int j = 0; j < dt.Rows.Count; j++)
+            {
+                sb.AppendLine("<tr>");
+                for (int i = 0; i < dt.Columns.Count; i++)
+                {
+                    sb.AppendLine("<td style='mso-number-format:\"\\@\"'>" + dt.Rows[j][dt.Columns[i].ColumnName] + "</td>");
+                }
+                sb.AppendLine("</tr>");
+            }
+
+            sb.AppendLine("</table>");
+
+            this.Response.Write(sb.ToString());
+
+            this.Response.End();
+        }
+
 
 
 

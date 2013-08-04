@@ -963,6 +963,17 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+        public bool InArea(PhoneAreaInfo phoneAreaInfo)
+        {
+            if (Filters == null || Filters.Count <= 0)
+                return false;
+
+            List<SPClientChannelSettingFiltersWrapper> filters =
+                SPClientChannelSettingFiltersWrapper.FindAllByClientChannelSettingID(this);
+
+            return filters.Exists(p => p.ParamsName.Trim().ToLower() == "province" && p.FilterValue == phoneAreaInfo.Province);
+        }
+
         public int QueryPhoneCount(DateTime startDate, DateTime endDate, bool includeSub, bool afterIntercept)
         {
             if (this.CommandType == "3")

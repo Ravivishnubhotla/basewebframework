@@ -278,7 +278,7 @@ namespace Legendigital.Common.Web.AppClass
                 SPFailedRequestWrapper.SaveFailedRequest(httpRequest, errorInfo, channelID, clientID);
         }
 
-        private static MethodDelegate GetMethodDelegateFromRecName(string fileName, HttpContext context)
+        public static MethodDelegate GetMethodDelegateFromRecName(string fileName, HttpContext context)
         {
             string codeText = File.ReadAllText(fileName);
 

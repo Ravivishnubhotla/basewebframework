@@ -51,6 +51,11 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                     this.txtOkMessage.Text = obj.OkMessage;
                     this.txtFailedMessage.Text = obj.FailedMessage;
 
+                    if (obj.HasConvertRule.HasValue)
+                        chkHasConvertRule.Checked = obj.HasConvertRule.Value;
+                    else
+                        chkHasConvertRule.Checked = false;
+
                     if (obj.RecStatReport.HasValue)
                         chkRecStatReport.Checked = obj.RecStatReport.Value;
                     else
@@ -152,6 +157,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.RecStatReport = chkRecStatReport.Checked;
                 obj.StatParamsName = txtStatParamName.Text.Trim();
                 obj.StatParamsValues = txtStatValues.Text.Trim();
+
+                obj.HasConvertRule = chkHasConvertRule.Checked;
 
                 obj.HasRequestTypeParams = chkHasRequestTypeParams.Checked;
                 obj.RequestTypeParamName = txtRequestTypeParamName.Text.Trim();
