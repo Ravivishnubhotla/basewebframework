@@ -28,6 +28,13 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports
             bindData();
         }
 
+
+        [AjaxMethod]
+        public void AutoMatch(int channelID, int clientID)
+        {
+            SPPaymentInfoWrapper.AutoMatch(channelID, clientID, DateTime.Now.Date, DateTime.Now.Date.AddDays(1), DataType.All.ToString());
+        }
+
         //,int channelID,int clinetID,int newintercept,int oldIntercept,int totalcont
         [AjaxMethod]
         public void ChangeInterceptCount(string dateTime,int clientID,string newIntercept)

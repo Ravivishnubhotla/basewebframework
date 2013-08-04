@@ -330,6 +330,7 @@
     <Content Include="Moudles\SPS\Channels\SPChannelFilesList.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelQuickAdd.ascx" />
     <Content Include="Moudles\SPS\Channels\SPChannelQuickAddIVR.ascx" />
+    <Content Include="Moudles\SPS\Channels\SPChannelRuleCheck.aspx" />
     <Content Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx" />
     <Content Include="Moudles\SPS\Channels\SPSourceCodeAdd.aspx" />
     <Content Include="Moudles\SPS\Channels\SPSourceCodeEditor.aspx" />
@@ -531,6 +532,13 @@
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelQuickAddIVR.ascx.designer.cs">
       <DependentUpon>SPChannelQuickAddIVR.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelRuleCheck.aspx.cs">
+      <DependentUpon>SPChannelRuleCheck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Moudles\SPS\Channels\SPChannelRuleCheck.aspx.designer.cs">
+      <DependentUpon>SPChannelRuleCheck.aspx</DependentUpon>
     </Compile>
     <Compile Include="Moudles\SPS\Channels\SPChannelSendTestRequestForm.aspx.cs">
       <DependentUpon>SPChannelSendTestRequestForm.aspx</DependentUpon>

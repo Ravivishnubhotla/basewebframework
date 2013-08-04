@@ -1,4 +1,4 @@
-
+ï»¿
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -303,7 +303,15 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 dr["SycnRetryTimes"] = spPaymentInfoWrappers[i].SycnRetryTimes;
                 dr["IsSycnData"] = spPaymentInfoWrappers[i].IsSycnData;
                 dr["SucesssToSend"] = spPaymentInfoWrappers[i].SucesssToSend;
-                dr["SendUrl"] = spPaymentInfoWrappers[i].SSycnDataUrl;
+                if (!string.IsNullOrEmpty(spPaymentInfoWrappers[i].SSycnDataUrl))
+                    dr["SendUrl"] = spPaymentInfoWrappers[i].SSycnDataUrl;
+                else
+                {
+                    if (spPaymentInfoWrappers[i].IsSycnData.HasValue && spPaymentInfoWrappers[i].IsSycnData.Value)
+                    {
+                        dr["SendUrl"] = spPaymentInfoWrappers[i].ReBuildUrl();
+                    }
+                }
 
                 foreach (string field in SPChannelWrapper.fields)
                 {
@@ -323,7 +331,77 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         }
 
+        public static List<SPPaymentInfoWrapper> FindAllDataListByOrderByAndCleintIDAndChanneLIDAndDate
+(int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, DataType dataType, string sortFieldName, bool isDesc)
+        {
 
+
+            return ConvertToWrapperList(businessProxy.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(channelId, clientId,
+                                                                                                  startDateTime,
+                                                                                                  enddateTime, dataType,
+                                                                                                  sortFieldName, isDesc));
+
+
+
+        }
+
+
+        public static DataTable FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate
+            (int channelId, int clientId, DateTime startDateTime, DateTime enddateTime, DataType dataType, string sortFieldName, bool isDesc)
+        {
+            if (channelId == 0)
+                throw new ArgumentException(" channelId not allow 0.");
+
+            SPChannelWrapper channelWrapper = SPChannelWrapper.FindById(channelId);
+
+            List<SPPaymentInfoWrapper> spPaymentInfoWrappers = ConvertToWrapperList(businessProxy.FindAllDataTableByOrderByAndCleintIDAndChanneLIDAndDate(channelId, clientId,
+                                                                                                  startDateTime,
+                                                                                                  enddateTime, dataType,
+                                                                                                  sortFieldName, isDesc));
+
+            DataTable channelRecordTable = new DataTable();
+
+            channelRecordTable.Columns.Add("LinkID", typeof(string));
+            channelRecordTable.Columns.Add("Mobile", typeof(string));
+            channelRecordTable.Columns.Add("Mo", typeof(string));
+            channelRecordTable.Columns.Add("Cpid", typeof(string));
+            channelRecordTable.Columns.Add("Province", typeof(string));
+            channelRecordTable.Columns.Add("City", typeof(string));
+            channelRecordTable.Columns.Add("CreateDate", typeof(DateTime));
+
+
+            for (int i = 0; i < spPaymentInfoWrappers.Count; i++)
+            {
+                DataRow dr = channelRecordTable.NewRow();
+
+                dr.BeginEdit();
+
+
+                dr["LinkID"] = spPaymentInfoWrappers[i].Linkid;
+                dr["Mobile"] = spPaymentInfoWrappers[i].MobileNumber;
+                dr["Mo"] = spPaymentInfoWrappers[i].Ywid;
+                dr["Cpid"] = spPaymentInfoWrappers[i].Cpid;
+                dr["CreateDate"] = spPaymentInfoWrappers[i].CreateDate;
+                dr["Province"] = spPaymentInfoWrappers[i].Province;
+                dr["City"] = spPaymentInfoWrappers[i].City;
+
+                //foreach (string field in SPChannelWrapper.fields)
+                //{
+                //    dr[field] = spPaymentInfoWrappers[i].GetMappingValue(field);
+                //}
+
+                dr.EndEdit();
+
+                channelRecordTable.Rows.Add(dr);
+
+
+            }
+
+            channelRecordTable.AcceptChanges();
+
+            return channelRecordTable;
+
+        }
 
 	    public string Values
 	    {
@@ -574,21 +652,21 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 	    {
             //using (new SessionScope())
             //{
-                Logger.Info("¿ªÊ¼ÖØĞÂ·¢ËÍÊ§°ÜÍ¬²½Êı¾İ");
+                Logger.Info("å¼€å§‹é‡æ–°å‘é€å¤±è´¥åŒæ­¥æ•°æ®");
 
                 List<SPClientChannelSettingWrapper> allNeedResendChannleClientSetting = SPClientChannelSettingWrapper.GetAllNeedRendSetting();
 
-                //Logger.Info(string.Format("¶ÁÈ¡ÉèÖÃ³É¹¦£¬¹²{0}¸öÅäÖÃĞèÒªÖØĞÂ·¢ËÍ", allNeedResendChannleClientSetting.Count));
+                //Logger.Info(string.Format("è¯»å–è®¾ç½®æˆåŠŸï¼Œå…±{0}ä¸ªé…ç½®éœ€è¦é‡æ–°å‘é€", allNeedResendChannleClientSetting.Count));
 
                 //foreach (SPClientChannelSettingWrapper channelSetting in allNeedResendChannleClientSetting)
                 //{
-                //    Logger.Info(string.Format("¿ªÊ¼ÖØĞÂ·¢ËÍÉèÖÃ{0}-{1}ÇëÇó", channelSetting.ChannelID.Name, channelSetting.ClinetID.Name));
+                //    Logger.Info(string.Format("å¼€å§‹é‡æ–°å‘é€è®¾ç½®{0}-{1}è¯·æ±‚", channelSetting.ChannelID.Name, channelSetting.ClinetID.Name));
 
                 //    List<SPPaymentInfoWrapper> spReSendPaymentInfos = FindAllNotSendData(channelSetting.ChannelID.Id,
                 //                                                                         channelSetting.ClinetID.Id, resendDay,
                 //                                                                         resendDay);
 
-                //    Logger.Info(string.Format("ÉèÖÃ{0}-{1}¿ªÊ¼£¬·¢ËÍÇëÇó£¬¹²{2}Ìõ¼ÇÂ¼¡£", channelSetting.ChannelID.Name, channelSetting.ClinetID.Name, spReSendPaymentInfos.Count));
+                //    Logger.Info(string.Format("è®¾ç½®{0}-{1}å¼€å§‹ï¼Œå‘é€è¯·æ±‚ï¼Œå…±{2}æ¡è®°å½•ã€‚", channelSetting.ChannelID.Name, channelSetting.ClinetID.Name, spReSendPaymentInfos.Count));
 
                 //    int failedCount = 0;
 
@@ -623,11 +701,11 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
                 //    }
 
-                //    Logger.Info(string.Format("ÉèÖÃ{0}-{1}½áÊø£¬Ê§°Ü{2}Ìõ¼ÇÂ¼¡£", channelSetting.ChannelID.Name, channelSetting.ClinetID.Name, failedCount));
+                //    Logger.Info(string.Format("è®¾ç½®{0}-{1}ç»“æŸï¼Œå¤±è´¥{2}æ¡è®°å½•ã€‚", channelSetting.ChannelID.Name, channelSetting.ClinetID.Name, failedCount));
 
                 //}
 
-                Logger.Info("ÖØĞÂ·¢ËÍÊ§°ÜÍ¬²½Êı¾İ½áÊø");
+                Logger.Info("é‡æ–°å‘é€å¤±è´¥åŒæ­¥æ•°æ®ç»“æŸ");
             }
         //}
 
@@ -686,14 +764,14 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
                 if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
                 {
                     this.IsSycnData = true;
-                    if (!string.IsNullOrEmpty(channelSetting.SyncType) && channelSetting.SyncType.Equals("2"))
-                    {
-                        this.SucesssToSend = false;
-                    }
-                    else
-                    {
+                    //if (!string.IsNullOrEmpty(channelSetting.SyncType) && channelSetting.SyncType.Equals("2"))
+                    //{
+                    //    this.SucesssToSend = false;
+                    //}
+                    //else
+                    //{
                         this.SucesssToSend = channelSetting.SendMsg(this);
-                    }
+                    //}
                 }
                 else
                     this.SucesssToSend = false;
@@ -852,5 +930,129 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
 
         }
+
+
+        public static void AutoMatch(int channelID, int clientID, DateTime startDateTime, DateTime endDateTime, string dataType)
+        {
+            List<SPPaymentInfoWrapper> dt = FindAllDataListByOrderByAndCleintIDAndChanneLIDAndDate(channelID, clientID, startDateTime,
+                endDateTime, DataType.All, "CreateDate", true);
+
+            foreach (SPPaymentInfoWrapper record in dt)
+            {
+                record.ReAutoMatch();
+            }
+        }
+
+        public void ReAutoMatch()
+        {
+            PhoneAreaInfo phoneAreaInfo = null;
+
+#if DEBUG
+            if (!string.IsNullOrEmpty(this.MobileNumber) && this.MobileNumber.Length > 7)
+            {
+                try
+                {
+
+                    phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(this.MobileNumber.Substring(0, 7));
+
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error(ex.Message);
+                }
+            }
+#else
+            if (!string.IsNullOrEmpty(this.MobileNumber) && this.MobileNumber.Length > 7)
+            {
+                try
+                {
+                    try
+                    {
+                        phoneAreaInfo = PhoneCache.GetPhoneAreaByPhoneNumber(this.MobileNumber);
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Error("å·æ®µè¯»å–é”™è¯¯ï¼š" + ex.Message);
+                        phoneAreaInfo = SPPhoneAreaWrapper.GetPhoneCity(this.MobileNumber.Substring(0, 7));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.Error("å·æ®µè¯»å–é”™è¯¯ï¼š" + ex.Message);
+                }
+            }
+            //else
+            //{
+            //    if (string.IsNullOrEmpty(mobile))
+            //    {
+            //        Logger.Error("ç©ºå·é”™è¯¯");
+            //    }
+            //    else
+            //    {
+            //        Logger.Error("å·ç é”™è¯¯ï¼š" + mobile);               
+            //    }
+            //}
+#endif
+
+            if (phoneAreaInfo != null)
+            {
+                this.Province = phoneAreaInfo.Province;
+                this.City = phoneAreaInfo.City;
+                this.MobileOperators = phoneAreaInfo.MobileOperators;
+            }
+
+            SPClientChannelSettingWrapper channelSetting = this.ChannelID.GetClientChannelSettingFromRequestValue(this.Ywid,
+                                                                                       this.Cpid, phoneAreaInfo);
+
+            if (channelSetting == null || !channelSetting.IsEnable)
+            {
+                List<SPClientChannelSettingWrapper> clientChannelSettings = this.ChannelID.GetAllClientChannelSetting();
+
+                channelSetting = clientChannelSettings.Find(p => (p.CommandType == "7" && p.Name.Contains("é»˜è®¤ä¸‹å®¶")));
+            }
+
+            this.ClientID = channelSetting.ClinetID;
+            this.ChannleClientID = channelSetting.Id;
+
+            try
+            {
+                if (channelSetting.ClinetID != null && channelSetting.ClinetID.SPClientGroupID != null)
+                {
+                    this.ClientGroupID = channelSetting.ClinetID.SPClientGroupID.Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("ClientGroup ID Error", ex);
+            }
+
+            this.IsSycnData = false;
+
+            UrlSendTask sendTask = null;
+
+            if (!(this.IsIntercept.HasValue && this.IsIntercept.Value))
+            {
+                if (!string.IsNullOrEmpty(channelSetting.SyncDataUrl))
+                {
+                    this.IsSycnData = true;
+                    this.SucesssToSend = false;
+                }
+                else
+                {
+                    this.IsSycnData = false;
+                    this.SucesssToSend = false;
+                }
+
+            }
+            else
+            {
+                this.IsSycnData = false;
+                this.SucesssToSend = false;
+            }
+
+
+            Update(this);
+        }
+
     }
 }

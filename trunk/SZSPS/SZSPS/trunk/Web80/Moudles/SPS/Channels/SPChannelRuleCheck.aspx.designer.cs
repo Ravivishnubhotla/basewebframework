@@ -7,19 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Legendigital.Common.Web.Moudles.SPS.Reports {
+namespace Legendigital.Common.Web.Moudles.SPS.Channels {
     
     
-    public partial class DetailRecordView {
-        
-        /// <summary>
-        /// storeData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Coolite.Ext.Web.Store storeData;
+    public partial class SPChannelRuleCheck {
         
         /// <summary>
         /// viewPortMain control.
@@ -40,75 +31,93 @@ namespace Legendigital.Common.Web.Moudles.SPS.Reports {
         protected global::Coolite.Ext.Web.FitLayout fitLayoutMain;
         
         /// <summary>
-        /// GridPanel1 control.
+        /// FormPanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridPanel GridPanel1;
+        protected global::Coolite.Ext.Web.FormPanel FormPanel1;
         
         /// <summary>
-        /// tbTop control.
+        /// FormLayout1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.Toolbar tbTop;
+        protected global::Coolite.Ext.Web.FormLayout FormLayout1;
         
         /// <summary>
-        /// btnRefresh control.
+        /// lblRuleTxt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnRefresh;
+        protected global::Coolite.Ext.Web.Label lblRuleTxt;
         
         /// <summary>
-        /// btnAdd control.
+        /// lblRuleStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnAdd;
+        protected global::Coolite.Ext.Web.Label lblRuleStatus;
         
         /// <summary>
-        /// btnExportAll control.
+        /// txtUlr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.ToolbarButton btnExportAll;
+        protected global::Coolite.Ext.Web.TextArea txtUlr;
         
         /// <summary>
-        /// GridView1 control.
+        /// txtResult control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.GridView GridView1;
+        protected global::Coolite.Ext.Web.TextArea txtResult;
         
         /// <summary>
-        /// RowSelectionModel1 control.
+        /// btnCreateRule control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.RowSelectionModel RowSelectionModel1;
+        protected global::Coolite.Ext.Web.Button btnCreateRule;
         
         /// <summary>
-        /// PagingToolBar1 control.
+        /// btnUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Coolite.Ext.Web.PagingToolbar PagingToolBar1;
+        protected global::Coolite.Ext.Web.Button btnUpdate;
+        
+        /// <summary>
+        /// btnTestRule control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnTestRule;
+        
+        /// <summary>
+        /// btnDownload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Coolite.Ext.Web.Button btnDownload;
     }
 }
