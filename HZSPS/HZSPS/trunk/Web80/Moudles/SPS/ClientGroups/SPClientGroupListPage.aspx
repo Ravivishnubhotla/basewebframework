@@ -84,7 +84,7 @@
                                                                                }
                                                                 }              
                 );
-            }
+            };
 
 
                                if (cmd == "cmdClientGroupPriceReport") {
@@ -99,7 +99,7 @@
                 win.autoLoad.params.ClientGroupID = id.data.Id;
         
                 win.show();    
-            }
+            };
             
             
                                            if (cmd == "cmdClientGroupPriceReport1") {
@@ -114,7 +114,7 @@
                 win.autoLoad.params.ClientGroupID = id.data.Id;
         
                 win.show();    
-            }
+            };
 
 
             
@@ -131,7 +131,7 @@
                 win.autoLoad.params.ClientGroupID = id.data.Id;
         
                 win.show();    
-            }
+            };
 
             if (cmd == "cmdChangePassword") 
             {
@@ -144,7 +144,7 @@
                 win.autoLoad.params.UserID = id.data.UserID;
         
                 win.show();  
-            }
+            };
             
             
             if (cmd == "cmdShowLoginLog") {
@@ -158,22 +158,22 @@
                 win.autoLoad.params.ParentID = id.data.UserID;
         
                 win.show();    
-            }             
+            };             
             
+    
             
-            
-            if (cmd == "cmdDelete") {
-                Ext.MessageBox.confirm('警告','确认要删除所选SPClientGroup ? ',
+            if (cmd == "cmdLock") {
+                Ext.MessageBox.confirm('警告','确认要锁定当前下家登陆用户 ? ',
                     function(e) {
                         if (e == 'yes')
-                            Coolite.AjaxMethods.DeleteRecord(
-                                                                id.id,
+                            Coolite.AjaxMethods.LockLoginUser(
+                                                                id.data.UserID,true,
                                                                 {
                                                                     failure: function(msg) {
                                                                         Ext.Msg.alert('操作失败', msg);
                                                                     },
                                                                     success: function(result) { 
-                                                                        Ext.Msg.alert('操作成功', '成功删除下家组！',RefreshSPClientGroupData);            
+                                                                        Ext.Msg.alert('操作成功', '成功锁定当前下家登陆用户！',RefreshSPClientGroupData);            
                                                                     },
                                                                     eventMask: {
                                                                                 showMask: true,
@@ -183,7 +183,31 @@
                                                             );
                     }
                     );
-            }
+            };
+            
+                        if (cmd == "cmdUnlock") {
+                Ext.MessageBox.confirm('警告','确认要解锁当前下家登陆用户 ? ',
+                    function(e) {
+                        if (e == 'yes')
+                            Coolite.AjaxMethods.LockLoginUser(
+                                                                id.data.UserID,false,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg);
+                                                                    },
+                                                                    success: function(result) { 
+                                                                        Ext.Msg.alert('操作成功', '成功解锁当前下家登陆用户！',RefreshSPClientGroupData);            
+                                                                    },
+                                                                    eventMask: {
+                                                                                showMask: true,
+                                                                                msg: '处理中...'
+                                                                               }
+                                                                }
+                                                            );
+                    }
+                    );
+            };
+            
         }
 
     </script>

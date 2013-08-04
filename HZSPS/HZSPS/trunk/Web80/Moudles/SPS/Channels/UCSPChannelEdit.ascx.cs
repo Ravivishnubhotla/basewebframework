@@ -76,6 +76,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                     else
                         this.txtRequestTypeParamName.Text = "";
 
+
+                    if (obj.Price.HasValue)
+                        txtPrice.Text = obj.Price.Value.ToString("N2");
+                    else
+                        txtPrice.Text = "0.00";
+
                     if (!string.IsNullOrEmpty(obj.RequestTypeValues))
                         this.txtRequestTypeValues.Text = obj.RequestTypeValues.ToString();
                     else
@@ -146,6 +152,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
 
                 obj.Rate = Convert.ToInt32(this.txtRate.Value);
                 obj.Status = 0;
+                obj.Price = Convert.ToDecimal(this.txtPrice.Value);
                 obj.OkMessage = txtOkMessage.Text.Trim();
                 obj.FailedMessage = txtFailedMessage.Text.Trim();
                 obj.RecStatReport = chkRecStatReport.Checked;
@@ -156,7 +163,7 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 obj.RequestTypeParamName = txtRequestTypeParamName.Text.Trim();
                 obj.RequestTypeValues = txtRequestTypeValues.Text.Trim();
 
-
+ 
                 obj.HasConvertRule = chkHasConvertRule.Checked;
                 obj.StatSendOnce = chkStatSendOnce.Checked;
                 obj.IsMonitoringRequest = chkIsMonitoringRequest.Checked;

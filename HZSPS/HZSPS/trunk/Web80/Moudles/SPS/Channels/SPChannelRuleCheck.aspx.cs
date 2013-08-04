@@ -95,7 +95,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
         {
             if (ChannleID <= 0)
             {
-                Ext.MessageBox.Alert("错误信息", "错误信息：ChannelID不存在！");
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：ChannelID不存在！";
                 return;
             }
 
@@ -123,6 +124,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
                 processMethod(hb);
 
                 this.txtResult.Text = JsonConvert.SerializeObject(hb);
+
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
             }
             catch (Exception ex)
             {
@@ -223,7 +226,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
 
             if (!File.Exists(rulePath))
             {
-                Ext.MessageBox.Alert("错误信息", "文件‘" + rulePath + "’不存在！");
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + "文件‘" + rulePath + "’不存在！";
                 return;
             }
 
@@ -231,11 +235,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
             {
                 this.Cache.Insert(SPRecievedHandler.spsRules + channel.FuzzyCommand, SPRecievedHandler.GetMethodDelegateFromRecName(rulePath, this.Context), new CacheDependency(rulePath));
 
-                Ext.MessageBox.Alert("操作成功", "更新规则成功！");
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
             }
             catch (Exception ex)
             {
-                Ext.MessageBox.Alert("错误信息", "规则加载失败,错误信息：" + ex.Message + "！");
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message + "！";
                 return;
             }
 
@@ -247,7 +252,8 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
         {
             if (ChannleID <= 0)
             {
-                Ext.MessageBox.Alert("错误信息", "错误信息：ChannelID不存在！");
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：ChannelID不存在！";
                 return;
             }
 
@@ -264,13 +270,12 @@ namespace Legendigital.Common.Web.Moudles.SPS.Channels
 
                 this.btnCreateRule.Disabled = true;
 
-                Ext.MessageBox.Alert("操作成功", "添加规则文件成功！");
-
-                
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = true;
             }
             catch (Exception ex)
             {
-                Ext.MessageBox.Alert("错误信息", "错误信息：" + ex.Message + "！");
+                Coolite.Ext.Web.ScriptManager.AjaxSuccess = false;
+                Coolite.Ext.Web.ScriptManager.AjaxErrorMessage = "错误信息：" + ex.Message + "！";
                 throw;
             }
         }

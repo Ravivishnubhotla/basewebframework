@@ -272,7 +272,7 @@
                     <ext:RecordField Name="ClientGroupName" />
                     <ext:RecordField Name="ChannelClientCode" />
                     <ext:RecordField Name="AssignedUser" />
-                    <ext:RecordField Name="Price" Type="Float" />
+                    <ext:RecordField Name="Price"  />
                     <ext:RecordField Name="IsSycnData" Type="Boolean" />
                 </Fields>
             </ext:JsonReader>
@@ -432,7 +432,6 @@
                                     <Renderer Fn="showPerent" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colPrice" DataIndex="Price" Header="价格" Sortable="true" Width="30">
-                                    <Renderer Fn="decimalFormat1" />
                                 </ext:Column>
                                 <ext:Column ColumnID="colChannelClient" DataIndex="cmdEditChannelClient" Header="设置"
                                     Sortable="true" Width="30">
