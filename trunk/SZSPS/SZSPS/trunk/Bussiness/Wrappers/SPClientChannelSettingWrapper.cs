@@ -218,6 +218,19 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
             }
         }
 
+
+        public int ClinetID_ID
+        {
+            get
+            {
+                if (this.ClinetID != null)
+                {
+                    return this.ClinetID.Id;
+                }
+                return 0;
+            }
+        }
+
         public bool IsEnable
         {
             get
@@ -810,6 +823,9 @@ namespace LD.SPPipeManage.Bussiness.Wrappers
 
         public NameValueCollection GetAllSendParams()
         {
+
+            
+
             NameValueCollection sendParams = new NameValueCollection();
 
             List<SPClientChannelSycnParamsWrapper> clientFieldMappings = this.GetFieldMappings();

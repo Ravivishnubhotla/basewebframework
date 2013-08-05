@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/AdminMaster.Master" AutoEventWireup="true"
     CodeBehind="SPCodeList.aspx.cs" Inherits="Legendigital.Common.Web.Moudles.SPS.ClientChannelSettings.SPCodeList" %>
-
+<%@ Register Src="../Clients/UCSPClientEdit.ascx" TagName="UCSPClientEdit" TagPrefix="uc2" %>
 <%@ Register Src="UCSPClientChannelSettingInfoEdit.ascx" TagName="UCSPClientChannelSettingInfoEdit"
     TagPrefix="uc5" %>
  <%@ Register Src="UCSPClientChannelSettingBaseEdit.ascx" TagName="UCSPClientChannelSettingBaseEdit"
@@ -158,6 +158,21 @@
                                                                 }              
                 );
             }
+            
+
+            if (cmd == "cmdClientEdit") {
+                Coolite.AjaxMethods.UCSPClientEdit.Show(id.data.ClinetID_ID,
+                                                                {
+                                                                    failure: function(msg) {
+                                                                        Ext.Msg.alert('操作失败', msg,RefreshSPClientData);
+                                                                    },
+                                                                    eventMask: {
+                                                                        showMask: true,
+                                                                        msg: '加载中...'
+                                                                    }
+                                                                }              
+                );
+            }
 
             
           if (cmd == "cmdTest") {
@@ -225,6 +240,7 @@
                     <ext:RecordField Name="InterceptRate" Type="int" />
                     <ext:RecordField Name="ChannelClientCode" />
                     <ext:RecordField Name="ClientName" />
+                    <ext:RecordField Name="ClinetID_ID" />
                     <ext:RecordField Name="MoCode" />
                     <ext:RecordField Name="ChannelID_ID" />
                     <ext:RecordField Name="ClientGroupName" />
@@ -243,7 +259,7 @@
     <uc5:UCSPClientChannelSettingInfoEdit ID="UCSPClientChannelSettingInfoEdit1" runat="server" />
      <uc6:UCSPClientChannelQuery ID="UCSPClientChannelQuery1" runat="server" />   
       <uc7:UCSPClientChannelSettingBaseEdit ID="UCSPClientChannelSettingBaseEdit1" runat="server" />      
-    
+        <uc2:UCSPClientEdit ID="UCSPClientEdit1" runat="server" />
     
     <ext:ViewPort ID="viewPortMain" runat="server">
         <Body>
@@ -314,6 +330,7 @@
                                                     <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdSetCode" Text="设置" />
                                                     <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdSetSycn" Text="同步地址" />
                                                     <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdTest" Text="通道测试" />
+                                                    <ext:MenuCommand Icon="ApplicationEdit" CommandName="cmdClientEdit" Text="下家编辑" />
                                                     <ext:MenuCommand Icon="TelephoneGo" CommandName="cmdTestClient" Text="下家测试" />
                                                     <ext:MenuCommand Icon="Find" CommandName="cmdQueryData" Text="查询" />
                                                 </Items>

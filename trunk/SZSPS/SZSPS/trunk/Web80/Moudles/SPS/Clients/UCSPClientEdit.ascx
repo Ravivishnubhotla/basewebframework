@@ -54,7 +54,7 @@
                             </ext:Anchor>
                             <ext:Anchor Horizontal="95%">
                                 <ext:ComboBox ID="cmbClientGroupID" runat="server" FieldLabel="下家组" AllowBlank="True"
-                                    StoreID="storeSPChannelGroup" Editable="false" TypeAhead="true" Mode="Local"
+                                    StoreID="storeSPChannelGroup" Editable="true" TypeAhead="true" Mode="Local"
                                     ForceSelection="true" TriggerAction="All" DisplayField="Name" ValueField="Id"
                                     EmptyText="请选择下家组">
                                     <Triggers>
