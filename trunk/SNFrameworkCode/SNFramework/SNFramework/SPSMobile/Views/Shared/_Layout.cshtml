@@ -34,7 +34,22 @@
     <!-- begin first page -->
     <section id="page1" data-role="page">
         <header data-role="header" data-theme="b">
+            @if (IsSectionDefined("Header"))
+            {
+                @RenderSection("Header")
+            }
+            else
+            {
+                if (Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("用户信息", "Index", "Account", routeValues: null, htmlAttributes: new {data_icon = "gear"})
+                }
+            }            
             <h1>短信业务平台移动版</h1>
+            @if (Request.IsAuthenticated)
+            {
+                @Html.ActionLink("注销", "LogOff", "Account", routeValues: null, htmlAttributes: new {data_icon = "cancel"})
+            }
         </header>
         @RenderBody()
         <footer data-role="footer">

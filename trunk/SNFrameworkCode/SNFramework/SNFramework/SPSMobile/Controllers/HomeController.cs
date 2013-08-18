@@ -3,38 +3,72 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using SPSMobile.Models;
 
 namespace SPSMobile.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         //
         // GET: /Home/
-
         public ActionResult Index()
         {
-            if (Session["LoginUser"] == null)
-                Response.Redirect("Home/Login");
+            //FormsAuthentication.SignOut();
+            //if (this.HttpContext.User == null)
+            //    return RedirectToAction("Login", "Home");
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
         }
 
 
-        //public ActionResult Dialog()
-        //{
-        //    return View();
-        //}
-        
-
-        public bool CheckUser(LoginUserInfo loginUserInfo)
+        [AllowAnonymous]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginUserModel model, string returnUrl)
         {
-            return false;
+            if (ModelState.IsValid)
+            {
+                if (model.ValidateUser())
+                {
+                    FormsAuthentication.SetAuthCookie(model.LoginID, model.SaveLoginStatus);
+                    if (Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
         }
+
+        //
+        // GET: /Account/LogOff
+
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
+ 
 
     }
 }

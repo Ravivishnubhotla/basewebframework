@@ -10,7 +10,7 @@ namespace SPSWeb.Jobs
     {
         private ILog logger = LogManager.GetLogger(typeof(DailyReportGenerateJob));
 
-        protected override void ExecuteInternal(JobExecutionContext context)
+        protected override void ExecuteInternal(IJobExecutionContext context)
         {
             logger.Info("日报表任务开始。。。");
 
@@ -25,5 +25,7 @@ namespace SPSWeb.Jobs
                 logger.Error("日报表任务失败:" + ex.Message);
             }
         }
+
+ 
     }
 }
