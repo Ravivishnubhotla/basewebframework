@@ -67,6 +67,33 @@ namespace SNFramework.BSF.MainPage {
         protected global::Ext.Net.Toolbar Toolbar1;
         
         /// <summary>
+        /// lblToday control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ToolbarTextItem lblToday;
+        
+        /// <summary>
+        /// ToolbarTextItem2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ToolbarTextItem ToolbarTextItem2;
+        
+        /// <summary>
+        /// currentLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Ext.Net.ToolbarTextItem currentLocation;
+        
+        /// <summary>
         /// lblWelcome control.
         /// </summary>
         /// <remarks>
@@ -83,15 +110,6 @@ namespace SNFramework.BSF.MainPage {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Ext.Net.ToolbarTextItem lblUser;
-        
-        /// <summary>
-        /// lblToday control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Ext.Net.ToolbarTextItem lblToday;
         
         /// <summary>
         /// ToolbarTextItem1 control.
