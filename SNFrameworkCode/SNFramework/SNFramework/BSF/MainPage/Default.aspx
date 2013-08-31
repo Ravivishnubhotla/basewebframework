@@ -10,6 +10,9 @@
         var loadPage = function (mtab, node) {
             if (node.attributes.isCategory != "False" && node.attributes.isCategory != null)
                 return;
+            
+            var navPath = node.attributes.navPath;
+
             var tab = mtab.getComponent(node.id);
 
             if (tab) {
@@ -17,6 +20,10 @@
             } else {
                 createTab(mtab, node);
             }
+            
+            var currentLocation = <%= currentLocation.ClientID %>;
+
+            currentLocation.setText(navPath);
         };
         function createTab(mtab, node) {
 
@@ -35,8 +42,11 @@
                     mode: "iframe",
                     url: taburl
                 },
+                tabTip:node.attributes.navPath,
                 closable: true
             }));
+            
+ 
             mtab.setActiveTab(tab);
         }
 
@@ -68,11 +78,53 @@
 
         }
 
+        function MainTabs_Changed(tab) {
+            
+            var currentLocation = <%= currentLocation.ClientID %>;
+
+            if (currentLocation != null) {
+
+                // alert(Ext.get(tab.tabEl).child('span.x-tab-strip-text', true));
+
+                currentLocation.setText(Ext.get(tab.tabEl).child('span.x-tab-strip-text', true).qtip);
+
+            }
+            
+
+
+        }
+
+        function FullScreen() {
+
+
+            var leftPanel = Ext.getCmp('<%= LeftPanel.ClientID %>');
+
+            var iscollapsed = leftPanel.collapsed;
+
+            iscollapsed ? leftPanel.expand() : leftPanel.collapse();
+
+
+            var regionHeader = Ext.getCmp('<%= regionHeader.ClientID %>');
+
+            //alert(w);
+            // expand or collapse that Panel based on its collapsed property state
+            iscollapsed ? regionHeader.expand() : regionHeader.collapse();
+
+
+            var regionFooter = Ext.getCmp('<%= regionFooter.ClientID %>');
+
+            //alert(w);
+            // expand or collapse that Panel based on its collapsed property state
+            iscollapsed ? regionFooter.expand() : regionFooter.collapse();
+
+
+        }
+
     </script>
     <ext:Viewport ID="ViewPort1" runat="server">
         <Items>
             <ext:BorderLayout ID="BorderLayout1" runat="server">
-                <North Collapsible="True" Split="True">
+                <North Collapsible="True" CollapseMode="Mini" Split="True">
                     <ext:Panel runat="server" ID="regionHeader" AutoHeight="true" Header="false">
                         <Content>
                             <div id="header" class="headerDiv">
@@ -83,18 +135,32 @@
                         <BottomBar>
                             <ext:Toolbar ID="Toolbar1" runat="server">
                                 <Items>
+                                    <ext:Button Icon="Date" runat="server">
+                                    </ext:Button>
+                                    <ext:ToolbarTextItem ID="lblToday" Text="2008-1-1">
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:Button Icon="DriveNetwork" runat="server">
+                                    </ext:Button>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="ToolbarTextItem2" Text="当前位置">
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarSpacer>
+                                    </ext:ToolbarSpacer>
+                                    <ext:ToolbarTextItem ID="currentLocation" Text=">> 系统首页" runat="server">
+                                    </ext:ToolbarTextItem>
+                                    <ext:ToolbarFill>
+                                    </ext:ToolbarFill>
                                     <ext:ToolbarTextItem ID="lblWelcome" runat="server" Text="<%$ Resources:msglblWelcome %>">
                                     </ext:ToolbarTextItem>
                                     <ext:ToolbarSpacer>
                                     </ext:ToolbarSpacer>
                                     <ext:ToolbarTextItem ID="lblUser" runat="server" Text="<%$ Resources:msglblSuperAdmin %>">
                                     </ext:ToolbarTextItem>
-                                    <ext:ToolbarSpacer>
-                                    </ext:ToolbarSpacer>
-                                    <ext:ToolbarTextItem ID="lblToday" Text="2008-1-1">
-                                    </ext:ToolbarTextItem>
-                                    <ext:ToolbarFill>
-                                    </ext:ToolbarFill>
                                     <ext:ToolbarTextItem ID="ToolbarTextItem1" runat="server" Text="<%$ Resources:msgToolbarTextItemThemsText %>" />
                                     <ext:ComboBox ID="cbTheme" runat="server" EmptyText="<%$ Resources:msgCbThemeEmptyText %>"
                                         Width="100" Editable="false" TypeAhead="true">
@@ -127,7 +193,7 @@
                         </BottomBar>
                     </ext:Panel>
                 </North>
-                <South Collapsible="true" Split="true">
+                <South Collapsible="true" Split="true" CollapseMode="Mini">
                     <ext:Panel runat="server" ID="regionFooter" AutoHeight="true" Border="true" Header="false"
                         BodyBorder="false">
                         <Content>
@@ -146,10 +212,19 @@
                 </West>
                 <Center>
                     <ext:Panel ID="Panel2" runat="server" Title="<%$ Resources:msgPanel2Title %>" Layout="Fit">
+                        <Tools>
+                            <ext:Tool Type="Toggle" Qtip="首页"></ext:Tool>
+                            <ext:Tool Type="Maximize" Handler="FullScreen();" Qtip="全屏">
+                            </ext:Tool>
+                            <ext:Tool Type="Refresh" Qtip="刷新当前模块">
+                            </ext:Tool>
+                            <ext:Tool Type="Help" Qtip="帮助">
+                            </ext:Tool>
+                        </Tools>
                         <Items>
                             <ext:TabPanel ID="MainTabs" runat="server" Border="false" EnableTabScroll="true">
                                 <Items>
-                                    <ext:Panel ID="pnlWorkSpace" runat="server" Title="工作面板" Layout="Fit" Frame="True"
+                                    <ext:Panel ID="pnlWorkSpace" runat="server" Title="工作面板" TabTip="工作面板" Layout="Fit" Frame="True"
                                         Closable="False">
                                         <Items>
                                             <ext:Panel ID="Panel1" runat="server" Header="False" Layout="Fit" Frame="True">
@@ -157,8 +232,8 @@
                                                     <ext:Toolbar ID="Toolbar2" runat="server">
                                                         <Items>
                                                             <ext:ToolbarFill ID="ToolbarFill1" runat="server" />
-                                                            <ext:Button ID="Button4" runat="server" Text="添加模块" Icon="BulletPlus"  Hidden="True" />
-                                                            <ext:Button ID="Button2" runat="server" Text="保存" Icon="Disk"  Hidden="True" />
+                                                            <ext:Button ID="Button4" runat="server" Text="添加模块" Icon="BulletPlus" Hidden="True" />
+                                                            <ext:Button ID="Button2" runat="server" Text="保存" Icon="Disk" Hidden="True" />
                                                         </Items>
                                                     </ext:Toolbar>
                                                 </TopBar>
@@ -216,6 +291,9 @@
                                 <Plugins>
                                     <ext:TabScrollerMenu ID="TabScrollerMenu1" runat="server" PageSize="5" />
                                 </Plugins>
+                                <Listeners>
+                                    <TabChange Handler="MainTabs_Changed(tab);"></TabChange>
+                                </Listeners>
                             </ext:TabPanel>
                         </Items>
                     </ext:Panel>

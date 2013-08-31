@@ -103,6 +103,9 @@ namespace Legendigital.Common.WebApp.AppCode
                 subNode.CustomAttributes.Add(new ConfigItem("isCategory", submenu.IsCategory.ToString(),
                                                             ParameterMode.Value));
 
+                subNode.CustomAttributes.Add(new ConfigItem("navPath", submenu.getPath(),
+                                            ParameterMode.Value));
+
                 mainNode.Nodes.Add(subNode);
                 CreateSubItem(submenu, subNode, page);
             }

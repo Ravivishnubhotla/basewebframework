@@ -103,5 +103,21 @@ namespace Legendigital.Framework.Common.BaseFramework
             subMenus.Add(subMenu);
             return subMenu;
         }
+
+        public string getPath()
+        {
+            string path = this.Name;
+
+            NavMenu pMenu = this.ParentMenu;
+
+            while (pMenu!=null)
+            {
+                path = pMenu.Name + "&nbsp;>>&nbsp;" + path;
+                pMenu = pMenu.ParentMenu;
+            }
+
+            return path;
+
+        }
     }
 }
